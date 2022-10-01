@@ -11,6 +11,7 @@ $pip install -U spacy
 $python -m spacy download en_core_web_sm
 ```
 
+# Run Experiments
 Set environment variable for API key
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>

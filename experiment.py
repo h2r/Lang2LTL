@@ -9,10 +9,23 @@ def run_exp():
         output_ltls = run_exp_e2e()
     else:
         output_ltls = run_exp_modular()
-    true_trajs = load_from_file(args.true_trajs)
 
-    acc_plan = plan(output_ltls, true_trajs)
-    print(acc_plan)
+    # ground_prompt = load_from_file(args.ground_prompt)
+    # known_names = load_from_file(args.known_names)
+
+    if args.ground == 'gpt3':
+        ground_module = GPT3()
+        # ground_queries = [ground_prompt+utt for utt in input_utterances]
+    # elif args.ground == 'bert':
+    #     ground_module = BERT()
+    else:
+        raise ValueError("ERROR: grounding module not recognized")
+
+    # ground_maps = ground_task(ground_module, known_names, ground_queries)
+
+    # true_trajs = load_from_file(args.true_trajs)
+    # acc_plan = plan(output_ltls, true_trajs, ground_maps)
+    # print(acc_plan)
 
 
 def run_exp_e2e():
@@ -35,20 +48,10 @@ def run_exp_modular():
     # Read data
     input_utterances = load_from_file(args.input)
     true_ltls = load_from_file(args.true_ltls)
-    ground_prompt = load_from_file(args.ground_prompt)
-    known_names = load_from_file(args.known_names)
     ner_prompt = load_from_file(args.ner_prompt)
     trans_prompt = load_from_file(args.trans_prompt)
 
     # Load modules and construct queries
-    if args.ground == 'gpt3':
-        ground_module = GPT3()
-        ground_queries = [ground_prompt+utt for utt in input_utterances]
-    # elif args.ground == 'bert':
-    #     ground_module = BERT()
-    else:
-        raise ValueError("ERROR: grounding module not recognized")
-
     if args.ner == 'gpt3':
         ner_module = GPT3()
         ner_queries = [ner_prompt+utt+"\nLandmarks:" for utt in input_utterances]
@@ -66,24 +69,24 @@ def run_exp_modular():
         raise ValueError("ERROR: translation module not recognized")
 
     # Query module
-    ground_maps = ground_task(ground_module, known_names, ground_queries)
+    placeholder_maps = ner_task(ner_module, ner_queries)
 
-    if args.trans == 's2s_sup':
-        placeholder_maps = ner_task(ner_module, ner_queries)
-        trans_queries = substitue(input_utterances, placeholder_maps)
-
+    trans_queries = substitue(input_utterances, placeholder_maps)
     output_ltls = trans_task(trans_module, trans_queries)
+
+    placeholder_maps_inv = [
+        {letter: name for name, letter in placeholder_map.items()}
+        for placeholder_map in placeholder_maps
+    ]
+    output_ltls = substitue(output_ltls, placeholder_maps_inv)
+
+    print(output_ltls)
 
     # Evaluate system output
     acc_lang = evalulate_lang(output_ltls, true_ltls)
     print(acc_lang)
 
     return output_ltls
-
-
-def ground_task(ground_module, known_names, queries):
-    ground_maps = []
-    return ground_maps
 
 
 def ner_task(ner_module, ner_queries):
@@ -94,17 +97,17 @@ def trans_task(trans_module, trans_queries):
     return [trans_module.translate(query) for query in trans_queries]
 
 
-def substitue(input_utterances, placeholder_maps):
-    input_symbolics = []
-    for utt, placeholder_map in zip(input_utterances, placeholder_maps):
-        for name, symbol in placeholder_map.items():
-            utt_sub = utt.replace(name, symbol)
-            if utt_sub == utt:  # name entity not found in utterance
-                raise ValueError(f"Name entity {name} not found in input utterance {utt}")
+def substitue(input_strs, placeholder_maps):
+    output_strs = []
+    for input_str, placeholder_map in zip(input_strs, placeholder_maps):
+        for k, v in placeholder_map.items():
+            input_str_sub = input_str.replace(k, v)
+            if input_str_sub == input_str:  # name entity not found in utterance
+                raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
             else:
-                utt = utt_sub
-        input_symbolics.append(utt)
-    return input_symbolics
+                input_str = input_str_sub
+        output_strs.append(input_str)
+    return output_strs
 
 
 def evalulate_lang(output_ltls, true_ltls):
@@ -112,6 +115,11 @@ def evalulate_lang(output_ltls, true_ltls):
     for out_ltl in output_ltls:
         accs.append(out_ltl in true_ltls)
     return sum(accs) / len(accs)
+
+
+def ground_task(ground_module, known_names, queries):
+    ground_maps = []
+    return ground_maps
 
 
 def plan(output_ltls, true_trajs):
@@ -129,7 +137,7 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--e2e_gpt3', type=bool, default=False, help="Solve translation task end-to-end using GPT-3")
+    parser.add_argument('--e2e_gpt3', action='store_true', help="Solve translation task end-to-end using GPT-3")
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
     parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
     parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
