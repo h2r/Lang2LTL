@@ -17,19 +17,30 @@ class GPT3:
         return response.choices[0].text
 
     def extract(self, query_prompt):
-        out = self.generate(query_prompt)
-        name_entities = out.split(' | ')
+        # out = self.generate(query_prompt)
+        out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
+
+        if out.find("Landmarks:") != 0:
+            raise ValueError(f"Invalid output string: {out}")
+
+        name_entities = out[11:].split(' | ')
 
         placeholder_map = {}
-        placeholder = "a"
+        letter = "A"
         for idx, ne in enumerate(name_entities):
-            placeholder_map[ne] = chr(ord(placeholder) + idx)  # increment placeholder using its ascii value
+            placeholder_map[ne] = chr(ord(letter) + idx)  # increment placeholder using its ascii value
 
         return placeholder_map
 
     def translate(self, query_prompt):
-        out = self.generate(query_prompt)
-        return out
+        # out = self.generate(query_prompt)
+        # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
+        out = "LTL: F ( A & F ( C & F ( B ) )"
+
+        if out.find("LTL:") != 0:
+            raise ValueError(f"Invalid output string: {out}")
+
+        return out[5:]
 
 
 if __name__ == '__main__':
