@@ -62,9 +62,9 @@ if __name__ == '__main__':
     true_ltls = [
         "F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
     ]
-    save_to_file(true_ltls, os.path.join("data", "true_output.pkl"))
+    save_to_file(true_ltls, os.path.join("data", "true_ltls.pkl"))
 
-    # true_ltls = load_from_file(os.path.join("data", "true_output.pkl"))
+    # true_ltls = load_from_file(os.path.join("data", "true_ltls.pkl"))
     # print(f"true_ltls:\n{true_ltls}")
 
 
