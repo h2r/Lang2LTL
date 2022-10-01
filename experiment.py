@@ -3,14 +3,15 @@ import argparse
 import dill
 
 from gpt3 import GPT3
+from utils import load_from_file
 
 
 def run_exp():
     # Read data
-    input_utterances = read_from_file(args.input)
-    ner_prompt = read_from_file(args.ner_prompt)
-    trans_prompt = read_from_file(args.trans_prompt)
-    true_ltls = read_from_file(args.true_output)
+    input_utterances = load_from_file(args.input)
+    ner_prompt = load_from_file(args.ner_prompt)
+    trans_prompt = load_from_file(args.trans_prompt)
+    true_ltls = load_from_file(args.true_output)
 
     # Load modules and construct queries
     if args.ground == 'gpt3':
@@ -22,7 +23,7 @@ def run_exp():
 
     if args.ner == 'gpt3':
         ner_module = GPT3()
-        ner_queries = [ner_prompt+input_utt for input_utt in input_utterances]
+        ner_queries = [ner_prompt+input_utt+"\nLandmarks:" for input_utt in input_utterances]
     # elif args.ner == 'bert':
     #     ner_module = BERT()
     else:
@@ -30,7 +31,7 @@ def run_exp():
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
-        trans_queries = [trans_prompt + input_utt for input_utt in input_utterances]
+        trans_queries = [trans_prompt+input_utt+"\nLTL:" for input_utt in input_utterances]
     # elif args.trans == 's2s_sup':
     #     trans_module = Seq2Seq()
     else:
@@ -46,20 +47,6 @@ def run_exp():
     # Evaluate system output
     acc = evalulate(output_ltls, true_ltls)
     print(acc)
-
-
-def read_from_file(fpath):
-    ftype = os.path.splitext(fpath)
-
-    with open(fpath, 'r') as rfile:
-        if ftype == 'txt':
-            out = rfile.readlines()
-        elif ftype == 'json':
-            out = dill.load(rfile)
-        else:
-            raise ValueError("ERROR: file type not recognized")
-
-    return out
 
 
 def ner_task(ner_module, ner_queries):
@@ -100,10 +87,11 @@ if __name__ == '__main__':
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
     parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
     parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
-    parser.add_argument('--input', type=str, default='input.pkl', help='file path to input utterances')
+    parser.add_argument('--input', type=str, default='data/input.pkl', help='file path to input utterances')
+    parser.add_argument('--true_output', type=str, default='data/true_output.pkl', help='file path to true LTLs')
+    parser.add_argument('--e2e_prompt', type=str, default='data/e2e_prompt.txt', help='file path to end-to-end prompt')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='file path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='file path to trans prompt')
-    parser.add_argument('--true_output', type=str, default='data/output.pkl', help='file path to true LTLs')
     args = parser.parse_args()
 
     run_exp()
