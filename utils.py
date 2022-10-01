@@ -50,6 +50,8 @@ def load_from_file(fpath):
 
 
 if __name__ == '__main__':
+    os.makedirs("data", exist_ok=True)
+
     input_utterances = [
         "Go to Heng Thai, after that visit Providence Palace, but before Providence Palace, go to Chinatown"
     ]
@@ -110,11 +112,11 @@ if __name__ == '__main__':
 
 
     trans_prompt = \
-        "English: Go to a then to b\nLTL: F ( a & F ( b ) )\n\n" \
-        "English: Go to a then reach b\nLTL: F ( a & F ( b ) )\n\n" \
-        "English: Find a then go to b\nLTL: F ( a & F ( b ) )\n\n" \
-        "English: Go to a then to b, but after c\nLTL: F ( a & F ( c & F ( b ) )\n\n" \
-        "English: Go to a then to b; go to c before b and after a\nLTL: F ( a & F ( c & F ( b ) )\n\n" \
+        "English: Go to A then to B\nLTL: F ( A & F ( B ) )\n\n" \
+        "English: Go to A then reach B\nLTL: F ( A & F ( B ) )\n\n" \
+        "English: Find A then go to B\nLTL: F ( A & F ( B ) )\n\n" \
+        "English: Go to A then to B, but after C\nLTL: F ( A & F ( C & F ( B ) )\n\n" \
+        "English: Go to A then to B; go to C before B and after A\nLTL: F ( A & F ( C & F ( B ) )\n\n" \
         "English: "
     save_to_file(trans_prompt, os.path.join("data", "trans_prompt.txt"))
 
