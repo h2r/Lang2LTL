@@ -118,7 +118,5 @@ if __name__ == '__main__':
         "English: "
     save_to_file(trans_prompt, os.path.join("data", "trans_prompt.txt"))
 
-    trans_prompt = load_from_file(os.path.join("data", "trans_prompt.txt"))
-    print(f"trans_prompt:\n{trans_prompt}")
-
-
+    # trans_prompt = load_from_file(os.path.join("data", "trans_prompt.txt"))
+    # print(f"trans_prompt:\n{trans_prompt}")

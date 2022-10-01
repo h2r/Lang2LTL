@@ -1,12 +1,24 @@
-import os
 import argparse
-import dill
 
 from gpt3 import GPT3
 from utils import load_from_file
 
 
-def run_exp():
+def run_exp_e2e():
+    input_utterances = load_from_file(args.input)
+    true_ltls = load_from_file(args.true_output)
+    e2e_prompt = load_from_file(args.e2e_prompt)
+
+    model = GPT3()
+
+    queries = [e2e_prompt+utt+"\nLTL:" for utt in input_utterances]
+    out_ltls = [model.translate(query) for query in queries]
+
+    acc = evalulate(out_ltls, true_ltls)
+    print(acc)
+
+
+def run_exp_modular():
     # Read data
     input_utterances = load_from_file(args.input)
     ner_prompt = load_from_file(args.ner_prompt)
@@ -23,7 +35,7 @@ def run_exp():
 
     if args.ner == 'gpt3':
         ner_module = GPT3()
-        ner_queries = [ner_prompt+input_utt+"\nLandmarks:" for input_utt in input_utterances]
+        ner_queries = [ner_prompt+utt+"\nLandmarks:" for utt in input_utterances]
     # elif args.ner == 'bert':
     #     ner_module = BERT()
     else:
@@ -31,7 +43,7 @@ def run_exp():
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
-        trans_queries = [trans_prompt+input_utt+"\nLTL:" for input_utt in input_utterances]
+        trans_queries = [trans_prompt+utt+"\nLTL:" for utt in input_utterances]
     # elif args.trans == 's2s_sup':
     #     trans_module = Seq2Seq()
     else:
@@ -59,7 +71,6 @@ def trans_task(trans_module, trans_queries):
 
 def substitue(input_utterances, placeholder_maps):
     input_symbolics = []
-
     for utt, placeholder_map in zip(input_utterances, placeholder_maps):
         for name, symbol in placeholder_map.items():
             utt_sub = utt.replace(name, symbol)
@@ -68,16 +79,13 @@ def substitue(input_utterances, placeholder_maps):
             else:
                 utt = utt_sub
         input_symbolics.append(utt)
-
     return input_symbolics
 
 
 def evalulate(output_ltls, true_ltls):
     accs = []
-
     for out_ltl in output_ltls:
         accs.append(out_ltl in true_ltls)
-
     return sum(accs) / len(accs)
 
 
@@ -94,4 +102,7 @@ if __name__ == '__main__':
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='file path to trans prompt')
     args = parser.parse_args()
 
-    run_exp()
+    if args.e2e_gpt3:
+        run_exp_e2e()
+    else:
+        run_exp_modular()
