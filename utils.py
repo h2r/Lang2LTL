@@ -43,10 +43,17 @@ def load_from_file(fpath):
     elif ftype == 'txt':
         with open(fpath, 'r') as rfile:
             out = "".join(rfile.readlines())
-
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
+
+
+def lists_equal(l1, l2):
+    """
+    For testing.
+    """
+    for elem1, elem2 in zip(l1, l2):
+        assert elem1 == elem2, f"{elem1} != {elem2}"
 
 
 if __name__ == '__main__':
@@ -57,18 +64,16 @@ if __name__ == '__main__':
     ]
     save_to_file(input_utterances, os.path.join("data", "input.pkl"))
 
-    # input_utterances = load_from_file(os.path.join("data", "input.pkl"))
-    # print(f"input_utterances:\n{input_utterances}")
-
+    input_utterances_loaded = load_from_file(os.path.join("data", "input.pkl"))
+    lists_equal(input_utterances, input_utterances_loaded)
 
     true_ltls = [
         "F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
     ]
     save_to_file(true_ltls, os.path.join("data", "true_ltls.pkl"))
 
-    # true_ltls = load_from_file(os.path.join("data", "true_ltls.pkl"))
-    # print(f"true_ltls:\n{true_ltls}")
-
+    true_ltls_loaded = load_from_file(os.path.join("data", "true_ltls.pkl"))
+    lists_equal(true_ltls, true_ltls_loaded)
 
     e2e_prompt = \
         "English: Go to Bookstore then to Science Library\n" \
@@ -89,8 +94,8 @@ if __name__ == '__main__':
         "English: "
     save_to_file(e2e_prompt, os.path.join("data", "e2e_prompt.txt"))
 
-    # e2e_prompt = load_from_file(os.path.join("data", "e2e_prompt.txt"))
-    # print(f"e2e_prompt:\n{e2e_prompt}")
+    e2e_prompt_loaded = load_from_file(os.path.join("data", "e2e_prompt.txt"))
+    lists_equal(e2e_prompt, e2e_prompt_loaded)
 
 
     ner_prompt = \
@@ -107,9 +112,8 @@ if __name__ == '__main__':
         "English: "
     save_to_file(ner_prompt, os.path.join("data", "ner_prompt.txt"))
 
-    # ner_prompt = load_from_file(os.path.join("data", "ner_prompt.txt"))
-    # print(f"ner_prompt:\n{ner_prompt}")
-
+    ner_prompt_loaded = load_from_file(os.path.join("data", "ner_prompt.txt"))
+    lists_equal(ner_prompt, ner_prompt_loaded)
 
     trans_prompt = \
         "English: Go to A then to B\nLTL: F ( A & F ( B ) )\n\n" \
@@ -120,5 +124,5 @@ if __name__ == '__main__':
         "English: "
     save_to_file(trans_prompt, os.path.join("data", "trans_prompt.txt"))
 
-    # trans_prompt = load_from_file(os.path.join("data", "trans_prompt.txt"))
-    # print(f"trans_prompt:\n{trans_prompt}")
+    trans_prompt_loaded = load_from_file(os.path.join("data", "trans_prompt.txt"))
+    lists_equal(trans_prompt, trans_prompt_loaded)
