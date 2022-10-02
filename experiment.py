@@ -45,13 +45,13 @@ def run_exp_e2e():
 
 
 def run_exp_modular():
-    # Read data
+    # Load data
     input_utterances = load_from_file(args.input)
     true_ltls = load_from_file(args.true_ltls)
     ner_prompt = load_from_file(args.ner_prompt)
     trans_prompt = load_from_file(args.trans_prompt)
 
-    # Load modules and construct queries
+    # Load modules
     if args.ner == 'gpt3':
         ner_module = GPT3()
         ner_queries = [ner_prompt+utt+"\nLandmarks:" for utt in input_utterances]
@@ -62,27 +62,27 @@ def run_exp_modular():
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
-        trans_queries = [trans_prompt+utt+"\nLTL:" for utt in input_utterances]
     # elif args.trans == 's2s_sup':
     #     trans_module = Seq2Seq()
     else:
         raise ValueError("ERROR: translation module not recognized")
 
-    # Query module
+    # Query modules
     placeholder_maps = ner_task(ner_module, ner_queries)
 
-    trans_queries = substitue(input_utterances, placeholder_maps)
+    trans_queries = substitue(input_utterances, placeholder_maps)  # replace names by symbols
+    if args.trans == 'gpt3':  # add prompt if translation module uses GPT-3
+        trans_queries = [trans_prompt + query + "\nLTL:" for query in trans_queries]
+
     output_ltls = trans_task(trans_module, trans_queries)
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
-    output_ltls = substitue(output_ltls, placeholder_maps_inv)
+    output_ltls = substitue(output_ltls, placeholder_maps_inv)  # replace symbols by names
 
-    print(output_ltls)
-
-    # Evaluate system output
+    # Evaluate
     acc_lang = evalulate_lang(output_ltls, true_ltls)
     print(acc_lang)
 
@@ -137,17 +137,17 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--e2e_gpt3', action='store_true', help="Solve translation task end-to-end using GPT-3")
-    parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
+    parser.add_argument('--e2e_gpt3', action='store_true', help="solve translation task end-to-end using GPT-3")
+    parser.add_argument('--e2e_prompt', type=str, default='data/e2e_prompt.txt', help='path to end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
     parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
     parser.add_argument('--input', type=str, default='data/input.pkl', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/true_ltls.pkl', help='path to true LTLs')
-    parser.add_argument('--known_names', type=str, default='data/known_names.pkl', help='path to known_names')
-    parser.add_argument('--ground_prompt', type=str, default='data/ground_prompt.txt', help='path to ground prompt')
-    parser.add_argument('--e2e_prompt', type=str, default='data/e2e_prompt.txt', help='path to end-to-end prompt')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
+    parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
+    parser.add_argument('--known_names', type=str, default='data/known_names.pkl', help='path to known_names')
+    parser.add_argument('--ground_prompt', type=str, default='data/ground_prompt.txt', help='path to ground prompt')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     args = parser.parse_args()
 
