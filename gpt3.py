@@ -6,7 +6,8 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 class GPT3:
-    def extract(self, query_prompt):
+    def extract_ne(self, query, **kwargs):
+        query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
         # out = self.generate(query_prompt)
         out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
 
@@ -15,14 +16,10 @@ class GPT3:
 
         name_entities = out[11:].split(' | ')
 
-        placeholder_map = {}
-        letter = "A"
-        for idx, ne in enumerate(name_entities):
-            placeholder_map[ne] = chr(ord(letter) + idx)  # increment placeholder using its ascii value
+        return name_entities
 
-        return placeholder_map
-
-    def translate(self, query_prompt):
+    def translate(self, query, **kwargs):
+        query_prompt = kwargs["prompt"] + query + "\nLTL:"
         # out = self.generate(query_prompt)
         # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
         out = "LTL: F ( A & F ( C & F ( B ) )"
@@ -75,5 +72,4 @@ if __name__ == '__main__':
         "English: "
 
     print(gpt3.generate(query_prompt))
-
     print(gpt3.get_embedding("Burger Queen"))

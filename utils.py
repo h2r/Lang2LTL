@@ -1,26 +1,27 @@
 import os
 import dill
-import csv
-import spacy
+import pandas as pd
 
 
-def ner_spacy():
-    nlp = spacy.load("en_core_web_sm")
-    # doc = nlp("Go to Burger Queen then to cafe on Thayer")
-    doc = nlp("Go to Starbucks then to war memorial")
-
-    for token in doc:
-        print(token, token.tag_, token.pos_, spacy.explain(token.tag_))
-
-    spacy.displacy.serve(doc, style="dep")
+def build_placeholder_map(name_entities):
+    placeholder_map = {}
+    letter = "A"
+    for idx, ne in enumerate(name_entities):
+        placeholder_map[ne] = chr(ord(letter) + idx)  # increment placeholder using its ascii value
+    return placeholder_map
 
 
-def ner_llm():
-    with open("data/providence_500.csv", mode='r') as rf:
-        csvfile = csv.reader(rf)
-        for lines in csvfile:
-            out_str = f"English: {lines[1]}; LTL: {lines[2]}"
-            print(out_str)
+def substitute(input_strs, placeholder_maps):
+    output_strs = []
+    for input_str, placeholder_map in zip(input_strs, placeholder_maps):
+        for k, v in placeholder_map.items():
+            input_str_sub = input_str.replace(k, v)
+            if input_str_sub == input_str:  # name entity not found in utterance
+                raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
+            else:
+                input_str = input_str_sub
+        output_strs.append(input_str)
+    return output_strs
 
 
 def save_to_file(data, fpth):
@@ -43,6 +44,8 @@ def load_from_file(fpath):
     elif ftype == 'txt':
         with open(fpath, 'r') as rfile:
             out = "".join(rfile.readlines())
+    elif ftype == 'csv':
+        out = pd.read_csv(fpath, index_col=0)
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
@@ -96,7 +99,6 @@ if __name__ == '__main__':
 
     e2e_prompt_loaded = load_from_file(os.path.join("data", "e2e_prompt.txt"))
     lists_equal(e2e_prompt, e2e_prompt_loaded)
-
 
     ner_prompt = \
         "English: Go to Bookstore then to Science Library\n" \
