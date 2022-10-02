@@ -1,6 +1,6 @@
 import os
 import dill
-import pandas as pd
+import numpy as np
 
 
 def build_placeholder_map(name_entities):
@@ -44,19 +44,22 @@ def load_from_file(fpath):
     elif ftype == 'txt':
         with open(fpath, 'r') as rfile:
             out = "".join(rfile.readlines())
-    elif ftype == 'csv':
-        out = pd.read_csv(fpath, index_col=0)
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
 
 
-def lists_equal(l1, l2):
+def equal(item1, item2):
     """
     For testing.
     """
-    for elem1, elem2 in zip(l1, l2):
-        assert elem1 == elem2, f"{elem1} != {elem2}"
+    if isinstance(item1, list) and isinstance(item2, list):
+        for elem1, elem2 in zip(item1, item2):
+            assert elem1 == elem2, f"{elem1} != {elem2}"
+    elif isinstance(item1, dict) and isinstance(item1, dict):
+        assert len(item1) == len(item2)
+        for k in item1:
+            assert np.all(item1[k] == item2[k]), f"{item1[k]} != {item2[k]}"
 
 
 if __name__ == '__main__':
@@ -68,7 +71,7 @@ if __name__ == '__main__':
     save_to_file(input_utterances, os.path.join("data", "input.pkl"))
 
     input_utterances_loaded = load_from_file(os.path.join("data", "input.pkl"))
-    lists_equal(input_utterances, input_utterances_loaded)
+    equal(input_utterances, input_utterances_loaded)
 
     true_ltls = [
         "F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
@@ -76,7 +79,7 @@ if __name__ == '__main__':
     save_to_file(true_ltls, os.path.join("data", "true_ltls.pkl"))
 
     true_ltls_loaded = load_from_file(os.path.join("data", "true_ltls.pkl"))
-    lists_equal(true_ltls, true_ltls_loaded)
+    equal(true_ltls, true_ltls_loaded)
 
     e2e_prompt = \
         "English: Go to Bookstore then to Science Library\n" \
@@ -98,7 +101,7 @@ if __name__ == '__main__':
     save_to_file(e2e_prompt, os.path.join("data", "e2e_prompt.txt"))
 
     e2e_prompt_loaded = load_from_file(os.path.join("data", "e2e_prompt.txt"))
-    lists_equal(e2e_prompt, e2e_prompt_loaded)
+    equal(e2e_prompt, e2e_prompt_loaded)
 
     ner_prompt = \
         "English: Go to Bookstore then to Science Library\n" \
@@ -115,7 +118,7 @@ if __name__ == '__main__':
     save_to_file(ner_prompt, os.path.join("data", "ner_prompt.txt"))
 
     ner_prompt_loaded = load_from_file(os.path.join("data", "ner_prompt.txt"))
-    lists_equal(ner_prompt, ner_prompt_loaded)
+    equal(ner_prompt, ner_prompt_loaded)
 
     trans_prompt = \
         "English: Go to A then to B\nLTL: F ( A & F ( B ) )\n\n" \
@@ -127,4 +130,13 @@ if __name__ == '__main__':
     save_to_file(trans_prompt, os.path.join("data", "trans_prompt.txt"))
 
     trans_prompt_loaded = load_from_file(os.path.join("data", "trans_prompt.txt"))
-    lists_equal(trans_prompt, trans_prompt_loaded)
+    equal(trans_prompt, trans_prompt_loaded)
+
+    name2embed = {
+        "restaurant": np.random.rand(1, 2048),
+        "mall": np.random.rand(1, 2048),
+    }
+    save_to_file(name2embed, os.path.join("data", "name_embed.pkl"))
+
+    name2embed_loaded = load_from_file(os.path.join("data", "name_embed.pkl"))
+    equal(name2embed, name2embed_loaded)

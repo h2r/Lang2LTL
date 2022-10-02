@@ -1,4 +1,5 @@
 import argparse
+import itertools
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
@@ -6,7 +7,26 @@ from utils import load_from_file, build_placeholder_map, substitute
 
 
 def run_exp():
-    # NER: extract name entities from input utterance
+    utt2names = ner()
+
+    if args.e2e_gpt3:
+        output_ltls = translate_e2e()
+    else:
+        output_ltls = translate_modular(utt2names)
+
+    evaluate_lang(output_ltls, true_ltls)
+
+    names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
+    name2grounds = grounding(names)
+
+    # true_trajs = load_from_file(args.true_trajs)
+    # plan(output_ltls, true_trajs, name2grounds)
+
+
+def ner():
+    """
+    Name Entity Recognition: extract name entities from input utterance
+    """
     ner_prompt = load_from_file(args.ner_prompt)
 
     if args.ner == 'gpt3':
@@ -17,34 +37,13 @@ def run_exp():
         raise ValueError("ERROR: NER module not recognized")
 
     utt2names = {utt: ner_module.extract_ne(utt, prompt=ner_prompt) for utt in input_utterances}
-
-    # Translation: language to LTl
-    if args.e2e_gpt3:
-        output_ltls = translate_e2e()
-    else:
-        output_ltls = translate_modular(utt2names)
-
-    # Evaluate translation
-    evaluate_lang(output_ltls, true_ltls)
-
-    # # Grounding: ground name entities to objects in the environment
-    # name2embed = load_from_file(args.name_embed)  # Pandas Dataframe
-    #
-    # if args.ground == 'gpt3':
-    #     ground_module = GPT3()
-    # # elif args.ground == 'bert':
-    # #     ground_module = BERT()
-    # else:
-    #     raise ValueError("ERROR: grounding module not recognized")
-    #
-    # ground_maps = ground_task(ground_module, name2embed, utt2names)
-
-    # true_trajs = load_from_file(args.true_trajs)
-    # acc_plan = plan(output_ltls, true_trajs, ground_maps)
-    # print(acc_plan)
+    return utt2names
 
 
 def translate_e2e():
+    """
+    Translation language to LTL using a single GPT-3.
+    """
     e2e_prompt = load_from_file(args.e2e_prompt)
     model = GPT3()
     output_ltls = [model.translate(utt, prompt=e2e_prompt) for utt in input_utterances]
@@ -52,6 +51,9 @@ def translate_e2e():
 
 
 def translate_modular(utt2names):
+    """
+    Translation language to LTL modular approach.
+    """
     trans_prompt = load_from_file(args.trans_prompt)
 
     if args.trans == 'gpt3':
@@ -83,26 +85,41 @@ def evaluate_lang(output_ltls, true_ltls):
     return acc
 
 
-def ground_task(ground_module, name2embed_df, utt2names):
-    embeddings = []
-    for utt, names in utt2names.items():
-        embeddings.append(ground_module.get_embedding(query))
+def grounding(names):
+    """
+    Ground name entities to objects in the environment.
+    """
+    name2embed = load_from_file(args.name_embed)
 
-    ground_maps = []
+    if args.ground == 'gpt3':
+        ground_module = GPT3()
+    # elif args.ground == 'bert':
+    #     ground_module = BERT()
+    else:
+        raise ValueError("ERROR: grounding module not recognized")
 
-    for embed in embeddings:
-        name2embed_df.apply(lambda x: cosine_similarity(x, embed))
+    name2grounds = {}
+    for name in names:
+        embed = ground_module.get_embedding(name)
+        sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
+        sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
+        name2grounds[name] = list(dict(sims_sorted[args.topk]).keys())
 
-    return ground_maps
+    return name2grounds
 
 
-def plan(output_ltls, true_trajs):
+def plan(output_ltls, true_trajs, name2grounds):
+    """
+    Planning with translated LTL as task specification
+    """
     accs = []
     planner = None
     for out_ltl, true_traj in zip(output_ltls, true_trajs):
-        out_traj = planner.plan(out_ltl)
+        out_traj = planner.plan(out_ltl, name2grounds)
         accs.append(evaluate_plan(out_traj, true_traj))
-    return sum(accs) / len(accs)
+    acc = sum(accs) / len(accs)
+    print(f"{acc}")
+    return acc
 
 
 def evaluate_plan(out_traj, true_traj):
@@ -120,7 +137,8 @@ if __name__ == '__main__':
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
-    parser.add_argument('--name_embed', type=str, default='data/name_embed.csv', help='path to name to embedding')
+    parser.add_argument('--name_embed', type=str, default='data/name_embed.pkl', help='path to name to embedding')
+    parser.add_argument('--topk', type=int, default=5, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     args = parser.parse_args()
 
