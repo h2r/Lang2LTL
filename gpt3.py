@@ -1,21 +1,11 @@
 import os
 import openai
+from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 class GPT3:
-    def __init__(self, temp=0.6):
-        self.temp = temp
-
-    def generate(self, query_prompt):
-        response = openai.Completion.create(
-            model="text-davinci-002",
-            prompt=query_prompt,
-            temperature=self.temp,
-        )
-        return response.choices[0].text
-
     def extract(self, query_prompt):
         # out = self.generate(query_prompt)
         out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
@@ -42,6 +32,26 @@ class GPT3:
 
         return out[5:]
 
+    @staticmethod
+    def generate(query_prompt, engine="text-davinci-002", temp=0.6):
+        response = openai.Completion.create(
+            model=engine,
+            prompt=query_prompt,
+            temperature=temp,
+        )['choices'][0]['text']
+        return response
+
+    @staticmethod
+    @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
+    def get_embedding(in_text: str, engine="text-similarity-babbage-001") -> list[float]:
+        in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
+
+        embedding = openai.Embedding.create(
+            input=[in_text],
+            engine=engine  # change for different embedding dimension
+        )["data"][0]["embedding"]
+        return embedding
+
 
 if __name__ == '__main__':
     gpt3 = GPT3()
@@ -64,4 +74,6 @@ if __name__ == '__main__':
         "LTL: F ( Burger Queen & F ( KFC & F ( black stone park ) )\n\n" \
         "English: "
 
-    gpt3.generate(query_prompt)
+    print(gpt3.generate(query_prompt))
+
+    print(gpt3.get_embedding("Burger Queen"))
