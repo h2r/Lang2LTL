@@ -16,3 +16,11 @@ Set environment variable for API key
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
 ```
+Run end-to-end language to LTL translation using GPT-3
+```
+python run_experiment.py --e2e_gpt3
+```
+Run the modular approach to language to LTL translation
+```
+python run_experiment.py
+```
