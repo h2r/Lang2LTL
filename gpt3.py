@@ -8,29 +8,39 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 class GPT3:
     def extract_ne(self, query, **kwargs):
         query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
-        # out = self.generate(query_prompt)
-        out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
-
-        if out.find("Landmarks:") != 0:
+        out = self.generate(query_prompt)
+        # out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
+        
+        #output does't contain "Landmarks:" since it's already in the prompt
+# =============================================================================
+#         if out.find("Landmarks:") != 0:
+#             raise ValueError(f"Invalid output string: {out}")
+# 
+#         name_entities = out[11:].split(' | ')
+# =============================================================================
+        try: 
+            name_entities = out.split(' | ')
+        except:
             raise ValueError(f"Invalid output string: {out}")
-
-        name_entities = out[11:].split(' | ')
-
         return name_entities
 
     def translate(self, query, **kwargs):
         query_prompt = kwargs["prompt"] + query + "\nLTL:"
-        # out = self.generate(query_prompt)
+        out = self.generate(query_prompt)
         # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
-        out = "LTL: F ( A & F ( C & F ( B ) )"
-
-        if out.find("LTL:") != 0:
-            raise ValueError(f"Invalid output string: {out}")
-
-        return out[5:]
+        # out = "LTL: F ( A & F ( C & F ( B ) )"
+        
+        #output does't contain "LTL:" since it's already in the prompt
+# =============================================================================
+#         if out.find("LTL:") != 0:
+#             raise ValueError(f"Invalid output string: {out}")
+# 
+#         return out[5:]
+# =============================================================================
+        return out
 
     @staticmethod
-    def generate(query_prompt, engine="text-davinci-002", temp=0.6):
+    def generate(query_prompt, engine="text-davinci-002", temp=0.6): # engine should match the embeds to calculate similarity
         response = openai.Completion.create(
             model=engine,
             prompt=query_prompt,
@@ -40,12 +50,12 @@ class GPT3:
 
     @staticmethod
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
-    def get_embedding(in_text: str, engine="text-similarity-babbage-001") -> list[float]:
+    def get_embedding(in_text: str, engine="text-similarity-davinci-001") -> list[float]:
         in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
 
         embedding = openai.Embedding.create(
             input=[in_text],
-            engine=engine  # change for different embedding dimension
+            model=engine  # change for different embedding dimension
         )["data"][0]["embedding"]
         return embedding
 

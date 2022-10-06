@@ -1,0 +1,6 @@
+Your task is to translate English utterance into lienar temproal logic(LTL).
+
+Utterance:'Go to A, and then walk to B'
+LTL:F & A F B
+
+Utterance:

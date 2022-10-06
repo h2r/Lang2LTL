@@ -1,7 +1,7 @@
 import os
 import dill
 import numpy as np
-
+import json
 
 def build_placeholder_map(name_entities):
     placeholder_map = {}
@@ -43,7 +43,13 @@ def load_from_file(fpath):
             out = dill.load(rfile)
     elif ftype == 'txt':
         with open(fpath, 'r') as rfile:
-            out = "".join(rfile.readlines())
+            if 'prompt' in fpath:
+                out = "".join(rfile.readlines())
+            else:
+                out = [ line[:-1] for line in rfile.readlines()]
+    elif ftype == 'json':
+        with open(fpath, 'r') as rfile:
+            out = json.load(rfile)
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
@@ -61,6 +67,21 @@ def equal(item1, item2):
         for k in item1:
             assert np.all(item1[k] == item2[k]), f"{item1[k]} != {item2[k]}"
 
+def clean_str(string):
+    def clean(string):
+        string = string.strip()
+        if string[:2] == '\n':
+            string = string[2:]
+        elif string[-2:] == '\n':
+            string = string[:-2]
+        return string
+    buffer = string
+    while True:
+        string = clean(string)
+        if buffer == string:
+            break
+        buffer = string
+    return string
 
 if __name__ == '__main__':
     os.makedirs("data", exist_ok=True)

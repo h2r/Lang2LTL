@@ -3,21 +3,23 @@ import itertools
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from utils import load_from_file, build_placeholder_map, substitute
+from utils import load_from_file, build_placeholder_map, substitute, clean_str
 
 
 def run_exp():
     utt2names = ner()
-
+    
+    names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
+    name2grounds = grounding(names)
+    
     if args.e2e_gpt3:
         output_ltls = translate_e2e()
     else:
-        output_ltls = translate_modular(utt2names)
-
+        output_ltls = translate_modular(utt2names, name2grounds)
+    output_ltls = [clean_str(output_ltl) for output_ltl in output_ltls]
+    print('Generated LTLs:\n', output_ltls,
+          '\n\nGround Truth LTLs:\n', true_ltls)
     evaluate_lang(output_ltls, true_ltls)
-
-    names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
-    name2grounds = grounding(names)
 
     # true_trajs = load_from_file(args.true_trajs)
     # plan(output_ltls, true_trajs, name2grounds)
@@ -36,7 +38,7 @@ def ner():
     else:
         raise ValueError("ERROR: NER module not recognized")
 
-    utt2names = {utt: ner_module.extract_ne(utt, prompt=ner_prompt) for utt in input_utterances}
+    utt2names = {utt: [clean_str(name) for name in ner_module.extract_ne(utt, prompt=ner_prompt)] for utt in input_utterances}
     return utt2names
 
 
@@ -50,7 +52,7 @@ def translate_e2e():
     return output_ltls
 
 
-def translate_modular(utt2names):
+def translate_modular(utt2names, name2grounds):
     """
     Translation language to LTL modular approach.
     """
@@ -68,9 +70,10 @@ def translate_modular(utt2names):
     output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
 
     placeholder_maps_inv = [
-        {letter: name for name, letter in placeholder_map.items()}
+        {letter: name2grounds[name][0] for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
+    
     output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by names
 
     return output_ltls
@@ -78,8 +81,8 @@ def translate_modular(utt2names):
 
 def evaluate_lang(output_ltls, true_ltls):
     accs = []
-    for out_ltl in output_ltls:
-        accs.append(out_ltl in true_ltls)
+    for out_ltl, true_ltl in zip(output_ltls,true_ltls):
+        accs.append(out_ltl == true_ltl)
     acc = sum(accs) / len(accs)
     print(f"Lang2LTL translation accuracy: {acc}")
     return acc
@@ -100,10 +103,11 @@ def grounding(names):
 
     name2grounds = {}
     for name in names:
+        
         embed = ground_module.get_embedding(name)
         sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
-        name2grounds[name] = list(dict(sims_sorted[args.topk]).keys())
+        name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
 
     return name2grounds
 
@@ -132,13 +136,13 @@ if __name__ == '__main__':
     parser.add_argument('--e2e_prompt', type=str, default='data/e2e_prompt.txt', help='path to end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
     parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
-    parser.add_argument('--input', type=str, default='data/input.pkl', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/true_ltls.pkl', help='path to true LTLs')
+    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true LTLs')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
-    parser.add_argument('--name_embed', type=str, default='data/name_embed.pkl', help='path to name to embedding')
-    parser.add_argument('--topk', type=int, default=5, help='top k similar known names to name entity')
+    parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to name to embedding')
+    parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     args = parser.parse_args()
 
