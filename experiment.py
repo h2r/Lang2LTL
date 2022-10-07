@@ -8,10 +8,10 @@ from utils import load_from_file, build_placeholder_map, substitute, clean_str
 
 def run_exp():
     utt2names = ner()
-    
+
     names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
     name2grounds = grounding(names)
-    
+
     if args.e2e_gpt3:
         output_ltls = translate_e2e()
     else:
@@ -68,12 +68,11 @@ def translate_modular(utt2names, name2grounds):
     placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]
     trans_queries = substitute(input_utterances, placeholder_maps)  # replace names by symbols
     output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
-
     placeholder_maps_inv = [
         {letter: name2grounds[name][0] for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
-    
+
     output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by names
 
     return output_ltls
@@ -136,8 +135,8 @@ if __name__ == '__main__':
     parser.add_argument('--e2e_prompt', type=str, default='data/e2e_prompt.txt', help='path to end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
     parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
-    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true LTLs')
+    parser.add_argument('--input', type=str, default='data/test_src_500.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/test_tar_500.txt', help='path to true LTLs')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')

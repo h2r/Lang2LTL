@@ -13,11 +13,14 @@ def build_placeholder_map(name_entities):
 
 def substitute(input_strs, placeholder_maps):
     output_strs = []
+
     for input_str, placeholder_map in zip(input_strs, placeholder_maps):
         for k, v in placeholder_map.items():
             input_str_sub = input_str.replace(k, v)
             if input_str_sub == input_str:  # name entity not found in utterance
-                raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
+                #raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
+                print(f"Name entity {k} not found in input utterance {input_str}") # just ignore it for testing in a large scale
+                
             else:
                 input_str = input_str_sub
         output_strs.append(input_str)

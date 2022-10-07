@@ -22,6 +22,7 @@ class GPT3:
             name_entities = out.split(' | ')
         except:
             raise ValueError(f"Invalid output string: {out}")
+        #print(query, name_entities)
         return name_entities
 
     def translate(self, query, **kwargs):
