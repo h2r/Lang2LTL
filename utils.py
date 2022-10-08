@@ -17,7 +17,7 @@ def substitute(input_strs, placeholder_maps):
         for k, v in placeholder_map.items():
             input_str_sub = input_str.replace(k, v)
             if input_str_sub == input_str:  # name entity not found in utterance
-                raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
+                raise ValueError(f"Name entity {k} not found in input utterance {input_str}") #potentially brake the run
             else:
                 input_str = input_str_sub
         output_strs.append(input_str)

@@ -1,6 +1,0 @@
-Your task is to find the landmarks in given utterances.
-
-Utterance:'Go to Burger Queen, and then walk to the cafe on Thayer'
-Landmarks:Burger Queen | cafe on Thayer
-
-Utterance:

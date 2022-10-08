@@ -50,7 +50,8 @@ class GPT3:
 
     @staticmethod
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
-    def get_embedding(in_text: str, engine="text-similarity-davinci-001") -> list[float]:
+    def get_embedding(in_text: str, engine="davinci") -> list[float]:
+        engine = "text-similarity-{}-001".format(engine)
         in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
 
         embedding = openai.Embedding.create(

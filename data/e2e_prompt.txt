@@ -1,6 +1,0 @@
-Your task is to translate English utterance into lienar temproal logic(LTL).
-
-Utterance:'Go to Burger Queen, and then walk to the cafe on Thayer'
-LTL:F & Burger Queen F cafe on Thayer
-
-Utterance:

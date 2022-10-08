@@ -15,8 +15,10 @@ def run_exp():
     if args.e2e_gpt3:
         output_ltls = translate_e2e()
     else:
-        output_ltls = translate_modular(utt2names, name2grounds)
-    output_ltls = [clean_str(output_ltl) for output_ltl in output_ltls]
+        output_ltls, placeholder_maps = translate_modular(utt2names)
+        output_ltls = convertLTL_modular(output_ltls, name2grounds, placeholder_maps)
+    output_ltls = [clean_str(output_ltl) for output_ltl in output_ltls] # clean ltls
+    
     print('Generated LTLs:\n', output_ltls,
           '\n\nGround Truth LTLs:\n', true_ltls)
     evaluate_lang(output_ltls, true_ltls)
@@ -52,7 +54,7 @@ def translate_e2e():
     return output_ltls
 
 
-def translate_modular(utt2names, name2grounds):
+def translate_modular(utt2names):
     """
     Translation language to LTL modular approach.
     """
@@ -70,12 +72,25 @@ def translate_modular(utt2names, name2grounds):
     output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
 
     placeholder_maps_inv = [
-        {letter: name2grounds[name][0] for name, letter in placeholder_map.items()}
+        {letter: name for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
     
     output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by names
 
+    return output_ltls, placeholder_maps
+
+def convertLTL_modular(output_ltls, name2grounds, placeholder_maps):
+    '''
+    Replace placeholders with grounded landmarks and output final LTLs for planning.
+    '''
+    placeholder2lm =[
+        {letter: name2grounds[name][0] for name, letter in placeholder_map.items()}
+        for placeholder_map in placeholder_maps
+    ]
+
+    output_ltls = substitute(substitute(output_ltls,placeholder_maps), placeholder2lm)
+    
     return output_ltls
 
 
@@ -104,7 +119,7 @@ def grounding(names):
     name2grounds = {}
     for name in names:
         
-        embed = ground_module.get_embedding(name)
+        embed = ground_module.get_embedding(name, args.engine)
         sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
         name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
@@ -144,6 +159,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to name to embedding')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
+    parser.add_argument('--engine',type=str,default = 'davinci', choices=['ada','babbage','curie','davinci'])
     args = parser.parse_args()
 
     input_utterances = load_from_file(args.input)
