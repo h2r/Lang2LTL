@@ -10,21 +10,9 @@ import argparse
 import json
 import openai
 import os
+from gpt3 import GPT3
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
-def get_embedding_gpt3(in_text: str, engine="davinci") -> list[float]:
-    engine = "text-similarity-{}-001".format(engine)
-    in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
-
-    embedding = openai.Embedding.create(
-        input=[in_text],
-        engine=engine  # change for different embedding dimension
-    )["data"][0]["embedding"]
-    return embedding
-
-def get_embedding_bert(in_text: str):
-    raise NotImplementedError("bert model isn't finished yet")
 
 def read_file(filepath):
     with open(filepath, 'r') as f:
@@ -33,12 +21,16 @@ def read_file(filepath):
 
 def store_embeds(names, filepath, model, engine):
     dic = {}
+    
+    if args.model == 'gpt3':
+        ground_module = GPT3()
+    # elif args.ground == 'bert':
+    #     ground_module = BERT()
+    else:
+        raise ValueError("ERROR: grounding module not recognized")
+        
     for name in names:
-        if model == 'gpt3':
-            embed = get_embedding_gpt3(name, engine)
-        elif model == 'bert':
-            embed = get_embedding_bert(name)
-        dic[name] = embed
+        dic[name] = ground_module.get_embedding(name, engine)
 
     with open(filepath,'w') as f:
         json.dump(dic,f)

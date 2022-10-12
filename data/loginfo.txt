@@ -1,0 +1,19 @@
+Name entity path which has green and white colours not found in input utterance move to reach the A by taking a path which has green colour and white colour in it while avoiding black yellow and red colour
+Name entity There are no landmarks mentioned in this utterance. not found in input utterance avoid yellow find green
+Name entity red room not found in input utterance go the red or yellow room into the blue room
+Name entity the yellow room not found in input utterance move the robot from A to the yellow or red room to the big blue room
+Name entity the red room not found in input utterance move the robot from A to the yellow or red room to the big blue room
+Name entity yellow room not found in input utterance go through the A into the B but only if you go through a yellow or red room first
+Name entity the red box not found in input utterance pass thru either the red or yellow box to get to the blue box
+Name entity the yellow box not found in input utterance pass thru either the red or yellow box to get to the blue box
+Name entity red room not found in input utterance go through the red or the yellow room to get to the blue room
+Name entity red room not found in input utterance go to A by using red or yellow rooms first
+Name entity yellow room not found in input utterance go through the yellow or red room to the blue room
+Name entity red room not found in input utterance the robot has to go through the red or yellow room to get to the green room
+Name entity red room not found in input utterance go through either the red or the yellow room to get to the green room
+Name entity red room not found in input utterance get to the A through red or yellow rooms only
+Name entity green room not found in input utterance go through the green or yellow room to get to the blue room
+Name entity green room not found in input utterance go to A through green or yellow room
+Name entity yellow room not found in input utterance move toward either the yellow or green room then into the blue room
+Name entity the yellow room not found in input utterance go through either the yellow or the green room to get to the blue room
+

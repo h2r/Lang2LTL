@@ -3,7 +3,7 @@ import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+openai.organization = os.getenv("ORG_ID")
 
 class GPT3:
     def extract_ne(self, query, **kwargs):
@@ -22,7 +22,6 @@ class GPT3:
             name_entities = out.split(' | ')
         except:
             raise ValueError(f"Invalid output string: {out}")
-        #print(query, name_entities)
         return name_entities
 
     def translate(self, query, **kwargs):
@@ -51,7 +50,8 @@ class GPT3:
 
     @staticmethod
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
-    def get_embedding(in_text: str, engine="text-similarity-davinci-001") -> list[float]:
+    def get_embedding(in_text: str, engine="davinci") -> list[float]:
+        engine = "text-similarity-{}-001".format(engine)
         in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
 
         embedding = openai.Embedding.create(
