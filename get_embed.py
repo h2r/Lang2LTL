@@ -32,9 +32,9 @@ def store_embeds(names, filepath, model, engine):
     for name in names:
         dic[name] = ground_module.get_embedding(name, engine)
 
-    with open(filepath,'w') as f:
-        json.dump(dic,f)
-        
+    with open(filepath, 'w') as f:
+        json.dump(dic, f)
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-landmark_path', type=str, default='data/landmarks.txt', help='path to landmark file for embedding')
