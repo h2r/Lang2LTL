@@ -10,7 +10,7 @@ class GPT3:
         query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
         out = self.generate(query_prompt)
         # out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
-        
+
         #output does't contain "Landmarks:" since it's already in the prompt
 # =============================================================================
 #         if out.find("Landmarks:") != 0:
@@ -29,7 +29,7 @@ class GPT3:
         out = self.generate(query_prompt)
         # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
         # out = "LTL: F ( A & F ( C & F ( B ) )"
-        
+
         #output does't contain "LTL:" since it's already in the prompt
 # =============================================================================
 #         if out.find("LTL:") != 0:
