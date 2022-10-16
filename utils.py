@@ -19,7 +19,7 @@ def substitute(input_strs, placeholder_maps):
             input_str_sub = input_str.replace(k, v)
             if input_str_sub == input_str:  # name entity not found in utterance
                 #raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
-                print(f"Name entity {k} not found in input utterance {input_str}") # just ignore it for testing in a large scale
+                print(f"Name entity {k} not found in input utterance {input_str}") # potentially brake the run
                 
             else:
                 input_str = input_str_sub
@@ -69,22 +69,6 @@ def equal(item1, item2):
         assert len(item1) == len(item2)
         for k in item1:
             assert np.all(item1[k] == item2[k]), f"{item1[k]} != {item2[k]}"
-
-def clean_str(string):
-    def clean(string):
-        string = string.strip()
-        if string[:2] == '\n':
-            string = string[2:]
-        elif string[-2:] == '\n':
-            string = string[:-2]
-        return string
-    buffer = string
-    while True:
-        string = clean(string)
-        if buffer == string:
-            break
-        buffer = string
-    return string
 
 if __name__ == '__main__':
     os.makedirs("data", exist_ok=True)

@@ -3,7 +3,7 @@ import itertools
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from utils import load_from_file, build_placeholder_map, substitute, clean_str
+from utils import load_from_file, build_placeholder_map, substitute
 
 
 def run_exp():
@@ -18,7 +18,7 @@ def run_exp():
         
         output_ltls, placeholder_maps = translate_modular(utt2names)
         output_ltls = convertLTL_modular(output_ltls, name2grounds, placeholder_maps)
-    output_ltls = [clean_str(output_ltl) for output_ltl in output_ltls] # clean ltls
+    output_ltls = [output_ltl.strip() for output_ltl in output_ltls] # clean ltls
     
     print('Generated LTLs:\n', output_ltls,
           '\n\nGround Truth LTLs:\n', true_ltls)
@@ -170,11 +170,12 @@ if __name__ == '__main__':
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
-    parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to name to embedding')
+    parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to known name embedding')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
-    parser.add_argument('--engine',type=str,default = 'davinci', choices=['ada','babbage','curie','davinci'])
-    parser.add_argument('--save_result_path', type=str,default='data/test_result.json',help='file path to save outputs of each model in a json file')
+    parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'])
+    parser.add_argument('--save_result_path', type=str, default='data/test_result.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--overall_e2e', action='store_true', help='do everthing (including grounding) with one prompt')
     args = parser.parse_args()
 
     input_utterances = load_from_file(args.input)
