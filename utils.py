@@ -12,17 +12,25 @@ def build_placeholder_map(name_entities):
     return placeholder_map
 
 
-def substitute(input_strs, placeholder_maps):
-    output_strs = []
-    for input_str, placeholder_map in zip(input_strs, placeholder_maps):
-        for k, v in placeholder_map.items():
-            input_str_sub = input_str.replace(k, v)
-            if input_str_sub == input_str:  # name entity not found in utterance
-                raise ValueError(f"Name entity {k} not found in input utterance {input_str}")  # potentially brake the run
-            else:
-                input_str = input_str_sub
-        output_strs.append(input_str)
+def substitute(input_strs, substitute_maps):
+    """
+    Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
+    """
+    if len(substitute_maps) == 1:  # same substitute map for all input strings
+        output_strs = [substitute_single(input_str, substitute_maps[0]) for input_str in input_strs]
+    else:
+        output_strs = [substitute_single(input_str, sub_map) for input_str, sub_map in zip(input_strs, substitute_maps)]
     return output_strs
+
+
+def substitute_single(input_str, substitute_map):
+    for k, v in substitute_map.items():
+        input_str_sub = input_str.replace(k, v)
+        if input_str_sub == input_str:
+            print(f"Name entity {k} not found in input string {input_str}")
+        else:
+            input_str = input_str_sub
+    return input_str
 
 
 def save_to_file(data, fpth):

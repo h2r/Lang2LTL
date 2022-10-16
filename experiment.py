@@ -97,7 +97,7 @@ def ground_ltls(output_ltls, name2grounds):
     Replace landmarks in output LTLs with objects in the environment and output final LTLs for planning.
     """
     name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}
-    output_ltls = substitute(output_ltls, name2ground)
+    output_ltls = substitute(output_ltls, [name2ground])
 
     return output_ltls
 
