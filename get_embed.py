@@ -37,10 +37,10 @@ def store_embeds(names):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-landmark_path', type=str, default='data/landmarks.txt', help='path to landmark file for embedding')
-    parser.add_argument('-embed_path', type=str, default='data/name2embed.json', help='path to save name2embed file')
-    parser.add_argument('-engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'])
-    parser.add_argument('-model', type=str, default='gpt3', choices=['gpt3', 'bert'])
+    parser.add_argument('--landmark_path', type=str, default='data/landmarks.txt', help='path to lmk embedding file')
+    parser.add_argument('--embed_path', type=str, default='data/name2embed.json', help='path to save name2embed file')
+    parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'])
+    parser.add_argument('--model', type=str, default='gpt3', choices=['gpt3', 'bert'])
 
     args = parser.parse_args()
 
