@@ -10,18 +10,13 @@ class GPT3:
         query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
         out = self.generate(query_prompt)
         # out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
-        
-        #output does't contain "Landmarks:" since it's already in the prompt
-# =============================================================================
-#         if out.find("Landmarks:") != 0:
-#             raise ValueError(f"Invalid output string: {out}")
-# 
-#         name_entities = out[11:].split(' | ')
-# =============================================================================
-        try: 
-            name_entities = out.split(' | ')
-        except:
-            raise ValueError(f"Invalid output string: {out}")
+
+        # if out.find("Landmarks:") != 0:
+        #     raise ValueError(f"Invalid output string: {out}")
+        #
+        # name_entities = out[11:].split(' | ')
+
+        name_entities = out.split(' | ')
         return name_entities
 
     def translate(self, query, **kwargs):
@@ -29,18 +24,15 @@ class GPT3:
         out = self.generate(query_prompt)
         # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
         # out = "LTL: F ( A & F ( C & F ( B ) )"
-        
-        #output does't contain "LTL:" since it's already in the prompt
-# =============================================================================
-#         if out.find("LTL:") != 0:
-#             raise ValueError(f"Invalid output string: {out}")
-# 
-#         return out[5:]
-# =============================================================================
+
+        # if out.find("LTL:") != 0:
+        #     raise ValueError(f"Invalid output string: {out}")
+        #
+        # return out[5:]
         return out
 
     @staticmethod
-    def generate(query_prompt, engine="text-davinci-002", temp=0.6): # engine should match the embeds to calculate similarity
+    def generate(query_prompt, engine="text-davinci-002", temp=0.6):  # engines must match when compare two embeddings
         response = openai.Completion.create(
             model=engine,
             prompt=query_prompt,
