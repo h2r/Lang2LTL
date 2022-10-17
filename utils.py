@@ -23,13 +23,17 @@ def substitute(input_strs, substitute_maps):
     return output_strs
 
 
-def substitute_single(input_str, substitute_map):
-    for k, v in substitute_map.items():
-        input_str_sub = input_str.replace(k, v)
-        if input_str_sub == input_str:
-            print(f"Name entity {k} not found in input string {input_str}")
-        else:
-            input_str = input_str_sub
+def substitute_single(input_str, sub_map):
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start sub with long strings
+    done_subs = set()  # only substitute key once when different keys mapping to same value
+    for k, v in sub_map:
+        if v not in done_subs:
+            done_subs.add(v)
+            input_str_sub = input_str.replace(k, v)
+            if input_str_sub == input_str:
+                print(f"Name entity {k} not found in input string {input_str}")
+            else:
+                input_str = input_str_sub
     return input_str
 
 
