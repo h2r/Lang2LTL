@@ -1,0 +1,8 @@
+Your task is to find referred landmarks from a given list and use them as propositions to translate English utterances into linear temporal logic (LTL) formulas. 
+
+Landmark List: ['Burger Queen', 'Pita Kabob Grill', 'Starbucks', 'war memorial', 'main green']
+Utterance: 'Go to Burger Queen, and then to cafe on Thayer.'
+LTL: F & Burger Queen F Starbucks
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance:

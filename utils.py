@@ -11,20 +11,29 @@ def build_placeholder_map(name_entities):
     return placeholder_map
 
 
-def substitute(input_strs, placeholder_maps):
-    output_strs = []
+def substitute(input_strs, substitute_maps):
+    """
+    Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
+    """
+    if len(substitute_maps) == 1:  # same substitute map for all input strings
+        output_strs = [substitute_single(input_str, substitute_maps[0]) for input_str in input_strs]
+    else:
+        output_strs = [substitute_single(input_str, sub_map) for input_str, sub_map in zip(input_strs, substitute_maps)]
+    return output_strs
 
-    for input_str, placeholder_map in zip(input_strs, placeholder_maps):
-        for k, v in placeholder_map.items():
+
+def substitute_single(input_str, sub_map):
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start sub with long strings
+    done_subs = set()  # only substitute key once when different keys mapping to same value
+    for k, v in sub_map:
+        if v not in done_subs:
+            done_subs.add(v)
             input_str_sub = input_str.replace(k, v)
-            if input_str_sub == input_str:  # name entity not found in utterance
-                #raise ValueError(f"Name entity {k} not found in input utterance {input_str}")
-                print(f"Name entity {k} not found in input utterance {input_str}") # potentially brake the run
-                
+            if input_str_sub == input_str:
+                print(f"Name entity {k} not found in input string {input_str}")
             else:
                 input_str = input_str_sub
-        output_strs.append(input_str)
-    return output_strs
+    return input_str
 
 
 def save_to_file(data, fpth):
@@ -35,6 +44,10 @@ def save_to_file(data, fpth):
     elif ftype == 'txt':
         with open(fpth, 'w') as wfile:
             wfile.write(data)
+    elif ftype == 'json':
+        with open(fpth,'w') as f:
+            json.dump(data,f)
+                
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
 
