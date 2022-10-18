@@ -18,6 +18,8 @@ def run_exp():
         names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
         name2grounds = grounding(names)
 
+        # TODO: ground language then translate grounded language to LTL instead of translate then ground output LTL?
+
         if args.translate_e2e:
             output_ltls = translate_e2e()
         else:
@@ -90,7 +92,7 @@ def translate_modular(utt2names):
 
     placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]
     trans_queries = substitute(input_utterances, placeholder_maps)  # replace names by symbols
-    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
+    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]  # TODO: some symbolic ltls contain newline
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
