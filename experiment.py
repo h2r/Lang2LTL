@@ -15,8 +15,10 @@ def run_exp():
     else:  # Modular
         utt2names = ner()
 
-        names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists
+        names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists; remove duplicates
         name2grounds = grounding(names)
+
+        # TODO: ground language then translate grounded languaage to LTL instead of translate then ground output LTL?
 
         if args.translate_e2e:
             output_ltls = translate_e2e()
@@ -27,12 +29,10 @@ def run_exp():
         output_ltls = [output_ltl.strip() for output_ltl in output_ltls]
 
     for input_utt, output_ltl, true_ltl in zip(input_utterances, output_ltls, true_ltls):
-        print(f'Input utterance: {input_utt}\n')
-        print(f'Output LTLs: {output_ltl}\n')
-        print(f'True LTLs: {true_ltl}\n\n')
+        print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
     evaluate_lang(output_ltls, true_ltls)
 
-    # Planning task
+    # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
     # plan(output_ltls, true_trajs, name2grounds)
 
@@ -78,16 +78,16 @@ def translate_modular(utt2names):
     else:
         raise ValueError("ERROR: translation module not recognized")
 
-    placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]
-    trans_queries = substitute(input_utterances, placeholder_maps)  # replace names by symbols
+    placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]  # TODO: also build inv here
+    trans_queries = substitute(input_utterances, placeholder_maps)  # replace name entities by symbols
     output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
-    
-    output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by names
+
+    output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by name entities
 
     return output_ltls, placeholder_maps
 
@@ -98,7 +98,6 @@ def ground_ltls(output_ltls, name2grounds):
     """
     name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}
     output_ltls = substitute(output_ltls, [name2ground])
-
     return output_ltls
 
 
@@ -158,8 +157,8 @@ if __name__ == '__main__':
     parser.add_argument('--overall_e2e_prompt', type=str, default='data/overall_e2e_prompt.txt', help='path to overal end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt.txt', help='path to translation end-to-end prompt')
-    parser.add_argument('--ner', type=str, default='gpt3', help='NER module: gpt3, bert')
-    parser.add_argument('--trans', type=str, default='gpt3', help='translation module: gpt3, s2s_sup, s2s_weaksup')
+    parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
+    parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
     parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true LTLs')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
@@ -168,7 +167,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to known name embedding')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
-    parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'])
+    parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
     args = parser.parse_args()
 
     input_utterances = load_from_file(args.input)

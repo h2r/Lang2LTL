@@ -24,8 +24,8 @@ def substitute(input_strs, substitute_maps):
 
 
 def substitute_single(input_str, sub_map):
-    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start sub with long strings
-    done_subs = set()  # only substitute key once when different keys mapping to same value
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
+    done_subs = set()  # only substitute key once when different keys map to same value
     for k, v in sub_map:
         if v not in done_subs:
             done_subs.add(v)
