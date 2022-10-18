@@ -1,7 +1,8 @@
 import os
+import json
 import dill
 import numpy as np
-import json
+
 
 def build_placeholder_map(name_entities):
     placeholder_map = {}
@@ -23,16 +24,15 @@ def substitute(input_strs, substitute_maps):
 
 
 def substitute_single(input_str, sub_map):
-    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start sub with long strings
-    done_subs = set()  # only substitute key once when different keys mapping to same value
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
+    done_subs = set()  # only substitute key once when different keys map to same value
     for k, v in sub_map:
-        if v not in done_subs:
-            done_subs.add(v)
-            input_str_sub = input_str.replace(k, v)
-            if input_str_sub == input_str:
-                print(f"Name entity {k} not found in input string {input_str}")
-            else:
-                input_str = input_str_sub
+        if k not in input_str:
+            print(f"Name entity {k} not found in input string: {input_str}")
+        else:
+            if v not in done_subs:
+                done_subs.add(v)
+                input_str = input_str.replace(k, v)
     return input_str
 
 
@@ -45,9 +45,8 @@ def save_to_file(data, fpth):
         with open(fpth, 'w') as wfile:
             wfile.write(data)
     elif ftype == 'json':
-        with open(fpth,'w') as f:
-            json.dump(data,f)
-                
+        with open(fpth, 'w') as wfile:
+            json.dump(data, wfile)
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
 
@@ -62,7 +61,7 @@ def load_from_file(fpath):
             if 'prompt' in fpath:
                 out = "".join(rfile.readlines())
             else:
-                out = [ line[:-1] for line in rfile.readlines()]
+                out = [line[:-1] for line in rfile.readlines()]
     elif ftype == 'json':
         with open(fpath, 'r') as rfile:
             out = json.load(rfile)
@@ -82,6 +81,7 @@ def equal(item1, item2):
         assert len(item1) == len(item2)
         for k in item1:
             assert np.all(item1[k] == item2[k]), f"{item1[k]} != {item2[k]}"
+
 
 if __name__ == '__main__':
     os.makedirs("data", exist_ok=True)

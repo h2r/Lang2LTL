@@ -7,7 +7,6 @@ from utils import load_from_file, save_to_file, build_placeholder_map, substitut
 
 
 def run_exp():
-    
     # Language tasks: grounding, NER, translation
     if args.overall_e2e:  # End-to-End
         e2e_module = GPT3()
@@ -22,15 +21,13 @@ def run_exp():
         if args.translate_e2e:
             output_ltls = translate_e2e()
         else:
-            output_ltls, placeholder_maps = translate_modular(utt2names)
+            output_ltls, symbolic_ltls, placeholder_maps = translate_modular(utt2names)
 
         output_ltls = ground_ltls(output_ltls, name2grounds)  # replace landmarks by their groundings
         output_ltls = [output_ltl.strip() for output_ltl in output_ltls]
 
     for input_utt, output_ltl, true_ltl in zip(input_utterances, output_ltls, true_ltls):
-        print(f'Input utterance: {input_utt}\n')
-        print(f'Output LTLs: {output_ltl}\n')
-        print(f'True LTLs: {true_ltl}\n\n')
+        print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
     acc = evaluate_lang(output_ltls, true_ltls)
 
     # Planning task
@@ -38,16 +35,18 @@ def run_exp():
     # plan(output_ltls, true_trajs, name2grounds)
     
     if args.save_result_path:
-        final_result = {
-            'NER':utt2names if not args.overall_e2e else None,
+        final_results = {
+            'NER': utt2names if not args.overall_e2e else None,
             'Grounding': name2grounds if not args.overall_e2e else None,
-            'translate': placeholder_maps if not (args.translate_e2e or args.overall_e2e) else None,
-            'final_LTL': output_ltls,
-            'input_utterances': input_utterances,
-            'Ground_truth': true_ltls,
-            'accuracy':acc
+            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.overall_e2e) else None,
+            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.overall_e2e) else None,
+            'Output LTLs': output_ltls,
+            'Input utterances': input_utterances,
+            'Ground truth': true_ltls,
+            'Accuracy': acc
             }
-        save_to_file(final_result,args.save_result_path)
+        save_to_file(final_results, args.save_result_path)
+
 
 def ner():
     """
@@ -90,27 +89,25 @@ def translate_modular(utt2names):
         raise ValueError("ERROR: translation module not recognized")
 
     placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]
-    print(placeholder_maps)
     trans_queries = substitute(input_utterances, placeholder_maps)  # replace names by symbols
-    output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
+    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
     
-    output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by names
+    output_ltls = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by names
 
-    return output_ltls, placeholder_maps
+    return output_ltls, symbolic_ltls, placeholder_maps
+
 
 def ground_ltls(output_ltls, name2grounds):
     """
     Replace landmarks in output LTLs with objects in the environment and output final LTLs for planning.
     """
-    name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}
-    print(name2grounds)
+    name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}  # TODO: redundant item when k == v
     output_ltls = substitute(output_ltls, [name2ground])
-
     return output_ltls
 
 
@@ -138,7 +135,6 @@ def grounding(names):
 
     name2grounds = {}
     for name in names:
-        
         embed = ground_module.get_embedding(name, args.engine)
         sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
