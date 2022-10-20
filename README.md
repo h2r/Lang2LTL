@@ -12,13 +12,14 @@ $python -m spacy download en_core_web_sm
 ```
 
 # Run Experiments
-Set environment variable for API key
+Set environment variable for API key and orgnization ID
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
+export ORG_ID=<YOUR_ORG_ID>
 ```
 Run end-to-end language to LTL translation using GPT-3
 ```
-python run_experiment.py --e2e_gpt3
+python run_experiment.py --overall_e2e
 ```
 Run the modular approach to language to LTL translation
 ```
