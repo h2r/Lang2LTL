@@ -8,9 +8,9 @@ from utils import load_from_file, save_to_file, build_placeholder_map, substitut
 
 def run_exp():
     # Language tasks: grounding, NER, translation
-    if args.overall_e2e:  # End-to-End
+    if args.full_e2e:  # Full end-to-end from language to LTL
         e2e_module = GPT3()
-        e2e_prompt = load_from_file(args.overall_e2e_prompt)
+        e2e_prompt = load_from_file(args.full_e2e_prompt)
         output_ltls = [e2e_module.translate(query, prompt=e2e_prompt) for query in input_utterances]
     else:  # Modular
         utt2names = ner()
@@ -18,7 +18,7 @@ def run_exp():
         names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists; remove duplicates
         name2grounds = grounding(names)
 
-        # TODO: ground language then translate grounded languaage to LTL instead of translate then ground output LTL?
+        # TODO: trans_e2e ground language then translate grounded language to LTL instead of translate then ground output LTL?
 
         if args.translate_e2e:
             output_ltls = translate_e2e()
@@ -38,10 +38,10 @@ def run_exp():
 
     if args.save_result_path:
         final_results = {
-            'NER': utt2names if not args.overall_e2e else None,
-            'Grounding': name2grounds if not args.overall_e2e else None,
-            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.overall_e2e) else None,
-            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.overall_e2e) else None,
+            'NER': utt2names if not args.full_e2e else None,
+            'Grounding': name2grounds if not args.full_e2e else None,
+            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
+            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
             'Output LTLs': output_ltls,
             'Input utterances': input_utterances,
             'Ground truth': true_ltls,
@@ -166,8 +166,8 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--overall_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
-    parser.add_argument('--overall_e2e_prompt', type=str, default='data/overall_e2e_prompt.txt', help='path to overal end-to-end prompt')
+    parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
+    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt.txt', help='path to overal end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
