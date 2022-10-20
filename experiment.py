@@ -3,7 +3,7 @@ import itertools
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from utils import load_from_file, build_placeholder_map, substitute
+from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
 def run_exp():
@@ -23,18 +23,31 @@ def run_exp():
         if args.translate_e2e:
             output_ltls = translate_e2e()
         else:
-            output_ltls, placeholder_maps = translate_modular(utt2names)
+            output_ltls, symbolic_ltls, placeholder_maps = translate_modular(utt2names)
 
         output_ltls = ground_ltls(output_ltls, name2grounds)  # replace landmarks by their groundings
         output_ltls = [output_ltl.strip() for output_ltl in output_ltls]
 
     for input_utt, output_ltl, true_ltl in zip(input_utterances, output_ltls, true_ltls):
         print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
-    evaluate_lang(output_ltls, true_ltls)
+    acc = evaluate_lang(output_ltls, true_ltls)
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
     # plan(output_ltls, true_trajs, name2grounds)
+
+    if args.save_result_path:
+        final_results = {
+            'NER': utt2names if not args.overall_e2e else None,
+            'Grounding': name2grounds if not args.overall_e2e else None,
+            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.overall_e2e) else None,
+            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.overall_e2e) else None,
+            'Output LTLs': output_ltls,
+            'Input utterances': input_utterances,
+            'Ground truth': true_ltls,
+            'Accuracy': acc
+            }
+        save_to_file(final_results, args.save_result_path)
 
 
 def ner():
@@ -80,23 +93,23 @@ def translate_modular(utt2names):
 
     placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]  # TODO: also build inv here
     trans_queries = substitute(input_utterances, placeholder_maps)  # replace name entities by symbols
-    output_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
+    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]  # TODO: some symbolic ltls contain newline
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
         for placeholder_map in placeholder_maps
     ]
 
-    output_ltls = substitute(output_ltls, placeholder_maps_inv)  # replace symbols by name entities
+    output_ltls = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
 
-    return output_ltls, placeholder_maps
+    return output_ltls, symbolic_ltls, placeholder_maps
 
 
 def ground_ltls(output_ltls, name2grounds):
     """
     Replace landmarks in output LTLs with objects in the environment and output final LTLs for planning.
     """
-    name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}
+    name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}  # TODO: redundant item when k == v
     output_ltls = substitute(output_ltls, [name2ground])
     return output_ltls
 
@@ -168,6 +181,7 @@ if __name__ == '__main__':
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
+    parser.add_argument('--save_result_path', type=str, default='data/test_result.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utterances = load_from_file(args.input)

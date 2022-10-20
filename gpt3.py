@@ -3,7 +3,7 @@ import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
-
+openai.organization = os.getenv("ORG_ID")
 
 class GPT3:
     def extract_ne(self, query, **kwargs):
