@@ -93,7 +93,7 @@ def translate_modular(utt2names):
 
     placeholder_maps = [build_placeholder_map(names) for names in utt2names.values()]  # TODO: also build inv here
     trans_queries = substitute(input_utterances, placeholder_maps)  # replace name entities by symbols
-    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]  # TODO: some symbolic ltls contain newline
+    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt).strip() for query in trans_queries]  # TODO: some symbolic ltls contain newline
 
     placeholder_maps_inv = [
         {letter: name for name, letter in placeholder_map.items()}
