@@ -5,35 +5,47 @@ import numpy as np
 
 
 def build_placeholder_map(name_entities):
-    placeholder_map = {}
+    placeholder_map, placeholder_map_inv = {}, {}
     letter = "A"
     for idx, ne in enumerate(name_entities):
-        placeholder_map[ne] = chr(ord(letter) + idx)  # increment placeholder using its ascii value
-    return placeholder_map
+        letter = chr(ord(letter) + idx)  # increment placeholder using its ascii value
+        placeholder_map[ne] = letter
+        placeholder_map_inv[letter] = ne
+    return placeholder_map, placeholder_map_inv
 
 
 def substitute(input_strs, substitute_maps):
     """
     Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
+    :param input_strs: input strings
+    :param substitute_maps: map substring to substitutions
+    :return: substituted string and corresponding substitutions
     """
+    output_strs, str2subs = [], {}
     if len(substitute_maps) == 1:  # same substitute map for all input strings
-        output_strs = [substitute_single(input_str, substitute_maps[0]) for input_str in input_strs]
+        for input_str in input_strs:
+            out_str, subs_done = substitute_single(input_str, substitute_maps[0])
+            output_strs.append(out_str)
+            str2subs[out_str] = subs_done
     else:
-        output_strs = [substitute_single(input_str, sub_map) for input_str, sub_map in zip(input_strs, substitute_maps)]
-    return output_strs
+        for input_str, sub_map in zip(input_strs, substitute_maps):
+            out_str, subs_done = substitute_single(input_str, sub_map)
+            output_strs.append(out_str)
+            str2subs[out_str] = subs_done
+    return output_strs, str2subs
 
 
 def substitute_single(input_str, sub_map):
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
-    done_subs = set()  # only substitute key once when different keys map to same value
+    subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
     for k, v in sub_map:
         if k not in input_str:
             print(f"Name entity {k} not found in input string: {input_str}")
         else:
-            if v not in done_subs:
-                done_subs.add(v)
+            if v not in subs_done:
+                subs_done.add(v)
                 input_str = input_str.replace(k, v)
-    return input_str.strip()
+    return input_str.strip(), subs_done
 
 
 def save_to_file(data, fpth):

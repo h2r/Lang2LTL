@@ -1,0 +1,44 @@
+Your task is to find referred landmarks from a given list and use them as propositions to translate English utterances into linear temporal logic (LTL) formulas.
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'move to red room'
+LTL: F red room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'i want you to go into the red one'
+LTL: F red room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'go into red room and then go into the green room'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'enter the red then enter the green rectangular room'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'go into the red room and enter the green room'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'go to the red area then to green area'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'robot c move to the big red room and then move to green'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'go into the red and then into the green room'
+LTL: F & red room F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'go in and then go to the green room'
+LTL: F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance: 'move until you are one square into green room'
+LTL: F green room
+
+Landmark List: ['blue room', 'green room', 'yellow room', 'purple room', 'red room']
+Utterance:
