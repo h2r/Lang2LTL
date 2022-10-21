@@ -9,9 +9,9 @@ from utils import load_from_file, save_to_file, build_placeholder_map, substitut
 def run_exp():
     # Language tasks: grounding, NER, translation
     if args.full_e2e:  # Full end-to-end from language to LTL
-        e2e_module = GPT3()
-        e2e_prompt = load_from_file(args.full_e2e_prompt)
-        output_ltls = [e2e_module.translate(query, prompt=e2e_prompt) for query in input_utterances]
+        full_e2e_module = GPT3()
+        full_e2e_prompt = load_from_file(args.full_e2e_prompt)
+        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt) for query in input_utterances]
     else:  # Modular
         utt2names = ner()
 
@@ -26,15 +26,14 @@ def run_exp():
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(utt2names)
 
         output_ltls = ground_ltls(output_ltls, name2grounds)  # replace landmarks by their groundings
-        output_ltls = [output_ltl.strip() for output_ltl in output_ltls]
 
     for input_utt, output_ltl, true_ltl in zip(input_utterances, output_ltls, true_ltls):
         print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
-    acc = evaluate_lang(output_ltls, true_ltls)
+    acc_lang = evaluate_lang(output_ltls, true_ltls)
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
-    # plan(output_ltls, true_trajs, name2grounds)
+    # acc_plan = plan(output_ltls, name2grounds)
 
     if args.save_result_path:
         final_results = {
@@ -42,10 +41,10 @@ def run_exp():
             'Grounding': name2grounds if not args.full_e2e else None,
             'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
             'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
-            'Output LTLs': output_ltls,
             'Input utterances': input_utterances,
+            'Output LTLs': output_ltls,
             'Ground truth': true_ltls,
-            'Accuracy': acc
+            'Accuracy': acc_lang,
             }
         save_to_file(final_results, args.save_result_path)
 
@@ -66,6 +65,29 @@ def ner():
     utt2names = {utt: [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
                  for utt in input_utterances}
     return utt2names
+
+
+def grounding(names):
+    """
+    Ground name entities in LTL formulas to objects in the environment.
+    """
+    name2embed = load_from_file(args.name_embed)
+
+    if args.ground == 'gpt3':
+        ground_module = GPT3()
+    # elif args.ground == 'bert':
+    #     ground_module = BERT()
+    else:
+        raise ValueError("ERROR: grounding module not recognized")
+
+    name2grounds = {}
+    for name in names:
+        embed = ground_module.get_embedding(name, args.engine)
+        sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
+        sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
+        name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
+
+    return name2grounds
 
 
 def translate_e2e():
@@ -123,29 +145,6 @@ def evaluate_lang(output_ltls, true_ltls):
     return acc
 
 
-def grounding(names):
-    """
-    Ground name entities in LTL formulas to objects in the environment.
-    """
-    name2embed = load_from_file(args.name_embed)
-
-    if args.ground == 'gpt3':
-        ground_module = GPT3()
-    # elif args.ground == 'bert':
-    #     ground_module = BERT()
-    else:
-        raise ValueError("ERROR: grounding module not recognized")
-
-    name2grounds = {}
-    for name in names:
-        embed = ground_module.get_embedding(name, args.engine)
-        sims = {n: cosine_similarity(e, embed) for n, e in name2embed.items()}
-        sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
-        name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
-
-    return name2grounds
-
-
 def plan(output_ltls, true_trajs, name2grounds):
     """
     Planning with translated LTL as task specification
@@ -166,20 +165,20 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
+    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true LTLs')
+    parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt.txt', help='path to overal end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
-    parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
-    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true LTLs')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt.txt', help='path to NER prompt')
+    parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
     parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt.txt', help='path to trans prompt')
-    parser.add_argument('--ground', type=str, default='gpt3', help='grounding module: gpt3, bert')
+    parser.add_argument('--ground', type=str, default='gpt3', choices=['gpt3', 'bert'], help='grounding module')
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to known name embedding')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
-    parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
     parser.add_argument('--save_result_path', type=str, default='data/test_result.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()

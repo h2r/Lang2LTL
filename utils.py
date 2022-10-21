@@ -4,7 +4,6 @@ import dill
 import numpy as np
 
 
-
 def build_placeholder_map(name_entities):
     placeholder_map = {}
     letter = "A"
@@ -34,7 +33,7 @@ def substitute_single(input_str, sub_map):
             if v not in done_subs:
                 done_subs.add(v)
                 input_str = input_str.replace(k, v)
-    return input_str
+    return input_str.strip()
 
 
 def save_to_file(data, fpth):
