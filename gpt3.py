@@ -5,6 +5,7 @@ from tenacity import retry, wait_random_exponential, stop_after_attempt
 openai.api_key = os.getenv("OPENAI_API_KEY")
 openai.organization = os.getenv("ORG_ID")
 
+
 class GPT3:
     def extract_ne(self, query, **kwargs):
         query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
@@ -29,7 +30,7 @@ class GPT3:
         #     raise ValueError(f"Invalid output string: {out}")
         #
         # return out[5:]
-        return out
+        return out.strip()
 
     @staticmethod
     def generate(query_prompt, engine="text-davinci-002", temp=0.6):  # engines must match when compare two embeddings
