@@ -6,11 +6,11 @@ import numpy as np
 
 def build_placeholder_map(name_entities):
     placeholder_map, placeholder_map_inv = {}, {}
-    letter = chr(ord("A") - 1)
+    letter = "A"
     for ne in name_entities:
-        letter = chr(ord(letter) + 1)  # increment placeholder using its ascii value
         placeholder_map[ne] = letter
         placeholder_map_inv[letter] = ne
+        letter = chr(ord(letter) + 1)  # increment placeholder using its ascii value
     return placeholder_map, placeholder_map_inv
 
 
