@@ -63,7 +63,7 @@ def ner():
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for utt in input_utts:
         names_per_utt = [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
-        names.add(names_per_utt)
+        names.update(names_per_utt)
         utt2names.append((utt, names_per_utt))
     return names, utt2names
 
