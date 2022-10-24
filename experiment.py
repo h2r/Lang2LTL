@@ -1,5 +1,5 @@
 import argparse
-import itertools
+from itertools import chain
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
@@ -11,21 +11,22 @@ def run_exp():
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3()
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt) for query in input_utterances]
+        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt) for query in input_utts]
     else:  # Modular
         utt2names = ner()
+        names = set(list(chain.from_iterable(utt2names.values())))  # flatten list of lists; remove duplicates
 
-        names = set(list(itertools.chain.from_iterable(utt2names.values())))  # flatten list of lists; remove duplicates
         name2grounds = grounding(names)
-
-        grounded_utts, utt2objs = ground_utterances(input_utterances, name2grounds)  # replace names by their groundings
+        grounded_utts, objs_per_utt = ground_utterances(input_utts, name2grounds)  # ground names to objects in env
 
         if args.translate_e2e:
             output_ltls = translate_e2e(grounded_utts)
         else:
-            output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, utt2objs)
+            output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
-    for input_utt, output_ltl, true_ltl in zip(input_utterances, output_ltls, true_ltls):
+    if len(input_utts) != len(output_ltls):
+        print(f'ERROR: number of input utterances {len(input_utts)} != number of output LTLs {len(output_ltls)}.')
+    for input_utt, output_ltl, true_ltl in zip(input_utts, output_ltls, true_ltls):
         print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
     acc_lang = evaluate_lang(output_ltls, true_ltls)
 
@@ -39,11 +40,11 @@ def run_exp():
             'Grounding': name2grounds if not args.full_e2e else None,
             'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
             'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
-            'Input utterances': input_utterances,
+            'Input utterances': input_utts,
             'Output LTLs': output_ltls,
             'Ground truth': true_ltls,
             'Accuracy': acc_lang,
-            }
+        }
         save_to_file(final_results, args.save_result_path)
 
 
@@ -61,7 +62,7 @@ def ner():
         raise ValueError(f'ERROR: NER module not recognized: {args.ner}')
 
     utt2names = {utt: [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
-                 for utt in input_utterances}
+                 for utt in input_utts}
     return utt2names
 
 
@@ -105,9 +106,12 @@ def translate_e2e(grounded_utts):
     return output_ltls
 
 
-def translate_modular(grounded_utts, utt2objs):
+def translate_modular(grounded_utts, objs_per_utt):
     """
     Translation language to LTL modular approach.
+    :param grounded_utts: Input utterances with name entities grounded to objects in given environment.
+    :param objs_per_utt: grounding objects for each input utterance
+    :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
     trans_prompt = load_from_file(args.trans_prompt)
 
@@ -119,7 +123,7 @@ def translate_modular(grounded_utts, utt2objs):
         raise ValueError("ERROR: translation module not recognized")
 
     placeholder_maps, placeholder_maps_inv = [], []
-    for objs in utt2objs.values():
+    for objs in objs_per_utt:
         placeholder_map, placeholder_map_inv = build_placeholder_map(objs)
         placeholder_maps.append(placeholder_map)
         placeholder_maps_inv.append(placeholder_map_inv)
@@ -159,11 +163,12 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='data/test_src_150.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/test_tar_150.txt', help='path to true LTLs')
+    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true grounded LTL formulas')
+    parser.add_argument('--nsamples', type=int, default=15, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
-    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_10.txt', help='path to overal end-to-end prompt')
+    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_10.txt', help='path to full end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_10.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
@@ -174,10 +179,10 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.json', help='path to known name embedding')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='data/test_result_modular.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='data/test_result_test.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
-    input_utterances = load_from_file(args.input)
-    true_ltls = load_from_file(args.true_ltls)
+    input_utts = load_from_file(args.input)[:args.nsamples]
+    true_ltls = load_from_file(args.true_ltls)[:args.nsamples]
 
     run_exp()

@@ -19,20 +19,20 @@ def substitute(input_strs, substitute_maps):
     Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
     :param input_strs: input strings
     :param substitute_maps: map substring to substitutions
-    :return: substituted string and corresponding substitutions
+    :return: substituted strings and their corresponding substitutions
     """
-    output_strs, str2subs = [], {}
+    output_strs, subs_per_str = [], []
     if len(substitute_maps) == 1:  # same substitute map for all input strings
         for input_str in input_strs:
             out_str, subs_done = substitute_single(input_str, substitute_maps[0])
             output_strs.append(out_str)
-            str2subs[out_str] = subs_done
-    else:
+            subs_per_str.append(subs_done)
+    else:  # a substitute map for each input string
         for input_str, sub_map in zip(input_strs, substitute_maps):
             out_str, subs_done = substitute_single(input_str, sub_map)
             output_strs.append(out_str)
-            str2subs[out_str] = subs_done
-    return output_strs, str2subs
+            subs_per_str.append(subs_done)
+    return output_strs, subs_per_str
 
 
 def substitute_single(input_str, sub_map):
