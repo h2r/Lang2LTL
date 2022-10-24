@@ -1,4 +1,4 @@
-Your task is to repeat exact strings from the given utterances which possibly refer to certain landmarks.
+Your task is to repeat exact strings from the given utterance which possibly refer to certain landmarks.
 
 Utterance: 'move to the red room'
 Landmarks: the red room
@@ -12,8 +12,8 @@ Landmarks: red room | the green room
 Utterance: 'enter the red then enter the green rectangular room'
 Landmarks: the red | the green rectangular room
 
-Utterance: 'go into the red room and enter the green room'
-Landmarks: the red room | the green room
+Utterance: 'go into red room and enter the green room'
+Landmarks: red room | the green room
 
 Utterance: 'go to the red area then to green area'
 Landmarks: the red area | green area
@@ -29,5 +29,8 @@ Landmarks: the green room
 
 Utterance: 'move until you are one square into green room'
 Landmarks: green room
+
+Utterance: 'move through green to get to blue'
+Landmarks: green | blue
 
 Utterance:
