@@ -13,10 +13,9 @@ def run_exp():
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
         output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt) for query in input_utts]
     else:  # Modular
-        utt2names = ner()
-        names = set(list(chain.from_iterable(utt2names.values())))  # flatten list of lists; remove duplicates
-
+        names, utt2names = ner()
         name2grounds = grounding(names)
+
         grounded_utts, objs_per_utt = ground_utterances(input_utts, name2grounds)  # ground names to objects in env
 
         if args.translate_e2e:
@@ -61,9 +60,12 @@ def ner():
     else:
         raise ValueError(f'ERROR: NER module not recognized: {args.ner}')
 
-    utt2names = {utt: [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
-                 for utt in input_utts}
-    return utt2names
+    names, utt2names = set(), []  # name entity list names should not have duplicates
+    for utt in input_utts:
+        names_per_utt = [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
+        names.add(names_per_utt)
+        utt2names.append((utt, names_per_utt))
+    return names, utt2names
 
 
 def grounding(names):
