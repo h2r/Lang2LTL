@@ -490,7 +490,7 @@ go through the red or the yellow room to get to the blue room
 go to blue room by using red or yellow rooms first
 go through the yellow or red room to the blue room
 the robot has to go through the yellow or red room to get to the blue room
-go to the blue room through red and yellow
+go to the blue room through red or yellow
 go through the red or green room into the blue room
 go from the blue room to the red room then go from the red room to the green room
 go from the blue room to the green room
@@ -524,7 +524,7 @@ move to red room then move to green room
 move into the red room then move into the green room
 go to the red room and then go to the green room
 go to the red room go to the green room
-go to the red room and then go to the blue room
+go to the red room and then go to the green room
 move to the red room then move to the green room
 go into the red room and then into the green room
 move to the red room and then move to the green room
@@ -589,7 +589,7 @@ go thru the yellow or red box to get to the green box
 go through either the red or the yellow room to get to the green room
 get to the green room through red or yellow rooms only
 move the robot through the yellow or red small room and then to the large green room
-go through the yellow and red room to the green room
+go through the yellow or red room to the green room
 enter the yellow or red room and proceed to the green room
 move to the green room by going through the yellow or red room
 move through the yellow or red room to the green room
@@ -848,7 +848,7 @@ go to green rectangle thru blue or red square but not yellow
 the robot must move through the red or blue room to get to the green room
 go through the blue or red room to the green room
 enter the green room through either the red or or blue rooms
-go through the red and blue room to the green room
+go through the red or blue room to the green room
 go through the red or blue room to enter the green room
 enter the blue or red room and proceed until the green room
 move toward either the red or blue room then into the green room
