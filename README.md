@@ -1,18 +1,19 @@
 # Installation
 ```
-$conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
-$conda activate lang2ltl
-$pip install openai
+conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
+conda activate lang2ltl
+pip install openai
+conda install -c conda-forge spot
 ```
 Optional if use spaCy
 ```
-$pip install -U pip setuptools wheel
-$pip install -U spacy
-$python -m spacy download en_core_web_sm
+pip install -U pip setuptools wheel
+pip install -U spacy
+python -m spacy download en_core_web_sm
 ```
 
 # Run Experiments
-Set environment variable for API key and orgnization ID
+Set environment variable for API key and organization ID
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
 export ORG_ID=<YOUR_ORG_ID>
@@ -25,3 +26,10 @@ Run the modular approach to language to LTL translation
 ```
 python run_experiment.py
 ```
+
+# Datasets
+```test_src_raw.txt``` and ```test_tar_raw.txt``` are the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al) for language commands paired LTL expressions, renamed from ```hard_pc_src.txt``` and ```hard_pc_tar.txt```. 
+
+```test_src_fixed.txt``` and ```test_tar_fixed.txt``` after fixing mistakes (e.g. mislabel, incorrect language, typos).
+
+```test_src_cleaned.txt``` and ```test_tar_cleaned.txt``` after data cleaning (e.g. remove ambiguous, manipulation).
