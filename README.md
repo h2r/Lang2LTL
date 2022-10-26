@@ -5,7 +5,7 @@ conda activate lang2ltl
 pip install openai
 conda install -c conda-forge spot
 ```
-Follow Spot installation instruction [here](https://spot.lre.epita.fr/install.html).
+Follow Spot installation instructions [here](https://spot.lre.epita.fr/install.html).
 
 Optional if use spaCy
 ```
