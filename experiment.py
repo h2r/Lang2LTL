@@ -1,5 +1,6 @@
 import os
 import argparse
+import logging
 import numpy as np
 import spot
 from openai.embeddings_utils import cosine_similarity
@@ -38,16 +39,16 @@ def run_exp():
         save_to_file(final_results, args.save_result_path)
 
     if len(input_utts) != len(output_ltls):
-        print(f'ERROR: number of input utterances {len(input_utts)} != number of output LTLs {len(output_ltls)}.')
+        logging.info(f'ERROR: number of input utterances {len(input_utts)} != number of output LTLs {len(output_ltls)}.')
     for input_utt, output_ltl, true_ltl in zip(input_utts, output_ltls, true_ltls):
-        print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
+        logging.info(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
     acc_lang = evaluate_lang(output_ltls, true_ltls)
-    print(f'Language to LTL translation accuracy: {acc_lang}')
+    logging.info(f'Language to LTL translation accuracy: {acc_lang}')
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
     # acc_plan = plan(output_ltls, name2grounds)
-    # print(f'Planning accuracy: {acc_plan}')
+    # logging.info(f'Planning accuracy: {acc_plan}')
 
 
 def ner():
@@ -161,7 +162,7 @@ def evaluate_lang(output_ltls, true_ltls):
         try:  # output LTL formula may have syntax error
             accs.append(spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl)))
         except SyntaxError:
-            print(f'Syntax error in output LTL: {out_ltl}\n')
+            logging.info(f'Syntax error in output LTL: {out_ltl}')
             accs.append(False)
     acc = np.mean(accs)
     return acc
@@ -188,12 +189,12 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='data/test_src_corlw.txt', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/test_tar_corlw.txt', help='path to true grounded LTL formulas')
-    parser.add_argument('--nsamples', type=int, default=None, help='use the first nsamples number of samples')
+    parser.add_argument('--nsamples', type=int, default=5, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
-    parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_10.txt', help='path to translation end-to-end prompt')
+    parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
     parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt_15.txt', help='path to NER prompt')
     parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
@@ -208,5 +209,13 @@ if __name__ == '__main__':
 
     input_utts = load_from_file(args.input)[:args.nsamples]
     true_ltls = load_from_file(args.true_ltls)[:args.nsamples]
+
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(f'{os.path.splitext(args.save_result_path)[0]}.log', mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
 
     run_exp()
