@@ -183,113 +183,113 @@ go to the red room
 go to the red room
 move from your room to the red room
 move to the red room
-go in to the pink room
-go to the pink room
+go in to the red room
+go to the red room
 move into the red room and stay on the first square you end up on
-go to pink room
-go to the pink room
+go to red room
+go to the red room
 go to the red room
 move to the red room
-go to the pink room
-go into the pink room
+go to the red room
+go into the red room
 go to the red room
 go to the red room
-move to the pink room
+move to the red room
 move to the red room
 go to the red room
 go to the red room
 move into the red room
-go to the pink room
-move to the pink room
-move to the pink room
-go to the pink room
+go to the red room
+move to the red room
+move to the red room
+go to the red room
 move to the red room
 go into the red room
 go to the red room
-go to the pink room
+go to the red room
 move to the red room
-go to pink room
+go to red room
 move to the red room
 go to the red room
 go to the red room
 move to the red room
 go to the red room
 move into the red room
-move to pink room
-go to the pink room
+move to red room
+go to the red room
 move to the red room
 go to the red room
-move to the pink room
-move to the pink room
+move to the red room
+move to the red room
 go to the red room
 move to red room
 go to the red room
 move to the red room
 go to the red room
 go to the red room
-move into pink room
+move into red room
 go into the red room
 move to the red room
-go to the pink room
-move to the pink room and stop after entering
+go to the red room
+move to the red room and stop after entering
 go to the red room
 move to the red room
 move to the red room
 go to the red room
-go to the pink room
+go to the red room
 move to the red room
 go to the red room
-go to the pink room
-go to the pink room
+go to the red room
+go to the red room
 go to red room
 go to the red room
 move to the red room
-go to the pink room
+go to the red room
 move to the red room
 go into the red room
 go to the red room
 move into the red room
 go to the red room
-move to pink room
-go to the pink room
+move to red room
 go to the red room
-go to the pink room
+go to the red room
+go to the red room
 go into the red room
 go to the red room
 go to the red room
-move to the pink room
 move to the red room
-enter the pink room
-go to the pink room
+move to the red room
+enter the red room
 go to the red room
-go to the pink room
-go to pink room
+go to the red room
+go to the red room
+go to red room
 go to the red room
 go to the red room
 go to the red room
 move to the red room
-go to the pink room
 go to the red room
-go to the pink room
+go to the red room
+go to the red room
 go to the red room
 i want you to go into the red room
-go to the pink room
+go to the red room
 move to the red room
 go to the red room
-go to the pink room
+go to the red room
 move to red room
 go to the red room
 go to the red room
-move to pink room
+move to red room
 move to the red room
 move to the red room
 move to the red room
 go to the red room
 go to red room
-go to pink room
+go to red room
 move to the red room
-go to the pink room
-move to the pink room
+go to the red room
+move to the red room
 move to the red room
 move to the red room
 go into the red room
@@ -318,9 +318,9 @@ go to the red room
 move to the red room
 move into the red room
 go to the red room
-go to the pink room
+go to the red room
 move to the red room
-go to the pink room
+go to the red room
 move to the red room
 go to the red room
 go to red room
@@ -375,105 +375,6 @@ get to the green rectangle but do not go through the yellow square
 enter the green room without entering a yellow room
 do not go through the yellow room while going to the green room
 go to the green room but avoid going through the yellow room
-move into the red room and push the chair back into the purple room
-go to the red room and push the chair in front of the blue room
-go to red room get the chair go back to purple room
-move to the red room retrieve the chair and push it back to the the blue room
-move into the red room and then push the chair into the blue room
-move into the red room get to the left of the chair and push the chair back up into the blue room
-bring the chair in the red room back to the purple room
-move to the red room push the chair to the blue room
-go into the red room find the chair and bring it back into the purple room
-go to red room push chair to blue room
-go into the room and find the chair then push it back into blue room
-go from the blue room to the red room then push the chair back into the blue room
-move the chair in the red room to the blue room
-move to the red room and push the chair back into the blue room
-move to the red room bring chair to the blue room
-go into the red room and push the chair back into the blue room
-go to red room move red chair to blue room
-move to the red room and push the chair into the blue room
-move to the red room move the chair to the blue room
-enter the red room and bring the chair back to the blue room
-push the red chair back into the blue room
-go to red room and move red chair to blue room
-go to the red room get the chair then go to the blue room
-move to the red room and push the chair into the blue room
-go to the red room and push the chair back to the blue room
-go to the red room go behind the chair then bring the chair to the blue room
-go to the red room then push the chair into the blue room
-move to the red room then move the chair to the blue room
-go into the red room and push the chair into the purple room
-move to the red room push the chair back to the blue room
-go to the red room get the chair and bring it to the purple room
-go to red room push chair to purple room
-go to the red room move the red chair to the purple room
-move to the red room and take the chair and go to violet room
-go to the red room then get the chair then go back to the blue room
-move to the red room and push the chair back into the blue room
-move to the red room move to the chair move the chair into the blue room
-push the chair from the red room into the blue room
-move the chair from the red room into the blue room
-move to the red room move behind the chair move the chair into the red room
-go to the red room and push the red chair to the purple room
-go to the red room grab the chair come back to the blue room
-move to the red room and push the chair back into the blue room
-move the chair from the red room to the blue room
-move to the red room and push the chair into the blue room
-go into the red room and push the chair into the blue room
-go to the red room and push the chair back into the blue room
-go to the red room find the chair and bring it back to the purple room
-go to red room and push the chair over and push it into the purple room
-move to the red room get the chair move to the blue room
-go to the red room and move the chair to the blue room
-go to the red room and bring the chair from there back to the purple room
-go into the red room take the chair and carry it back to the blue room
-move to the red room move the chair to the purple room
-go into red room get chair go into blue room
-go to the red room get the chair return to the blue room
-go to the red room and take the chair to the blue room
-go to the red room pick up the chair and go backto the blue room
-move to the red room then push the chair to the blue room
-go into the red room and bring the chair back to the purple room
-go to the red room and get the chair and move it to the purple room
-go to red room move chair to blue room
-go to the red room and push the chair into the blue room
-go the red room get dog and go back to blue room
-move to the red room and push the chair to the blue room
-move to the red room then move the chair to the blue room
-go into the red room and move the chair to the blue room
-go to the red room get the chair and then go back to the blue room
-move to the red room push the chair into the blue room
-go into the red room and move the chair into the blue room
-go to the red room push the object to the blue room
-move to the red room grab the chair then move to the blue room
-go to the red room get the chair then go to the blue room
-get the chair from the red room and return it to the blue room
-go to the red room push the chair back up to the green room
-go to the red room push the chair into the blue room
-move down to the red room then move the chair up to the blue room
-move to the red room move the chair to the blue room
-go to the red room then push the chair into the blue room
-go to the red room and get behind the chair and push it to the blue room
-go to the chair in the red room and then push the chair into the blue room
-go to the red room and push the chair into the blue room
-go to red room bring chair back to blue room
-go to red room get chair go to blue room
-move to the red room and move the chair into the blue room
-go to red room push chair into the blue room
-go from the blue room to the red room then push the chair to the blue room
-move to the red room and move the red chair to the blue room
-go in the red room and bring the chair back to blue room
-move to the red room push the chair into the blue room
-go to the red room get the chair and take it to the blue room
-go to red room go to chair move chair to blue room
-move to the red room and push the object back into the blue room
-move to the red room and pick up the chair then move the chair into the blue room
-go to red room and bring chair back to blue room
-go to red room go to far wall go to chair push chair to blue room
-go to red room pick up the chair and come back
-enter the red room go to the chair push the chair across the red room then push it into the blue room
-move to the red room move to the red chair move the red chair to the blue room
 go through the yellow or red room to reach the blue room
 go the red or yellow room into the blue room
 move the robot from the pink room to the yellow or red room to the big blue room
@@ -493,7 +394,6 @@ the robot has to go through the yellow or red room to get to the blue room
 go to the blue room through red or yellow
 go through the red or green room into the blue room
 go from the blue room to the red room then go from the red room to the green room
-go from the blue room to the green room
 go to red room and then green room
 go into the red room and then go into the green room
 go to the red room then go to the green room
@@ -546,7 +446,6 @@ go in and then go to the green room
 move to the green room
 move to the green room
 go to the green room
-go to the other room
 move to the green room
 move to the green room
 go to the green room
@@ -659,7 +558,6 @@ enter blue room via the non red room
 enter the blue room without entering a red room
 move to the large blue room while avoiding the small red room
 go to the blue room but avoid the red room
-go through the red and to the blue
 move to the blue room avoiding the red room
 go through the room which is not red to get to the blue room
 go to the blue room but avoid the red room
@@ -724,63 +622,6 @@ go to the blue room and do not use the green room
 go to the blue room while avoiding the green room
 entering any room that is not green will lead you to the blue room
 move to the large blue room while avoiding the small green room
-go to the red room move chair to the green room
-push the object in the red room into the green room
-go to the red room and push the chair into the green room
-go to the red room and then go to the green room
-go into the pink room retrieve the yellow object move it to the green room
-push chair from red room to green room
-push the object from the red room into the green room
-go to the pink room push the yellow object into the green room
-go to pink room and push yellow object into green room
-go into the red room and push the object into the green room
-move to pink room pick up yellow thing move to green room
-go to the red room move the object into the green room
-go from the blue room to the red room then push the yellow object into the green room
-push the backpack in from the red room into the green room
-push the object in the pink room into the green room
-go to below yellow object then go to green door
-go into the red room and move the object into the green room
-go to the yellow object in the pink room and move it to the green room
-go to red room push item to green room
-go to the pink room go to the chair pick up the chair go to the green room
-go to the red room and push the box into the green room
-go to the red room and move the object to the green room
-go to red room push yellow thing into green room
-move to the red room then move the object into the green room
-go to the red room move behind the yellow object then move to the green room
-move to the red room move to the yellow item move the yellow item to the green room
-go to the pink room go to the chair go to the blue room
-leave the blue room and enter the red room and go behind the object and push it into the green room
-enter the red room and then push the object into green room
-go from the blue room to the red room then push the yellow object from the red room into the green room
-go into the red room and push the chair into the green room
-go to the red room push the object into the green room
-go to the red room take the object and go into the green room
-go to the orange room then push the chair from the orange room into the green room
-go to the pink room room and push the object into the green room
-go into the red room and push the chair into the green room
-go to the red room move the yellow thing into the green room
-move to the red room move the yellow item to the green room
-go to pink room locate yellow object push to the green room
-go to the pink room go the yellow chair push the yellow chair to the green room
-go to the pink room and push the yellow object into the green room
-move to the red room and push the chair into the green room
-move to the red room move to the object in the red room move the object to the green room
-go to the red room and push the chair into the green room
-go to the red room take the yellow color object from there and go to green room with this object
-go from blue room to the red room go under object and move it to the green room
-move to pink room and get object and move to green room
-leave the blue room and go into the red room then go to the object in the red room and move the object into the green room
-go to red room move the item and go to green room
-go to the red room and push the yellow thing into the green room
-move to the red room then move with the object to the green room
-go into the red room then push the chair into the green room
-move to the red room and then push the object into the green room
-goto red room push object to green room
-go to red room push object to green room
-go to red room get chair bring to green room
-go to red room go to far wall go to chair push chair to green room
 go to the green room but avoid the blue room
 go to green without going through blue
 enter the green room without passing the blue one
