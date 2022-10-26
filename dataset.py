@@ -3,7 +3,7 @@ from utils import load_from_file, save_to_file, substitute
 
 def generate_tar_file():
     """
-    Convert letters to words to represent propositions in ground truth LTLs.
+    Convert letters to words to represent propositions in ground truth LTLs for spot.formula to work.
     e.g. F & B F C -> F & blue_room F green_room
     For [Gopalan et al. 18 dataset] https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al
     """
