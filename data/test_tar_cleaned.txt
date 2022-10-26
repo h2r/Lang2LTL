@@ -375,105 +375,6 @@ F D
 & F C G ! Y
 & F C G ! Y
 & F C G ! Y
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
-F & D F E
 F & | D Y F B
 F & | D Y F B
 F & | D Y F B
@@ -533,8 +434,6 @@ F & D F C
 F & D F C
 F & D F C
 F & D F C
-F & D F C
-F C
 F C
 F C
 F C
@@ -677,7 +576,6 @@ F & | C Y F B
 & F B G ! D
 & F B G ! D
 & F B G ! D
-& F B G ! D
 & F B G ! C
 & F B G ! C
 & F B G ! C
@@ -724,63 +622,6 @@ F & | C Y F B
 & F B G ! C
 & F B G ! C
 & F B G ! C
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
-F & D F Z
 & F C G ! B
 & F C G ! B
 & F C G ! B
