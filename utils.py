@@ -9,7 +9,7 @@ def build_placeholder_map(name_entities):
     letter = "A"
     for ne in name_entities:
         placeholder_map[ne] = letter
-        placeholder_map_inv[letter] = ne
+        placeholder_map_inv[letter] = "_".join(ne.split()).strip()
         letter = chr(ord(letter) + 1)  # increment placeholder using its ascii value
     return placeholder_map, placeholder_map_inv
 
