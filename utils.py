@@ -1,6 +1,7 @@
 import os
 import json
 import dill
+import logging
 import numpy as np
 
 
@@ -40,7 +41,7 @@ def substitute_single(input_str, sub_map):
     subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
     for k, v in sub_map:
         if k not in input_str:
-            print(f"Name entity {k} not found in input string: {input_str}")
+            logging.info(f"Name entity {k} not found in input string: {input_str}")
         else:
             if v not in subs_done:
                 subs_done.add(v)
