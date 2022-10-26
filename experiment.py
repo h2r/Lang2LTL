@@ -131,7 +131,7 @@ def translate_modular(grounded_utts, objs_per_utt):
     :param objs_per_utt: grounding objects for each input utterance
     :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
-    trans_prompt = load_from_file(args.trans_prompt)
+    trans_modular_prompt = load_from_file(args.trans_modular_prompt)
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
@@ -147,7 +147,7 @@ def translate_modular(grounded_utts, objs_per_utt):
         placeholder_maps_inv.append(placeholder_map_inv)
 
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
-    symbolic_ltls = [trans_module.translate(query, prompt=trans_prompt) for query in trans_queries]
+    symbolic_ltls = [trans_module.translate(query, prompt=trans_modular_prompt) for query in trans_queries]
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
     return output_ltls, symbolic_ltls, placeholder_maps
 
@@ -191,19 +191,19 @@ if __name__ == '__main__':
     parser.add_argument('--nsamples', type=int, default=None, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
-    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_10.txt', help='path to full end-to-end prompt')
+    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_10.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
-    parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt_10.txt', help='path to NER prompt')
+    parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt_15.txt', help='path to NER prompt')
     parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
-    parser.add_argument('--trans_prompt', type=str, default='data/trans_prompt_10.txt', help='path to trans prompt')
+    parser.add_argument('--trans_modular_prompt', type=str, default='data/trans_modular_prompt_15.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', choices=['gpt3', 'bert'], help='grounding module')
     parser.add_argument('--obj_embed', type=str, default='data/obj2embed_davinci.json', help='path to embedding of objects in env')
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_corlw.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts = load_from_file(args.input)[:args.nsamples]

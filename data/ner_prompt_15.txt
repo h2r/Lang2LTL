@@ -1,0 +1,48 @@
+Your task is to repeat exact strings from the given utterances which possibly refer to certain landmarks.
+
+Utterance: 'move to the red room'
+Landmarks: the red room
+
+Utterance: 'i want you to go into the red one'
+Landmarks: the red one
+
+Utterance: 'go into red room and then go into the green room'
+Landmarks: red room | the green room
+
+Utterance: 'enter the red then enter the green rectangular room'
+Landmarks: the red | the green rectangular room
+
+Utterance: 'go into the red room and enter the green room'
+Landmarks: the red room | the green room
+
+Utterance: 'go to the green room but avoid going through the yellow room'
+Landmarks: the green room | the yellow room
+
+Utterance: 'take a path to reach the blue color place by not taking the route which is red and black'
+Landmarks: the blue color place | the route which is red and black
+
+Utterance: ''get to the green rectangle but do not go through the yellow square'
+Landmarks: the green rectangular| the yellow square
+
+Utterance: 'avoid green go to blue'
+Landmarks: green | blue
+
+Utterance: 'only go through rooms that are not blue to get to the green room'
+Landmarks: blue | the green room
+
+Utterance: 'go to red or blue then green'
+Landmarks: red | blue | green
+
+Utterance: 'move the robot through the yellow or red small room and then to the large green room'
+Landmarks: the yellow | red small room | the large green rooms
+
+Utterance: 'move through the yellow or green room to the blue room'
+Landmarks: the yellow | green room | the blue rooms
+
+Utterance: 'go to the green room through the red or blue room'
+Landmarks: the green room | the red | blue rooms
+
+Utterance: 'take the red or blue room into the green room'
+Landmarks: the red | blue room | the green rooms
+
+Utterance: 
