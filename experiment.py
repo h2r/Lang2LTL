@@ -188,7 +188,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='data/test_src_corlw.txt', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/test_tar_corlw.txt', help='path to true grounded LTL formulas')
-    parser.add_argument('--nsamples', type=int, default=5, help='use the first nsamples number of samples')
+    parser.add_argument('--nsamples', type=int, default=None, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_10.txt', help='path to full end-to-end prompt')
@@ -203,7 +203,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_5.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts = load_from_file(args.input)[:args.nsamples]
