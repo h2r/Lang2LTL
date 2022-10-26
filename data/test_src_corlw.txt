@@ -55,7 +55,7 @@ the robot moves towards the green room through the blue room
 go thru the blue box to get to the green box
 move to the blue room and then to the green room
 instead of going through the red room move through the blue room to enter the green room
-go to the blue room then to then green room
+go to the blue room then to the green room
 go through the blue room in to the green room
 go thru the blue to get to the green
 go through the blue room to get to the green room
