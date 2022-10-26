@@ -24,6 +24,18 @@ def run_exp():
         else:
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
+    if args.save_result_path:
+        final_results = {
+            'NER': utt2names if not args.full_e2e else None,
+            'Grounding': name2grounds if not args.full_e2e else None,
+            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
+            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
+            'Input utterances': input_utts,
+            'Output LTLs': output_ltls,
+            'Ground truth': true_ltls
+        }
+        save_to_file(final_results, args.save_result_path)
+
     if len(input_utts) != len(output_ltls):
         print(f'ERROR: number of input utterances {len(input_utts)} != number of output LTLs {len(output_ltls)}.')
     for input_utt, output_ltl, true_ltl in zip(input_utts, output_ltls, true_ltls):
@@ -35,19 +47,6 @@ def run_exp():
     # true_trajs = load_from_file(args.true_trajs)
     # acc_plan = plan(output_ltls, name2grounds)
     # print(f'Planning accuracy: {acc_plan}')
-
-    if args.save_result_path:
-        final_results = {
-            'NER': utt2names if not args.full_e2e else None,
-            'Grounding': name2grounds if not args.full_e2e else None,
-            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
-            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
-            'Input utterances': input_utts,
-            'Output LTLs': output_ltls,
-            'Ground truth': true_ltls,
-            'Accuracy': acc_lang,
-        }
-        save_to_file(final_results, args.save_result_path)
 
 
 def ner():
@@ -145,7 +144,11 @@ def evaluate_lang(output_ltls, true_ltls):
     """
     accs = []
     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-        accs.append(spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl)))
+        try:  # output LTL may have syntax error
+            accs.append(spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl)))
+        except SyntaxError:
+            print(f'Syntax error in output LTL: {out_ltl}')
+            accs.append(False)
     acc = np.mean(accs)
     return acc
 
