@@ -1,0 +1,48 @@
+Your task to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: 'move to red room'
+LTL: F red room
+
+Utterance: 'i want you to go into the red room'
+LTL: F red room
+
+Utterance: 'go into red room and then go into the green room'
+LTL: F & red room F green room
+
+Utterance: 'enter the red room then enter the green room'
+LTL: F & red room F green room
+
+Utterance: 'go into the red room and enter the green room'
+LTL: F & red room F green room
+
+Utterance: 'go to the green room but avoid going through the yellow room'
+LTL: & F green room G ! yellow room
+
+Utterance: 'take a path to reach the blue room by not taking the red room'
+LTL: & F blue room G ! red room
+
+Utterance: 'get to the green room but do not go through the yellow room'
+LTL: & F green room G ! yellow room
+
+Utterance: 'avoid green room go to blue room'
+LTL: & F blue room G ! green room
+
+Utterance: 'only go through rooms that are not blue room to get to the green room'
+LTL: & F green room G ! blue room
+
+Utterance: 'go to red room or blue room then green room'
+LTL: F & | red room blue room F green room
+
+Utterance: 'move the robot through the yellow room or red room and then to the green room'
+LTL: F & | red room yellow room F green room
+
+Utterance: 'move through the yellow room or green room to the blue room'
+LTL: F & | green room yellow room F blue room
+
+Utterance: 'go to the green room through the red room or blue room'
+LTL: F & | red room blue room F green room
+
+Utterance: 'take the red room or blue room into the green room'
+LTL: F & | red room blue room F green room
+
+Utterance: 
