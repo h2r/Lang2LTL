@@ -1,0 +1,857 @@
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & blue_room F green_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F & green_room F blue_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+F red_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+& F green_room G ! yellow_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & red_room F chair_in_green_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & | red_room yellow_room F blue_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F & red_room F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | red_room yellow_room F green_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+F & | green_room yellow_room F blue_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! red_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+& F blue_room G ! green_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+F & red_room F chair_in_blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+& F green_room G ! blue_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
+F & | red_room blue_room F green_room
