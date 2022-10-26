@@ -5,6 +5,8 @@ conda activate lang2ltl
 pip install openai
 conda install -c conda-forge spot
 ```
+Follow Spot installation instruction [here](https://spot.lre.epita.fr/install.html).
+
 Optional if use spaCy
 ```
 pip install -U pip setuptools wheel
@@ -32,4 +34,4 @@ python run_experiment.py
 
 ```test_src_fixed.txt``` and ```test_tar_fixed.txt``` after fixing mistakes (e.g. mislabel, incorrect language, typos).
 
-```test_src_cleaned.txt``` and ```test_tar_cleaned.txt``` after data cleaning (e.g. remove ambiguous, manipulation).
+```test_src_cleaned.txt``` and ```test_tar_cleaned.txt``` after data cleaning (e.g. remove ambiguous language, manipulation).

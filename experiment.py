@@ -1,5 +1,6 @@
 import argparse
-from itertools import chain
+import numpy as np
+import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
@@ -28,10 +29,12 @@ def run_exp():
     for input_utt, output_ltl, true_ltl in zip(input_utts, output_ltls, true_ltls):
         print(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
     acc_lang = evaluate_lang(output_ltls, true_ltls)
+    print(f'Language to LTL translation accuracy: {acc_lang}')
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
     # acc_plan = plan(output_ltls, name2grounds)
+    # print(f'Planning accuracy: {acc_plan}')
 
     if args.save_result_path:
         final_results = {
@@ -137,11 +140,13 @@ def translate_modular(grounded_utts, objs_per_utt):
 
 
 def evaluate_lang(output_ltls, true_ltls):
+    """
+    Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
+    """
     accs = []
     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-        accs.append(out_ltl == true_ltl)
-    acc = sum(accs) / len(accs)
-    print(f"Lang2LTL translation accuracy: {acc}")
+        accs.append(spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl)))
+    acc = np.mean(accs)
     return acc
 
 
@@ -154,8 +159,7 @@ def plan(output_ltls, true_trajs, name2grounds):
     for out_ltl, true_traj in zip(output_ltls, true_trajs):
         out_traj = planner.plan(out_ltl, name2grounds)
         accs.append(evaluate_plan(out_traj, true_traj))
-    acc = sum(accs) / len(accs)
-    print(f"{acc}")
+    acc = np.mean(accs)
     return acc
 
 
@@ -165,8 +169,8 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='data/test_src.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/test_tar.txt', help='path to true grounded LTL formulas')
+    parser.add_argument('--input', type=str, default='data/test_src_cleaned.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/test_tar_cleaned.txt', help='path to true grounded LTL formulas')
     parser.add_argument('--nsamples', type=int, default=15, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
