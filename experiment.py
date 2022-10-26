@@ -1,6 +1,7 @@
 import os
 import argparse
 import logging
+import random
 import numpy as np
 import spot
 from openai.embeddings_utils import cosine_similarity
@@ -26,6 +27,13 @@ def run_exp():
         else:
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
+    if len(input_utts) != len(output_ltls):
+        logging.info(f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}')
+    accs_lang, acc_lang = evaluate_lang(output_ltls, true_ltls)
+    for input_utt, output_ltl, true_ltl, acc in zip(input_utts, output_ltls, true_ltls, accs_lang):
+        logging.info(f'Input utterance: {input_utt}\nOutput LTL: {output_ltl}\nTrue LTL: {true_ltl}\n{acc}\n')
+    logging.info(f'Language to LTL translation accuracy: {acc_lang}')
+
     if args.save_result_path:
         final_results = {
             'NER': utt2names if not args.full_e2e else None,
@@ -37,13 +45,6 @@ def run_exp():
             'Ground truth': true_ltls
         }
         save_to_file(final_results, args.save_result_path)
-
-    if len(input_utts) != len(output_ltls):
-        logging.info(f'ERROR: number of input utterances {len(input_utts)} != number of output LTLs {len(output_ltls)}.')
-    for input_utt, output_ltl, true_ltl in zip(input_utts, output_ltls, true_ltls):
-        logging.info(f'Input utterance: {input_utt}\nOutput LTLs: {output_ltl}\nTrue LTLs: {true_ltl}\n')
-    acc_lang = evaluate_lang(output_ltls, true_ltls)
-    logging.info(f'Language to LTL translation accuracy: {acc_lang}')
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
@@ -89,19 +90,19 @@ def grounding(names):
     else:
         raise ValueError(f'ERROR: grounding module not recognized: {args.ground}')
 
-    name2grounds, is_add_embed = {}, False
+    name2grounds, is_embed_added = {}, False
     for name in names:
         if name in name2embed:  # use cached embedding if exists
             embed = name2embed[name]
         else:
             embed = ground_module.get_embedding(name, args.engine)
             name2embed[name] = embed
-            is_add_embed = True
+            is_embed_added = True
         sims = {n: cosine_similarity(e, embed) for n, e in obj2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
         name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
 
-        if is_add_embed:
+        if is_embed_added:
             save_to_file(name2embed, args.name_embed)
 
     return name2grounds
@@ -165,7 +166,7 @@ def evaluate_lang(output_ltls, true_ltls):
             logging.info(f'Syntax error in output LTL: {out_ltl}')
             accs.append(False)
     acc = np.mean(accs)
-    return acc
+    return accs, acc
 
 
 def plan(output_ltls, true_trajs, name2grounds):
@@ -189,7 +190,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='data/test_src_corlw.txt', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/test_tar_corlw.txt', help='path to true grounded LTL formulas')
-    parser.add_argument('--nsamples', type=int, default=5, help='use the first nsamples number of samples')
+    parser.add_argument('--nsamples', type=int, default=-1, help='use the first nsamples number of samples')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
@@ -207,8 +208,12 @@ if __name__ == '__main__':
     parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
-    input_utts = load_from_file(args.input)[:args.nsamples]
-    true_ltls = load_from_file(args.true_ltls)[:args.nsamples]
+    input_utts = load_from_file(args.input)
+    true_ltls = load_from_file(args.true_ltls)
+    if args.nsamples == -1:  # for testing, randomly sample 50 pairs to cover diversity of dataset
+        input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), 10))
+    else:
+        input_utts, true_ltls = input_utts[:args.nsamples], true_ltls[:args.nsamples]
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
