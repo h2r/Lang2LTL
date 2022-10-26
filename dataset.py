@@ -17,7 +17,8 @@ def generate_tar_file():
     }
     raw_true_ltls = load_from_file("data/test_tar_cleaned.txt")
     true_ltls = substitute(raw_true_ltls, [sub_map])[0]
-    save_to_file('\n'.join(true_ltls), "data/test_tar_corlw.txt")
+    data = '\n'.join(true_ltls) + '\n'
+    save_to_file(data, "data/test_tar_corlw.txt")
 
 
 if __name__ == '__main__':
