@@ -12,7 +12,10 @@ LTL: F & A F B
 Utterance: enter A before enter B
 LTL: F & A F B
 
-Utterance: go into the A after enter B
+Utterance: go into A after enter B
+LTL: F & B F A
+
+Utterance: move to B go to A
 LTL: F & B F A
 
 Utterance: go to A but avoid going through B
