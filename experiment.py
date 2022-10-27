@@ -30,8 +30,8 @@ def run_exp():
     if len(input_utts) != len(output_ltls):
         logging.info(f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}')
     accs_lang, acc_lang = evaluate_lang(output_ltls, true_ltls)
-    for input_utt, output_ltl, true_ltl, acc in zip(input_utts, output_ltls, true_ltls, accs_lang):
-        logging.info(f'Input utterance: {input_utt}\nOutput LTL: {output_ltl}\nTrue LTL: {true_ltl}\n{acc}\n')
+    for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, output_ltls, true_ltls, accs_lang)):
+        logging.info(f'{idx}\nInput utterance: {input_utt}\nOutput LTL: {output_ltl}\nTrue LTL: {true_ltl}\n{acc}\n')
     logging.info(f'Language to LTL translation accuracy: {acc_lang}')
 
     if args.save_result_path:
@@ -66,7 +66,8 @@ def ner():
         raise ValueError(f'ERROR: NER module not recognized: {args.ner}')
 
     names, utt2names = set(), []  # name entity list names should not have duplicates
-    for utt in input_utts:
+    for idx_utt, utt in enumerate(input_utts):
+        logging.info(f'Extracting name entities from utterance: {idx_utt}')
         names_per_utt = [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
         names.update(names_per_utt)
         utt2names.append((utt, names_per_utt))
@@ -190,7 +191,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--input', type=str, default='data/test_src_corlw.txt', help='file path to input utterances')
     parser.add_argument('--true_ltls', type=str, default='data/test_tar_corlw.txt', help='path to true grounded LTL formulas')
-    parser.add_argument('--nsamples', type=int, default=None, help='randomly sample nsamples pairs or None to use all')
+    parser.add_argument('--nsamples', type=int, default=10, help='randomly sample nsamples pairs or None to use all')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
@@ -205,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15_corlw_full.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_full_e2e_prompt15_corlw_full.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts, true_ltls = load_from_file(args.input), load_from_file(args.true_ltls)
