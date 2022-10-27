@@ -1,48 +1,48 @@
 Your task to translate English utterances into linear temporal logic (LTL) formulas.
 
-Utterance: 'move to red room'
-LTL: F red room
+Utterance: move to the red room
+LTL: F red_room
 
-Utterance: 'i want you to go into the red room'
-LTL: F red room
+Utterance: go into the red one
+LTL: F red_room
 
-Utterance: 'go into red room and then go into the green room'
-LTL: F & red room F green room
+Utterance: go into yellow room and then go into the large green room
+LTL: F & yellow_room F green_room
 
-Utterance: 'enter the red room then enter the green room'
-LTL: F & red room F green room
+Utterance: enter the red room then enter the green rectangular room
+LTL: F & red_room F green_room
 
-Utterance: 'go into the red room and enter the green room'
-LTL: F & red room F green room
+Utterance: go into the blue room and enter the green room
+LTL: F & blue_room F green_room
 
-Utterance: 'go to the green room but avoid going through the yellow room'
-LTL: & F green room G ! yellow room
+Utterance: go to the green area but avoid going through the yellow area
+LTL: & F green_room G ! yellow_room
 
-Utterance: 'take a path to reach the blue room by not taking the red room'
-LTL: & F blue room G ! red room
+Utterance: take a path to reach the blue box but avoid the red path
+LTL: & F blue_room G ! red_room
 
-Utterance: 'get to the green room but do not go through the yellow room'
-LTL: & F green room G ! yellow room
+Utterance: get to the green rectangle but do not go through the yellow square
+LTL: & F green_room G ! yellow_room
 
-Utterance: 'avoid green room go to blue room'
-LTL: & F blue room G ! green room
+Utterance: avoid green go to blue
+LTL: & F blue_room G ! green_room
 
-Utterance: 'only go through rooms that are not blue room to get to the green room'
-LTL: & F green room G ! blue room
+Utterance: only go through rooms that are not blue to get to the green room
+LTL: & F green_room G ! blue_room
 
-Utterance: 'go to red room or blue room then green room'
-LTL: F & | red room blue room F green room
+Utterance: go to red or blue then green
+LTL: F & | red_room blue_room F green_room
 
-Utterance: 'move the robot through the yellow room or red room and then to the green room'
-LTL: F & | red room yellow room F green room
+Utterance: move the robot through the yellow or small red room and then to the large green room
+LTL: F & | yellow_room red_room F green_room
 
-Utterance: 'move through the yellow room or green room to the blue room'
-LTL: F & | green room yellow room F blue room
+Utterance: move through the yellow or green room to the blue room
+LTL: F & | yellow_room green_room F blue_room
 
-Utterance: 'go to the green room through the red room or blue room'
-LTL: F & | red room blue room F green room
+Utterance: go to the green room via the red room or blue room
+LTL: F & | red_room blue_room F green_room
 
-Utterance: 'take the red room or blue room into the green room'
-LTL: F & | red room blue room F green room
+Utterance: go through the red room or blue room to the green room
+LTL: F & | red_room blue_room F green_room
 
 Utterance: 
