@@ -22,7 +22,7 @@ Utterance: take a path to reach the blue box but avoid the red path
 Landmarks: the blue box | the red path
 
 Utterance: get to the green rectangle but do not go through the yellow square
-Landmarks: the green rectangle| the yellow square
+Landmarks: the green rectangle | the yellow square
 
 Utterance: avoid green go to blue
 Landmarks: green | blue
