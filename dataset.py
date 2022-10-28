@@ -1,3 +1,6 @@
+import random
+import spot
+
 from utils import load_from_file, save_to_file, substitute
 
 
@@ -19,6 +22,29 @@ def generate_tar_file():
     true_ltls = substitute(raw_true_ltls, [sub_map])[0]
     data = '\n'.join(true_ltls) + '\n'
     save_to_file(data, "data/test_tar_corlw.txt")
+
+
+def create_osm_dataset():
+    """
+    To test generalization capability of LLMs, create an OSM dataset.
+    """
+    data = load_from_file('data/providence_500.csv')
+    data_rand = random.sample(data[:361], 50)
+
+    utts, ltls = [], []
+    for entry in data_rand:
+        utts.append(entry[1].lower().strip())
+        ltls.append(entry[2].strip())
+
+    save_to_file('\n'.join(utts)+'\n', 'data/osm_src_corlw.txt')
+    save_to_file('\n'.join(ltls)+'\n', 'data/osm_tar_corlw.txt')
+
+    # manually change all names in LTLs to lower case, connected with underscores
+
+    # check LTL formulas compatible with Spot
+    ltls = load_from_file('data/osm_tar_corlw.txt')
+    for ltl in ltls:
+        spot.formula(ltl)
 
 
 if __name__ == '__main__':

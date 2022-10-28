@@ -1,6 +1,7 @@
 import os
 import json
 import dill
+import csv
 import logging
 import numpy as np
 
@@ -78,6 +79,11 @@ def load_from_file(fpath):
     elif ftype == 'json':
         with open(fpath, 'r') as rfile:
             out = json.load(rfile)
+    elif ftype == 'csv':
+        with open(fpath, 'r') as rfile:
+            csvreader = csv.reader(rfile)
+            fileds = next(csvreader)
+            out = [row for row in csvreader]
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
