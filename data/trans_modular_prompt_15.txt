@@ -1,51 +1,51 @@
 Your task is to translate English utterances into linear temporal logic (LTL) formulas.
 
-Utterance: move to A
+Utterance: move to the A
 LTL: F A
 
-Utterance: go into A
+Utterance: go into the A
 LTL: F A
 
-Utterance: go to A then B
+Utterance: go to A then the B
 LTL: F & A F B
 
-Utterance: enter A before enter B
+Utterance: enter the A before enter the B
 LTL: F & A F B
 
-Utterance: go into A after enter B
+Utterance: go into the A after enter B
 LTL: F & B F A
 
 Utterance: move to B go to A
 LTL: F & B F A
 
-Utterance: go to A but avoid going through B
+Utterance: go to the A but avoid going through the B
 LTL: & F A G ! B
 
-Utterance: take a path to reach A but avoid B
+Utterance: take a path to reach the A but avoid B
 LTL: & F A G ! B
 
-Utterance: get to A but do not go through B
+Utterance: get to A but do not go through the B
 LTL: & F A G ! B
 
 Utterance: avoid A go to B
 LTL: & F B G ! A
 
-Utterance: only go through rooms that are not A to get to B
+Utterance: only go through rooms that are not A to get to the B
 LTL: & F B G ! A
 
 Utterance: go to A or B then C
 LTL: F & | A B F C
 
-Utterance: move the robot through A or B and then to C
+Utterance: move the robot through the A or B and then to the C
 LTL: F & | A B F C
 
-Utterance: move through A or B to C
+Utterance: move through the A or B to C
 LTL: F & | A B F C
 
 Utterance: go to A via B or C
 LTL: F & | B C F A
 
-Utterance: go through A or B into C
+Utterance: go through the A or B into the C
 LTL: F & | A B F C
 
 Utterance: 

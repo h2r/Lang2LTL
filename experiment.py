@@ -206,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_full_e2e_prompt15_corlw_full.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15nothe_corlw_full.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts, true_ltls = load_from_file(args.input), load_from_file(args.true_ltls)
