@@ -22,9 +22,13 @@ export ORG_ID=<YOUR_ORG_ID>
 ```
 Run end-to-end language to LTL translation using GPT-3
 ```
-python run_experiment.py --overall_e2e
+python run_experiment.py --full_e2e
 ```
-Run the modular approach to language to LTL translation
+Run the modular_ner approach to language to LTL translation
+```
+python run_experiment.py --translate_e2e
+```
+Run the modular_ner+placeholders approach to language to LTL translation
 ```
 python run_experiment.py
 ```
