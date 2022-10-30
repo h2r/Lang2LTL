@@ -189,12 +189,12 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='data/test_src_corlw.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/test_tar_corlw.txt', help='path to true grounded LTL formulas')
+    parser.add_argument('--input', type=str, default='data/osm_src_corlw.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/osm_tar_corlw.txt', help='path to true grounded LTL formulas')
     parser.add_argument('--nsamples', type=int, default=None, help='randomly sample nsamples pairs or None to use all')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
-    parser.add_argument('--full_e2e_prompt', type=str, default='data/full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
+    parser.add_argument('--full_e2e_prompt', type=str, default='data/osm_full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
@@ -206,7 +206,7 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15nothe_corlw_full.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_full_e2e_prompt15_osm_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts, true_ltls = load_from_file(args.input), load_from_file(args.true_ltls)
