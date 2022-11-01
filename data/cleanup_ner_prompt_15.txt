@@ -1,48 +1,48 @@
 Your task is to repeat exact strings from the given utterances which possibly refer to certain landmarks.
 
 Utterance: move to the red room
-Landmarks: red room
+Landmarks: the red room
 
 Utterance: go into the red one
-Landmarks: red one
+Landmarks: the red one
 
 Utterance: go into yellow room and then go into the large green room
-Landmarks: yellow room | large green room
+Landmarks: yellow room | the large green room
 
 Utterance: enter the red then enter the green rectangular room
-Landmarks: red | green rectangular room
+Landmarks: the red | the green rectangular room
 
-Utterance: go into the blue room and enter green room
-Landmarks: blue room | green room
+Utterance: go into the blue room and enter the green room
+Landmarks: the blue room | the green room
 
 Utterance: go to the green area but avoid going through the yellow area
-Landmarks: green area | yellow area
+Landmarks: the green area | the yellow area
 
-Utterance: take a path to reach the blue box but avoid red path
-Landmarks: blue box | red path
+Utterance: take a path to reach the blue box but avoid the red path
+Landmarks: the blue box | the red path
 
-Utterance: get to green rectangle but do not go through the yellow square
-Landmarks: green rectangle | yellow square
+Utterance: get to the green rectangle but do not go through the yellow square
+Landmarks: the green rectangle | the yellow square
 
 Utterance: avoid green go to blue
 Landmarks: green | blue
 
 Utterance: only go through rooms that are not blue to get to the green room
-Landmarks: blue | green room
+Landmarks: blue | the green room
 
 Utterance: go to red or blue then green
 Landmarks: red | blue | green
 
 Utterance: move the robot through the yellow or small red room and then to the large green room
-Landmarks: yellow | small red room | large green room
+Landmarks: the yellow | small red room | the large green room
 
-Utterance: move through the yellow or green room to blue room
-Landmarks: yellow | green room | blue room
+Utterance: move through the yellow or green room to the blue room
+Landmarks: the yellow | green room | the blue room
 
-Utterance: go to green room via red or blue room
-Landmarks: green room | red | blue room
+Utterance: go to the green room via the red or blue room
+Landmarks: the green room | the red | blue room
 
 Utterance: go through the red room or blue room to the green room
-Landmarks: red room | blue room | green room
+Landmarks: the red room | blue room | the green room
 
 Utterance: 
