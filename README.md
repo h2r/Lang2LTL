@@ -34,6 +34,7 @@ python run_experiment.py
 ```
 
 # Datasets
+## Cleanup World
 ```test_src_raw.txt``` and ```test_tar_raw.txt``` are the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al) 
 for language commands paired LTL expressions, renamed from ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
 
