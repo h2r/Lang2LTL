@@ -24,16 +24,10 @@ def substitute(input_strs, substitute_maps):
     :return: substituted strings and their corresponding substitutions
     """
     output_strs, subs_per_str = [], []
-    if len(substitute_maps) == 1:  # same substitute map for all input strings
-        for input_str in input_strs:
-            out_str, subs_done = substitute_single(input_str, substitute_maps[0])
-            output_strs.append(out_str)
-            subs_per_str.append(subs_done)
-    else:  # a substitute map for each input string
-        for input_str, sub_map in zip(input_strs, substitute_maps):
-            out_str, subs_done = substitute_single(input_str, sub_map)
-            output_strs.append(out_str)
-            subs_per_str.append(subs_done)
+    for input_str, sub_map in zip(input_strs, substitute_maps):
+        out_str, subs_done = substitute_single(input_str, sub_map)
+        output_strs.append(out_str)
+        subs_per_str.append(subs_done)
     return output_strs, subs_per_str
 
 
@@ -44,7 +38,7 @@ def substitute_single(input_str, sub_map):
         if k not in input_str:
             logging.info(f"Name entity {k} not found in input string: {input_str}")
         else:
-            if v not in subs_done:
+            if v not in subs_done:  # TODO: 'the name' sub first then 'name' sub again. redundant if same grounding, wrong otherwise
                 subs_done.add(v)
                 input_str = input_str.replace(k, v)
     return input_str.strip(), subs_done

@@ -19,13 +19,13 @@ def run_exp():
     else:  # Modular
         names, utt2names = ner()
         name2grounds = grounding(names)
-
-        grounded_utts, objs_per_utt = ground_utterances(input_utts, name2grounds)  # ground names to objects in env
-
+        grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
         if args.translate_e2e:
             output_ltls = translate_e2e(grounded_utts)
         else:
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
+
+    # breakpoint()
 
     if len(input_utts) != len(output_ltls):
         logging.info(f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}')
@@ -68,7 +68,20 @@ def ner():
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for idx_utt, utt in enumerate(input_utts):
         logging.info(f'Extracting name entities from utterance: {idx_utt}')
-        names_per_utt = [name.strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
+        names_per_utt = [name.lower().strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
+
+        extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate NER error
+        for name in names_per_utt:
+            name_words = name.split()
+            if name_words[0] == 'the':
+                extra_name = ' '.join(name_words[1:])
+            else:
+                name_words.insert(0, 'the')
+                extra_name = ' '.join(name_words)
+            if extra_name not in names_per_utt:
+                extra_names.append(extra_name)
+        names_per_utt += extra_names
+
         names.update(names_per_utt)
         utt2names.append((utt, names_per_utt))
     return names, utt2names
@@ -109,12 +122,15 @@ def grounding(names):
     return name2grounds
 
 
-def ground_utterances(input_strs, name2grounds):
+def ground_utterances(input_strs, utt2names, name2grounds):
     """
     Replace name entities in input strings (e.g. utterances, LTL formulas) with objects in given environment.
     """
-    name2ground = {name: grounds[0] for name, grounds in name2grounds.items()}  # TODO: redundant item when k == v
-    return substitute(input_strs, [name2ground])
+    grounding_maps = []  # name to grounding map per utterance
+    for _, names in utt2names:
+        # breakpoint()
+        grounding_maps.append({name: name2grounds[name][0] for name in names})
+    return substitute(input_strs, grounding_maps)
 
 
 def translate_e2e(grounded_utts):
@@ -150,7 +166,13 @@ def translate_modular(grounded_utts, objs_per_utt):
         placeholder_maps_inv.append(placeholder_map_inv)
 
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
+
+    # breakpoint()
+
     symbolic_ltls = [trans_module.translate(query, prompt=trans_modular_prompt) for query in trans_queries]
+
+    # breakpoint()
+
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
     return output_ltls, symbolic_ltls, placeholder_maps
 
@@ -198,15 +220,15 @@ if __name__ == '__main__':
     parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
-    parser.add_argument('--ner_prompt', type=str, default='data/ner_prompt_15.txt', help='path to NER prompt')
+    parser.add_argument('--ner_prompt', type=str, default='data/cleanup_ner_prompt_15.txt', help='path to NER prompt')
     parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
-    parser.add_argument('--trans_modular_prompt', type=str, default='data/trans_modular_prompt_15.txt', help='path to trans prompt')
+    parser.add_argument('--trans_modular_prompt', type=str, default='data/cleanup_trans_modular_prompt_15.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', choices=['gpt3', 'bert'], help='grounding module')
-    parser.add_argument('--obj_embed', type=str, default='data/obj2embed_davinci.json', help='path to embedding of objects in env')
-    parser.add_argument('--name_embed', type=str, default='data/name2embed_davinci.pkl', help='path to embedding of names in language')
+    parser.add_argument('--obj_embed', type=str, default='data/osm_obj2embed_gpt3_davinci.pkl', help='path to embedding of objects in env')
+    parser.add_argument('--name_embed', type=str, default='data/osm_name2embed_gpt3_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_full_e2e_prompt15_osm_corlw.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15_osm_corlw_test.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts, true_ltls = load_from_file(args.input), load_from_file(args.true_ltls)
