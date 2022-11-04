@@ -1,6 +1,6 @@
 fedex office
 cvs
-science_library
+science library
 bookstore
 marston hall
 citizens bank
