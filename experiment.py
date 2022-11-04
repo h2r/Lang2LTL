@@ -20,12 +20,10 @@ def run_exp():
         names, utt2names = ner()
         name2grounds = grounding(names)
         grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
-        if args.translate_e2e:
+        if args.trans_e2e:
             output_ltls = translate_e2e(grounded_utts)
         else:
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
-
-    # breakpoint()
 
     if len(input_utts) != len(output_ltls):
         logging.info(f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}')
@@ -34,17 +32,16 @@ def run_exp():
         logging.info(f'{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n')
     logging.info(f'Language to LTL translation accuracy: {acc_lang}')
 
-    if args.save_result_path:
-        final_results = {
-            'NER': utt2names if not args.full_e2e else None,
-            'Grounding': name2grounds if not args.full_e2e else None,
-            'Placeholder maps': placeholder_maps if not (args.translate_e2e or args.full_e2e) else None,
-            'Input utterances': input_utts,
-            'Symbolic LTLs': symbolic_ltls if not (args.translate_e2e or args.full_e2e) else None,
-            'Output LTLs': output_ltls,
-            'Ground truth': true_ltls
-        }
-        save_to_file(final_results, args.save_result_path)
+    final_results = {
+        'NER': utt2names if not args.full_e2e else None,
+        'Grounding': name2grounds if not args.full_e2e else None,
+        'Placeholder maps': placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
+        'Input utterances': input_utts,
+        'Symbolic LTLs': symbolic_ltls if not (args.trans_e2e or args.full_e2e) else None,
+        'Output LTLs': output_ltls,
+        'Ground truth': true_ltls
+    }
+    save_to_file(final_results, args.save_result_path)
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
@@ -112,6 +109,7 @@ def grounding(names):
             embed = ground_module.get_embedding(name, args.engine)
             name2embed[name] = embed
             is_embed_added = True
+
         sims = {n: cosine_similarity(e, embed) for n, e in obj2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
         name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
@@ -128,7 +126,6 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     """
     grounding_maps = []  # name to grounding map per utterance
     for _, names in utt2names:
-        # breakpoint()
         grounding_maps.append({name: name2grounds[name][0] for name in names})
     return substitute(input_strs, grounding_maps)
 
@@ -166,13 +163,7 @@ def translate_modular(grounded_utts, objs_per_utt):
         placeholder_maps_inv.append(placeholder_map_inv)
 
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
-
-    # breakpoint()
-
     symbolic_ltls = [trans_module.translate(query, prompt=trans_modular_prompt) for query in trans_queries]
-
-    # breakpoint()
-
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
     return output_ltls, symbolic_ltls, placeholder_maps
 
@@ -211,24 +202,24 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input', type=str, default='data/osm_src_corlw.txt', help='file path to input utterances')
-    parser.add_argument('--true_ltls', type=str, default='data/osm_tar_corlw.txt', help='path to true grounded LTL formulas')
+    parser.add_argument('--input', type=str, default='data/cleanup_src_corlw.txt', help='file path to input utterances')
+    parser.add_argument('--true_ltls', type=str, default='data/cleanup_tar_corlw.txt', help='path to true grounded LTL formulas')
     parser.add_argument('--nsamples', type=int, default=None, help='randomly sample nsamples pairs or None to use all')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
-    parser.add_argument('--full_e2e_prompt', type=str, default='data/osm_full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
-    parser.add_argument('--translate_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
-    parser.add_argument('--trans_e2e_prompt', type=str, default='data/trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
+    parser.add_argument('--full_e2e_prompt', type=str, default='data/cleanup_full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
+    parser.add_argument('--trans_e2e', action='store_true', help="solve translation task end-to-end using GPT-3")
+    parser.add_argument('--trans_e2e_prompt', type=str, default='data/cleanup_trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
     parser.add_argument('--ner_prompt', type=str, default='data/cleanup_ner_prompt_15.txt', help='path to NER prompt')
     parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
     parser.add_argument('--trans_modular_prompt', type=str, default='data/cleanup_trans_modular_prompt_15.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', choices=['gpt3', 'bert'], help='grounding module')
-    parser.add_argument('--obj_embed', type=str, default='data/osm_obj2embed_gpt3_davinci.pkl', help='path to embedding of objects in env')
-    parser.add_argument('--name_embed', type=str, default='data/osm_name2embed_gpt3_davinci.pkl', help='path to embedding of names in language')
+    parser.add_argument('--obj_embed', type=str, default='data/cleanup_obj2embed_gpt3_davinci.pkl', help='path to embedding of objects in env')
+    parser.add_argument('--name_embed', type=str, default='data/cleanup_name2embed_gpt3_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
-    parser.add_argument('--save_result_path', type=str, default='results/test_result_modular_prompt15_osm_corlw_test.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     input_utts, true_ltls = load_from_file(args.input), load_from_file(args.true_ltls)
