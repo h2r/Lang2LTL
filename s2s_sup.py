@@ -1,3 +1,7 @@
+"""
+Based on PyTorch tutorial, Language Translation with nn.transformer and torchtext.
+https://pytorch.org/tutorials/beginner/translation_transformer.html
+"""
 import math
 from timeit import default_timer as timer
 import torch
