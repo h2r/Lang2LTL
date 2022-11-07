@@ -7,6 +7,7 @@ import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
+from s2s_sup import Seq2Seq
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
@@ -151,8 +152,8 @@ def translate_modular(grounded_utts, objs_per_utt):
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
-    # elif args.trans == 's2s_sup':
-    #     trans_module = Seq2Seq()
+    elif args.trans == 's2s_sup':
+        trans_module = Seq2Seq()
     else:
         raise ValueError("ERROR: translation module not recognized")
 
