@@ -1,0 +1,12 @@
+Symbolic Language Command,Symbolic LTL Formula
+go to A,F A
+move to A,F A
+find A,F A
+reach A,F A
+arrive at A,F A
+drive to A,F A
+go to A then go to B,F & A F B
+move to A then move to B,F & A F B
+find A then find B,F & A F B
+find A then go to B,F & A F B
+move to A then go to B,F & A F B
