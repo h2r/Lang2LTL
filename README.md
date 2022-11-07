@@ -3,9 +3,18 @@
 conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
 conda activate lang2ltl
 pip install openai
+```
+
+To install LTL/Automaton library Spot
+```
 conda install -c conda-forge spot
 ```
-Follow Spot installation instructions [here](https://spot.lre.epita.fr/install.html).
+or follow the installation instructions [here](https://spot.lre.epita.fr/install.html).
+
+Optional if use Sequence-to-Sequence model
+```
+conda install pytorch torchtext torchdata -c pytorch
+```
 
 Optional if use spaCy
 ```
