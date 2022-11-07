@@ -4,6 +4,7 @@ https://pytorch.org/tutorials/beginner/translation_transformer.html
 """
 import math
 from timeit import default_timer as timer
+from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
 from torch.nn import Transformer
@@ -13,10 +14,12 @@ from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
 from torchtext.datasets import multi30k, Multi30k
 
+from utils import load_from_file
+
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
 
-SRC_LANG, TAR_LANG = 'de', 'en'  # 'en', 'ltl'
+# SRC_LANG, TAR_LANG = 'de', 'en'  # 'en', 'ltl'
 UNK_IDX, PAD_IDX, SOS_IDX, EOS_IDX = 0, 1, 2, 3
 SPECIAL_SYMBOLS = ['<unk>', '<pad>', '<sos>', '<eos>']
 
@@ -110,16 +113,41 @@ class Seq2SeqTransformer(nn.Module):
         return self.transformer.decoder(self.positional_encoding(self.tar_token_embed(tar)), memory, tar_mask)
 
 
-def yield_tokens(data_iter, language):
+def yield_tokens(data_iter, tokenizer, language):
     language_idx = {SRC_LANG: 0, TAR_LANG: 1}
     for sample in data_iter:
-        yield token_transform[language](sample[language_idx[language]])
+        if isinstance(tokenizer, dict):  # if different tokenizers for source and target
+            yield tokenizer[language](sample[language_idx[language]])
+        else:
+            yield tokenizer(sample[language_idx[language]])
 
 
-def generate_square_subsequent_mask(sz):
-    mask = (torch.triu(torch.ones((sz, sz), device=DEVICE)) == 1).transpose(0, 1)
-    mask = mask.float().masked_fill(mask == 0, float('-inf')).masked_fill(mask == 1, float(0.0))
-    return mask
+def sequential_transforms(*transforms):
+    """
+    Iteratively apply input transforms to input text.
+    """
+    def fn(txt_input):
+        for transform in transforms:
+            txt_input = transform(txt_input)
+        return txt_input
+    return fn
+
+
+def tensor_transform(token_ids):
+    """
+    Add SOS and EOS indices.
+    """
+    return torch.cat((torch.tensor([SOS_IDX]), torch.tensor(token_ids), torch.tensor([EOS_IDX])))
+
+
+def collate_fn(data_batch):
+    src_batch, tar_batch = [], []
+    for src_sample, tar_sample in data_batch:
+        src_batch.append(text_transform[SRC_LANG](src_sample.rstrip('\n')))
+        tar_batch.append(text_transform[TAR_LANG](tar_sample.rstrip('\n')))
+    src_batch = pad_sequence(src_batch, padding_value=PAD_IDX)
+    tar_batch = pad_sequence(tar_batch, padding_value=PAD_IDX)
+    return src_batch, tar_batch
 
 
 def create_mask(src, tar):
@@ -133,29 +161,10 @@ def create_mask(src, tar):
     return src_mask, tar_mask, src_padding_mask, tar_padding_mask
 
 
-def tensor_transform(token_ids):
-    """
-    Add SOS and EOS.
-    """
-    return torch.cat((torch.tensor([SOS_IDX]), torch.tensor(token_ids), torch.tensor([EOS_IDX])))
-
-
-def sequential_transforms(*transforms):
-    def fn(txt_input):
-        for transform in transforms:
-            txt_input = transform(txt_input)  # TODO: output set by only last iteration
-        return txt_input
-    return fn
-
-
-def collate_fn(data_batch):
-    src_batch, tar_batch = [], []
-    for src_sample, tar_sample in data_batch:
-        src_batch.append(text_transform[SRC_LANG](src_sample.rstrip('\n')))
-        tar_batch.append(text_transform[TAR_LANG](tar_sample.rstrip('\n')))
-    src_batch = pad_sequence(src_batch, padding_value=PAD_IDX)
-    tar_batch = pad_sequence(tar_batch, padding_value=PAD_IDX)
-    return src_batch, tar_batch
+def generate_square_subsequent_mask(sz):
+    mask = (torch.triu(torch.ones((sz, sz), device=DEVICE)) == 1).transpose(0, 1)
+    mask = mask.float().masked_fill(mask == 0, float('-inf')).masked_fill(mask == 1, float(0.0))
+    return mask
 
 
 def train_epoch(model, optimizer):
@@ -206,28 +215,48 @@ def evaluate(model):
 
 
 if __name__ == '__main__':
-    token_transform = {
-        SRC_LANG: get_tokenizer('spacy', language='de_core_news_sm'),
-        TAR_LANG: get_tokenizer('spacy', language='en_core_web_sm')
-    }
+    SRC_LANG, TAR_LANG = 'en', 'ltl'
+
+    data_csv = load_from_file('data/symbolic_pairs.csv')
+    dataset = [(utt, ltl) for utt, ltl in data_csv]
+    train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
 
     vocab_transform = {}
-    multi30k.URL['train'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz"
-    multi30k.URL['valid'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz"
+    tokenizer = get_tokenizer(tokenizer=None)
     for ln in [SRC_LANG, TAR_LANG]:
-        train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
-        vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, ln),
+        vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, tokenizer, ln),
                                                         min_freq=1,
                                                         specials=SPECIAL_SYMBOLS,
                                                         special_first=True)
         vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
 
     text_transform = {
-        SRC_LANG: sequential_transforms(token_transform[SRC_LANG], vocab_transform[SRC_LANG], tensor_transform),
-        TAR_LANG: sequential_transforms(token_transform[TAR_LANG], token_transform[SRC_LANG], tensor_transform)
-    }
+        SRC_LANG: sequential_transforms(tokenizer, vocab_transform[SRC_LANG], tensor_transform),
+        TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
+    }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
 
-    breakpoint()
+
+    # vocab_transform = {}
+    # multi30k.URL['train'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz"
+    # multi30k.URL['valid'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz"
+    # token_transform = {
+    #     SRC_LANG: get_tokenizer(tokenizer='spacy', language='de_core_news_sm'),
+    #     TAR_LANG: get_tokenizer(tokenizer='spacy', language='en_core_web_sm')
+    # }
+    # for ln in [SRC_LANG, TAR_LANG]:
+    #     train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
+    #     vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, token_transform, ln),
+    #                                                     min_freq=1,
+    #                                                     specials=SPECIAL_SYMBOLS,
+    #                                                     special_first=True)
+    #     vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
+    #
+    # text_transform = {
+    #     SRC_LANG: sequential_transforms(token_transform[SRC_LANG], vocab_transform[SRC_LANG], tensor_transform),
+    #     TAR_LANG: sequential_transforms(token_transform[TAR_LANG], vocab_transform[SRC_LANG], tensor_transform)
+    # }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
+
+
 
     SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
 
