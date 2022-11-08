@@ -76,7 +76,7 @@ class PositionalEncoding(nn.Module):
         pos_embedding = pos_embedding.unsqueeze(-2)
 
         self.dropout = nn.Dropout(dropout)
-        self.register_buff('pos_embedding', pos_embedding)
+        self.register_buffer('pos_embedding', pos_embedding)
 
     def forward(self, token_embedding):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
@@ -167,10 +167,9 @@ def generate_square_subsequent_mask(sz):
     return mask
 
 
-def train_epoch(model, optimizer):
+def train_epoch(model, optimizer, train_iter):
     model.train()
     losses = 0
-    train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
     train_dataloader = DataLoader(train_iter, batch_size=BATCH_SIZE, collate_fn=collate_fn)
 
     for src_batch, tar_batch in train_dataloader:
@@ -184,7 +183,7 @@ def train_epoch(model, optimizer):
 
         optimizer.zero_grad()
         tar_out = tar_batch[1:, :]
-        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.shape(-1))
+        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.shape[-1])
         loss.backward()
         optimizer.step()
         losses += loss.item()
@@ -192,10 +191,9 @@ def train_epoch(model, optimizer):
     return losses / len(train_dataloader)
 
 
-def evaluate(model):
+def evaluate(model, val_iter):
     model.eval()
     losses = 0
-    val_iter = Multi30k(split='valid', language_pair=(SRC_LANG, TAR_LANG))
     val_dataloader = DataLoader(val_iter, batch_size=BATCH_SIZE, collate_fn=collate_fn)
 
     for src_batch, tar_batch in val_dataloader:
@@ -208,7 +206,7 @@ def evaluate(model):
                        src_padding_mask)
 
         tar_out = tar_batch[1:, :]
-        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape(-1))
+        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape[-1])
         losses += loss.item()
 
     return losses / len(val_dataloader)
@@ -263,20 +261,21 @@ if __name__ == '__main__':
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
                                      DIM_FFN_HID)
-
     for param in transformer.parameters():
         if param.dim() > 1:
             nn.init.xavier_uniform_(param)
-
     transformer = transformer.to(DEVICE)
 
     loss_fn = torch.nn.CrossEntropyLoss(ignore_index=PAD_IDX)
     optimizer = torch.optim.Adam(transformer.parameters(), lr=0.0001, betas=(0.9, 0.98), eps=1e-9)
+    # train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
+    # train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
+    # val_iter = Multi30k(split='valid', language_pair=(SRC_LANG, TAR_LANG))
 
     for epoch in range(1, NUM_EPOCHS+1):
         start_time = timer()
-        train_loss = train_epoch(transformer, optimizer)
+        train_loss = train_epoch(transformer, optimizer, train_iter)
         end_time = timer()
-        val_loss = evaluate(transformer)
+        val_loss = evaluate(transformer, val_iter)
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {val_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
