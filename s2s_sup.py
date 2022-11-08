@@ -46,7 +46,7 @@ class Seq2Seq:
         self.model.load_state_dict(torch.load(fpath_load))
 
     def translate(self, query):
-        return self.model(query)
+        return translate(self.model, query)
 
 
 class TokenEmbedding(nn.Module):
@@ -212,6 +212,34 @@ def evaluate(model, val_iter):
     return losses / len(val_dataloader)
 
 
+def translate(model, src_sentence):
+    model.eval()
+    src = text_transform[SRC_LANG](src_sentence).view(-1, 1)
+    num_tokens = src.shape[0]
+    src_mask = torch.zeros(num_tokens, num_tokens, dtype=torch.bool)
+    tar_tokens = greedy_decode(model, src, src_mask, max_len=num_tokens+5, start_symbol=SOS_IDX).flatten()
+    return " ".join(vocab_transform[TAR_LANG].lookup_tokens(list(tar_tokens.cpu().numpy()))).replace("<sos>", "").replace("<eos>", "")
+
+
+def greedy_decode(model, src, src_mask, max_len, start_symbol):
+    src, src_mask = src.to(DEVICE), src_mask.to(DEVICE)
+    memory = model.encode(src, src_mask)
+    ys = torch.ones(1, 1).fill_(start_symbol).type(torch.long).to(DEVICE)
+    for _ in range(max_len-1):
+        memory = memory.to(DEVICE)
+        tar_mask = generate_square_subsequent_mask(ys.size(0)).type(torch.bool).to(DEVICE)
+        out = model.decode(ys, memory, tar_mask)
+        out = out.transpose(0 ,1)
+        prob = model.generator(out[:, -1])
+        _, next_word = torch.max(prob, dim=1)
+        next_word = next_word.item()
+        ys = torch.cat([ys, torch.ones(1, 1).type_as(src.data).fill_(next_word)], dim=0)
+        if next_word == EOS_IDX:
+            break
+    return ys
+
+
+
 if __name__ == '__main__':
     data_csv = load_from_file('data/symbolic_pairs.csv')
     dataset = [(utt, ltl) for utt, ltl in data_csv]
@@ -250,3 +278,5 @@ if __name__ == '__main__':
         val_loss = evaluate(transformer, val_iter)
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {val_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
+
+    print(translate(transformer, "go to A then to B"))
