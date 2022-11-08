@@ -7,7 +7,8 @@ import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from s2s_sup import Seq2Seq, construct_dataset
+from s2s_sup import Seq2Seq
+from s2s_transformer import construct_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
