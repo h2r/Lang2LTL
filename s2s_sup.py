@@ -12,7 +12,6 @@ from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import DataLoader
 from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
-from torchtext.datasets import multi30k, Multi30k
 
 from utils import load_from_file
 
@@ -33,7 +32,7 @@ NUM_EPOCHS = 18
 
 class Seq2Seq:
     """
-    Inference trained model.
+    Model inference.
     """
     def __init__(self, src_vocab_sz, tar_vocab_sz, fpath_load, model_type='transformer'):
         if model_type == 'transformer':
@@ -47,6 +46,37 @@ class Seq2Seq:
 
     def translate(self, query):
         return translate(self.model, query)
+
+
+class Seq2SeqTransformer(nn.Module):
+    def __init__(self, src_vocab_size, tar_vocab_size,
+                 num_encoder_layers, num_decoder_layers, embed_size, nhead,
+                 dim_feedforward, dropout=0.1):
+        super(Seq2SeqTransformer, self).__init__()
+        self.transformer = Transformer(d_model=embed_size,
+                                       nhead=nhead,
+                                       num_encoder_layers=num_encoder_layers,
+                                       num_decoder_layers=num_decoder_layers,
+                                       dim_feedforward=dim_feedforward,
+                                       dropout=dropout)
+        self.generator = nn.Linear(embed_size, tar_vocab_size)
+        self.src_token_embed = TokenEmbedding(src_vocab_size, embed_size)
+        self.tar_token_embed = TokenEmbedding(tar_vocab_size, embed_size)
+        self.positional_encoding = PositionalEncoding(embed_size, dropout)
+
+    def forward(self, src, tar, src_mask, tar_mask, src_padding_mask, tar_padding_mask,
+                memory_key_padding_mask):
+        src_embed = self.positional_encoding(self.src_token_embed(src))
+        tar_embed = self.positional_encoding(self.tar_token_embed(tar))
+        outs = self.transformer(src_embed, tar_embed, src_mask, tar_mask, None,
+                                src_padding_mask, tar_padding_mask, memory_key_padding_mask)
+        return self.generator(outs)
+
+    def encode(self, src, src_mask):
+        return self.transformer.encoder(self.positional_encoding(self.src_token_embed(src)), src_mask)
+
+    def decode(self, tar, memory, tar_mask):
+        return self.transformer.decoder(self.positional_encoding(self.tar_token_embed(tar)), memory, tar_mask)
 
 
 class TokenEmbedding(nn.Module):
@@ -80,37 +110,6 @@ class PositionalEncoding(nn.Module):
 
     def forward(self, token_embedding):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
-
-
-class Seq2SeqTransformer(nn.Module):
-    def __init__(self, src_vocab_size, tar_vocab_size,
-                 num_encoder_layers, num_decoder_layers, embed_size, nhead,
-                 dim_feedforward, dropout=0.1):
-        super(Seq2SeqTransformer, self).__init__()
-        self.transformer = Transformer(d_model=embed_size,
-                                       nhead=nhead,
-                                       num_encoder_layers=num_encoder_layers,
-                                       num_decoder_layers=num_decoder_layers,
-                                       dim_feedforward=dim_feedforward,
-                                       dropout=dropout)
-        self.generator = nn.Linear(embed_size, tar_vocab_size)
-        self.src_token_embed = TokenEmbedding(src_vocab_size, embed_size)
-        self.tar_token_embed = TokenEmbedding(tar_vocab_size, embed_size)
-        self.positional_encoding = PositionalEncoding(embed_size, dropout)
-
-    def forward(self, src, tar, src_mask, tar_mask, src_padding_mask, tar_padding_mask,
-                memory_key_padding_mask):
-        src_embed = self.positional_encoding(self.src_token_embed(src))
-        tar_embed = self.positional_encoding(self.tar_token_embed(tar))
-        outs = self.transformer(src_embed, tar_embed, src_mask, tar_mask, None,
-                                src_padding_mask, tar_padding_mask, memory_key_padding_mask)
-        return self.generator(outs)
-
-    def encode(self, src, src_mask):
-        return self.transformer.encoder(self.positional_encoding(self.src_token_embed(src)), src_mask)
-
-    def decode(self, tar, memory, tar_mask):
-        return self.transformer.decoder(self.positional_encoding(self.tar_token_embed(tar)), memory, tar_mask)
 
 
 def yield_tokens(data_iter, tokenizer, language):
@@ -152,7 +151,6 @@ def collate_fn(data_batch):
 
 def create_mask(src, tar):
     src_seq_len, tar_seq_len = src.shape[0], tar.shape[0]
-
     src_mask = torch.zeros((src_seq_len, src_seq_len), device=DEVICE).type(torch.bool)
     tar_mask = generate_square_subsequent_mask(tar_seq_len)
 
@@ -174,7 +172,6 @@ def train_epoch(model, optimizer, train_iter):
 
     for src_batch, tar_batch in train_dataloader:
         src_batch, tar_batch = src_batch.to(DEVICE), tar_batch.to(DEVICE)
-
         tar_input = tar_batch[:-1, :]
         src_mask, tar_mask, src_padding_mask, tar_padding_mask = create_mask(src_batch, tar_input)
 
@@ -187,7 +184,6 @@ def train_epoch(model, optimizer, train_iter):
         loss.backward()
         optimizer.step()
         losses += loss.item()
-
     return losses / len(train_dataloader)
 
 
@@ -198,7 +194,6 @@ def evaluate(model, val_iter):
 
     for src_batch, tar_batch in val_dataloader:
         src_batch, tar_batch = src_batch.to(DEVICE), tar_batch.to(DEVICE)
-
         tar_input = tar_batch[:-1, :]
         src_mask, tar_mask, src_padding_mask, tar_padding_mask = create_mask(src_batch, tar_input)
 
@@ -208,7 +203,6 @@ def evaluate(model, val_iter):
         tar_out = tar_batch[1:, :]
         loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape(-1))
         losses += loss.item()
-
     return losses / len(val_dataloader)
 
 
@@ -237,7 +231,6 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
         if next_word == EOS_IDX:
             break
     return ys
-
 
 
 if __name__ == '__main__':
