@@ -44,13 +44,12 @@ python run_experiment.py
 
 # Datasets
 ## Cleanup World
-```test_src_raw.txt``` and ```test_tar_raw.txt``` are the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al) 
-for language commands paired LTL expressions, renamed from ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
+```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
+for language commands paired LTL expressions, converted to 1 csv file from 2 txt files, ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
 
-```test_src_fixed.txt``` and ```test_tar_fixed.txt``` after fixing mistakes (e.g. mislabel, incorrect language, typos).
+```cleanup_fixed.csv``` after fixing mistakes (e.g. mislabel, incorrect language, typos).
 
-```test_src_cleaned.txt``` and ```test_tar_cleaned.txt``` after data cleaning (e.g. remove ambiguous language, manipulation).
+```cleanup_cleaned.csv``` after data cleaning (e.g. remove ambiguous language, manipulation).
 
-```test_src_corlw.txt``` and ```test_tar_corlw.txt``` generated from ```test_src_cleaned.txt``` and ```test_tar_cleaned.txt``` 
-by running the ```generate_tar_file``` function in ```dataset.py```.
+```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.

@@ -55,6 +55,10 @@ def save_to_file(data, fpth):
     elif ftype == 'json':
         with open(fpth, 'w') as wfile:
             json.dump(data, wfile)
+    elif ftype == 'csv':
+        with open(fpth, 'w', newline='') as wfile:
+            writer = csv.writer(wfile)
+            writer.writerows(data)
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
 

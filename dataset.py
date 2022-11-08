@@ -18,10 +18,19 @@ def generate_tar_file():
         "E": "chair_in_green_room",
         "Z": "chair_in_blue_room"
     }
-    raw_true_ltls = load_from_file("data/test_tar_cleaned.txt")
-    true_ltls = substitute(raw_true_ltls, [sub_map])[0]
-    data = '\n'.join(true_ltls) + '\n'
-    save_to_file(data, "data/test_tar_corlw.txt")
+    csv_fpath = "data/cleanup_cleaned.csv"
+    raw_pairs = load_from_file(csv_fpath)
+    raw_utts, raw_true_ltls = [], []
+    for utt, ltl in raw_pairs:
+        raw_utts.append(utt)
+        raw_true_ltls.append(ltl)
+
+    true_ltls = substitute(raw_true_ltls, [sub_map]*len(raw_true_ltls))
+
+    pairs = [["Language Command", "LTL Formula"]]
+    for utt, ltl in zip(raw_utts, true_ltls):
+        pairs.append([utt.strip(), ltl.strip()])
+    save_to_file(pairs, csv_fpath)
 
 
 def create_osm_dataset():
@@ -31,21 +40,19 @@ def create_osm_dataset():
     data = load_from_file('data/providence_500.csv')
     data_rand = random.sample(data[:361], 50)
 
-    utts, ltls = [], []
-    for entry in data_rand:
-        utts.append(entry[1].lower().strip())
-        ltls.append(entry[2].strip())
-
-    save_to_file('\n'.join(utts)+'\n', 'data/osm_src_corlw.txt')
-    save_to_file('\n'.join(ltls)+'\n', 'data/osm_tar_corlw.txt')
+    csv_data = [["Language Command", "LTL Formula"]]
+    for symbolic_ltl, utt, ltl in data_rand:
+        csv_data.append([utt.lower().strip(), ltl.strip()])
+    save_to_file(csv_data, 'data/osm_corlw.csv')
 
     # manually change all names in LTLs to lower case, connected with underscores
 
     # check LTL formulas compatible with Spot
-    ltls = load_from_file('data/osm_tar_corlw.txt')
-    for ltl in ltls:
+    pairs = load_from_file('data/osm_corlw.csv')
+    for utt, ltl in pairs:
         spot.formula(ltl)
 
 
 if __name__ == '__main__':
-    generate_tar_file()
+    # generate_tar_file()
+    create_osm_dataset()

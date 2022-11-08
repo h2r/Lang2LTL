@@ -20,7 +20,7 @@ torch.manual_seed(0)
 
 SRC_LANG, TAR_LANG = 'en', 'ltl'  # 'de', 'en'
 UNK_IDX, PAD_IDX, SOS_IDX, EOS_IDX = 0, 1, 2, 3
-SPECIAL_SYMBOLS = ['<unk>', '<pad>', '<sos>', '<eos>']
+SPECIAL_TOKENS = ['<unk>', '<pad>', '<sos>', '<eos>']
 
 NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS = 3, 3
 EMBED_SIZE = 512
@@ -243,7 +243,7 @@ if __name__ == '__main__':
     for ln in [SRC_LANG, TAR_LANG]:
         vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, tokenizer, ln),
                                                         min_freq=1,
-                                                        specials=SPECIAL_SYMBOLS,
+                                                        specials=SPECIAL_TOKENS,
                                                         special_first=True)
         vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
     SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
