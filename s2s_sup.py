@@ -183,7 +183,7 @@ def train_epoch(model, optimizer, train_iter):
 
         optimizer.zero_grad()
         tar_out = tar_batch[1:, :]
-        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.shape[-1])
+        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape(-1))
         loss.backward()
         optimizer.step()
         losses += loss.item()
@@ -206,7 +206,7 @@ def evaluate(model, val_iter):
                        src_padding_mask)
 
         tar_out = tar_batch[1:, :]
-        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape[-1])
+        loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape(-1))
         losses += loss.item()
 
     return losses / len(val_dataloader)
