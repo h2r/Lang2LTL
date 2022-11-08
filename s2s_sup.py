@@ -19,7 +19,7 @@ from utils import load_from_file
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
 
-# SRC_LANG, TAR_LANG = 'de', 'en'  # 'en', 'ltl'
+SRC_LANG, TAR_LANG = 'en', 'ltl'  # 'de', 'en'
 UNK_IDX, PAD_IDX, SOS_IDX, EOS_IDX = 0, 1, 2, 3
 SPECIAL_SYMBOLS = ['<unk>', '<pad>', '<sos>', '<eos>']
 
@@ -213,8 +213,6 @@ def evaluate(model, val_iter):
 
 
 if __name__ == '__main__':
-    SRC_LANG, TAR_LANG = 'en', 'ltl'
-
     data_csv = load_from_file('data/symbolic_pairs.csv')
     dataset = [(utt, ltl) for utt, ltl in data_csv]
     train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
@@ -227,36 +225,12 @@ if __name__ == '__main__':
                                                         specials=SPECIAL_SYMBOLS,
                                                         special_first=True)
         vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
+    SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
 
     text_transform = {
         SRC_LANG: sequential_transforms(tokenizer, vocab_transform[SRC_LANG], tensor_transform),
         TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
     }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
-
-
-    # vocab_transform = {}
-    # multi30k.URL['train'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/training.tar.gz"
-    # multi30k.URL['valid'] = "https://raw.githubusercontent.com/neychev/small_DL_repo/master/datasets/Multi30k/validation.tar.gz"
-    # token_transform = {
-    #     SRC_LANG: get_tokenizer(tokenizer='spacy', language='de_core_news_sm'),
-    #     TAR_LANG: get_tokenizer(tokenizer='spacy', language='en_core_web_sm')
-    # }
-    # for ln in [SRC_LANG, TAR_LANG]:
-    #     train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
-    #     vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, token_transform, ln),
-    #                                                     min_freq=1,
-    #                                                     specials=SPECIAL_SYMBOLS,
-    #                                                     special_first=True)
-    #     vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
-    #
-    # text_transform = {
-    #     SRC_LANG: sequential_transforms(token_transform[SRC_LANG], vocab_transform[SRC_LANG], tensor_transform),
-    #     TAR_LANG: sequential_transforms(token_transform[TAR_LANG], vocab_transform[SRC_LANG], tensor_transform)
-    # }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
-
-
-
-    SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
 
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -268,9 +242,6 @@ if __name__ == '__main__':
 
     loss_fn = torch.nn.CrossEntropyLoss(ignore_index=PAD_IDX)
     optimizer = torch.optim.Adam(transformer.parameters(), lr=0.0001, betas=(0.9, 0.98), eps=1e-9)
-    # train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
-    # train_iter = Multi30k(split='train', language_pair=(SRC_LANG, TAR_LANG))
-    # val_iter = Multi30k(split='valid', language_pair=(SRC_LANG, TAR_LANG))
 
     for epoch in range(1, NUM_EPOCHS+1):
         start_time = timer()
