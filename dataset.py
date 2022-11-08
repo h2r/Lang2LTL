@@ -18,8 +18,7 @@ def generate_tar_file():
         "E": "chair_in_green_room",
         "Z": "chair_in_blue_room"
     }
-    csv_fpath = "data/cleanup_cleaned.csv"
-    raw_pairs = load_from_file(csv_fpath)
+    raw_pairs = load_from_file("data/cleanup_cleaned.csv")
     raw_utts, raw_true_ltls = [], []
     for utt, ltl in raw_pairs:
         raw_utts.append(utt)
@@ -30,7 +29,7 @@ def generate_tar_file():
     pairs = [["Language Command", "LTL Formula"]]
     for utt, ltl in zip(raw_utts, true_ltls):
         pairs.append([utt.strip(), ltl.strip()])
-    save_to_file(pairs, csv_fpath)
+    save_to_file(pairs, "data/cleanup_corlw.csv")
 
 
 def create_osm_dataset():
