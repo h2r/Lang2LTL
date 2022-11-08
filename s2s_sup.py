@@ -35,7 +35,7 @@ class Seq2Seq:
     """
     Inference trained model.
     """
-    def __init__(self, src_vocab_sz, tar_vocab_sz, model_type='transformer', fpath_load='s2s_transformer.pth'):
+    def __init__(self, src_vocab_sz, tar_vocab_sz, fpath_load, model_type='transformer'):
         if model_type == 'transformer':
             self.model = Seq2SeqTransformer(src_vocab_sz, tar_vocab_sz,
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -278,5 +278,8 @@ if __name__ == '__main__':
         val_loss = evaluate(transformer, val_iter)
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {val_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
+    model_fpath = 'model/s2s_sup.pth'
+    torch.save(transformer.state_dict(),model_fpath )
 
-    print(translate(transformer, "go to A then to B"))
+    s2s_transformer = Seq2Seq(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE, model_fpath)
+    print(s2s_transformer.translate("go to A then to B"))
