@@ -277,8 +277,8 @@ if __name__ == '__main__':
         val_loss = evaluate(transformer, val_iter)
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {val_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
-    model_fpath = 'model/s2s_sup.pth'
-    torch.save(transformer.state_dict(),model_fpath )
+    model_fpath = 'model/s2s_transformer.pth'
+    torch.save(transformer.state_dict(), model_fpath)
 
     s2s_transformer = Seq2Seq(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE, model_fpath)
     print(s2s_transformer.translate("go to A then to B"))
