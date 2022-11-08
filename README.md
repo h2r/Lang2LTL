@@ -53,3 +53,6 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
+
+## OpenStreetMap (OSM)
+```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
