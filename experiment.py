@@ -11,7 +11,7 @@ from s2s_sup import Seq2Seq, construct_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
-def run_exp():
+def run_exp(save_result_path):
     # Language tasks: grounding, NER, translation
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3()
@@ -40,9 +40,10 @@ def run_exp():
         'Input utterances': input_utts,
         'Symbolic LTLs': symbolic_ltls if not (args.trans_e2e or args.full_e2e) else None,
         'Output LTLs': output_ltls,
-        'Ground truth': true_ltls
+        'Ground truth': true_ltls,
+        'Accuracy': acc_lang
     }
-    save_to_file(final_results, args.save_result_path)
+    save_to_file(final_results, save_result_path)
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
@@ -233,6 +234,7 @@ if __name__ == '__main__':
         true_ltls.append(ltl)
     assert len(input_utts) == len(true_ltls), f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}'
     if args.nsamples:  # for testing, randomly sample 50 pairs to cover diversity of dataset
+        random.seed(42)
         input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
 
     logging.basicConfig(level=logging.DEBUG,
@@ -244,5 +246,7 @@ if __name__ == '__main__':
     )
 
     for run in range(args.nruns):
-        logging.info(f'RUN: {run}')
-        run_exp()
+        fpath_tup = os.path.splitext(args.save_result_path)
+        save_result_path = f'{fpath_tup[0]}_run{run}' + fpath_tup[1]
+        logging.info(f'\n\n\nRUN: {run}')
+        run_exp(save_result_path)
