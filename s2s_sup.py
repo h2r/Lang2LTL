@@ -112,6 +112,29 @@ class PositionalEncoding(nn.Module):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
 
 
+def construct_dataset(fpath='data/symbolic_pairs.csv'):
+    data_csv = load_from_file(fpath)
+    dataset = [(utt, ltl) for utt, ltl in data_csv]
+    train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
+
+    vocab_transform = {}
+    tokenizer = get_tokenizer(tokenizer=None)
+    for ln in [SRC_LANG, TAR_LANG]:
+        vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, tokenizer, ln),
+                                                        min_freq=1,
+                                                        specials=SPECIAL_TOKENS,
+                                                        special_first=True)
+        vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
+    src_vocab_size, tar_vocab_size = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
+
+    text_transform = {
+        SRC_LANG: sequential_transforms(tokenizer, vocab_transform[SRC_LANG], tensor_transform),
+        TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
+    }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
+
+    return train_iter, val_iter, vocab_transform, text_transform, src_vocab_size, tar_vocab_size
+
+
 def yield_tokens(data_iter, tokenizer, language):
     language_idx = {SRC_LANG: 0, TAR_LANG: 1}
     for sample in data_iter:
@@ -234,24 +257,7 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 
 if __name__ == '__main__':
-    data_csv = load_from_file('data/symbolic_pairs.csv')
-    dataset = [(utt, ltl) for utt, ltl in data_csv]
-    train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
-
-    vocab_transform = {}
-    tokenizer = get_tokenizer(tokenizer=None)
-    for ln in [SRC_LANG, TAR_LANG]:
-        vocab_transform[ln] = build_vocab_from_iterator(yield_tokens(train_iter, tokenizer, ln),
-                                                        min_freq=1,
-                                                        specials=SPECIAL_TOKENS,
-                                                        special_first=True)
-        vocab_transform[ln].set_default_index(UNK_IDX)  # default index returned when token not found
-    SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = len(vocab_transform[SRC_LANG]), len(vocab_transform[TAR_LANG])
-
-    text_transform = {
-        SRC_LANG: sequential_transforms(tokenizer, vocab_transform[SRC_LANG], tensor_transform),
-        TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
-    }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
+    train_iter, val_iter, vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset()
 
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,

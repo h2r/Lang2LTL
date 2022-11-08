@@ -7,7 +7,7 @@ import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from s2s_sup import Seq2Seq
+from s2s_sup import Seq2Seq, construct_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
@@ -153,7 +153,8 @@ def translate_modular(grounded_utts, objs_per_utt):
     if args.trans == 'gpt3':
         trans_module = GPT3()
     elif args.trans == 's2s_sup':
-        trans_module = Seq2Seq()
+        _, _, _, _, src_vocab_size, tar_vocab_size = construct_dataset(args.s2s_sup_data)
+        trans_module = Seq2Seq(src_vocab_size, tar_vocab_size, args.s2s_sup_model)
     else:
         raise ValueError("ERROR: translation module not recognized")
 
@@ -205,6 +206,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--pairs', type=str, default='data/cleanup_corlw.csv', help='file path to utterance, ltl pairs')
     parser.add_argument('--nsamples', type=int, default=None, help='randomly sample nsamples pairs or None to use all')
+    parser.add_argument('--nruns', type=int, default=1, help='number of runs to test each model')
     parser.add_argument('--true_trajs', type=str, default='data/true_trajs.pkl', help='path to true trajectories')
     parser.add_argument('--full_e2e', action='store_true', help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument('--full_e2e_prompt', type=str, default='data/cleanup_full_e2e_prompt_15.txt', help='path to full end-to-end prompt')
@@ -219,6 +221,8 @@ if __name__ == '__main__':
     parser.add_argument('--name_embed', type=str, default='data/cleanup_name2embed_gpt3_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
+    parser.add_argument('--s2s_sup_data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
+    parser.add_argument('--s2s_sup_model', type=str, default='model/s2s_sup.pth', help='file path to trained supervised seq2seq model')
     parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_corlw.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
@@ -227,7 +231,7 @@ if __name__ == '__main__':
     for utt, ltl in pairs:
         input_utts.append(utt)
         true_ltls.append(ltl)
-    assert len(input_utts) == len(true_ltls), f'ERROR: input_utts and true_ltls have diff len: {len(input_utts)}, {len(true_ltls)}'
+    assert len(input_utts) == len(true_ltls), f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}'
     if args.nsamples:  # for testing, randomly sample 50 pairs to cover diversity of dataset
         input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
 
@@ -239,4 +243,6 @@ if __name__ == '__main__':
                         ]
     )
 
-    run_exp()
+    for run in range(args.nruns):
+        logging.info(f'RUN: {run}')
+        run_exp()
