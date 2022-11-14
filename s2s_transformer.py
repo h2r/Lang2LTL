@@ -211,7 +211,7 @@ def evaluate(model, val_iter):
     return losses / len(val_dataloader)
 
 
-def translate(model, src_sentence):
+def translate(model, vocab_transform, text_transform, src_sentence):
     model.eval()
     src = text_transform[SRC_LANG](src_sentence).view(-1, 1)
     num_tokens = src.shape[0]

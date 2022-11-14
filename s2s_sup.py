@@ -11,19 +11,21 @@ class Seq2Seq:
     """
     Model inference.
     """
-    def __init__(self, src_vocab_sz, tar_vocab_sz, fpath_load, model_type='transformer'):
+    def __init__(self, vocab_transform, text_transform, src_vocab_sz, tar_vocab_sz, fpath_load, model_type='transformer'):
         if model_type == 'transformer':
             self.model = Seq2SeqTransformer(src_vocab_sz, tar_vocab_sz,
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
                                             DIM_FFN_HID)
-            self.translate = transformer_translate
+            self.model_translate = transformer_translate
+            self.vocab_transform = vocab_transform
+            self.text_transform = text_transform
         else:
             raise ValueError(f'ERROR: Model type not recognized: {model_type}')
 
         self.model.load_state_dict(torch.load(fpath_load))
 
     def translate(self, query):
-        return self.translate(self.model, query)
+        return self.model_translate(self.model, self.vocab_transform, self.text_transform, query)
 
 
 if __name__ == '__main__':
@@ -32,6 +34,6 @@ if __name__ == '__main__':
     parser.add_argument('--model', type=str, default='model/s2s_transformer.pth', help='file path to trained supervised seq2seq model')
     args = parser.parse_args()
 
-    _, _, _, _, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
-    s2s_transformer = Seq2Seq(src_vocab_size, tar_vocab_size, args.model)
+    _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
+    s2s_transformer = Seq2Seq(vocab_transform, text_transform, src_vocab_size, tar_vocab_size, args.model)
     print(s2s_transformer.translate("go to A then to B"))
