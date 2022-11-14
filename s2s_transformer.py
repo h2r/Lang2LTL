@@ -261,6 +261,3 @@ if __name__ == '__main__':
               f'Epoch time: {(end_time-start_time):.3f}s')
     model_fpath = 'model/s2s_transformer.pth'
     torch.save(transformer.state_dict(), model_fpath)
-
-    s2s_transformer = Seq2Seq(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE, model_fpath)
-    print(s2s_transformer.translate("go to A then to B"))
