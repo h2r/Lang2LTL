@@ -228,7 +228,7 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
         memory = memory.to(DEVICE)
         tar_mask = generate_square_subsequent_mask(ys.size(0)).type(torch.bool).to(DEVICE)
         out = model.decode(ys, memory, tar_mask)
-        out = out.transpose(0 ,1)
+        out = out.transpose(0, 1)
         prob = model.generator(out[:, -1])
         _, next_word = torch.max(prob, dim=1)
         next_word = next_word.item()
@@ -239,6 +239,7 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 
 if __name__ == '__main__':
+    # Train and save model
     train_iter, val_iter, vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset()
 
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
