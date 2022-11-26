@@ -34,7 +34,10 @@ def sample_formulas(pattern_type, nprops):
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
-    return [spot.formula(pattern_sampler(list(props))) for props in props_perm], props_perm
+    formulas = [pattern_sampler(list(props)) for props in props_perm]
+    # formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]  # for debug
+
+    return formulas, props_perm
 
 
 def visit(props):
