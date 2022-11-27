@@ -31,11 +31,13 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = patrolling
     elif pattern_type == "sequenced_patrolling":
         pattern_sampler = sequenced_patrolling
+    elif pattern_type == "ordered_patrolling":
+        pattern_sampler = ordered_patrolling
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
     formulas = [pattern_sampler(list(props)) for props in props_perm]
-    # formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]  # for debug
+    formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]  # for debug
 
     return formulas, props_perm
 
@@ -60,8 +62,8 @@ def ordered_visit(props):
 
 def strict_ordered_visit_fixed(props):
     """
-    Compared to what presented in the paper, after visit predecessor,
-    trace does not need to exit it at immediate next time step.
+    Different to what presented in the paper, after visiting a predecessor,
+    trace does not need to exit it at the immediate next time step.
     """
     return
 
@@ -77,9 +79,40 @@ def patrolling(props):
 
 
 def sequenced_patrolling(props):
+    """
+    Sequenced patrolling formulas are the same as patrolling formulas.
+    e.g. G(F(a & F(b & Fc))) == GFc & GFa & GFb
+    """
     return f"G " + sequenced_visit(props)
 
 
+def ordered_patrolling(props):
+    """
+    1st part of ordered patrolling formula is the same as sequenced visit formula.
+    """
+    formula = sequenced_patrolling(props[:])
+    if len(props) > 1:
+        formula = f"& {formula} {ordered_patrolling_constraints(props)}"
+    return formula
+
+
+def ordered_patrolling_constraints(props):
+    """
+    2nd and 3rd parts of ordered patrolling formula.
+    Assume length of list `props` is at least 2.
+    """
+    if len(props) == 2:
+        a, b = props[0], props[1]
+        return f"& U ! {b} {a} G -> {b} X U ! {b} {a}"
+    b, a = props[1], props.pop(0)
+    return f"& U ! {b} {a} & G -> {b} X U ! {b} {a} " + ordered_patrolling_constraints(props)
+
+
 if __name__ == '__main__':
-    formulas, props_perm = sample_formulas("sequenced_patrolling", 3)
-    pprint(list(zip(formulas, props_perm)))
+    props = ['a', 'b', 'c']
+    formula = ordered_patrolling_constraints(props)
+    formula = spot.formula(ordered_patrolling_constraints(props))
+    print(formula)
+
+    # formulas, props_perm = sample_formulas("ordered_patrolling", 3)
+    # pprint(list(zip(formulas, props_perm)))
