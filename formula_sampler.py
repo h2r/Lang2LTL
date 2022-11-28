@@ -3,9 +3,12 @@ Sample formulas from a set of specification patterns with permutation of varying
 Please refer to Specification Patterns for Robotic Missions for the definition of each pattern type.
 https://arxiv.org/pdf/1901.02077.pdf
 """
+import argparse
 from itertools import permutations
 from pprint import pprint
 import spot
+
+from utils import prefix_to_infix
 
 
 def sample_formulas(pattern_type, nprops):
@@ -37,7 +40,8 @@ def sample_formulas(pattern_type, nprops):
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
     formulas = [pattern_sampler(list(props)) for props in props_perm]
-    formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]  # for debug
+    if args.debug:
+        formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]
 
     return formulas, props_perm
 
@@ -93,14 +97,14 @@ def ordered_patrolling(props):
     formula = sequenced_patrolling(props[:])
     if len(props) > 1:
         formula = f"& {formula} {ordered_patrolling_constraints(props)}"
-    return formula
+    return prefix_to_infix(formula)
 
 
 def ordered_patrolling_constraints(props):
     """
     2nd and 3rd parts of ordered patrolling formula.
-    Assume length of list `props` is at least 2.
     """
+    assert len(props) >= 2, f"length of props for ordered_patrolling_constraints must be at least 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
         return f"& U ! {b} {a} G -> {b} X U ! {b} {a}"
@@ -109,10 +113,14 @@ def ordered_patrolling_constraints(props):
 
 
 if __name__ == '__main__':
-    props = ['a', 'b', 'c']
-    formula = ordered_patrolling_constraints(props)
-    formula = spot.formula(ordered_patrolling_constraints(props))
-    print(formula)
+    paser = argparse.ArgumentParser()
+    paser.add_argument("--debug", action="store_true", help="include to turn on debug mode.")
+    args = paser.parse_args()
 
-    # formulas, props_perm = sample_formulas("ordered_patrolling", 3)
-    # pprint(list(zip(formulas, props_perm)))
+    # props = ['a', 'b', 'c']
+    # formula = ordered_patrolling_constraints(props)
+    # formula = spot.formula(prefix_to_infix(formula))
+    # print(formula)
+
+    formulas, props_perm = sample_formulas("ordered_patrolling", 3)
+    pprint(list(zip(formulas, props_perm)))
