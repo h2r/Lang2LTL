@@ -44,6 +44,35 @@ def substitute_single(input_str, sub_map):
     return input_str.strip(), subs_done
 
 
+def prefix_to_infix(formula):
+    """
+    :param formula: LTL formula string in prefix order
+    :return: LTL formula string in infix order
+    """
+    BINARY_OPERATORS = {"&", "|", "U", "W", "R", "->", "<->"}
+    UNARY_OPERATORS = {"!", "X", "F", "G"}
+    formula_in = formula.split()
+    stack = []  # stack
+
+    while formula_in:
+        op = formula_in.pop(-1)
+        if op == ">":
+            op += formula_in.pop(-1)  # implication operator has 2 chars, ->
+        if formula_in and formula_in[-1] == "<":
+            op += formula_in.pop(-1)  # equivalent operator has 3 chars, <->
+
+        if op in BINARY_OPERATORS:
+            formula_out = "(" + stack.pop(0) + op + stack.pop(0) + ")"
+            stack.insert(0, formula_out)
+        elif op in UNARY_OPERATORS:
+            formula_out = op + "(" + stack.pop(0) + ")"
+            stack.insert(0, formula_out)
+        else:
+            stack.insert(0, op)
+
+    return stack[0]
+
+
 def save_to_file(data, fpth):
     ftype = os.path.splitext(fpth)[-1][1:]
     if ftype == 'pkl':
