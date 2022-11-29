@@ -33,7 +33,7 @@ class GPT3:
         return out.strip()
 
     @staticmethod
-    def generate(query_prompt, engine="text-davinci-002", temp=0.6):  # engines must match when compare two embeddings
+    def generate(query_prompt, engine="text-davinci-003", temp=0.6):  # engines must match when compare two embeddings
         response = openai.Completion.create(
             model=engine,
             prompt=query_prompt,
