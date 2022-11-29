@@ -26,10 +26,10 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = sequenced_visit
     elif pattern_type == "ordered_visit":
         pattern_sampler = ordered_visit
-    elif pattern_type == "strict_ordered_visit":
-        pattern_sampler = strict_ordered_visit_fixed
-    elif pattern_type == "fair_visit":
-        pattern_sampler = fair_visit
+    # elif pattern_type == "strict_ordered_visit":
+    #     pattern_sampler = strict_ordered_visit_fixed
+    # elif pattern_type == "fair_visit":
+    #     pattern_sampler = fair_visit
     elif pattern_type == "patrolling":
         pattern_sampler = patrolling
     elif pattern_type == "sequenced_patrolling":
@@ -96,6 +96,7 @@ def ordered_patrolling(props):
     """
     formula = sequenced_patrolling(props[:])
     if len(props) > 1:
+        # props.append(props[0])  # incorrect definition in paper: circle proposition list back to first proposition
         formula = f"& {formula} {ordered_patrolling_constraints(props)}"
     return prefix_to_infix(formula)
 
@@ -119,8 +120,9 @@ if __name__ == '__main__':
 
     # props = ['a', 'b', 'c']
     # formula = ordered_patrolling_constraints(props)
+    # print(formula)
     # formula = spot.formula(prefix_to_infix(formula))
     # print(formula)
 
-    formulas, props_perm = sample_formulas("ordered_patrolling", 3)
+    formulas, props_perm = sample_formulas("ordered_patrolling", 2)
     pprint(list(zip(formulas, props_perm)))
