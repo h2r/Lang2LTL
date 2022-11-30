@@ -2,6 +2,8 @@
 Sample formulas from a set of specification patterns with permutation of varying numbers of propositions.
 Please refer to Specification Patterns for Robotic Missions for the definition of each pattern type.
 https://arxiv.org/pdf/1901.02077.pdf
+Pattern sampling functions with post fixed means the function is different to what presented in the paper,
+after visiting a predecessor, trace does not need to exit DFA state at the immediate next time step.
 """
 import argparse
 from itertools import permutations
@@ -26,8 +28,8 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = sequenced_visit
     elif pattern_type == "ordered_visit":
         pattern_sampler = ordered_visit
-    # elif pattern_type == "strict_ordered_visit":
-    #     pattern_sampler = strict_ordered_visit_fixed
+    elif pattern_type == "strict_ordered_visit":
+        pattern_sampler = strict_ordered_visit_fixed
     # elif pattern_type == "fair_visit":
     #     pattern_sampler = fair_visit
     elif pattern_type == "patrolling":
@@ -65,11 +67,19 @@ def ordered_visit(props):
 
 
 def strict_ordered_visit_fixed(props):
-    """
-    Different to what presented in the paper, after visiting a predecessor,
-    trace does not need to exit it at the immediate next time step.
-    """
-    return
+    formula = ordered_visit(props[:])
+    if len(props) > 1:
+        formula = f"& {formula} {strict_ordered_visit_constraint3(props)}"
+    return formula
+
+
+def strict_ordered_visit_constraint3(props):
+    assert len(props) >= 2, f"length of props for strict_ordered_visit_constraint3 must be >= 2, got {len(props)}"
+    if len(props) == 2:
+        a, b = props[0], props[1]
+        return f"U ! {a} & {a} X U !{a} {b}"
+    b, a = props[1], props.pop(0)
+    return f"& U ! {a} & {a} X U !{a} {b} " + {strict_ordered_visit_constraint3(props)}
 
 
 def fair_visit(props):
@@ -128,7 +138,7 @@ if __name__ == '__main__':
     paser.add_argument("--debug", action="store_true", help="include to turn on debug mode.")
     args = paser.parse_args()
 
-    formulas, props_perm = sample_formulas("ordered_patrolling", 3)
+    formulas, props_perm = sample_formulas("strict_ordered_visit", 3)
     pprint(list(zip(formulas, props_perm)))
 
     # props = ['a', 'b', 'c']
