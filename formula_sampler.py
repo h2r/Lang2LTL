@@ -79,7 +79,7 @@ def strict_ordered_visit_constraint3(props):
         a, b = props[0], props[1]
         return f"U ! {a} & {a} X U !{a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& U ! {a} & {a} X U !{a} {b} " + {strict_ordered_visit_constraint3(props)}
+    return f"& U ! {a} & {a} X U !{a} {b} " + strict_ordered_visit_constraint3(props)
 
 
 def fair_visit(props):
