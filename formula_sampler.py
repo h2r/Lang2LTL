@@ -77,9 +77,9 @@ def strict_ordered_visit_constraint3(props):
     assert len(props) >= 2, f"length of props for strict_ordered_visit_constraint3 must be >= 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"U ! {a} & {a} X U !{a} {b}"
+        return f"U ! {a} U {a} U !{a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& U ! {a} & {a} X U !{a} {b} " + strict_ordered_visit_constraint3(props)
+    return f"& U ! {a} U {a} U !{a} {b} " + strict_ordered_visit_constraint3(props)
 
 
 def fair_visit(props):
