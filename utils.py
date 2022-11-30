@@ -62,7 +62,7 @@ def prefix_to_infix(formula):
             op += formula_in.pop(-1)  # equivalent operator has 3 chars, <->
 
         if op in BINARY_OPERATORS:
-            formula_out = "(" + stack.pop(0) + op + stack.pop(0) + ")"
+            formula_out = "(" + stack.pop(0) + " " + op + " " + stack.pop(0) + ")"
             stack.insert(0, formula_out)
         elif op in UNARY_OPERATORS:
             formula_out = op + "(" + stack.pop(0) + ")"
