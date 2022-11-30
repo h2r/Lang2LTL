@@ -41,7 +41,7 @@ def sample_formulas(pattern_type, nprops):
 
     formulas = [pattern_sampler(list(props)) for props in props_perm]
     if args.debug:
-        formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]
+        formulas = [spot.formula(prefix_to_infix(pattern_sampler(list(props)))) for props in props_perm]
 
     return formulas, props_perm
 
@@ -96,7 +96,7 @@ def ordered_patrolling_fixed(props):
         formula = f"& {formula} {utils(props[:])}"
         props.append(props[0])  # proposition list circles back to 1st proposition for 3rd constraint
         formula = f"& {formula} {ordered_patrolling_constraint3(props)}"
-    return prefix_to_infix(formula)
+    return formula
 
 
 def ordered_patrolling_constraint3(props):
@@ -106,9 +106,9 @@ def ordered_patrolling_constraint3(props):
     assert len(props) >= 2, f"length of props for ordered_patrolling_constraint3 must be >= 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G -> {b} X U ! {b} {a}"
+        return f"G -> {b} X U {b} & ! {b} U ! {b} {a}"
     b, a = props[1], props.pop(0)
-    return f"& G -> {b} X U ! {b} {a} " + ordered_patrolling_constraint3(props)
+    return f"& G -> {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrolling_constraint3(props)
 
 
 def utils(props):
@@ -130,3 +130,10 @@ if __name__ == '__main__':
 
     formulas, props_perm = sample_formulas("ordered_patrolling", 3)
     pprint(list(zip(formulas, props_perm)))
+
+    # props = ['a', 'b', 'c']
+    # formula = ordered_patrolling_constraint3(props)
+    # print(formula)
+    # if args.debug:
+    #     formula = spot.formula(prefix_to_infix(formula))
+    #     print(formula)
