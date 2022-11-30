@@ -96,7 +96,7 @@ def ordered_patrolling(props):
     """
     formula = sequenced_patrolling(props[:])
     if len(props) > 1:
-        # props.append(props[0])  # incorrect definition in paper: circle proposition list back to first proposition
+        props.append(props[0])  # circle proposition list back to first proposition
         formula = f"& {formula} {ordered_patrolling_constraints(props)}"
     return prefix_to_infix(formula)
 
