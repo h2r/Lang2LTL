@@ -48,8 +48,9 @@ def prefix_to_infix(formula):
     """
     :param formula: LTL formula string in prefix order
     :return: LTL formula string in infix order
+    Spot's prefix parser uses i for implies and e for equivalent. https://spot.lre.epita.fr/ioltl.html#prefix
     """
-    BINARY_OPERATORS = {"&", "|", "U", "W", "R", "->", "<->"}
+    BINARY_OPERATORS = {"&", "|", "U", "W", "R", "->", "i", "<->", "e"}
     UNARY_OPERATORS = {"!", "X", "F", "G"}
     formula_in = formula.split()
     stack = []  # stack
