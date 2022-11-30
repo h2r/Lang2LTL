@@ -23,7 +23,7 @@ def sample_formulas(pattern_type, nprops):
     props_perm = list(permutations(props_all))
 
     if pattern_type == "visit":
-        pattern_sampler = visit
+        pattern_sampler = finals
     elif pattern_type == "sequenced_visit":
         pattern_sampler = sequenced_visit
     elif pattern_type == "ordered_visit":
@@ -46,12 +46,6 @@ def sample_formulas(pattern_type, nprops):
         formulas = [spot.formula(prefix_to_infix(pattern_sampler(list(props)))) for props in props_perm]
 
     return formulas, props_perm
-
-
-def visit(props):
-    if len(props) == 1:
-        return f"F {props[0]}"
-    return f"& F {props.pop(0)} " + visit(props)
 
 
 def sequenced_visit(props):
@@ -121,6 +115,15 @@ def ordered_patrolling_constraint3(props):
     return f"& G -> {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrolling_constraint3(props)
 
 
+def finals(props):
+    """
+    Conjunction of finals.
+    """
+    if len(props) == 1:
+        return f"F {props[0]}"
+    return f"& F {props.pop(0)} " + finals(props)
+
+
 def utils(props):
     """
     Conjunction of utils.
@@ -138,7 +141,7 @@ if __name__ == '__main__':
     paser.add_argument("--debug", action="store_true", help="include to turn on debug mode.")
     args = paser.parse_args()
 
-    formulas, props_perm = sample_formulas("strict_ordered_visit", 3)
+    formulas, props_perm = sample_formulas("visit", 3)
     pprint(list(zip(formulas, props_perm)))
 
     # props = ['a', 'b', 'c']
