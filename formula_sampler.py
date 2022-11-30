@@ -10,7 +10,8 @@ from itertools import permutations
 from pprint import pprint
 import spot
 
-from utils import prefix_to_infix
+
+PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]  # 16
 
 
 def sample_formulas(pattern_type, nprops):
@@ -19,7 +20,7 @@ def sample_formulas(pattern_type, nprops):
     :param nprops: number of proposition in LTL formulas
     :return: sampled formulas with `nprops` propositions of `pattern_type` and permutation of propositions
     """
-    props_all = [chr(ord("a")+i) for i in range(nprops)]
+    props_all = PROPS[:nprops]  # props_all = [chr(ord("a")+i) for i in range(nprops)]
     props_perm = list(permutations(props_all))
 
     if pattern_type == "visit":
@@ -41,9 +42,10 @@ def sample_formulas(pattern_type, nprops):
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
-    formulas = [pattern_sampler(list(props)) for props in props_perm]
     if args.debug:
-        formulas = [spot.formula(prefix_to_infix(pattern_sampler(list(props)))) for props in props_perm]
+        formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]
+    else:
+        formulas = [pattern_sampler(list(props)) for props in props_perm]
 
     return formulas, props_perm
 
@@ -91,9 +93,9 @@ def fair_visit_constraint2(props):
     assert len(props) >= 2, f"length of props for fair_visit_constraint2 must be >= 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G -> {a} X W ! {a} {b}"
+        return f"G i {a} X W ! {a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& G -> {a} X W ! {a} {b} " + fair_visit_constraint2(props)
+    return f"& G i {a} X W ! {a} {b} " + fair_visit_constraint2(props)
 
 
 def patrolling(props):
@@ -126,9 +128,9 @@ def ordered_patrolling_constraint3(props):
     assert len(props) >= 2, f"length of props for ordered_patrolling_constraint3 must be >= 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G -> {b} X U {b} & ! {b} U ! {b} {a}"
+        return f"G i {b} X U {b} & ! {b} U ! {b} {a}"
     b, a = props[1], props.pop(0)
-    return f"& G -> {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrolling_constraint3(props)
+    return f"& G i {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrolling_constraint3(props)
 
 
 def finals(props):
@@ -164,5 +166,5 @@ if __name__ == '__main__':
     # formula = ordered_patrolling_constraint3(props)
     # print(formula)
     # if args.debug:
-    #     formula = spot.formula(prefix_to_infix(formula))
+    #     formula = spot.formula(formula)
     #     print(formula)
