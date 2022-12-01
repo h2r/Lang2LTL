@@ -40,7 +40,9 @@ def sample_formulas(pattern_type, nprops):
     elif pattern_type == "ordered_patrol":
         pattern_sampler = ordered_patrol_fixed
     elif pattern_type == "fair_patrol":
-        pattern_sampler = fair_patrol_fix
+        pattern_sampler = fair_patrol_fixed
+    elif pattern_type == "strict_ordered_patrol":
+        pattern_sampler = strict_ordered_patrol_fixed
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -135,12 +137,31 @@ def ordered_patrol_constraint3(props):
     return f"& G i {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrol_constraint3(props)
 
 
-def fair_patrol_fix(props):
+def fair_patrol_fixed(props):
     formula = f"G " + finals(props[:])
     if len(props) > 1:
         props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
         formula = f"& {formula} " + fair_visit_constraint2(props)
     return formula
+
+
+def strict_ordered_patrol_fixed(props):
+    formula = ordered_patrol_fixed(props[:])
+    if len(props) > 1:
+        formula = f"& {formula} {strict_ordered_patrol_constraint4(props)}"
+    return formula
+
+
+def strict_ordered_patrol_constraint4(props):
+    """
+    4th term of strict ordered patrolling formula.
+    """
+    assert len(props) > 1, f"length of props for strict_ordered_patrol_constraint4 must be > 1, got {len(props)}"
+    if len(props) == 2:
+        a, b = props[0], props[1]
+        return f"G i {a} U {a} & ! {a} U ! {a} {b}"
+    b, a = props[1], props.pop(0)
+    return f"& G i {a} U {a} & ! {a} U ! {a} {b} " + strict_ordered_patrol_constraint4(props)
 
 
 def finals(props):
@@ -166,10 +187,12 @@ def utils(props):
 
 if __name__ == '__main__':
     paser = argparse.ArgumentParser()
-    paser.add_argument("--debug", action="store_true", help="include to turn on debug mode.")
+    paser.add_argument("--pattern_type", type=str, default="strict_ordered_patrol", help="type of specification pattern.")
+    paser.add_argument("--nprops", type=int, default=3, help="number of propositions.")
+    paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
 
-    formulas, props_perm = sample_formulas("fair_patrol", 3)
+    formulas, props_perm = sample_formulas(args.pattern_type, args.nprops)
     pprint(list(zip(formulas, props_perm)))
 
     # props = ['a', 'b', 'c']
