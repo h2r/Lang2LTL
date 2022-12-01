@@ -33,12 +33,14 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = strict_ordered_visit_fixed
     elif pattern_type == "fair_visit":
         pattern_sampler = fair_visit_fixed
-    elif pattern_type == "patrolling":
-        pattern_sampler = patrolling
-    elif pattern_type == "sequenced_patrolling":
-        pattern_sampler = sequenced_patrolling
-    elif pattern_type == "ordered_patrolling":
-        pattern_sampler = ordered_patrolling_fixed
+    elif pattern_type == "patrol":
+        pattern_sampler = patrol
+    elif pattern_type == "sequenced_patrol":
+        pattern_sampler = sequenced_patrol
+    elif pattern_type == "ordered_patrol":
+        pattern_sampler = ordered_patrol_fixed
+    elif pattern_type == "fair_patrol":
+        pattern_sampler = fair_patrol_fix
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -70,7 +72,7 @@ def strict_ordered_visit_fixed(props):
 
 
 def strict_ordered_visit_constraint3(props):
-    assert len(props) >= 2, f"length of props for strict_ordered_visit_constraint3 must be >= 2, got {len(props)}"
+    assert len(props) > 1, f"length of props for strict_ordered_visit_constraint3 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
         return f"U ! {a} U {a} U !{a} {b}"
@@ -90,7 +92,7 @@ def fair_visit_constraint2(props):
     """
     2nd term of fair visit formula.
     """
-    assert len(props) >= 2, f"length of props for fair_visit_constraint2 must be >= 2, got {len(props)}"
+    assert len(props) > 1, f"length of props for fair_visit_constraint2 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
         return f"G i {a} U {a} & ! {a} W ! {a} {b}"
@@ -98,13 +100,13 @@ def fair_visit_constraint2(props):
     return f"& G i {a} U {a} & ! {a} W ! {a} {b} " + fair_visit_constraint2(props)
 
 
-def patrolling(props):
+def patrol(props):
     if len(props) == 1:
         return f"G F {props[0]}"
-    return f"& G F {props.pop(0)} " + patrolling(props)
+    return f"& G F {props.pop(0)} " + patrol(props)
 
 
-def sequenced_patrolling(props):
+def sequenced_patrol(props):
     """
     Sequenced patrolling formulas are the same as patrolling formulas.
     e.g. G(F(a & F(b & Fc))) == GFc & GFa & GFb
@@ -112,25 +114,33 @@ def sequenced_patrolling(props):
     return f"G " + sequenced_visit(props)
 
 
-def ordered_patrolling_fixed(props):
-    formula = sequenced_patrolling(props[:])
+def ordered_patrol_fixed(props):
+    formula = sequenced_patrol(props[:])
     if len(props) > 1:
         formula = f"& {formula} {utils(props[:])}"
         props.append(props[0])  # proposition list circles back to 1st proposition for 3rd constraint
-        formula = f"& {formula} {ordered_patrolling_constraint3(props)}"
+        formula = f"& {formula} {ordered_patrol_constraint3(props)}"
     return formula
 
 
-def ordered_patrolling_constraint3(props):
+def ordered_patrol_constraint3(props):
     """
     3rd term of ordered patrolling formula.
     """
-    assert len(props) >= 2, f"length of props for ordered_patrolling_constraint3 must be >= 2, got {len(props)}"
+    assert len(props) > 1, f"length of props for ordered_patrol_constraint3 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
         return f"G i {b} X U {b} & ! {b} U ! {b} {a}"
     b, a = props[1], props.pop(0)
-    return f"& G i {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrolling_constraint3(props)
+    return f"& G i {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrol_constraint3(props)
+
+
+def fair_patrol_fix(props):
+    formula = f"G " + finals(props[:])
+    if len(props) > 1:
+        props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
+        formula = f"& {formula} " + fair_visit_constraint2(props)
+    return formula
 
 
 def finals(props):
@@ -146,7 +156,7 @@ def utils(props):
     """
     Conjunction of utils.
     """
-    assert len(props) >= 2, f"length of props for conjunction of utils must be >= 2, got {len(props)}"
+    assert len(props) > 1, f"length of props for conjunction of utils must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
         return f"U ! {b} {a}"
@@ -159,11 +169,11 @@ if __name__ == '__main__':
     paser.add_argument("--debug", action="store_true", help="include to turn on debug mode.")
     args = paser.parse_args()
 
-    formulas, props_perm = sample_formulas("fair_visit", 3)
+    formulas, props_perm = sample_formulas("fair_patrol", 3)
     pprint(list(zip(formulas, props_perm)))
 
     # props = ['a', 'b', 'c']
-    # formula = ordered_patrolling_constraint3(props)
+    # formula = ordered_patrol_constraint3(props)
     # print(formula)
     # if args.debug:
     #     formula = spot.formula(formula)
