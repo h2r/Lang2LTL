@@ -32,7 +32,7 @@ def sample_formulas(pattern_type, nprops):
     elif pattern_type == "strict_ordered_visit":
         pattern_sampler = strict_ordered_visit_fixed
     elif pattern_type == "fair_visit":
-        pattern_sampler = fair_visit
+        pattern_sampler = fair_visit_fixed
     elif pattern_type == "patrolling":
         pattern_sampler = patrolling
     elif pattern_type == "sequenced_patrolling":
@@ -78,7 +78,7 @@ def strict_ordered_visit_constraint3(props):
     return f"& U ! {a} U {a} U !{a} {b} " + strict_ordered_visit_constraint3(props)
 
 
-def fair_visit(props):
+def fair_visit_fixed(props):
     formula = finals(props[:])
     if len(props) > 1:
         props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
@@ -93,9 +93,9 @@ def fair_visit_constraint2(props):
     assert len(props) >= 2, f"length of props for fair_visit_constraint2 must be >= 2, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G i {a} X W ! {a} {b}"
+        return f"G i {a} U {a} & ! {a} W ! {a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& G i {a} X W ! {a} {b} " + fair_visit_constraint2(props)
+    return f"& G i {a} U {a} & ! {a} W ! {a} {b} " + fair_visit_constraint2(props)
 
 
 def patrolling(props):
