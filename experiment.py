@@ -155,8 +155,8 @@ def translate_modular(grounded_utts, objs_per_utt):
     if args.trans == 'gpt3':
         trans_module = GPT3()
     elif args.trans == 's2s_sup':
-        _, _, _, _, src_vocab_size, tar_vocab_size = construct_dataset(args.s2s_sup_data)
-        trans_module = Seq2Seq(src_vocab_size, tar_vocab_size, args.s2s_sup_model)
+        _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset(args.s2s_sup_data)
+        trans_module = Seq2Seq(vocab_transform, text_transform, src_vocab_size, tar_vocab_size, args.s2s_sup_model)
     else:
         raise ValueError("ERROR: translation module not recognized")
 
@@ -234,7 +234,7 @@ if __name__ == '__main__':
         input_utts.append(utt)
         true_ltls.append(ltl)
     assert len(input_utts) == len(true_ltls), f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}'
-    if args.nsamples:  # for testing, randomly sample 50 pairs to cover diversity of dataset
+    if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
         random.seed(42)
         input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
 
