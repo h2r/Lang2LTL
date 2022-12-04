@@ -3,6 +3,7 @@
 conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
 conda activate lang2ltl
 pip install openai
+conda install -c huggingface transformers
 ```
 
 To install LTL/Automaton library Spot
