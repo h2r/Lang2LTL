@@ -97,9 +97,9 @@ def fair_visit_constraint2(props):
     assert len(props) > 1, f"length of props for fair_visit_constraint2 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G i {a} U {a} & ! {a} W ! {a} {b}"
+        return f"G i {a} W {a} & ! {a} W ! {a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& G i {a} U {a} & ! {a} W ! {a} {b} " + fair_visit_constraint2(props)
+    return f"& G i {a} W {a} & ! {a} W ! {a} {b} " + fair_visit_constraint2(props)
 
 
 def patrol(props):
