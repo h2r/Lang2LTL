@@ -43,6 +43,12 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = fair_patrol_fixed
     elif pattern_type == "strict_ordered_patrol":
         pattern_sampler = strict_ordered_patrol_fixed
+    elif pattern_type == "past_avoid":
+        pattern_sampler = past_avoid
+    elif pattern_type == "global_avoid":
+        pattern_sampler = global_avoid
+    elif pattern_type == "future_avoid":
+        pattern_sampler = future_avoid
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -162,6 +168,21 @@ def strict_ordered_patrol_constraint4(props):
         return f"G i {a} U {a} & ! {a} U ! {a} {b}"
     b, a = props[1], props.pop(0)
     return f"& G i {a} U {a} & ! {a} U ! {a} {b} " + strict_ordered_patrol_constraint4(props)
+
+
+def past_avoid(props):
+    assert len(props) == 2, f"length of props for past_avoid must be 2, got {len(props)}"
+    return f"U ! {props[0]} {props[1]}"
+
+
+def global_avoid(props):
+    assert len(props) == 1, f"length of props for global_avoid must be 1, got {len(props)}"
+    return f"G ! {props[0]}"
+
+
+def future_avoid(props):
+    assert len(props) == 2, f"length of props for future_avoid must be 2, got {len(props)}"
+    return f"G i {props[0]} G ! {props[1]}"
 
 
 def finals(props):
