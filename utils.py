@@ -93,7 +93,7 @@ def save_to_file(data, fpth):
         raise ValueError(f"ERROR: file type {ftype} not recognized")
 
 
-def load_from_file(fpath):
+def load_from_file(fpath, noheader=True):
     ftype = os.path.splitext(fpath)[-1][1:]
     if ftype == 'pkl':
         with open(fpath, 'rb') as rfile:
@@ -110,7 +110,8 @@ def load_from_file(fpath):
     elif ftype == 'csv':
         with open(fpath, 'r') as rfile:
             csvreader = csv.reader(rfile)
-            fileds = next(csvreader)
+            if noheader:
+                fileds = next(csvreader)
             out = [row for row in csvreader]
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
