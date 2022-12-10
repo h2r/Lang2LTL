@@ -24,6 +24,24 @@ pip install -U spacy
 python -m spacy download en_core_web_sm
 ```
 
+# Files
+```experiment.py```: main function to start running all experiments
+
+```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions
+
+```s2s_sup.py```: abstract class for supervised sequence-to-sequence model
+
+```s2s_transformer.py```: transformer sequence-to-sequence model
+
+```gpt3.py```: interface to GPT-3 model
+
+```get_embed.py```: interface to GPT-3 embedding feature
+
+```dataset.py```: construct training and test datasets
+
+```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
+
+
 # Run Experiments
 Set environment variable for API key and organization ID
 ```
