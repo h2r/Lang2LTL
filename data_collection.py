@@ -8,6 +8,11 @@ def aggregate_responses(raw_fpath, result_fpath):
     :param raw_fpath: file path to raw csv containing Google form responses
     :param result_fpath: file path to aggregated results
     Assume fields of csv file are Timestamp, Username, LTL template type, Number of Propositions, Utterance.
+
+    The raw responses from Google form have many empty columns in each row.
+    To aggregate responses and save them in a csv file,
+    1. Download the responses to the Google form as a csv file then place it in the data folder.
+    2. run python data_collection.py
     """
     raw_data = load_from_file(raw_fpath, noheader=False)
     fields = raw_data.pop(0)
