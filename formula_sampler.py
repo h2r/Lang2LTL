@@ -14,7 +14,7 @@ import spot
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]  # 16
 
 
-def sample_formulas(pattern_type, nprops):
+def sample_formulas(pattern_type, nprops, debug):
     """
     :param pattern_type: type of LTL specification pattern
     :param nprops: number of proposition in LTL formulas
@@ -29,30 +29,30 @@ def sample_formulas(pattern_type, nprops):
         pattern_sampler = sequenced_visit
     elif pattern_type == "ordered_visit":
         pattern_sampler = ordered_visit
-    elif pattern_type == "strict_ordered_visit":
+    elif pattern_type == "strictly_ordered_visit":
         pattern_sampler = strict_ordered_visit_fixed
     elif pattern_type == "fair_visit":
         pattern_sampler = fair_visit_fixed
-    elif pattern_type == "patrol":
+    elif pattern_type == "patrolling":
         pattern_sampler = patrol
-    elif pattern_type == "sequenced_patrol":
+    elif pattern_type == "sequenced_patrolling":
         pattern_sampler = sequenced_patrol
-    elif pattern_type == "ordered_patrol":
+    elif pattern_type == "ordered_patrolling":
         pattern_sampler = ordered_patrol_fixed
-    elif pattern_type == "fair_patrol":
+    elif pattern_type == "fair_patrolling":
         pattern_sampler = fair_patrol_fixed
-    elif pattern_type == "strict_ordered_patrol":
+    elif pattern_type == "strictly_ordered_patrol":
         pattern_sampler = strict_ordered_patrol_fixed
-    elif pattern_type == "past_avoid":
+    elif pattern_type == "past_avoidance":
         pattern_sampler = past_avoid
-    elif pattern_type == "global_avoid":
+    elif pattern_type == "global_avoidance":
         pattern_sampler = global_avoid
-    elif pattern_type == "future_avoid":
+    elif pattern_type == "future_avoidance":
         pattern_sampler = future_avoid
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
-    if args.debug:
+    if debug:
         formulas = [spot.formula(pattern_sampler(list(props))) for props in props_perm]
     else:
         formulas = [pattern_sampler(list(props)) for props in props_perm]
@@ -213,7 +213,7 @@ if __name__ == '__main__':
     paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
 
-    formulas, props_perm = sample_formulas(args.pattern_type, args.nprops)
+    formulas, props_perm = sample_formulas(args.pattern_type, args.nprops, args.debug)
     pprint(list(zip(formulas, props_perm)))
 
     # props = ['a', 'b', 'c']
