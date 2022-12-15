@@ -2,6 +2,7 @@ import random
 import spot
 
 from utils import load_from_file, save_to_file, substitute
+from formula_sampler import PROPS, sample_formulas
 
 
 def generate_tar_file():
@@ -52,6 +53,28 @@ def create_osm_dataset():
         spot.formula(ltl)
 
 
+def create_symbolic_dataset():
+    data = load_from_file('data/aggregated_responses.csv')
+
+    csv_symbolic = [["ltl_formula", "utterance"]]
+    for _, _, pattern_type, nprops, utt in data:
+        pattern_type = "_".join(pattern_type.lower().split())
+        # prop_ordered = PROPS[:int(nprops)]
+        ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)
+        for ltl, prop_perm in zip(ltls, props_perm):
+            # sub_map = {prop_old: prop_new for prop_old, prop_new in zip(prop_ordered, prop_perm)}
+            # utts_perm, _ = substitute([utt], [sub_map])
+            # utt = utts_perm[0]
+            csv_symbolic.append([utt.lower().strip(), ltl.strip().replace('\r', '')])
+    save_to_file(csv_symbolic, 'data/symbolic_pairs.csv')
+
+    pairs = load_from_file('data/symbolic_pairs.csv')
+    for utt, ltl in pairs:
+        print(utt)
+        print(spot.formula(ltl))
+
+
 if __name__ == '__main__':
     # generate_tar_file()
-    create_osm_dataset()
+    # create_osm_dataset()
+    create_symbolic_dataset()
