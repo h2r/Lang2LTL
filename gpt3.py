@@ -43,13 +43,11 @@ class GPT3:
 
     @staticmethod
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
-    def get_embedding(in_text: str, engine="davinci") -> list[float]:
-        engine = "text-similarity-{}-001".format(engine)
-        in_text = in_text.replace("\n", " ")  # replace newlines, which can negatively affect performance
-
+    def get_embedding(text, model="text-embedding-ada-002"):
+        text = text.replace("\n", " ")  # replace newlines, which can negatively affect performance
         embedding = openai.Embedding.create(
-            input=[in_text],
-            model=engine  # change for different embedding dimension
+            input=[text],
+            model=model  # change for different embedding dimension
         )["data"][0]["embedding"]
         return embedding
 
@@ -75,5 +73,8 @@ if __name__ == '__main__':
         "LTL: F ( Burger Queen & F ( KFC & F ( black stone park ) )\n\n" \
         "English: "
 
-    print(gpt3.generate(query_prompt))
-    print(gpt3.get_embedding("Burger Queen"))
+    response = gpt3.generate(query_prompt)
+    embedding = gpt3.get_embedding("Burger Queen")
+    breakpoint()
+    print(response)
+    print(embedding)
