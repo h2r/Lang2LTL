@@ -4,7 +4,7 @@ conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pa
 conda activate lang2ltl
 pip install openai
 conda install pytorch torchtext torchdata -c pytorch
-conda install -c huggingface transformers
+pip install transformers
 ```
 
 To install LTL/Automaton library Spot
