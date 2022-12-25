@@ -1,3 +1,6 @@
+"""
+Infer trained model.
+"""
 import argparse
 import torch
 from transformers import T5Tokenizer, T5ForConditionalGeneration
@@ -11,9 +14,6 @@ from s2s_pt_transformer import construct_dataset as transformer_construct_datase
 
 
 class Seq2Seq:
-    """
-    Model inference.
-    """
     def __init__(self, model_type, **kwargs):
         self.model_type = model_type
 
