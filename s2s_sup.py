@@ -1,39 +1,71 @@
 import argparse
 import torch
+from transformers import T5Tokenizer, T5ForConditionalGeneration
 
-from s2s_transformer import Seq2SeqTransformer, \
+from s2s_hf_transformers import T5_PREFIX
+
+from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
-from s2s_transformer import translate as transformer_translate
-from s2s_transformer import construct_dataset as transformer_construct_dataset
+from s2s_pt_transformer import translate as transformer_translate
+from s2s_pt_transformer import construct_dataset as transformer_construct_dataset
 
 
 class Seq2Seq:
     """
     Model inference.
     """
-    def __init__(self, vocab_transform, text_transform, src_vocab_sz, tar_vocab_sz, fpath_load, model_type='transformer'):
-        if model_type == 'transformer':
-            self.model = Seq2SeqTransformer(src_vocab_sz, tar_vocab_sz,
+    def __init__(self, model_type, **kwargs):
+        self.model_type = model_type
+
+        if args.model == "t5-base":  # https://huggingface.co/docs/transformers/model_doc/t5
+            self.tokenizer = T5Tokenizer.from_pretrained(args.model)
+            self.model = T5ForConditionalGeneration.from_pretrained(args.model)
+        elif model_type == "pt_transformer":
+            self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
                                             DIM_FFN_HID)
             self.model_translate = transformer_translate
             self.vocab_transform = vocab_transform
             self.text_transform = text_transform
+            self.model.load_state_dict(torch.load(kwargs["fpath_load"]))
         else:
-            raise ValueError(f'ERROR: Model type not recognized: {model_type}')
+            raise ValueError(f'ERROR: unrecognized model: {model_type}')
 
-        self.model.load_state_dict(torch.load(fpath_load))
-
-    def translate(self, query):
-        return self.model_translate(self.model, self.vocab_transform, self.text_transform, query)
+    def translate(self, queries):
+        if self.model_type == "t5-base":
+            inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
+            output_tokens = self.model.generate(
+                input_ids=inputs["input_ids"],
+                attention_mask=inputs["attention_mask"],
+                do_sample=False,
+            )
+            ltls = self.tokenizer.batch_decode(output_tokens, skip_special_tokens=True)
+        elif self.model_type == "pt_transformer":
+            ltls = self.model_translate(self.model, self.vocab_transform, self.text_transform, queries[0])
+        else:
+            raise ValueError(f'ERROR: unrecognized model, {self.model_type}')
+        return ltls
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, default='model/s2s_transformer.pth', help='file path to trained supervised seq2seq model')
+    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "pt_transformer"], help='name of supervised seq2seq model')
+    parser.add_argument('--utt', type=str, default="visit a then b", help='utterance to translate')
     args = parser.parse_args()
 
-    _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
-    s2s_transformer = Seq2Seq(vocab_transform, text_transform, src_vocab_size, tar_vocab_size, args.model)
-    print(s2s_transformer.translate("go to A then to B"))
+    if args.model == "t5-base":  # pretrained T5 from Hugging Face
+        s2s = Seq2Seq(args.model)
+    elif args.model == "pt_transformer":  # pretrained seq2seq transformer
+        _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
+        model_params = f"model/s2s_{args.model}.pth"
+        s2s = Seq2Seq(args.model,
+                      vocab_transform=vocab_transform, text_transform=text_transform,
+                      src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=args.model_params)
+    else:
+        raise TypeError(f"ERROR: unrecognized model, {args.model}")
+
+    ltls = s2s.translate([args.utt])
+    print(args.utt)
+    print(ltls)
