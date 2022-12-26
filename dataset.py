@@ -1,7 +1,8 @@
 import random
+import string
 import spot
 
-from utils import load_from_file, save_to_file, substitute
+from utils import load_from_file, save_to_file, substitute, substitute_single_correct
 from formula_sampler import PROPS, sample_formulas
 
 
@@ -53,22 +54,31 @@ def create_osm_dataset():
         spot.formula(ltl)
 
 
-def create_symbolic_dataset():
-    data = load_from_file('data/aggregated_responses.csv')
+def create_symbolic_dataset(load_fpath, perm_props):
+    """
+    Generate dataset for training symbolic translation module.
+    :param load_fpath: file path to load Google form responses
+    :param perm_props: True if permute propositions in utterances and LTL formulas
+    """
+    data = load_from_file(load_fpath)
 
-    csv_symbolic = [["ltl_formula", "utterance"]]
+    csv_symbolic = [["utterance", "ltl_formula"]]
     for _, _, pattern_type, nprops, utt in data:
+        utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
         pattern_type = "_".join(pattern_type.lower().split())
-        # prop_ordered = PROPS[:int(nprops)]
-        ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)
-        for ltl, prop_perm in zip(ltls, props_perm):
-            # sub_map = {prop_old: prop_new for prop_old, prop_new in zip(prop_ordered, prop_perm)}
-            # utts_perm, _ = substitute([utt], [sub_map])
-            # utt = utts_perm[0]
-            csv_symbolic.append([utt.lower().strip(), ltl.strip().replace('\r', '')])
-    save_to_file(csv_symbolic, 'data/symbolic_pairs.csv')
+        ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)  # sample ltls w/ all possible permutations
+        if perm_props:  # all possible permutations of propositions
+            for ltl, prop_perm in zip(ltls, props_perm):
+                sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
+                utt_perm, _ = substitute_single_correct(utt, sub_map)  # sub propositions in utt w/ perm corres to ltl
+                csv_symbolic.append([utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
+        else:  # propositions only appear in ascending order
+            csv_symbolic.append([utt.lower().strip(), ltls[0].strip().replace('\r', '')])
 
-    pairs = load_from_file('data/symbolic_pairs.csv')
+    save_fpath = 'data/symbolic_pairs_perm.csv' if perm_props else 'data/symbolic_pairs_no_perm.csv'
+    save_to_file(csv_symbolic, save_fpath)
+
+    pairs = load_from_file(save_fpath)
     for utt, ltl in pairs:
         print(utt)
         print(spot.formula(ltl))
@@ -77,4 +87,4 @@ def create_symbolic_dataset():
 if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
-    create_symbolic_dataset()
+    create_symbolic_dataset('data/aggregated_responses_batch_1.csv', True)
