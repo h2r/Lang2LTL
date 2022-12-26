@@ -2,6 +2,7 @@ import os
 import json
 import dill
 import csv
+from collections import defaultdict
 import logging
 import numpy as np
 
@@ -32,8 +33,15 @@ def substitute(input_strs, substitute_maps):
 
 
 def substitute_single(input_str, sub_map):
+    """
+    substitute words and phrases from a single utterance
+
+    TODO: handle substitution map: {green one: green room, green place: green room, green: green room}
+    TODO: handle substitution map: {a: b, b: a}
+    """
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
     subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
+
     for k, v in sub_map:
         if k not in input_str:
             logging.info(f"Name entity {k} not found in input string: {input_str}")
@@ -42,6 +50,36 @@ def substitute_single(input_str, sub_map):
                 subs_done.add(v)
                 input_str = input_str.replace(k, v)
     return input_str.strip(), subs_done
+
+
+def substitute_single_fix(input_str, sub_map):
+    """
+    Correcting substitute_single with
+    e.g. input_str='go to a then go to b', sub_map={'a': 'b', 'b': 'a'}
+    return='go to a then go to a'
+
+    Require `input_str` to be normalized, i.e. all punctuations removed.
+
+    TODO: only work with substitute single words, e.g. a, b, c, etc, not phrases, e.g. green one -> green room.
+    """
+    input_str_list = input_str.split(" ")
+
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
+    subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
+
+    # Record indices of all keys in sub_map in *original* input_str.
+    key2indices = defaultdict(list)
+    for k, _ in sub_map:
+        key2indices[k] = [idx for idx, word in enumerate(input_str_list) if word == k]
+
+    # Loop through indices and keys to replace each key with value.
+    for k, v in sub_map:
+        indices = key2indices[k]
+        for idx in indices:
+            input_str_list[idx] = v
+            subs_done.add(v)
+
+    return ' '.join(input_str_list).strip(), subs_done
 
 
 def prefix_to_infix(formula):

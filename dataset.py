@@ -2,7 +2,7 @@ import random
 import string
 import spot
 
-from utils import load_from_file, save_to_file, substitute, substitute_single_correct
+from utils import load_from_file, save_to_file, substitute, substitute_single_fix
 from formula_sampler import PROPS, sample_formulas
 
 
@@ -70,7 +70,7 @@ def create_symbolic_dataset(load_fpath, perm_props):
         if perm_props:  # all possible permutations of propositions
             for ltl, prop_perm in zip(ltls, props_perm):
                 sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
-                utt_perm, _ = substitute_single_correct(utt, sub_map)  # sub propositions in utt w/ perm corres to ltl
+                utt_perm, _ = substitute_single_fix(utt, sub_map)  # sub propositions in utt w/ perm corres to ltl
                 csv_symbolic.append([utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
         else:  # propositions only appear in ascending order
             csv_symbolic.append([utt.lower().strip(), ltls[0].strip().replace('\r', '')])
