@@ -11,7 +11,8 @@ def aggregate_responses(raw_fpath, result_fpath):
 
     The raw responses from Google form have many empty columns in each row.
     To aggregate responses and save them in a csv file,
-    1. Download the responses to the Google form as a csv file then place it in the data folder.
+    1. Fix incorrect responses in Google Sheets if needed.
+    2. Download the responses to the Google form from Google Sheets as a csv file then place it in the data folder.
     2. run python data_collection.py
     """
     raw_data = load_from_file(raw_fpath, noheader=False)
@@ -41,6 +42,6 @@ def aggregate_responses(raw_fpath, result_fpath):
 
 
 if __name__ == '__main__':
-    raw_fpath = os.path.join("data", "raw_responses.csv")
-    result_fpath = os.path.join("data", "aggregated_responses.csv")
+    raw_fpath = os.path.join("data", "raw_responses_batch_1.csv")
+    result_fpath = os.path.join("data", "aggregated_responses_batch_1.csv")
     aggregate_responses(raw_fpath, result_fpath)
