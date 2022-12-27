@@ -49,6 +49,9 @@ class Seq2Seq:
             raise ValueError(f'ERROR: unrecognized model, {self.model_type}')
         return ltls
 
+    def parameters(self):
+        return self.model.parameters()
+
 
 def evaluate(s2s, results_fpath):
     _, valid_iter, _, _, _, _ = transformer_construct_dataset(args.data)
@@ -70,6 +73,10 @@ def evaluate(s2s, results_fpath):
     print(np.mean([True if acc == 'True' else False for acc in accs]))
 
 
+def count_params(model):
+    return sum(param.numel() for param in model.parameters() if param.requires_grad)
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/symbolic_pairs_no_perm.csv', help='file path to train and test data for supervised seq2seq')
@@ -87,6 +94,8 @@ if __name__ == '__main__':
                       src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
+
+    print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
 
     evaluate(s2s, f"results/s2s_{args.model}_batch_1_results")
 
