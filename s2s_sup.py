@@ -3,7 +3,7 @@ Infer trained model.
 """
 import argparse
 import torch
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
 
 from s2s_hf_transformers import T5_PREFIX
 
@@ -18,8 +18,8 @@ class Seq2Seq:
         self.model_type = model_type
 
         if args.model == "t5-base":  # https://huggingface.co/docs/transformers/model_doc/t5
-            self.tokenizer = T5Tokenizer.from_pretrained(args.model)
-            self.model = T5ForConditionalGeneration.from_pretrained(args.model)
+            self.tokenizer = AutoTokenizer.from_pretrained(args.model)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
         elif model_type == "pt_transformer":
             self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -50,9 +50,9 @@ class Seq2Seq:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
+    parser.add_argument('--data', type=str, default='data/symbolic_pairs_no_perm.csv', help='file path to train and test data for supervised seq2seq')
     parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "pt_transformer"], help='name of supervised seq2seq model')
-    parser.add_argument('--utt', type=str, default="visit a then b", help='utterance to translate')
+    parser.add_argument('--utt', type=str, default="visit a while avoiding b then go to b", help='utterance to translate')
     args = parser.parse_args()
 
     if args.model == "t5-base":  # pretrained T5 from Hugging Face
@@ -62,7 +62,7 @@ if __name__ == '__main__':
         model_params = f"model/s2s_{args.model}.pth"
         s2s = Seq2Seq(args.model,
                       vocab_transform=vocab_transform, text_transform=text_transform,
-                      src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=args.model_params)
+                      src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
 
