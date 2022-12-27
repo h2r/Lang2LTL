@@ -4,7 +4,8 @@ conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pa
 conda activate lang2ltl
 pip install openai
 conda install pytorch torchtext torchdata -c pytorch
-pip install transformers
+pip install tensorboard
+pip install transformers datasets
 ```
 
 To install LTL/Automaton library Spot
