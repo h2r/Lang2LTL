@@ -28,7 +28,7 @@ EMBED_SIZE = 512
 NHEAD = 8
 DIM_FFN_HID = 512
 BATCH_SIZE = 128
-NUM_EPOCHS = 144
+NUM_EPOCHS = 128
 
 
 class Seq2SeqTransformer(nn.Module):
@@ -95,10 +95,10 @@ class PositionalEncoding(nn.Module):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
 
 
-def construct_dataset(fpath='data/symbolic_pairs_no_perm.csv'):
+def construct_dataset(fpath='data/symbolic_pairs_no_perm.csv', test_size=0.3, seed=42):
     data_csv = load_from_file(fpath)
     dataset = [(utt, ltl) for utt, ltl in data_csv]
-    train_iter, valid_iter = train_test_split(dataset, test_size=0.3, random_state=42)
+    train_iter, valid_iter = train_test_split(dataset, test_size=test_size, random_state=seed)
 
     vocab_transform = {}
     tokenizer = get_tokenizer(tokenizer=None)
@@ -193,12 +193,12 @@ def train_epoch(model, optimizer, train_iter):
     return losses / len(train_dataloader)
 
 
-def evaluate(model, val_iter):
+def evaluate(model, valid_iter):
     model.eval()
     losses = 0
-    val_dataloader = DataLoader(val_iter, batch_size=BATCH_SIZE, collate_fn=collate_fn)
+    valid_dataloader = DataLoader(valid_iter, batch_size=BATCH_SIZE, collate_fn=collate_fn)
 
-    for src_batch, tar_batch in val_dataloader:
+    for src_batch, tar_batch in valid_dataloader:
         src_batch, tar_batch = src_batch.to(DEVICE), tar_batch.to(DEVICE)
         tar_input = tar_batch[:-1, :]
         src_mask, tar_mask, src_padding_mask, tar_padding_mask = create_mask(src_batch, tar_input)
@@ -209,7 +209,7 @@ def evaluate(model, val_iter):
         tar_out = tar_batch[1:, :]
         loss = loss_fn(logits.reshape(-1, logits.shape[-1]), tar_out.reshape(-1))
         losses += loss.item()
-    return losses / len(val_dataloader)
+    return losses / len(valid_dataloader)
 
 
 def translate(model, vocab_transform, text_transform, src_sentence):
