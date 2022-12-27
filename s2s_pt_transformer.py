@@ -12,6 +12,7 @@ from torch.nn.utils.rnn import pad_sequence
 from torch.utils.data import DataLoader
 from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
+from torch.utils.tensorboard import SummaryWriter
 
 from utils import load_from_file
 
@@ -27,7 +28,7 @@ EMBED_SIZE = 512
 NHEAD = 8
 DIM_FFN_HID = 512
 BATCH_SIZE = 128
-NUM_EPOCHS = 18
+NUM_EPOCHS = 144
 
 
 class Seq2SeqTransformer(nn.Module):
@@ -94,10 +95,10 @@ class PositionalEncoding(nn.Module):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
 
 
-def construct_dataset(fpath='data/symbolic_pairs.csv'):
+def construct_dataset(fpath='data/symbolic_pairs_no_perm.csv'):
     data_csv = load_from_file(fpath)
     dataset = [(utt, ltl) for utt, ltl in data_csv]
-    train_iter, val_iter = train_test_split(dataset, test_size=0.3, random_state=42)
+    train_iter, valid_iter = train_test_split(dataset, test_size=0.3, random_state=42)
 
     vocab_transform = {}
     tokenizer = get_tokenizer(tokenizer=None)
@@ -114,7 +115,7 @@ def construct_dataset(fpath='data/symbolic_pairs.csv'):
         TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
     }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
 
-    return train_iter, val_iter, vocab_transform, text_transform, src_vocab_size, tar_vocab_size
+    return train_iter, valid_iter, vocab_transform, text_transform, src_vocab_size, tar_vocab_size
 
 
 def yield_tokens(data_iter, tokenizer, language):
@@ -240,7 +241,7 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 if __name__ == '__main__':
     # Train and save model
-    train_iter, val_iter, vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset()
+    train_iter, valid_iter, vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset()
 
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -252,13 +253,17 @@ if __name__ == '__main__':
 
     loss_fn = torch.nn.CrossEntropyLoss(ignore_index=PAD_IDX)
     optimizer = torch.optim.Adam(transformer.parameters(), lr=0.0001, betas=(0.9, 0.98), eps=1e-9)
+    writer = SummaryWriter()  # writer will output to ./runs/ directory by default; activate: tensorboard --logdir=runs
 
     for epoch in range(1, NUM_EPOCHS+1):
         start_time = timer()
         train_loss = train_epoch(transformer, optimizer, train_iter)
         end_time = timer()
-        val_loss = evaluate(transformer, val_iter)
-        print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {val_loss:.3f}\n'
+        valid_loss = evaluate(transformer, valid_iter)
+        print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
-    model_fpath = 'model/s2s_transformer.pth'
+        writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
+    model_fpath = 'model/s2s_pt_transformer.pth'
     torch.save(transformer.state_dict(), model_fpath)
+    writer.flush()
+    writer.close()
