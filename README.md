@@ -5,7 +5,7 @@ conda activate lang2ltl
 pip install openai
 conda install pytorch torchtext torchdata -c pytorch
 pip install tensorboard
-pip install transformers datasets
+pip install transformers datasets evaluate
 ```
 
 To install LTL/Automaton library Spot
