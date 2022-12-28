@@ -3,7 +3,7 @@ Finetune pre-trained transformer models from Hugging Face.
 """
 import argparse
 import numpy as np
-from datasets import load_dataset
+from datasets import load_dataset, load_metric
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, \
     Seq2SeqTrainer, Adafactor, Seq2SeqTrainingArguments, DataCollatorForSeq2Seq
 import evaluate
@@ -21,6 +21,9 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
     """
     Followed most of the tutorial at
     https://medium.com/nlplanet/a-full-guide-to-finetuning-t5-for-text2text-and-building-a-demo-with-streamlit-c72009631887
+
+    Finetune T5 for translation example
+    https://github.com/huggingface/notebooks/blob/main/examples/translation.ipynb
 
     For trainer initiation, followed
     https://huggingface.co/docs/transformers/training
@@ -74,14 +77,15 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
         weight_decay=0.01,
         num_train_epochs=1,
         # fp16=True,
-        # predict_with_generate=True,
-        # metric_for_best_model="rouge1",
+        predict_with_generate=True,
+        metric_for_best_model="exact_match",
         load_best_model_at_end=True,
         save_total_limit=3,
+        overwrite_output_dir=True,
         report_to="tensorboard"
     )
 
-    data_collator = DataCollatorForSeq2Seq(tokenizer)
+    data_collator = DataCollatorForSeq2Seq(tokenizer, model=model)
 
     metric = evaluate.load("exact_match")
 
@@ -149,6 +153,8 @@ if __name__ == '__main__':
 
     if args.model in T5_MODELS:
         finetune_t5(args.model, tokenizer, args.data)
+
+    # tensorboard --logdir=model/runs
 
     # input_sequences, output_sequences = construct_dataset(args.data)
 
