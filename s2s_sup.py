@@ -98,7 +98,7 @@ if __name__ == '__main__':
 
     print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
 
-    evaluate(s2s, f"results/s2s_{args.model}_batch_1_results")
+    evaluate(s2s, f"results/s2s_{args.model}_symbolic_batch_1")
 
     # ltls = s2s.translate([args.utt])
     # print(args.utt)
