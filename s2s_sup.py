@@ -20,8 +20,9 @@ class Seq2Seq:
         self.model_type = model_type
 
         if args.model in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
-            self.tokenizer = AutoTokenizer.from_pretrained(args.model)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
+            model_dir = f"model/{model_type}"
+            self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
         elif model_type == "pt_transformer":
             self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -80,7 +81,7 @@ def count_params(model):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/symbolic_pairs_no_perm.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "pt_transformer"], help='name of supervised seq2seq model')
+    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"], help='name of supervised seq2seq model')
     parser.add_argument('--utt', type=str, default="visit a while avoiding b then go to b", help='utterance to translate')
     args = parser.parse_args()
 
