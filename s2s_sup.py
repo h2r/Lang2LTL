@@ -7,7 +7,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
 import spot
 
-from s2s_hf_transformers import T5_PREFIX
+from s2s_hf_transformers import T5_PREFIX, T5_MODELS
 from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
 from s2s_pt_transformer import translate as transformer_translate
@@ -19,7 +19,7 @@ class Seq2Seq:
     def __init__(self, model_type, **kwargs):
         self.model_type = model_type
 
-        if args.model == "t5-base":  # https://huggingface.co/docs/transformers/model_doc/t5
+        if args.model in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
             self.tokenizer = AutoTokenizer.from_pretrained(args.model)
             self.model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
         elif model_type == "pt_transformer":
@@ -34,7 +34,7 @@ class Seq2Seq:
             raise ValueError(f'ERROR: unrecognized model: {model_type}')
 
     def translate(self, queries):
-        if self.model_type == "t5-base":
+        if self.model_type in T5_MODELS:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
             inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
             output_tokens = self.model.generate(
@@ -84,7 +84,7 @@ if __name__ == '__main__':
     parser.add_argument('--utt', type=str, default="visit a while avoiding b then go to b", help='utterance to translate')
     args = parser.parse_args()
 
-    if args.model == "t5-base":  # pretrained T5 from Hugging Face
+    if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
         s2s = Seq2Seq(args.model)
     elif args.model == "pt_transformer":  # pretrained seq2seq transformer
         _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
