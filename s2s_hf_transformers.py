@@ -73,7 +73,7 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
         per_device_eval_batch_size=BATCH_SIZE,
         weight_decay=0.01,
         num_train_epochs=1,
-        fp16=True,
+        # fp16=True,
         # predict_with_generate=True,
         # metric_for_best_model="rouge1",
         load_best_model_at_end=True,
@@ -96,9 +96,10 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
     )
 
     trainer.train()
+    trainer.save_model()
 
 
-def construct_dataset(fpath, valid_size=0.2, test_size=0.1):
+def construct_dataset(fpath):
     data = load_from_file(fpath)
     input_sequences, output_sequences = [], []
     for utt, ltl in data:
