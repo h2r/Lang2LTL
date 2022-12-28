@@ -34,8 +34,9 @@ def substitute(input_strs, substitute_maps):
 
 def substitute_single(input_str, sub_map):
     """
-    substitute words and phrases from a single utterance
+    Substitute words and phrases from a single utterance.
 
+    Assume no swaps in `sub_map`, e.g. {key: val, val: key}
     TODO: handle substitution map: {green one: green room, green place: green room, green: green room}
     TODO: handle substitution map: {a: b, b: a}
     """
@@ -46,6 +47,11 @@ def substitute_single(input_str, sub_map):
         if k not in input_str:
             logging.info(f"Name entity {k} not found in input string: {input_str}")
         else:
+            # k_v_overlap = False  # to handle substitution map {green one: green room, green: green room}
+            # for sub_done in subs_done:
+            #     if k in sub_done:
+            #         k_v_overlap = True
+            # if not k_v_overlap:
             if v not in subs_done:  # TODO: 'the name' sub first then 'name' sub again. redundant if same grounding, wrong otherwise
                 subs_done.add(v)
                 input_str = input_str.replace(k, v)
