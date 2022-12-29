@@ -1,4 +1,5 @@
 import os
+from collections import defaultdict
 
 from utils import load_from_file, save_to_file
 
@@ -13,7 +14,7 @@ def aggregate_responses(raw_fpath, result_fpath):
     To aggregate responses and save them in a csv file,
     1. Fix incorrect responses in Google Sheets if needed.
     2. Download the responses to the Google form from Google Sheets as a csv file then place it in the data folder.
-    2. run python data_collection.py
+    3. run python data_collection.py
     """
     raw_data = load_from_file(raw_fpath, noheader=False)
     fields = raw_data.pop(0)
@@ -37,11 +38,30 @@ def aggregate_responses(raw_fpath, result_fpath):
             else:
                 result_row[col_idx] = col
         results.append(result_row)
-
     save_to_file(results, result_fpath)
 
 
+def analyze_responses(result_fpath, analysis_fpath):
+    """
+    :param result_fpath: file path to aggregated results
+    :param analysis_fpath: path to file containing analysis of the results
+    """
+    results = load_from_file(result_fpath, noheader=True)
+    counter = defaultdict(lambda: defaultdict(int))
+
+    for _, _, ltl_type, nprops, _ in results:
+        counter[ltl_type][nprops] += 1
+
+    analysis = [["LTL template type", "Number of Propositions", "Utterance"]]
+    for ltl_type, nprops2count in counter.items():
+        for nprops, count in nprops2count.items():
+            analysis.append([ltl_type, nprops, count])
+    save_to_file(analysis, analysis_fpath)
+
+
 if __name__ == '__main__':
-    raw_fpath = os.path.join("data", "raw_responses_batch_1.csv")
-    result_fpath = os.path.join("data", "aggregated_responses_batch_1.csv")
-    aggregate_responses(raw_fpath, result_fpath)
+    raw_fpath = os.path.join("data", "raw_responses_batch1.csv")
+    result_fpath = os.path.join("data", "aggregated_responses_batch1.csv")
+    analysis_fpath = os.path.join("data", "analysis_batch1.csv")
+    # aggregate_responses(raw_fpath, result_fpath)
+    analyze_responses(result_fpath, analysis_fpath)

@@ -87,4 +87,4 @@ def create_symbolic_dataset(load_fpath, perm_props):
 if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
-    create_symbolic_dataset('data/aggregated_responses_batch_1.csv', True)
+    create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
