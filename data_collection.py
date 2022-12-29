@@ -52,7 +52,7 @@ def analyze_responses(result_fpath, analysis_fpath):
     for _, _, ltl_type, nprops, _ in results:
         counter[ltl_type][nprops] += 1
 
-    analysis = [["LTL template type", "Number of Propositions", "Utterance"]]
+    analysis = [["LTL Template Type", "Number of Propositions", "Utterance"]]
     for ltl_type, nprops2count in counter.items():
         for nprops, count in nprops2count.items():
             analysis.append([ltl_type, nprops, count])
