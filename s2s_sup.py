@@ -2,6 +2,7 @@
 Infer trained model.
 """
 import argparse
+from pathlib import Path
 import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
@@ -55,11 +56,12 @@ class Seq2Seq:
 
 
 def evaluate(s2s, results_fpath):
-    _, valid_iter, _, _, _, _ = transformer_construct_dataset(args.data)
-    results = [["utterances", "true_ltl", "output_ltl", "is_correct"]]
+    train_iter, valid_iter, _, _, _, _ = transformer_construct_dataset(args.data)
+    results = [["train_or_valid", "utterances", "true_ltl", "output_ltl", "is_correct"]]
     accs = []
 
-    for utt, true_ltl in valid_iter:
+    for idx, (utt, true_ltl) in enumerate(valid_iter+train_iter):
+        train_or_valid = "valid" if idx < len(valid_iter) else "train"
         out_ltl = s2s.translate([utt])[0]
         try:  # output LTL formula may have syntax error
             is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
@@ -67,8 +69,9 @@ def evaluate(s2s, results_fpath):
         except SyntaxError:
             print(f'Syntax error in output LTL: {out_ltl}')
             is_correct = 'Syntax Error'
-        accs.append(is_correct)
-        results.append([utt, true_ltl, out_ltl, is_correct])
+        results.append([train_or_valid, utt, true_ltl, out_ltl, is_correct])
+        if train_or_valid == "valid":
+            accs.append(is_correct)
 
     save_to_file(results, f"{results_fpath}.csv")
     print(np.mean([True if acc == 'True' else False for acc in accs]))
@@ -80,7 +83,7 @@ def count_params(model):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='data/symbolic_pairs_no_perm.csv', help='file path to train and test data for supervised seq2seq')
+    parser.add_argument('--data', type=str, default='data/symbolic_no_perm_batch1.csv', help='file path to train and test data for supervised seq2seq')
     parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"], help='name of supervised seq2seq model')
     parser.add_argument('--utt', type=str, default="visit a while avoiding b then go to b", help='utterance to translate')
     args = parser.parse_args()
@@ -98,7 +101,7 @@ if __name__ == '__main__':
 
     print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
 
-    evaluate(s2s, f"results/s2s_{args.model}_symbolic_batch_1")
+    evaluate(s2s, f"results/s2s_{args.model}_{Path(args.data).stem}")
 
     # ltls = s2s.translate([args.utt])
     # print(args.utt)

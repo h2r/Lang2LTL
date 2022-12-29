@@ -1,43 +1,138 @@
-utterances,true_ltl,output_ltl,is_correct
-go to a then b,F & a F b, F & a F b ,True
-move to a then move to b,F & a F b, F & a F b ,True
-after you have been to a make your way to b,F & a F b, F & a F b ,True
-reach a,F a, F a ,True
-go to a then go to b or go to b then go to a,& F a F b, F & a F b ,False
-do not visit h until you visit d visit d only once do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b U ! b U ! b U c U c U c U c U c U !c d U ! d,Syntax Error
-do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d, & & U ! b a & U ! c b & U ! d c & U ! h d F h ,Syntax Error
-reach a exactly once while staying away from b then move to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-do not stop going to a,G F a, G F a ,True
-make sure a and b are visited infinitely,& G F a G F b, & F a F b ,False
-keep visiting a and b in any order,& G F a G F b, & G F a G F b ,True
-dont stop visiting a,G F a, G F a ,True
-make sure you frequent a and b equally or at most one time in difference,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i,Syntax Error
-visit a then b then c then d and then h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c F d & U ! a,Syntax Error
-eventually reach a and b,& F a F b, & F a F b ,True
-keep visiting a,G F a, G F a ,True
-eventually you must go to a,F a, F a ,True
-head to a first and then to b but dont visit b if you havent been to a,& U ! b a F b, F & a F & b F & U ! a U a U !a b ,Syntax Error
-do not stop visiting a,G F a, G F a ,True
-you must visit a first before going to b,& U ! b a F b, & U ! b a F b ,True
-reach a and b in an arbitrary order and make sure to visit one of them at most once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W !,Syntax Error
-head to a,F a, F a ,True
-go to b but do not go to b until you go to a first,& U ! b a F b, & U ! b a F b ,True
-go to four locations a b d and c,& F a & F b & F c F d, & F a & F b & F c F d ,True
-go to a and then go to b and then go to c,F & a F & b F c, F & a F & b F c ,True
-go to a,F a, F a ,True
-visit a and visit b only if a is visited,& U ! b a F b, & U ! b a F b ,True
-go to a but keep avoiding b and once you have been to a go to b,& U ! b a F b, & U ! b a F b ,True
-visit a and visit b after a is visited,F & a F b, & F a F b ,False
-go to a an infinite number of times,G F a, & G F a G F b ,False
-in some sequence visit a b and c in that order,F & a F & b F c, F & a F & b F c ,True
-after you visit a go to b,F & a F b, F & a F b ,True
-go to a exactly once while avoiding b then go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-pick one from a and b go there and then head to the other one,& F a F b, & & F a F b & G i a W a & ! a W ! a b G i,Syntax Error
-visit a b and c in order but keep avoiding latter ones when you are heading to former ones,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-navigate to a exactly once while staying away from b then you can go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-reach a,F a, F a ,True
-go to a,F a, F a ,True
-go to a and b in arbitrary order,& F a F b, & F a F b ,True
-do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c, & & U ! b a & U ! c b & U ! d c F d ,Syntax Error
-eventually go visit a b h d and c,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-dont visit b before you visit a and then go to b without revisiting a,& & U ! b a F b U ! a U a U !a b, & U ! b a F b ,False
+train_or_valid,utterances,true_ltl,output_ltl,is_correct
+valid,go to a then b,F & a F b, F & a F b ,True
+valid,move to a then move to b,F & a F b, F & a F b ,True
+valid,after you have been to a make your way to b,F & a F b, F & a F b ,True
+valid,reach a,F a, F a ,True
+valid,go to a then go to b or go to b then go to a,& F a F b, F & a F b ,False
+valid,do not visit h until you visit d visit d only once do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b U ! b U ! b U c U c U c U c U c U !c d U ! d,Syntax Error
+valid,do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d, & & U ! b a & U ! c b & U ! d c & U ! h d F h ,Syntax Error
+valid,reach a exactly once while staying away from b then move to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+valid,do not stop going to a,G F a, G F a ,True
+valid,make sure a and b are visited infinitely,& G F a G F b, & F a F b ,False
+valid,keep visiting a and b in any order,& G F a G F b, & G F a G F b ,True
+valid,dont stop visiting a,G F a, G F a ,True
+valid,make sure you frequent a and b equally or at most one time in difference,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i,Syntax Error
+valid,visit a then b then c then d and then h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c F d & U ! a,Syntax Error
+valid,eventually reach a and b,& F a F b, & F a F b ,True
+valid,keep visiting a,G F a, G F a ,True
+valid,eventually you must go to a,F a, F a ,True
+valid,head to a first and then to b but dont visit b if you havent been to a,& U ! b a F b, F & a F & b F & U ! a U a U !a b ,Syntax Error
+valid,do not stop visiting a,G F a, G F a ,True
+valid,you must visit a first before going to b,& U ! b a F b, & U ! b a F b ,True
+valid,reach a and b in an arbitrary order and make sure to visit one of them at most once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W !,Syntax Error
+valid,head to a,F a, F a ,True
+valid,go to b but do not go to b until you go to a first,& U ! b a F b, & U ! b a F b ,True
+valid,go to four locations a b d and c,& F a & F b & F c F d, & F a & F b & F c F d ,True
+valid,go to a and then go to b and then go to c,F & a F & b F c, F & a F & b F c ,True
+valid,go to a,F a, F a ,True
+valid,visit a and visit b only if a is visited,& U ! b a F b, & U ! b a F b ,True
+valid,go to a but keep avoiding b and once you have been to a go to b,& U ! b a F b, & U ! b a F b ,True
+valid,visit a and visit b after a is visited,F & a F b, & F a F b ,False
+valid,go to a an infinite number of times,G F a, & G F a G F b ,False
+valid,in some sequence visit a b and c in that order,F & a F & b F c, F & a F & b F c ,True
+valid,after you visit a go to b,F & a F b, F & a F b ,True
+valid,go to a exactly once while avoiding b then go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+valid,pick one from a and b go there and then head to the other one,& F a F b, & & F a F b & G i a W a & ! a W ! a b G i,Syntax Error
+valid,visit a b and c in order but keep avoiding latter ones when you are heading to former ones,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+valid,navigate to a exactly once while staying away from b then you can go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+valid,reach a,F a, F a ,True
+valid,go to a,F a, F a ,True
+valid,go to a and b in arbitrary order,& F a F b, & F a F b ,True
+valid,do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c, & & U ! b a & U ! c b & U ! d c F d ,Syntax Error
+valid,eventually go visit a b h d and c,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
+valid,dont visit b before you visit a and then go to b without revisiting a,& & U ! b a F b U ! a U a U !a b, & U ! b a F b ,False
+train,before visiting b c d and h visit a and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h,& U ! b a & U ! c b & U ! d c & U ! h d F h, & U ! b a & U ! c b & U ! d c & U ! h d F h ,True
+train,reach a and b in any order,& F a F b, & F a F b ,True
+train,head to a b and c in order,F & a F & b F c, F & a F & b F c ,True
+train,make sure you frequent a infinitely,G F a, G F a ,True
+train,go to a and then go to b but dont visit b before a is visited,& U ! b a F b, & U ! b a F b ,True
+train,dont stop visiting a and b,& G F a G F b, & G F a G F b ,True
+train,sometime visit a c b h and d,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
+train,stay away from b until you make a single visit to a and then go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+train,do not visit b until you go to a,& U ! b a F b, & U ! b a F b ,True
+train,revisit a and b multiple times but be sure not to go to one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b,Syntax Error
+train,keep away from b and c while heading to a and then keep away from c while heading to b and eventually go to c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,eventually first visit a and then b after,F & a F b, F & a F b ,True
+train,sometime along the way go to a and b,& F a F b, & F a F b ,True
+train,make sure a b and c are all visited,& F a & F b F c, & F a & F b F c ,True
+train,go to a then move to b,F & a F b, F & a F b ,True
+train,keep going to a again and again,G F a, G F a ,True
+train,visit c a and b in no specific order,& F a & F b F c, & F a & F b F c ,True
+train,move to a and b in any order but do not visit one of them more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W,Syntax Error
+train,visit a,F a, F a ,True
+train,visit a b and c in arbitrary order,& F a & F b F c, & F a & F b F c ,True
+train,visit a and b,& F a F b, & F a F b ,True
+train,visit a then b then c and then d you can only visit each landmark once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d, & & U ! b a & U ! c b & U ! d c F d & U ! a,Syntax Error
+train,eventually visit a afterward eventually visit b afterward eventually visit c afterward eventually visit d afterward eventually visit h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U,Syntax Error
+train,visit a then visit b then visit c then visit d,F & a F & b F & c F d, F & a F & b F & c F d ,True
+train,keep visiting a as many times as you can,G F a, G F a ,True
+train,go to one of a and b and then to the other,& F a F b, & F a F b ,True
+train,a b and c must be visited,& F a & F b F c, & F a & F b F c ,True
+train,go to a and sometime afterward visit b,F & a F b, F & a F b ,True
+train,visit b a c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
+train,eventually reach a c and b,& F a & F b F c, & F a & F b F c ,True
+train,go to a but not through b or c and then go to b but not through c and finally go to c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,never stop visiting a,G F a, G F a ,True
+train,keep going to a,G F a, G F a ,True
+train,visit a and b multiple times in arbitrary order but dont visit one more than one time more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b,Syntax Error
+train,dont stop until a b and c are visited,& F a & F b F c, & F a & F b F c ,True
+train,go to a while staying away from b then move to b,& U ! b a F b, & U ! b a F b ,True
+train,visit a and b in any order,& F a F b, & F a F b ,True
+train,please dont stop visiting a if you are able to,G F a, G F a ,True
+train,go to a and move on to b once you have been to a,F & a F b, F & a F b ,True
+train,visit a and b in any order but do not visit one of them more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b,Syntax Error
+train,make you way to a,F a, F a ,True
+train,go to b but only visit b if you already visited a,& U ! b a F b, & U ! b a F b ,True
+train,visit a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F,Syntax Error
+train,travel between a and b multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W,Syntax Error
+train,find b but not until you find a first,& U ! b a F b, & U ! b a F b ,True
+train,keep coming to a but you dont need to always stay at a,G F a, G F a ,True
+train,you must visit a infinitely often,G F a, G F a ,True
+train,keep visiting a,G F a, G F a ,True
+train,first go to a while avoiding b then move to b,& U ! b a F b, & U ! b a F b ,True
+train,visit a b c d and h in this order there can be other landmarks in between,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h ,True
+train,visit a sometime afterwards visit b sometime afterwards visit c,F & a F & b F c, F & a F & b F c ,True
+train,make you way to a but keep avoiding b or c and head to b but keep avoiding c after that and  then visit c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,make sure you visit a infinite times,G F a, G F a ,True
+train,direct yourself to a but keep away from b and c then go to b but bypass c and eventually make you way at c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,only visit a once and do not visit b until you visit a,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+train,please visit a infinitely often,G F a, G F a ,True
+train,go to a b and c in any order,& F a & F b F c, & F a & F b F c ,True
+train,find a while avoiding b then after finding a go to b,& U ! b a F b, & U ! b a F b ,True
+train,go to a and go to b after a is visited and go to c after a and b are visited,F & a F & b F c, F & a F & b F c ,True
+train,go to a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
+train,in strictly this order visit a then eventually visit b and finally eventually c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,visit a b and c one after another,F & a F & b F c, F & a F & b F c ,True
+train,visit a and then b,F & a F b, F & a F b ,True
+train,pick one from a and b and go there and then go back and forth between a and b with or without stay,& G F a G F b, & G F a G F b ,True
+train,go to a and b in any order,& F a F b, & F a F b ,True
+train,do not visit c until visiting b do not visit b until visiting a,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
+train,visit a and b in any order,& F a F b, & F a F b ,True
+train,go to a b and c,& F a & F b F c, & F a & F b F c ,True
+train,continue moving to a,G F a, G F a ,True
+train,visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
+train,complete rounds of visiting a and b without missing any location,& G F a G F b, & G F a G F b ,True
+train,you must visit a exactly once while avoiding b then you can navigate to b,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b ,Syntax Error
+train,in no particular order visit a b c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
+train,visit b and a,& F a F b, & F a F b ,True
+train,move a then find b,F & a F b, F & a F b ,True
+train,go to a and b in any order and make sure the difference of visits is at most one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b &,Syntax Error
+train,make sure you visit a at least once,F a, F a ,True
+train,eventually in some sequence visit a b c and d each must be followed by the next,F & a F & b F & c F d, F & a F & b F & c F d ,True
+train,visit a one time but not through b and head to b after a is visited,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+train,walk to a,F a, F a ,True
+train,avoid b initially when a is not visited and then just visit a once and then visit b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+train,find a,F a, F a ,True
+train,move to a,F a, F a ,True
+train,move to a exactly once while avoiding b then find b,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b,Syntax Error
+train,frequent a and b but the order can be arbitrary,& G F a G F b, & G F a G F b ,True
+train,go to a and b in an arbitrary order and make sure to visit one no more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W !,Syntax Error
+train,make sure both a and b are visited,& F a F b, & F a F b ,True
+train,move to a and b in any order,& F a F b, & F a F b ,True
+train,visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c, & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U,Syntax Error
+train,go to a only once but keep away from b and then visit b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
+train,go to a and b any time and in any order but do not visit one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a, & & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W !,Syntax Error
+train,find a first then find b,F & a F b, F & a F b ,True
+train,go to a and then go to b,F & a F b, F & a F b ,True
+train,make your way to a b and c consecutively,F & a F & b F c, F & a F & b F c ,True
+train,navigate to a,F a, F a ,True
