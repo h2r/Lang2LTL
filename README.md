@@ -81,4 +81,6 @@ Convert propositions in target LTLs from letters to words joined by underscores.
 ```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
 
 ## Symbolic
-```symbolic_pairs.csv``` pairs of utterances and LTL formulas whose propositions are symbolic, e.g. a, b, c, etc, used for training symbolic translation module.
+```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g. a, b, c, etc, used for training symbolic translation module.
+
+```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
