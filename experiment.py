@@ -109,7 +109,7 @@ def grounding(names):
         if name in name2embed:  # use cached embedding if exists
             embed = name2embed[name]
         else:
-            embed = ground_module.get_embedding(name, args.engine)
+            embed = ground_module.get_embedding(name, args.embed_engine)
             name2embed[name] = embed
             is_embed_added = True
 
@@ -222,10 +222,10 @@ if __name__ == '__main__':
     parser.add_argument('--obj_embed', type=str, default='data/cleanup_obj2embed_gpt3_davinci.pkl', help='path to embedding of objects in env')
     parser.add_argument('--name_embed', type=str, default='data/cleanup_name2embed_gpt3_davinci.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
-    parser.add_argument('--engine', type=str, default='davinci', choices=['ada', 'babbage', 'curie', 'davinci'], help='gpt-3 engine')
+    parser.add_argument('--embed_engine', type=str, default='text-embedding-ada-002', help='gpt-3 embedding engine')
     parser.add_argument('--s2s_sup_data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--s2s_sup_model', type=str, default='model/s2s_transformer.pth', help='file path to trained supervised seq2seq model')
-    parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_corlw.json', help='file path to save outputs of each model in a json file')
+    parser.add_argument('--s2s_sup_model', type=str, default='model/s2s_transformer.pth', help='file path to trained parameters of supervised seq2seq')
+    parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_test.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 
     pairs = load_from_file(args.pairs)
