@@ -88,6 +88,14 @@ def substitute_single_fix(input_str, sub_map):
     return ' '.join(input_str_list).strip(), subs_done
 
 
+def count_params(model):
+    """
+    :param model: a PyTorch module
+    :return: the number of trainable paramters in input PyTorch module
+    """
+    return sum(param.numel() for param in model.parameters() if param.requires_grad)
+
+
 def prefix_to_infix(formula):
     """
     :param formula: LTL formula string in prefix order

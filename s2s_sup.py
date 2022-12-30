@@ -3,17 +3,16 @@ Infer trained model.
 """
 import argparse
 from pathlib import Path
-import numpy as np
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
-import spot
 
 from s2s_hf_transformers import T5_PREFIX, T5_MODELS
 from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
 from s2s_pt_transformer import translate as transformer_translate
 from s2s_pt_transformer import construct_dataset as transformer_construct_dataset
-from utils import save_to_file
+from evaluation import evaluate
+from utils import count_params
 
 
 class Seq2Seq:
@@ -55,32 +54,6 @@ class Seq2Seq:
         return self.model.parameters()
 
 
-def evaluate(s2s, results_fpath):
-    train_iter, valid_iter, _, _, _, _ = transformer_construct_dataset(args.data)
-    results = [["train_or_valid", "utterances", "true_ltl", "output_ltl", "is_correct"]]
-    accs = []
-
-    for idx, (utt, true_ltl) in enumerate(valid_iter+train_iter):
-        train_or_valid = "valid" if idx < len(valid_iter) else "train"
-        out_ltl = s2s.translate([utt])[0]
-        try:  # output LTL formula may have syntax error
-            is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-            is_correct = 'True' if is_correct else 'False'
-        except SyntaxError:
-            print(f'Syntax error in output LTL: {out_ltl}')
-            is_correct = 'Syntax Error'
-        results.append([train_or_valid, utt, true_ltl, out_ltl, is_correct])
-        if train_or_valid == "valid":
-            accs.append(is_correct)
-
-    save_to_file(results, f"{results_fpath}.csv")
-    print(np.mean([True if acc == 'True' else False for acc in accs]))
-
-
-def count_params(model):
-    return sum(param.numel() for param in model.parameters() if param.requires_grad)
-
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/symbolic_no_perm_batch1.csv', help='file path to train and test data for supervised seq2seq')
@@ -101,7 +74,7 @@ if __name__ == '__main__':
 
     print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
 
-    evaluate(s2s, f"results/s2s_{args.model}_{Path(args.data).stem}")
+    evaluate(s2s, args.data, f"results/s2s_{args.model}_{Path(args.data).stem}")
 
     # ltls = s2s.translate([args.utt])
     # print(args.utt)
