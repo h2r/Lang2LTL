@@ -3,13 +3,13 @@ import argparse
 import logging
 import random
 import numpy as np
-import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
+from evaluation import evaluate_lang, evaluate_plan
 
 
 def run_exp(save_result_path):
@@ -177,21 +177,6 @@ def translate_modular(grounded_utts, objs_per_utt):
     return output_ltls, symbolic_ltls, placeholder_maps
 
 
-def evaluate_lang(output_ltls, true_ltls):
-    """
-    Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
-    """
-    accs = []
-    for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-        try:  # output LTL formula may have syntax error
-            accs.append(spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl)))
-        except SyntaxError:
-            logging.info(f'Syntax error in output LTL: {out_ltl}')
-            accs.append(False)
-    acc = np.mean(accs)
-    return accs, acc
-
-
 def plan(output_ltls, true_trajs, name2grounds):
     """
     Planning with translated LTL as task specification
@@ -203,10 +188,6 @@ def plan(output_ltls, true_trajs, name2grounds):
         accs.append(evaluate_plan(out_traj, true_traj))
     acc = np.mean(accs)
     return acc
-
-
-def evaluate_plan(out_traj, true_traj):
-    return out_traj == true_traj
 
 
 if __name__ == '__main__':

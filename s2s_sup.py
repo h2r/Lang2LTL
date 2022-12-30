@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
     print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
 
-    evaluate(s2s, args.data, f"results/s2s_{args.model}_{Path(args.data).stem}")
+    evaluate_lang_from_file(s2s, args.data, f"results/s2s_{args.model}_{Path(args.data).stem}")
 
     # ltls = s2s.translate([args.utt])
     # print(args.utt)
