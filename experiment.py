@@ -7,8 +7,8 @@ import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
-from s2s_sup import Seq2Seq
-from s2s_transformer import construct_dataset
+from s2s_sup import Seq2Seq, T5_MODELS
+from s2s_pt_transformer import construct_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 
@@ -154,9 +154,14 @@ def translate_modular(grounded_utts, objs_per_utt):
 
     if args.trans == 'gpt3':
         trans_module = GPT3()
-    elif args.trans == 's2s_sup':
+    elif args.trans in T5_MODELS:
+        trans_module = Seq2Seq(args.trans)
+    elif args.trans == 'pt_transformer':
         _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset(args.s2s_sup_data)
-        trans_module = Seq2Seq(vocab_transform, text_transform, src_vocab_size, tar_vocab_size, args.s2s_sup_model)
+        model_params = f"model/s2s_{args.trans}.pth"
+        trans_module = Seq2Seq(args.trans,
+                               vocab_transform=vocab_transform, text_transform=text_transform,
+                               src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
         raise ValueError("ERROR: translation module not recognized")
 
@@ -216,7 +221,7 @@ if __name__ == '__main__':
     parser.add_argument('--trans_e2e_prompt', type=str, default='data/cleanup_trans_e2e_prompt_15.txt', help='path to translation end-to-end prompt')
     parser.add_argument('--ner', type=str, default='gpt3', choices=['gpt3', 'bert'], help='NER module')
     parser.add_argument('--ner_prompt', type=str, default='data/cleanup_ner_prompt_15.txt', help='path to NER prompt')
-    parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 's2s_sup', 's2s_weaksup'], help='translation module')
+    parser.add_argument('--trans', type=str, default='gpt3', choices=['gpt3', 't5-base', 't5-small', 'pt_transformer'], help='translation module')
     parser.add_argument('--trans_modular_prompt', type=str, default='data/cleanup_trans_modular_prompt_15.txt', help='path to trans prompt')
     parser.add_argument('--ground', type=str, default='gpt3', choices=['gpt3', 'bert'], help='grounding module')
     parser.add_argument('--obj_embed', type=str, default='data/cleanup_obj2embed_gpt3_davinci.pkl', help='path to embedding of objects in env')
@@ -224,7 +229,6 @@ if __name__ == '__main__':
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
     parser.add_argument('--embed_engine', type=str, default='text-embedding-ada-002', help='gpt-3 embedding engine')
     parser.add_argument('--s2s_sup_data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--s2s_sup_model', type=str, default='model/s2s_transformer.pth', help='file path to trained parameters of supervised seq2seq')
     parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_test.json', help='file path to save outputs of each model in a json file')
     args = parser.parse_args()
 

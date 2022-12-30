@@ -63,7 +63,7 @@ if __name__ == '__main__':
 
     if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
         s2s = Seq2Seq(args.model)
-    elif args.model == "pt_transformer":  # pretrained seq2seq transformer
+    elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
         _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = transformer_construct_dataset(args.data)
         model_params = f"model/s2s_{args.model}.pth"
         s2s = Seq2Seq(args.model,
