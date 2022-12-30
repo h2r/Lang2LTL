@@ -6,6 +6,8 @@ from collections import defaultdict
 import logging
 import numpy as np
 
+from gpt3 import GPT3
+
 
 def build_placeholder_map(name_entities):
     placeholder_map, placeholder_map_inv = {}, {}
@@ -183,7 +185,21 @@ def equal(item1, item2):
             assert np.all(item1[k] == item2[k]), f"{item1[k]} != {item2[k]}"
 
 
+def get_embeddings(objs_fpath, obj2embed_fpath):
+    """
+    Get GPT-3 embeddings for objects in environment and save them
+    """
+    gpt3 = GPT3()
+    obj_names = load_from_file(objs_fpath)
+    obj2embed = {obj_name: gpt3.get_embedding(obj_name) for obj_name in obj_names}
+    save_to_file(obj2embed, obj2embed_fpath)
+
+
 if __name__ == '__main__':
+    # objs_fpath = "data/cleanup_landmarks.txt"
+    # obj2embed_fpath = "data/cleanup_obj2embed_gpt3_ada-002.pkl"
+    # get_embeddings(objs_fpath, obj2embed_fpath)
+
     os.makedirs("data", exist_ok=True)
 
     input_utterances = [
