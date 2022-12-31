@@ -2,9 +2,9 @@
 Based on PyTorch tutorial, Language Translation with nn.transformer and torchtext.
 https://pytorch.org/tutorials/beginner/translation_transformer.html
 """
+import argparse
 import math
 from timeit import default_timer as timer
-from sklearn.model_selection import train_test_split
 import torch
 import torch.nn as nn
 from torch.nn import Transformer
@@ -14,7 +14,7 @@ from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
 from torch.utils.tensorboard import SummaryWriter
 
-from utils import load_from_file
+from dataset import construct_dataset
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
@@ -95,11 +95,7 @@ class PositionalEncoding(nn.Module):
         return self.dropout(token_embedding + self.pos_embedding[:token_embedding.size(0), :])
 
 
-def construct_dataset(fpath='data/symbolic_pairs_no_perm.csv', test_size=0.3, seed=42):
-    data_csv = load_from_file(fpath)
-    dataset = [(utt, ltl) for utt, ltl in data_csv]
-    train_iter, valid_iter = train_test_split(dataset, test_size=test_size, random_state=seed)
-
+def construct_dataset_meta(train_iter):
     vocab_transform = {}
     tokenizer = get_tokenizer(tokenizer=None)
     for ln in [SRC_LANG, TAR_LANG]:
@@ -115,7 +111,7 @@ def construct_dataset(fpath='data/symbolic_pairs_no_perm.csv', test_size=0.3, se
         TAR_LANG: sequential_transforms(tokenizer, vocab_transform[TAR_LANG], tensor_transform)
     }  # covert raw strings to tensors of indices: tokenize, convert words to indices, add SOS and EOS indices
 
-    return train_iter, valid_iter, vocab_transform, text_transform, src_vocab_size, tar_vocab_size
+    return vocab_transform, text_transform, src_vocab_size, tar_vocab_size
 
 
 def yield_tokens(data_iter, tokenizer, language):
@@ -240,8 +236,25 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--data', type=str, default='data/symbolic_no_perm_batch1.csv', help='file path to train and test data for supervised seq2seq')
+    parser.add_argument('--holdout_type', type=str, default='utt', help='type of holdout testing')
+    parser.add_argument('--test_size', type=float, default=0.2, help='train test split ratio. used only when holdout_type=utt')
+    parser.add_argument('--seed', type=int, default=42, help='random state for train test split. used only when holdout_type=utt')
+    args = parser.parse_args()
+
     # Train and save model
-    train_iter, valid_iter, vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset()
+    if args.holdout_type == "ltl_template":
+        kwargs = {"holdout_templates": ["sequenced_visit"]}
+    elif args.holdout_type == "ltl_instance":
+        kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
+    elif args.holdout_type == "utt":
+        kwargs = {"test_size": args.test_size, "seed": args.seed}
+    else:
+        raise ValueError(f"ERROR unrecognized holdout type: {args.holdout_type}.")
+    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(args.data, args.holdout_type, **kwargs)
+
+    vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset_meta(train_iter)
 
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,

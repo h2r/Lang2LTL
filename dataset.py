@@ -1,5 +1,7 @@
 import random
 import string
+from collections import defaultdict
+from sklearn.model_selection import train_test_split
 import spot
 
 from utils import load_from_file, save_to_file, substitute, substitute_single_fix
@@ -57,12 +59,12 @@ def create_osm_dataset():
 def create_symbolic_dataset(load_fpath, perm_props):
     """
     Generate dataset for training symbolic translation module.
-    :param load_fpath: file path to load Google form responses
-    :param perm_props: True if permute propositions in utterances and LTL formulas
+    :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
+    :param perm_props: True if permute propositions in utterances and LTL formulas.
     """
     data = load_from_file(load_fpath)
 
-    csv_symbolic = [["utterance", "ltl_formula"]]
+    csv_symbolic = [["pattern_type", "props", "utterance", "ltl_formula"]]
     for _, _, pattern_type, nprops, utt in data:
         utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
         pattern_type = "_".join(pattern_type.lower().split())
@@ -71,20 +73,83 @@ def create_symbolic_dataset(load_fpath, perm_props):
             for ltl, prop_perm in zip(ltls, props_perm):
                 sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
                 utt_perm, _ = substitute_single_fix(utt, sub_map)  # sub propositions in utt w/ perm corres to ltl
-                csv_symbolic.append([utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
+                csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
         else:  # propositions only appear in ascending order
-            csv_symbolic.append([utt.lower().strip(), ltls[0].strip().replace('\r', '')])
+            csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower().strip(), ltls[0].strip().replace('\r', '')])
 
-    save_fpath = 'data/symbolic_pairs_perm.csv' if perm_props else 'data/symbolic_pairs_no_perm.csv'
+    save_fpath = 'data/symbolic_perm_batch1.csv' if perm_props else 'data/symbolic_no_perm_batch1.csv'
     save_to_file(csv_symbolic, save_fpath)
 
     pairs = load_from_file(save_fpath)
-    for utt, ltl in pairs:
-        print(utt)
+    for pattern_type, props, utt, ltl in pairs:
+        print(f"{pattern_type}, {props}, {utt}")
         print(spot.formula(ltl))
+    print(f"Total number of utt, ltl pairs: {len(pairs)}")
+
+
+def construct_dataset(data_fpath, holdout_type, **kwargs):
+    dataset = load_from_file(data_fpath)
+    train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
+
+    if holdout_type == "ltl_template":  # hold out specified pattern types
+        for pattern_type, props, utt, ltl in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            if pattern_type in kwargs["holdout_templates"]:
+                valid_iter.append((utt, ltl))
+                valid_meta.append((pattern_type, len(props)))
+            else:
+                train_iter.append((utt, ltl))
+                train_meta.append((pattern_type, len(props)))
+    elif holdout_type == "ltl_instance":  # hold out specified (pattern type, nprops) pairs
+        for pattern_type, props, utt, ltl in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            if (pattern_type, len(props)) in kwargs["holdout_instances"]:
+                valid_iter.append((utt, ltl))
+                valid_meta.append((pattern_type, len(props)))
+            else:
+                train_iter.append((utt, ltl))
+                train_meta.append((pattern_type, len(props)))
+    elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
+        meta2data = defaultdict(list)
+        for pattern_type, props, utt, ltl in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            meta2data[(pattern_type, len(props))].append((utt, ltl))
+        for meta, data in meta2data.items():
+            if len(data) == 1:
+                train_iter.append(data[0])
+                train_meta.append(meta)
+            else:
+                train_dataset, valid_dataset = train_test_split(data, test_size=kwargs["test_size"], random_state=kwargs["seed"])
+                for utt, ltl in train_dataset:
+                    train_iter.append((utt, ltl))
+                    train_meta.append(meta)
+                for utt, ltl in valid_dataset:
+                    valid_iter.append((utt, ltl))
+                    valid_meta.append(meta)
+    else:
+        raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
+
+    return train_iter, train_meta, valid_iter, valid_meta
 
 
 if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
-    create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
+    # create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
+
+    # For testing 3 types of holdout test split
+    holdout_type = "utt"
+    data_fpath = 'data/symbolic_no_perm_batch1.csv'
+    if holdout_type == "ltl_template":
+        kwargs = {"holdout_templates": ["strictly_ordered_visit"]}
+    elif holdout_type == "ltl_instance":
+        kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
+    elif holdout_type == "utt":
+        kwargs = {"test_size": 0.2, "seed": 42}
+    else:
+        raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
+    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(data_fpath, holdout_type, **kwargs)
+    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
+    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
+    for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
+        print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
