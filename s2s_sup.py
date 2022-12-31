@@ -78,7 +78,7 @@ if __name__ == '__main__':
         s2s = Seq2Seq(args.model)
     elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
         vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{args.model}.pth"
+        model_params = f"model/s2s_{args.model}_batch1.pth"
         s2s = Seq2Seq(args.model,
                       vocab_transform=vocab_transform, text_transform=text_transform,
                       src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)

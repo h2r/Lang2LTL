@@ -276,7 +276,7 @@ if __name__ == '__main__':
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
         writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
-    model_fpath = 'model/s2s_pt_transformer.pth'
+    model_fpath = 'model/s2s_pt_transformer_batch1.pth'
     torch.save(transformer.state_dict(), model_fpath)
     writer.flush()
     writer.close()
