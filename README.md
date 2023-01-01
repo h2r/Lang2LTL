@@ -47,11 +47,13 @@ python -m spacy download en_core_web_sm
 
 
 # Run Experiments
-Set environment variable for API key and organization ID
+Temporarily set environment variables for API key and organization ID
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
 export ORG_ID=<YOUR_ORG_ID>
 ```
+Or permanently set the above environment variables in your ```~/.bash_file``` or ```~/.bashrc```.
+
 Run end-to-end language to LTL translation using GPT-3
 ```
 python run_experiment.py --full_e2e
