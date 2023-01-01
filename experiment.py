@@ -3,6 +3,7 @@ import argparse
 import logging
 import random
 import numpy as np
+import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
@@ -17,7 +18,7 @@ def run_exp(save_result_path):
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3()
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt) for query in input_utts]
+        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt, n=1) for query in input_utts]
     else:  # Modular
         names, utt2names = ner()
         name2grounds = grounding(names)
@@ -28,11 +29,11 @@ def run_exp(save_result_path):
             output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
     if len(input_utts) != len(output_ltls):
-        logging.info(f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}')
+        logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}")
     accs_lang, acc_lang = evaluate_lang(output_ltls, true_ltls)
     for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, output_ltls, true_ltls, accs_lang)):
-        logging.info(f'{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n')
-    logging.info(f'Language to LTL translation accuracy: {acc_lang}')
+        logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
+    logging.info(f"Language to LTL translation accuracy: {acc_lang}")
 
     final_results = {
         'NER': utt2names if not args.full_e2e else None,
@@ -63,11 +64,11 @@ def ner():
     # elif args.ner == 'bert':
     #     ner_module = BERT()
     else:
-        raise ValueError(f'ERROR: NER module not recognized: {args.ner}')
+        raise ValueError(f"ERROR: NER module not recognized: {args.ner}")
 
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for idx_utt, utt in enumerate(input_utts):
-        logging.info(f'Extracting name entities from utterance: {idx_utt}')
+        logging.info(f"Extracting name entities from utterance: {idx_utt}")
         names_per_utt = [name.lower().strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
 
         extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate NER error
@@ -102,7 +103,7 @@ def grounding(names):
     # elif args.ground == 'bert':
     #     ground_module = BERT()
     else:
-        raise ValueError(f'ERROR: grounding module not recognized: {args.ground}')
+        raise ValueError(f"ERROR: grounding module not recognized: {args.ground}")
 
     name2grounds, is_embed_added = {}, False
     for name in names:
@@ -139,7 +140,7 @@ def translate_e2e(grounded_utts):
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
     model = GPT3()
-    output_ltls = [model.translate(utt, prompt=trans_e2e_prompt) for utt in grounded_utts]
+    output_ltls = [model.translate(utt, prompt=trans_e2e_prompt, n=1) for utt in grounded_utts]
     return output_ltls
 
 
@@ -163,18 +164,54 @@ def translate_modular(grounded_utts, objs_per_utt):
                                vocab_transform=vocab_transform, text_transform=text_transform,
                                src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
-        raise ValueError("ERROR: translation module not recognized")
+        raise ValueError(f"ERROR: translation module not recognized: {args.trans}")
 
     placeholder_maps, placeholder_maps_inv = [], []
     for objs in objs_per_utt:
         placeholder_map, placeholder_map_inv = build_placeholder_map(objs)
         placeholder_maps.append(placeholder_map)
         placeholder_maps_inv.append(placeholder_map_inv)
-
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
-    symbolic_ltls = [trans_module.translate(query, prompt=trans_modular_prompt) for query in trans_queries]
+
+    symbolic_ltls = []
+    for query in trans_queries:
+        ltl = trans_module.translate(query, prompt=trans_modular_prompt, n=1)
+        try:
+            spot.formula(ltl)
+        except SyntaxError:
+            ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
+        symbolic_ltls.append(ltl)
+
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
     return output_ltls, symbolic_ltls, placeholder_maps
+
+
+def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=20):
+    """
+    :param trans_module: model for the translation module.
+    :param query: input utterance.
+    :param ltl_incorrect:  LTL formula that has syntax error.
+    :param trans_modular_prompt: prompt for GPT-3 translation module
+    :param n: number of outupt to sample from the translation module.
+    :return: LTL formula of correct syntax and most likely to be correct translation of utterance `query'.
+    """
+    breakpoint()
+    logging.info(f"Syntax error in {query} | {ltl_incorrect}")
+    if isinstance(trans_module, GPT3):
+        ltls_fix = trans_module.translate(query, prompt=trans_modular_prompt, n=n)
+    else:
+        ltls_fix = trans_module.translate(query, n=n)
+    logging.info(f"{n} candidate LTL formulas: {ltls_fix}")
+    ltl_fix = ""
+    for ltl in ltls_fix:
+        try:
+            spot.formula(ltl)
+            ltl_fix = ltl
+            break
+        except SyntaxError:
+            continue
+    logging.info(f"Fixed LTL: {ltl_fix}")
+    return ltl_fix
 
 
 def plan(output_ltls, true_trajs, name2grounds):
@@ -218,7 +255,7 @@ if __name__ == '__main__':
     for utt, ltl in pairs:
         input_utts.append(utt)
         true_ltls.append(ltl)
-    assert len(input_utts) == len(true_ltls), f'ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}'
+    assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
     if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
         random.seed(42)
         input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
@@ -233,6 +270,6 @@ if __name__ == '__main__':
 
     for run in range(args.nruns):
         fpath_tup = os.path.splitext(args.save_result_path)
-        save_result_path = f'{fpath_tup[0]}_run{run}' + fpath_tup[1]
-        logging.info(f'\n\n\nRUN: {run}')
+        save_result_path = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
+        logging.info(f"\n\n\nRUN: {run}")
         run_exp(save_result_path)
