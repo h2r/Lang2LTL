@@ -9,35 +9,24 @@ openai.organization = os.getenv("ORG_ID")
 class GPT3:
     def extract_ne(self, query, **kwargs):
         query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
-        out = self.generate(query_prompt)
-        # out = "Landmarks: Heng Thai | Providence Palace | Chinatown"
-
-        # if out.find("Landmarks:") != 0:
-        #     raise ValueError(f"Invalid output string: {out}")
-        #
-        # name_entities = out[11:].split(' | ')
-
+        out = GPT3.generate(query_prompt)
         name_entities = out.split(' | ')
         return name_entities
 
     def translate(self, query, **kwargs):
         query_prompt = kwargs["prompt"] + query + "\nLTL:"
-        out = self.generate(query_prompt)
-        # out = "LTL: F ( Heng Thai & F ( Chinatown & F ( Providence Palace ) )"
-        # out = "LTL: F ( A & F ( C & F ( B ) )"
-
-        # if out.find("LTL:") != 0:
-        #     raise ValueError(f"Invalid output string: {out}")
-        #
-        # return out[5:]
-        return out.strip()
+        outs = GPT3.generate(query_prompt, n=kwargs["n"])
+        if kwargs["n"] > 1:  # GPT-3 generates more than 1 candidate translations
+            return [out.strip() for out in outs]
+        return outs.strip()
 
     @staticmethod
-    def generate(query_prompt, engine="text-davinci-003", temp=0.6):  # engines must match when compare two embeddings
+    def generate(query_prompt, engine="text-davinci-003", temp=0.6, n=1):  # engines must match when compare two embeddings
         response = openai.Completion.create(
             model=engine,
             prompt=query_prompt,
             temperature=temp,
+            n=n
         )['choices'][0]['text']
         return response
 
@@ -73,8 +62,8 @@ if __name__ == '__main__':
         "LTL: F ( Burger Queen & F ( KFC & F ( black stone park ) )\n\n" \
         "English: "
 
-    response = gpt3.generate(query_prompt)
-    embedding = gpt3.get_embedding("Burger Queen")
-    breakpoint()
+    response = GPT3.generate(query_prompt, n=3)
     print(response)
-    print(embedding)
+    # embedding = GPT3.get_embedding("Burger Queen")
+    # print(embedding)
+    breakpoint()
