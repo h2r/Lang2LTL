@@ -244,8 +244,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     # Train and save model
-    if args.holdout_type == "ltl_template":
-        kwargs = {"holdout_templates": ["sequenced_visit"]}
+    if args.holdout_type == "ltl_type":
+        kwargs = {"holdout_types": ["sequenced_visit"]}
     elif args.holdout_type == "ltl_instance":
         kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
     elif args.holdout_type == "utt":

@@ -186,7 +186,7 @@ def translate_modular(grounded_utts, objs_per_utt):
     return output_ltls, symbolic_ltls, placeholder_maps
 
 
-def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=20):
+def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=100):
     """
     :param trans_module: model for the translation module.
     :param query: input utterance.
@@ -196,7 +196,7 @@ def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=
     :return: LTL formula of correct syntax and most likely to be correct translation of utterance `query'.
     """
     breakpoint()
-    logging.info(f"Syntax error in {query} | {ltl_incorrect}")
+    logging.info(f"Syntax error: {query} | {ltl_incorrect}")
     if isinstance(trans_module, GPT3):
         ltls_fix = trans_module.translate(query, prompt=trans_modular_prompt, n=n)
     else:

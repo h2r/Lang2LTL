@@ -91,10 +91,10 @@ def construct_dataset(data_fpath, holdout_type, **kwargs):
     dataset = load_from_file(data_fpath)
     train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
 
-    if holdout_type == "ltl_template":  # hold out specified pattern types
+    if holdout_type == "ltl_type":  # hold out specified pattern types
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            if pattern_type in kwargs["holdout_templates"]:
+            if pattern_type in kwargs["holdout_types"]:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
             else:
@@ -140,8 +140,8 @@ if __name__ == '__main__':
     # For testing 3 types of holdout test split
     holdout_type = "utt"
     data_fpath = 'data/symbolic_no_perm_batch1.csv'
-    if holdout_type == "ltl_template":
-        kwargs = {"holdout_templates": ["strictly_ordered_visit"]}
+    if holdout_type == "ltl_type":
+        kwargs = {"holdout_types": ["strictly_ordered_visit"]}
     elif holdout_type == "ltl_instance":
         kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
     elif holdout_type == "utt":

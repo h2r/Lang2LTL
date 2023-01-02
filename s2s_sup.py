@@ -64,8 +64,8 @@ if __name__ == '__main__':
     parser.add_argument('--seed', type=int, default=42, help='random state for train test split. used only when holdout_type=utt')
     args = parser.parse_args()
 
-    if args.holdout_type == "ltl_template":
-        kwargs = {"holdout_templates": ["sequenced_visit"]}
+    if args.holdout_type == "ltl_type":
+        kwargs = {"holdout_types": ["sequenced_visit"]}
     elif args.holdout_type == "ltl_instance":
         kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
     elif args.holdout_type == "utt":
