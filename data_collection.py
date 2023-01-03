@@ -63,5 +63,5 @@ if __name__ == '__main__':
     raw_fpath = os.path.join("data", "raw_responses_batch1.csv")
     result_fpath = os.path.join("data", "aggregated_responses_batch1.csv")
     analysis_fpath = os.path.join("data", "analysis_batch1.csv")
-    # aggregate_responses(raw_fpath, result_fpath)
+    aggregate_responses(raw_fpath, result_fpath)
     analyze_responses(result_fpath, analysis_fpath)
