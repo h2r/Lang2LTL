@@ -145,3 +145,28 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,walk to a
 2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,make you way to a
 2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,head to a
+2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Go to a
+2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Reach a
+2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Visit a
+2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Find a
+2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Approach a
+2023/01/03 2:46:54 PM EST,ankitshah91@gmail.com,Visit,2,"Go to a, and go to b"
+2023/01/03 2:46:54 PM EST,ankitshah91@gmail.com,Visit,2,Visit a and b
+2023/01/03 2:46:54 PM EST,ankitshah91@gmail.com,Visit,2,"Reach a, reach b"
+2023/01/03 2:46:54 PM EST,ankitshah91@gmail.com,Visit,2,Visit both a and b
+2023/01/03 2:46:54 PM EST,ankitshah91@gmail.com,Visit,2,Find a and b
+2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Go to the following locations, a, b, and c"
+2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Reach a, b, and c"
+2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Visit a, b, and c in any order"
+2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Find a, b, and c"
+2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Visit all three locations a, b, and c"
+2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Go to a, go to b, got to c and go to d"
+2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Reach all the following locations: a, b, c, and d"
+2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit a, Go to b, reach c, reach d"
+2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit a, b, c, and d in no particular order"
+2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit, a, b, c, and d. The order is not important"
+2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Go to a, go to b, go to c, go to d, go to h"
+2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Visit a, b, c, d, h in any order required"
+2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Visit all locations, a, b, c, d, h"
+2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Reach the following five locations a, b, c, d, h"
+2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Find the following: a, b, c, d, h"
