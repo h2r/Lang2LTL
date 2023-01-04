@@ -170,3 +170,13 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Visit all locations, a, b, c, d, h"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Reach the following five locations a, b, c, d, h"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Find the following: a, b, c, d, h"
+2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Go to a, then b, then c"
+2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Go to a. Then, go to b. Finally, go to c."
+2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Visit a, b, and c in that order. "
+2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,Start at a. Then visit b. Then go to c. 
+2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Please visit a at 9:00, then b at 10:00, and then c at 11:00. "
+2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Please visit a, b, and c in any order."
+2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Go to a, b, and c."
+2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"When you have the chance, can you go to a, c, and b. "
+2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"You must go to c, a, and b at least once. "
+2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Go to all of a, b, and c. "
