@@ -32,7 +32,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2022/12/10 11:43:28 PM EST,saml@princeton.edu,Ordered Visit,5,"Before visiting b, c, d, and h, visit an and never visit it again. Then visit b before c, d, and h, and never visit it again. Do not visit d and h until you visit c. Never visit c again. Then visit d before h and never visit h again. Finally visit h"
 2022/12/10 11:51:39 PM EST,saml@princeton.edu,Strictly Ordered Visit,2,Only visit a once and do not visit b until you visit a. 
 2022/12/11 12:08:43 AM EST,saml@princeton.edu,Strictly Ordered Visit,3,Do not visit c until you visit b. Visit b only once. Do no visit b until you visit a. Visit a only once
-2022/12/11 6:47:47 AM EST,ifrah_idrees@brown.edu,Patrolling,2,complete rounds of visiting a and b without missing any location
 2022/12/11 5:15:29 PM EST,saml@princeton.edu,Strictly Ordered Visit,4,Do not visit d until you visit c. Visit c only once. Do not visit c until you visit b. Visit b only once. Do no visit b until you visit a. Visit a only once
 2022/12/11 5:15:29 PM EST,saml@princeton.edu,Strictly Ordered Visit,4,"Visit a, then b, then c, and then d. You can only visit each landmark once."
 2022/12/11 5:16:47 PM EST,saml@princeton.edu,Strictly Ordered Visit,5,Do not visit h until you visit d. Visit d only once. Do not visit d until you visit c. Visit c only once. Do not visit c until you visit b. Visit b only once. Do no visit b until you visit a. Visit a only once
@@ -180,3 +179,31 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"When you have the chance, can you go to a, c, and b. "
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"You must go to c, a, and b at least once. "
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Go to all of a, b, and c. "
+2023/01/04 10:49:02 AM EST,ankitshah91@gmail.com,Sequenced Visit,2,Go to a then go to b
+2023/01/04 10:49:02 AM EST,ankitshah91@gmail.com,Sequenced Visit,2,Go to b after going to a
+2023/01/04 10:49:02 AM EST,ankitshah91@gmail.com,Sequenced Visit,2,"Visit a, visit b after that"
+2023/01/04 10:49:02 AM EST,ankitshah91@gmail.com,Sequenced Visit,2,Reach a then go to b
+2023/01/04 10:49:02 AM EST,ankitshah91@gmail.com,Sequenced Visit,2,Go to a then reach b
+2023/01/04 10:51:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,3,Go to a then go to b then go to c
+2023/01/04 10:51:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,3,"Go to a , then visit b, then reach c"
+2023/01/04 10:51:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,3,"Go to c after b, go to b after going to a"
+2023/01/04 10:51:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,3,"Visit b at least once after going to a, and visit c at least once after going to b"
+2023/01/04 10:51:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,3,"Reach a, then reach b and then reach c"
+2023/01/04 10:56:25 AM EST,ankitshah91@gmail.com,Sequenced Visit,4,Go to a then go to b then go to c and then go to d
+2023/01/04 10:56:25 AM EST,ankitshah91@gmail.com,Sequenced Visit,4,"Ensure that you visit a,b,c, and d in order"
+2023/01/04 10:56:25 AM EST,ankitshah91@gmail.com,Sequenced Visit,4,"Visit b at least once after visiting a, visit c at least once after visiting a and b, visit d at least once after visiting a,b, and c"
+2023/01/04 10:56:25 AM EST,ankitshah91@gmail.com,Sequenced Visit,4,Reach a then reach b then reach c and then reach d
+2023/01/04 10:56:25 AM EST,ankitshah91@gmail.com,Sequenced Visit,4,"Visit a, b, c, and d one after the other"
+2023/01/04 11:04:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,5,"Visit a, b, c, d, and h sequentially"
+2023/01/04 11:04:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,5,"Visit a, then visit b, then visit c, then visit d, and then visit h"
+2023/01/04 11:04:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,5,"Reach a, b, c, d, and h sequentially"
+2023/01/04 11:04:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,5,"Visit b at least once after visiting a, visit c at least once after visiting both a and b, visit d at least once after visiting a, b and c, and visit h at least once after visiting a, b, c, and d"
+2023/01/04 11:04:09 AM EST,ankitshah91@gmail.com,Sequenced Visit,5,"Go to a, then go to b, and then reach c, then reach d, and finally go to h"
+2023/01/05 1:53:21 AM EST,ziyi_yang1@brown.edu,Fair Visit,5,"make sure you frequent a, b, c, d, and h equally or at most one time in difference"
+2023/01/05 1:53:21 AM EST,ziyi_yang1@brown.edu,Fair Visit,5,"visit a, b, c, d, and h multiple times in arbitrary order, but do not visit one more than one time more than the other"
+2023/01/05 1:53:21 AM EST,ziyi_yang1@brown.edu,Fair Visit,5,"go to a, b, c, d, and h any time and in any order, but do not visit one more than the other more than once"
+2023/01/05 1:53:21 AM EST,ziyi_yang1@brown.edu,Fair Visit,5,"travel between a, b, c, d, and h multiple times in any sequence, but ensure neither is visited more than once more than the other"
+2023/01/05 1:53:21 AM EST,ziyi_yang1@brown.edu,Fair Visit,5,"revisit a, b, c, d, and h multiple times, but be sure not to go to one more than the other more than once"
+2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Go to a, b,c,d,and then h"
+2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Visit a, b,c,d,and then h"
+2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Visit a, then b, then c, then d and then h and after that visit them again in any order"
