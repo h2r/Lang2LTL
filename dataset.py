@@ -82,10 +82,10 @@ def create_symbolic_dataset(load_fpath, perm_props):
     save_to_file(csv_symbolic, save_fpath)
 
     pairs = load_from_file(save_fpath)
-    for pattern_type, props, utt, ltl in pairs:
-        print(f"{pattern_type}, {props}, {utt}")
-        print(spot.formula(ltl))
-    print(f"Total number of utt, ltl pairs: {len(pairs)}")
+    # for pattern_type, props, utt, ltl in pairs:
+    #     print(f"{pattern_type}, {props}, {utt}")
+    #     print(spot.formula(ltl))
+    print(f"Total number of utt, ltl pairs: {len(pairs)}\n")
 
 
 def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed):
@@ -97,6 +97,7 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
     :param test_size: percentage or number of samples to holdout for testing.
     :param seed: random seed
     """
+    print(f"Generating train, test split for holdout type: {holdout_type}")
     dataset = load_from_file(data_fpath)
     train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
 
@@ -172,7 +173,7 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
     # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
     #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
     print(f"Number of training samples: {len(train_iter)}")
-    print(f"Number of validation samples: {len(valid_iter)}")
+    print(f"Number of validation samples: {len(valid_iter)}\n")
 
 
 def load_split_dataset(split_fpath):
@@ -183,19 +184,13 @@ def load_split_dataset(split_fpath):
 if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
-    # create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
 
-    # Construct train, test split based on the type of holdout testing
-    holdout_type = "ltl_type"
-    filter_types = ["fair_visit"]
+    # Construct train, test split for 3 types of holdout
+    create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
+
     data_fpath = "data/symbolic_no_perm_batch1.csv"
-    if holdout_type == "ltl_type":
-        test_size = 2
-    elif holdout_type == "ltl_instance":
-        test_size = 0.2
-    elif holdout_type == "utt":
-        test_size = 0.2
-    else:
-        raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
+    filter_types = ["fair_visit"]
     seed = 42
-    construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed)
+    construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
+    construct_split_dataset(data_fpath, holdout_type="ltl_instance", filter_types=filter_types, test_size=0.2, seed=seed)
+    construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
