@@ -207,3 +207,38 @@ fair_visit,"['a', 'b', 'c', 'd', 'h']",revisit a b c d and h multiple times but 
 visit,"['a', 'b', 'c', 'd', 'h']",go to a bcdand then h,& F a & F b & F c & F d F h
 visit,"['a', 'b', 'c', 'd', 'h']",visit a bcdand then h,& F a & F b & F c & F d F h
 visit,"['a', 'b', 'c', 'd', 'h']",visit a then b then c then d and then h and after that visit them again in any order,& F a & F b & F c & F d F h
+ordered_visit,"['a', 'b']",visit b only after visiting a,& U ! b a F b
+ordered_visit,"['a', 'b']",go to b after going to a do not go to b before,& U ! b a F b
+ordered_visit,"['a', 'b']",go to a and only then go to b,& U ! b a F b
+ordered_visit,"['a', 'b']",ensure that you do not reach b before going to a,& U ! b a F b
+ordered_visit,"['a', 'b']",visit b but do not visit b before you reach a,& U ! b a F b
+ordered_visit,"['a', 'b', 'c']",visit c but only after visiting b and visit b only after visiting a,& U ! b a & U ! c b F c
+ordered_visit,"['a', 'b', 'c']",go to a only then go to b and only then go to c,& U ! b a & U ! c b F c
+ordered_visit,"['a', 'b', 'c']",do not go to c until you visit b and do not go to b until you visit a and make sure you visit c,& U ! b a & U ! c b F c
+ordered_visit,"['a', 'b', 'c']",reach c but not until you visit a and b and that specific order,& U ! b a & U ! c b F c
+ordered_visit,"['a', 'b', 'c']",visit a only then should you visit b and only after that should you reach c,& U ! b a & U ! c b F c
+ordered_visit,"['a', 'b', 'c', 'd']",visit a b c and d in that specific order make sure not to visit waypoints out of turn,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",go to a only after that go to b only then go to c and only then go to d,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",visit d but do not visit d until you have reached c in turn only go to c after you visit b and only go to b after reaching a,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",first go directly to a without visiting any other waypoints then go directly to b then directly to c and finally directly to d,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",visit a b c d in that specific order,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a b c d and h in that specific order,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",ensure that you visit h but only after d in turn only visit d after c only visit c after b and only visit b after a,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in that specific order ensure to not visit locations out of turn,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to h but only after visiting a b c d in that specific order,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a,& U ! b a & U ! c b & U ! d c & U ! h d F h
+visit,"['a', 'b', 'c', 'd']",go to a b c and d in arbitrary order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",visit a b c and d,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",make sure a b c and d are all visited,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",do not stop until a b c and d are all visited,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",make your way to a b c and d,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd', 'h']",go to a b c d and h in arbitrary order,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",make sure a b c d and h are all visited,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",do not stop until a b c d and h are all visited,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",make your way to a b c d and h,& F a & F b & F c & F d F h
+sequenced_visit,"['a', 'b', 'c', 'd']",go to a and then go to b and then go to c and then go to d,F & a F & b F & c F d
+sequenced_visit,"['a', 'b', 'c', 'd']",visit a b c and d in this order,F & a F & b F & c F d
+sequenced_visit,"['a', 'b', 'c', 'd']",head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited,F & a F & b F & c F d
+sequenced_visit,"['a', 'b', 'c', 'd']",make sure a b c and d are all visited in this order,F & a F & b F & c F d
+sequenced_visit,"['a', 'b', 'c', 'd']",you have to walk to a and then walk to b and then walk to c and finally walk to d,F & a F & b F & c F d
