@@ -3,6 +3,7 @@ Based on PyTorch tutorial, Language Translation with nn.transformer and torchtex
 https://pytorch.org/tutorials/beginner/translation_transformer.html
 """
 import argparse
+from pathlib import Path
 import math
 from timeit import default_timer as timer
 import torch
@@ -14,7 +15,7 @@ from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
 from torch.utils.tensorboard import SummaryWriter
 
-from dataset import construct_dataset
+from dataset import load_split_dataset
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
@@ -237,25 +238,15 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='data/symbolic_no_perm_batch1.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--holdout_type', type=str, default='utt', help='type of holdout testing')
-    parser.add_argument('--test_size', type=float, default=0.2, help='train test split ratio. used only when holdout_type=utt')
-    parser.add_argument('--seed', type=int, default=42, help='random state for train test split. used only when holdout_type=utt')
+    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
+                        help='file path to train and test data for supervised seq2seq')
     args = parser.parse_args()
 
-    # Train and save model
-    if args.holdout_type == "ltl_type":
-        kwargs = {"holdout_types": ["sequenced_visit"]}
-    elif args.holdout_type == "ltl_instance":
-        kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
-    elif args.holdout_type == "utt":
-        kwargs = {"test_size": args.test_size, "seed": args.seed}
-    else:
-        raise ValueError(f"ERROR unrecognized holdout type: {args.holdout_type}.")
-    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(args.data, args.holdout_type, **kwargs)
-
+    # Load train, test data
+    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(args.split_dataset_fpath)
     vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset_meta(train_iter)
 
+    # Train and save model
     transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
                                      NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
                                      DIM_FFN_HID)
@@ -276,7 +267,7 @@ if __name__ == '__main__':
         print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
               f'Epoch time: {(end_time-start_time):.3f}s')
         writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
-    model_fpath = 'model/s2s_pt_transformer_batch1.pth'
+    model_fpath = f'model/s2s_pt_transformer_{Path(args.split_dataset_fpath).stem}.pth'
     torch.save(transformer.state_dict(), model_fpath)
     writer.flush()
     writer.close()

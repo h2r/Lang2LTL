@@ -1,3 +1,4 @@
+from pathlib import Path
 import random
 import string
 from collections import defaultdict
@@ -5,7 +6,7 @@ from sklearn.model_selection import train_test_split
 import spot
 
 from utils import load_from_file, save_to_file, substitute, substitute_single_fix
-from formula_sampler import PROPS, sample_formulas
+from formula_sampler import PROPS, ALL_TYPES, sample_formulas
 
 
 def generate_tar_file():
@@ -87,23 +88,46 @@ def create_symbolic_dataset(load_fpath, perm_props):
     print(f"Total number of utt, ltl pairs: {len(pairs)}")
 
 
-def construct_dataset(data_fpath, holdout_type, **kwargs):
+def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed):
+    """
+    :param data_fpath: path to symbolic dataset
+    :param holdout_type: type of holdout test. choices are ltl_type, ltl_instance, utt.
+    :param filter_types: LTL types to filter out.
+    :param split_fpath: path to pickle file that stores train, test split
+    :param test_size: percentage or number of samples to holdout for testing.
+    :param seed: random seed
+    """
     dataset = load_from_file(data_fpath)
     train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
 
     if holdout_type == "ltl_type":  # hold out specified pattern types
+        all_types = [typ for typ in ALL_TYPES if typ not in filter_types]
+        random.seed(seed)
+        holdout_types = random.sample(all_types, test_size)
+        print(f"Train LTL types: {[instance for instance in ALL_TYPES if instance not in holdout_types]}")
+        print(f"Holdout LTL types: {holdout_types}")
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            if pattern_type in kwargs["holdout_types"]:
+            if pattern_type in holdout_types:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
             else:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "ltl_instance":  # hold out specified (pattern type, nprops) pairs
+        all_instances = []
+        for pattern_type, props, _, _ in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            instance = (pattern_type, len(props))
+            if pattern_type not in filter_types and instance not in all_instances:
+                all_instances.append(instance)
+        random.seed(seed)
+        holdout_instances = random.sample(all_instances, int(len(all_instances)*test_size))
+        print(f"Train LTL instances: {[instance for instance in all_instances if instance not in holdout_instances]}")
+        print(f"Holdout LTL instances: {holdout_instances}")
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            if (pattern_type, len(props)) in kwargs["holdout_instances"]:
+            if (pattern_type, len(props)) in holdout_instances:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
             else:
@@ -113,13 +137,14 @@ def construct_dataset(data_fpath, holdout_type, **kwargs):
         meta2data = defaultdict(list)
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            meta2data[(pattern_type, len(props))].append((utt, ltl))
+            if pattern_type not in filter_types:
+                meta2data[(pattern_type, len(props))].append((utt, ltl))
         for meta, data in meta2data.items():
             if len(data) == 1:
                 train_iter.append(data[0])
                 train_meta.append(meta)
             else:
-                train_dataset, valid_dataset = train_test_split(data, test_size=kwargs["test_size"], random_state=kwargs["seed"])
+                train_dataset, valid_dataset = train_test_split(data, test_size=test_size, random_state=seed)
                 for utt, ltl in train_dataset:
                     train_iter.append((utt, ltl))
                     train_meta.append(meta)
@@ -129,27 +154,48 @@ def construct_dataset(data_fpath, holdout_type, **kwargs):
     else:
         raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
 
-    return train_iter, train_meta, valid_iter, valid_meta
+    split_dataset = {
+        "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
+        "holdout_type": holdout_type,
+        "filter_types": filter_types,
+        "test_size": test_size,
+        "seed": seed
+    }
+    dataset_name = Path(data_fpath).stem
+    split_fpath = f"data/split_{dataset_name}_{holdout_type}_{test_size}_{seed}.pkl"
+    save_to_file(split_dataset, split_fpath)
+
+    # Testing by loading the saved split dataset back
+    # train_iter, train_meta, valid_iter, valid_meta = load_split_datast(split_fpath)
+    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
+    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
+    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
+    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
+    print(f"Number of training samples: {len(train_iter)}")
+    print(f"Number of validation samples: {len(valid_iter)}")
+
+
+def load_split_dataset(split_fpath):
+    dataset = load_from_file(split_fpath)
+    return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
 
 
 if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
-    # create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
+    # create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
 
-    # For testing 3 types of holdout test split
-    holdout_type = "utt"
-    data_fpath = 'data/symbolic_no_perm_batch1.csv'
+    # Construct train, test split based on the type of holdout testing
+    holdout_type = "ltl_type"
+    filter_types = ["fair_visit"]
+    data_fpath = "data/symbolic_no_perm_batch1.csv"
     if holdout_type == "ltl_type":
-        kwargs = {"holdout_types": ["strictly_ordered_visit"]}
+        test_size = 2
     elif holdout_type == "ltl_instance":
-        kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
+        test_size = 0.2
     elif holdout_type == "utt":
-        kwargs = {"test_size": 0.2, "seed": 42}
+        test_size = 0.2
     else:
         raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
-    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(data_fpath, holdout_type, **kwargs)
-    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
-    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
-    for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
-        print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
+    seed = 42
+    construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed)

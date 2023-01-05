@@ -4,7 +4,7 @@ from collections import defaultdict
 import numpy as np
 import spot
 
-from dataset import construct_dataset
+from dataset import load_split_dataset
 from utils import load_from_file, save_to_file
 
 
@@ -25,7 +25,7 @@ def evaluate_lang(output_ltls, true_ltls):
     return accs, acc
 
 
-def evaluate_lang_single(model, valid_iter, valid_meta, result_log_fpath, analysis_fpath, acc_fpath, valid_iter_len):
+def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len):
     """
     Evaluate translation accuracy per LTL pattern type.
     """
@@ -68,10 +68,10 @@ def evaluate_lang_single(model, valid_iter, valid_meta, result_log_fpath, analys
     return meta2acc, total_acc
 
 
-def evaluate_lang_from_file(model, holdout_type, data_fpath, result_log_fpath, analysis_fpath, acc_fpath, **kwargs):
-    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(data_fpath, holdout_type, **kwargs)
+def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath):
+    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
     return evaluate_lang_single(model, valid_iter+train_iter, valid_meta+train_meta,
-                                result_log_fpath, analysis_fpath, acc_fpath, len(valid_iter))
+                                analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
 
 
 def evaluate_plan(out_traj, true_traj):

@@ -9,9 +9,9 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5Fo
 from s2s_hf_transformers import T5_PREFIX, T5_MODELS
 from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
-from dataset import construct_dataset
 from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
+from dataset import load_split_dataset
 from evaluation import evaluate_lang_from_file
 from utils import count_params
 
@@ -57,36 +57,30 @@ class Seq2Seq:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='data/symbolic_no_perm_batch1.csv', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"], help='name of supervised seq2seq model')
-    parser.add_argument('--holdout_type', type=str, default='utt', help='type of holdout testing')
-    parser.add_argument('--test_size', type=float, default=0.2, help='train test split ratio. used only when holdout_type=utt')
-    parser.add_argument('--seed', type=int, default=42, help='random state for train test split. used only when holdout_type=utt')
+    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
+                        help='file path to train test split dataset')
+    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"],
+                        help='name of supervised seq2seq model')
     args = parser.parse_args()
 
-    if args.holdout_type == "ltl_type":
-        kwargs = {"holdout_types": ["sequenced_visit"]}
-    elif args.holdout_type == "ltl_instance":
-        kwargs = {"holdout_instances": [("sequenced_visit", 3)]}
-    elif args.holdout_type == "utt":
-        kwargs = {"test_size": args.test_size, "seed": args.seed}
-    else:
-        raise ValueError(f"ERROR unrecognized holdout type: {args.holdout_type}.")
-    train_iter, train_meta, valid_iter, valid_meta = construct_dataset(args.data, args.holdout_type, **kwargs)
+    # Load train, test data
+    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(args.split_dataset_fpath)
 
     if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
         s2s = Seq2Seq(args.model)
     elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
         vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{args.model}_batch1.pth"
+        model_params = f"model/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}.pth"
         s2s = Seq2Seq(args.model,
                       vocab_transform=vocab_transform, text_transform=text_transform,
                       src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
-    print(f"number of trainable parameters in {args.model}: {count_params(s2s)}")
+    print(f"Number of trainable parameters in {args.model}: {count_params(s2s)}")
+    print(f"Number of training samples: {len(train_iter)}")
+    print(f"Number of validation samples: {len(valid_iter)}")
 
-    results_fpath = f"results/s2s_{args.model}_{Path(args.data).stem}_log.csv"
+    result_log_fpath = f"results/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}_log.csv"
     analysis_fpath = "data/analysis_batch1.csv"
-    acc_fpath = f"results/s2s_{args.model}_{Path(args.data).stem}_acc.csv"
-    evaluate_lang_from_file(s2s, args.holdout_type, args.data, results_fpath, analysis_fpath, acc_fpath, **kwargs)
+    acc_fpath = f"results/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}_acc.csv"
+    evaluate_lang_from_file(s2s, args.split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)

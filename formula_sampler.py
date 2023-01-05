@@ -12,6 +12,9 @@ import spot
 
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]  # 16
+ALL_TYPES = [
+    "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",
+]
 
 
 def sample_formulas(pattern_type, nprops, debug):
