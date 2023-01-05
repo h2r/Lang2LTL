@@ -207,3 +207,23 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Go to a, b,c,d,and then h"
 2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Visit a, b,c,d,and then h"
 2023/01/05 5:41:34 AM EST,ifrah_idrees@brown.edu,Visit,5,"Visit a, then b, then c, then d and then h and after that visit them again in any order"
+2023/01/05 11:57:46 AM EST,ankitshah91@gmail.com,Ordered Visit,2,Visit b only after visiting a
+2023/01/05 11:57:46 AM EST,ankitshah91@gmail.com,Ordered Visit,2,"Go to b after going to a, do not go to b before"
+2023/01/05 11:57:46 AM EST,ankitshah91@gmail.com,Ordered Visit,2,Go to a and only then go to b.
+2023/01/05 11:57:46 AM EST,ankitshah91@gmail.com,Ordered Visit,2,Ensure that you do not reach b before going to a
+2023/01/05 11:57:46 AM EST,ankitshah91@gmail.com,Ordered Visit,2,"Visit b, but do not visit b before you reach a"
+2023/01/05 12:00:21 PM EST,ankitshah91@gmail.com,Ordered Visit,3,"Visit c, but only after visiting b, and visit b only after visiting a"
+2023/01/05 12:00:21 PM EST,ankitshah91@gmail.com,Ordered Visit,3,"Go to a, only then go to b, and only then go to c"
+2023/01/05 12:00:21 PM EST,ankitshah91@gmail.com,Ordered Visit,3,"Do not go to c until you visit b, and do not go to b until you visit a, and make sure you visit c"
+2023/01/05 12:00:21 PM EST,ankitshah91@gmail.com,Ordered Visit,3,"Reach c, but not until you visit a and b and that specific order"
+2023/01/05 12:00:21 PM EST,ankitshah91@gmail.com,Ordered Visit,3,"Visit a, only then should you visit b and only after that should you reach c"
+2023/01/05 12:02:41 PM EST,ankitshah91@gmail.com,Ordered Visit,4,"Visit a, b, c, and d in that specific order. make sure not to visit waypoints out of turn"
+2023/01/05 12:02:41 PM EST,ankitshah91@gmail.com,Ordered Visit,4,"Go to a, only after that go to b, only then go to c, and only then go to d"
+2023/01/05 12:02:41 PM EST,ankitshah91@gmail.com,Ordered Visit,4,"Visit d, but do not visit d until you have reached c. In turn only go to c after you visit b, and only go to b after reaching a"
+2023/01/05 12:02:41 PM EST,ankitshah91@gmail.com,Ordered Visit,4,"First go directly to a without visiting any other waypoints, Then go directly to b then directly to c and finally directly to d."
+2023/01/05 12:02:41 PM EST,ankitshah91@gmail.com,Ordered Visit,4,"Visit a, b, c, d in that specific order"
+2023/01/05 12:11:59 PM EST,ankitshah91@gmail.com,Ordered Visit,5,"Go to a, b, c, d, and h in that specific order"
+2023/01/05 12:11:59 PM EST,ankitshah91@gmail.com,Ordered Visit,5,"Ensure that you visit h, but only after d. In turn only visit d after c, only visit c after b and only visit b after a"
+2023/01/05 12:11:59 PM EST,ankitshah91@gmail.com,Ordered Visit,5,"Visit a, b, c, d, and h in that specific order. Ensure to not visit locations out of turn"
+2023/01/05 12:11:59 PM EST,ankitshah91@gmail.com,Ordered Visit,5,"Go to h, but only after visiting a, b, c, d in that specific order"
+2023/01/05 12:11:59 PM EST,ankitshah91@gmail.com,Ordered Visit,5,"Go to h, not before going d. Do not go to d before going c, do not go to c before going to b, and do not go to before going to a"
