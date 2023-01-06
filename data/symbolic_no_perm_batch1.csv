@@ -204,9 +204,6 @@ fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h multiple times in arb
 fair_visit,"['a', 'b', 'c', 'd', 'h']",go to a b c d and h any time and in any order but do not visit one more than the other more than once,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 fair_visit,"['a', 'b', 'c', 'd', 'h']",travel between a b c d and h multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 fair_visit,"['a', 'b', 'c', 'd', 'h']",revisit a b c d and h multiple times but be sure not to go to one more than the other more than once,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-visit,"['a', 'b', 'c', 'd', 'h']",go to a bcdand then h,& F a & F b & F c & F d F h
-visit,"['a', 'b', 'c', 'd', 'h']",visit a bcdand then h,& F a & F b & F c & F d F h
-visit,"['a', 'b', 'c', 'd', 'h']",visit a then b then c then d and then h and after that visit them again in any order,& F a & F b & F c & F d F h
 ordered_visit,"['a', 'b']",visit b only after visiting a,& U ! b a F b
 ordered_visit,"['a', 'b']",go to b after going to a do not go to b before,& U ! b a F b
 ordered_visit,"['a', 'b']",go to a and only then go to b,& U ! b a F b
@@ -247,18 +244,88 @@ sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in this order,F 
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited and then to h after d is visited,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",make sure a b c d and h are all visited in this order,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",you have to walk to a and then walk to b and then walk to c and then walk to d and finally walk to h,F & a F & b F & c F & d F h
-strictly_ordered_visit,"['a', 'b', 'c']",go to a but not through b and then go to b but not through c and finally go to c no revisiting is allowed here,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
-strictly_ordered_visit,"['a', 'b', 'c']",go to a while avoiding b and then go to b while avoiding c and without revisiting a and then go to c without revisiting b,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
-strictly_ordered_visit,"['a', 'b', 'c']",go to a but keep avoiding b and then go to b but keep avoiding c and then go to c do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
-strictly_ordered_visit,"['a', 'b', 'c']",do not visit b before you visit a and then go to b without visiting c or revisiting a and then go to c without revisiting b,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
-strictly_ordered_visit,"['a', 'b', 'c']",walk to a while keeping away from b and then walk to b while keeping away from c without going back to a and finally walk to c without going back to b,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
-strictly_ordered_visit,"['a', 'b', 'c', 'd']",go to a but not through b and then go to b but not through c and then go to c but not through d and finally go to d no revisiting is allowed here,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
-strictly_ordered_visit,"['a', 'b', 'c', 'd']",go to a while avoiding b and then go to b while avoiding c and without revisiting a and then go to c while avoiding d and without revisiting b and then go to d without revisiting c,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
-strictly_ordered_visit,"['a', 'b', 'c', 'd']",go to a but keep avoiding b and then go to b but keep avoiding c and then go to c but keep avoiding d and then go to d do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
-strictly_ordered_visit,"['a', 'b', 'c', 'd']",do not visit b before you visit a and then go to b without visiting c or revisiting a and then go to c without visiting d or revisiting b and then go to d without revisiting c,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
-strictly_ordered_visit,"['a', 'b', 'c', 'd']",walk to a while keeping away from b and then walk to b without going back to a while keeping away from c and then walk to c without going back to b while keeping away from d and finally walk to d without going back to c,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
-strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a but not through b and then go to b but not through c and then go to c but not through d and then go to d but not through h and finally go to h no revisiting is allowed here,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a while avoiding b and then go to b while avoiding c and without revisiting a and then go to c while avoiding d and without revisiting b and then go to d while avoiding h and without revisiting c and then go to h without visiting d,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a but keep avoiding b and then go to b but keep avoiding c and then go to c but keep avoiding d and then go to d but keep avoiding h and then go to h do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",do not visit b before you visit a and then go to b without visiting c or revisiting a and then go to c without visiting d or revisiting b and then go to d without visiting h or revisiting c and then go to h without revisiting d,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",walk to a while keeping away from b and then walk to b without going back to a while keeping away from c and then walk to c without going back to b while keeping away from d and then walk to d without going back to c while keeping away from h and finally walk to h without going back to d,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+ordered_visit,"['a', 'b', 'c', 'd']",go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",go to a and only go to b only after a is visited and then go to c only after a and b are both visited and then go to d only after a b and c are all visited,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",visit a b c and d in this order without skipping any one of them,& U ! b a & U ! c b & U ! d c F d
+ordered_visit,"['a', 'b', 'c', 'd']",do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited,& U ! b a & U ! c b & U ! d c F d
+strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a but not through b c d or h and then go to b but not through c d or h and then go to c but not through d or h and then go to d but not through h and finally go to h no revisiting is allowed here,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",do not go to h until d is visited and do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited along the path never return to previous location you have been to,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a but do not visit b c d or h and then go to b but do not visit c d or h or revisit a and then go to c but do not visit d or h or revisit a or b and then go to d but do not visit h or revisit a b or c and then go to h but do not revisit a b c or d,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+strictly_ordered_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+strictly_ordered_visit,"['a', 'b', 'c', 'd']",go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d no revisiting is allowed,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+strictly_ordered_visit,"['a', 'b', 'c', 'd']",do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited along the path never return to previous location you have been to,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+strictly_ordered_visit,"['a', 'b', 'c', 'd']",make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+strictly_ordered_visit,"['a', 'b', 'c', 'd']",go to a but do not visit b c or d and then go to b but do not visit c or d or revisit a and then go to c but do not visit d or revisit a or b and then go to d but do not revisit a b or c,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+strictly_ordered_visit,"['a', 'b', 'c', 'd']",visit a b c and d in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+strictly_ordered_visit,"['a', 'b', 'c']",go to a but not through b or c and then go to b but not through c and finally go to c no revisiting is allowed,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",do not go to c until b is visited and do not go to b until a is visited along the path never return to previous location you have been to,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",go to a but do not visit b or c and then go to b but do not visit c or revisit a and then go to c but do not revisit a or b,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",visit a b and c in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a but not through b c d or h and then go to b but not through c d or h and then go to c but not through d or h and then go to d but not through h and finally go to h,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to a and only go to b only after a is visited and then go to c only after a and b are both visited and then go to d only after a b and c are all visited and then go to h only after a b c and d are all visited,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in this order without skipping any one of them,& U ! b a & U ! c b & U ! d c & U ! h d F h
+ordered_visit,"['a', 'b', 'c', 'd', 'h']",do not go to h until d is visited and do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited,& U ! b a & U ! c b & U ! d c & U ! h d F h
+patrolling,['a'],never stop visiting a,G F a
+patrolling,['a'],make sure a is visited infinitely,G F a
+patrolling,['a'],visit a as many times as you can,G F a
+patrolling,['a'],frequent a infinitely,G F a
+patrolling,['a'],please keep visiting a without stopping,G F a
+patrolling,"['a', 'b']",never stop visiting a and b,& G F a G F b
+patrolling,"['a', 'b']",frequent a and b infinitely in any order,& G F a G F b
+patrolling,"['a', 'b']",visit a and b as many times as you can,& G F a G F b
+patrolling,"['a', 'b']",keep going to a and b in arbitrary order,& G F a G F b
+patrolling,"['a', 'b']",please keep visiting a and b without stopping,& G F a G F b
+patrolling,"['a', 'b', 'c']",never stop visiting a b and c,& G F a & G F b G F c
+patrolling,"['a', 'b', 'c']",frequent a b and c infinitely in any order,& G F a & G F b G F c
+patrolling,"['a', 'b', 'c']",please keep visiting a b and c without stopping,& G F a & G F b G F c
+patrolling,"['a', 'b', 'c']",make sure a b and c are visited infinitely,& G F a & G F b G F c
+patrolling,"['a', 'b', 'c']",keep visiting a b and c in any order,& G F a & G F b G F c
+patrolling,"['a', 'b', 'c', 'd']",never stop visiting a b c and d,& G F a & G F b & G F c G F d
+patrolling,"['a', 'b', 'c', 'd']",frequent a b c and d infinitely in any order,& G F a & G F b & G F c G F d
+patrolling,"['a', 'b', 'c', 'd']",please keep visiting a b c and d without stopping,& G F a & G F b & G F c G F d
+patrolling,"['a', 'b', 'c', 'd']",make sure a b c and d are visited infinitely,& G F a & G F b & G F c G F d
+patrolling,"['a', 'b', 'c', 'd']",keep visiting a b c and d in any order,& G F a & G F b & G F c G F d
+patrolling,"['a', 'b', 'c', 'd', 'h']",never stop visiting a b c d and h,& G F a & G F b & G F c & G F d G F h
+patrolling,"['a', 'b', 'c', 'd', 'h']",frequent a b c d and h infinitely in any order,& G F a & G F b & G F c & G F d G F h
+patrolling,"['a', 'b', 'c', 'd', 'h']",please keep visiting a b c d and h without stopping,& G F a & G F b & G F c & G F d G F h
+patrolling,"['a', 'b', 'c', 'd', 'h']",make sure a b c d and h are visited infinitely,& G F a & G F b & G F c & G F d G F h
+patrolling,"['a', 'b', 'c', 'd', 'h']",keep visiting a b c d h in any order,& G F a & G F b & G F c & G F d G F h
+fair_visit,"['a', 'b', 'c', 'd']",make sure you frequent a b c and d equally or at most one time in difference,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
+fair_visit,"['a', 'b', 'c', 'd']",visit a b c and d multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
+fair_visit,"['a', 'b', 'c', 'd']",go to a b c and d any time and in any order but do not visit one more than the other more than once,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
+fair_visit,"['a', 'b', 'c', 'd']",travel between a b c  and d multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
+fair_visit,"['a', 'b', 'c', 'd']",revisit a b c and d multiple times but be sure not to go to one more than the other more than once,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
+fair_visit,"['a', 'b', 'c']",make sure you frequent a b and c equally or at most one time in difference,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
+fair_visit,"['a', 'b', 'c']",visit a b and c multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
+fair_visit,"['a', 'b', 'c']",go to a b and c any time and in any order but do not visit one more than the other more than once,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
+fair_visit,"['a', 'b', 'c']",travel between a b and c multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
+fair_visit,"['a', 'b', 'c']",revisit a b and c multiple times but be sure not to go to one more than the other more than once,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
+fair_visit,"['a', 'b']",make sure you frequent a and b equally or at most one time in difference,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
+fair_visit,"['a', 'b']",visit a and b multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
+fair_visit,"['a', 'b']",go to a and b any time and in any order but do not visit one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
+fair_visit,"['a', 'b']",travel between a and b multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
+fair_visit,"['a', 'b']",revisit a and b multiple times but be sure not to go to one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
+visit,['a'],go to a,F a
+visit,['a'],visit a,F a
+visit,['a'],stop by a,F a
+visit,"['a', 'b']",move to a and b,& F a F b
+visit,"['a', 'b']",go to a and b,& F a F b
+visit,"['a', 'b']",stop by a and b,& F a F b
+visit,"['a', 'b', 'c', 'd']",move to abcand d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",visit abc and d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",stop by abc and d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",move to abc and d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",stop by abc and d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c', 'd']",visit abc and d in any order,& F a & F b & F c F d
+visit,"['a', 'b', 'c']",move to abc in any order,& F a & F b F c
+visit,"['a', 'b', 'c']",stop by abc in any order,& F a & F b F c
+visit,"['a', 'b', 'c']",visit abc in any order,& F a & F b F c
+strictly_ordered_visit,"['a', 'b']",visit b but only after a also you cannot revisit a before completing the remaining tasks,& & U ! b a F b U ! a U a U !a b
+strictly_ordered_visit,"['a', 'b']",go to a only then go to b but ensure to not revisit a,& & U ! b a F b U ! a U a U !a b
+strictly_ordered_visit,"['a', 'b']",visit a and b in that exact sequence out of sequence visits and repeated visits are not permitted,& & U ! b a F b U ! a U a U !a b
+strictly_ordered_visit,"['a', 'b']",go to a and only then go to b without returning to a,& & U ! b a F b U ! a U a U !a b
+strictly_ordered_visit,"['a', 'b']",reach a and then b in that exact order without repetitions,& & U ! b a F b U ! a U a U !a b
