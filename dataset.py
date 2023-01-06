@@ -187,6 +187,7 @@ if __name__ == '__main__':
 
     # Construct train, test split for 3 types of holdout
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
+    create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
 
     data_fpath = "data/symbolic_no_perm_batch1.csv"
     filter_types = ["fair_visit"]

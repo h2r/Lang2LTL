@@ -7,15 +7,15 @@ Visit,5,17
 Sequenced Visit,2,18
 Sequenced Visit,3,17
 Sequenced Visit,4,12
-Sequenced Visit,5,6
+Sequenced Visit,5,11
 Ordered Visit,2,17
 Ordered Visit,3,12
 Ordered Visit,4,6
 Ordered Visit,5,6
 Strictly Ordered Visit,2,11
-Strictly Ordered Visit,3,2
-Strictly Ordered Visit,4,2
-Strictly Ordered Visit,5,3
+Strictly Ordered Visit,3,7
+Strictly Ordered Visit,4,7
+Strictly Ordered Visit,5,8
 Patrolling,1,12
 Patrolling,2,5
 Fair Visit,2,10
