@@ -1,24 +1,27 @@
 LTL Template Type,Number of Propositions,Number of Utterances
-Visit,1,18
-Visit,2,19
-Visit,3,23
-Visit,4,13
-Visit,5,17
+Visit,1,21
+Visit,2,22
+Visit,3,26
+Visit,4,19
+Visit,5,14
 Sequenced Visit,2,18
 Sequenced Visit,3,17
 Sequenced Visit,4,12
 Sequenced Visit,5,11
 Ordered Visit,2,17
 Ordered Visit,3,12
-Ordered Visit,4,6
-Ordered Visit,5,6
-Strictly Ordered Visit,2,11
+Ordered Visit,4,11
+Ordered Visit,5,11
+Strictly Ordered Visit,2,16
 Strictly Ordered Visit,3,7
 Strictly Ordered Visit,4,7
 Strictly Ordered Visit,5,8
-Patrolling,1,12
-Patrolling,2,5
-Fair Visit,2,10
-Fair Visit,3,3
+Patrolling,1,17
+Patrolling,2,10
+Patrolling,3,5
+Patrolling,4,5
+Patrolling,5,5
+Fair Visit,2,15
+Fair Visit,3,8
 Fair Visit,5,8
-Fair Visit,4,3
+Fair Visit,4,8
