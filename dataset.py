@@ -105,14 +105,12 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
         all_types = [typ for typ in ALL_TYPES if typ not in filter_types]
         random.seed(seed)
         holdout_types = random.sample(all_types, test_size)
-        print(f"Train LTL types: {[instance for instance in ALL_TYPES if instance not in holdout_types]}")
-        print(f"Holdout LTL types: {holdout_types}")
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
             if pattern_type in holdout_types:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
-            else:
+            elif pattern_type in all_types:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "ltl_instance":  # hold out specified (pattern type, nprops) pairs
@@ -124,14 +122,13 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
                 all_instances.append(instance)
         random.seed(seed)
         holdout_instances = random.sample(all_instances, int(len(all_instances)*test_size))
-        print(f"Train LTL instances: {[instance for instance in all_instances if instance not in holdout_instances]}")
-        print(f"Holdout LTL instances: {holdout_instances}")
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            if (pattern_type, len(props)) in holdout_instances:
+            instance = (pattern_type, len(props))
+            if instance in holdout_instances:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
-            else:
+            elif instance in all_instances:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
@@ -167,11 +164,13 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
     save_to_file(split_dataset, split_fpath)
 
     # Testing by loading the saved split dataset back
-    # train_iter, train_meta, valid_iter, valid_meta = load_split_datast(split_fpath)
+    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_fpath)
     # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
     #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
     # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
     #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
+    print(f"Training set: {set(train_meta)}")
+    print(f"Validation set: {set(valid_meta)}")
     print(f"Number of training samples: {len(train_iter)}")
     print(f"Number of validation samples: {len(valid_iter)}\n")
 
