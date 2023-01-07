@@ -3,6 +3,7 @@ Based on PyTorch tutorial, Language Translation with nn.transformer and torchtex
 https://pytorch.org/tutorials/beginner/translation_transformer.html
 """
 import argparse
+import os
 from pathlib import Path
 import math
 from timeit import default_timer as timer
@@ -239,35 +240,41 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
-                        help='file path to train and test data for supervised seq2seq')
+                        help='complete file path or prefix of file paths to train and test data for supervised seq2seq')
     args = parser.parse_args()
 
-    # Load train, test data
-    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(args.split_dataset_fpath)
-    vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset_meta(train_iter)
+    if "pkl" in args.split_dataset_fpath:  # complete file path, e.g. data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl
+        split_dataset_fpaths = [args.split_dataset_fpath]
+    else:  # prefix of file paths, e.g. split_symbolic_no_perm_batch1_utt
+        split_dataset_fpaths = [os.path.join("data", fpath) for fpath in os.listdir("data") if args.split_dataset_fpath in fpath]
 
-    # Train and save model
-    transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
-                                     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
-                                     DIM_FFN_HID)
-    for param in transformer.parameters():
-        if param.dim() > 1:
-            nn.init.xavier_uniform_(param)
-    transformer = transformer.to(DEVICE)
+    for split_dataset_fpath in split_dataset_fpaths:
+        # Load train, test data
+        train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
+        vocab_transform, text_transform, SRC_VOCAB_SIZE, TAR_VOCAB_SIZE = construct_dataset_meta(train_iter)
 
-    loss_fn = torch.nn.CrossEntropyLoss(ignore_index=PAD_IDX)
-    optimizer = torch.optim.Adam(transformer.parameters(), lr=0.0001, betas=(0.9, 0.98), eps=1e-9)
-    writer = SummaryWriter()  # writer will output to ./runs/ directory by default; activate: tensorboard --logdir=runs
+        # Train and save model
+        transformer = Seq2SeqTransformer(SRC_VOCAB_SIZE, TAR_VOCAB_SIZE,
+                                         NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
+                                         DIM_FFN_HID)
+        for param in transformer.parameters():
+            if param.dim() > 1:
+                nn.init.xavier_uniform_(param)
+        transformer = transformer.to(DEVICE)
 
-    for epoch in range(1, NUM_EPOCHS+1):
-        start_time = timer()
-        train_loss = train_epoch(transformer, optimizer, train_iter)
-        end_time = timer()
-        valid_loss = evaluate(transformer, valid_iter)
-        print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
-              f'Epoch time: {(end_time-start_time):.3f}s')
-        writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
-    model_fpath = f'model/s2s_pt_transformer_{Path(args.split_dataset_fpath).stem}.pth'
-    torch.save(transformer.state_dict(), model_fpath)
-    writer.flush()
-    writer.close()
+        loss_fn = torch.nn.CrossEntropyLoss(ignore_index=PAD_IDX)
+        optimizer = torch.optim.Adam(transformer.parameters(), lr=0.0001, betas=(0.9, 0.98), eps=1e-9)
+        writer = SummaryWriter()  # writer will output to ./runs/ directory by default; activate: tensorboard --logdir=runs
+
+        for epoch in range(1, NUM_EPOCHS+1):
+            start_time = timer()
+            train_loss = train_epoch(transformer, optimizer, train_iter)
+            end_time = timer()
+            valid_loss = evaluate(transformer, valid_iter)
+            print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
+                  f'Epoch time: {(end_time-start_time):.3f}s')
+            writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
+        model_fpath = f'model/s2s_pt_transformer_{Path(split_dataset_fpath).stem}.pth'
+        torch.save(transformer.state_dict(), model_fpath)
+        writer.flush()
+        writer.close()

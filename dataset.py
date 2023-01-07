@@ -185,13 +185,14 @@ if __name__ == '__main__':
     # generate_tar_file()
     # create_osm_dataset()
 
-    # Construct train, test split for 3 types of holdout
+    # Construct train, test split for 3 types of holdout for symbolic translation
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
 
     data_fpath = "data/symbolic_no_perm_batch1.csv"
     filter_types = ["fair_visit"]
-    seed = 42
-    construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
-    construct_split_dataset(data_fpath, holdout_type="ltl_instance", filter_types=filter_types, test_size=0.2, seed=seed)
-    construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
+    seeds = [0, 1, 2, 42, 111]
+    for seed in seeds:
+        construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
+        construct_split_dataset(data_fpath, holdout_type="ltl_instance", filter_types=filter_types, test_size=0.2, seed=seed)
+        construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)

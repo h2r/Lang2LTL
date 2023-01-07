@@ -2,6 +2,7 @@
 Infer trained model.
 """
 import argparse
+import os
 from pathlib import Path
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
@@ -58,29 +59,37 @@ class Seq2Seq:
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
-                        help='file path to train test split dataset')
+                        help='complete file path or prefix of file paths to train test split dataset')
     parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"],
                         help='name of supervised seq2seq model')
     args = parser.parse_args()
 
-    # Load train, test data
-    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(args.split_dataset_fpath)
+    if "pkl" in args.split_dataset_fpath:  # complete file path, e.g. data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl
+        split_dataset_fpaths = [args.split_dataset_fpath]
+    else:  # prefix of file paths, e.g. split_symbolic_no_perm_batch1_utt
+        split_dataset_fpaths = [os.path.join("data", fpath) for fpath in os.listdir("data") if args.split_dataset_fpath in fpath]
 
-    if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
-        s2s = Seq2Seq(args.model)
-    elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
-        vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}.pth"
-        s2s = Seq2Seq(args.model,
-                      vocab_transform=vocab_transform, text_transform=text_transform,
-                      src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
-    else:
-        raise TypeError(f"ERROR: unrecognized model, {args.model}")
-    print(f"Number of trainable parameters in {args.model}: {count_params(s2s)}")
-    print(f"Number of training samples: {len(train_iter)}")
-    print(f"Number of validation samples: {len(valid_iter)}")
+    for split_dataset_fpath in split_dataset_fpaths:
+        # Load train, test data
+        train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
 
-    result_log_fpath = f"results/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}_log.csv"
-    analysis_fpath = "data/analysis_batch1.csv"
-    acc_fpath = f"results/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}_acc.csv"
-    evaluate_lang_from_file(s2s, args.split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)
+        # Load trained model
+        if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
+            s2s = Seq2Seq(args.model)
+        elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
+            vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
+            model_params = f"model/s2s_{args.model}_{Path(split_dataset_fpath).stem}.pth"
+            s2s = Seq2Seq(args.model,
+                          vocab_transform=vocab_transform, text_transform=text_transform,
+                          src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
+        else:
+            raise TypeError(f"ERROR: unrecognized model, {args.model}")
+        print(f"Number of trainable parameters in {args.model}: {count_params(s2s)}")
+        print(f"Number of training samples: {len(train_iter)}")
+        print(f"Number of validation samples: {len(valid_iter)}")
+
+        # Evaluation
+        result_log_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_log.csv"
+        analysis_fpath = "data/analysis_batch1.csv"
+        acc_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_acc.csv"
+        evaluate_lang_from_file(s2s, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)
