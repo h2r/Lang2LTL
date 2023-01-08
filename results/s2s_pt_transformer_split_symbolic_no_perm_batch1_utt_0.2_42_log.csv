@@ -1,220 +1,70 @@
 train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
-valid,visit,1,visit a,F a, F a ,True
-valid,visit,1,reach a,F a, F a ,True
-valid,visit,1,go to a,F a, F a ,True
-valid,visit,1,reach a,F a, F a ,True
-valid,visit,2,visit a and b,& F a F b, & F a F b ,True
-valid,visit,2,go to a and b in any order,& F a F b, & F a F b ,True
-valid,visit,2,pick one from a and b go there and then head to the other one,& F a F b, & & U ! b a F b ,Syntax Error
-valid,visit,2,visit b and a,& F a F b, & F a F b ,True
-valid,visit,3,visit a b and c in any order,& F a & F b F c, & F a & F b F c ,True
-valid,visit,3,make sure a b and c are all visited,& F a & F b F c, & F a & F b F c ,True
-valid,visit,3,go to a b and c,& F a & F b F c, & F a & F b F c ,True
-valid,visit,3,go to a b and c in any order,& F a & F b F c, & F a & F b F c ,True
-valid,visit,3,visit all three locations a b and c,& F a & F b F c, & F a & F b F c ,True
-valid,visit,4,do not stop until a b c and d are all visited,& F a & F b & F c F d, & F a & F b & F c F d ,True
-valid,visit,4,visit a b c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-valid,visit,4,visit b a c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-valid,visit,5,visit a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F,Syntax Error
-valid,visit,5,sometime visit a c b h and d,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
-valid,visit,5,visit a b c d h in any order required,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-valid,visit,5,do not stop until a b c d and h are all visited,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-valid,sequenced_visit,2,eventually first visit a and then b after,F & a F b, F & a F b ,True
-valid,sequenced_visit,2,visit a and then b,F & a F b, F & a F b ,True
-valid,sequenced_visit,2,visit a and visit b after a is visited,F & a F b, F & a F b ,True
-valid,sequenced_visit,2,find a first then find b,F & a F b, F & a F b ,True
-valid,sequenced_visit,3,visit a sometime afterwards visit b sometime afterwards visit c,F & a F & b F c, F & a F & b F c ,True
-valid,sequenced_visit,3,in some sequence visit a b and c in that order,F & a F & b F c, F & a F & b F c ,True
-valid,sequenced_visit,3,make your way to a b and c consecutively,F & a F & b F c, & F a & F b F c ,False
-valid,sequenced_visit,3,visit b at least once after going to a and visit c at least once after going to b,F & a F & b F c, F & a F & b F c ,True
-valid,sequenced_visit,4,make sure a b c and d are all visited in this order,F & a F & b F & c F d, & F a & F b & F c F d ,False
-valid,sequenced_visit,4,head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited,F & a F & b F & c F d, F & a F & b F & c F d ,True
-valid,sequenced_visit,4,eventually in some sequence visit a b c and d each must be followed by the next,F & a F & b F & c F d, & F a & F b & F c F d ,False
-valid,sequenced_visit,5,visit a b c d and h in this order there can be other landmarks in between,F & a F & b F & c F & d F h, & F a & F b & F c & F d F h ,False
-valid,sequenced_visit,5,visit a b c d and h sequentially,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h,True
-valid,ordered_visit,2,do not visit b until you go to a,& U ! b a F b, & U ! b a F b ,True
-valid,ordered_visit,2,you must visit a first before going to b,& U ! b a F b, & U ! b a F b ,True
-valid,ordered_visit,2,first go to a while avoiding b then move to b,& U ! b a F b, & U ! b a F b ,True
-valid,ordered_visit,2,ensure that you do not reach b before going to a,& U ! b a F b, & U ! b a F b ,True
-valid,ordered_visit,3,reach c but not until you visit a and b and that specific order,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-valid,ordered_visit,3,do not go to c until you visit b and do not go to b until you visit a and make sure you visit c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-valid,ordered_visit,3,do not visit c until visiting b do not visit b until visiting a,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-valid,ordered_visit,4,visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
-valid,ordered_visit,4,visit a b c and d in that specific order make sure not to visit waypoints out of turn,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
-valid,ordered_visit,5,before visiting b c d and h visit an and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h,& U ! b a & U ! c b & U ! d c & U ! h d F h, & F a & F b & F c & F d F h ,False
-valid,ordered_visit,5,go to a b c d and h in that specific order,& U ! b a & U ! c b & U ! d c & U ! h d F h, & F a & F b & F c & F d F h ,False
-valid,strictly_ordered_visit,2,you must visit a exactly once while avoiding b then you can navigate to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-valid,strictly_ordered_visit,2,only visit a once and do not visit b until you visit a,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-valid,strictly_ordered_visit,2,avoid b initially when a is not visited and then just visit a once and then visit b,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b ,Syntax Error
-valid,strictly_ordered_visit,3,visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c, & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U,Syntax Error
-valid,strictly_ordered_visit,4,visit a then b then c and then d you can only visit each landmark once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d, & & U ! b a & U ! c b & U ! d c F d & U ! a,Syntax Error
-valid,strictly_ordered_visit,5,do not visit h until you visit d visit d only once do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U,Syntax Error
-valid,patrolling,1,do not stop visiting a,G F a, G F a ,True
-valid,patrolling,1,make sure you frequent a infinitely,G F a, G F a ,True
-valid,patrolling,1,keep visiting a,G F a, G F a ,True
-valid,patrolling,2,make sure a and b are visited infinitely,& G F a G F b, & F a F b ,False
-train,visit,1,move to a,F a, F a ,True
-train,visit,1,go to a,F a, F a ,True
-train,visit,1,find a,F a, F a ,True
-train,visit,1,visit a,F a, F a ,True
-train,visit,1,make you way to a,F a, F a ,True
-train,visit,1,eventually you must go to a,F a, F a ,True
-train,visit,1,make sure you visit a at least once,F a, F a ,True
-train,visit,1,approach a,F a, F a ,True
-train,visit,1,go to a,F a, F a ,True
-train,visit,1,head to a,F a, F a ,True
-train,visit,1,find a,F a, F a ,True
-train,visit,1,walk to a,F a, F a ,True
-train,visit,1,reach a,F a, F a ,True
-train,visit,1,navigate to a,F a, F a ,True
-train,visit,2,go to a then go to b or go to b then go to a,& F a F b, & F a F b ,True
-train,visit,2,reach a reach b,& F a F b, & F a F b ,True
-train,visit,2,eventually reach a and b,& F a F b, & F a F b ,True
-train,visit,2,go to a and b in an arbitrary order,& F a F b, & F a F b ,True
-train,visit,2,visit a and b,& F a F b, & F a F b ,True
-train,visit,2,visit both a and b,& F a F b, & F a F b ,True
-train,visit,2,sometime along the way go to a and b,& F a F b, & F a F b ,True
-train,visit,2,make sure both a and b are visited,& F a F b, & F a F b ,True
-train,visit,2,find a and b,& F a F b, & F a F b ,True
-train,visit,2,visit a and b in any order,& F a F b, & F a F b ,True
-train,visit,2,go to one of a and b and then to the other,& F a F b, & F a F b ,True
-train,visit,2,reach a and b in any order,& F a F b, & F a F b ,True
-train,visit,2,visit a and b in any order,& F a F b, & F a F b ,True
-train,visit,2,go to a and go to b,& F a F b, & F a F b ,True
-train,visit,2,move to a and b in any order,& F a F b, & F a F b ,True
-train,visit,3,visit a b and c in arbitrary order,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,visit c a and b in no specific order,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,go to the following locations a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,visit a b and c in any order,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,eventually reach a c and b,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,a b and c must be visited,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,when you have the chance can you go to a c and b,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,head to a b and c in any order,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,in any order you like go to a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,please visit a b and c in any order,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,find a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,you must go to c a and b at least once,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,go to all of a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,make sure a b and c are all visited,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,do not stop until a b and c are visited,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,reach a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,go to a b and c,& F a & F b F c, & F a & F b F c ,True
-train,visit,3,walk to a b and c in an arbitrary order,& F a & F b F c, & F a & F b F c ,True
-train,visit,4,go to a b c and d in arbitrary order,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,visit a go to b reach c reach d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,in no particular order visit a b c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,go to four locations a b d and c,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,make your way to a b c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,reach all the following locations a b c and d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,visit a b c and d the order is not important,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,make sure a b c and d are all visited,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,go to a go to b got to c and go to d,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,4,visit a b c and d in no particular order,& F a & F b & F c F d, & F a & F b & F c F d ,True
-train,visit,5,visit a then b then c then d and then h and after that visit them again in any order,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,make sure a b c d and h are all visited,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,find the following a b c d h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
-train,visit,5,visit a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F,Syntax Error
-train,visit,5,eventually go visit a b h d and c,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,go to a bcdand then h,& F a & F b & F c & F d F h, & F a & F b & F c & F d,Syntax Error
-train,visit,5,make your way to a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,go to a go to b go to c go to d go to h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,reach the following five locations a b c d h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,visit a bcdand then h,& F a & F b & F c & F d F h, & F a & F b & F c & F,Syntax Error
-train,visit,5,go to a b c d and h in arbitrary order,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h ,True
-train,visit,5,go to a b c d and h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
-train,visit,5,visit all locations a b c d h,& F a & F b & F c & F d F h, & F a & F b & F c & F d F h,True
-train,sequenced_visit,2,move to a then move to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a then go to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,reach a then go to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,visit a visit b after that,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a and move on to b once you have been to a,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a and sometime afterward visit b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,after you visit a go to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a then reach b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a then b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a and then go to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to a then move to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,after you have been to a make your way to b,F & a F b, F & a F b ,True
-train,sequenced_visit,2,go to b after going to a,F & a F b, F & a F b ,True
-train,sequenced_visit,2,move a then find b,F & a F b, F & a F b ,True
-train,sequenced_visit,3,please visit a at 900 then b at 1000 and then c at 1100,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to c after b go to b after going to a,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a then go to b finally go to c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a  then visit b then reach c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a and then go to b and then go to c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,visit a b and c in that order,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,reach a then reach b and then reach c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a and go to b after a is visited and go to c after a and b are visited,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a then b then c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,start at a then visit b then go to c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,go to a then go to b then go to c,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,visit a b and c one after another,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,3,head to a b and c in order,F & a F & b F c, F & a F & b F c ,True
-train,sequenced_visit,4,visit a b c and d in this order,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,reach a then reach b then reach c and then reach d,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,go to a then go to b then go to c and then go to d,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,visit a then visit b then visit c then visit d,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,you have to walk to a and then walk to b and then walk to c and finally walk to d,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,visit b at least once after visiting a visit c at least once after visiting a and b visit d at least once after visiting ab and c,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,go to a and then go to b and then go to c and then go to d,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,ensure that you visit abc and d in order,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,4,visit a b c and d one after the other,F & a F & b F & c F d, F & a F & b F & c F d ,True
-train,sequenced_visit,5,go to a then go to b and then reach c then reach d and finally go to h,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h ,True
-train,sequenced_visit,5,visit a then visit b then visit c then visit d and then visit h,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h ,True
-train,sequenced_visit,5,visit b at least once after visiting a visit c at least once after visiting both a and b visit d at least once after visiting a b and c and visit h at least once after visiting a b c and d,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h ,True
-train,sequenced_visit,5,reach a b c d and h sequentially,F & a F & b F & c F & d F h, F & a F & b F & c F & d F h,True
-train,ordered_visit,2,head to a first and then to b but do not visit b if you havent been to a,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to a and only then go to b,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,visit a and visit b only if a is visited,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to b after going to a do not go to b before,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to b but do not go to b until you go to a first,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to b but only visit b if you already visited a,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,visit b but do not visit b before you reach a,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,find a while avoiding b then after finding a go to b,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to a and then go to b but do not visit b before a is visited,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to a but keep avoiding b and once you have been to a go to b,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,visit b only after visiting a,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,find b but not until you find a first,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,2,go to a while staying away from b then move to b,& U ! b a F b, & U ! b a F b ,True
-train,ordered_visit,3,go to a only then go to b and only then go to c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,keep away from b and c while heading to a and then keep away from c while heading to b and eventually go to c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,go to a but not through b or c and then go to b but not through c and finally go to c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,in strictly this order visit a then eventually visit b and finally eventually c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,visit a only then should you visit b and only after that should you reach c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,direct yourself to a but keep away from b and c then go to b but bypass c and eventually make you way at c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,visit c but only after visiting b and visit b only after visiting a,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,make you way to a but keep avoiding b or c and head to b but keep avoiding c after that and  then visit c,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,3,visit a b and c in order but keep avoiding latter ones when you are heading to former ones,& U ! b a & U ! c b F c, & U ! b a & U ! c b F c ,True
-train,ordered_visit,4,visit a b c d in that specific order,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c,Syntax Error
-train,ordered_visit,4,go to a only after that go to b only then go to c and only then go to d,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
-train,ordered_visit,4,first go directly to a without visiting any other waypoints then go directly to b then directly to c and finally directly to d,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
-train,ordered_visit,4,visit d but do not visit d until you have reached c in turn only go to c after you visit b and only go to b after reaching a,& U ! b a & U ! c b & U ! d c F d, & U ! b a & U ! c b & U ! d c F d ,True
-train,ordered_visit,5,go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a,& U ! b a & U ! c b & U ! d c & U ! h d F h, & U ! b a & U ! c b & U ! d c & U ! h d F h ,True
-train,ordered_visit,5,ensure that you visit h but only after d in turn only visit d after c only visit c after b and only visit b after a,& U ! b a & U ! c b & U ! d c & U ! h d F h, & U ! b a & U ! c b & U ! d c & U ! h d F h ,True
-train,ordered_visit,5,go to h but only after visiting a b c d in that specific order,& U ! b a & U ! c b & U ! d c & U ! h d F h, & U ! b a & U ! c b & U ! d c & U ! h d F,Syntax Error
-train,ordered_visit,5,visit a b c d and h in that specific order ensure to not visit locations out of turn,& U ! b a & U ! c b & U ! d c & U ! h d F h, & U ! b a & U ! c b & U ! d c & U ! h d F h ,True
-train,strictly_ordered_visit,2,do not visit b before you visit a and then go to b without revisiting a,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b ,Syntax Error
-train,strictly_ordered_visit,2,reach a exactly once while staying away from b then move to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-train,strictly_ordered_visit,2,go to a exactly once while avoiding b then go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-train,strictly_ordered_visit,2,stay away from b until you make a single visit to a and then go to b,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b ,Syntax Error
-train,strictly_ordered_visit,2,navigate to a exactly once while staying away from b then you can go to b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-train,strictly_ordered_visit,2,visit a one time but not through b and head to b after a is visited,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-train,strictly_ordered_visit,2,move to a exactly once while avoiding b then find b,& & U ! b a F b U ! a U a U !a b, & & U ! b a F b U ! a U a U !a b ,True
-train,strictly_ordered_visit,2,go to a only once but keep away from b and then visit b,& & U ! b a F b U ! a U a U !a b, & & & U ! b a F b U ! a U a U !a b ,Syntax Error
-train,strictly_ordered_visit,3,do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c, & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U !b c ,False
-train,strictly_ordered_visit,4,do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d, & & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U !b c U ! c U c U !c,Syntax Error
-train,strictly_ordered_visit,5,visit a then b then c then d and then h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F,Syntax Error
-train,strictly_ordered_visit,5,eventually visit a afterward eventually visit b afterward eventually visit c afterward eventually visit d afterward eventually visit h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h, & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U,Syntax Error
-train,patrolling,1,keep going to a,G F a, G F a ,True
-train,patrolling,1,please visit a infinitely often,G F a, G F a ,True
-train,patrolling,1,continue moving to a,G F a, G F a ,True
-train,patrolling,1,go to a an infinite number of times,G F a, G F a ,True
-train,patrolling,1,make sure you visit a infinite times,G F a, G F a ,True
-train,patrolling,1,do not stop going to a,G F a, G F a ,True
-train,patrolling,1,keep visiting a,G F a, G F a ,True
-train,patrolling,1,do not stop visiting a,G F a, G F a ,True
-train,patrolling,1,you must visit a infinitely often,G F a, G F a ,True
-train,patrolling,2,pick one from a and b and go there and then go back and forth between a and b with or without stay,& G F a G F b, & G F a G F b ,True
-train,patrolling,2,do not stop visiting a and b,& G F a G F b, & G F a G F b ,True
-train,patrolling,2,keep visiting a and b in any order,& G F a G F b, & G F a G F b ,True
-train,patrolling,2,frequent a and b but the order can be arbitrary,& G F a G F b, & G F a G F b ,True
+valid,visit,1,visit a,F a,F a,True
+valid,visit,1,approach a,F a,F a,True
+valid,visit,1,visit a,F a,F a,True
+valid,visit,1,reach a,F a,F a,True
+valid,visit,1,go to a,F a,F a,True
+valid,visit,2,visit a and b,& F a F b,& F a F b,True
+valid,visit,2,go to a and b in an arbitrary order,& F a F b,& F a F b,True
+valid,visit,2,go to a then go to b or go to b then go to a,& F a F b,F & a F b,False
+valid,visit,2,visit b and a,& F a F b,& F a F b,True
+valid,visit,2,visit a and b,& F a F b,& F a F b,True
+valid,visit,3,go to a b and c in any order,& F a & F b F c,& F a & F b F c,True
+valid,visit,3,find a b and c,& F a & F b F c,& F a & F b F c,True
+valid,visit,3,go to a b and c,& F a & F b F c,& F a & F b F c,True
+valid,visit,3,stop by abc in any order,& F a & F b F c,& F a & F b F c,True
+valid,visit,3,a b and c must be visited,& F a & F b F c,& F a & F b F c,True
+valid,visit,3,make sure a b and c are all visited,& F a & F b F c,& F a & F b F c,True
+valid,visit,4,visit b a c and d,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,visit a go to b reach c reach d,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,do not stop until a b c and d are all visited,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,go to four locations a b d and c,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,5,go to a b c d and h in arbitrary order,& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,make sure a b c d and h are all visited,& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,visit a b c d and h,& F a & F b & F c & F d F h,& F a & F b & F c & F d F,Syntax Error
+valid,sequenced_visit,2,eventually first visit a and then b after,F & a F b,F & a F b,True
+valid,sequenced_visit,2,visit a and then b,F & a F b,F & a F b,True
+valid,sequenced_visit,2,visit a and visit b after a is visited,F & a F b,F & a F b,True
+valid,sequenced_visit,2,find a first then find b,F & a F b,F & a F b,True
+valid,sequenced_visit,3,visit a sometime afterwards visit b sometime afterwards visit c,F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,in some sequence visit a b and c in that order,F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,make your way to a b and c consecutively,F & a F & b F c,& F a & F b F c,False
+valid,sequenced_visit,3,visit b at least once after going to a and visit c at least once after going to b,F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,4,make sure a b c and d are all visited in this order,F & a F & b F & c F d,& F a & F b & F c F d,False
+valid,sequenced_visit,4,head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited,F & a F & b F & c F d,F & a F & b F & c F d,True
+valid,sequenced_visit,4,eventually in some sequence visit a b c and d each must be followed by the next,F & a F & b F & c F d,& F a & F b & F c F d,False
+valid,sequenced_visit,5,go to a then go to b and then reach c then reach d and finally go to h,F & a F & b F & c F & d F h,F & a F & b F & c F & d F h,True
+valid,sequenced_visit,5,visit a b c d and h in this order there can be other landmarks in between,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,sequenced_visit,5,make sure a b c d and h are all visited in this order,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,ordered_visit,2,do not visit b until you go to a,& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,you must visit a first before going to b,& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,first go to a while avoiding b then move to b,& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,ensure that you do not reach b before going to a,& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,3,reach c but not until you visit a and b and that specific order,& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,3,do not go to c until you visit b and do not go to b until you visit a and make sure you visit c,& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,3,do not visit c until visiting b do not visit b until visiting a,& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,4,visit a b c d in that specific order,& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,4,visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d,& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c,Syntax Error
+valid,ordered_visit,4,visit a b c and d in this order without skipping any one of them,& U ! b a & U ! c b & U ! d c F d,& U ! b a & U ! c b & U ! d c F d & U ! a,Syntax Error
+valid,ordered_visit,5,go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a,& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,True
+valid,ordered_visit,5,before visiting b c d and h visit an and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h,& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b & U b U !b c & U ! c U c U !c d U ! d U d U !d h,Syntax Error
+valid,ordered_visit,5,visit a b c d and h in this order without skipping any one of them,& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,True
+valid,strictly_ordered_visit,2,only visit a once and do not visit b until you visit a,& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,go to a exactly once while avoiding b then go to b,& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,you must visit a exactly once while avoiding b then you can navigate to b,& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,go to a and only then go to b without returning to a,& & U ! b a F b U ! a U a U !a b,& U ! b a F b,False
+valid,strictly_ordered_visit,3,do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,True
+valid,strictly_ordered_visit,3,visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U,Syntax Error
+valid,strictly_ordered_visit,4,do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U,Syntax Error
+valid,strictly_ordered_visit,4,visit a then b then c and then d you can only visit each landmark once,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& & U ! b a & U ! c b & U ! d c F d,Syntax Error
+valid,strictly_ordered_visit,5,visit a then b then c then d and then h visit each landmark only once,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& U ! b a & U ! c b & U ! d c & U ! h d F h,False
+valid,strictly_ordered_visit,5,make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,True
+valid,patrolling,1,keep visiting a,G F a,G F a,True
+valid,patrolling,1,go to a an infinite number of times,G F a,G F a,True
+valid,patrolling,1,please visit a infinitely often,G F a,G F a,True
+valid,patrolling,1,frequent a infinitely,G F a,G F a,True
+valid,patrolling,2,keep going to a and b in arbitrary order,& G F a G F b,& G F a G F b,True
+valid,patrolling,2,make sure a and b are visited infinitely,& G F a G F b,& G F a G F b,True
+valid,patrolling,3,frequent a b and c infinitely in any order,& G F a & G F b G F c,& G F a & G F b G F c,True
+valid,patrolling,4,frequent a b c and d infinitely in any order,& G F a & G F b & G F c G F d,& G F a & G F b & G F c G F d,True
+valid,patrolling,5,frequent a b c d and h infinitely in any order,& G F a & G F b & G F c & G F d G F h,& G F a & G F b & G F c & G F d G,Syntax Error

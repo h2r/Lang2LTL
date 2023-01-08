@@ -1,0 +1,489 @@
+Number of trainable parameters in pt_transformer: 12728850
+Number of training samples: 222
+Number of validation samples: 69
+
+0
+visit | 1
+visit a
+F a
+F a
+True
+
+1
+visit | 1
+approach a
+F a
+F a
+True
+
+2
+visit | 1
+visit a
+F a
+F a
+True
+
+3
+visit | 1
+reach a
+F a
+F a
+True
+
+4
+visit | 1
+go to a
+F a
+F a
+True
+
+5
+visit | 2
+visit a and b
+& F a F b
+& F a F b
+True
+
+6
+visit | 2
+go to a and b in an arbitrary order
+& F a F b
+& F a F b
+True
+
+7
+visit | 2
+go to a then go to b or go to b then go to a
+& F a F b
+F & a F b
+False
+
+8
+visit | 2
+visit b and a
+& F a F b
+& F a F b
+True
+
+9
+visit | 2
+visit a and b
+& F a F b
+& F a F b
+True
+
+10
+visit | 3
+go to a b and c in any order
+& F a & F b F c
+& F a & F b F c
+True
+
+11
+visit | 3
+find a b and c
+& F a & F b F c
+& F a & F b F c
+True
+
+12
+visit | 3
+go to a b and c
+& F a & F b F c
+& F a & F b F c
+True
+
+13
+visit | 3
+stop by abc in any order
+& F a & F b F c
+& F a & F b F c
+True
+
+14
+visit | 3
+a b and c must be visited
+& F a & F b F c
+& F a & F b F c
+True
+
+15
+visit | 3
+make sure a b and c are all visited
+& F a & F b F c
+& F a & F b F c
+True
+
+16
+visit | 4
+visit b a c and d
+& F a & F b & F c F d
+& F a & F b & F c F d
+True
+
+17
+visit | 4
+visit a go to b reach c reach d
+& F a & F b & F c F d
+& F a & F b & F c F d
+True
+
+18
+visit | 4
+do not stop until a b c and d are all visited
+& F a & F b & F c F d
+& F a & F b & F c F d
+True
+
+19
+visit | 4
+go to four locations a b d and c
+& F a & F b & F c F d
+& F a & F b & F c F d
+True
+
+20
+visit | 5
+go to a b c d and h in arbitrary order
+& F a & F b & F c & F d F h
+& F a & F b & F c & F d F h
+True
+
+21
+visit | 5
+make sure a b c d and h are all visited
+& F a & F b & F c & F d F h
+& F a & F b & F c & F d F h
+True
+
+22
+visit | 5
+visit a b c d and h
+& F a & F b & F c & F d F h
+& F a & F b & F c & F d F
+Syntax Error
+
+23
+sequenced_visit | 2
+eventually first visit a and then b after
+F & a F b
+F & a F b
+True
+
+24
+sequenced_visit | 2
+visit a and then b
+F & a F b
+F & a F b
+True
+
+25
+sequenced_visit | 2
+visit a and visit b after a is visited
+F & a F b
+F & a F b
+True
+
+26
+sequenced_visit | 2
+find a first then find b
+F & a F b
+F & a F b
+True
+
+27
+sequenced_visit | 3
+visit a sometime afterwards visit b sometime afterwards visit c
+F & a F & b F c
+F & a F & b F c
+True
+
+28
+sequenced_visit | 3
+in some sequence visit a b and c in that order
+F & a F & b F c
+F & a F & b F c
+True
+
+29
+sequenced_visit | 3
+make your way to a b and c consecutively
+F & a F & b F c
+& F a & F b F c
+False
+
+30
+sequenced_visit | 3
+visit b at least once after going to a and visit c at least once after going to b
+F & a F & b F c
+F & a F & b F c
+True
+
+31
+sequenced_visit | 4
+make sure a b c and d are all visited in this order
+F & a F & b F & c F d
+& F a & F b & F c F d
+False
+
+32
+sequenced_visit | 4
+head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited
+F & a F & b F & c F d
+F & a F & b F & c F d
+True
+
+33
+sequenced_visit | 4
+eventually in some sequence visit a b c and d each must be followed by the next
+F & a F & b F & c F d
+& F a & F b & F c F d
+False
+
+34
+sequenced_visit | 5
+go to a then go to b and then reach c then reach d and finally go to h
+F & a F & b F & c F & d F h
+F & a F & b F & c F & d F h
+True
+
+35
+sequenced_visit | 5
+visit a b c d and h in this order there can be other landmarks in between
+F & a F & b F & c F & d F h
+& F a & F b & F c & F d F h
+False
+
+36
+sequenced_visit | 5
+make sure a b c d and h are all visited in this order
+F & a F & b F & c F & d F h
+& F a & F b & F c & F d F h
+False
+
+37
+ordered_visit | 2
+do not visit b until you go to a
+& U ! b a F b
+& U ! b a F b
+True
+
+38
+ordered_visit | 2
+you must visit a first before going to b
+& U ! b a F b
+& U ! b a F b
+True
+
+39
+ordered_visit | 2
+first go to a while avoiding b then move to b
+& U ! b a F b
+& U ! b a F b
+True
+
+40
+ordered_visit | 2
+ensure that you do not reach b before going to a
+& U ! b a F b
+& U ! b a F b
+True
+
+41
+ordered_visit | 3
+reach c but not until you visit a and b and that specific order
+& U ! b a & U ! c b F c
+& U ! b a & U ! c b F c
+True
+
+42
+ordered_visit | 3
+do not go to c until you visit b and do not go to b until you visit a and make sure you visit c
+& U ! b a & U ! c b F c
+& U ! b a & U ! c b F c
+True
+
+43
+ordered_visit | 3
+do not visit c until visiting b do not visit b until visiting a
+& U ! b a & U ! c b F c
+& U ! b a & U ! c b F c
+True
+
+44
+ordered_visit | 4
+visit a b c d in that specific order
+& U ! b a & U ! c b & U ! d c F d
+F & a F & b F & c F d
+False
+
+45
+ordered_visit | 4
+visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d
+& U ! b a & U ! c b & U ! d c F d
+& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c
+Syntax Error
+
+46
+ordered_visit | 4
+visit a b c and d in this order without skipping any one of them
+& U ! b a & U ! c b & U ! d c F d
+& U ! b a & U ! c b & U ! d c F d & U ! a
+Syntax Error
+
+47
+ordered_visit | 5
+go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+True
+
+48
+ordered_visit | 5
+before visiting b c d and h visit an and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+& U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b & U b U !b c & U ! c U c U !c d U ! d U d U !d h
+Syntax Error
+
+49
+ordered_visit | 5
+visit a b c d and h in this order without skipping any one of them
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+True
+
+50
+strictly_ordered_visit | 2
+only visit a once and do not visit b until you visit a
+& & U ! b a F b U ! a U a U !a b
+& & U ! b a F b U ! a U a U !a b
+True
+
+51
+strictly_ordered_visit | 2
+go to a exactly once while avoiding b then go to b
+& & U ! b a F b U ! a U a U !a b
+& & U ! b a F b U ! a U a U !a b
+True
+
+52
+strictly_ordered_visit | 2
+you must visit a exactly once while avoiding b then you can navigate to b
+& & U ! b a F b U ! a U a U !a b
+& & U ! b a F b U ! a U a U !a b
+True
+
+53
+strictly_ordered_visit | 2
+go to a and only then go to b without returning to a
+& & U ! b a F b U ! a U a U !a b
+& U ! b a F b
+False
+
+54
+strictly_ordered_visit | 3
+do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+True
+
+55
+strictly_ordered_visit | 3
+visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U
+Syntax Error
+
+56
+strictly_ordered_visit | 4
+do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U
+Syntax Error
+
+57
+strictly_ordered_visit | 4
+visit a then b then c and then d you can only visit each landmark once
+& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+& & U ! b a & U ! c b & U ! d c F d
+Syntax Error
+
+58
+strictly_ordered_visit | 5
+visit a then b then c then d and then h visit each landmark only once
+& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+& U ! b a & U ! c b & U ! d c & U ! h d F h
+False
+
+59
+strictly_ordered_visit | 5
+make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+True
+
+60
+patrolling | 1
+keep visiting a
+G F a
+G F a
+True
+
+61
+patrolling | 1
+go to a an infinite number of times
+G F a
+G F a
+True
+
+62
+patrolling | 1
+please visit a infinitely often
+G F a
+G F a
+True
+
+63
+patrolling | 1
+frequent a infinitely
+G F a
+G F a
+True
+
+64
+patrolling | 2
+keep going to a and b in arbitrary order
+& G F a G F b
+& G F a G F b
+True
+
+65
+patrolling | 2
+make sure a and b are visited infinitely
+& G F a G F b
+& G F a G F b
+True
+
+66
+patrolling | 3
+frequent a b and c infinitely in any order
+& G F a & G F b G F c
+& G F a & G F b G F c
+True
+
+67
+patrolling | 4
+frequent a b c and d infinitely in any order
+& G F a & G F b & G F c G F d
+& G F a & G F b & G F c G F d
+True
+
+68
+patrolling | 5
+frequent a b c d and h infinitely in any order
+& G F a & G F b & G F c & G F d G F h
+& G F a & G F b & G F c & G F d G
+Syntax Error
+
+{('visit', 1): 1.0, ('visit', 2): 0.8, ('visit', 3): 1.0, ('visit', 4): 1.0, ('visit', 5): 0.6666666666666666, ('sequenced_visit', 2): 1.0, ('sequenced_visit', 3): 0.75, ('sequenced_visit', 4): 0.3333333333333333, ('sequenced_visit', 5): 0.3333333333333333, ('ordered_visit', 2): 1.0, ('ordered_visit', 3): 1.0, ('ordered_visit', 4): 0.0, ('ordered_visit', 5): 0.6666666666666666, ('strictly_ordered_visit', 2): 0.75, ('strictly_ordered_visit', 3): 0.5, ('strictly_ordered_visit', 4): 0.0, ('strictly_ordered_visit', 5): 0.5, ('patrolling', 1): 1.0, ('patrolling', 2): 1.0, ('patrolling', 3): 1.0, ('patrolling', 4): 1.0, ('patrolling', 5): 0.0}
+total validation accuracy: 0.7536231884057971
