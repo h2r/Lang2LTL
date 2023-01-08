@@ -167,9 +167,9 @@ def strict_ordered_patrol_constraint4(props):
     assert len(props) > 1, f"length of props for strict_ordered_patrol_constraint4 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G i {a} U {a} & ! {a} U ! {a} {b}"
+        return f"G i {a} W {a} & ! {a} W ! {a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& G i {a} U {a} & ! {a} U ! {a} {b} " + strict_ordered_patrol_constraint4(props)
+    return f"& G i {a} W {a} & ! {a} W ! {a} {b} " + strict_ordered_patrol_constraint4(props)
 
 
 def past_avoid(props):
@@ -210,7 +210,7 @@ def utils(props):
 
 if __name__ == '__main__':
     paser = argparse.ArgumentParser()
-    paser.add_argument("--pattern_type", type=str, default="ordered_patrolling", help="type of specification pattern.")
+    paser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
     paser.add_argument("--nprops", type=int, default=3, help="number of propositions.")
     paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
