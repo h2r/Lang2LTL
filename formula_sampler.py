@@ -197,6 +197,7 @@ def future_avoid(props):
 
 
 def upper_restricted_avoid(props):
+    props.append(props[0])
     return f"! {lower_restricted_avoid(props)}"
 
 
