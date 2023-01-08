@@ -2,6 +2,7 @@
 Infer trained model.
 """
 import argparse
+import logging
 import os
 from pathlib import Path
 import torch
@@ -58,11 +59,19 @@ class Seq2Seq:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
+    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_ltl_instance_0.2_42.pkl',
                         help='complete file path or prefix of file paths to train test split dataset')
     parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"],
                         help='name of supervised seq2seq model')
     args = parser.parse_args()
+
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(f'results/s2s_{args.model}_{Path(args.split_dataset_fpath).stem}.log', mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
 
     if "pkl" in args.split_dataset_fpath:  # complete file path, e.g. data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl
         split_dataset_fpaths = [args.split_dataset_fpath]
@@ -84,9 +93,9 @@ if __name__ == '__main__':
                           src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
         else:
             raise TypeError(f"ERROR: unrecognized model, {args.model}")
-        print(f"Number of trainable parameters in {args.model}: {count_params(s2s)}")
-        print(f"Number of training samples: {len(train_iter)}")
-        print(f"Number of validation samples: {len(valid_iter)}")
+        logging.info(f"Number of trainable parameters in {args.model}: {count_params(s2s)}")
+        logging.info(f"Number of training samples: {len(train_iter)}")
+        logging.info(f"Number of validation samples: {len(valid_iter)}\n")
 
         # Evaluation
         result_log_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_log.csv"
