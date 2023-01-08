@@ -203,7 +203,8 @@ def upper_restricted_avoid(props):
 def lower_restricted_avoid(props):
     if len(props) == 1:
         return finals(props[0])
-    return f"F & {props.pop(0)} X {lower_restricted_avoid(props)}"
+    a = props.pop(0)
+    return f"F & {a} U {a} & ! {a} U ! {a} {lower_restricted_avoid(props)}"
 
 
 def exact_restricted_avoid(props):
