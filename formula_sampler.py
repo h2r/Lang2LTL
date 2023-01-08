@@ -42,10 +42,10 @@ def sample_formulas(pattern_type, nprops, debug):
         pattern_sampler = sequenced_patrol
     elif pattern_type == "ordered_patrolling":
         pattern_sampler = ordered_patrol_fixed
+    elif pattern_type == "strictly_ordered_patrolling":
+        pattern_sampler = strict_ordered_patrol_fixed
     elif pattern_type == "fair_patrolling":
         pattern_sampler = fair_patrol_fixed
-    elif pattern_type == "strictly_ordered_patrol":
-        pattern_sampler = strict_ordered_patrol_fixed
     elif pattern_type == "past_avoidance":
         pattern_sampler = past_avoid
     elif pattern_type == "global_avoidance":
@@ -129,7 +129,6 @@ def ordered_patrol_fixed(props):
     formula = sequenced_patrol(props[:])
     if len(props) > 1:
         formula = f"& {formula} {utils(props[:])}"
-        props.append(props[0])  # proposition list circles back to 1st proposition for 3rd constraint
         formula = f"& {formula} {ordered_patrol_constraint3(props)}"
     return formula
 
@@ -141,9 +140,9 @@ def ordered_patrol_constraint3(props):
     assert len(props) > 1, f"length of props for ordered_patrol_constraint3 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"G i {b} X U {b} & ! {b} U ! {b} {a}"
+        return f"G i {b} W {b} & ! {b} W ! {b} {a}"
     b, a = props[1], props.pop(0)
-    return f"& G i {b} X U {b} & ! {b} U ! {b} {a} " + ordered_patrol_constraint3(props)
+    return f"& G i {b} W {b} & ! {b} W ! {b} {a} " + ordered_patrol_constraint3(props)
 
 
 def fair_patrol_fixed(props):
@@ -211,7 +210,7 @@ def utils(props):
 
 if __name__ == '__main__':
     paser = argparse.ArgumentParser()
-    paser.add_argument("--pattern_type", type=str, default="strict_ordered_patrol", help="type of specification pattern.")
+    paser.add_argument("--pattern_type", type=str, default="ordered_patrolling", help="type of specification pattern.")
     paser.add_argument("--nprops", type=int, default=3, help="number of propositions.")
     paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
