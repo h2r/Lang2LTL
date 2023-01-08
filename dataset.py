@@ -91,7 +91,7 @@ def create_symbolic_dataset(load_fpath, perm_props):
 def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed):
     """
     :param data_fpath: path to symbolic dataset
-    :param holdout_type: type of holdout test. choices are ltl_type, ltl_instance, utt.
+    :param holdout_type: type of holdout test. choices are ltl_type, ltl_formula, utt.
     :param filter_types: LTL types to filter out.
     :param split_fpath: path to pickle file that stores train, test split
     :param test_size: percentage or number of samples to holdout for testing.
@@ -113,7 +113,7 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
             elif pattern_type in all_types:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
-    elif holdout_type == "ltl_instance":  # hold out specified (pattern type, nprops) pairs
+    elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
         all_instances = []
         for pattern_type, props, _, _ in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
@@ -193,5 +193,5 @@ if __name__ == '__main__':
     seeds = [0, 1, 2, 42, 111]
     for seed in seeds:
         construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
-        construct_split_dataset(data_fpath, holdout_type="ltl_instance", filter_types=filter_types, test_size=0.2, seed=seed)
+        construct_split_dataset(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, test_size=0.2, seed=seed)
         construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
