@@ -208,9 +208,9 @@ def lower_restricted_avoid(props):
 
 def exact_restricted_avoid(props):
     if len(props) == 1:
-        return f"U ! {props[0]} & {props[0]} X G !{props[0]}"
+        return f"U ! {props[0]} & {props[0]} U {props[0]} G !{props[0]}"
     a = props.pop(0)
-    return f"U ! {a} & {a} X {exact_restricted_avoid(props)}"
+    return f"U ! {a} & {a} U {a} {exact_restricted_avoid(props)}"
 
 
 def finals(props):
