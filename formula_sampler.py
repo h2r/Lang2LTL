@@ -23,8 +23,11 @@ def sample_formulas(pattern_type, nprops, debug):
     :param nprops: number of proposition in LTL formulas
     :return: sampled formulas with `nprops` propositions of `pattern_type` and permutation of propositions
     """
-    props_all = PROPS[:nprops]  # props_all = [chr(ord("a")+i) for i in range(nprops)]
-    props_perm = list(permutations(props_all))
+    if "restricted_avoidance" in pattern_type:
+        props_all = PROPS[:1] * nprops
+    else:
+        props_all = PROPS[:nprops]  # props_all = [chr(ord("a")+i) for i in range(nprops)]
+    props_perm = sorted(set(permutations(props_all)))  # remove repetitions from perm, e.g. props_all = ['a', 'a']
 
     if pattern_type == "visit":
         pattern_sampler = finals
@@ -52,6 +55,12 @@ def sample_formulas(pattern_type, nprops, debug):
         pattern_sampler = global_avoid
     elif pattern_type == "future_avoidance":
         pattern_sampler = future_avoid
+    elif pattern_type == "upper_restricted_avoidance":
+        pattern_sampler = upper_restricted_avoid
+    elif pattern_type == "lower_restricted_avoidance":
+        pattern_sampler = lower_restricted_avoid
+    elif pattern_type == "exact_restricted_avoidance":
+        pattern_sampler = exact_restricted_avoid
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -185,6 +194,23 @@ def global_avoid(props):
 def future_avoid(props):
     assert len(props) == 2, f"length of props for future_avoid must be 2, got {len(props)}"
     return f"G i {props[0]} G ! {props[1]}"
+
+
+def upper_restricted_avoid(props):
+    return f"! {lower_restricted_avoid(props)}"
+
+
+def lower_restricted_avoid(props):
+    if len(props) == 1:
+        return finals(props[0])
+    return f"F & {props.pop(0)} X {lower_restricted_avoid(props)}"
+
+
+def exact_restricted_avoid(props):
+    if len(props) == 1:
+        return f"U ! {props[0]} & {props[0]} X G !{props[0]}"
+    a = props.pop(0)
+    return f"U ! {a} & {a} X {exact_restricted_avoid(props)}"
 
 
 def finals(props):
