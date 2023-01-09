@@ -107,4 +107,3 @@ LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U 
 
 Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
 LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-

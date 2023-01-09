@@ -71,4 +71,3 @@ LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U 
 
 Utterance: do not visit h until you visit d visit d only once do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
 LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
-

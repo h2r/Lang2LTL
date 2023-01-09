@@ -199,7 +199,7 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
 
     split_dataset_name = Path(split_fpath).stem
     prompt_fpath = f"data/finetune_prompt_{nexamples}_{seed}_{split_dataset_name}.txt"
-    save_to_file(prompt, prompt_fpath)
+    save_to_file(prompt.strip(), prompt_fpath)
 
 
 if __name__ == '__main__':
@@ -210,15 +210,7 @@ if __name__ == '__main__':
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
 
-    data_fpath = "data/symbolic_no_perm_batch1.csv"
-    filter_types = ["fair_visit"]
-    seeds = [0, 1, 2, 42, 111]
-    for seed in seeds:
-        construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
-        construct_split_dataset(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, test_size=0.2, seed=seed)
-        construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
-
-    split_fpath = "data/split_symbolic_no_perm_batch1_ltl_type_2_42.pkl"
+    split_fpath = "data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl"
     nexamples = [1, 2, 3]
     seed = 42
     for n in nexamples:

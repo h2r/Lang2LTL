@@ -107,4 +107,3 @@ LTL: & G F a & G F b & G F c & G F d G F h
 
 Utterance: keep visiting a b c d h in any order
 LTL: & G F a & G F b & G F c & G F d G F h
-
