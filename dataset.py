@@ -165,10 +165,6 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
 
     # Testing by loading the saved split dataset back
     train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_fpath)
-    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
-    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
-    # for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(valid_iter, valid_meta)):
-    #     print(f"{idx}: {pattern_type} | {nprop} | {ltl} | {utt}")
     print(f"Training set: {set(train_meta)}")
     print(f"Validation set: {set(valid_meta)}")
     print(f"Number of training samples: {len(train_iter)}")
@@ -178,6 +174,32 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
 def load_split_dataset(split_fpath):
     dataset = load_from_file(split_fpath)
     return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
+
+
+def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
+    """
+    :param split_fpath: path to pickle file containing train, test split for a holdout type
+    :param nexamples: number of examples for 1 formula
+    :return:
+    """
+    train_iter, train_meta, _, _ = load_split_dataset(split_fpath)
+
+    meta2data = defaultdict(list)
+    for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
+        meta2data[(pattern_type, nprop)].append((utt, ltl))
+    sorted(meta2data.items(), key=lambda kv: kv[0])
+
+    prompt = "Your task is to translate English utterances into linear temporal logic (LTL) formulas.\n\n"
+    for (pattern_type, nprop), data in meta2data.items():
+        random.seed(seed)
+        examples = random.sample(data, nexamples)
+        for utt, ltl in examples:
+            prompt += f"Utterance: {utt}\nLTL: {ltl}\n\n"
+            print(f"{pattern_type} | {nprop}\n{utt}\n{ltl}\n")
+
+    split_dataset_name = Path(split_fpath).stem
+    prompt_fpath = f"data/finetune_prompt_{nexamples}_{seed}_{split_dataset_name}.txt"
+    save_to_file(prompt, prompt_fpath)
 
 
 if __name__ == '__main__':
@@ -195,3 +217,9 @@ if __name__ == '__main__':
         construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
         construct_split_dataset(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, test_size=0.2, seed=seed)
         construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
+
+    split_fpath = "data/split_symbolic_no_perm_batch1_ltl_type_2_42.pkl"
+    nexamples = [1, 2, 3]
+    seed = 42
+    for n in nexamples:
+        generate_prompts_from_split_dataset(split_fpath, n, seed)
