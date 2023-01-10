@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 import random
 import string
@@ -160,7 +161,7 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
         "seed": seed
     }
     dataset_name = Path(data_fpath).stem
-    split_fpath = f"data/split_{dataset_name}_{holdout_type}_{test_size}_{seed}.pkl"
+    split_fpath = f"data/holdout_splits/split_{dataset_name}_{holdout_type}_{test_size}_{seed}.pkl"
     save_to_file(split_dataset, split_fpath)
 
     # Testing by loading the saved split dataset back
@@ -199,7 +200,7 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
     prompt.strip()  # remove newline at the end of file
 
     split_dataset_name = Path(split_fpath).stem
-    prompt_fpath = f"data/finetune_prompt_{nexamples}_{seed}_{split_dataset_name}.txt"
+    prompt_fpath = f"data/finetune_prompts/finetune_prompt_{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
 
@@ -220,8 +221,10 @@ if __name__ == '__main__':
         construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
 
     # Generate finetune prompts for GPT-3
-    split_fpath = "data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl"
+    split_dpath = os.path.join("data", "holdout_splits")
+    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath)]
     nexamples = [1, 2, 3]
     seed = 42
-    for n in nexamples:
-        generate_prompts_from_split_dataset(split_fpath, n, seed)
+    for split_fpath in split_fpaths:
+        for n in nexamples:
+            generate_prompts_from_split_dataset(split_fpath, n, seed)

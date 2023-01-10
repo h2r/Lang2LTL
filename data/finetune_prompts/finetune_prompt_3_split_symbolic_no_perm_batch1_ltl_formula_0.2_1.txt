@@ -1,5 +1,14 @@
 Your task is to translate English utterances into linear temporal logic (LTL) formulas.
 
+Utterance: stop by a
+LTL: F a
+
+Utterance: move to a
+LTL: F a
+
+Utterance: visit a
+LTL: F a
+
 Utterance: go to a and b
 LTL: & F a F b
 
@@ -9,23 +18,14 @@ LTL: & F a F b
 Utterance: visit a and b
 LTL: & F a F b
 
-Utterance: when you have the chance can you go to a c and b
-LTL: & F a & F b F c
+Utterance: go to a go to b got to c and go to d
+LTL: & F a & F b & F c F d
 
-Utterance: head to a b and c in any order
-LTL: & F a & F b F c
+Utterance: visit b a c and d
+LTL: & F a & F b & F c F d
 
-Utterance: go to a b and c
-LTL: & F a & F b F c
-
-Utterance: visit a b c d and h
-LTL: & F a & F b & F c & F d F h
-
-Utterance: sometime visit a c b h and d
-LTL: & F a & F b & F c & F d F h
-
-Utterance: visit a b c d and h
-LTL: & F a & F b & F c & F d F h
+Utterance: go to a b c and d in arbitrary order
+LTL: & F a & F b & F c F d
 
 Utterance: move to a then move to b
 LTL: F & a F b
@@ -135,15 +135,6 @@ LTL: G F a
 Utterance: make sure you visit a infinite times
 LTL: G F a
 
-Utterance: make sure a and b are visited infinitely
-LTL: & G F a G F b
-
-Utterance: keep visiting a and b in any order
-LTL: & G F a G F b
-
-Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
-LTL: & G F a G F b
-
 Utterance: never stop visiting a b and c
 LTL: & G F a & G F b G F c
 
@@ -153,6 +144,15 @@ LTL: & G F a & G F b G F c
 Utterance: please keep visiting a b and c without stopping
 LTL: & G F a & G F b G F c
 
+Utterance: never stop visiting a b c and d
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: keep visiting a b c and d in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: please keep visiting a b c and d without stopping
+LTL: & G F a & G F b & G F c G F d
+
 Utterance: never stop visiting a b c d and h
 LTL: & G F a & G F b & G F c & G F d G F h
 
@@ -161,3 +161,4 @@ LTL: & G F a & G F b & G F c & G F d G F h
 
 Utterance: please keep visiting a b c d and h without stopping
 LTL: & G F a & G F b & G F c & G F d G F h
+

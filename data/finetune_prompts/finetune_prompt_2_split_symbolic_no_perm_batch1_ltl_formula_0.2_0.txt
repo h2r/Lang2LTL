@@ -1,0 +1,110 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: stop by a
+LTL: F a
+
+Utterance: move to a
+LTL: F a
+
+Utterance: when you have the chance can you go to a c and b
+LTL: & F a & F b F c
+
+Utterance: head to a b and c in any order
+LTL: & F a & F b F c
+
+Utterance: go to a go to b got to c and go to d
+LTL: & F a & F b & F c F d
+
+Utterance: visit b a c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d and h
+LTL: & F a & F b & F c & F d F h
+
+Utterance: sometime visit a c b h and d
+LTL: & F a & F b & F c & F d F h
+
+Utterance: move to a then move to b
+LTL: F & a F b
+
+Utterance: eventually first visit a and then b after
+LTL: F & a F b
+
+Utterance: visit a b and c one after another
+LTL: F & a F & b F c
+
+Utterance: visit a sometime afterwards visit b sometime afterwards visit c
+LTL: F & a F & b F c
+
+Utterance: make sure a b c and d are all visited in this order
+LTL: F & a F & b F & c F d
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: find b but not until you find a first
+LTL: & U ! b a F b
+
+Utterance: do not visit b until you go to a
+LTL: & U ! b a F b
+
+Utterance: reach c but not until you visit a and b and that specific order
+LTL: & U ! b a & U ! c b F c
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a but do not visit b or c and then go to b but do not visit c or revisit a and then go to c but do not revisit a or b
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: go to a but do not visit b c or d and then go to b but do not visit c or d or revisit a and then go to c but do not visit d or revisit a or b and then go to d but do not revisit a b or c
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: visit a then b then c then d and then h visit each landmark only once
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: do not visit h until you visit d visit d only once do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: do not stop visiting a
+LTL: G F a
+
+Utterance: keep visiting a
+LTL: G F a
+
+Utterance: make sure a and b are visited infinitely
+LTL: & G F a G F b
+
+Utterance: keep visiting a and b in any order
+LTL: & G F a G F b
+
+Utterance: never stop visiting a b and c
+LTL: & G F a & G F b G F c
+
+Utterance: keep visiting a b and c in any order
+LTL: & G F a & G F b G F c
+
+Utterance: never stop visiting a b c and d
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: keep visiting a b c and d in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: never stop visiting a b c d and h
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: keep visiting a b c d h in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
