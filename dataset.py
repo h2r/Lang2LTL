@@ -115,21 +115,21 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
-        all_instances = []
+        all_formulas = []
         for pattern_type, props, _, _ in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
             instance = (pattern_type, len(props))
-            if pattern_type not in filter_types and instance not in all_instances:
-                all_instances.append(instance)
+            if pattern_type not in filter_types and instance not in all_formulas:
+                all_formulas.append(instance)
         random.seed(seed)
-        holdout_instances = random.sample(all_instances, int(len(all_instances)*test_size))
+        holdout_instances = random.sample(all_formulas, int(len(all_formulas)*test_size))
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
             instance = (pattern_type, len(props))
             if instance in holdout_instances:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
-            elif instance in all_instances:
+            elif instance in all_formulas:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
