@@ -1,0 +1,27 @@
+LTL Template Type,Number of Propositions,Number of Utterances,Accuracy
+visit,1,21,0.0
+visit,2,22,0.0
+visit,3,26,0.0
+visit,4,19,0.0
+visit,5,14,0.0
+sequenced_visit,2,18,no valid data
+sequenced_visit,3,17,no valid data
+sequenced_visit,4,12,no valid data
+sequenced_visit,5,11,no valid data
+ordered_visit,2,17,no valid data
+ordered_visit,3,12,no valid data
+ordered_visit,4,11,no valid data
+ordered_visit,5,11,no valid data
+strictly_ordered_visit,2,16,no valid data
+strictly_ordered_visit,3,7,no valid data
+strictly_ordered_visit,4,7,no valid data
+strictly_ordered_visit,5,8,no valid data
+patrolling,1,17,0.0
+patrolling,2,10,0.0
+patrolling,3,5,0.0
+patrolling,4,5,0.0
+patrolling,5,5,0.0
+fair_visit,2,15,no valid data
+fair_visit,3,8,no valid data
+fair_visit,5,8,no valid data
+fair_visit,4,8,no valid data

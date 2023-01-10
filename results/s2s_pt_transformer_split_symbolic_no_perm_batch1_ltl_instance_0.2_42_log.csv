@@ -1,0 +1,57 @@
+train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
+valid,visit,1,visit a,F a,F & a F b,False
+valid,visit,1,reach a,F a,F a,True
+valid,visit,1,eventually you must go to a,F a,F & a F b,False
+valid,visit,4,visit b a c and d,& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,visit,4,go to four locations a b d and c,& F a & F b & F c F d,F & a F & b F & c F d F d,Syntax Error
+valid,visit,4,in no particular order visit a b c and d,& F a & F b & F c F d,& F a & F b F c & F d,Syntax Error
+valid,sequenced_visit,5,visit a b c d and h in this order there can be other landmarks in between,F & a F & b F & c F & d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,False
+valid,visit,1,move to a,F a,F & a F b,False
+valid,visit,1,go to a,F a,F & a F b,False
+valid,visit,1,reach a,F a,F a,True
+valid,visit,1,navigate to a,F a,G F a,False
+valid,visit,1,find a,F a,F a,True
+valid,visit,1,go to a,F a,F & a F b,False
+valid,visit,1,make sure you visit a at least once,F a,F & a F b,False
+valid,visit,1,walk to a,F a,F & a F b,False
+valid,visit,1,make you way to a,F a,G F a,False
+valid,visit,1,head to a,F a,F & a F b,False
+valid,visit,1,go to a,F a,F & a F b,False
+valid,visit,1,reach a,F a,F a,True
+valid,visit,1,visit a,F a,F & a F b,False
+valid,visit,1,find a,F a,F a,True
+valid,visit,1,approach a,F a,G F a,False
+valid,visit,4,go to a go to b got to c and go to d,& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,visit,4,reach all the following locations a b c and d,& F a & F b & F c F d,& F a & F b F c & F d F d,Syntax Error
+valid,visit,4,visit a go to b reach c reach d,& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,visit,4,visit a b c and d in no particular order,& F a & F b & F c F d,& F a & F b F c & F d,Syntax Error
+valid,visit,4,visit a b c and d the order is not important,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,sequenced_visit,5,visit a b c d and h sequentially,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,sequenced_visit,5,visit a then visit b then visit c then visit d and then visit h,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
+valid,sequenced_visit,5,reach a b c d and h sequentially,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,sequenced_visit,5,visit b at least once after visiting a visit c at least once after visiting both a and b visit d at least once after visiting a b and c and visit h at least once after visiting a b c and d,F & a F & b F & c F & d F h,& U ! b a & U ! c b & U ! d c F d,False
+valid,sequenced_visit,5,go to a then go to b and then reach c then reach d and finally go to h,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
+valid,visit,4,go to a b c and d in arbitrary order,& F a & F b & F c F d,& F a & F b F c & F d,Syntax Error
+valid,visit,4,visit a b c and d,& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,visit,4,make sure a b c and d are all visited,& F a & F b & F c F d,& F a & F b F c & F d F d,Syntax Error
+valid,visit,4,do not stop until a b c and d are all visited,& F a & F b & F c F d,& F a & F b F c & F d F d,Syntax Error
+valid,visit,4,make your way to a b c and d,& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,sequenced_visit,5,go to a and then go to b and then go to c and then go to d and then go to h,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
+valid,sequenced_visit,5,visit a b c d and h in this order,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,sequenced_visit,5,head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited and then to h after d is visited,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
+valid,sequenced_visit,5,make sure a b c d and h are all visited in this order,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
+valid,sequenced_visit,5,you have to walk to a and then walk to b and then walk to c and then walk to d and finally walk to h,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
+valid,patrolling,4,never stop visiting a b c and d,& G F a & G F b & G F c G F d,& G F a & G F b & G F c & G,Syntax Error
+valid,patrolling,4,frequent a b c and d infinitely in any order,& G F a & G F b & G F c G F d,& G F a & G F b & G F c & G F d,Syntax Error
+valid,patrolling,4,please keep visiting a b c and d without stopping,& G F a & G F b & G F c G F d,& G F a & G F b & G F c & G F d,Syntax Error
+valid,patrolling,4,make sure a b c and d are visited infinitely,& G F a & G F b & G F c G F d,& F a & F b & F c & F d,Syntax Error
+valid,patrolling,4,keep visiting a b c and d in any order,& G F a & G F b & G F c G F d,& G F a & G F b & G F c & G F d,Syntax Error
+valid,visit,1,go to a,F a,F & a F b,False
+valid,visit,1,visit a,F a,F & a F b,False
+valid,visit,1,stop by a,F a,F a,True
+valid,visit,4,move to abcand d in any order,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,visit abc and d in any order,& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,stop by abc and d in any order,& F a & F b & F c F d,& F a & F b & F c F d F d,Syntax Error
+valid,visit,4,move to abc and d in any order,& F a & F b & F c F d,& F a & F b & F c F d F d,Syntax Error
+valid,visit,4,stop by abc and d in any order,& F a & F b & F c F d,& F a & F b & F c F d F d,Syntax Error
+valid,visit,4,visit abc and d in any order,& F a & F b & F c F d,& F a & F b & F c F d,True
