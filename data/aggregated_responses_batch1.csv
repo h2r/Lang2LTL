@@ -159,21 +159,11 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Visit a, b, and c in any order"
 2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Find a, b, and c"
 2023/01/03 2:47:47 PM EST,ankitshah91@gmail.com,Visit,3,"Visit all three locations a, b, and c"
-2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Go to a, go to b, got to c and go to d"
-2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Reach all the following locations: a, b, c, and d"
-2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit a, Go to b, reach c, reach d"
-2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit a, b, c, and d in no particular order"
-2023/01/03 2:49:03 PM EST,ankitshah91@gmail.com,Visit,4,"Visit, a, b, c, and d. The order is not important"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Go to a, go to b, go to c, go to d, go to h"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Visit a, b, c, d, h in any order required"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Visit all locations, a, b, c, d, h"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Reach the following five locations a, b, c, d, h"
 2023/01/03 2:50:15 PM EST,ankitshah91@gmail.com,Visit,5,"Find the following: a, b, c, d, h"
-2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Go to a, then b, then c"
-2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Go to a. Then, go to b. Finally, go to c."
-2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Visit a, b, and c in that order. "
-2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,Start at a. Then visit b. Then go to c. 
-2023/01/03 10:31:05 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,3,"Please visit a at 9:00, then b at 10:00, and then c at 11:00. "
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Please visit a, b, and c in any order."
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"Go to a, b, and c."
 2023/01/03 11:43:54 PM EST,benjamin_schornstein@brown.edu,Visit,3,"When you have the chance, can you go to a, c, and b. "
@@ -315,17 +305,136 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/06 10:40:26 AM EST,ifrah_idrees@brown.edu,Visit,2,move to a and b
 2023/01/06 10:40:26 AM EST,ifrah_idrees@brown.edu,Visit,2,Go to a and b
 2023/01/06 10:40:26 AM EST,ifrah_idrees@brown.edu,Visit,2,Stop by a and b
-2023/01/06 10:44:53 AM EST,ifrah_idrees@brown.edu,Visit,4,"Move to a,b,c,and d in any order"
-2023/01/06 10:44:53 AM EST,ifrah_idrees@brown.edu,Visit,4,"Visit a,b,c, and d in any order"
-2023/01/06 10:44:53 AM EST,ifrah_idrees@brown.edu,Visit,4,"Stop by a,b,c and d in any order"
-2023/01/06 10:46:11 AM EST,ifrah_idrees@brown.edu,Visit,4,"Move to a,b,c, and d in any order"
-2023/01/06 10:46:11 AM EST,ifrah_idrees@brown.edu,Visit,4,"Stop by a,b,c and d in any order"
-2023/01/06 10:46:11 AM EST,ifrah_idrees@brown.edu,Visit,4,"Visit a,b,c and d in any order"
-2023/01/06 10:46:58 AM EST,ifrah_idrees@brown.edu,Visit,3,"Move to a,b,c in any order"
-2023/01/06 10:46:58 AM EST,ifrah_idrees@brown.edu,Visit,3,"Stop by a,b,c in any order"
-2023/01/06 10:46:58 AM EST,ifrah_idrees@brown.edu,Visit,3,"Visit a,b,c in any order"
 2023/01/06 11:01:42 AM EST,ankitshah91@gmail.com,Strictly Ordered Visit,2,"Visit b, but only after a. Also you cannot revisit a before completing the remaining tasks"
 2023/01/06 11:01:42 AM EST,ankitshah91@gmail.com,Strictly Ordered Visit,2,"Go to a, only then go to b, but ensure to not revisit a"
 2023/01/06 11:01:42 AM EST,ankitshah91@gmail.com,Strictly Ordered Visit,2,"Visit a, and b in that exact sequence. Out of sequence visits and repeated visits are not permitted"
 2023/01/06 11:01:42 AM EST,ankitshah91@gmail.com,Strictly Ordered Visit,2,Go to a and only then go to b without returning to a
 2023/01/06 11:01:42 AM EST,ankitshah91@gmail.com,Strictly Ordered Visit,2,Reach a and then b in that exact order without repetitions
+2023/01/09 6:17:13 AM EST,ifrah_idrees@brown.edu,Sequenced Visit,2,Visit a then visit b
+2023/01/09 6:17:13 AM EST,ifrah_idrees@brown.edu,Sequenced Visit,2,Visit a followed by b
+2023/01/09 6:17:13 AM EST,ifrah_idrees@brown.edu,Sequenced Visit,2,Go to a then b
+2023/01/09 6:17:13 AM EST,ifrah_idrees@brown.edu,Sequenced Visit,2,Go to b after visiting a
+2023/01/09 9:17:55 AM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,2,Visit b but before visiting b you must visit a. Visit each location once.
+2023/01/09 9:17:55 AM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,2,Visit a and visit only once. Then eventually visit b. Do not visit b with visiting a.
+2023/01/09 9:17:55 AM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,2,Only visit a once then followed by b.
+2023/01/09 9:17:55 AM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,2,visit a and b once but do not visit b with visiting a.
+2023/01/09 10:34:13 AM EST,ankitshah91@gmail.com,Patrolling,1,Keep on visiting a forever
+2023/01/09 10:34:13 AM EST,ankitshah91@gmail.com,Patrolling,1,Go to a repeatedly
+2023/01/09 10:34:13 AM EST,ankitshah91@gmail.com,Patrolling,1,Visit a infinitely often
+2023/01/09 10:34:13 AM EST,ankitshah91@gmail.com,Patrolling,1,Make sure at any point in time you will visit a at least once in the future
+2023/01/09 10:34:13 AM EST,ankitshah91@gmail.com,Patrolling,1,Keep visiting a forever
+2023/01/09 10:35:26 AM EST,ankitshah91@gmail.com,Patrolling,2,Keep visiting a and b forever
+2023/01/09 10:35:26 AM EST,ankitshah91@gmail.com,Patrolling,2,Go to a and b infinitely often
+2023/01/09 10:35:26 AM EST,ankitshah91@gmail.com,Patrolling,2,Repeatedly visit a and b forever
+2023/01/09 10:35:26 AM EST,ankitshah91@gmail.com,Patrolling,2,At any point in time you must visit a and b at least once after
+2023/01/09 10:35:26 AM EST,ankitshah91@gmail.com,Patrolling,2,Always keep visiting a and b
+2023/01/09 10:36:40 AM EST,ankitshah91@gmail.com,Patrolling,3,"Keep visiting a, b, and c infinitely often"
+2023/01/09 10:36:40 AM EST,ankitshah91@gmail.com,Patrolling,3,"Make sure you are always visiting a, b, and c"
+2023/01/09 10:36:40 AM EST,ankitshah91@gmail.com,Patrolling,3,"Don't ever stop visiting a, b, and c"
+2023/01/09 10:36:40 AM EST,ankitshah91@gmail.com,Patrolling,3,"At any point in time ensure that you will visit a, b, and c at least once in the future"
+2023/01/09 10:36:40 AM EST,ankitshah91@gmail.com,Patrolling,3,"Repeatedly keep visiting a, b, and c"
+2023/01/09 10:48:47 AM EST,ifrah_idrees@brown.edu,Patrolling,1,Keep visiting a
+2023/01/09 10:48:47 AM EST,ifrah_idrees@brown.edu,Patrolling,1,Continue to visit a
+2023/01/09 10:48:47 AM EST,ifrah_idrees@brown.edu,Patrolling,1,Visit a again and again
+2023/01/09 10:56:56 AM EST,ifrah_idrees@brown.edu,Patrolling,2,Keep going to a and b an infinite number of times
+2023/01/09 10:56:56 AM EST,ifrah_idrees@brown.edu,Patrolling,2,Keep visiting a and b an infinite number of times
+2023/01/09 10:56:56 AM EST,ifrah_idrees@brown.edu,Patrolling,2,Continue visiting  a and b an infinite number of times
+2023/01/09 10:56:56 AM EST,ifrah_idrees@brown.edu,Patrolling,2,Don't stop visiting a and b
+2023/01/09 11:03:51 AM EST,ankitshah91@gmail.com,Visit,4,"Go to a, go to b, go to c and go to d"
+2023/01/09 11:03:51 AM EST,ankitshah91@gmail.com,Visit,4,"Reach all the following locations: a, b, c, and d"
+2023/01/09 11:03:51 AM EST,ankitshah91@gmail.com,Visit,4,"Visit a, Go to b, reach c, reach d"
+2023/01/09 11:03:51 AM EST,ankitshah91@gmail.com,Visit,4,"Visit a, b, c, and d in no particular order"
+2023/01/09 11:03:51 AM EST,ankitshah91@gmail.com,Visit,4,"Visit, a, b, c, and d. The order is not important"
+2023/01/09 1:22:13 PM EST,ifrah_idrees@brown.edu,Fair Visit,2,Visit a and b equally
+2023/01/09 1:22:13 PM EST,ifrah_idrees@brown.edu,Fair Visit,2,Go to a and b arbitrarily but don't visit one more than other
+2023/01/09 1:22:13 PM EST,ifrah_idrees@brown.edu,Fair Visit,2,Visit a and b with total number of visits to a equal to total number of visits to b
+2023/01/09 1:22:13 PM EST,ifrah_idrees@brown.edu,Fair Visit,2,Visit a and b with total number of visits to a one more than the total number of visits to b
+2023/01/09 1:40:24 PM EST,ifrah_idrees@brown.edu,Fair Visit,5,"Visit a, b, c, d and h equal number of times."
+2023/01/09 1:40:24 PM EST,ifrah_idrees@brown.edu,Fair Visit,5,"Visit a, b, c, d and h equal number of times."
+2023/01/09 1:40:24 PM EST,ifrah_idrees@brown.edu,Fair Visit,5,"Visit a, b, c, d and h with total number of visits same for each location"
+2023/01/09 1:40:24 PM EST,ifrah_idrees@brown.edu,Fair Visit,5,"Visit a b, c, d and h with equal number of visits to a, b, d and c . And make total number of visits to d be one more than the total number of visits to a."
+2023/01/09 1:41:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,3,Visit a then b then c
+2023/01/09 1:41:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,3,Go to a then b then c
+2023/01/09 1:41:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,3,"Visit a, b, c one after the other"
+2023/01/09 1:41:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,3,Visit a followed by b which is then to be followed by c
+2023/01/09 1:42:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,4,"Visit a followed by b, c and then d"
+2023/01/09 1:42:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,4,"Visit a then b then c, and then d"
+2023/01/09 1:42:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,4,"Go to a, then b, then c, and then d"
+2023/01/09 1:42:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,4,"Move to a, then b, c, and then d"
+2023/01/09 1:42:18 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,4,"Visit a, b, c and d one after another"
+2023/01/09 1:42:59 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,5,"  Visit a followed by b, c, d and then h"
+2023/01/09 1:42:59 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,5,"Go to a, b, c, d and then h"
+2023/01/09 1:42:59 PM EST,ifrah_idrees@brown.edu,Sequenced Visit,5,"Visit a, b, c, d and then h"
+2023/01/09 1:46:42 PM EST,ifrah_idrees@brown.edu,Ordered Visit,2,Visit b but before visiting b you must visit a
+2023/01/09 1:46:42 PM EST,ifrah_idrees@brown.edu,Ordered Visit,2,Visit a then eventually visit b. Do not visit b before visiting a.
+2023/01/09 1:46:42 PM EST,ifrah_idrees@brown.edu,Ordered Visit,2,"Visit a, and continue visiting a but then you must visit b"
+2023/01/09 1:46:42 PM EST,ifrah_idrees@brown.edu,Ordered Visit,2,visit a and b but do not visit b without visiting a.
+2023/01/09 1:47:54 PM EST,ifrah_idrees@brown.edu,Ordered Visit,4,"Visit a before vising b, c, and d. Then visit b before visiting c, d and then visit d before visiting c"
+2023/01/09 1:47:54 PM EST,ifrah_idrees@brown.edu,Ordered Visit,4,"Visit a, b, c, and d in this strict order. Once the predecessor is visited you must visit the successor."
+2023/01/09 1:47:54 PM EST,ifrah_idrees@brown.edu,Ordered Visit,4,"Do not visit successor without visiting the predecessor in the following strict order a, b, c, and d"
+2023/01/09 1:47:54 PM EST,ifrah_idrees@brown.edu,Ordered Visit,4,"Visit a, continue visiting a but then you must visit b, followed by c and then d."
+2023/01/09 1:49:06 PM EST,ifrah_idrees@brown.edu,Ordered Visit,5,"Visit a before vising b, c, d, and h. Then visit b before visiting c, d, and h. Then visit d before visiting h and then visit h."
+2023/01/09 1:49:06 PM EST,ifrah_idrees@brown.edu,Ordered Visit,5,"Visit a, b, c, d and h in this strict order. Once the predecessor is visited you must visit the successor."
+2023/01/09 1:49:06 PM EST,ifrah_idrees@brown.edu,Ordered Visit,5,"Visit a, b, c, d and h in this strict order. Once the predecessor is visited you must visit the successor."
+2023/01/09 1:49:06 PM EST,ifrah_idrees@brown.edu,Ordered Visit,5,"Visit a, continue visiting a but then you must visit b, followed by c, d and then h."
+2023/01/09 2:02:37 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,3,Visit b but before visiting b you must visit a. Only after that visit c. Visit each location once.
+2023/01/09 2:02:37 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,3,Visit a  only once. Then eventually visit b one time. Then visit c in the future once. 
+2023/01/09 2:02:37 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,3,"Visit a, b, and c once. Do not visit b without visiting a and do not visit c without visiting b."
+2023/01/09 2:02:37 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,3,Only visit a once followed by visiting b then visiting c once.
+2023/01/09 2:14:33 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,4,Visit b but before visiting b you must visit a. Only after that visit c. After visiting c visit d. Visit each location once.
+2023/01/09 2:14:33 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,4,Visit a only once. Then eventually visit b once. After that visit c in the future once. Followed by one-time visit to d. 
+2023/01/09 2:14:33 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,4,"Visit a, b, c, d once. Do not visit b without visiting a and do not visit b without visiting c. Do not visit d without visiting c."
+2023/01/09 2:14:33 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,4,"Visit a followed by a one time visits to b, then c then visit d.Follow this strict order. "
+2023/01/09 2:18:36 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,5,Visit b but before visiting b you must visit a. After that visit c. Don't visit c without visiting a and b. Then visit d followed by h. Visit each location once.
+2023/01/09 2:18:36 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,5,Visit a only once. Then eventually visit b only once. Then visit c in the future for one time. Followed by one visit to d and after that h.
+2023/01/09 2:18:36 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,5,"Visit a, b, c, d, and h once. Do not visit b without visiting a and do not visit c without visiting b. Also, do not visit d without visiting c and do not visit h without visiting d."
+2023/01/09 2:18:36 PM EST,ifrah_idrees@brown.edu,Strictly Ordered Visit,5,"Visit a followed by visiting b then visit c, d and h in this exact order. Visit all locations once"
+2023/01/09 2:19:21 PM EST,ifrah_idrees@brown.edu,Patrolling,3,"Keep going to a, b, and c an infinite number of times"
+2023/01/09 2:19:21 PM EST,ifrah_idrees@brown.edu,Patrolling,3,"Keep visiting a, b, and c an infinite number of times"
+2023/01/09 2:19:21 PM EST,ifrah_idrees@brown.edu,Patrolling,3,"Continue visiting  a, b, and c an infinite number of times"
+2023/01/09 2:19:21 PM EST,ifrah_idrees@brown.edu,Patrolling,3,"Don't stop visiting a, b and c"
+2023/01/09 2:26:29 PM EST,ifrah_idrees@brown.edu,Patrolling,4,"Keep going to a, b, c and d an infinite number of times"
+2023/01/09 2:26:29 PM EST,ifrah_idrees@brown.edu,Patrolling,4,"Keep visiting a, b, c and d an infinite number of times"
+2023/01/09 2:26:29 PM EST,ifrah_idrees@brown.edu,Patrolling,4,"Continue visiting  a, b, c and d an infinite number of times"
+2023/01/09 2:26:29 PM EST,ifrah_idrees@brown.edu,Patrolling,4,"Don't stop visiting a, b, c,and d"
+2023/01/09 2:27:43 PM EST,ifrah_idrees@brown.edu,Patrolling,5,"Keep going to a, b, c, d and h an infinite number of times"
+2023/01/09 2:27:43 PM EST,ifrah_idrees@brown.edu,Patrolling,5,"Keep visiting a, b, c, d and h an infinite number of times"
+2023/01/09 2:27:43 PM EST,ifrah_idrees@brown.edu,Patrolling,5,"Don't stop visiting a, b, c, d and h"
+2023/01/09 2:27:43 PM EST,ifrah_idrees@brown.edu,Patrolling,5,"Continue visiting  a, b, c, d and h an infinite number of times"
+2023/01/09 2:29:28 PM EST,ifrah_idrees@brown.edu,Fair Visit,3,"Visit a, b and c equal number of times."
+2023/01/09 2:29:28 PM EST,ifrah_idrees@brown.edu,Fair Visit,3,"Go to a, b and c arbitrarily but don't visit one more than other"
+2023/01/09 2:29:28 PM EST,ifrah_idrees@brown.edu,Fair Visit,3,"Visit a, b, and c with total number of visits same for each location"
+2023/01/09 2:29:28 PM EST,ifrah_idrees@brown.edu,Fair Visit,3,"Visit a, b, and c with equal number of visits to a and b. And make the total number of visits to c be one more than the total number of visits to a."
+2023/01/09 2:31:58 PM EST,ifrah_idrees@brown.edu,Fair Visit,4,"Visit a, b, c and d equal number of times."
+2023/01/09 2:31:58 PM EST,ifrah_idrees@brown.edu,Fair Visit,4,"Visit a, b, c and d equal number of times."
+2023/01/09 2:31:58 PM EST,ifrah_idrees@brown.edu,Fair Visit,4,"Visit a, b, c and d with total number of visits same for each location"
+2023/01/09 2:31:58 PM EST,ifrah_idrees@brown.edu,Fair Visit,4,"Visit a b, c, and d with equal number of visits to a, b and c . And make total number of visits to d be one more than the total number of visits to a."
+2023/01/09 2:39:22 PM EST,ifrah_idrees@brown.edu,Visit,4,"Move to a, b, c, and d in any order"
+2023/01/09 2:39:22 PM EST,ifrah_idrees@brown.edu,Visit,4,"Stop by a, b, c and d in any order"
+2023/01/09 2:39:22 PM EST,ifrah_idrees@brown.edu,Visit,4,"Visit a, b, c and d in any order"
+2023/01/09 2:41:52 PM EST,ifrah_idrees@brown.edu,Visit,4,"Move to a, b, c, and d in any order"
+2023/01/09 2:41:52 PM EST,ifrah_idrees@brown.edu,Visit,4,"Visit a, b, c, and d in any order"
+2023/01/09 2:41:52 PM EST,ifrah_idrees@brown.edu,Visit,4,"Stop by a, b, c and d in any order"
+2023/01/09 2:42:50 PM EST,ifrah_idrees@brown.edu,Visit,3,"Move to a, b, and c in any order"
+2023/01/09 2:42:50 PM EST,ifrah_idrees@brown.edu,Visit,3,"Stop by a, b, and c in any order"
+2023/01/09 2:42:50 PM EST,ifrah_idrees@brown.edu,Visit,3,"Visit a, b, and c in any order"
+2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Please go to a then b then c then d in that specific order
+2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Follow the path from a to b to c to d directly
+2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,"First go to a. Then go to b. Then go to c. Finally, go to d."
+2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Move directly from a to b to c to d
+2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Visit a then b then c and then d in that strict order. 
+2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"Visit a, b, c, and d the same number of times."
+2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"Visit a, b, c, and d and then get to your goal. Then, go to d, c, b, and a to get back to the start."
+2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"If you start at a, you must also go to b, c, and d. Likewise, if you start at b, you must go to a, c, and d. If you start at c, you must go to a, b, and d. If you start at d, you must go to a, b, and c."
+2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"If you go to one of a, b, c, or d, you must go to all of them. "
+2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"You must go to a, b, c, and d the same number of times. "
+2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Patrol around the locations a, b, c, and d "
+2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Circle around a, b, c, and d"
+2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Keep going to a, b, c, and d "
+2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Go to a, b, c, and d over and over again"
+2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Continue to stop at a, b, c, and d."
+2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Visit a, b, c, d, and h in any order"
+2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Visit c, a, d, h, and b in no particular order"
+2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to a, d, c, h, and b at least once"
+2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to b, a, h, c, and d "
+2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to h, c, b, d, and a in any sequence"

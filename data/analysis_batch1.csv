@@ -3,25 +3,25 @@ Visit,1,21
 Visit,2,22
 Visit,3,26
 Visit,4,19
-Visit,5,14
-Sequenced Visit,2,18
-Sequenced Visit,3,17
-Sequenced Visit,4,12
-Sequenced Visit,5,11
-Ordered Visit,2,17
+Visit,5,19
+Sequenced Visit,2,22
+Sequenced Visit,3,16
+Sequenced Visit,4,17
+Sequenced Visit,5,14
+Ordered Visit,2,21
 Ordered Visit,3,12
-Ordered Visit,4,11
-Ordered Visit,5,11
-Strictly Ordered Visit,2,16
-Strictly Ordered Visit,3,7
-Strictly Ordered Visit,4,7
-Strictly Ordered Visit,5,8
-Patrolling,1,17
-Patrolling,2,10
-Patrolling,3,5
-Patrolling,4,5
-Patrolling,5,5
-Fair Visit,2,15
-Fair Visit,3,8
-Fair Visit,5,8
-Fair Visit,4,8
+Ordered Visit,4,15
+Ordered Visit,5,15
+Strictly Ordered Visit,2,20
+Strictly Ordered Visit,3,11
+Strictly Ordered Visit,4,16
+Strictly Ordered Visit,5,12
+Patrolling,1,25
+Patrolling,2,19
+Patrolling,3,14
+Patrolling,4,14
+Patrolling,5,9
+Fair Visit,2,19
+Fair Visit,3,12
+Fair Visit,5,12
+Fair Visit,4,17
