@@ -1,3 +1,4 @@
+import os
 import logging
 from collections import defaultdict
 import numpy as np
@@ -50,7 +51,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     logging.info(meta2acc)
 
     analysis = load_from_file(analysis_fpath)
-    acc_anaysis = [["LTL Template Type", "Number of Propositions", "Number of Utterances", "Accuracy"]]
+    acc_anaysis = [["LTL Type", "Number of Propositions", "Number of Utterances", "Accuracy"]]
     for pattern_type, nprops, nutts in analysis:
         pattern_type = "_".join(pattern_type.lower().split())
         meta = (pattern_type, int(nprops))
@@ -70,6 +71,28 @@ def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_l
     train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
     return evaluate_lang_single(model, valid_iter, valid_meta,
                                 analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
+
+
+def aggregate_results(result_fpaths):
+    """
+    Aggregate accuracy-per-formula results from K-fold cross validation or multiple random seeds.
+    Assume files have same columns (LTL Type, Number of Propositions, Number of Utterances, Accuracy)
+    and same values for first 3 columns.
+    :param result_fpaths: paths to results file to be aggregated
+    """
+    result_aux = load_from_file(result_fpaths[0], noheader=False)
+    fields = result_aux[0]
+    aggregated_result = [fields]
+    for row in result_aux:
+        aggregated_result.append(row[:3]+[0])
+
+    for n, result_fpath in enumerate(result_fpaths):
+        result = load_from_file(result_fpath, noheader=True)
+        for row_idx, row in enumerate(result):
+            aggregated_result[row_idx][3] += 1 / (n + 1) * (row[3] - aggregated_result[row_idx][3])  # running average
+
+    aggregated_result_fpath = f"{os.path.commonprefix(result_fpaths)}.csv"
+    save_to_file(aggregated_result, aggregated_result_fpath)
 
 
 def evaluate_plan(out_traj, true_traj):
