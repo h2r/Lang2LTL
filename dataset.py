@@ -3,7 +3,7 @@ from pathlib import Path
 import random
 import string
 from collections import defaultdict
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold
 import spot
 
 from utils import load_from_file, save_to_file, substitute, substitute_single_fix
@@ -91,6 +91,7 @@ def create_symbolic_dataset(load_fpath, perm_props):
 
 def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed):
     """
+    Random sample for type, formula and utterance holdout.
     :param data_fpath: path to symbolic dataset
     :param holdout_type: type of holdout test. choices are ltl_type, ltl_formula, utt.
     :param filter_types: LTL types to filter out.
@@ -118,18 +119,18 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
         all_formulas = []
         for pattern_type, props, _, _ in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            instance = (pattern_type, len(props))
-            if pattern_type not in filter_types and instance not in all_formulas:
-                all_formulas.append(instance)
+            formula = (pattern_type, len(props))
+            if pattern_type not in filter_types and formula not in all_formulas:
+                all_formulas.append(formula)
         random.seed(seed)
-        holdout_instances = random.sample(all_formulas, int(len(all_formulas)*test_size))
+        holdout_formulas = random.sample(all_formulas, int(len(all_formulas)*test_size))
         for pattern_type, props, utt, ltl in dataset:
             props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-            instance = (pattern_type, len(props))
-            if instance in holdout_instances:
+            formula = (pattern_type, len(props))
+            if formula in holdout_formulas:
                 valid_iter.append((utt, ltl))
                 valid_meta.append((pattern_type, len(props)))
-            elif instance in all_formulas:
+            elif formula in all_formulas:
                 train_iter.append((utt, ltl))
                 train_meta.append((pattern_type, len(props)))
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
@@ -172,6 +173,99 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
     print(f"Number of validation samples: {len(valid_iter)}\n")
 
 
+def construct_split_dataset_new(data_fpath, holdout_type, filter_types, size, seed):
+    """
+    K-fold cross validation for type and formula holdout. Random sample for utterance holdout.
+    :param data_fpath: path to symbolic dataset
+    :param holdout_type: type of holdout test. choices are ltl_type, ltl_formula, utt.
+    :param filter_types: LTL types to filter out.
+    :param split_fpath: path to pickle file that stores train, test split
+    :param size: size of each fold for type and formula holdout; percentage utterances to holdout for utterance holdout.
+    :param seed: random seed
+    """
+    print(f"Generating train, test split for holdout type: {holdout_type}")
+    dataset = load_from_file(data_fpath)
+
+    if holdout_type == "ltl_type":  # hold out specified pattern types
+        all_types = [typ for typ in ALL_TYPES if typ not in filter_types]
+        kf = KFold(n_splits=len(all_types)//size, random_state=seed, shuffle=True)
+        for fold_idx, (train_idx, holdout_idx) in enumerate(kf.split(all_types)):
+            holdout_types = [all_types[idx] for idx in holdout_idx]
+            train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
+            for pattern_type, props, utt, ltl in dataset:
+                props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+                if pattern_type in holdout_types:
+                    valid_iter.append((utt, ltl))
+                    valid_meta.append((pattern_type, len(props)))
+                elif pattern_type in all_types:
+                    train_iter.append((utt, ltl))
+                    train_meta.append((pattern_type, len(props)))
+            dataset_name = Path(data_fpath).stem
+            split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
+            save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
+                               holdout_type, filter_types, size, seed)
+    elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
+        all_formulas = []
+        for pattern_type, props, _, _ in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            formula = (pattern_type, len(props))
+            if pattern_type not in filter_types and formula not in all_formulas:
+                all_formulas.append(formula)
+        kf = KFold(n_splits=len(all_formulas)//size, random_state=seed, shuffle=True)
+        for fold_idx, (train_idx, holdout_idx) in enumerate(kf.split(all_formulas)):
+            holdout_formulas = [all_formulas[idx] for idx in holdout_idx]
+            train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
+            for pattern_type, props, utt, ltl in dataset:
+                props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+                formula = (pattern_type, len(props))
+                if formula in holdout_formulas:
+                    valid_iter.append((utt, ltl))
+                    valid_meta.append((pattern_type, len(props)))
+                elif formula in all_formulas:
+                    train_iter.append((utt, ltl))
+                    train_meta.append((pattern_type, len(props)))
+            dataset_name = Path(data_fpath).stem
+            split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
+            save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
+                               holdout_type, filter_types, size, seed)
+    elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
+        train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
+        meta2data = defaultdict(list)
+        for pattern_type, props, utt, ltl in dataset:
+            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            if pattern_type not in filter_types:
+                meta2data[(pattern_type, len(props))].append((utt, ltl))
+        for meta, data in meta2data.items():
+            if len(data) == 1:
+                train_iter.append(data[0])
+                train_meta.append(meta)
+            else:
+                train_dataset, valid_dataset = train_test_split(data, test_size=size, random_state=seed)
+                for utt, ltl in train_dataset:
+                    train_iter.append((utt, ltl))
+                    train_meta.append(meta)
+                for utt, ltl in valid_dataset:
+                    valid_iter.append((utt, ltl))
+                    valid_meta.append(meta)
+        dataset_name = Path(data_fpath).stem
+        split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}.pkl"
+        save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
+                           holdout_type, filter_types, size, seed)
+    else:
+        raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
+
+
+def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta, holdout_type, filter_types, size, seed):
+    split_dataset = {
+        "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
+        "holdout_type": holdout_type,
+        "filter_types": filter_types,
+        "size": size,
+        "seed": seed
+    }
+    save_to_file(split_dataset, split_fpath)
+
+
 def load_split_dataset(split_fpath):
     dataset = load_from_file(split_fpath)
     return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
@@ -200,7 +294,7 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
     prompt.strip()  # remove newline at the end of file
 
     split_dataset_name = Path(split_fpath).stem
-    prompt_fpath = f"data/finetune_prompts/finetune_prompt_{nexamples}_{split_dataset_name}.txt"
+    prompt_fpath = f"data/finetune_prompts_new/finetune_prompt_{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
 
@@ -216,13 +310,13 @@ if __name__ == '__main__':
     filter_types = ["fair_visit"]
     seeds = [0, 1, 2, 42, 111]
     for seed in seeds:
-        construct_split_dataset(data_fpath, holdout_type="ltl_type", filter_types=filter_types, test_size=2, seed=seed)
-        construct_split_dataset(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, test_size=0.2, seed=seed)
-        construct_split_dataset(data_fpath, holdout_type="utt", filter_types=filter_types, test_size=0.2, seed=seed)
+        construct_split_dataset_new(data_fpath, holdout_type="ltl_type", filter_types=filter_types, size=1, seed=seed)
+        construct_split_dataset_new(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, size=5, seed=seed)
+        construct_split_dataset_new(data_fpath, holdout_type="utt", filter_types=filter_types, size=0.2, seed=seed)
 
-    # Generate finetune prompts for GPT-3
-    split_dpath = os.path.join("data", "holdout_splits")
-    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath)]
+    # Generate prompts for off-the-shelf GPT-3
+    split_dpath = os.path.join("data", "holdout_splits_new")
+    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
     nexamples = [1, 2, 3]
     seed = 42
     for split_fpath in split_fpaths:
