@@ -51,3 +51,4 @@ LTL: & G F a & G F b & G F c G F d
 Utterance: never stop visiting a b c d and h
 LTL: & G F a & G F b & G F c & G F d G F h
 
+Utterance:

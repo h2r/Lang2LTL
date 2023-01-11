@@ -51,3 +51,4 @@ LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U
 Utterance: visit a then b then c then d and then h visit each landmark only once
 LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
 
+Utterance:

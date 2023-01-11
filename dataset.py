@@ -291,10 +291,10 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
         for utt, ltl in examples:
             prompt += f"Utterance: {utt}\nLTL: {ltl}\n\n"
             print(f"{pattern_type} | {nprop}\n{utt}\n{ltl}\n")
-    prompt.strip()  # remove newline at the end of file
+    prompt += "Utterance:"
 
     split_dataset_name = Path(split_fpath).stem
-    prompt_fpath = f"data/finetune_prompts_new/finetune_prompt_{nexamples}_{split_dataset_name}.txt"
+    prompt_fpath = f"data/symbolic_prompts_new/prompt_{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
 
