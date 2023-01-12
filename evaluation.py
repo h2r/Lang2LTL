@@ -1,9 +1,12 @@
 import os
+from pathlib import Path
+import argparse
 import logging
 from collections import defaultdict
 import numpy as np
 import spot
 
+from gpt3 import GPT3
 from dataset import load_split_dataset
 from utils import load_from_file, save_to_file
 
@@ -68,7 +71,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
 
 
 def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath):
-    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
+    _, _, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
     return evaluate_lang_single(model, valid_iter, valid_meta,
                                 analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
 
@@ -97,3 +100,36 @@ def aggregate_results(result_fpaths):
 
 def evaluate_plan(out_traj, true_traj):
     return out_traj == true_traj
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--split_dataset_fpath", type=str, default="", help="path to pkl file storing train, test set")
+    parser.add_argument("--model", type=str, default="", help="name of model to be evaluated")
+    parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
+
+    args = parser.parse_args()
+    dataset_name = Path(args.split_dataset_fpath).stem
+
+    if "gpt3" in args.model:
+        dataset = load_from_file(args.split_dataset_fpath)
+        valid_iter = dataset["valid_iter"]
+        if "finetuned" in args.model:
+            engine = load_from_file("model/gpt3_models.pkl")[args.model]
+            valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
+        else:
+            engine = args.model
+            prompt_fpath = os.path.join("data", "symbolic_prompts_new", f"prompt_{args.nexamples}_{dataset_name}.txt")
+            prompt = load_from_file(prompt_fpath)
+            valid_iter = [(f"{prompt}Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
+
+        dataset["valid_iter"] = valid_iter
+        split_dataset_fpath = save_to_file(dataset, os.path.join("data", "gpt3", f"{dataset_name}.pkl"))
+        model = GPT3(engine, temp=0, max_tokens=64)
+    else:
+        raise ValueError(f"ERROR: model not recognized: {args.model}")
+
+    analysis_fpath = "data/analysis_batch1.csv"
+    result_log_fpath = f"results/log_{args.model}_{dataset_name}.csv"
+    acc_fpath = f"results/acc_{args.model}_{dataset_name}.csv"
+    evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)

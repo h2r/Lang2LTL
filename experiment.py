@@ -16,9 +16,9 @@ from evaluation import evaluate_lang, evaluate_plan
 def run_exp(save_result_path):
     # Language tasks: grounding, NER, translation
     if args.full_e2e:  # Full end-to-end from language to LTL
-        full_e2e_module = GPT3()
+        full_e2e_module = GPT3(args.completion_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        output_ltls = [full_e2e_module.translate(query, prompt=full_e2e_prompt, n=1) for query in input_utts]
+        output_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
     else:  # Modular
         names, utt2names = ner()
         name2grounds = grounding(names)
@@ -60,7 +60,7 @@ def ner():
     ner_prompt = load_from_file(args.ner_prompt)
 
     if args.ner == 'gpt3':
-        ner_module = GPT3()
+        ner_module = GPT3(args.completion_engine)
     # elif args.ner == 'bert':
     #     ner_module = BERT()
     else:
@@ -99,7 +99,7 @@ def grounding(names):
         name2embed = {}
 
     if args.ground == 'gpt3':
-        ground_module = GPT3()
+        ground_module = GPT3(args.embed_engine)
     # elif args.ground == 'bert':
     #     ground_module = BERT()
     else:
@@ -139,8 +139,8 @@ def translate_e2e(grounded_utts):
     Translation language to LTL using a single GPT-3.
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
-    model = GPT3()
-    output_ltls = [model.translate(utt, prompt=trans_e2e_prompt, n=1) for utt in grounded_utts]
+    model = GPT3(args.completion_engine)
+    output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
     return output_ltls
 
 
@@ -154,7 +154,7 @@ def translate_modular(grounded_utts, objs_per_utt):
     trans_modular_prompt = load_from_file(args.trans_modular_prompt)
 
     if args.trans == 'gpt3':
-        trans_module = GPT3()
+        trans_module = GPT3(args.completion_engine)
     elif args.trans in T5_MODELS:
         trans_module = Seq2Seq(args.trans)
     elif args.trans == 'pt_transformer':
@@ -175,7 +175,7 @@ def translate_modular(grounded_utts, objs_per_utt):
 
     symbolic_ltls = []
     for query in trans_queries:
-        ltl = trans_module.translate(query, prompt=trans_modular_prompt, n=1)
+        ltl = trans_module.translate(query, trans_modular_prompt)
         try:
             spot.formula(ltl)
         except SyntaxError:
@@ -198,9 +198,10 @@ def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=
     breakpoint()
     logging.info(f"Syntax error: {query} | {ltl_incorrect}")
     if isinstance(trans_module, GPT3):
-        ltls_fix = trans_module.translate(query, prompt=trans_modular_prompt, n=n)
+        trans_module.n = n
+        ltls_fix = trans_module.translate(query, trans_modular_prompt)
     else:
-        ltls_fix = trans_module.translate(query, n=n)
+        ltls_fix = trans_module.translate(query)
     logging.info(f"{n} candidate LTL formulas: {ltls_fix}")
     ltl_fix = ""
     for ltl in ltls_fix:
@@ -245,6 +246,7 @@ if __name__ == '__main__':
     parser.add_argument('--obj_embed', type=str, default='data/cleanup_obj2embed_gpt3_ada-002.pkl', help='path to embedding of objects in env')
     parser.add_argument('--name_embed', type=str, default='data/cleanup_name2embed_gpt3_ada-002.pkl', help='path to embedding of names in language')
     parser.add_argument('--topk', type=int, default=2, help='top k similar known names to name entity')
+    parser.add_argument('--completion_engine', type=str, default='text-davinci-003', help='gpt-3 text completion engine')
     parser.add_argument('--embed_engine', type=str, default='text-embedding-ada-002', help='gpt-3 embedding engine')
     parser.add_argument('--s2s_sup_data', type=str, default='data/symbolic_pairs.csv', help='file path to train and test data for supervised seq2seq')
     parser.add_argument('--save_result_path', type=str, default='results/modular_prompt15_cleanup_test.json', help='file path to save outputs of each model in a json file')

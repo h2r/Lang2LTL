@@ -7,49 +7,52 @@ openai.organization = os.getenv("ORG_ID")
 
 
 class GPT3:
-    def extract_ne(self, query, **kwargs):
-        query_prompt = kwargs["prompt"] + query + "\nLandmarks:"
-        outs = GPT3.generate(query_prompt)
+    def __init__(self, engine, temp=0.6, n=1, max_tokens=64):
+        self.engine = engine
+        self.temp = temp
+        self.n = n
+        self.max_tokens = max_tokens
+
+    def extract_ne(self, query, prompt):
+        query_prompt = prompt + query + "\nLandmarks:"
+        outs = self.generate(query_prompt)
         name_entities = outs[0].split(' | ')
         return name_entities
 
-    def translate(self, query, **kwargs):
-        query_prompt = kwargs["prompt"] + query + "\nLTL:"
-        outs = GPT3.generate(query_prompt, n=kwargs["n"])
-        if kwargs["n"] == 1:
-            return outs[0].strip()
-        else:  # GPT-3 generates more than 1 candidate translations
-            return [out.strip() for out in outs]
+    def translate(self, query, prompt=""):
+        if isinstance(query, list):
+            query = query[0]
+        query_prompt = prompt + query + "\nLTL:"
+        outs = self.generate(query_prompt)
+        return outs
 
-    @staticmethod
-    def generate(query_prompt, engine="text-davinci-003", temp=0.6, n=1):  # engines must match when compare two embeddings
+    def generate(self, query_prompt):  # engines must match when compare two embeddings
         raw_responses = openai.Completion.create(
-            model=engine,
+            model=self.engine,
             prompt=query_prompt,
-            temperature=temp,
-            n=n,
-            logprobs=5
+            temperature=self.temp,
+            stop=['\n'],
+            n=self.n,
+            # logprobs=5
         )
-        if n == 1:
-            responses = [raw_responses['choices'][0]['text']]
+        if self.n == 1:
+            responses = [raw_responses['choices'][0]['text'].strip()]
         else:
-            responses = [choice['text'] for choice in raw_responses['choices']]
+            responses = [choice['text'].strip() for choice in raw_responses['choices']]
         return responses
 
-    @staticmethod
     @retry(wait=wait_random_exponential(min=1, max=20), stop=stop_after_attempt(6))
-    def get_embedding(text, model="text-embedding-ada-002"):
+    def get_embedding(self, text):
         text = text.replace("\n", " ")  # replace newlines, which can negatively affect performance
         embedding = openai.Embedding.create(
             input=[text],
-            model=model  # change for different embedding dimension
+            model=self.engine  # change for different embedding dimension
         )["data"][0]["embedding"]
         return embedding
 
 
-if __name__ == '__main__':
-    gpt3 = GPT3()
-
+if __name__ == "__main__":
+    gpt3 = GPT3("text-davinci-003", n=3)
     query_prompt = \
         "English: Go to Bookstore then to Science Library\n" \
         "Landmarks: Bookstore | Science Library\n" \
@@ -67,9 +70,10 @@ if __name__ == '__main__':
         "Landmarks: Burger Queen | black stone park | KFC\n" \
         "LTL: F ( Burger Queen & F ( KFC & F ( black stone park ) )\n\n" \
         "English: "
-
-    response = GPT3.generate(query_prompt, n=3)
+    response = gpt3.generate(query_prompt)
     print(response)
-    # embedding = GPT3.get_embedding("Burger Queen")
-    # print(embedding)
+
+    gpt3 = GPT3("text-embedding-ada-002")
+    embedding = gpt3.get_embedding("Burger Queen")
+    print(embedding)
     breakpoint()

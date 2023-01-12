@@ -27,17 +27,17 @@ def load_names(fpath):
 
 def store_embeds(names):
     if args.model == 'gpt3':
-        ground_module = GPT3()
+        ground_module = GPT3(args.gpt3_embed_engine)
     # elif args.model == 'bert':
     #     ground_module = BERT()
     else:
         raise ValueError("ERROR: grounding module not recognized")
 
-    name2embed = {name: ground_module.get_embedding(name, args.gpt3_embed_model) for name in names}
+    name2embed = {name: ground_module.get_embedding(name) for name in names}
 
     fpath_tup = os.path.splitext(args.embed_path)
     if args.model == 'gpt3':
-        save_fpath = f'{fpath_tup[0]}_{args.model}_{args.gpt3_embed_model}' + fpath_tup[1]
+        save_fpath = f'{fpath_tup[0]}_{args.model}_{args.gpt3_embed_engine}' + fpath_tup[1]
     else:
         save_fpath = f'{fpath_tup[0]}_{args.model}' + fpath_tup[1]
 
@@ -50,7 +50,7 @@ if __name__ == '__main__':
     parser.add_argument('--landmark_path', type=str, default='data/osm_landmarks.txt', help='path to lmk embedding file')
     parser.add_argument('--embed_path', type=str, default='data/osm_obj2embed.pkl', help='path to save obj2embed file')
     parser.add_argument('--model', type=str, default='gpt3', choices=['gpt3', 'bert'])
-    parser.add_argument('--gpt3_embed_model', type=str, default='text-embedding-ada-002')
+    parser.add_argument('--gpt3_embed_engine', type=str, default='text-embedding-ada-002')
     args = parser.parse_args()
 
     names = load_names(args.landmark_path)
