@@ -1,0 +1,139 @@
+train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
+valid,visit,1,"Utterance: visit a
+LTL:",F a,,Syntax Error
+valid,visit,1,"Utterance: approach a
+LTL:",F a,,Syntax Error
+valid,visit,1,"Utterance: visit a
+LTL:",F a,,Syntax Error
+valid,visit,1,"Utterance: reach a
+LTL:",F a,,Syntax Error
+valid,visit,1,"Utterance: go to a
+LTL:",F a,F a,True
+valid,visit,2,"Utterance: visit a and b
+LTL:",& F a F b,,Syntax Error
+valid,visit,2,"Utterance: go to a and b in an arbitrary order
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Utterance: go to a then go to b or go to b then go to a
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Utterance: visit b and a
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Utterance: visit a and b
+LTL:",& F a F b,& F a F b,True
+valid,visit,3,"Utterance: go to a b and c in any order
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Utterance: find a b and c
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Utterance: go to a b and c
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Utterance: stop by abc in any order
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Utterance: a b and c must be visited
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Utterance: make sure a b and c are all visited
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,4,"Utterance: visit b a c and d
+LTL:",& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,"Utterance: visit a go to b reach c reach d
+LTL:",& F a & F b & F c F d,,Syntax Error
+valid,visit,4,"Utterance: do not stop until a b c and d are all visited
+LTL:",& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,"Utterance: go to four locations a b d and c
+LTL:",& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,5,"Utterance: go to a b c d and h in arbitrary order
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,"Utterance: make sure a b c d and h are all visited
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,"Utterance: visit a b c d and h
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,sequenced_visit,2,"Utterance: eventually first visit a and then b after
+LTL:",F & a F b,F & a F b,True
+valid,sequenced_visit,2,"Utterance: visit a and then b
+LTL:",F & a F b,,Syntax Error
+valid,sequenced_visit,2,"Utterance: visit a and visit b after a is visited
+LTL:",F & a F b,,Syntax Error
+valid,sequenced_visit,2,"Utterance: find a first then find b
+LTL:",F & a F b,F & a F b,True
+valid,sequenced_visit,3,"Utterance: visit a sometime afterwards visit b sometime afterwards visit c
+LTL:",F & a F & b F c,,Syntax Error
+valid,sequenced_visit,3,"Utterance: in some sequence visit a b and c in that order
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,"Utterance: make your way to a b and c consecutively
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,"Utterance: visit b at least once after going to a and visit c at least once after going to b
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,4,"Utterance: make sure a b c and d are all visited in this order
+LTL:",F & a F & b F & c F d,F & a F & b F & c F d,True
+valid,sequenced_visit,4,"Utterance: head to a and then to b after a is visited and then to c after b is visited and then to d after c is visited
+LTL:",F & a F & b F & c F d,F & a F & b F & c F d,True
+valid,sequenced_visit,4,"Utterance: eventually in some sequence visit a b c and d each must be followed by the next
+LTL:",F & a F & b F & c F d,& F a & F b & F c F d,False
+valid,sequenced_visit,5,"Utterance: go to a then go to b and then reach c then reach d and finally go to h
+LTL:",F & a F & b F & c F & d F h,F & a F & b F & c F d F h,Syntax Error
+valid,sequenced_visit,5,"Utterance: visit a b c d and h in this order there can be other landmarks in between
+LTL:",F & a F & b F & c F & d F h,F & a F & b F & c F & d F h,True
+valid,sequenced_visit,5,"Utterance: make sure a b c d and h are all visited in this order
+LTL:",F & a F & b F & c F & d F h,F & a F & b F & c F & d F h,True
+valid,ordered_visit,2,"Utterance: do not visit b until you go to a
+LTL:",& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,"Utterance: you must visit a first before going to b
+LTL:",& U ! b a F b,must go to a before b,Syntax Error
+valid,ordered_visit,2,"Utterance: first go to a while avoiding b then move to b
+LTL:",& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,"Utterance: ensure that you do not reach b before going to a
+LTL:",& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,3,"Utterance: reach c but not until you visit a and b and that specific order
+LTL:",& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,3,"Utterance: do not go to c until you visit b and do not go to b until you visit a and make sure you visit c
+LTL:",& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,3,"Utterance: do not visit c until visiting b do not visit b until visiting a
+LTL:",& U ! b a & U ! c b F c,& U ! b a & U ! c b F c,True
+valid,ordered_visit,4,"Utterance: visit a b c d in that specific order
+LTL:",& U ! b a & U ! c b & U ! d c F d,F a F b F c F d,Syntax Error
+valid,ordered_visit,4,"Utterance: visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b F c & U ! d c U d U !d b,False
+valid,ordered_visit,4,"Utterance: visit a b c and d in this order without skipping any one of them
+LTL:",& U ! b a & U ! c b & U ! d c F d,& U ! b a & U ! c b & U ! d c F d,True
+valid,ordered_visit,5,"Utterance: go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,True
+valid,ordered_visit,5,"Utterance: before visiting b c d and h visit an and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,5,"Utterance: visit a b c d and h in this order without skipping any one of them
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,True
+valid,strictly_ordered_visit,2,"Utterance: only visit a once and do not visit b until you visit a
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,"Utterance: go to a exactly once while avoiding b then go to b
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,"Utterance: you must visit a exactly once while avoiding b then you can navigate to b
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,"Utterance: go to a and only then go to b without returning to a
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,3,"Utterance: do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+LTL:",& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,True
+valid,strictly_ordered_visit,3,"Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL:",& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,True
+valid,strictly_ordered_visit,4,"Utterance: do not visit d until you visit c visit c only once do not visit c until you visit b visit b only once do no visit b until you visit a visit a only once
+LTL:",& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,True
+valid,strictly_ordered_visit,4,"Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL:",& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,True
+valid,strictly_ordered_visit,5,"Utterance: visit a then b then c then d and then h visit each landmark only once
+LTL:",& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,True
+valid,strictly_ordered_visit,5,"Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL:",& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,True
+valid,patrolling,1,"Utterance: keep visiting a
+LTL:",G F a,,Syntax Error
+valid,patrolling,1,"Utterance: go to a an infinite number of times
+LTL:",G F a,G F a,True
+valid,patrolling,1,"Utterance: please visit a infinitely often
+LTL:",G F a,G F a,True
+valid,patrolling,1,"Utterance: frequent a infinitely
+LTL:",G F a,G F a,True
+valid,patrolling,2,"Utterance: keep going to a and b in arbitrary order
+LTL:",& G F a G F b,& G F a G F b,True
+valid,patrolling,2,"Utterance: make sure a and b are visited infinitely
+LTL:",& G F a G F b,& G F a G F b,True
+valid,patrolling,3,"Utterance: frequent a b and c infinitely in any order
+LTL:",& G F a & G F b G F c,& G F a & G F b G F c,True
+valid,patrolling,4,"Utterance: frequent a b c and d infinitely in any order
+LTL:",& G F a & G F b & G F c G F d,& G F a & G F b & G F c G F d,True
+valid,patrolling,5,"Utterance: frequent a b c d and h infinitely in any order
+LTL:",& G F a & G F b & G F c & G F d G F h,& G F a & G F b & G F c & G F d G F h,True

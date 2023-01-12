@@ -76,7 +76,7 @@ def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_l
                                 analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
 
 
-def aggregate_results(result_fpaths):
+def aggregate_results(result_fpaths, filter_types):
     """
     Aggregate accuracy-per-formula results from K-fold cross validation or multiple random seeds.
     Assume files have same columns (LTL Type, Number of Propositions, Number of Utterances, Accuracy)
@@ -84,15 +84,17 @@ def aggregate_results(result_fpaths):
     :param result_fpaths: paths to results file to be aggregated
     """
     result_aux = load_from_file(result_fpaths[0], noheader=False)
-    fields = result_aux[0]
+    fields = result_aux.pop(0)
     aggregated_result = [fields]
     for row in result_aux:
-        aggregated_result.append(row[:3]+[0])
+        aggregated_result.append(row[:3]+[0.0])
 
     for n, result_fpath in enumerate(result_fpaths):
         result = load_from_file(result_fpath, noheader=True)
+
         for row_idx, row in enumerate(result):
-            aggregated_result[row_idx][3] += 1 / (n + 1) * (row[3] - aggregated_result[row_idx][3])  # running average
+            if row[0] not in filter_types:
+                aggregated_result[row_idx+1][3] += 1 / (n + 1) * (float(row[3]) - aggregated_result[row_idx+1][3])  # running average
 
     aggregated_result_fpath = f"{os.path.commonprefix(result_fpaths)}.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
@@ -104,10 +106,9 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split_dataset_fpath", type=str, default="", help="path to pkl file storing train, test set")
-    parser.add_argument("--model", type=str, default="", help="name of model to be evaluated")
+    parser.add_argument("--split_dataset_fpath", type=str, default="data/holdout_splits/split_symbolic_no_perm_batch1_utt_0.2_111.pkl", help="path to pkl file storing train, test set")
+    parser.add_argument("--model", type=str, default="gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_111", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
-
     args = parser.parse_args()
     dataset_name = Path(args.split_dataset_fpath).stem
 
@@ -117,19 +118,32 @@ if __name__ == "__main__":
         if "finetuned" in args.model:
             engine = load_from_file("model/gpt3_models.pkl")[args.model]
             valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
+            result_log_fpath = f"results/log_{args.model}.csv"
+            acc_fpath = f"results/acc_{args.model}.csv"
         else:
             engine = args.model
             prompt_fpath = os.path.join("data", "symbolic_prompts_new", f"prompt_{args.nexamples}_{dataset_name}.txt")
             prompt = load_from_file(prompt_fpath)
             valid_iter = [(f"{prompt}Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
+            result_log_fpath = f"results/log_{args.model}_{dataset_name}.csv"
+            acc_fpath = f"results/acc_{args.model}_{dataset_name}.csv"
 
         dataset["valid_iter"] = valid_iter
-        split_dataset_fpath = save_to_file(dataset, os.path.join("data", "gpt3", f"{dataset_name}.pkl"))
+        split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
+        save_to_file(dataset, split_dataset_fpath)
         model = GPT3(engine, temp=0, max_tokens=64)
     else:
         raise ValueError(f"ERROR: model not recognized: {args.model}")
 
     analysis_fpath = "data/analysis_batch1.csv"
-    result_log_fpath = f"results/log_{args.model}_{dataset_name}.csv"
-    acc_fpath = f"results/acc_{args.model}_{dataset_name}.csv"
     evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)
+
+    # result_fpaths = [
+    #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_0.csv",
+    #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_1.csv",
+    #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_2.csv",
+    #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_42.csv",
+    #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_111.csv",
+    # ]
+    # filter_types = ["fair_visit"]
+    # aggregate_results(result_fpaths, filter_types)
