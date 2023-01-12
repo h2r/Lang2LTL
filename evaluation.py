@@ -89,15 +89,20 @@ def aggregate_results(result_fpaths, filter_types):
     for row in result_aux:
         aggregated_result.append(row[:3]+[0.0])
 
+    total_corrects, total_samples = 0, 0
     for n, result_fpath in enumerate(result_fpaths):
         result = load_from_file(result_fpath, noheader=True)
 
         for row_idx, row in enumerate(result):
             if row[0] not in filter_types:
-                aggregated_result[row_idx+1][3] += 1 / (n + 1) * (float(row[3]) - aggregated_result[row_idx+1][3])  # running average
+                acc, nsamples = float(row[3]), int(row[2])
+                aggregated_result[row_idx+1][3] += 1 / (n + 1) * (acc - aggregated_result[row_idx+1][3])  # running average
+                total_corrects += nsamples * acc
+                total_samples += nsamples
 
     aggregated_result_fpath = f"{os.path.commonprefix(result_fpaths)}.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
+    print(f"total accuracy: {total_corrects / total_samples}")
 
 
 def evaluate_plan(out_traj, true_traj):
