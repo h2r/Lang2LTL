@@ -94,7 +94,7 @@ def aggregate_results(result_fpaths, filter_types):
         result = load_from_file(result_fpath, noheader=True)
 
         for row_idx, row in enumerate(result):
-            if row[0] not in filter_types:
+            if row[0] not in filter_types and row[3] != "no valid data":
                 acc, nsamples = float(row[3]), int(row[2])
                 aggregated_result[row_idx+1][3] += 1 / (n + 1) * (acc - aggregated_result[row_idx+1][3])  # running average
                 total_corrects += nsamples * acc
