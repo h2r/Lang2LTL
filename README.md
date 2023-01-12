@@ -31,19 +31,21 @@ python -m spacy download en_core_web_sm
 
 ```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions
 
-```s2s_sup.py```: for inference pretrained supervised sequence-to-sequence model
+```s2s_sup.py```: for inference trained supervised sequence-to-sequence model
 
-```s2s_hf_transformers.py```: to finetune pretrained transformer models from Hugging Face
+```s2s_hf_transformers.py```: finetune pretrained transformer models from Hugging Face
 
-```s2s_pt_transformer.py```: to train transformer sequence-to-sequence model implemented in PyTorch
+```s2s_pt_transformer.py```: train from scratch transformer sequence-to-sequence model implemented in PyTorch
 
 ```gpt3.py```: interface to GPT-3 model
 
 ```get_embed.py```: interface to GPT-3 embedding feature
 
-```dataset.py```: construct training and test datasets
+```dataset.py```: construct training and test sets
 
 ```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
+
+```evaluation.py```: functions to evaluate translation and planning.
 
 
 # Run Experiments
