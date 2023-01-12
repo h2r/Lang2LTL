@@ -1,0 +1,4831 @@
+train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
+valid,visit,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a
+LTL:",F a,F a,True
+valid,visit,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: walk to a
+LTL:",F a,F a,True
+valid,visit,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: move to a
+LTL:",F a,F a,True
+valid,visit,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a
+LTL:",F a,F a,True
+valid,visit,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: approach a
+LTL:",F a,F a,True
+valid,visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: move to a and b
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: reach a reach b
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: eventually reach a and b
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a and b in an arbitrary order
+LTL:",& F a F b,& F a F b,True
+valid,visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: find a and b
+LTL:",& F a F b,& F a F b,True
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: please visit a b and c in any order
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to the following locations a b and c
+LTL:",& F a & F b F c,& F a F b F c,Syntax Error
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit all three locations a b and c
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: head to a b and c in any order
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to all of a b and c
+LTL:",& F a & F b F c,& F a & F b F c,True
+valid,visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: do not stop until a b and c are visited
+LTL:",& F a & F b F c,& G F a & G F b & G F c,Syntax Error
+valid,visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a go to b got to c and go to d
+LTL:",& F a & F b & F c F d,F & a F & b F & c F d,False
+valid,visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: stop by abc and d in any order
+LTL:",& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b c and d in no particular order
+LTL:",& F a & F b & F c F d,& G F a & G F b & G F c G F d,False
+valid,visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: make sure a b c and d are all visited
+LTL:",& F a & F b & F c F d,& F a & F b & F c F d,True
+valid,visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a b c d and h
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: reach the following five locations a b c d h
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit all locations a b c d h
+LTL:",& F a & F b & F c & F d F h,& F a & F b & F c & F d F h,True
+valid,sequenced_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: move a then find b
+LTL:",F & a F b,F & a F b,True
+valid,sequenced_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: move to a then move to b
+LTL:",F & a F b,F & a F b,True
+valid,sequenced_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a then go to b
+LTL:",F & a F b,F & a F b,True
+valid,sequenced_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a and sometime afterward visit b
+LTL:",F & a F b,& F a F b,False
+valid,sequenced_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b and c one after another
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a  then visit b then reach c
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a then b then c
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a and then go to b and then go to c
+LTL:",F & a F & b F c,F & a F & b F c,True
+valid,sequenced_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a then go to b then go to c and then go to d
+LTL:",F & a F & b F & c F d,F & a F & b F & c F d,True
+valid,sequenced_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: ensure that you visit abc and d in order
+LTL:",F & a F & b F & c F d,& U ! b a & U ! c b & U ! d c F d,False
+valid,sequenced_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit b at least once after visiting a visit c at least once after visiting a and b visit d at least once after visiting ab and c
+LTL:",F & a F & b F & c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d,Syntax Error
+valid,sequenced_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a then visit b then visit c then visit d and then visit h
+LTL:",F & a F & b F & c F & d F h,F & a F & b F & c F & d F h,True
+valid,sequenced_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: reach a b c d and h sequentially
+LTL:",F & a F & b F & c F & d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,False
+valid,sequenced_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit b at least once after visiting a visit c at least once after visiting both a and b visit d at least once after visiting a b and c and visit h at least once after visiting a b c and d
+LTL:",F & a F & b F & c F & d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: find b but not until you find a first
+LTL:",& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to b after going to a do not go to b before
+LTL:",& U ! b a F b,& U ! b a F b U ! a U a U !a b,Syntax Error
+valid,ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a and then go to b but do not visit b before a is visited
+LTL:",& U ! b a F b,& F a & U ! b a F b,True
+valid,ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to b but do not go to b until you go to a first
+LTL:",& U ! b a F b,& U ! b a F b,True
+valid,ordered_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a but not through b or c and then go to b but not through c and finally go to c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: make you way to a but keep avoiding b or c and head to b but keep avoiding c after that and  then visit c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: direct yourself to a but keep away from b and c then go to b but bypass c and eventually make you way at c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c,Syntax Error
+valid,ordered_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a only after that go to b only then go to c and only then go to d
+LTL:",& U ! b a & U ! c b & U ! d c F d,& U ! b a & U ! c b & U ! d c F d,True
+valid,ordered_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit d but do not visit d until you have reached c in turn only go to c after you visit b and only go to b after reaching a
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d,Syntax Error
+valid,ordered_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: first go directly to a without visiting any other waypoints then go directly to b then directly to c and finally directly to d
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: ensure that you visit h but only after d in turn only visit d after c only visit c after b and only visit b after a
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b c d and h in that specific order ensure to not visit locations out of turn
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,Syntax Error
+valid,ordered_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to h but only after visiting a b c d in that specific order
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,True
+valid,strictly_ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: move to a exactly once while avoiding b then find b
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a and b in that exact sequence out of sequence visits and repeated visits are not permitted
+LTL:",& & U ! b a F b U ! a U a U !a b,& U ! b a F b U ! a U a U !a b,Syntax Error
+valid,strictly_ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a one time but not through b and head to b after a is visited
+LTL:",& & U ! b a F b U ! a U a U !a b,& U ! b a F b & U ! a U a U !a b,Syntax Error
+valid,strictly_ordered_visit,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: reach a exactly once while staying away from b then move to b
+LTL:",& & U ! b a F b U ! a U a U !a b,& & U ! b a F b U ! a U a U !a b,True
+valid,strictly_ordered_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b and c in this order without skipping any one of them do not revisit any one of them once after you have been there
+LTL:",& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& U ! b a & U ! c b F c & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c,Syntax Error
+valid,strictly_ordered_visit,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a but not through b or c and then go to b but not through c and finally go to c no revisiting is allowed
+LTL:",& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,& & U ! b a & U ! c b F c & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c,Syntax Error
+valid,strictly_ordered_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b c and d in this order without skipping any one of them do not revisit any one of them once after you have been there
+LTL:",& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d a,Syntax Error
+valid,strictly_ordered_visit,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d no revisiting is allowed
+LTL:",& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d a,True
+valid,strictly_ordered_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: visit a b c d and h in this order without skipping any one of them do not revisit any one of them once after you have been there
+LTL:",& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,Syntax Error
+valid,strictly_ordered_visit,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: eventually visit a afterward eventually visit b afterward eventually visit c afterward eventually visit d afterward eventually visit h visit each landmark only once
+LTL:",& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,True
+valid,patrolling,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: do not stop visiting a
+LTL:",G F a,G F a,True
+valid,patrolling,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: make sure a is visited infinitely
+LTL:",G F a,G F a,True
+valid,patrolling,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: keep visiting a
+LTL:",G F a,G F a,True
+valid,patrolling,1,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: continue moving to a
+LTL:",G F a,G F a,True
+valid,patrolling,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: do not stop visiting a and b
+LTL:",& G F a G F b,G F & a F b,True
+valid,patrolling,2,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: please keep visiting a and b without stopping
+LTL:",& G F a G F b,G F & a F b,True
+valid,patrolling,3,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: please keep visiting a b and c without stopping
+LTL:",& G F a & G F b G F c,& G F a & G F b G F c,True
+valid,patrolling,4,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: please keep visiting a b c and d without stopping
+LTL:",& G F a & G F b & G F c G F d,& G F a & G F b & G F c & G F d,Syntax Error
+valid,patrolling,5,"Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: eventually you must go to a
+LTL: F a
+
+Utterance: sometime along the way go to a and b
+LTL: & F a F b
+
+Utterance: eventually reach a c and b
+LTL: & F a & F b F c
+
+Utterance: visit a b c and d
+LTL: & F a & F b & F c F d
+
+Utterance: visit a b c d h in any order required
+LTL: & F a & F b & F c & F d F h
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to a then go to b then go to c
+LTL: F & a F & b F c
+
+Utterance: visit a then visit b then visit c then visit d
+LTL: F & a F & b F & c F d
+
+Utterance: visit a b c d and h sequentially
+LTL: F & a F & b F & c F & d F h
+
+Utterance: visit b only after visiting a
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL: & U ! b a & U ! c b F c
+
+Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to a b c d and h in that specific order
+LTL: & U ! b a & U ! c b & U ! d c & U ! h d F h
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+
+Utterance: visit a then b then c and then d you can only visit each landmark once
+LTL: & & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h
+
+Utterance: never stop visiting a
+LTL: G F a
+
+Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL: & G F a G F b
+
+Utterance: frequent a b and c infinitely in any order
+LTL: & G F a & G F b G F c
+
+Utterance: frequent a b c and d infinitely in any order
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: frequent a b c d and h infinitely in any order
+LTL: & G F a & G F b & G F c & G F d G F h
+
+Utterance: please keep visiting a b c d and h without stopping
+LTL:",& G F a & G F b & G F c & G F d G F h,& G F a & G F b & G F c & G F d G F h,True

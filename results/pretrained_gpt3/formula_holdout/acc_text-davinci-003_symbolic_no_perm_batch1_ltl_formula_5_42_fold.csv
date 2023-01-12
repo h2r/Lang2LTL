@@ -1,0 +1,27 @@
+LTL Type,Number of Propositions,Number of Utterances,Accuracy
+visit,1,21,0.9523809523809523
+visit,2,22,0.5454545454545454
+visit,3,26,0.15384615384615385
+visit,4,19,0.02631578947368421
+visit,5,19,0.07142857142857142
+sequenced_visit,2,22,0.16666666666666666
+sequenced_visit,3,16,0.0
+sequenced_visit,4,17,0.020833333333333332
+sequenced_visit,5,14,0.36363636363636365
+ordered_visit,2,21,0.21568627450980393
+ordered_visit,3,12,0.0625
+ordered_visit,4,15,0.09090909090909091
+ordered_visit,5,15,0.18181818181818182
+strictly_ordered_visit,2,20,0.0625
+strictly_ordered_visit,3,11,0.0
+strictly_ordered_visit,4,16,0.0
+strictly_ordered_visit,5,12,0.08333333333333333
+patrolling,1,25,0.5
+patrolling,2,19,0.13333333333333333
+patrolling,3,14,0.2
+patrolling,4,14,0.3
+patrolling,5,9,0.3333333333333333
+fair_visit,2,19,0.0
+fair_visit,3,12,0.0
+fair_visit,5,12,0.0
+fair_visit,4,17,0.0
