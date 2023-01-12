@@ -1,0 +1,27 @@
+LTL Type,Number of Propositions,Number of Utterances,Accuracy
+visit,1,21,no valid data
+visit,2,22,no valid data
+visit,3,26,no valid data
+visit,4,19,0.5789473684210527
+visit,5,19,0.5
+sequenced_visit,2,22,no valid data
+sequenced_visit,3,16,no valid data
+sequenced_visit,4,17,no valid data
+sequenced_visit,5,14,no valid data
+ordered_visit,2,21,no valid data
+ordered_visit,3,12,no valid data
+ordered_visit,4,15,0.36363636363636365
+ordered_visit,5,15,0.0
+strictly_ordered_visit,2,20,no valid data
+strictly_ordered_visit,3,11,no valid data
+strictly_ordered_visit,4,16,no valid data
+strictly_ordered_visit,5,12,no valid data
+patrolling,1,25,0.0
+patrolling,2,19,no valid data
+patrolling,3,14,no valid data
+patrolling,4,14,1.0
+patrolling,5,9,no valid data
+fair_visit,2,19,no valid data
+fair_visit,3,12,no valid data
+fair_visit,5,12,no valid data
+fair_visit,4,17,no valid data
