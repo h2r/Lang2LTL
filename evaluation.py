@@ -117,13 +117,13 @@ if __name__ == "__main__":
     args = parser.parse_args()
     dataset_name = Path(args.split_dataset_fpath).stem
 
-    if "gpt3" in args.model:
+    if "gpt3" in args.model or "davinci" in args.model:
         dataset = load_from_file(args.split_dataset_fpath)
         valid_iter = dataset["valid_iter"]
         if "finetuned" in args.model:
             engine = load_from_file("model/gpt3_models.pkl")[args.model]
             valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
-            result_log_fpath = f"results/log_{args.model}.csv"
+            result_log_fpath = f"results/log_{args.model}.csv"  # finetuned model name also include dataset name
             acc_fpath = f"results/acc_{args.model}.csv"
         else:
             engine = args.model
@@ -132,7 +132,6 @@ if __name__ == "__main__":
             valid_iter = [(f"{prompt}Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
             result_log_fpath = f"results/log_{args.model}_{dataset_name}.csv"
             acc_fpath = f"results/acc_{args.model}_{dataset_name}.csv"
-
         dataset["valid_iter"] = valid_iter
         split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
         save_to_file(dataset, split_dataset_fpath)
@@ -143,6 +142,7 @@ if __name__ == "__main__":
     analysis_fpath = "data/analysis_batch1.csv"
     evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)
 
+    # To aggregate accuracy-per-formula result files, comment out all above in main, uncomment all below
     # result_fpaths = [
     #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_0.csv",
     #     "results/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_1.csv",
