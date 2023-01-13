@@ -6,7 +6,7 @@ from collections import defaultdict
 from sklearn.model_selection import train_test_split, KFold
 import spot
 
-from utils import load_from_file, save_to_file, substitute, substitute_single_fix
+from utils import load_from_file, save_to_file, substitute, substitute_single_letter
 from formula_sampler import PROPS, ALL_TYPES, sample_formulas
 
 
@@ -74,7 +74,7 @@ def create_symbolic_dataset(load_fpath, perm_props):
         if perm_props:  # all possible permutations of propositions
             for ltl, prop_perm in zip(ltls, props_perm):
                 sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
-                utt_perm, _ = substitute_single_fix(utt, sub_map)  # sub propositions in utt w/ perm corres to ltl
+                utt_perm = substitute_single_letter(utt, sub_map)  # sub props in utt w/ permutation corres to ltl
                 csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
         else:  # propositions only appear in ascending order
             csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower().strip(), ltls[0].strip().replace('\r', '')])
