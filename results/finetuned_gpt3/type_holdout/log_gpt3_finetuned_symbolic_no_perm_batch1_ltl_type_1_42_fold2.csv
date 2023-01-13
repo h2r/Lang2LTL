@@ -1,0 +1,103 @@
+train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
+valid,ordered_visit,2,"Utterance: do not visit b until you go to a
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: you must visit a first before going to b
+LTL:",& U ! b a F b,F & a F b,False
+valid,ordered_visit,3,"Utterance: do not visit c until visiting b do not visit b until visiting a
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: in strictly this order visit a then eventually visit b and finally eventually c
+LTL:",& U ! b a & U ! c b F c,F & a F & b F c,False
+valid,ordered_visit,4,"Utterance: visit a as many times as you want then visit b as many times but never visit a again then visit c as many times but never visit b again finally visit d
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,False
+valid,ordered_visit,5,"Utterance: before visiting b c d and h visit an and never visit it again then visit b before c d and h and never visit it again do not visit d and h until you visit c never visit c again then visit d before h and never visit h again finally visit h
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,2,"Utterance: go to b but do not go to b until you go to a first
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: find b but not until you find a first
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: find a while avoiding b then after finding a go to b
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: first go to a while avoiding b then move to b
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: go to a while staying away from b then move to b
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,3,"Utterance: go to a but not through b or c and then go to b but not through c and finally go to c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: make you way to a but keep avoiding b or c and head to b but keep avoiding c after that and  then visit c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: direct yourself to a but keep away from b and c then go to b but bypass c and eventually make you way at c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: keep away from b and c while heading to a and then keep away from c while heading to b and eventually go to c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: visit a b and c in order but keep avoiding latter ones when you are heading to former ones
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,2,"Utterance: go to a and then go to b but do not visit b before a is visited
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: visit a and visit b only if a is visited
+LTL:",& U ! b a F b,& F a F b,False
+valid,ordered_visit,2,"Utterance: go to b but only visit b if you already visited a
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: go to a but keep avoiding b and once you have been to a go to b
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: head to a first and then to b but do not visit b if you havent been to a
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: visit b only after visiting a
+LTL:",& U ! b a F b,F & a F b,False
+valid,ordered_visit,2,"Utterance: go to b after going to a do not go to b before
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: go to a and only then go to b
+LTL:",& U ! b a F b,F & a F b,False
+valid,ordered_visit,2,"Utterance: ensure that you do not reach b before going to a
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,2,"Utterance: visit b but do not visit b before you reach a
+LTL:",& U ! b a F b,& & U ! b a F b U ! a U a U !a b,False
+valid,ordered_visit,3,"Utterance: visit c but only after visiting b and visit b only after visiting a
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: go to a only then go to b and only then go to c
+LTL:",& U ! b a & U ! c b F c,F & a F & b F c,False
+valid,ordered_visit,3,"Utterance: do not go to c until you visit b and do not go to b until you visit a and make sure you visit c
+LTL:",& U ! b a & U ! c b F c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c,False
+valid,ordered_visit,3,"Utterance: reach c but not until you visit a and b and that specific order
+LTL:",& U ! b a & U ! c b F c,& & U ! b a F c,Syntax Error
+valid,ordered_visit,3,"Utterance: visit a only then should you visit b and only after that should you reach c
+LTL:",& U ! b a & U ! c b F c,F & a F & b F c,False
+valid,ordered_visit,4,"Utterance: visit a b c and d in that specific order make sure not to visit waypoints out of turn
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,False
+valid,ordered_visit,4,"Utterance: go to a only after that go to b only then go to c and only then go to d
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,4,"Utterance: visit d but do not visit d until you have reached c in turn only go to c after you visit b and only go to b after reaching a
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,False
+valid,ordered_visit,4,"Utterance: first go directly to a without visiting any other waypoints then go directly to b then directly to c and finally directly to d
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,4,"Utterance: visit a b c d in that specific order
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F & d F,Syntax Error
+valid,ordered_visit,5,"Utterance: go to a b c d and h in that specific order
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,F & a F & b F & c F & d F h,False
+valid,ordered_visit,5,"Utterance: ensure that you visit h but only after d in turn only visit d after c only visit c after b and only visit b after a
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,F & a F & b F & c F & d F h,False
+valid,ordered_visit,5,"Utterance: visit a b c d and h in that specific order ensure to not visit locations out of turn
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,5,"Utterance: go to h but only after visiting a b c d in that specific order
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,F & a F & b F & c F & d F h,False
+valid,ordered_visit,5,"Utterance: go to h not before going d do not go to d before going c do not go to c before going to b and do not go to before going to a
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,4,"Utterance: go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,False
+valid,ordered_visit,4,"Utterance: go to a and only go to b only after a is visited and then go to c only after a and b are both visited and then go to d only after a b and c are all visited
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,4,"Utterance: make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a
+LTL:",& U ! b a & U ! c b & U ! d c F d,F & a F & b F & c F d,False
+valid,ordered_visit,4,"Utterance: visit a b c and d in this order without skipping any one of them
+LTL:",& U ! b a & U ! c b & U ! d c F d,& F a & F b & F c F d,False
+valid,ordered_visit,4,"Utterance: do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited
+LTL:",& U ! b a & U ! c b & U ! d c F d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U !a b & U ! b U b U !b c U ! c U c U !c d,False
+valid,ordered_visit,5,"Utterance: go to a but not through b c d or h and then go to b but not through c d or h and then go to c but not through d or h and then go to d but not through h and finally go to h
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
+valid,ordered_visit,5,"Utterance: go to a and only go to b only after a is visited and then go to c only after a and b are both visited and then go to d only after a b and c are all visited and then go to h only after a b c and d are all visited
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,F & a F & b F & c F & d F h,False
+valid,ordered_visit,5,"Utterance: make your way to h only after going to d before that make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,F & a F & b F & c F & d F h,False
+valid,ordered_visit,5,"Utterance: visit a b c d and h in this order without skipping any one of them
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& F a & F b & F c & F d F h,False
+valid,ordered_visit,5,"Utterance: do not go to h until d is visited and do not go to d until c is visited and do not go to c until b is visited and do not go to b until a is visited
+LTL:",& U ! b a & U ! c b & U ! d c & U ! h d F h,& & U ! b a & U ! c b & U ! d c & U ! h d F h & U ! a U a U !a b & U ! b U b U !b c & U ! c U c U !c d U ! d U d U !d h,False
