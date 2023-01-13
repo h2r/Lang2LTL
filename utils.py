@@ -1,9 +1,9 @@
 import os
+import logging
 import json
 import dill
 import csv
 from collections import defaultdict
-import logging
 import numpy as np
 
 from gpt3 import GPT3
@@ -60,34 +60,47 @@ def substitute_single(input_str, sub_map):
     return input_str.strip(), subs_done
 
 
-def substitute_single_fix(input_str, sub_map):
+def substitute_single_word(in_str, sub_map):
     """
-    Correcting substitute_single with
-    e.g. input_str='go to a then go to b', sub_map={'a': 'b', 'b': 'a'}
-    return='go to a then go to a'
+    Substitute words and phrases in a single utterance.
+    Assume numbers are not in the input string.
+    """
+    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
+
+    # swap every key with a unique number
+    for n, (k, v) in enumerate(sub_map):
+        in_str = in_str.replace(k, str(n))
+
+    # swap every number with corresponding v
+    for n, (k, v) in enumerate(sub_map):
+        in_str = in_str.replace(str(n), v)
+
+    return in_str.strip()
+
+
+def substitute_single_letter(in_str, sub_map):
+    """
+    Substitute English letters in a single utterance.
+    e.g. input_str="go to a then go to b", sub_map={'a': 'b', 'b': 'a'} -> return="go to a then go to a"
 
     Require `input_str` to be normalized, i.e. all punctuations removed.
-
-    TODO: only work with substitute single words, e.g. a, b, c, etc, not phrases, e.g. green one -> green room.
+    Only work with letters, e.g. a, b, c, etc, not phrases, e.g. green one -> green room.
     """
-    input_str_list = input_str.split(" ")
-
+    in_str_list = in_str.split(" ")
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
-    subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
 
     # Record indices of all keys in sub_map in *original* input_str.
     key2indices = defaultdict(list)
     for k, _ in sub_map:
-        key2indices[k] = [idx for idx, word in enumerate(input_str_list) if word == k]
+        key2indices[k] = [idx for idx, word in enumerate(in_str_list) if word == k]
 
     # Loop through indices and keys to replace each key with value.
     for k, v in sub_map:
         indices = key2indices[k]
         for idx in indices:
-            input_str_list[idx] = v
-            subs_done.add(v)
+            in_str_list[idx] = v
 
-    return ' '.join(input_str_list).strip(), subs_done
+    return ' '.join(in_str_list).strip()
 
 
 def count_params(model):
