@@ -120,18 +120,24 @@ if __name__ == "__main__":
     if "gpt3" in args.model or "davinci" in args.model:
         dataset = load_from_file(args.split_dataset_fpath)
         valid_iter = dataset["valid_iter"]
+        if "utt" in args.split_dataset_fpath:  # result directory based on holdout type
+            dname = "utt"
+        elif "formula" in args.split_dataset_fpath:
+            dname = "formula"
+        elif "type" in args.split_dataset_fpath:
+            dname = "type"
         if "finetuned" in args.model:
             engine = load_from_file("model/gpt3_models.pkl")[args.model]
             valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
-            result_log_fpath = f"results/log_{args.model}.csv"  # finetuned model name also include dataset name
-            acc_fpath = f"results/acc_{args.model}.csv"
+            result_log_fpath = os.path.join("results", "finetuned_gpt3", dname, f"log_{args.model}.csv")  # fintuned model name contains dataset name
+            acc_fpath = os.path.join("results", "finetuned_gpt3", dname, f"acc_{args.model}.csv")
         else:
             engine = args.model
             prompt_fpath = os.path.join("data", "symbolic_prompts_new", f"prompt_{args.nexamples}_{dataset_name}.txt")
             prompt = load_from_file(prompt_fpath)
             valid_iter = [(f"{prompt}Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
-            result_log_fpath = f"results/log_{args.model}_{dataset_name}.csv"
-            acc_fpath = f"results/acc_{args.model}_{dataset_name}.csv"
+            result_log_fpath = os.path.join("result", "pretrained_gpt3", dname, f"log_{args.model}_{dataset_name}.csv")
+            acc_fpath = os.path.join("result", "pretrained_gpt3", dname, f"acc_{args.model}_{dataset_name}.csv")
         dataset["valid_iter"] = valid_iter
         split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
         save_to_file(dataset, split_dataset_fpath)
