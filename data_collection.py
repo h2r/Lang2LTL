@@ -29,11 +29,11 @@ def aggregate_responses(raw_fpath, result_fpath):
                     result_row[3] = col
             elif "Utterance" in field:
                 if col:
-                    if result_row[-1]:  # more than 1 utterances recorded for this participant
+                    if result_row[-1]:  # more than 1 utterances recorded from this participant
                         results.append(result_row)
                         result_row = result_row[:]  # start a new row
                         result_row[-1] = col  # every col same as last row except utterance
-                    else:  # 1st utterance recorded for this participant
+                    else:  # 1st utterance recorded from this participant
                         result_row[-1] = col
             else:
                 result_row[col_idx] = col
