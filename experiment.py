@@ -8,7 +8,8 @@ from openai.embeddings_utils import cosine_similarity
 
 from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
-from s2s_pt_transformer import construct_dataset
+from s2s_pt_transformer import construct_dataset_meta
+from dataset import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 from evaluation import evaluate_lang, evaluate_plan
 
@@ -158,7 +159,8 @@ def translate_modular(grounded_utts, objs_per_utt):
     elif args.trans in T5_MODELS:
         trans_module = Seq2Seq(args.trans)
     elif args.trans == 'pt_transformer':
-        _, _, vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset(args.s2s_sup_data)
+        train_iter, _, _, _ = load_split_dataset(args.s2s_sup_data)
+        vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset_meta(train_iter)
         model_params = f"model/s2s_{args.trans}.pth"
         trans_module = Seq2Seq(args.trans,
                                vocab_transform=vocab_transform, text_transform=text_transform,
