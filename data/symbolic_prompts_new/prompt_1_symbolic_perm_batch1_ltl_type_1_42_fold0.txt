@@ -1,0 +1,57 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: stop by a
+LTL: F a
+
+Utterance: go to a and b
+LTL: & F a F b
+
+Utterance: in any order you like go to c a and b
+LTL: & F c & F a F b
+
+Utterance: move to abcand a in any order
+LTL: & F c & F b & F d F a
+
+Utterance: visit h c a d and b
+LTL: & F h & F c & F a & F d F b
+
+Utterance: find a but not until you find b first
+LTL: & U ! a b F a
+
+Utterance: go to b but not through a or c and then go to a but not through c and finally go to c
+LTL: & U ! a b & U ! c a F c
+
+Utterance: go to b only after that go to c only then go to d and only then go to a
+LTL: & U ! c b & U ! d c & U ! a d F a
+
+Utterance: do not go to b until d is visited and do not go to d until a is visited and do not go to a until c is visited and do not go to c until h is visited
+LTL: & U ! c h & U ! a c & U ! d a & U ! b d F b
+
+Utterance: move to b exactly once while avoiding a then find a
+LTL: & & U ! a b F a U ! b U b U !b a
+
+Utterance: visit c a and b in this order without skipping any one of them do not revisit any one of them once after you have been there
+LTL: & & U ! a c & U ! b a F b & U ! c U c U !c a U ! a U a U !a b
+
+Utterance: visit d a c and b in this order without skipping any one of them do not revisit any one of them once after you have been there
+LTL: & & U ! a d & U ! c a & U ! b c F b & U ! d U d U !d a & U ! a U a U !a c U ! c U c U !c b
+
+Utterance: make your way to h only after going to d before that make your way to d only after going to a before that make your way to a only after going to b before that make your way to b only after going to c do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! b c & U ! a b & U ! d a & U ! h d F h & U ! c U c U !c b & U ! b U b U !b a & U ! a U a U !a d U ! d U d U !d h
+
+Utterance: do not stop visiting a
+LTL: G F a
+
+Utterance: make sure b and a are visited infinitely
+LTL: & G F b G F a
+
+Utterance: make sure b a and c are visited infinitely
+LTL: & G F b & G F a G F c
+
+Utterance: make sure b c d and a are visited infinitely
+LTL: & G F b & G F c & G F d G F a
+
+Utterance: never stop visiting h d a b and c
+LTL: & G F h & G F d & G F a & G F b G F c
+
+Utterance:

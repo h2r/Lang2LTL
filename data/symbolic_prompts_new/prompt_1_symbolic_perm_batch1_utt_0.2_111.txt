@@ -1,0 +1,69 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: find a
+LTL: F a
+
+Utterance: go to a and b in an arbitrary order
+LTL: & F a F b
+
+Utterance: go to b a and c
+LTL: & F b & F a F c
+
+Utterance: visit a c b and d the order is not important
+LTL: & F a & F c & F b F d
+
+Utterance: visit c h b d a in any order required
+LTL: & F c & F h & F b & F d F a
+
+Utterance: reach a then go to b
+LTL: F & a F b
+
+Utterance: start at b then visit a then go to c
+LTL: F & b F & a F c
+
+Utterance: visit b a d and c in this order
+LTL: F & b F & a F & d F c
+
+Utterance: visit d then visit h then visit c then visit b and then visit a
+LTL: F & d F & h F & c F & b F a
+
+Utterance: you must visit a first before going to b
+LTL: & U ! b a F b
+
+Utterance: in strictly this order visit b then eventually visit a and finally eventually c
+LTL: & U ! a b & U ! c a F c
+
+Utterance: go to d and only go to a only after d is visited and then go to c only after d and a are both visited and then go to b only after d a and c are all visited
+LTL: & U ! a d & U ! c a & U ! b c F b
+
+Utterance: ensure that you visit a but only after b in turn only visit b after c only visit c after h and only visit h after d
+LTL: & U ! h d & U ! c h & U ! b c & U ! a b F a
+
+Utterance: visit b but only after a also you cannot revisit a before completing the remaining tasks
+LTL: & & U ! b a F b U ! a U a U !a b
+
+Utterance: make your way to a only after going to c before that make your way to c only after going to b do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! c b & U ! a c F a & U ! b U b U !b c U ! c U c U !c a
+
+Utterance: go to d but not through a c or b and then go to a but not through c or b and then go to c but not through b and finally go to b no revisiting is allowed
+LTL: & & U ! a d & U ! c a & U ! b c F b & U ! d U d U !d a & U ! a U a U !a c U ! c U c U !c b
+
+Utterance: go to a but not through b d h or c and then go to b but not through d h or c and then go to d but not through h or c and then go to h but not through c and finally go to c no revisiting is allowed here
+LTL: & & U ! b a & U ! d b & U ! h d & U ! c h F c & U ! a U a U !a b & U ! b U b U !b d & U ! d U d U !d h U ! h U h U !h c
+
+Utterance: frequent a infinitely
+LTL: G F a
+
+Utterance: do not stop visiting a and b
+LTL: & G F a G F b
+
+Utterance: keep visiting b c and a in any order
+LTL: & G F b & G F c G F a
+
+Utterance: never stop visiting b d a and c
+LTL: & G F b & G F d & G F a G F c
+
+Utterance: never stop visiting b c d h and a
+LTL: & G F b & G F c & G F d & G F h G F a
+
+Utterance:
