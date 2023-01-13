@@ -438,3 +438,115 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to a, d, c, h, and b at least once"
 2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to b, a, h, c, and d "
 2023/01/09 9:22:21 PM EST,benjamin_schornstein@brown.edu,Visit,5,"Go to h, c, b, d, and a in any sequence"
+2023/01/10 9:44:34 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,2,Go to a and then go to b in that order.
+2023/01/10 9:44:34 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,2,Go from a to b.
+2023/01/10 9:44:34 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,2,First go to a. Then go to b
+2023/01/10 9:44:34 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,2,Move from a directly to b
+2023/01/10 9:44:34 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,2,Travel from a directly to b.
+2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Go from a directly to b and then directly to c
+2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Travel to a to.b to c exactly in that order
+2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Move exactly from a to b to c
+2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,"First visit a. Then go to b. Finally, go to c."
+2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Go to a first. Go to b second. Go to c third.
+2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,Go to a and b the same number of times.
+2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,"If you go to a, you must also go to b and visa versa. "
+2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,Visit both a and b an equal number of times.
+2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,"If you travel to b, you must go to a. If you travel to a, you must go to b."
+2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,a and b must be seen the same amount of times.
+2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Please circle around a
+2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Keep going to a
+2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Always stop at a repeatedly
+2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Cycle about a
+2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Patrol around the landmark a
+2023/01/10 10:00:56 PM EST,benjamin_schornstein@brown.edu,Visit,1,Please go to a
+2023/01/10 10:00:56 PM EST,benjamin_schornstein@brown.edu,Visit,1,Travel to a
+2023/01/10 10:00:56 PM EST,benjamin_schornstein@brown.edu,Visit,1,Visit a
+2023/01/10 10:00:56 PM EST,benjamin_schornstein@brown.edu,Visit,1,Stop at a
+2023/01/10 10:00:56 PM EST,benjamin_schornstein@brown.edu,Visit,1,Attend a
+2023/01/10 10:02:28 PM EST,benjamin_schornstein@brown.edu,Visit,2,Go to a and b in any order
+2023/01/10 10:02:28 PM EST,benjamin_schornstein@brown.edu,Visit,2,Make sure to go to both a and b
+2023/01/10 10:02:28 PM EST,benjamin_schornstein@brown.edu,Visit,2,Attend a and b on your travels
+2023/01/10 10:02:28 PM EST,benjamin_schornstein@brown.edu,Visit,2,Make sure to go to both a and b at least once
+2023/01/10 10:02:28 PM EST,benjamin_schornstein@brown.edu,Visit,2,Go to b and a in any order
+2023/01/10 10:05:19 PM EST,benjamin_schornstein@brown.edu,Visit,4,"Go to b, d, a, and c in any order"
+2023/01/10 10:05:19 PM EST,benjamin_schornstein@brown.edu,Visit,4,"Attend to a, d, c, and b on your travels"
+2023/01/10 10:05:19 PM EST,benjamin_schornstein@brown.edu,Visit,4,"Make sure to visit a, b, d, and c in any sequence"
+2023/01/10 10:05:19 PM EST,benjamin_schornstein@brown.edu,Visit,4,"Please visit each of d, c, b, and a"
+2023/01/10 10:05:19 PM EST,benjamin_schornstein@brown.edu,Visit,4,"Travel to a, b, c, and d. "
+2023/01/10 10:10:27 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,2,Go to a and then to b
+2023/01/10 10:10:27 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,2,Visit a and then b in that sequence
+2023/01/10 10:10:27 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,2,"First go to a. Then, go to b."
+2023/01/10 10:10:27 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,2,"Travel first to a, and then directly to b."
+2023/01/10 10:10:27 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,2,"Go to a first. Second, go to b."
+2023/01/10 10:13:59 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,4,Go to a. Then go to b. Then go to c. Then go to d.
+2023/01/10 10:13:59 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,4,Go from a to b to c to d in that sequence
+2023/01/10 10:13:59 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,4,"Go from a to b to c to d, and make sure to go to b after a, c after b, and d after c"
+2023/01/10 10:13:59 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,4,Travel from a to b to c to d.
+2023/01/10 10:13:59 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,4,"First go to a. Then visit b. Then see c. Finally, attend d. "
+2023/01/10 10:26:10 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,5,Go from a to b to c to d to h in that sequence.
+2023/01/10 10:26:10 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,5,"Visit a, b, c, d, and h. Don't visit b before a, c before b, d before c, and h before d."
+2023/01/10 10:26:10 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,5,"Visit a, then b, then c, then d, and finally h."
+2023/01/10 10:26:10 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,5,First visit a. Visit b after a. Then visit c after b. Then visit d after c. Finally visit h after d.
+2023/01/10 10:26:10 PM EST,benjamin_schornstein@brown.edu,Sequenced Visit,5,"Visit a first. Visit b afterwards. Then go to c after that, and d after that. Finally go to h. "
+2023/01/10 10:49:54 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,3,"Visit a, b, and c, where b doesn't proceed a and c doesn't proceed b."
+2023/01/10 10:49:54 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,3,"Go to b after a, and go to c after b."
+2023/01/10 10:49:54 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,3,"Go to a, then b, then c."
+2023/01/10 10:49:54 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,3,"First go to a. Then go to b after a. Finally, go to c after b."
+2023/01/10 10:49:54 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,3,"First go to a. Then, go to b. Finally, visit c."
+2023/01/10 11:11:27 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,4,"Visit a before b, b before c, and c before d."
+2023/01/10 11:11:27 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,4,"After a is visited, go to b. After visiting b, go to c. After visiting c, go to d."
+2023/01/10 11:11:27 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,4,"If you visit a, you can go to b. If you visit b, you can go to c. If you visit c, you can go to d."
+2023/01/10 11:11:27 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,4,You can't visit b before a. You can't visit c before b. You can't visit d before c.
+2023/01/10 11:11:27 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,4,"If you visited b, you have visited a. If you visited c, you have visited b. If you visited d, you have visited c. "
+2023/01/10 11:13:50 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,5,"Visit a before b, b before c, c before d, and h before d"
+2023/01/10 11:13:50 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,5,"If you visit a, you can go to b. If you visit b, you can go to c. If you visit c, you can go to d. If you visit d, you can go to h."
+2023/01/10 11:13:50 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,5,You can't visit b before a. You can't visit c before b. You can't visit d before c. You can't visit h before d.
+2023/01/10 11:13:50 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,5,"If you visited b, you have visited a. If you visited c, you have visited b. If you visited d, you have visited c.  If you visited h, you visited d."
+2023/01/10 11:13:50 PM EST,benjamin_schornstein@brown.edu,Ordered Visit,5,"If a is visited, go to b. If b is visited, go to c. If c is visited, go to d. If d is visited, go to h."
+2023/01/10 11:16:50 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,2,"Visit a first, then visit b."
+2023/01/10 11:16:50 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,2,First go to a. Then go to b.
+2023/01/10 11:16:50 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,2,Go from a directly to b.
+2023/01/10 11:16:50 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,2,Start at a. Then go to b.
+2023/01/10 11:16:50 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,2,You must go to a and then to b in that order.
+2023/01/10 11:33:32 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,5,Go from a to b to c to d to h directly in that order.
+2023/01/10 11:33:32 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,5,First visit a. Then visit b. Then visit c. Then visit d. Finally visit h.
+2023/01/10 11:33:32 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,5,"Go to a, then b, then c, then d, then h in that order."
+2023/01/10 11:33:32 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,5,Go from a to b to c to d to h in that order.
+2023/01/10 11:33:32 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,5,"Start at a. Then go to b. Third, go to c. Fourth, go to d. Finally, go to h."
+2023/01/11 7:41:41 PM EST,saml@princeton.edu,Fair Visit,2,Visit a and b but the number of times you visit a can never exceed the number of times you visit b by more than one.
+2023/01/11 7:41:41 PM EST,saml@princeton.edu,Fair Visit,2,go to a and b but the difference between the number of times you go to a and b is at most one.
+2023/01/11 7:41:41 PM EST,saml@princeton.edu,Fair Visit,2,fairly visit a and b. that means the number of times you go to one location can be at most one more than the number of times you go to the other location
+2023/01/11 7:45:14 PM EST,saml@princeton.edu,Fair Visit,3,Visit a and b and c but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one.
+2023/01/11 7:45:14 PM EST,saml@princeton.edu,Fair Visit,3,"go to a and b and c but the difference between the number of times you go to any two locations (a, b or a, c or b, c) is at most one."
+2023/01/11 7:45:14 PM EST,saml@princeton.edu,Fair Visit,3,fairly visit a and b and c. that means the number of times you go to any one location can be at most one more than the number of times you go to any other location
+2023/01/11 7:48:22 PM EST,saml@princeton.edu,Fair Visit,4,Visit locations a and b and c and d but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one.
+2023/01/11 7:48:22 PM EST,saml@princeton.edu,Fair Visit,4,go to locations a and b and c and d but the difference between the number of times you go to any two locations is at most one.
+2023/01/11 7:48:22 PM EST,saml@princeton.edu,Fair Visit,4,fairly visit locations a and b and c and d. that means the number of times you go to any one location can be at most one more than the number of times you go to any other location
+2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,Visit locations a and b and c and d and h but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one.
+2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,go to locations a and b and c and d and h but the difference between the number of times you go to any two locations is at most one.
+2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,fairly visit locations a and b and c and d and h. that means the number of times you go to any one location can be at most one more than the number of times you go to any other location
+2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Visit a, b, and c the same number of times."
+2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you go to one of the landmarks a, b, or c at any point, you must visit the other two you missed."
+2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Go to b, c, and a an equal number of times."
+2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Visit a, c, and b at the same rate."
+2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you visit a, visit b and c. If you visit b, visit a and c. If you visit c, visit a and b."
+2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Visit a, h, c, b, and d the same number of times."
+2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"For each time you go to one of the landmarks a, b, d, c, or h, you must go to the others you missed."
+2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Visit c, h, a, d, and b equally. "
+2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Go to a, b, c, d, and h an equal number of times."
+2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Please attend c, a, d, h, and b an identical number of times "
+2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Move around a and b
+2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Cycle through a and b
+2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Go through b and a in a cycle
+2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Keep on visiting a and b
+2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Travel to a and b multiple times
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Move through a, b, and c in a circle"
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Cycle through c, a, and b"
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Travel through a, c, and b multiple times in a row."
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Continuously move to c, b, and a."
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Circle around a, b, and c"
+2023/01/11 9:22:28 PM EST,benjamin_schornstein@brown.edu,Patrolling,5,"Circle around h, d, c, b, and a"
+2023/01/11 9:22:28 PM EST,benjamin_schornstein@brown.edu,Patrolling,5,"Visit b, c, a, d, and h multiple times"
+2023/01/11 9:22:28 PM EST,benjamin_schornstein@brown.edu,Patrolling,5,"Go to a, d, c, h, and b in a continuous cycle"
+2023/01/11 9:22:28 PM EST,benjamin_schornstein@brown.edu,Patrolling,5,"At every time step go to a, b, c, d, and h"
+2023/01/11 9:22:28 PM EST,benjamin_schornstein@brown.edu,Patrolling,5,"Cycle through d, h, b, c, and a"
