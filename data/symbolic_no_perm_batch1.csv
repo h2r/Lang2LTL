@@ -550,3 +550,18 @@ patrolling,"['a', 'b', 'c', 'd', 'h']",visit b c a d and h multiple times,& G F 
 patrolling,"['a', 'b', 'c', 'd', 'h']",go to a d c h and b in a continuous cycle,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",at every time step go to a b c d and h,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",cycle through d h b c and a,& G F a & G F b & G F c & G F d G F h
+visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in no specific order,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",reach a b c d and h in any order,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",make sure you go to a b c d h in any order,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",you must visit a b c d h but it can be done in any order,& F a & F b & F c & F d F h
+visit,"['a', 'b', 'c', 'd', 'h']",in no particular order visit a b c d h,& F a & F b & F c & F d F h
+strictly_ordered_visit,"['a', 'b', 'c']",visit a exactly once do not visit b or c before a then visit b exactly once  do not visit c before b finally visit c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",go to a exactly once then go to b exactly once finally go to c do not go to b or c before a do not go to c before b,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",go to a exactly once while avoiding b and c then go to b exactly once while avoiding c finally go to c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+strictly_ordered_visit,"['a', 'b', 'c']",visit a exactly once avoid b or c before a then reach b exactly once  avoid c before b finally move to c,& & U ! b a & U ! c b F c & U ! a U a U !a b U ! b U b U !b c
+sequenced_visit,"['a', 'b', 'c', 'd', 'h']",go to a then go to b then go to c then go to d finally go to h,F & a F & b F & c F & d F h
+sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a then visit b then visit c then visit d finally visit h,F & a F & b F & c F & d F h
+sequenced_visit,"['a', 'b', 'c', 'd', 'h']",move to a then move to b then move to c then move to d finally move to h,F & a F & b F & c F & d F h
+sequenced_visit,"['a', 'b', 'c', 'd', 'h']",first go to a then move to b then go visit c then visit d finally reach h,F & a F & b F & c F & d F h
+sequenced_visit,"['a', 'b', 'c', 'd', 'h']",first make you way to a then you must go to b after that visit c then move to d finally reach h,F & a F & b F & c F & d F h
