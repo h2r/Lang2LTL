@@ -66,3 +66,4 @@ LTL: & G F a & G F b & G F c G F d
 Utterance: please keep visiting a b c d and h without stopping
 LTL: & G F a & G F b & G F c & G F d G F h
 
+Utterance:

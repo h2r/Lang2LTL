@@ -66,3 +66,4 @@ LTL: & G F a & G F b & G F c G F d
 Utterance: frequent a b c d and h infinitely in any order
 LTL: & G F a & G F b & G F c & G F d G F h
 
+Utterance:
