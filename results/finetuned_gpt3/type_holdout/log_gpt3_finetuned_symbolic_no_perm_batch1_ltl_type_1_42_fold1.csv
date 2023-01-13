@@ -1,0 +1,85 @@
+train_or_valid,pattern_type,nprops,utterances,true_ltl,output_ltl,is_correct
+valid,patrolling,1,"Utterance: keep visiting a
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: go to a an infinite number of times
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: continue moving to a
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: do not stop visiting a
+LTL:",G F a,& U ! b a F b,False
+valid,patrolling,1,"Utterance: do not stop going to a
+LTL:",G F a,& U ! b a F b,False
+valid,patrolling,1,"Utterance: please visit a infinitely often
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: you must visit a infinitely often
+LTL:",G F a,F a,False
+valid,patrolling,2,"Utterance: keep visiting a and b in any order
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: make sure a and b are visited infinitely
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: do not stop visiting a and b
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: frequent a and b but the order can be arbitrary
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: pick one from a and b and go there and then go back and forth between a and b with or without stay
+LTL:",& G F a G F b,& F a & F b F a F b,Syntax Error
+valid,patrolling,1,"Utterance: keep visiting a
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: keep going to a
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: make sure you frequent a infinitely
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: do not stop visiting a
+LTL:",G F a,& U ! b a F b,False
+valid,patrolling,1,"Utterance: make sure you visit a infinite times
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: never stop visiting a
+LTL:",G F a,& U ! b a F b,False
+valid,patrolling,1,"Utterance: make sure a is visited infinitely
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: visit a as many times as you can
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: frequent a infinitely
+LTL:",G F a,F a,False
+valid,patrolling,1,"Utterance: please keep visiting a without stopping
+LTL:",G F a,& & U ! b a F b U ! a U a U !a b,False
+valid,patrolling,2,"Utterance: never stop visiting a and b
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: frequent a and b infinitely in any order
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: visit a and b as many times as you can
+LTL:",& G F a G F b,F & a F b,False
+valid,patrolling,2,"Utterance: keep going to a and b in arbitrary order
+LTL:",& G F a G F b,& F a F b,False
+valid,patrolling,2,"Utterance: please keep visiting a and b without stopping
+LTL:",& G F a G F b,& & U ! b a F b U ! a U a U !a b,False
+valid,patrolling,3,"Utterance: never stop visiting a b and c
+LTL:",& G F a & G F b G F c,& F a & F b F c,False
+valid,patrolling,3,"Utterance: frequent a b and c infinitely in any order
+LTL:",& G F a & G F b G F c,& F a & F b F c,False
+valid,patrolling,3,"Utterance: please keep visiting a b and c without stopping
+LTL:",& G F a & G F b G F c,& U ! b a & U ! c b F c,False
+valid,patrolling,3,"Utterance: make sure a b and c are visited infinitely
+LTL:",& G F a & G F b G F c,& F a & F b F c,False
+valid,patrolling,3,"Utterance: keep visiting a b and c in any order
+LTL:",& G F a & G F b G F c,& F a & F b F c,False
+valid,patrolling,4,"Utterance: never stop visiting a b c and d
+LTL:",& G F a & G F b & G F c G F d,& F a & F b & F c F d,False
+valid,patrolling,4,"Utterance: frequent a b c and d infinitely in any order
+LTL:",& G F a & G F b & G F c G F d,& F a & F b & F c F d,False
+valid,patrolling,4,"Utterance: please keep visiting a b c and d without stopping
+LTL:",& G F a & G F b & G F c G F d,& U ! b a & U ! c b & U ! d c F d,False
+valid,patrolling,4,"Utterance: make sure a b c and d are visited infinitely
+LTL:",& G F a & G F b & G F c G F d,& F a & F b & F c F d,False
+valid,patrolling,4,"Utterance: keep visiting a b c and d in any order
+LTL:",& G F a & G F b & G F c G F d,& F a & F b & F c F d,False
+valid,patrolling,5,"Utterance: never stop visiting a b c d and h
+LTL:",& G F a & G F b & G F c & G F d G F h,& F a & F b & F c & F d F h,False
+valid,patrolling,5,"Utterance: frequent a b c d and h infinitely in any order
+LTL:",& G F a & G F b & G F c & G F d G F h,& F a & F b & F c & F d F h,False
+valid,patrolling,5,"Utterance: please keep visiting a b c d and h without stopping
+LTL:",& G F a & G F b & G F c & G F d G F h,& U ! b a & U ! c b & U ! d c & U ! h d F h,False
+valid,patrolling,5,"Utterance: make sure a b c d and h are visited infinitely
+LTL:",& G F a & G F b & G F c & G F d G F h,& F a & F b & F c & F d F h,False
+valid,patrolling,5,"Utterance: keep visiting a b c d h in any order
+LTL:",& G F a & G F b & G F c & G F d G F h,& F a & F b & F c & F d F h,False
