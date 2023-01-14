@@ -13,7 +13,7 @@ import spot
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]  # 16
 ALL_TYPES = [
-    "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",
+    "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",  # batch1
 ]
 
 
@@ -56,11 +56,11 @@ def sample_formulas(pattern_type, nprops, debug):
     elif pattern_type == "future_avoidance":
         pattern_sampler = future_avoid
     elif pattern_type == "upper_restricted_avoidance":
-        pattern_sampler = upper_restricted_avoid
+        pattern_sampler = upper_restricted_avoid_fixed
     elif pattern_type == "lower_restricted_avoidance":
-        pattern_sampler = lower_restricted_avoid
+        pattern_sampler = lower_restricted_avoid_fixed
     elif pattern_type == "exact_restricted_avoidance":
-        pattern_sampler = exact_restricted_avoid
+        pattern_sampler = exact_restricted_avoid_fixed
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -100,7 +100,7 @@ def strict_ordered_visit_constraint3(props):
     return f"& U ! {a} U {a} U !{a} {b} " + strict_ordered_visit_constraint3(props)
 
 
-def fair_visit_fixed(props):
+def fair_visit_fixed(props):  # TODO: to be fixed
     formula = finals(props[:])
     if len(props) > 1:
         props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
@@ -154,14 +154,6 @@ def ordered_patrol_constraint3(props):
     return f"& G i {b} W {b} & ! {b} W ! {b} {a} " + ordered_patrol_constraint3(props)
 
 
-def fair_patrol_fixed(props):
-    formula = f"G " + finals(props[:])
-    if len(props) > 1:
-        props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
-        formula = f"& {formula} " + fair_visit_constraint2(props)
-    return formula
-
-
 def strict_ordered_patrol_fixed(props):
     formula = ordered_patrol_fixed(props[:])
     if len(props) > 1:
@@ -181,6 +173,14 @@ def strict_ordered_patrol_constraint4(props):
     return f"& G i {a} W {a} & ! {a} W ! {a} {b} " + strict_ordered_patrol_constraint4(props)
 
 
+def fair_patrol_fixed(props):  # TODO: to be fixed
+    formula = f"G " + finals(props[:])
+    if len(props) > 1:
+        props.append(props[0])  # proposition list circles back to 1st proposition for 2nd constraint
+        formula = f"& {formula} " + fair_visit_constraint2(props)
+    return formula
+
+
 def past_avoid(props):
     assert len(props) == 2, f"length of props for past_avoid must be 2, got {len(props)}"
     return f"U ! {props[0]} {props[1]}"
@@ -196,23 +196,23 @@ def future_avoid(props):
     return f"G i {props[0]} G ! {props[1]}"
 
 
-def upper_restricted_avoid(props):
+def upper_restricted_avoid_fixed(props):
     props.append(props[0])
-    return f"! {lower_restricted_avoid(props)}"
+    return f"! {lower_restricted_avoid_fixed(props)}"
 
 
-def lower_restricted_avoid(props):
+def lower_restricted_avoid_fixed(props):
     if len(props) == 1:
         return finals(props[0])
     a = props.pop(0)
-    return f"F & {a} U {a} & ! {a} U ! {a} {lower_restricted_avoid(props)}"
+    return f"F & {a} U {a} & ! {a} U ! {a} {lower_restricted_avoid_fixed(props)}"
 
 
-def exact_restricted_avoid(props):
+def exact_restricted_avoid_fixed(props):  # TODO: to be fixed
     if len(props) == 1:
         return f"U ! {props[0]} & {props[0]} U {props[0]} G !{props[0]}"
     a = props.pop(0)
-    return f"U ! {a} & {a} U {a} {exact_restricted_avoid(props)}"
+    return f"U ! {a} & {a} U {a} {exact_restricted_avoid_fixed(props)}"
 
 
 def finals(props):
