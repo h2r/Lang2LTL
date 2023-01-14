@@ -61,6 +61,18 @@ def sample_formulas(pattern_type, nprops, debug):
         pattern_sampler = lower_restricted_avoid_fixed
     elif pattern_type == "exact_restricted_avoidance":
         pattern_sampler = exact_restricted_avoid_fixed
+    elif pattern_type == "instantaneous_reaction":
+        pattern_sampler = instantaneous_reaction
+    elif pattern_type == "delayed_reaction":
+        pattern_sampler = delayed_reaction
+    elif pattern_type == "prompt_reaction":
+        pattern_sampler = prompt_reaction
+    elif pattern_type == "bound_reaction":
+        pattern_sampler = bound_reaction
+    elif pattern_type == "bound_delay":
+        pattern_sampler = bound_delay
+    elif pattern_type == "wait":
+        pattern_sampler = wait
     else:
         raise TypeError(f"ERROR: unrecognized pattern type {pattern_type}")
 
@@ -215,6 +227,36 @@ def exact_restricted_avoid_fixed(props):  # TODO: to be fixed
     return f"U ! {a} & {a} U {a} {exact_restricted_avoid_fixed(props)}"
 
 
+def instantaneous_reaction(props):
+    assert len(props) == 2, f"length of props for instantaneous_reaction must be 2, got {len(props)}"
+    return f"G i {props[0]} {props[1]}"
+
+
+def delayed_reaction(props):
+    assert len(props) == 2, f"length of props for delayed_reaction must be 2, got {len(props)}"
+    return f"G i {props[0]} F {props[1]}"
+
+
+def prompt_reaction(props):
+    assert len(props) == 2, f"length of props for prompt_reaction must be 2, got {len(props)}"
+    return f"G i {props[0]} X {props[1]}"
+
+
+def bound_reaction(props):
+    assert len(props) == 2, f"length of props for bound_reaction must be 2, got {len(props)}"
+    return f"G e {props[0]} {props[1]}"
+
+
+def bound_delay(props):
+    assert len(props) == 2, f"length of props for bound_delay must be 2, got {len(props)}"
+    return f"G e {props[0]} X {props[1]}"
+
+
+def wait(props):
+    assert len(props) == 2, f"length of props for wait must be 2, got {len(props)}"
+    return f"U {props[0]} {props[1]}"
+
+
 def finals(props):
     """
     Conjunction of finals.
@@ -238,8 +280,8 @@ def utils(props):
 
 if __name__ == '__main__':
     paser = argparse.ArgumentParser()
-    paser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
-    paser.add_argument("--nprops", type=int, default=3, help="number of propositions.")
+    paser.add_argument("--pattern_type", type=str, default="instantaneous_reaction", help="type of specification pattern.")
+    paser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
     paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
 
