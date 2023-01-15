@@ -89,21 +89,11 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/02 1:31:01 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Visit a, b, c, d, but make sure that any location is not visited more than once more than the others"
 2023/01/02 1:31:01 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Visit a, b, c, d fairly, i.e. at any given time the visit counts to the locations should not exceed that of any other location by more than one."
 2023/01/02 1:31:01 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Go to a,b,c, and d in any order, but ensure that each location is visited at most once more than other locations at any time"
-2023/01/02 11:21:04 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"go to a but not through b or c, and then go to b but not through c, and finally go to c"
-2023/01/02 11:21:04 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"make you way to a but keep avoiding b or c, and head to b but keep avoiding c after that, and  then visit c"
-2023/01/02 11:21:04 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"direct yourself to a but keep away from b and c, then go to b but bypass c, and eventually make you way at c"
-2023/01/02 11:21:04 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"keep away from b and c while heading to a, and then keep away from c while heading to b, and eventually go to c"
-2023/01/02 11:21:04 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"visit a, b, and c in order, but keep avoiding latter ones when you are heading to former ones"
 2023/01/02 11:21:34 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,3,"go to a, and then go to b, and then go to c"
 2023/01/02 11:21:34 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,3,"visit a, b, and c one after another"
 2023/01/02 11:21:34 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,3,"go to a, and go to b after a is visited, and go to c after a and b are visited."
 2023/01/02 11:21:34 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,3,"make your way to a, b, and c consecutively"
 2023/01/02 11:21:34 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,3,"head to a, b, and c in order"
-2023/01/02 11:22:06 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep visiting a and b in any order
-2023/01/02 11:22:06 PM EST,ziyi_yang1@brown.edu,Patrolling,2,make sure a and b are visited infinitely
-2023/01/02 11:22:06 PM EST,ziyi_yang1@brown.edu,Patrolling,2,do not stop visiting a and b
-2023/01/02 11:22:06 PM EST,ziyi_yang1@brown.edu,Patrolling,2,"frequent a and b, but the order can be arbitrary"
-2023/01/02 11:22:06 PM EST,ziyi_yang1@brown.edu,Patrolling,2,"pick one from a and b and go there, and then go back and forth between a and b with or without stay"
 2023/01/02 11:22:37 PM EST,ziyi_yang1@brown.edu,Visit,3,"go to a, b, and c in any order"
 2023/01/02 11:22:37 PM EST,ziyi_yang1@brown.edu,Visit,3,"make sure a, b, and c are all visited"
 2023/01/02 11:22:37 PM EST,ziyi_yang1@brown.edu,Visit,3,"do not stop until a, b, and c are visited"
@@ -254,16 +244,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/06 1:16:29 AM EST,ziyi_yang1@brown.edu,Ordered Visit,5,"make your way to h only after going to d. before that, make your way to d only after going to c. before that, make your way to c only after going to b. before that, make your way to b only after going to a"
 2023/01/06 1:16:29 AM EST,ziyi_yang1@brown.edu,Ordered Visit,5,"visit a, b, c, d, and h in this order without skipping any one of them"
 2023/01/06 1:16:29 AM EST,ziyi_yang1@brown.edu,Ordered Visit,5,"do not go to h until d is visited, and do not go to d until c is visited, and do not go to c until b is visited, and do not go to b until a is visited"
-2023/01/06 2:05:25 AM EST,ziyi_yang1@brown.edu,Patrolling,1,never stop visiting a
-2023/01/06 2:05:25 AM EST,ziyi_yang1@brown.edu,Patrolling,1,make sure a is visited infinitely
-2023/01/06 2:05:25 AM EST,ziyi_yang1@brown.edu,Patrolling,1,visit a as many times as you can
-2023/01/06 2:05:25 AM EST,ziyi_yang1@brown.edu,Patrolling,1,frequent a infinitely
-2023/01/06 2:05:25 AM EST,ziyi_yang1@brown.edu,Patrolling,1,please keep visiting a without stopping
-2023/01/06 2:06:48 AM EST,ziyi_yang1@brown.edu,Patrolling,2,never stop visiting a and b
-2023/01/06 2:06:48 AM EST,ziyi_yang1@brown.edu,Patrolling,2,frequent a and b infinitely in any order
-2023/01/06 2:06:48 AM EST,ziyi_yang1@brown.edu,Patrolling,2,visit a and b as many times as you can
-2023/01/06 2:06:48 AM EST,ziyi_yang1@brown.edu,Patrolling,2,keep going to a and b in arbitrary order
-2023/01/06 2:06:48 AM EST,ziyi_yang1@brown.edu,Patrolling,2,please keep visiting a and b without stopping
 2023/01/06 2:11:41 AM EST,ziyi_yang1@brown.edu,Patrolling,3,"never stop visiting a, b, and c"
 2023/01/06 2:11:41 AM EST,ziyi_yang1@brown.edu,Patrolling,3,"frequent a, b, and c infinitely in any order"
 2023/01/06 2:11:41 AM EST,ziyi_yang1@brown.edu,Patrolling,3,"please keep visiting a, b, and c without stopping"
@@ -611,3 +591,23 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Visit a, b, c, d, and h in that exact order. Once you leave a location you cannot return to it"
 2023/01/14 4:21:28 AM EST,xinyu_liu@brown.edu,Ordered Visit,5,"visit a, do not visit b, c, d or h before visiting a, then visit b, do not visit c, d or h before visiting b, then visit c, do not visit d or h before visiting c, then visit d, do not visit h before visiting d, finally visit h  "
 2023/01/14 4:21:28 AM EST,xinyu_liu@brown.edu,Ordered Visit,5,"visit a, do not visit b, c, d or h until you visit a, then visit b, do not visit c, d or h until you visit b, then visit c, do not visit d or h until you visit c, then visit d, do not visit h until you visit d, finally reach h  "
+2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,never stop visiting a and b
+2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,frequent a and b infinitely in any order
+2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,visit a and b an infinite number of times
+2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep going to a and b in arbitrary order
+2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,please keep visiting a and b without stopping
+2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,never stop visiting a
+2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,make sure a is visited infinitely
+2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,visit a an infinite number of times
+2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,frequent a infinitely
+2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,please keep visiting a without stopping
+2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"go to a but not through b or c, and then go to b but not through c, and finally go to c"
+2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"make you way to a but keep avoiding b and c, and head to b but keep avoiding c, and then visit c"
+2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"direct yourself to a but keep away from b and c, then go to b but bypass c, and eventually make you way to c"
+2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"keep away from b and c while heading to a, and then keep away from c while heading to b, and eventually go to c"
+2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"visit a, b, and c in order, but keep avoiding latter ones when you are heading to former ones"
+2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep visiting a and b in any order
+2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,make sure a and b are visited infinitely
+2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,do not stop visiting a and b
+2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,"frequent a and b, but the order can be arbitrary"
+2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep going back and forth between a and b
