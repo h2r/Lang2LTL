@@ -535,11 +535,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/13 12:25:00 PM EST,xinyu_liu@brown.edu,Strictly Ordered Visit,3,"visit a exactly once while avoiding b and c, then visit b exactly once while avoiding c, finally visit c"
 2023/01/13 12:25:00 PM EST,xinyu_liu@brown.edu,Strictly Ordered Visit,3,"go to a exactly once while avoiding b and c, then go to b exactly once while avoiding c, finally go to c"
 2023/01/13 12:25:00 PM EST,xinyu_liu@brown.edu,Strictly Ordered Visit,3,"visit a exactly once, avoid b or c before a, then reach b exactly once,  avoid c before b, finally move to c"
-2023/01/13 12:29:50 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"go to a, then go to b, then go to c, then go to d, finally go to h"
-2023/01/13 12:29:50 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"visit a, then visit b, then visit c, then visit d, finally visit h"
-2023/01/13 12:29:50 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"move to a, then move to b, then move to c, then move to d, finally move to h"
-2023/01/13 12:29:50 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first go to a, then move to b, then go visit c, then visit d, finally reach h"
-2023/01/13 12:29:50 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first make you way to a, then you must go to b, after that visit c, then move to d, finally reach h"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"go to a only once but keep away from b, and then visit b but keep away from a"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"visit a one time but not through b, and head to b after a is visited but not through a"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"stay away from b until you make a single visit to a, and then go to b while staying away from a"
@@ -611,3 +606,8 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,do not stop visiting a and b
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,"frequent a and b, but the order can be arbitrary"
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep going back and forth between a and b
+2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"go to a, then go to b, then go to c, then go to d, finally go to h"
+2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"visit a, then visit b, then visit c, then visit d, finally visit h"
+2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"move to a, then move to b, then move to c, then move to d, finally move to h"
+2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first go to a, then move to b, then go visit c, then visit d, finally reach h"
+2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first make your way to a, then you must go to b, after that visit c, then move to d, finally reach h"
