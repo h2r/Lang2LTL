@@ -124,11 +124,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/02 11:29:21 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,2,"after you have been to a, make your way to b"
 2023/01/02 11:29:21 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,2,go to a and move on to b once you have been to a
 2023/01/02 11:29:21 PM EST,ziyi_yang1@brown.edu,Sequenced Visit,2,go to a and then go to b
-2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,go to a
-2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,make sure you visit a at least once
-2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,walk to a
-2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,make you way to a
-2023/01/02 11:29:52 PM EST,ziyi_yang1@brown.edu,Visit,1,head to a
 2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Go to a
 2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Reach a
 2023/01/03 2:46:09 PM EST,ankitshah91@gmail.com,Visit,1,Visit a
@@ -596,11 +591,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,visit a an infinite number of times
 2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,frequent a infinitely
 2023/01/14 4:45:45 PM EST,ziyi_yang1@brown.edu,Patrolling,1,please keep visiting a without stopping
-2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"go to a but not through b or c, and then go to b but not through c, and finally go to c"
-2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"make you way to a but keep avoiding b and c, and head to b but keep avoiding c, and then visit c"
-2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"direct yourself to a but keep away from b and c, then go to b but bypass c, and eventually make you way to c"
-2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"keep away from b and c while heading to a, and then keep away from c while heading to b, and eventually go to c"
-2023/01/14 4:53:09 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"visit a, b, and c in order, but keep avoiding latter ones when you are heading to former ones"
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,keep visiting a and b in any order
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,make sure a and b are visited infinitely
 2023/01/14 4:56:42 PM EST,ziyi_yang1@brown.edu,Patrolling,2,do not stop visiting a and b
@@ -611,3 +601,13 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"move to a, then move to b, then move to c, then move to d, finally move to h"
 2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first go to a, then move to b, then go visit c, then visit d, finally reach h"
 2023/01/15 1:55:42 PM EST,xinyu_liu@brown.edu,Sequenced Visit,5,"first make your way to a, then you must go to b, after that visit c, then move to d, finally reach h"
+2023/01/15 2:12:45 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"go to a but not through b or c, and then go to b but not through c, and finally go to c"
+2023/01/15 2:12:45 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"make your way to a but keep avoiding b and c, and head to b but keep avoiding c, and then visit c"
+2023/01/15 2:12:45 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"direct yourself to a but keep away from b and c, then go to b but bypass c, and eventually make your way to c"
+2023/01/15 2:12:45 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"keep away from b and c while heading to a, and then keep away from c while heading to b, and eventually go to c"
+2023/01/15 2:12:45 PM EST,ziyi_yang1@brown.edu,Ordered Visit,3,"visit a, b, and c in order, but keep avoiding latter ones when you are heading to former ones"
+2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,go to a
+2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,make sure you visit a at least once
+2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,walk to a
+2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,make your way to a
+2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,head to a

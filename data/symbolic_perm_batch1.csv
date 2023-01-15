@@ -1996,11 +1996,6 @@ sequenced_visit,"('b', 'a')",go to b and move on to a once you have been to b,F 
 sequenced_visit,"('a', 'b')",go to a and then go to b,F & a F b
 sequenced_visit,"('b', 'a')",go to b and then go to a,F & b F a
 visit,"('a',)",go to a,F a
-visit,"('a',)",make sure you visit a at least once,F a
-visit,"('a',)",walk to a,F a
-visit,"('a',)",make you way to a,F a
-visit,"('a',)",head to a,F a
-visit,"('a',)",go to a,F a
 visit,"('a',)",reach a,F a
 visit,"('a',)",visit a,F a
 visit,"('a',)",find a,F a
@@ -17480,606 +17475,6 @@ strictly_ordered_visit,"('b', 'a', 'c')",visit b exactly once avoid a or c befor
 strictly_ordered_visit,"('b', 'c', 'a')",visit b exactly once avoid c or a before b then reach c exactly once  avoid a before c finally move to a,& & U ! c b & U ! a c F a & U ! b U b U !b c U ! c U c U !c a
 strictly_ordered_visit,"('c', 'a', 'b')",visit c exactly once avoid a or b before c then reach a exactly once  avoid b before a finally move to b,& & U ! a c & U ! b a F b & U ! c U c U !c a U ! a U a U !a b
 strictly_ordered_visit,"('c', 'b', 'a')",visit c exactly once avoid b or a before c then reach b exactly once  avoid a before b finally move to a,& & U ! b c & U ! a b F a & U ! c U c U !c b U ! b U b U !b a
-sequenced_visit,"('a', 'b', 'c', 'd', 'h')",go to a then go to b then go to c then go to d finally go to h,F & a F & b F & c F & d F h
-sequenced_visit,"('a', 'b', 'c', 'h', 'd')",go to a then go to b then go to c then go to h finally go to d,F & a F & b F & c F & h F d
-sequenced_visit,"('a', 'b', 'd', 'c', 'h')",go to a then go to b then go to d then go to c finally go to h,F & a F & b F & d F & c F h
-sequenced_visit,"('a', 'b', 'd', 'h', 'c')",go to a then go to b then go to d then go to h finally go to c,F & a F & b F & d F & h F c
-sequenced_visit,"('a', 'b', 'h', 'c', 'd')",go to a then go to b then go to h then go to c finally go to d,F & a F & b F & h F & c F d
-sequenced_visit,"('a', 'b', 'h', 'd', 'c')",go to a then go to b then go to h then go to d finally go to c,F & a F & b F & h F & d F c
-sequenced_visit,"('a', 'c', 'b', 'd', 'h')",go to a then go to c then go to b then go to d finally go to h,F & a F & c F & b F & d F h
-sequenced_visit,"('a', 'c', 'b', 'h', 'd')",go to a then go to c then go to b then go to h finally go to d,F & a F & c F & b F & h F d
-sequenced_visit,"('a', 'c', 'd', 'b', 'h')",go to a then go to c then go to d then go to b finally go to h,F & a F & c F & d F & b F h
-sequenced_visit,"('a', 'c', 'd', 'h', 'b')",go to a then go to c then go to d then go to h finally go to b,F & a F & c F & d F & h F b
-sequenced_visit,"('a', 'c', 'h', 'b', 'd')",go to a then go to c then go to h then go to b finally go to d,F & a F & c F & h F & b F d
-sequenced_visit,"('a', 'c', 'h', 'd', 'b')",go to a then go to c then go to h then go to d finally go to b,F & a F & c F & h F & d F b
-sequenced_visit,"('a', 'd', 'b', 'c', 'h')",go to a then go to d then go to b then go to c finally go to h,F & a F & d F & b F & c F h
-sequenced_visit,"('a', 'd', 'b', 'h', 'c')",go to a then go to d then go to b then go to h finally go to c,F & a F & d F & b F & h F c
-sequenced_visit,"('a', 'd', 'c', 'b', 'h')",go to a then go to d then go to c then go to b finally go to h,F & a F & d F & c F & b F h
-sequenced_visit,"('a', 'd', 'c', 'h', 'b')",go to a then go to d then go to c then go to h finally go to b,F & a F & d F & c F & h F b
-sequenced_visit,"('a', 'd', 'h', 'b', 'c')",go to a then go to d then go to h then go to b finally go to c,F & a F & d F & h F & b F c
-sequenced_visit,"('a', 'd', 'h', 'c', 'b')",go to a then go to d then go to h then go to c finally go to b,F & a F & d F & h F & c F b
-sequenced_visit,"('a', 'h', 'b', 'c', 'd')",go to a then go to h then go to b then go to c finally go to d,F & a F & h F & b F & c F d
-sequenced_visit,"('a', 'h', 'b', 'd', 'c')",go to a then go to h then go to b then go to d finally go to c,F & a F & h F & b F & d F c
-sequenced_visit,"('a', 'h', 'c', 'b', 'd')",go to a then go to h then go to c then go to b finally go to d,F & a F & h F & c F & b F d
-sequenced_visit,"('a', 'h', 'c', 'd', 'b')",go to a then go to h then go to c then go to d finally go to b,F & a F & h F & c F & d F b
-sequenced_visit,"('a', 'h', 'd', 'b', 'c')",go to a then go to h then go to d then go to b finally go to c,F & a F & h F & d F & b F c
-sequenced_visit,"('a', 'h', 'd', 'c', 'b')",go to a then go to h then go to d then go to c finally go to b,F & a F & h F & d F & c F b
-sequenced_visit,"('b', 'a', 'c', 'd', 'h')",go to b then go to a then go to c then go to d finally go to h,F & b F & a F & c F & d F h
-sequenced_visit,"('b', 'a', 'c', 'h', 'd')",go to b then go to a then go to c then go to h finally go to d,F & b F & a F & c F & h F d
-sequenced_visit,"('b', 'a', 'd', 'c', 'h')",go to b then go to a then go to d then go to c finally go to h,F & b F & a F & d F & c F h
-sequenced_visit,"('b', 'a', 'd', 'h', 'c')",go to b then go to a then go to d then go to h finally go to c,F & b F & a F & d F & h F c
-sequenced_visit,"('b', 'a', 'h', 'c', 'd')",go to b then go to a then go to h then go to c finally go to d,F & b F & a F & h F & c F d
-sequenced_visit,"('b', 'a', 'h', 'd', 'c')",go to b then go to a then go to h then go to d finally go to c,F & b F & a F & h F & d F c
-sequenced_visit,"('b', 'c', 'a', 'd', 'h')",go to b then go to c then go to a then go to d finally go to h,F & b F & c F & a F & d F h
-sequenced_visit,"('b', 'c', 'a', 'h', 'd')",go to b then go to c then go to a then go to h finally go to d,F & b F & c F & a F & h F d
-sequenced_visit,"('b', 'c', 'd', 'a', 'h')",go to b then go to c then go to d then go to a finally go to h,F & b F & c F & d F & a F h
-sequenced_visit,"('b', 'c', 'd', 'h', 'a')",go to b then go to c then go to d then go to h finally go to a,F & b F & c F & d F & h F a
-sequenced_visit,"('b', 'c', 'h', 'a', 'd')",go to b then go to c then go to h then go to a finally go to d,F & b F & c F & h F & a F d
-sequenced_visit,"('b', 'c', 'h', 'd', 'a')",go to b then go to c then go to h then go to d finally go to a,F & b F & c F & h F & d F a
-sequenced_visit,"('b', 'd', 'a', 'c', 'h')",go to b then go to d then go to a then go to c finally go to h,F & b F & d F & a F & c F h
-sequenced_visit,"('b', 'd', 'a', 'h', 'c')",go to b then go to d then go to a then go to h finally go to c,F & b F & d F & a F & h F c
-sequenced_visit,"('b', 'd', 'c', 'a', 'h')",go to b then go to d then go to c then go to a finally go to h,F & b F & d F & c F & a F h
-sequenced_visit,"('b', 'd', 'c', 'h', 'a')",go to b then go to d then go to c then go to h finally go to a,F & b F & d F & c F & h F a
-sequenced_visit,"('b', 'd', 'h', 'a', 'c')",go to b then go to d then go to h then go to a finally go to c,F & b F & d F & h F & a F c
-sequenced_visit,"('b', 'd', 'h', 'c', 'a')",go to b then go to d then go to h then go to c finally go to a,F & b F & d F & h F & c F a
-sequenced_visit,"('b', 'h', 'a', 'c', 'd')",go to b then go to h then go to a then go to c finally go to d,F & b F & h F & a F & c F d
-sequenced_visit,"('b', 'h', 'a', 'd', 'c')",go to b then go to h then go to a then go to d finally go to c,F & b F & h F & a F & d F c
-sequenced_visit,"('b', 'h', 'c', 'a', 'd')",go to b then go to h then go to c then go to a finally go to d,F & b F & h F & c F & a F d
-sequenced_visit,"('b', 'h', 'c', 'd', 'a')",go to b then go to h then go to c then go to d finally go to a,F & b F & h F & c F & d F a
-sequenced_visit,"('b', 'h', 'd', 'a', 'c')",go to b then go to h then go to d then go to a finally go to c,F & b F & h F & d F & a F c
-sequenced_visit,"('b', 'h', 'd', 'c', 'a')",go to b then go to h then go to d then go to c finally go to a,F & b F & h F & d F & c F a
-sequenced_visit,"('c', 'a', 'b', 'd', 'h')",go to c then go to a then go to b then go to d finally go to h,F & c F & a F & b F & d F h
-sequenced_visit,"('c', 'a', 'b', 'h', 'd')",go to c then go to a then go to b then go to h finally go to d,F & c F & a F & b F & h F d
-sequenced_visit,"('c', 'a', 'd', 'b', 'h')",go to c then go to a then go to d then go to b finally go to h,F & c F & a F & d F & b F h
-sequenced_visit,"('c', 'a', 'd', 'h', 'b')",go to c then go to a then go to d then go to h finally go to b,F & c F & a F & d F & h F b
-sequenced_visit,"('c', 'a', 'h', 'b', 'd')",go to c then go to a then go to h then go to b finally go to d,F & c F & a F & h F & b F d
-sequenced_visit,"('c', 'a', 'h', 'd', 'b')",go to c then go to a then go to h then go to d finally go to b,F & c F & a F & h F & d F b
-sequenced_visit,"('c', 'b', 'a', 'd', 'h')",go to c then go to b then go to a then go to d finally go to h,F & c F & b F & a F & d F h
-sequenced_visit,"('c', 'b', 'a', 'h', 'd')",go to c then go to b then go to a then go to h finally go to d,F & c F & b F & a F & h F d
-sequenced_visit,"('c', 'b', 'd', 'a', 'h')",go to c then go to b then go to d then go to a finally go to h,F & c F & b F & d F & a F h
-sequenced_visit,"('c', 'b', 'd', 'h', 'a')",go to c then go to b then go to d then go to h finally go to a,F & c F & b F & d F & h F a
-sequenced_visit,"('c', 'b', 'h', 'a', 'd')",go to c then go to b then go to h then go to a finally go to d,F & c F & b F & h F & a F d
-sequenced_visit,"('c', 'b', 'h', 'd', 'a')",go to c then go to b then go to h then go to d finally go to a,F & c F & b F & h F & d F a
-sequenced_visit,"('c', 'd', 'a', 'b', 'h')",go to c then go to d then go to a then go to b finally go to h,F & c F & d F & a F & b F h
-sequenced_visit,"('c', 'd', 'a', 'h', 'b')",go to c then go to d then go to a then go to h finally go to b,F & c F & d F & a F & h F b
-sequenced_visit,"('c', 'd', 'b', 'a', 'h')",go to c then go to d then go to b then go to a finally go to h,F & c F & d F & b F & a F h
-sequenced_visit,"('c', 'd', 'b', 'h', 'a')",go to c then go to d then go to b then go to h finally go to a,F & c F & d F & b F & h F a
-sequenced_visit,"('c', 'd', 'h', 'a', 'b')",go to c then go to d then go to h then go to a finally go to b,F & c F & d F & h F & a F b
-sequenced_visit,"('c', 'd', 'h', 'b', 'a')",go to c then go to d then go to h then go to b finally go to a,F & c F & d F & h F & b F a
-sequenced_visit,"('c', 'h', 'a', 'b', 'd')",go to c then go to h then go to a then go to b finally go to d,F & c F & h F & a F & b F d
-sequenced_visit,"('c', 'h', 'a', 'd', 'b')",go to c then go to h then go to a then go to d finally go to b,F & c F & h F & a F & d F b
-sequenced_visit,"('c', 'h', 'b', 'a', 'd')",go to c then go to h then go to b then go to a finally go to d,F & c F & h F & b F & a F d
-sequenced_visit,"('c', 'h', 'b', 'd', 'a')",go to c then go to h then go to b then go to d finally go to a,F & c F & h F & b F & d F a
-sequenced_visit,"('c', 'h', 'd', 'a', 'b')",go to c then go to h then go to d then go to a finally go to b,F & c F & h F & d F & a F b
-sequenced_visit,"('c', 'h', 'd', 'b', 'a')",go to c then go to h then go to d then go to b finally go to a,F & c F & h F & d F & b F a
-sequenced_visit,"('d', 'a', 'b', 'c', 'h')",go to d then go to a then go to b then go to c finally go to h,F & d F & a F & b F & c F h
-sequenced_visit,"('d', 'a', 'b', 'h', 'c')",go to d then go to a then go to b then go to h finally go to c,F & d F & a F & b F & h F c
-sequenced_visit,"('d', 'a', 'c', 'b', 'h')",go to d then go to a then go to c then go to b finally go to h,F & d F & a F & c F & b F h
-sequenced_visit,"('d', 'a', 'c', 'h', 'b')",go to d then go to a then go to c then go to h finally go to b,F & d F & a F & c F & h F b
-sequenced_visit,"('d', 'a', 'h', 'b', 'c')",go to d then go to a then go to h then go to b finally go to c,F & d F & a F & h F & b F c
-sequenced_visit,"('d', 'a', 'h', 'c', 'b')",go to d then go to a then go to h then go to c finally go to b,F & d F & a F & h F & c F b
-sequenced_visit,"('d', 'b', 'a', 'c', 'h')",go to d then go to b then go to a then go to c finally go to h,F & d F & b F & a F & c F h
-sequenced_visit,"('d', 'b', 'a', 'h', 'c')",go to d then go to b then go to a then go to h finally go to c,F & d F & b F & a F & h F c
-sequenced_visit,"('d', 'b', 'c', 'a', 'h')",go to d then go to b then go to c then go to a finally go to h,F & d F & b F & c F & a F h
-sequenced_visit,"('d', 'b', 'c', 'h', 'a')",go to d then go to b then go to c then go to h finally go to a,F & d F & b F & c F & h F a
-sequenced_visit,"('d', 'b', 'h', 'a', 'c')",go to d then go to b then go to h then go to a finally go to c,F & d F & b F & h F & a F c
-sequenced_visit,"('d', 'b', 'h', 'c', 'a')",go to d then go to b then go to h then go to c finally go to a,F & d F & b F & h F & c F a
-sequenced_visit,"('d', 'c', 'a', 'b', 'h')",go to d then go to c then go to a then go to b finally go to h,F & d F & c F & a F & b F h
-sequenced_visit,"('d', 'c', 'a', 'h', 'b')",go to d then go to c then go to a then go to h finally go to b,F & d F & c F & a F & h F b
-sequenced_visit,"('d', 'c', 'b', 'a', 'h')",go to d then go to c then go to b then go to a finally go to h,F & d F & c F & b F & a F h
-sequenced_visit,"('d', 'c', 'b', 'h', 'a')",go to d then go to c then go to b then go to h finally go to a,F & d F & c F & b F & h F a
-sequenced_visit,"('d', 'c', 'h', 'a', 'b')",go to d then go to c then go to h then go to a finally go to b,F & d F & c F & h F & a F b
-sequenced_visit,"('d', 'c', 'h', 'b', 'a')",go to d then go to c then go to h then go to b finally go to a,F & d F & c F & h F & b F a
-sequenced_visit,"('d', 'h', 'a', 'b', 'c')",go to d then go to h then go to a then go to b finally go to c,F & d F & h F & a F & b F c
-sequenced_visit,"('d', 'h', 'a', 'c', 'b')",go to d then go to h then go to a then go to c finally go to b,F & d F & h F & a F & c F b
-sequenced_visit,"('d', 'h', 'b', 'a', 'c')",go to d then go to h then go to b then go to a finally go to c,F & d F & h F & b F & a F c
-sequenced_visit,"('d', 'h', 'b', 'c', 'a')",go to d then go to h then go to b then go to c finally go to a,F & d F & h F & b F & c F a
-sequenced_visit,"('d', 'h', 'c', 'a', 'b')",go to d then go to h then go to c then go to a finally go to b,F & d F & h F & c F & a F b
-sequenced_visit,"('d', 'h', 'c', 'b', 'a')",go to d then go to h then go to c then go to b finally go to a,F & d F & h F & c F & b F a
-sequenced_visit,"('h', 'a', 'b', 'c', 'd')",go to h then go to a then go to b then go to c finally go to d,F & h F & a F & b F & c F d
-sequenced_visit,"('h', 'a', 'b', 'd', 'c')",go to h then go to a then go to b then go to d finally go to c,F & h F & a F & b F & d F c
-sequenced_visit,"('h', 'a', 'c', 'b', 'd')",go to h then go to a then go to c then go to b finally go to d,F & h F & a F & c F & b F d
-sequenced_visit,"('h', 'a', 'c', 'd', 'b')",go to h then go to a then go to c then go to d finally go to b,F & h F & a F & c F & d F b
-sequenced_visit,"('h', 'a', 'd', 'b', 'c')",go to h then go to a then go to d then go to b finally go to c,F & h F & a F & d F & b F c
-sequenced_visit,"('h', 'a', 'd', 'c', 'b')",go to h then go to a then go to d then go to c finally go to b,F & h F & a F & d F & c F b
-sequenced_visit,"('h', 'b', 'a', 'c', 'd')",go to h then go to b then go to a then go to c finally go to d,F & h F & b F & a F & c F d
-sequenced_visit,"('h', 'b', 'a', 'd', 'c')",go to h then go to b then go to a then go to d finally go to c,F & h F & b F & a F & d F c
-sequenced_visit,"('h', 'b', 'c', 'a', 'd')",go to h then go to b then go to c then go to a finally go to d,F & h F & b F & c F & a F d
-sequenced_visit,"('h', 'b', 'c', 'd', 'a')",go to h then go to b then go to c then go to d finally go to a,F & h F & b F & c F & d F a
-sequenced_visit,"('h', 'b', 'd', 'a', 'c')",go to h then go to b then go to d then go to a finally go to c,F & h F & b F & d F & a F c
-sequenced_visit,"('h', 'b', 'd', 'c', 'a')",go to h then go to b then go to d then go to c finally go to a,F & h F & b F & d F & c F a
-sequenced_visit,"('h', 'c', 'a', 'b', 'd')",go to h then go to c then go to a then go to b finally go to d,F & h F & c F & a F & b F d
-sequenced_visit,"('h', 'c', 'a', 'd', 'b')",go to h then go to c then go to a then go to d finally go to b,F & h F & c F & a F & d F b
-sequenced_visit,"('h', 'c', 'b', 'a', 'd')",go to h then go to c then go to b then go to a finally go to d,F & h F & c F & b F & a F d
-sequenced_visit,"('h', 'c', 'b', 'd', 'a')",go to h then go to c then go to b then go to d finally go to a,F & h F & c F & b F & d F a
-sequenced_visit,"('h', 'c', 'd', 'a', 'b')",go to h then go to c then go to d then go to a finally go to b,F & h F & c F & d F & a F b
-sequenced_visit,"('h', 'c', 'd', 'b', 'a')",go to h then go to c then go to d then go to b finally go to a,F & h F & c F & d F & b F a
-sequenced_visit,"('h', 'd', 'a', 'b', 'c')",go to h then go to d then go to a then go to b finally go to c,F & h F & d F & a F & b F c
-sequenced_visit,"('h', 'd', 'a', 'c', 'b')",go to h then go to d then go to a then go to c finally go to b,F & h F & d F & a F & c F b
-sequenced_visit,"('h', 'd', 'b', 'a', 'c')",go to h then go to d then go to b then go to a finally go to c,F & h F & d F & b F & a F c
-sequenced_visit,"('h', 'd', 'b', 'c', 'a')",go to h then go to d then go to b then go to c finally go to a,F & h F & d F & b F & c F a
-sequenced_visit,"('h', 'd', 'c', 'a', 'b')",go to h then go to d then go to c then go to a finally go to b,F & h F & d F & c F & a F b
-sequenced_visit,"('h', 'd', 'c', 'b', 'a')",go to h then go to d then go to c then go to b finally go to a,F & h F & d F & c F & b F a
-sequenced_visit,"('a', 'b', 'c', 'd', 'h')",visit a then visit b then visit c then visit d finally visit h,F & a F & b F & c F & d F h
-sequenced_visit,"('a', 'b', 'c', 'h', 'd')",visit a then visit b then visit c then visit h finally visit d,F & a F & b F & c F & h F d
-sequenced_visit,"('a', 'b', 'd', 'c', 'h')",visit a then visit b then visit d then visit c finally visit h,F & a F & b F & d F & c F h
-sequenced_visit,"('a', 'b', 'd', 'h', 'c')",visit a then visit b then visit d then visit h finally visit c,F & a F & b F & d F & h F c
-sequenced_visit,"('a', 'b', 'h', 'c', 'd')",visit a then visit b then visit h then visit c finally visit d,F & a F & b F & h F & c F d
-sequenced_visit,"('a', 'b', 'h', 'd', 'c')",visit a then visit b then visit h then visit d finally visit c,F & a F & b F & h F & d F c
-sequenced_visit,"('a', 'c', 'b', 'd', 'h')",visit a then visit c then visit b then visit d finally visit h,F & a F & c F & b F & d F h
-sequenced_visit,"('a', 'c', 'b', 'h', 'd')",visit a then visit c then visit b then visit h finally visit d,F & a F & c F & b F & h F d
-sequenced_visit,"('a', 'c', 'd', 'b', 'h')",visit a then visit c then visit d then visit b finally visit h,F & a F & c F & d F & b F h
-sequenced_visit,"('a', 'c', 'd', 'h', 'b')",visit a then visit c then visit d then visit h finally visit b,F & a F & c F & d F & h F b
-sequenced_visit,"('a', 'c', 'h', 'b', 'd')",visit a then visit c then visit h then visit b finally visit d,F & a F & c F & h F & b F d
-sequenced_visit,"('a', 'c', 'h', 'd', 'b')",visit a then visit c then visit h then visit d finally visit b,F & a F & c F & h F & d F b
-sequenced_visit,"('a', 'd', 'b', 'c', 'h')",visit a then visit d then visit b then visit c finally visit h,F & a F & d F & b F & c F h
-sequenced_visit,"('a', 'd', 'b', 'h', 'c')",visit a then visit d then visit b then visit h finally visit c,F & a F & d F & b F & h F c
-sequenced_visit,"('a', 'd', 'c', 'b', 'h')",visit a then visit d then visit c then visit b finally visit h,F & a F & d F & c F & b F h
-sequenced_visit,"('a', 'd', 'c', 'h', 'b')",visit a then visit d then visit c then visit h finally visit b,F & a F & d F & c F & h F b
-sequenced_visit,"('a', 'd', 'h', 'b', 'c')",visit a then visit d then visit h then visit b finally visit c,F & a F & d F & h F & b F c
-sequenced_visit,"('a', 'd', 'h', 'c', 'b')",visit a then visit d then visit h then visit c finally visit b,F & a F & d F & h F & c F b
-sequenced_visit,"('a', 'h', 'b', 'c', 'd')",visit a then visit h then visit b then visit c finally visit d,F & a F & h F & b F & c F d
-sequenced_visit,"('a', 'h', 'b', 'd', 'c')",visit a then visit h then visit b then visit d finally visit c,F & a F & h F & b F & d F c
-sequenced_visit,"('a', 'h', 'c', 'b', 'd')",visit a then visit h then visit c then visit b finally visit d,F & a F & h F & c F & b F d
-sequenced_visit,"('a', 'h', 'c', 'd', 'b')",visit a then visit h then visit c then visit d finally visit b,F & a F & h F & c F & d F b
-sequenced_visit,"('a', 'h', 'd', 'b', 'c')",visit a then visit h then visit d then visit b finally visit c,F & a F & h F & d F & b F c
-sequenced_visit,"('a', 'h', 'd', 'c', 'b')",visit a then visit h then visit d then visit c finally visit b,F & a F & h F & d F & c F b
-sequenced_visit,"('b', 'a', 'c', 'd', 'h')",visit b then visit a then visit c then visit d finally visit h,F & b F & a F & c F & d F h
-sequenced_visit,"('b', 'a', 'c', 'h', 'd')",visit b then visit a then visit c then visit h finally visit d,F & b F & a F & c F & h F d
-sequenced_visit,"('b', 'a', 'd', 'c', 'h')",visit b then visit a then visit d then visit c finally visit h,F & b F & a F & d F & c F h
-sequenced_visit,"('b', 'a', 'd', 'h', 'c')",visit b then visit a then visit d then visit h finally visit c,F & b F & a F & d F & h F c
-sequenced_visit,"('b', 'a', 'h', 'c', 'd')",visit b then visit a then visit h then visit c finally visit d,F & b F & a F & h F & c F d
-sequenced_visit,"('b', 'a', 'h', 'd', 'c')",visit b then visit a then visit h then visit d finally visit c,F & b F & a F & h F & d F c
-sequenced_visit,"('b', 'c', 'a', 'd', 'h')",visit b then visit c then visit a then visit d finally visit h,F & b F & c F & a F & d F h
-sequenced_visit,"('b', 'c', 'a', 'h', 'd')",visit b then visit c then visit a then visit h finally visit d,F & b F & c F & a F & h F d
-sequenced_visit,"('b', 'c', 'd', 'a', 'h')",visit b then visit c then visit d then visit a finally visit h,F & b F & c F & d F & a F h
-sequenced_visit,"('b', 'c', 'd', 'h', 'a')",visit b then visit c then visit d then visit h finally visit a,F & b F & c F & d F & h F a
-sequenced_visit,"('b', 'c', 'h', 'a', 'd')",visit b then visit c then visit h then visit a finally visit d,F & b F & c F & h F & a F d
-sequenced_visit,"('b', 'c', 'h', 'd', 'a')",visit b then visit c then visit h then visit d finally visit a,F & b F & c F & h F & d F a
-sequenced_visit,"('b', 'd', 'a', 'c', 'h')",visit b then visit d then visit a then visit c finally visit h,F & b F & d F & a F & c F h
-sequenced_visit,"('b', 'd', 'a', 'h', 'c')",visit b then visit d then visit a then visit h finally visit c,F & b F & d F & a F & h F c
-sequenced_visit,"('b', 'd', 'c', 'a', 'h')",visit b then visit d then visit c then visit a finally visit h,F & b F & d F & c F & a F h
-sequenced_visit,"('b', 'd', 'c', 'h', 'a')",visit b then visit d then visit c then visit h finally visit a,F & b F & d F & c F & h F a
-sequenced_visit,"('b', 'd', 'h', 'a', 'c')",visit b then visit d then visit h then visit a finally visit c,F & b F & d F & h F & a F c
-sequenced_visit,"('b', 'd', 'h', 'c', 'a')",visit b then visit d then visit h then visit c finally visit a,F & b F & d F & h F & c F a
-sequenced_visit,"('b', 'h', 'a', 'c', 'd')",visit b then visit h then visit a then visit c finally visit d,F & b F & h F & a F & c F d
-sequenced_visit,"('b', 'h', 'a', 'd', 'c')",visit b then visit h then visit a then visit d finally visit c,F & b F & h F & a F & d F c
-sequenced_visit,"('b', 'h', 'c', 'a', 'd')",visit b then visit h then visit c then visit a finally visit d,F & b F & h F & c F & a F d
-sequenced_visit,"('b', 'h', 'c', 'd', 'a')",visit b then visit h then visit c then visit d finally visit a,F & b F & h F & c F & d F a
-sequenced_visit,"('b', 'h', 'd', 'a', 'c')",visit b then visit h then visit d then visit a finally visit c,F & b F & h F & d F & a F c
-sequenced_visit,"('b', 'h', 'd', 'c', 'a')",visit b then visit h then visit d then visit c finally visit a,F & b F & h F & d F & c F a
-sequenced_visit,"('c', 'a', 'b', 'd', 'h')",visit c then visit a then visit b then visit d finally visit h,F & c F & a F & b F & d F h
-sequenced_visit,"('c', 'a', 'b', 'h', 'd')",visit c then visit a then visit b then visit h finally visit d,F & c F & a F & b F & h F d
-sequenced_visit,"('c', 'a', 'd', 'b', 'h')",visit c then visit a then visit d then visit b finally visit h,F & c F & a F & d F & b F h
-sequenced_visit,"('c', 'a', 'd', 'h', 'b')",visit c then visit a then visit d then visit h finally visit b,F & c F & a F & d F & h F b
-sequenced_visit,"('c', 'a', 'h', 'b', 'd')",visit c then visit a then visit h then visit b finally visit d,F & c F & a F & h F & b F d
-sequenced_visit,"('c', 'a', 'h', 'd', 'b')",visit c then visit a then visit h then visit d finally visit b,F & c F & a F & h F & d F b
-sequenced_visit,"('c', 'b', 'a', 'd', 'h')",visit c then visit b then visit a then visit d finally visit h,F & c F & b F & a F & d F h
-sequenced_visit,"('c', 'b', 'a', 'h', 'd')",visit c then visit b then visit a then visit h finally visit d,F & c F & b F & a F & h F d
-sequenced_visit,"('c', 'b', 'd', 'a', 'h')",visit c then visit b then visit d then visit a finally visit h,F & c F & b F & d F & a F h
-sequenced_visit,"('c', 'b', 'd', 'h', 'a')",visit c then visit b then visit d then visit h finally visit a,F & c F & b F & d F & h F a
-sequenced_visit,"('c', 'b', 'h', 'a', 'd')",visit c then visit b then visit h then visit a finally visit d,F & c F & b F & h F & a F d
-sequenced_visit,"('c', 'b', 'h', 'd', 'a')",visit c then visit b then visit h then visit d finally visit a,F & c F & b F & h F & d F a
-sequenced_visit,"('c', 'd', 'a', 'b', 'h')",visit c then visit d then visit a then visit b finally visit h,F & c F & d F & a F & b F h
-sequenced_visit,"('c', 'd', 'a', 'h', 'b')",visit c then visit d then visit a then visit h finally visit b,F & c F & d F & a F & h F b
-sequenced_visit,"('c', 'd', 'b', 'a', 'h')",visit c then visit d then visit b then visit a finally visit h,F & c F & d F & b F & a F h
-sequenced_visit,"('c', 'd', 'b', 'h', 'a')",visit c then visit d then visit b then visit h finally visit a,F & c F & d F & b F & h F a
-sequenced_visit,"('c', 'd', 'h', 'a', 'b')",visit c then visit d then visit h then visit a finally visit b,F & c F & d F & h F & a F b
-sequenced_visit,"('c', 'd', 'h', 'b', 'a')",visit c then visit d then visit h then visit b finally visit a,F & c F & d F & h F & b F a
-sequenced_visit,"('c', 'h', 'a', 'b', 'd')",visit c then visit h then visit a then visit b finally visit d,F & c F & h F & a F & b F d
-sequenced_visit,"('c', 'h', 'a', 'd', 'b')",visit c then visit h then visit a then visit d finally visit b,F & c F & h F & a F & d F b
-sequenced_visit,"('c', 'h', 'b', 'a', 'd')",visit c then visit h then visit b then visit a finally visit d,F & c F & h F & b F & a F d
-sequenced_visit,"('c', 'h', 'b', 'd', 'a')",visit c then visit h then visit b then visit d finally visit a,F & c F & h F & b F & d F a
-sequenced_visit,"('c', 'h', 'd', 'a', 'b')",visit c then visit h then visit d then visit a finally visit b,F & c F & h F & d F & a F b
-sequenced_visit,"('c', 'h', 'd', 'b', 'a')",visit c then visit h then visit d then visit b finally visit a,F & c F & h F & d F & b F a
-sequenced_visit,"('d', 'a', 'b', 'c', 'h')",visit d then visit a then visit b then visit c finally visit h,F & d F & a F & b F & c F h
-sequenced_visit,"('d', 'a', 'b', 'h', 'c')",visit d then visit a then visit b then visit h finally visit c,F & d F & a F & b F & h F c
-sequenced_visit,"('d', 'a', 'c', 'b', 'h')",visit d then visit a then visit c then visit b finally visit h,F & d F & a F & c F & b F h
-sequenced_visit,"('d', 'a', 'c', 'h', 'b')",visit d then visit a then visit c then visit h finally visit b,F & d F & a F & c F & h F b
-sequenced_visit,"('d', 'a', 'h', 'b', 'c')",visit d then visit a then visit h then visit b finally visit c,F & d F & a F & h F & b F c
-sequenced_visit,"('d', 'a', 'h', 'c', 'b')",visit d then visit a then visit h then visit c finally visit b,F & d F & a F & h F & c F b
-sequenced_visit,"('d', 'b', 'a', 'c', 'h')",visit d then visit b then visit a then visit c finally visit h,F & d F & b F & a F & c F h
-sequenced_visit,"('d', 'b', 'a', 'h', 'c')",visit d then visit b then visit a then visit h finally visit c,F & d F & b F & a F & h F c
-sequenced_visit,"('d', 'b', 'c', 'a', 'h')",visit d then visit b then visit c then visit a finally visit h,F & d F & b F & c F & a F h
-sequenced_visit,"('d', 'b', 'c', 'h', 'a')",visit d then visit b then visit c then visit h finally visit a,F & d F & b F & c F & h F a
-sequenced_visit,"('d', 'b', 'h', 'a', 'c')",visit d then visit b then visit h then visit a finally visit c,F & d F & b F & h F & a F c
-sequenced_visit,"('d', 'b', 'h', 'c', 'a')",visit d then visit b then visit h then visit c finally visit a,F & d F & b F & h F & c F a
-sequenced_visit,"('d', 'c', 'a', 'b', 'h')",visit d then visit c then visit a then visit b finally visit h,F & d F & c F & a F & b F h
-sequenced_visit,"('d', 'c', 'a', 'h', 'b')",visit d then visit c then visit a then visit h finally visit b,F & d F & c F & a F & h F b
-sequenced_visit,"('d', 'c', 'b', 'a', 'h')",visit d then visit c then visit b then visit a finally visit h,F & d F & c F & b F & a F h
-sequenced_visit,"('d', 'c', 'b', 'h', 'a')",visit d then visit c then visit b then visit h finally visit a,F & d F & c F & b F & h F a
-sequenced_visit,"('d', 'c', 'h', 'a', 'b')",visit d then visit c then visit h then visit a finally visit b,F & d F & c F & h F & a F b
-sequenced_visit,"('d', 'c', 'h', 'b', 'a')",visit d then visit c then visit h then visit b finally visit a,F & d F & c F & h F & b F a
-sequenced_visit,"('d', 'h', 'a', 'b', 'c')",visit d then visit h then visit a then visit b finally visit c,F & d F & h F & a F & b F c
-sequenced_visit,"('d', 'h', 'a', 'c', 'b')",visit d then visit h then visit a then visit c finally visit b,F & d F & h F & a F & c F b
-sequenced_visit,"('d', 'h', 'b', 'a', 'c')",visit d then visit h then visit b then visit a finally visit c,F & d F & h F & b F & a F c
-sequenced_visit,"('d', 'h', 'b', 'c', 'a')",visit d then visit h then visit b then visit c finally visit a,F & d F & h F & b F & c F a
-sequenced_visit,"('d', 'h', 'c', 'a', 'b')",visit d then visit h then visit c then visit a finally visit b,F & d F & h F & c F & a F b
-sequenced_visit,"('d', 'h', 'c', 'b', 'a')",visit d then visit h then visit c then visit b finally visit a,F & d F & h F & c F & b F a
-sequenced_visit,"('h', 'a', 'b', 'c', 'd')",visit h then visit a then visit b then visit c finally visit d,F & h F & a F & b F & c F d
-sequenced_visit,"('h', 'a', 'b', 'd', 'c')",visit h then visit a then visit b then visit d finally visit c,F & h F & a F & b F & d F c
-sequenced_visit,"('h', 'a', 'c', 'b', 'd')",visit h then visit a then visit c then visit b finally visit d,F & h F & a F & c F & b F d
-sequenced_visit,"('h', 'a', 'c', 'd', 'b')",visit h then visit a then visit c then visit d finally visit b,F & h F & a F & c F & d F b
-sequenced_visit,"('h', 'a', 'd', 'b', 'c')",visit h then visit a then visit d then visit b finally visit c,F & h F & a F & d F & b F c
-sequenced_visit,"('h', 'a', 'd', 'c', 'b')",visit h then visit a then visit d then visit c finally visit b,F & h F & a F & d F & c F b
-sequenced_visit,"('h', 'b', 'a', 'c', 'd')",visit h then visit b then visit a then visit c finally visit d,F & h F & b F & a F & c F d
-sequenced_visit,"('h', 'b', 'a', 'd', 'c')",visit h then visit b then visit a then visit d finally visit c,F & h F & b F & a F & d F c
-sequenced_visit,"('h', 'b', 'c', 'a', 'd')",visit h then visit b then visit c then visit a finally visit d,F & h F & b F & c F & a F d
-sequenced_visit,"('h', 'b', 'c', 'd', 'a')",visit h then visit b then visit c then visit d finally visit a,F & h F & b F & c F & d F a
-sequenced_visit,"('h', 'b', 'd', 'a', 'c')",visit h then visit b then visit d then visit a finally visit c,F & h F & b F & d F & a F c
-sequenced_visit,"('h', 'b', 'd', 'c', 'a')",visit h then visit b then visit d then visit c finally visit a,F & h F & b F & d F & c F a
-sequenced_visit,"('h', 'c', 'a', 'b', 'd')",visit h then visit c then visit a then visit b finally visit d,F & h F & c F & a F & b F d
-sequenced_visit,"('h', 'c', 'a', 'd', 'b')",visit h then visit c then visit a then visit d finally visit b,F & h F & c F & a F & d F b
-sequenced_visit,"('h', 'c', 'b', 'a', 'd')",visit h then visit c then visit b then visit a finally visit d,F & h F & c F & b F & a F d
-sequenced_visit,"('h', 'c', 'b', 'd', 'a')",visit h then visit c then visit b then visit d finally visit a,F & h F & c F & b F & d F a
-sequenced_visit,"('h', 'c', 'd', 'a', 'b')",visit h then visit c then visit d then visit a finally visit b,F & h F & c F & d F & a F b
-sequenced_visit,"('h', 'c', 'd', 'b', 'a')",visit h then visit c then visit d then visit b finally visit a,F & h F & c F & d F & b F a
-sequenced_visit,"('h', 'd', 'a', 'b', 'c')",visit h then visit d then visit a then visit b finally visit c,F & h F & d F & a F & b F c
-sequenced_visit,"('h', 'd', 'a', 'c', 'b')",visit h then visit d then visit a then visit c finally visit b,F & h F & d F & a F & c F b
-sequenced_visit,"('h', 'd', 'b', 'a', 'c')",visit h then visit d then visit b then visit a finally visit c,F & h F & d F & b F & a F c
-sequenced_visit,"('h', 'd', 'b', 'c', 'a')",visit h then visit d then visit b then visit c finally visit a,F & h F & d F & b F & c F a
-sequenced_visit,"('h', 'd', 'c', 'a', 'b')",visit h then visit d then visit c then visit a finally visit b,F & h F & d F & c F & a F b
-sequenced_visit,"('h', 'd', 'c', 'b', 'a')",visit h then visit d then visit c then visit b finally visit a,F & h F & d F & c F & b F a
-sequenced_visit,"('a', 'b', 'c', 'd', 'h')",move to a then move to b then move to c then move to d finally move to h,F & a F & b F & c F & d F h
-sequenced_visit,"('a', 'b', 'c', 'h', 'd')",move to a then move to b then move to c then move to h finally move to d,F & a F & b F & c F & h F d
-sequenced_visit,"('a', 'b', 'd', 'c', 'h')",move to a then move to b then move to d then move to c finally move to h,F & a F & b F & d F & c F h
-sequenced_visit,"('a', 'b', 'd', 'h', 'c')",move to a then move to b then move to d then move to h finally move to c,F & a F & b F & d F & h F c
-sequenced_visit,"('a', 'b', 'h', 'c', 'd')",move to a then move to b then move to h then move to c finally move to d,F & a F & b F & h F & c F d
-sequenced_visit,"('a', 'b', 'h', 'd', 'c')",move to a then move to b then move to h then move to d finally move to c,F & a F & b F & h F & d F c
-sequenced_visit,"('a', 'c', 'b', 'd', 'h')",move to a then move to c then move to b then move to d finally move to h,F & a F & c F & b F & d F h
-sequenced_visit,"('a', 'c', 'b', 'h', 'd')",move to a then move to c then move to b then move to h finally move to d,F & a F & c F & b F & h F d
-sequenced_visit,"('a', 'c', 'd', 'b', 'h')",move to a then move to c then move to d then move to b finally move to h,F & a F & c F & d F & b F h
-sequenced_visit,"('a', 'c', 'd', 'h', 'b')",move to a then move to c then move to d then move to h finally move to b,F & a F & c F & d F & h F b
-sequenced_visit,"('a', 'c', 'h', 'b', 'd')",move to a then move to c then move to h then move to b finally move to d,F & a F & c F & h F & b F d
-sequenced_visit,"('a', 'c', 'h', 'd', 'b')",move to a then move to c then move to h then move to d finally move to b,F & a F & c F & h F & d F b
-sequenced_visit,"('a', 'd', 'b', 'c', 'h')",move to a then move to d then move to b then move to c finally move to h,F & a F & d F & b F & c F h
-sequenced_visit,"('a', 'd', 'b', 'h', 'c')",move to a then move to d then move to b then move to h finally move to c,F & a F & d F & b F & h F c
-sequenced_visit,"('a', 'd', 'c', 'b', 'h')",move to a then move to d then move to c then move to b finally move to h,F & a F & d F & c F & b F h
-sequenced_visit,"('a', 'd', 'c', 'h', 'b')",move to a then move to d then move to c then move to h finally move to b,F & a F & d F & c F & h F b
-sequenced_visit,"('a', 'd', 'h', 'b', 'c')",move to a then move to d then move to h then move to b finally move to c,F & a F & d F & h F & b F c
-sequenced_visit,"('a', 'd', 'h', 'c', 'b')",move to a then move to d then move to h then move to c finally move to b,F & a F & d F & h F & c F b
-sequenced_visit,"('a', 'h', 'b', 'c', 'd')",move to a then move to h then move to b then move to c finally move to d,F & a F & h F & b F & c F d
-sequenced_visit,"('a', 'h', 'b', 'd', 'c')",move to a then move to h then move to b then move to d finally move to c,F & a F & h F & b F & d F c
-sequenced_visit,"('a', 'h', 'c', 'b', 'd')",move to a then move to h then move to c then move to b finally move to d,F & a F & h F & c F & b F d
-sequenced_visit,"('a', 'h', 'c', 'd', 'b')",move to a then move to h then move to c then move to d finally move to b,F & a F & h F & c F & d F b
-sequenced_visit,"('a', 'h', 'd', 'b', 'c')",move to a then move to h then move to d then move to b finally move to c,F & a F & h F & d F & b F c
-sequenced_visit,"('a', 'h', 'd', 'c', 'b')",move to a then move to h then move to d then move to c finally move to b,F & a F & h F & d F & c F b
-sequenced_visit,"('b', 'a', 'c', 'd', 'h')",move to b then move to a then move to c then move to d finally move to h,F & b F & a F & c F & d F h
-sequenced_visit,"('b', 'a', 'c', 'h', 'd')",move to b then move to a then move to c then move to h finally move to d,F & b F & a F & c F & h F d
-sequenced_visit,"('b', 'a', 'd', 'c', 'h')",move to b then move to a then move to d then move to c finally move to h,F & b F & a F & d F & c F h
-sequenced_visit,"('b', 'a', 'd', 'h', 'c')",move to b then move to a then move to d then move to h finally move to c,F & b F & a F & d F & h F c
-sequenced_visit,"('b', 'a', 'h', 'c', 'd')",move to b then move to a then move to h then move to c finally move to d,F & b F & a F & h F & c F d
-sequenced_visit,"('b', 'a', 'h', 'd', 'c')",move to b then move to a then move to h then move to d finally move to c,F & b F & a F & h F & d F c
-sequenced_visit,"('b', 'c', 'a', 'd', 'h')",move to b then move to c then move to a then move to d finally move to h,F & b F & c F & a F & d F h
-sequenced_visit,"('b', 'c', 'a', 'h', 'd')",move to b then move to c then move to a then move to h finally move to d,F & b F & c F & a F & h F d
-sequenced_visit,"('b', 'c', 'd', 'a', 'h')",move to b then move to c then move to d then move to a finally move to h,F & b F & c F & d F & a F h
-sequenced_visit,"('b', 'c', 'd', 'h', 'a')",move to b then move to c then move to d then move to h finally move to a,F & b F & c F & d F & h F a
-sequenced_visit,"('b', 'c', 'h', 'a', 'd')",move to b then move to c then move to h then move to a finally move to d,F & b F & c F & h F & a F d
-sequenced_visit,"('b', 'c', 'h', 'd', 'a')",move to b then move to c then move to h then move to d finally move to a,F & b F & c F & h F & d F a
-sequenced_visit,"('b', 'd', 'a', 'c', 'h')",move to b then move to d then move to a then move to c finally move to h,F & b F & d F & a F & c F h
-sequenced_visit,"('b', 'd', 'a', 'h', 'c')",move to b then move to d then move to a then move to h finally move to c,F & b F & d F & a F & h F c
-sequenced_visit,"('b', 'd', 'c', 'a', 'h')",move to b then move to d then move to c then move to a finally move to h,F & b F & d F & c F & a F h
-sequenced_visit,"('b', 'd', 'c', 'h', 'a')",move to b then move to d then move to c then move to h finally move to a,F & b F & d F & c F & h F a
-sequenced_visit,"('b', 'd', 'h', 'a', 'c')",move to b then move to d then move to h then move to a finally move to c,F & b F & d F & h F & a F c
-sequenced_visit,"('b', 'd', 'h', 'c', 'a')",move to b then move to d then move to h then move to c finally move to a,F & b F & d F & h F & c F a
-sequenced_visit,"('b', 'h', 'a', 'c', 'd')",move to b then move to h then move to a then move to c finally move to d,F & b F & h F & a F & c F d
-sequenced_visit,"('b', 'h', 'a', 'd', 'c')",move to b then move to h then move to a then move to d finally move to c,F & b F & h F & a F & d F c
-sequenced_visit,"('b', 'h', 'c', 'a', 'd')",move to b then move to h then move to c then move to a finally move to d,F & b F & h F & c F & a F d
-sequenced_visit,"('b', 'h', 'c', 'd', 'a')",move to b then move to h then move to c then move to d finally move to a,F & b F & h F & c F & d F a
-sequenced_visit,"('b', 'h', 'd', 'a', 'c')",move to b then move to h then move to d then move to a finally move to c,F & b F & h F & d F & a F c
-sequenced_visit,"('b', 'h', 'd', 'c', 'a')",move to b then move to h then move to d then move to c finally move to a,F & b F & h F & d F & c F a
-sequenced_visit,"('c', 'a', 'b', 'd', 'h')",move to c then move to a then move to b then move to d finally move to h,F & c F & a F & b F & d F h
-sequenced_visit,"('c', 'a', 'b', 'h', 'd')",move to c then move to a then move to b then move to h finally move to d,F & c F & a F & b F & h F d
-sequenced_visit,"('c', 'a', 'd', 'b', 'h')",move to c then move to a then move to d then move to b finally move to h,F & c F & a F & d F & b F h
-sequenced_visit,"('c', 'a', 'd', 'h', 'b')",move to c then move to a then move to d then move to h finally move to b,F & c F & a F & d F & h F b
-sequenced_visit,"('c', 'a', 'h', 'b', 'd')",move to c then move to a then move to h then move to b finally move to d,F & c F & a F & h F & b F d
-sequenced_visit,"('c', 'a', 'h', 'd', 'b')",move to c then move to a then move to h then move to d finally move to b,F & c F & a F & h F & d F b
-sequenced_visit,"('c', 'b', 'a', 'd', 'h')",move to c then move to b then move to a then move to d finally move to h,F & c F & b F & a F & d F h
-sequenced_visit,"('c', 'b', 'a', 'h', 'd')",move to c then move to b then move to a then move to h finally move to d,F & c F & b F & a F & h F d
-sequenced_visit,"('c', 'b', 'd', 'a', 'h')",move to c then move to b then move to d then move to a finally move to h,F & c F & b F & d F & a F h
-sequenced_visit,"('c', 'b', 'd', 'h', 'a')",move to c then move to b then move to d then move to h finally move to a,F & c F & b F & d F & h F a
-sequenced_visit,"('c', 'b', 'h', 'a', 'd')",move to c then move to b then move to h then move to a finally move to d,F & c F & b F & h F & a F d
-sequenced_visit,"('c', 'b', 'h', 'd', 'a')",move to c then move to b then move to h then move to d finally move to a,F & c F & b F & h F & d F a
-sequenced_visit,"('c', 'd', 'a', 'b', 'h')",move to c then move to d then move to a then move to b finally move to h,F & c F & d F & a F & b F h
-sequenced_visit,"('c', 'd', 'a', 'h', 'b')",move to c then move to d then move to a then move to h finally move to b,F & c F & d F & a F & h F b
-sequenced_visit,"('c', 'd', 'b', 'a', 'h')",move to c then move to d then move to b then move to a finally move to h,F & c F & d F & b F & a F h
-sequenced_visit,"('c', 'd', 'b', 'h', 'a')",move to c then move to d then move to b then move to h finally move to a,F & c F & d F & b F & h F a
-sequenced_visit,"('c', 'd', 'h', 'a', 'b')",move to c then move to d then move to h then move to a finally move to b,F & c F & d F & h F & a F b
-sequenced_visit,"('c', 'd', 'h', 'b', 'a')",move to c then move to d then move to h then move to b finally move to a,F & c F & d F & h F & b F a
-sequenced_visit,"('c', 'h', 'a', 'b', 'd')",move to c then move to h then move to a then move to b finally move to d,F & c F & h F & a F & b F d
-sequenced_visit,"('c', 'h', 'a', 'd', 'b')",move to c then move to h then move to a then move to d finally move to b,F & c F & h F & a F & d F b
-sequenced_visit,"('c', 'h', 'b', 'a', 'd')",move to c then move to h then move to b then move to a finally move to d,F & c F & h F & b F & a F d
-sequenced_visit,"('c', 'h', 'b', 'd', 'a')",move to c then move to h then move to b then move to d finally move to a,F & c F & h F & b F & d F a
-sequenced_visit,"('c', 'h', 'd', 'a', 'b')",move to c then move to h then move to d then move to a finally move to b,F & c F & h F & d F & a F b
-sequenced_visit,"('c', 'h', 'd', 'b', 'a')",move to c then move to h then move to d then move to b finally move to a,F & c F & h F & d F & b F a
-sequenced_visit,"('d', 'a', 'b', 'c', 'h')",move to d then move to a then move to b then move to c finally move to h,F & d F & a F & b F & c F h
-sequenced_visit,"('d', 'a', 'b', 'h', 'c')",move to d then move to a then move to b then move to h finally move to c,F & d F & a F & b F & h F c
-sequenced_visit,"('d', 'a', 'c', 'b', 'h')",move to d then move to a then move to c then move to b finally move to h,F & d F & a F & c F & b F h
-sequenced_visit,"('d', 'a', 'c', 'h', 'b')",move to d then move to a then move to c then move to h finally move to b,F & d F & a F & c F & h F b
-sequenced_visit,"('d', 'a', 'h', 'b', 'c')",move to d then move to a then move to h then move to b finally move to c,F & d F & a F & h F & b F c
-sequenced_visit,"('d', 'a', 'h', 'c', 'b')",move to d then move to a then move to h then move to c finally move to b,F & d F & a F & h F & c F b
-sequenced_visit,"('d', 'b', 'a', 'c', 'h')",move to d then move to b then move to a then move to c finally move to h,F & d F & b F & a F & c F h
-sequenced_visit,"('d', 'b', 'a', 'h', 'c')",move to d then move to b then move to a then move to h finally move to c,F & d F & b F & a F & h F c
-sequenced_visit,"('d', 'b', 'c', 'a', 'h')",move to d then move to b then move to c then move to a finally move to h,F & d F & b F & c F & a F h
-sequenced_visit,"('d', 'b', 'c', 'h', 'a')",move to d then move to b then move to c then move to h finally move to a,F & d F & b F & c F & h F a
-sequenced_visit,"('d', 'b', 'h', 'a', 'c')",move to d then move to b then move to h then move to a finally move to c,F & d F & b F & h F & a F c
-sequenced_visit,"('d', 'b', 'h', 'c', 'a')",move to d then move to b then move to h then move to c finally move to a,F & d F & b F & h F & c F a
-sequenced_visit,"('d', 'c', 'a', 'b', 'h')",move to d then move to c then move to a then move to b finally move to h,F & d F & c F & a F & b F h
-sequenced_visit,"('d', 'c', 'a', 'h', 'b')",move to d then move to c then move to a then move to h finally move to b,F & d F & c F & a F & h F b
-sequenced_visit,"('d', 'c', 'b', 'a', 'h')",move to d then move to c then move to b then move to a finally move to h,F & d F & c F & b F & a F h
-sequenced_visit,"('d', 'c', 'b', 'h', 'a')",move to d then move to c then move to b then move to h finally move to a,F & d F & c F & b F & h F a
-sequenced_visit,"('d', 'c', 'h', 'a', 'b')",move to d then move to c then move to h then move to a finally move to b,F & d F & c F & h F & a F b
-sequenced_visit,"('d', 'c', 'h', 'b', 'a')",move to d then move to c then move to h then move to b finally move to a,F & d F & c F & h F & b F a
-sequenced_visit,"('d', 'h', 'a', 'b', 'c')",move to d then move to h then move to a then move to b finally move to c,F & d F & h F & a F & b F c
-sequenced_visit,"('d', 'h', 'a', 'c', 'b')",move to d then move to h then move to a then move to c finally move to b,F & d F & h F & a F & c F b
-sequenced_visit,"('d', 'h', 'b', 'a', 'c')",move to d then move to h then move to b then move to a finally move to c,F & d F & h F & b F & a F c
-sequenced_visit,"('d', 'h', 'b', 'c', 'a')",move to d then move to h then move to b then move to c finally move to a,F & d F & h F & b F & c F a
-sequenced_visit,"('d', 'h', 'c', 'a', 'b')",move to d then move to h then move to c then move to a finally move to b,F & d F & h F & c F & a F b
-sequenced_visit,"('d', 'h', 'c', 'b', 'a')",move to d then move to h then move to c then move to b finally move to a,F & d F & h F & c F & b F a
-sequenced_visit,"('h', 'a', 'b', 'c', 'd')",move to h then move to a then move to b then move to c finally move to d,F & h F & a F & b F & c F d
-sequenced_visit,"('h', 'a', 'b', 'd', 'c')",move to h then move to a then move to b then move to d finally move to c,F & h F & a F & b F & d F c
-sequenced_visit,"('h', 'a', 'c', 'b', 'd')",move to h then move to a then move to c then move to b finally move to d,F & h F & a F & c F & b F d
-sequenced_visit,"('h', 'a', 'c', 'd', 'b')",move to h then move to a then move to c then move to d finally move to b,F & h F & a F & c F & d F b
-sequenced_visit,"('h', 'a', 'd', 'b', 'c')",move to h then move to a then move to d then move to b finally move to c,F & h F & a F & d F & b F c
-sequenced_visit,"('h', 'a', 'd', 'c', 'b')",move to h then move to a then move to d then move to c finally move to b,F & h F & a F & d F & c F b
-sequenced_visit,"('h', 'b', 'a', 'c', 'd')",move to h then move to b then move to a then move to c finally move to d,F & h F & b F & a F & c F d
-sequenced_visit,"('h', 'b', 'a', 'd', 'c')",move to h then move to b then move to a then move to d finally move to c,F & h F & b F & a F & d F c
-sequenced_visit,"('h', 'b', 'c', 'a', 'd')",move to h then move to b then move to c then move to a finally move to d,F & h F & b F & c F & a F d
-sequenced_visit,"('h', 'b', 'c', 'd', 'a')",move to h then move to b then move to c then move to d finally move to a,F & h F & b F & c F & d F a
-sequenced_visit,"('h', 'b', 'd', 'a', 'c')",move to h then move to b then move to d then move to a finally move to c,F & h F & b F & d F & a F c
-sequenced_visit,"('h', 'b', 'd', 'c', 'a')",move to h then move to b then move to d then move to c finally move to a,F & h F & b F & d F & c F a
-sequenced_visit,"('h', 'c', 'a', 'b', 'd')",move to h then move to c then move to a then move to b finally move to d,F & h F & c F & a F & b F d
-sequenced_visit,"('h', 'c', 'a', 'd', 'b')",move to h then move to c then move to a then move to d finally move to b,F & h F & c F & a F & d F b
-sequenced_visit,"('h', 'c', 'b', 'a', 'd')",move to h then move to c then move to b then move to a finally move to d,F & h F & c F & b F & a F d
-sequenced_visit,"('h', 'c', 'b', 'd', 'a')",move to h then move to c then move to b then move to d finally move to a,F & h F & c F & b F & d F a
-sequenced_visit,"('h', 'c', 'd', 'a', 'b')",move to h then move to c then move to d then move to a finally move to b,F & h F & c F & d F & a F b
-sequenced_visit,"('h', 'c', 'd', 'b', 'a')",move to h then move to c then move to d then move to b finally move to a,F & h F & c F & d F & b F a
-sequenced_visit,"('h', 'd', 'a', 'b', 'c')",move to h then move to d then move to a then move to b finally move to c,F & h F & d F & a F & b F c
-sequenced_visit,"('h', 'd', 'a', 'c', 'b')",move to h then move to d then move to a then move to c finally move to b,F & h F & d F & a F & c F b
-sequenced_visit,"('h', 'd', 'b', 'a', 'c')",move to h then move to d then move to b then move to a finally move to c,F & h F & d F & b F & a F c
-sequenced_visit,"('h', 'd', 'b', 'c', 'a')",move to h then move to d then move to b then move to c finally move to a,F & h F & d F & b F & c F a
-sequenced_visit,"('h', 'd', 'c', 'a', 'b')",move to h then move to d then move to c then move to a finally move to b,F & h F & d F & c F & a F b
-sequenced_visit,"('h', 'd', 'c', 'b', 'a')",move to h then move to d then move to c then move to b finally move to a,F & h F & d F & c F & b F a
-sequenced_visit,"('a', 'b', 'c', 'd', 'h')",first go to a then move to b then go visit c then visit d finally reach h,F & a F & b F & c F & d F h
-sequenced_visit,"('a', 'b', 'c', 'h', 'd')",first go to a then move to b then go visit c then visit h finally reach d,F & a F & b F & c F & h F d
-sequenced_visit,"('a', 'b', 'd', 'c', 'h')",first go to a then move to b then go visit d then visit c finally reach h,F & a F & b F & d F & c F h
-sequenced_visit,"('a', 'b', 'd', 'h', 'c')",first go to a then move to b then go visit d then visit h finally reach c,F & a F & b F & d F & h F c
-sequenced_visit,"('a', 'b', 'h', 'c', 'd')",first go to a then move to b then go visit h then visit c finally reach d,F & a F & b F & h F & c F d
-sequenced_visit,"('a', 'b', 'h', 'd', 'c')",first go to a then move to b then go visit h then visit d finally reach c,F & a F & b F & h F & d F c
-sequenced_visit,"('a', 'c', 'b', 'd', 'h')",first go to a then move to c then go visit b then visit d finally reach h,F & a F & c F & b F & d F h
-sequenced_visit,"('a', 'c', 'b', 'h', 'd')",first go to a then move to c then go visit b then visit h finally reach d,F & a F & c F & b F & h F d
-sequenced_visit,"('a', 'c', 'd', 'b', 'h')",first go to a then move to c then go visit d then visit b finally reach h,F & a F & c F & d F & b F h
-sequenced_visit,"('a', 'c', 'd', 'h', 'b')",first go to a then move to c then go visit d then visit h finally reach b,F & a F & c F & d F & h F b
-sequenced_visit,"('a', 'c', 'h', 'b', 'd')",first go to a then move to c then go visit h then visit b finally reach d,F & a F & c F & h F & b F d
-sequenced_visit,"('a', 'c', 'h', 'd', 'b')",first go to a then move to c then go visit h then visit d finally reach b,F & a F & c F & h F & d F b
-sequenced_visit,"('a', 'd', 'b', 'c', 'h')",first go to a then move to d then go visit b then visit c finally reach h,F & a F & d F & b F & c F h
-sequenced_visit,"('a', 'd', 'b', 'h', 'c')",first go to a then move to d then go visit b then visit h finally reach c,F & a F & d F & b F & h F c
-sequenced_visit,"('a', 'd', 'c', 'b', 'h')",first go to a then move to d then go visit c then visit b finally reach h,F & a F & d F & c F & b F h
-sequenced_visit,"('a', 'd', 'c', 'h', 'b')",first go to a then move to d then go visit c then visit h finally reach b,F & a F & d F & c F & h F b
-sequenced_visit,"('a', 'd', 'h', 'b', 'c')",first go to a then move to d then go visit h then visit b finally reach c,F & a F & d F & h F & b F c
-sequenced_visit,"('a', 'd', 'h', 'c', 'b')",first go to a then move to d then go visit h then visit c finally reach b,F & a F & d F & h F & c F b
-sequenced_visit,"('a', 'h', 'b', 'c', 'd')",first go to a then move to h then go visit b then visit c finally reach d,F & a F & h F & b F & c F d
-sequenced_visit,"('a', 'h', 'b', 'd', 'c')",first go to a then move to h then go visit b then visit d finally reach c,F & a F & h F & b F & d F c
-sequenced_visit,"('a', 'h', 'c', 'b', 'd')",first go to a then move to h then go visit c then visit b finally reach d,F & a F & h F & c F & b F d
-sequenced_visit,"('a', 'h', 'c', 'd', 'b')",first go to a then move to h then go visit c then visit d finally reach b,F & a F & h F & c F & d F b
-sequenced_visit,"('a', 'h', 'd', 'b', 'c')",first go to a then move to h then go visit d then visit b finally reach c,F & a F & h F & d F & b F c
-sequenced_visit,"('a', 'h', 'd', 'c', 'b')",first go to a then move to h then go visit d then visit c finally reach b,F & a F & h F & d F & c F b
-sequenced_visit,"('b', 'a', 'c', 'd', 'h')",first go to b then move to a then go visit c then visit d finally reach h,F & b F & a F & c F & d F h
-sequenced_visit,"('b', 'a', 'c', 'h', 'd')",first go to b then move to a then go visit c then visit h finally reach d,F & b F & a F & c F & h F d
-sequenced_visit,"('b', 'a', 'd', 'c', 'h')",first go to b then move to a then go visit d then visit c finally reach h,F & b F & a F & d F & c F h
-sequenced_visit,"('b', 'a', 'd', 'h', 'c')",first go to b then move to a then go visit d then visit h finally reach c,F & b F & a F & d F & h F c
-sequenced_visit,"('b', 'a', 'h', 'c', 'd')",first go to b then move to a then go visit h then visit c finally reach d,F & b F & a F & h F & c F d
-sequenced_visit,"('b', 'a', 'h', 'd', 'c')",first go to b then move to a then go visit h then visit d finally reach c,F & b F & a F & h F & d F c
-sequenced_visit,"('b', 'c', 'a', 'd', 'h')",first go to b then move to c then go visit a then visit d finally reach h,F & b F & c F & a F & d F h
-sequenced_visit,"('b', 'c', 'a', 'h', 'd')",first go to b then move to c then go visit a then visit h finally reach d,F & b F & c F & a F & h F d
-sequenced_visit,"('b', 'c', 'd', 'a', 'h')",first go to b then move to c then go visit d then visit a finally reach h,F & b F & c F & d F & a F h
-sequenced_visit,"('b', 'c', 'd', 'h', 'a')",first go to b then move to c then go visit d then visit h finally reach a,F & b F & c F & d F & h F a
-sequenced_visit,"('b', 'c', 'h', 'a', 'd')",first go to b then move to c then go visit h then visit a finally reach d,F & b F & c F & h F & a F d
-sequenced_visit,"('b', 'c', 'h', 'd', 'a')",first go to b then move to c then go visit h then visit d finally reach a,F & b F & c F & h F & d F a
-sequenced_visit,"('b', 'd', 'a', 'c', 'h')",first go to b then move to d then go visit a then visit c finally reach h,F & b F & d F & a F & c F h
-sequenced_visit,"('b', 'd', 'a', 'h', 'c')",first go to b then move to d then go visit a then visit h finally reach c,F & b F & d F & a F & h F c
-sequenced_visit,"('b', 'd', 'c', 'a', 'h')",first go to b then move to d then go visit c then visit a finally reach h,F & b F & d F & c F & a F h
-sequenced_visit,"('b', 'd', 'c', 'h', 'a')",first go to b then move to d then go visit c then visit h finally reach a,F & b F & d F & c F & h F a
-sequenced_visit,"('b', 'd', 'h', 'a', 'c')",first go to b then move to d then go visit h then visit a finally reach c,F & b F & d F & h F & a F c
-sequenced_visit,"('b', 'd', 'h', 'c', 'a')",first go to b then move to d then go visit h then visit c finally reach a,F & b F & d F & h F & c F a
-sequenced_visit,"('b', 'h', 'a', 'c', 'd')",first go to b then move to h then go visit a then visit c finally reach d,F & b F & h F & a F & c F d
-sequenced_visit,"('b', 'h', 'a', 'd', 'c')",first go to b then move to h then go visit a then visit d finally reach c,F & b F & h F & a F & d F c
-sequenced_visit,"('b', 'h', 'c', 'a', 'd')",first go to b then move to h then go visit c then visit a finally reach d,F & b F & h F & c F & a F d
-sequenced_visit,"('b', 'h', 'c', 'd', 'a')",first go to b then move to h then go visit c then visit d finally reach a,F & b F & h F & c F & d F a
-sequenced_visit,"('b', 'h', 'd', 'a', 'c')",first go to b then move to h then go visit d then visit a finally reach c,F & b F & h F & d F & a F c
-sequenced_visit,"('b', 'h', 'd', 'c', 'a')",first go to b then move to h then go visit d then visit c finally reach a,F & b F & h F & d F & c F a
-sequenced_visit,"('c', 'a', 'b', 'd', 'h')",first go to c then move to a then go visit b then visit d finally reach h,F & c F & a F & b F & d F h
-sequenced_visit,"('c', 'a', 'b', 'h', 'd')",first go to c then move to a then go visit b then visit h finally reach d,F & c F & a F & b F & h F d
-sequenced_visit,"('c', 'a', 'd', 'b', 'h')",first go to c then move to a then go visit d then visit b finally reach h,F & c F & a F & d F & b F h
-sequenced_visit,"('c', 'a', 'd', 'h', 'b')",first go to c then move to a then go visit d then visit h finally reach b,F & c F & a F & d F & h F b
-sequenced_visit,"('c', 'a', 'h', 'b', 'd')",first go to c then move to a then go visit h then visit b finally reach d,F & c F & a F & h F & b F d
-sequenced_visit,"('c', 'a', 'h', 'd', 'b')",first go to c then move to a then go visit h then visit d finally reach b,F & c F & a F & h F & d F b
-sequenced_visit,"('c', 'b', 'a', 'd', 'h')",first go to c then move to b then go visit a then visit d finally reach h,F & c F & b F & a F & d F h
-sequenced_visit,"('c', 'b', 'a', 'h', 'd')",first go to c then move to b then go visit a then visit h finally reach d,F & c F & b F & a F & h F d
-sequenced_visit,"('c', 'b', 'd', 'a', 'h')",first go to c then move to b then go visit d then visit a finally reach h,F & c F & b F & d F & a F h
-sequenced_visit,"('c', 'b', 'd', 'h', 'a')",first go to c then move to b then go visit d then visit h finally reach a,F & c F & b F & d F & h F a
-sequenced_visit,"('c', 'b', 'h', 'a', 'd')",first go to c then move to b then go visit h then visit a finally reach d,F & c F & b F & h F & a F d
-sequenced_visit,"('c', 'b', 'h', 'd', 'a')",first go to c then move to b then go visit h then visit d finally reach a,F & c F & b F & h F & d F a
-sequenced_visit,"('c', 'd', 'a', 'b', 'h')",first go to c then move to d then go visit a then visit b finally reach h,F & c F & d F & a F & b F h
-sequenced_visit,"('c', 'd', 'a', 'h', 'b')",first go to c then move to d then go visit a then visit h finally reach b,F & c F & d F & a F & h F b
-sequenced_visit,"('c', 'd', 'b', 'a', 'h')",first go to c then move to d then go visit b then visit a finally reach h,F & c F & d F & b F & a F h
-sequenced_visit,"('c', 'd', 'b', 'h', 'a')",first go to c then move to d then go visit b then visit h finally reach a,F & c F & d F & b F & h F a
-sequenced_visit,"('c', 'd', 'h', 'a', 'b')",first go to c then move to d then go visit h then visit a finally reach b,F & c F & d F & h F & a F b
-sequenced_visit,"('c', 'd', 'h', 'b', 'a')",first go to c then move to d then go visit h then visit b finally reach a,F & c F & d F & h F & b F a
-sequenced_visit,"('c', 'h', 'a', 'b', 'd')",first go to c then move to h then go visit a then visit b finally reach d,F & c F & h F & a F & b F d
-sequenced_visit,"('c', 'h', 'a', 'd', 'b')",first go to c then move to h then go visit a then visit d finally reach b,F & c F & h F & a F & d F b
-sequenced_visit,"('c', 'h', 'b', 'a', 'd')",first go to c then move to h then go visit b then visit a finally reach d,F & c F & h F & b F & a F d
-sequenced_visit,"('c', 'h', 'b', 'd', 'a')",first go to c then move to h then go visit b then visit d finally reach a,F & c F & h F & b F & d F a
-sequenced_visit,"('c', 'h', 'd', 'a', 'b')",first go to c then move to h then go visit d then visit a finally reach b,F & c F & h F & d F & a F b
-sequenced_visit,"('c', 'h', 'd', 'b', 'a')",first go to c then move to h then go visit d then visit b finally reach a,F & c F & h F & d F & b F a
-sequenced_visit,"('d', 'a', 'b', 'c', 'h')",first go to d then move to a then go visit b then visit c finally reach h,F & d F & a F & b F & c F h
-sequenced_visit,"('d', 'a', 'b', 'h', 'c')",first go to d then move to a then go visit b then visit h finally reach c,F & d F & a F & b F & h F c
-sequenced_visit,"('d', 'a', 'c', 'b', 'h')",first go to d then move to a then go visit c then visit b finally reach h,F & d F & a F & c F & b F h
-sequenced_visit,"('d', 'a', 'c', 'h', 'b')",first go to d then move to a then go visit c then visit h finally reach b,F & d F & a F & c F & h F b
-sequenced_visit,"('d', 'a', 'h', 'b', 'c')",first go to d then move to a then go visit h then visit b finally reach c,F & d F & a F & h F & b F c
-sequenced_visit,"('d', 'a', 'h', 'c', 'b')",first go to d then move to a then go visit h then visit c finally reach b,F & d F & a F & h F & c F b
-sequenced_visit,"('d', 'b', 'a', 'c', 'h')",first go to d then move to b then go visit a then visit c finally reach h,F & d F & b F & a F & c F h
-sequenced_visit,"('d', 'b', 'a', 'h', 'c')",first go to d then move to b then go visit a then visit h finally reach c,F & d F & b F & a F & h F c
-sequenced_visit,"('d', 'b', 'c', 'a', 'h')",first go to d then move to b then go visit c then visit a finally reach h,F & d F & b F & c F & a F h
-sequenced_visit,"('d', 'b', 'c', 'h', 'a')",first go to d then move to b then go visit c then visit h finally reach a,F & d F & b F & c F & h F a
-sequenced_visit,"('d', 'b', 'h', 'a', 'c')",first go to d then move to b then go visit h then visit a finally reach c,F & d F & b F & h F & a F c
-sequenced_visit,"('d', 'b', 'h', 'c', 'a')",first go to d then move to b then go visit h then visit c finally reach a,F & d F & b F & h F & c F a
-sequenced_visit,"('d', 'c', 'a', 'b', 'h')",first go to d then move to c then go visit a then visit b finally reach h,F & d F & c F & a F & b F h
-sequenced_visit,"('d', 'c', 'a', 'h', 'b')",first go to d then move to c then go visit a then visit h finally reach b,F & d F & c F & a F & h F b
-sequenced_visit,"('d', 'c', 'b', 'a', 'h')",first go to d then move to c then go visit b then visit a finally reach h,F & d F & c F & b F & a F h
-sequenced_visit,"('d', 'c', 'b', 'h', 'a')",first go to d then move to c then go visit b then visit h finally reach a,F & d F & c F & b F & h F a
-sequenced_visit,"('d', 'c', 'h', 'a', 'b')",first go to d then move to c then go visit h then visit a finally reach b,F & d F & c F & h F & a F b
-sequenced_visit,"('d', 'c', 'h', 'b', 'a')",first go to d then move to c then go visit h then visit b finally reach a,F & d F & c F & h F & b F a
-sequenced_visit,"('d', 'h', 'a', 'b', 'c')",first go to d then move to h then go visit a then visit b finally reach c,F & d F & h F & a F & b F c
-sequenced_visit,"('d', 'h', 'a', 'c', 'b')",first go to d then move to h then go visit a then visit c finally reach b,F & d F & h F & a F & c F b
-sequenced_visit,"('d', 'h', 'b', 'a', 'c')",first go to d then move to h then go visit b then visit a finally reach c,F & d F & h F & b F & a F c
-sequenced_visit,"('d', 'h', 'b', 'c', 'a')",first go to d then move to h then go visit b then visit c finally reach a,F & d F & h F & b F & c F a
-sequenced_visit,"('d', 'h', 'c', 'a', 'b')",first go to d then move to h then go visit c then visit a finally reach b,F & d F & h F & c F & a F b
-sequenced_visit,"('d', 'h', 'c', 'b', 'a')",first go to d then move to h then go visit c then visit b finally reach a,F & d F & h F & c F & b F a
-sequenced_visit,"('h', 'a', 'b', 'c', 'd')",first go to h then move to a then go visit b then visit c finally reach d,F & h F & a F & b F & c F d
-sequenced_visit,"('h', 'a', 'b', 'd', 'c')",first go to h then move to a then go visit b then visit d finally reach c,F & h F & a F & b F & d F c
-sequenced_visit,"('h', 'a', 'c', 'b', 'd')",first go to h then move to a then go visit c then visit b finally reach d,F & h F & a F & c F & b F d
-sequenced_visit,"('h', 'a', 'c', 'd', 'b')",first go to h then move to a then go visit c then visit d finally reach b,F & h F & a F & c F & d F b
-sequenced_visit,"('h', 'a', 'd', 'b', 'c')",first go to h then move to a then go visit d then visit b finally reach c,F & h F & a F & d F & b F c
-sequenced_visit,"('h', 'a', 'd', 'c', 'b')",first go to h then move to a then go visit d then visit c finally reach b,F & h F & a F & d F & c F b
-sequenced_visit,"('h', 'b', 'a', 'c', 'd')",first go to h then move to b then go visit a then visit c finally reach d,F & h F & b F & a F & c F d
-sequenced_visit,"('h', 'b', 'a', 'd', 'c')",first go to h then move to b then go visit a then visit d finally reach c,F & h F & b F & a F & d F c
-sequenced_visit,"('h', 'b', 'c', 'a', 'd')",first go to h then move to b then go visit c then visit a finally reach d,F & h F & b F & c F & a F d
-sequenced_visit,"('h', 'b', 'c', 'd', 'a')",first go to h then move to b then go visit c then visit d finally reach a,F & h F & b F & c F & d F a
-sequenced_visit,"('h', 'b', 'd', 'a', 'c')",first go to h then move to b then go visit d then visit a finally reach c,F & h F & b F & d F & a F c
-sequenced_visit,"('h', 'b', 'd', 'c', 'a')",first go to h then move to b then go visit d then visit c finally reach a,F & h F & b F & d F & c F a
-sequenced_visit,"('h', 'c', 'a', 'b', 'd')",first go to h then move to c then go visit a then visit b finally reach d,F & h F & c F & a F & b F d
-sequenced_visit,"('h', 'c', 'a', 'd', 'b')",first go to h then move to c then go visit a then visit d finally reach b,F & h F & c F & a F & d F b
-sequenced_visit,"('h', 'c', 'b', 'a', 'd')",first go to h then move to c then go visit b then visit a finally reach d,F & h F & c F & b F & a F d
-sequenced_visit,"('h', 'c', 'b', 'd', 'a')",first go to h then move to c then go visit b then visit d finally reach a,F & h F & c F & b F & d F a
-sequenced_visit,"('h', 'c', 'd', 'a', 'b')",first go to h then move to c then go visit d then visit a finally reach b,F & h F & c F & d F & a F b
-sequenced_visit,"('h', 'c', 'd', 'b', 'a')",first go to h then move to c then go visit d then visit b finally reach a,F & h F & c F & d F & b F a
-sequenced_visit,"('h', 'd', 'a', 'b', 'c')",first go to h then move to d then go visit a then visit b finally reach c,F & h F & d F & a F & b F c
-sequenced_visit,"('h', 'd', 'a', 'c', 'b')",first go to h then move to d then go visit a then visit c finally reach b,F & h F & d F & a F & c F b
-sequenced_visit,"('h', 'd', 'b', 'a', 'c')",first go to h then move to d then go visit b then visit a finally reach c,F & h F & d F & b F & a F c
-sequenced_visit,"('h', 'd', 'b', 'c', 'a')",first go to h then move to d then go visit b then visit c finally reach a,F & h F & d F & b F & c F a
-sequenced_visit,"('h', 'd', 'c', 'a', 'b')",first go to h then move to d then go visit c then visit a finally reach b,F & h F & d F & c F & a F b
-sequenced_visit,"('h', 'd', 'c', 'b', 'a')",first go to h then move to d then go visit c then visit b finally reach a,F & h F & d F & c F & b F a
-sequenced_visit,"('a', 'b', 'c', 'd', 'h')",first make you way to a then you must go to b after that visit c then move to d finally reach h,F & a F & b F & c F & d F h
-sequenced_visit,"('a', 'b', 'c', 'h', 'd')",first make you way to a then you must go to b after that visit c then move to h finally reach d,F & a F & b F & c F & h F d
-sequenced_visit,"('a', 'b', 'd', 'c', 'h')",first make you way to a then you must go to b after that visit d then move to c finally reach h,F & a F & b F & d F & c F h
-sequenced_visit,"('a', 'b', 'd', 'h', 'c')",first make you way to a then you must go to b after that visit d then move to h finally reach c,F & a F & b F & d F & h F c
-sequenced_visit,"('a', 'b', 'h', 'c', 'd')",first make you way to a then you must go to b after that visit h then move to c finally reach d,F & a F & b F & h F & c F d
-sequenced_visit,"('a', 'b', 'h', 'd', 'c')",first make you way to a then you must go to b after that visit h then move to d finally reach c,F & a F & b F & h F & d F c
-sequenced_visit,"('a', 'c', 'b', 'd', 'h')",first make you way to a then you must go to c after that visit b then move to d finally reach h,F & a F & c F & b F & d F h
-sequenced_visit,"('a', 'c', 'b', 'h', 'd')",first make you way to a then you must go to c after that visit b then move to h finally reach d,F & a F & c F & b F & h F d
-sequenced_visit,"('a', 'c', 'd', 'b', 'h')",first make you way to a then you must go to c after that visit d then move to b finally reach h,F & a F & c F & d F & b F h
-sequenced_visit,"('a', 'c', 'd', 'h', 'b')",first make you way to a then you must go to c after that visit d then move to h finally reach b,F & a F & c F & d F & h F b
-sequenced_visit,"('a', 'c', 'h', 'b', 'd')",first make you way to a then you must go to c after that visit h then move to b finally reach d,F & a F & c F & h F & b F d
-sequenced_visit,"('a', 'c', 'h', 'd', 'b')",first make you way to a then you must go to c after that visit h then move to d finally reach b,F & a F & c F & h F & d F b
-sequenced_visit,"('a', 'd', 'b', 'c', 'h')",first make you way to a then you must go to d after that visit b then move to c finally reach h,F & a F & d F & b F & c F h
-sequenced_visit,"('a', 'd', 'b', 'h', 'c')",first make you way to a then you must go to d after that visit b then move to h finally reach c,F & a F & d F & b F & h F c
-sequenced_visit,"('a', 'd', 'c', 'b', 'h')",first make you way to a then you must go to d after that visit c then move to b finally reach h,F & a F & d F & c F & b F h
-sequenced_visit,"('a', 'd', 'c', 'h', 'b')",first make you way to a then you must go to d after that visit c then move to h finally reach b,F & a F & d F & c F & h F b
-sequenced_visit,"('a', 'd', 'h', 'b', 'c')",first make you way to a then you must go to d after that visit h then move to b finally reach c,F & a F & d F & h F & b F c
-sequenced_visit,"('a', 'd', 'h', 'c', 'b')",first make you way to a then you must go to d after that visit h then move to c finally reach b,F & a F & d F & h F & c F b
-sequenced_visit,"('a', 'h', 'b', 'c', 'd')",first make you way to a then you must go to h after that visit b then move to c finally reach d,F & a F & h F & b F & c F d
-sequenced_visit,"('a', 'h', 'b', 'd', 'c')",first make you way to a then you must go to h after that visit b then move to d finally reach c,F & a F & h F & b F & d F c
-sequenced_visit,"('a', 'h', 'c', 'b', 'd')",first make you way to a then you must go to h after that visit c then move to b finally reach d,F & a F & h F & c F & b F d
-sequenced_visit,"('a', 'h', 'c', 'd', 'b')",first make you way to a then you must go to h after that visit c then move to d finally reach b,F & a F & h F & c F & d F b
-sequenced_visit,"('a', 'h', 'd', 'b', 'c')",first make you way to a then you must go to h after that visit d then move to b finally reach c,F & a F & h F & d F & b F c
-sequenced_visit,"('a', 'h', 'd', 'c', 'b')",first make you way to a then you must go to h after that visit d then move to c finally reach b,F & a F & h F & d F & c F b
-sequenced_visit,"('b', 'a', 'c', 'd', 'h')",first make you way to b then you must go to a after that visit c then move to d finally reach h,F & b F & a F & c F & d F h
-sequenced_visit,"('b', 'a', 'c', 'h', 'd')",first make you way to b then you must go to a after that visit c then move to h finally reach d,F & b F & a F & c F & h F d
-sequenced_visit,"('b', 'a', 'd', 'c', 'h')",first make you way to b then you must go to a after that visit d then move to c finally reach h,F & b F & a F & d F & c F h
-sequenced_visit,"('b', 'a', 'd', 'h', 'c')",first make you way to b then you must go to a after that visit d then move to h finally reach c,F & b F & a F & d F & h F c
-sequenced_visit,"('b', 'a', 'h', 'c', 'd')",first make you way to b then you must go to a after that visit h then move to c finally reach d,F & b F & a F & h F & c F d
-sequenced_visit,"('b', 'a', 'h', 'd', 'c')",first make you way to b then you must go to a after that visit h then move to d finally reach c,F & b F & a F & h F & d F c
-sequenced_visit,"('b', 'c', 'a', 'd', 'h')",first make you way to b then you must go to c after that visit a then move to d finally reach h,F & b F & c F & a F & d F h
-sequenced_visit,"('b', 'c', 'a', 'h', 'd')",first make you way to b then you must go to c after that visit a then move to h finally reach d,F & b F & c F & a F & h F d
-sequenced_visit,"('b', 'c', 'd', 'a', 'h')",first make you way to b then you must go to c after that visit d then move to a finally reach h,F & b F & c F & d F & a F h
-sequenced_visit,"('b', 'c', 'd', 'h', 'a')",first make you way to b then you must go to c after that visit d then move to h finally reach a,F & b F & c F & d F & h F a
-sequenced_visit,"('b', 'c', 'h', 'a', 'd')",first make you way to b then you must go to c after that visit h then move to a finally reach d,F & b F & c F & h F & a F d
-sequenced_visit,"('b', 'c', 'h', 'd', 'a')",first make you way to b then you must go to c after that visit h then move to d finally reach a,F & b F & c F & h F & d F a
-sequenced_visit,"('b', 'd', 'a', 'c', 'h')",first make you way to b then you must go to d after that visit a then move to c finally reach h,F & b F & d F & a F & c F h
-sequenced_visit,"('b', 'd', 'a', 'h', 'c')",first make you way to b then you must go to d after that visit a then move to h finally reach c,F & b F & d F & a F & h F c
-sequenced_visit,"('b', 'd', 'c', 'a', 'h')",first make you way to b then you must go to d after that visit c then move to a finally reach h,F & b F & d F & c F & a F h
-sequenced_visit,"('b', 'd', 'c', 'h', 'a')",first make you way to b then you must go to d after that visit c then move to h finally reach a,F & b F & d F & c F & h F a
-sequenced_visit,"('b', 'd', 'h', 'a', 'c')",first make you way to b then you must go to d after that visit h then move to a finally reach c,F & b F & d F & h F & a F c
-sequenced_visit,"('b', 'd', 'h', 'c', 'a')",first make you way to b then you must go to d after that visit h then move to c finally reach a,F & b F & d F & h F & c F a
-sequenced_visit,"('b', 'h', 'a', 'c', 'd')",first make you way to b then you must go to h after that visit a then move to c finally reach d,F & b F & h F & a F & c F d
-sequenced_visit,"('b', 'h', 'a', 'd', 'c')",first make you way to b then you must go to h after that visit a then move to d finally reach c,F & b F & h F & a F & d F c
-sequenced_visit,"('b', 'h', 'c', 'a', 'd')",first make you way to b then you must go to h after that visit c then move to a finally reach d,F & b F & h F & c F & a F d
-sequenced_visit,"('b', 'h', 'c', 'd', 'a')",first make you way to b then you must go to h after that visit c then move to d finally reach a,F & b F & h F & c F & d F a
-sequenced_visit,"('b', 'h', 'd', 'a', 'c')",first make you way to b then you must go to h after that visit d then move to a finally reach c,F & b F & h F & d F & a F c
-sequenced_visit,"('b', 'h', 'd', 'c', 'a')",first make you way to b then you must go to h after that visit d then move to c finally reach a,F & b F & h F & d F & c F a
-sequenced_visit,"('c', 'a', 'b', 'd', 'h')",first make you way to c then you must go to a after that visit b then move to d finally reach h,F & c F & a F & b F & d F h
-sequenced_visit,"('c', 'a', 'b', 'h', 'd')",first make you way to c then you must go to a after that visit b then move to h finally reach d,F & c F & a F & b F & h F d
-sequenced_visit,"('c', 'a', 'd', 'b', 'h')",first make you way to c then you must go to a after that visit d then move to b finally reach h,F & c F & a F & d F & b F h
-sequenced_visit,"('c', 'a', 'd', 'h', 'b')",first make you way to c then you must go to a after that visit d then move to h finally reach b,F & c F & a F & d F & h F b
-sequenced_visit,"('c', 'a', 'h', 'b', 'd')",first make you way to c then you must go to a after that visit h then move to b finally reach d,F & c F & a F & h F & b F d
-sequenced_visit,"('c', 'a', 'h', 'd', 'b')",first make you way to c then you must go to a after that visit h then move to d finally reach b,F & c F & a F & h F & d F b
-sequenced_visit,"('c', 'b', 'a', 'd', 'h')",first make you way to c then you must go to b after that visit a then move to d finally reach h,F & c F & b F & a F & d F h
-sequenced_visit,"('c', 'b', 'a', 'h', 'd')",first make you way to c then you must go to b after that visit a then move to h finally reach d,F & c F & b F & a F & h F d
-sequenced_visit,"('c', 'b', 'd', 'a', 'h')",first make you way to c then you must go to b after that visit d then move to a finally reach h,F & c F & b F & d F & a F h
-sequenced_visit,"('c', 'b', 'd', 'h', 'a')",first make you way to c then you must go to b after that visit d then move to h finally reach a,F & c F & b F & d F & h F a
-sequenced_visit,"('c', 'b', 'h', 'a', 'd')",first make you way to c then you must go to b after that visit h then move to a finally reach d,F & c F & b F & h F & a F d
-sequenced_visit,"('c', 'b', 'h', 'd', 'a')",first make you way to c then you must go to b after that visit h then move to d finally reach a,F & c F & b F & h F & d F a
-sequenced_visit,"('c', 'd', 'a', 'b', 'h')",first make you way to c then you must go to d after that visit a then move to b finally reach h,F & c F & d F & a F & b F h
-sequenced_visit,"('c', 'd', 'a', 'h', 'b')",first make you way to c then you must go to d after that visit a then move to h finally reach b,F & c F & d F & a F & h F b
-sequenced_visit,"('c', 'd', 'b', 'a', 'h')",first make you way to c then you must go to d after that visit b then move to a finally reach h,F & c F & d F & b F & a F h
-sequenced_visit,"('c', 'd', 'b', 'h', 'a')",first make you way to c then you must go to d after that visit b then move to h finally reach a,F & c F & d F & b F & h F a
-sequenced_visit,"('c', 'd', 'h', 'a', 'b')",first make you way to c then you must go to d after that visit h then move to a finally reach b,F & c F & d F & h F & a F b
-sequenced_visit,"('c', 'd', 'h', 'b', 'a')",first make you way to c then you must go to d after that visit h then move to b finally reach a,F & c F & d F & h F & b F a
-sequenced_visit,"('c', 'h', 'a', 'b', 'd')",first make you way to c then you must go to h after that visit a then move to b finally reach d,F & c F & h F & a F & b F d
-sequenced_visit,"('c', 'h', 'a', 'd', 'b')",first make you way to c then you must go to h after that visit a then move to d finally reach b,F & c F & h F & a F & d F b
-sequenced_visit,"('c', 'h', 'b', 'a', 'd')",first make you way to c then you must go to h after that visit b then move to a finally reach d,F & c F & h F & b F & a F d
-sequenced_visit,"('c', 'h', 'b', 'd', 'a')",first make you way to c then you must go to h after that visit b then move to d finally reach a,F & c F & h F & b F & d F a
-sequenced_visit,"('c', 'h', 'd', 'a', 'b')",first make you way to c then you must go to h after that visit d then move to a finally reach b,F & c F & h F & d F & a F b
-sequenced_visit,"('c', 'h', 'd', 'b', 'a')",first make you way to c then you must go to h after that visit d then move to b finally reach a,F & c F & h F & d F & b F a
-sequenced_visit,"('d', 'a', 'b', 'c', 'h')",first make you way to d then you must go to a after that visit b then move to c finally reach h,F & d F & a F & b F & c F h
-sequenced_visit,"('d', 'a', 'b', 'h', 'c')",first make you way to d then you must go to a after that visit b then move to h finally reach c,F & d F & a F & b F & h F c
-sequenced_visit,"('d', 'a', 'c', 'b', 'h')",first make you way to d then you must go to a after that visit c then move to b finally reach h,F & d F & a F & c F & b F h
-sequenced_visit,"('d', 'a', 'c', 'h', 'b')",first make you way to d then you must go to a after that visit c then move to h finally reach b,F & d F & a F & c F & h F b
-sequenced_visit,"('d', 'a', 'h', 'b', 'c')",first make you way to d then you must go to a after that visit h then move to b finally reach c,F & d F & a F & h F & b F c
-sequenced_visit,"('d', 'a', 'h', 'c', 'b')",first make you way to d then you must go to a after that visit h then move to c finally reach b,F & d F & a F & h F & c F b
-sequenced_visit,"('d', 'b', 'a', 'c', 'h')",first make you way to d then you must go to b after that visit a then move to c finally reach h,F & d F & b F & a F & c F h
-sequenced_visit,"('d', 'b', 'a', 'h', 'c')",first make you way to d then you must go to b after that visit a then move to h finally reach c,F & d F & b F & a F & h F c
-sequenced_visit,"('d', 'b', 'c', 'a', 'h')",first make you way to d then you must go to b after that visit c then move to a finally reach h,F & d F & b F & c F & a F h
-sequenced_visit,"('d', 'b', 'c', 'h', 'a')",first make you way to d then you must go to b after that visit c then move to h finally reach a,F & d F & b F & c F & h F a
-sequenced_visit,"('d', 'b', 'h', 'a', 'c')",first make you way to d then you must go to b after that visit h then move to a finally reach c,F & d F & b F & h F & a F c
-sequenced_visit,"('d', 'b', 'h', 'c', 'a')",first make you way to d then you must go to b after that visit h then move to c finally reach a,F & d F & b F & h F & c F a
-sequenced_visit,"('d', 'c', 'a', 'b', 'h')",first make you way to d then you must go to c after that visit a then move to b finally reach h,F & d F & c F & a F & b F h
-sequenced_visit,"('d', 'c', 'a', 'h', 'b')",first make you way to d then you must go to c after that visit a then move to h finally reach b,F & d F & c F & a F & h F b
-sequenced_visit,"('d', 'c', 'b', 'a', 'h')",first make you way to d then you must go to c after that visit b then move to a finally reach h,F & d F & c F & b F & a F h
-sequenced_visit,"('d', 'c', 'b', 'h', 'a')",first make you way to d then you must go to c after that visit b then move to h finally reach a,F & d F & c F & b F & h F a
-sequenced_visit,"('d', 'c', 'h', 'a', 'b')",first make you way to d then you must go to c after that visit h then move to a finally reach b,F & d F & c F & h F & a F b
-sequenced_visit,"('d', 'c', 'h', 'b', 'a')",first make you way to d then you must go to c after that visit h then move to b finally reach a,F & d F & c F & h F & b F a
-sequenced_visit,"('d', 'h', 'a', 'b', 'c')",first make you way to d then you must go to h after that visit a then move to b finally reach c,F & d F & h F & a F & b F c
-sequenced_visit,"('d', 'h', 'a', 'c', 'b')",first make you way to d then you must go to h after that visit a then move to c finally reach b,F & d F & h F & a F & c F b
-sequenced_visit,"('d', 'h', 'b', 'a', 'c')",first make you way to d then you must go to h after that visit b then move to a finally reach c,F & d F & h F & b F & a F c
-sequenced_visit,"('d', 'h', 'b', 'c', 'a')",first make you way to d then you must go to h after that visit b then move to c finally reach a,F & d F & h F & b F & c F a
-sequenced_visit,"('d', 'h', 'c', 'a', 'b')",first make you way to d then you must go to h after that visit c then move to a finally reach b,F & d F & h F & c F & a F b
-sequenced_visit,"('d', 'h', 'c', 'b', 'a')",first make you way to d then you must go to h after that visit c then move to b finally reach a,F & d F & h F & c F & b F a
-sequenced_visit,"('h', 'a', 'b', 'c', 'd')",first make you way to h then you must go to a after that visit b then move to c finally reach d,F & h F & a F & b F & c F d
-sequenced_visit,"('h', 'a', 'b', 'd', 'c')",first make you way to h then you must go to a after that visit b then move to d finally reach c,F & h F & a F & b F & d F c
-sequenced_visit,"('h', 'a', 'c', 'b', 'd')",first make you way to h then you must go to a after that visit c then move to b finally reach d,F & h F & a F & c F & b F d
-sequenced_visit,"('h', 'a', 'c', 'd', 'b')",first make you way to h then you must go to a after that visit c then move to d finally reach b,F & h F & a F & c F & d F b
-sequenced_visit,"('h', 'a', 'd', 'b', 'c')",first make you way to h then you must go to a after that visit d then move to b finally reach c,F & h F & a F & d F & b F c
-sequenced_visit,"('h', 'a', 'd', 'c', 'b')",first make you way to h then you must go to a after that visit d then move to c finally reach b,F & h F & a F & d F & c F b
-sequenced_visit,"('h', 'b', 'a', 'c', 'd')",first make you way to h then you must go to b after that visit a then move to c finally reach d,F & h F & b F & a F & c F d
-sequenced_visit,"('h', 'b', 'a', 'd', 'c')",first make you way to h then you must go to b after that visit a then move to d finally reach c,F & h F & b F & a F & d F c
-sequenced_visit,"('h', 'b', 'c', 'a', 'd')",first make you way to h then you must go to b after that visit c then move to a finally reach d,F & h F & b F & c F & a F d
-sequenced_visit,"('h', 'b', 'c', 'd', 'a')",first make you way to h then you must go to b after that visit c then move to d finally reach a,F & h F & b F & c F & d F a
-sequenced_visit,"('h', 'b', 'd', 'a', 'c')",first make you way to h then you must go to b after that visit d then move to a finally reach c,F & h F & b F & d F & a F c
-sequenced_visit,"('h', 'b', 'd', 'c', 'a')",first make you way to h then you must go to b after that visit d then move to c finally reach a,F & h F & b F & d F & c F a
-sequenced_visit,"('h', 'c', 'a', 'b', 'd')",first make you way to h then you must go to c after that visit a then move to b finally reach d,F & h F & c F & a F & b F d
-sequenced_visit,"('h', 'c', 'a', 'd', 'b')",first make you way to h then you must go to c after that visit a then move to d finally reach b,F & h F & c F & a F & d F b
-sequenced_visit,"('h', 'c', 'b', 'a', 'd')",first make you way to h then you must go to c after that visit b then move to a finally reach d,F & h F & c F & b F & a F d
-sequenced_visit,"('h', 'c', 'b', 'd', 'a')",first make you way to h then you must go to c after that visit b then move to d finally reach a,F & h F & c F & b F & d F a
-sequenced_visit,"('h', 'c', 'd', 'a', 'b')",first make you way to h then you must go to c after that visit d then move to a finally reach b,F & h F & c F & d F & a F b
-sequenced_visit,"('h', 'c', 'd', 'b', 'a')",first make you way to h then you must go to c after that visit d then move to b finally reach a,F & h F & c F & d F & b F a
-sequenced_visit,"('h', 'd', 'a', 'b', 'c')",first make you way to h then you must go to d after that visit a then move to b finally reach c,F & h F & d F & a F & b F c
-sequenced_visit,"('h', 'd', 'a', 'c', 'b')",first make you way to h then you must go to d after that visit a then move to c finally reach b,F & h F & d F & a F & c F b
-sequenced_visit,"('h', 'd', 'b', 'a', 'c')",first make you way to h then you must go to d after that visit b then move to a finally reach c,F & h F & d F & b F & a F c
-sequenced_visit,"('h', 'd', 'b', 'c', 'a')",first make you way to h then you must go to d after that visit b then move to c finally reach a,F & h F & d F & b F & c F a
-sequenced_visit,"('h', 'd', 'c', 'a', 'b')",first make you way to h then you must go to d after that visit c then move to a finally reach b,F & h F & d F & c F & a F b
-sequenced_visit,"('h', 'd', 'c', 'b', 'a')",first make you way to h then you must go to d after that visit c then move to b finally reach a,F & h F & d F & c F & b F a
 strictly_ordered_visit,"('a', 'b')",go to a only once but keep away from b and then visit b but keep away from a,& & U ! b a F b U ! a U a U !a b
 strictly_ordered_visit,"('b', 'a')",go to b only once but keep away from a and then visit a but keep away from b,& & U ! a b F a U ! b U b U !b a
 strictly_ordered_visit,"('a', 'b')",visit a one time but not through b and head to b after a is visited but not through a,& & U ! b a F b U ! a U a U !a b
@@ -20589,24 +19984,634 @@ patrolling,"('a',)",make sure a is visited infinitely,G F a
 patrolling,"('a',)",visit a an infinite number of times,G F a
 patrolling,"('a',)",frequent a infinitely,G F a
 patrolling,"('a',)",please keep visiting a without stopping,G F a
+patrolling,"('a', 'b')",keep visiting a and b in any order,& G F a G F b
+patrolling,"('b', 'a')",keep visiting b and a in any order,& G F b G F a
+patrolling,"('a', 'b')",make sure a and b are visited infinitely,& G F a G F b
+patrolling,"('b', 'a')",make sure b and a are visited infinitely,& G F b G F a
+patrolling,"('a', 'b')",do not stop visiting a and b,& G F a G F b
+patrolling,"('b', 'a')",do not stop visiting b and a,& G F b G F a
+patrolling,"('a', 'b')",frequent a and b but the order can be arbitrary,& G F a G F b
+patrolling,"('b', 'a')",frequent b and a but the order can be arbitrary,& G F b G F a
+patrolling,"('a', 'b')",keep going back and forth between a and b,& G F a G F b
+patrolling,"('b', 'a')",keep going back and forth between b and a,& G F b G F a
+sequenced_visit,"('a', 'b', 'c', 'd', 'h')",go to a then go to b then go to c then go to d finally go to h,F & a F & b F & c F & d F h
+sequenced_visit,"('a', 'b', 'c', 'h', 'd')",go to a then go to b then go to c then go to h finally go to d,F & a F & b F & c F & h F d
+sequenced_visit,"('a', 'b', 'd', 'c', 'h')",go to a then go to b then go to d then go to c finally go to h,F & a F & b F & d F & c F h
+sequenced_visit,"('a', 'b', 'd', 'h', 'c')",go to a then go to b then go to d then go to h finally go to c,F & a F & b F & d F & h F c
+sequenced_visit,"('a', 'b', 'h', 'c', 'd')",go to a then go to b then go to h then go to c finally go to d,F & a F & b F & h F & c F d
+sequenced_visit,"('a', 'b', 'h', 'd', 'c')",go to a then go to b then go to h then go to d finally go to c,F & a F & b F & h F & d F c
+sequenced_visit,"('a', 'c', 'b', 'd', 'h')",go to a then go to c then go to b then go to d finally go to h,F & a F & c F & b F & d F h
+sequenced_visit,"('a', 'c', 'b', 'h', 'd')",go to a then go to c then go to b then go to h finally go to d,F & a F & c F & b F & h F d
+sequenced_visit,"('a', 'c', 'd', 'b', 'h')",go to a then go to c then go to d then go to b finally go to h,F & a F & c F & d F & b F h
+sequenced_visit,"('a', 'c', 'd', 'h', 'b')",go to a then go to c then go to d then go to h finally go to b,F & a F & c F & d F & h F b
+sequenced_visit,"('a', 'c', 'h', 'b', 'd')",go to a then go to c then go to h then go to b finally go to d,F & a F & c F & h F & b F d
+sequenced_visit,"('a', 'c', 'h', 'd', 'b')",go to a then go to c then go to h then go to d finally go to b,F & a F & c F & h F & d F b
+sequenced_visit,"('a', 'd', 'b', 'c', 'h')",go to a then go to d then go to b then go to c finally go to h,F & a F & d F & b F & c F h
+sequenced_visit,"('a', 'd', 'b', 'h', 'c')",go to a then go to d then go to b then go to h finally go to c,F & a F & d F & b F & h F c
+sequenced_visit,"('a', 'd', 'c', 'b', 'h')",go to a then go to d then go to c then go to b finally go to h,F & a F & d F & c F & b F h
+sequenced_visit,"('a', 'd', 'c', 'h', 'b')",go to a then go to d then go to c then go to h finally go to b,F & a F & d F & c F & h F b
+sequenced_visit,"('a', 'd', 'h', 'b', 'c')",go to a then go to d then go to h then go to b finally go to c,F & a F & d F & h F & b F c
+sequenced_visit,"('a', 'd', 'h', 'c', 'b')",go to a then go to d then go to h then go to c finally go to b,F & a F & d F & h F & c F b
+sequenced_visit,"('a', 'h', 'b', 'c', 'd')",go to a then go to h then go to b then go to c finally go to d,F & a F & h F & b F & c F d
+sequenced_visit,"('a', 'h', 'b', 'd', 'c')",go to a then go to h then go to b then go to d finally go to c,F & a F & h F & b F & d F c
+sequenced_visit,"('a', 'h', 'c', 'b', 'd')",go to a then go to h then go to c then go to b finally go to d,F & a F & h F & c F & b F d
+sequenced_visit,"('a', 'h', 'c', 'd', 'b')",go to a then go to h then go to c then go to d finally go to b,F & a F & h F & c F & d F b
+sequenced_visit,"('a', 'h', 'd', 'b', 'c')",go to a then go to h then go to d then go to b finally go to c,F & a F & h F & d F & b F c
+sequenced_visit,"('a', 'h', 'd', 'c', 'b')",go to a then go to h then go to d then go to c finally go to b,F & a F & h F & d F & c F b
+sequenced_visit,"('b', 'a', 'c', 'd', 'h')",go to b then go to a then go to c then go to d finally go to h,F & b F & a F & c F & d F h
+sequenced_visit,"('b', 'a', 'c', 'h', 'd')",go to b then go to a then go to c then go to h finally go to d,F & b F & a F & c F & h F d
+sequenced_visit,"('b', 'a', 'd', 'c', 'h')",go to b then go to a then go to d then go to c finally go to h,F & b F & a F & d F & c F h
+sequenced_visit,"('b', 'a', 'd', 'h', 'c')",go to b then go to a then go to d then go to h finally go to c,F & b F & a F & d F & h F c
+sequenced_visit,"('b', 'a', 'h', 'c', 'd')",go to b then go to a then go to h then go to c finally go to d,F & b F & a F & h F & c F d
+sequenced_visit,"('b', 'a', 'h', 'd', 'c')",go to b then go to a then go to h then go to d finally go to c,F & b F & a F & h F & d F c
+sequenced_visit,"('b', 'c', 'a', 'd', 'h')",go to b then go to c then go to a then go to d finally go to h,F & b F & c F & a F & d F h
+sequenced_visit,"('b', 'c', 'a', 'h', 'd')",go to b then go to c then go to a then go to h finally go to d,F & b F & c F & a F & h F d
+sequenced_visit,"('b', 'c', 'd', 'a', 'h')",go to b then go to c then go to d then go to a finally go to h,F & b F & c F & d F & a F h
+sequenced_visit,"('b', 'c', 'd', 'h', 'a')",go to b then go to c then go to d then go to h finally go to a,F & b F & c F & d F & h F a
+sequenced_visit,"('b', 'c', 'h', 'a', 'd')",go to b then go to c then go to h then go to a finally go to d,F & b F & c F & h F & a F d
+sequenced_visit,"('b', 'c', 'h', 'd', 'a')",go to b then go to c then go to h then go to d finally go to a,F & b F & c F & h F & d F a
+sequenced_visit,"('b', 'd', 'a', 'c', 'h')",go to b then go to d then go to a then go to c finally go to h,F & b F & d F & a F & c F h
+sequenced_visit,"('b', 'd', 'a', 'h', 'c')",go to b then go to d then go to a then go to h finally go to c,F & b F & d F & a F & h F c
+sequenced_visit,"('b', 'd', 'c', 'a', 'h')",go to b then go to d then go to c then go to a finally go to h,F & b F & d F & c F & a F h
+sequenced_visit,"('b', 'd', 'c', 'h', 'a')",go to b then go to d then go to c then go to h finally go to a,F & b F & d F & c F & h F a
+sequenced_visit,"('b', 'd', 'h', 'a', 'c')",go to b then go to d then go to h then go to a finally go to c,F & b F & d F & h F & a F c
+sequenced_visit,"('b', 'd', 'h', 'c', 'a')",go to b then go to d then go to h then go to c finally go to a,F & b F & d F & h F & c F a
+sequenced_visit,"('b', 'h', 'a', 'c', 'd')",go to b then go to h then go to a then go to c finally go to d,F & b F & h F & a F & c F d
+sequenced_visit,"('b', 'h', 'a', 'd', 'c')",go to b then go to h then go to a then go to d finally go to c,F & b F & h F & a F & d F c
+sequenced_visit,"('b', 'h', 'c', 'a', 'd')",go to b then go to h then go to c then go to a finally go to d,F & b F & h F & c F & a F d
+sequenced_visit,"('b', 'h', 'c', 'd', 'a')",go to b then go to h then go to c then go to d finally go to a,F & b F & h F & c F & d F a
+sequenced_visit,"('b', 'h', 'd', 'a', 'c')",go to b then go to h then go to d then go to a finally go to c,F & b F & h F & d F & a F c
+sequenced_visit,"('b', 'h', 'd', 'c', 'a')",go to b then go to h then go to d then go to c finally go to a,F & b F & h F & d F & c F a
+sequenced_visit,"('c', 'a', 'b', 'd', 'h')",go to c then go to a then go to b then go to d finally go to h,F & c F & a F & b F & d F h
+sequenced_visit,"('c', 'a', 'b', 'h', 'd')",go to c then go to a then go to b then go to h finally go to d,F & c F & a F & b F & h F d
+sequenced_visit,"('c', 'a', 'd', 'b', 'h')",go to c then go to a then go to d then go to b finally go to h,F & c F & a F & d F & b F h
+sequenced_visit,"('c', 'a', 'd', 'h', 'b')",go to c then go to a then go to d then go to h finally go to b,F & c F & a F & d F & h F b
+sequenced_visit,"('c', 'a', 'h', 'b', 'd')",go to c then go to a then go to h then go to b finally go to d,F & c F & a F & h F & b F d
+sequenced_visit,"('c', 'a', 'h', 'd', 'b')",go to c then go to a then go to h then go to d finally go to b,F & c F & a F & h F & d F b
+sequenced_visit,"('c', 'b', 'a', 'd', 'h')",go to c then go to b then go to a then go to d finally go to h,F & c F & b F & a F & d F h
+sequenced_visit,"('c', 'b', 'a', 'h', 'd')",go to c then go to b then go to a then go to h finally go to d,F & c F & b F & a F & h F d
+sequenced_visit,"('c', 'b', 'd', 'a', 'h')",go to c then go to b then go to d then go to a finally go to h,F & c F & b F & d F & a F h
+sequenced_visit,"('c', 'b', 'd', 'h', 'a')",go to c then go to b then go to d then go to h finally go to a,F & c F & b F & d F & h F a
+sequenced_visit,"('c', 'b', 'h', 'a', 'd')",go to c then go to b then go to h then go to a finally go to d,F & c F & b F & h F & a F d
+sequenced_visit,"('c', 'b', 'h', 'd', 'a')",go to c then go to b then go to h then go to d finally go to a,F & c F & b F & h F & d F a
+sequenced_visit,"('c', 'd', 'a', 'b', 'h')",go to c then go to d then go to a then go to b finally go to h,F & c F & d F & a F & b F h
+sequenced_visit,"('c', 'd', 'a', 'h', 'b')",go to c then go to d then go to a then go to h finally go to b,F & c F & d F & a F & h F b
+sequenced_visit,"('c', 'd', 'b', 'a', 'h')",go to c then go to d then go to b then go to a finally go to h,F & c F & d F & b F & a F h
+sequenced_visit,"('c', 'd', 'b', 'h', 'a')",go to c then go to d then go to b then go to h finally go to a,F & c F & d F & b F & h F a
+sequenced_visit,"('c', 'd', 'h', 'a', 'b')",go to c then go to d then go to h then go to a finally go to b,F & c F & d F & h F & a F b
+sequenced_visit,"('c', 'd', 'h', 'b', 'a')",go to c then go to d then go to h then go to b finally go to a,F & c F & d F & h F & b F a
+sequenced_visit,"('c', 'h', 'a', 'b', 'd')",go to c then go to h then go to a then go to b finally go to d,F & c F & h F & a F & b F d
+sequenced_visit,"('c', 'h', 'a', 'd', 'b')",go to c then go to h then go to a then go to d finally go to b,F & c F & h F & a F & d F b
+sequenced_visit,"('c', 'h', 'b', 'a', 'd')",go to c then go to h then go to b then go to a finally go to d,F & c F & h F & b F & a F d
+sequenced_visit,"('c', 'h', 'b', 'd', 'a')",go to c then go to h then go to b then go to d finally go to a,F & c F & h F & b F & d F a
+sequenced_visit,"('c', 'h', 'd', 'a', 'b')",go to c then go to h then go to d then go to a finally go to b,F & c F & h F & d F & a F b
+sequenced_visit,"('c', 'h', 'd', 'b', 'a')",go to c then go to h then go to d then go to b finally go to a,F & c F & h F & d F & b F a
+sequenced_visit,"('d', 'a', 'b', 'c', 'h')",go to d then go to a then go to b then go to c finally go to h,F & d F & a F & b F & c F h
+sequenced_visit,"('d', 'a', 'b', 'h', 'c')",go to d then go to a then go to b then go to h finally go to c,F & d F & a F & b F & h F c
+sequenced_visit,"('d', 'a', 'c', 'b', 'h')",go to d then go to a then go to c then go to b finally go to h,F & d F & a F & c F & b F h
+sequenced_visit,"('d', 'a', 'c', 'h', 'b')",go to d then go to a then go to c then go to h finally go to b,F & d F & a F & c F & h F b
+sequenced_visit,"('d', 'a', 'h', 'b', 'c')",go to d then go to a then go to h then go to b finally go to c,F & d F & a F & h F & b F c
+sequenced_visit,"('d', 'a', 'h', 'c', 'b')",go to d then go to a then go to h then go to c finally go to b,F & d F & a F & h F & c F b
+sequenced_visit,"('d', 'b', 'a', 'c', 'h')",go to d then go to b then go to a then go to c finally go to h,F & d F & b F & a F & c F h
+sequenced_visit,"('d', 'b', 'a', 'h', 'c')",go to d then go to b then go to a then go to h finally go to c,F & d F & b F & a F & h F c
+sequenced_visit,"('d', 'b', 'c', 'a', 'h')",go to d then go to b then go to c then go to a finally go to h,F & d F & b F & c F & a F h
+sequenced_visit,"('d', 'b', 'c', 'h', 'a')",go to d then go to b then go to c then go to h finally go to a,F & d F & b F & c F & h F a
+sequenced_visit,"('d', 'b', 'h', 'a', 'c')",go to d then go to b then go to h then go to a finally go to c,F & d F & b F & h F & a F c
+sequenced_visit,"('d', 'b', 'h', 'c', 'a')",go to d then go to b then go to h then go to c finally go to a,F & d F & b F & h F & c F a
+sequenced_visit,"('d', 'c', 'a', 'b', 'h')",go to d then go to c then go to a then go to b finally go to h,F & d F & c F & a F & b F h
+sequenced_visit,"('d', 'c', 'a', 'h', 'b')",go to d then go to c then go to a then go to h finally go to b,F & d F & c F & a F & h F b
+sequenced_visit,"('d', 'c', 'b', 'a', 'h')",go to d then go to c then go to b then go to a finally go to h,F & d F & c F & b F & a F h
+sequenced_visit,"('d', 'c', 'b', 'h', 'a')",go to d then go to c then go to b then go to h finally go to a,F & d F & c F & b F & h F a
+sequenced_visit,"('d', 'c', 'h', 'a', 'b')",go to d then go to c then go to h then go to a finally go to b,F & d F & c F & h F & a F b
+sequenced_visit,"('d', 'c', 'h', 'b', 'a')",go to d then go to c then go to h then go to b finally go to a,F & d F & c F & h F & b F a
+sequenced_visit,"('d', 'h', 'a', 'b', 'c')",go to d then go to h then go to a then go to b finally go to c,F & d F & h F & a F & b F c
+sequenced_visit,"('d', 'h', 'a', 'c', 'b')",go to d then go to h then go to a then go to c finally go to b,F & d F & h F & a F & c F b
+sequenced_visit,"('d', 'h', 'b', 'a', 'c')",go to d then go to h then go to b then go to a finally go to c,F & d F & h F & b F & a F c
+sequenced_visit,"('d', 'h', 'b', 'c', 'a')",go to d then go to h then go to b then go to c finally go to a,F & d F & h F & b F & c F a
+sequenced_visit,"('d', 'h', 'c', 'a', 'b')",go to d then go to h then go to c then go to a finally go to b,F & d F & h F & c F & a F b
+sequenced_visit,"('d', 'h', 'c', 'b', 'a')",go to d then go to h then go to c then go to b finally go to a,F & d F & h F & c F & b F a
+sequenced_visit,"('h', 'a', 'b', 'c', 'd')",go to h then go to a then go to b then go to c finally go to d,F & h F & a F & b F & c F d
+sequenced_visit,"('h', 'a', 'b', 'd', 'c')",go to h then go to a then go to b then go to d finally go to c,F & h F & a F & b F & d F c
+sequenced_visit,"('h', 'a', 'c', 'b', 'd')",go to h then go to a then go to c then go to b finally go to d,F & h F & a F & c F & b F d
+sequenced_visit,"('h', 'a', 'c', 'd', 'b')",go to h then go to a then go to c then go to d finally go to b,F & h F & a F & c F & d F b
+sequenced_visit,"('h', 'a', 'd', 'b', 'c')",go to h then go to a then go to d then go to b finally go to c,F & h F & a F & d F & b F c
+sequenced_visit,"('h', 'a', 'd', 'c', 'b')",go to h then go to a then go to d then go to c finally go to b,F & h F & a F & d F & c F b
+sequenced_visit,"('h', 'b', 'a', 'c', 'd')",go to h then go to b then go to a then go to c finally go to d,F & h F & b F & a F & c F d
+sequenced_visit,"('h', 'b', 'a', 'd', 'c')",go to h then go to b then go to a then go to d finally go to c,F & h F & b F & a F & d F c
+sequenced_visit,"('h', 'b', 'c', 'a', 'd')",go to h then go to b then go to c then go to a finally go to d,F & h F & b F & c F & a F d
+sequenced_visit,"('h', 'b', 'c', 'd', 'a')",go to h then go to b then go to c then go to d finally go to a,F & h F & b F & c F & d F a
+sequenced_visit,"('h', 'b', 'd', 'a', 'c')",go to h then go to b then go to d then go to a finally go to c,F & h F & b F & d F & a F c
+sequenced_visit,"('h', 'b', 'd', 'c', 'a')",go to h then go to b then go to d then go to c finally go to a,F & h F & b F & d F & c F a
+sequenced_visit,"('h', 'c', 'a', 'b', 'd')",go to h then go to c then go to a then go to b finally go to d,F & h F & c F & a F & b F d
+sequenced_visit,"('h', 'c', 'a', 'd', 'b')",go to h then go to c then go to a then go to d finally go to b,F & h F & c F & a F & d F b
+sequenced_visit,"('h', 'c', 'b', 'a', 'd')",go to h then go to c then go to b then go to a finally go to d,F & h F & c F & b F & a F d
+sequenced_visit,"('h', 'c', 'b', 'd', 'a')",go to h then go to c then go to b then go to d finally go to a,F & h F & c F & b F & d F a
+sequenced_visit,"('h', 'c', 'd', 'a', 'b')",go to h then go to c then go to d then go to a finally go to b,F & h F & c F & d F & a F b
+sequenced_visit,"('h', 'c', 'd', 'b', 'a')",go to h then go to c then go to d then go to b finally go to a,F & h F & c F & d F & b F a
+sequenced_visit,"('h', 'd', 'a', 'b', 'c')",go to h then go to d then go to a then go to b finally go to c,F & h F & d F & a F & b F c
+sequenced_visit,"('h', 'd', 'a', 'c', 'b')",go to h then go to d then go to a then go to c finally go to b,F & h F & d F & a F & c F b
+sequenced_visit,"('h', 'd', 'b', 'a', 'c')",go to h then go to d then go to b then go to a finally go to c,F & h F & d F & b F & a F c
+sequenced_visit,"('h', 'd', 'b', 'c', 'a')",go to h then go to d then go to b then go to c finally go to a,F & h F & d F & b F & c F a
+sequenced_visit,"('h', 'd', 'c', 'a', 'b')",go to h then go to d then go to c then go to a finally go to b,F & h F & d F & c F & a F b
+sequenced_visit,"('h', 'd', 'c', 'b', 'a')",go to h then go to d then go to c then go to b finally go to a,F & h F & d F & c F & b F a
+sequenced_visit,"('a', 'b', 'c', 'd', 'h')",visit a then visit b then visit c then visit d finally visit h,F & a F & b F & c F & d F h
+sequenced_visit,"('a', 'b', 'c', 'h', 'd')",visit a then visit b then visit c then visit h finally visit d,F & a F & b F & c F & h F d
+sequenced_visit,"('a', 'b', 'd', 'c', 'h')",visit a then visit b then visit d then visit c finally visit h,F & a F & b F & d F & c F h
+sequenced_visit,"('a', 'b', 'd', 'h', 'c')",visit a then visit b then visit d then visit h finally visit c,F & a F & b F & d F & h F c
+sequenced_visit,"('a', 'b', 'h', 'c', 'd')",visit a then visit b then visit h then visit c finally visit d,F & a F & b F & h F & c F d
+sequenced_visit,"('a', 'b', 'h', 'd', 'c')",visit a then visit b then visit h then visit d finally visit c,F & a F & b F & h F & d F c
+sequenced_visit,"('a', 'c', 'b', 'd', 'h')",visit a then visit c then visit b then visit d finally visit h,F & a F & c F & b F & d F h
+sequenced_visit,"('a', 'c', 'b', 'h', 'd')",visit a then visit c then visit b then visit h finally visit d,F & a F & c F & b F & h F d
+sequenced_visit,"('a', 'c', 'd', 'b', 'h')",visit a then visit c then visit d then visit b finally visit h,F & a F & c F & d F & b F h
+sequenced_visit,"('a', 'c', 'd', 'h', 'b')",visit a then visit c then visit d then visit h finally visit b,F & a F & c F & d F & h F b
+sequenced_visit,"('a', 'c', 'h', 'b', 'd')",visit a then visit c then visit h then visit b finally visit d,F & a F & c F & h F & b F d
+sequenced_visit,"('a', 'c', 'h', 'd', 'b')",visit a then visit c then visit h then visit d finally visit b,F & a F & c F & h F & d F b
+sequenced_visit,"('a', 'd', 'b', 'c', 'h')",visit a then visit d then visit b then visit c finally visit h,F & a F & d F & b F & c F h
+sequenced_visit,"('a', 'd', 'b', 'h', 'c')",visit a then visit d then visit b then visit h finally visit c,F & a F & d F & b F & h F c
+sequenced_visit,"('a', 'd', 'c', 'b', 'h')",visit a then visit d then visit c then visit b finally visit h,F & a F & d F & c F & b F h
+sequenced_visit,"('a', 'd', 'c', 'h', 'b')",visit a then visit d then visit c then visit h finally visit b,F & a F & d F & c F & h F b
+sequenced_visit,"('a', 'd', 'h', 'b', 'c')",visit a then visit d then visit h then visit b finally visit c,F & a F & d F & h F & b F c
+sequenced_visit,"('a', 'd', 'h', 'c', 'b')",visit a then visit d then visit h then visit c finally visit b,F & a F & d F & h F & c F b
+sequenced_visit,"('a', 'h', 'b', 'c', 'd')",visit a then visit h then visit b then visit c finally visit d,F & a F & h F & b F & c F d
+sequenced_visit,"('a', 'h', 'b', 'd', 'c')",visit a then visit h then visit b then visit d finally visit c,F & a F & h F & b F & d F c
+sequenced_visit,"('a', 'h', 'c', 'b', 'd')",visit a then visit h then visit c then visit b finally visit d,F & a F & h F & c F & b F d
+sequenced_visit,"('a', 'h', 'c', 'd', 'b')",visit a then visit h then visit c then visit d finally visit b,F & a F & h F & c F & d F b
+sequenced_visit,"('a', 'h', 'd', 'b', 'c')",visit a then visit h then visit d then visit b finally visit c,F & a F & h F & d F & b F c
+sequenced_visit,"('a', 'h', 'd', 'c', 'b')",visit a then visit h then visit d then visit c finally visit b,F & a F & h F & d F & c F b
+sequenced_visit,"('b', 'a', 'c', 'd', 'h')",visit b then visit a then visit c then visit d finally visit h,F & b F & a F & c F & d F h
+sequenced_visit,"('b', 'a', 'c', 'h', 'd')",visit b then visit a then visit c then visit h finally visit d,F & b F & a F & c F & h F d
+sequenced_visit,"('b', 'a', 'd', 'c', 'h')",visit b then visit a then visit d then visit c finally visit h,F & b F & a F & d F & c F h
+sequenced_visit,"('b', 'a', 'd', 'h', 'c')",visit b then visit a then visit d then visit h finally visit c,F & b F & a F & d F & h F c
+sequenced_visit,"('b', 'a', 'h', 'c', 'd')",visit b then visit a then visit h then visit c finally visit d,F & b F & a F & h F & c F d
+sequenced_visit,"('b', 'a', 'h', 'd', 'c')",visit b then visit a then visit h then visit d finally visit c,F & b F & a F & h F & d F c
+sequenced_visit,"('b', 'c', 'a', 'd', 'h')",visit b then visit c then visit a then visit d finally visit h,F & b F & c F & a F & d F h
+sequenced_visit,"('b', 'c', 'a', 'h', 'd')",visit b then visit c then visit a then visit h finally visit d,F & b F & c F & a F & h F d
+sequenced_visit,"('b', 'c', 'd', 'a', 'h')",visit b then visit c then visit d then visit a finally visit h,F & b F & c F & d F & a F h
+sequenced_visit,"('b', 'c', 'd', 'h', 'a')",visit b then visit c then visit d then visit h finally visit a,F & b F & c F & d F & h F a
+sequenced_visit,"('b', 'c', 'h', 'a', 'd')",visit b then visit c then visit h then visit a finally visit d,F & b F & c F & h F & a F d
+sequenced_visit,"('b', 'c', 'h', 'd', 'a')",visit b then visit c then visit h then visit d finally visit a,F & b F & c F & h F & d F a
+sequenced_visit,"('b', 'd', 'a', 'c', 'h')",visit b then visit d then visit a then visit c finally visit h,F & b F & d F & a F & c F h
+sequenced_visit,"('b', 'd', 'a', 'h', 'c')",visit b then visit d then visit a then visit h finally visit c,F & b F & d F & a F & h F c
+sequenced_visit,"('b', 'd', 'c', 'a', 'h')",visit b then visit d then visit c then visit a finally visit h,F & b F & d F & c F & a F h
+sequenced_visit,"('b', 'd', 'c', 'h', 'a')",visit b then visit d then visit c then visit h finally visit a,F & b F & d F & c F & h F a
+sequenced_visit,"('b', 'd', 'h', 'a', 'c')",visit b then visit d then visit h then visit a finally visit c,F & b F & d F & h F & a F c
+sequenced_visit,"('b', 'd', 'h', 'c', 'a')",visit b then visit d then visit h then visit c finally visit a,F & b F & d F & h F & c F a
+sequenced_visit,"('b', 'h', 'a', 'c', 'd')",visit b then visit h then visit a then visit c finally visit d,F & b F & h F & a F & c F d
+sequenced_visit,"('b', 'h', 'a', 'd', 'c')",visit b then visit h then visit a then visit d finally visit c,F & b F & h F & a F & d F c
+sequenced_visit,"('b', 'h', 'c', 'a', 'd')",visit b then visit h then visit c then visit a finally visit d,F & b F & h F & c F & a F d
+sequenced_visit,"('b', 'h', 'c', 'd', 'a')",visit b then visit h then visit c then visit d finally visit a,F & b F & h F & c F & d F a
+sequenced_visit,"('b', 'h', 'd', 'a', 'c')",visit b then visit h then visit d then visit a finally visit c,F & b F & h F & d F & a F c
+sequenced_visit,"('b', 'h', 'd', 'c', 'a')",visit b then visit h then visit d then visit c finally visit a,F & b F & h F & d F & c F a
+sequenced_visit,"('c', 'a', 'b', 'd', 'h')",visit c then visit a then visit b then visit d finally visit h,F & c F & a F & b F & d F h
+sequenced_visit,"('c', 'a', 'b', 'h', 'd')",visit c then visit a then visit b then visit h finally visit d,F & c F & a F & b F & h F d
+sequenced_visit,"('c', 'a', 'd', 'b', 'h')",visit c then visit a then visit d then visit b finally visit h,F & c F & a F & d F & b F h
+sequenced_visit,"('c', 'a', 'd', 'h', 'b')",visit c then visit a then visit d then visit h finally visit b,F & c F & a F & d F & h F b
+sequenced_visit,"('c', 'a', 'h', 'b', 'd')",visit c then visit a then visit h then visit b finally visit d,F & c F & a F & h F & b F d
+sequenced_visit,"('c', 'a', 'h', 'd', 'b')",visit c then visit a then visit h then visit d finally visit b,F & c F & a F & h F & d F b
+sequenced_visit,"('c', 'b', 'a', 'd', 'h')",visit c then visit b then visit a then visit d finally visit h,F & c F & b F & a F & d F h
+sequenced_visit,"('c', 'b', 'a', 'h', 'd')",visit c then visit b then visit a then visit h finally visit d,F & c F & b F & a F & h F d
+sequenced_visit,"('c', 'b', 'd', 'a', 'h')",visit c then visit b then visit d then visit a finally visit h,F & c F & b F & d F & a F h
+sequenced_visit,"('c', 'b', 'd', 'h', 'a')",visit c then visit b then visit d then visit h finally visit a,F & c F & b F & d F & h F a
+sequenced_visit,"('c', 'b', 'h', 'a', 'd')",visit c then visit b then visit h then visit a finally visit d,F & c F & b F & h F & a F d
+sequenced_visit,"('c', 'b', 'h', 'd', 'a')",visit c then visit b then visit h then visit d finally visit a,F & c F & b F & h F & d F a
+sequenced_visit,"('c', 'd', 'a', 'b', 'h')",visit c then visit d then visit a then visit b finally visit h,F & c F & d F & a F & b F h
+sequenced_visit,"('c', 'd', 'a', 'h', 'b')",visit c then visit d then visit a then visit h finally visit b,F & c F & d F & a F & h F b
+sequenced_visit,"('c', 'd', 'b', 'a', 'h')",visit c then visit d then visit b then visit a finally visit h,F & c F & d F & b F & a F h
+sequenced_visit,"('c', 'd', 'b', 'h', 'a')",visit c then visit d then visit b then visit h finally visit a,F & c F & d F & b F & h F a
+sequenced_visit,"('c', 'd', 'h', 'a', 'b')",visit c then visit d then visit h then visit a finally visit b,F & c F & d F & h F & a F b
+sequenced_visit,"('c', 'd', 'h', 'b', 'a')",visit c then visit d then visit h then visit b finally visit a,F & c F & d F & h F & b F a
+sequenced_visit,"('c', 'h', 'a', 'b', 'd')",visit c then visit h then visit a then visit b finally visit d,F & c F & h F & a F & b F d
+sequenced_visit,"('c', 'h', 'a', 'd', 'b')",visit c then visit h then visit a then visit d finally visit b,F & c F & h F & a F & d F b
+sequenced_visit,"('c', 'h', 'b', 'a', 'd')",visit c then visit h then visit b then visit a finally visit d,F & c F & h F & b F & a F d
+sequenced_visit,"('c', 'h', 'b', 'd', 'a')",visit c then visit h then visit b then visit d finally visit a,F & c F & h F & b F & d F a
+sequenced_visit,"('c', 'h', 'd', 'a', 'b')",visit c then visit h then visit d then visit a finally visit b,F & c F & h F & d F & a F b
+sequenced_visit,"('c', 'h', 'd', 'b', 'a')",visit c then visit h then visit d then visit b finally visit a,F & c F & h F & d F & b F a
+sequenced_visit,"('d', 'a', 'b', 'c', 'h')",visit d then visit a then visit b then visit c finally visit h,F & d F & a F & b F & c F h
+sequenced_visit,"('d', 'a', 'b', 'h', 'c')",visit d then visit a then visit b then visit h finally visit c,F & d F & a F & b F & h F c
+sequenced_visit,"('d', 'a', 'c', 'b', 'h')",visit d then visit a then visit c then visit b finally visit h,F & d F & a F & c F & b F h
+sequenced_visit,"('d', 'a', 'c', 'h', 'b')",visit d then visit a then visit c then visit h finally visit b,F & d F & a F & c F & h F b
+sequenced_visit,"('d', 'a', 'h', 'b', 'c')",visit d then visit a then visit h then visit b finally visit c,F & d F & a F & h F & b F c
+sequenced_visit,"('d', 'a', 'h', 'c', 'b')",visit d then visit a then visit h then visit c finally visit b,F & d F & a F & h F & c F b
+sequenced_visit,"('d', 'b', 'a', 'c', 'h')",visit d then visit b then visit a then visit c finally visit h,F & d F & b F & a F & c F h
+sequenced_visit,"('d', 'b', 'a', 'h', 'c')",visit d then visit b then visit a then visit h finally visit c,F & d F & b F & a F & h F c
+sequenced_visit,"('d', 'b', 'c', 'a', 'h')",visit d then visit b then visit c then visit a finally visit h,F & d F & b F & c F & a F h
+sequenced_visit,"('d', 'b', 'c', 'h', 'a')",visit d then visit b then visit c then visit h finally visit a,F & d F & b F & c F & h F a
+sequenced_visit,"('d', 'b', 'h', 'a', 'c')",visit d then visit b then visit h then visit a finally visit c,F & d F & b F & h F & a F c
+sequenced_visit,"('d', 'b', 'h', 'c', 'a')",visit d then visit b then visit h then visit c finally visit a,F & d F & b F & h F & c F a
+sequenced_visit,"('d', 'c', 'a', 'b', 'h')",visit d then visit c then visit a then visit b finally visit h,F & d F & c F & a F & b F h
+sequenced_visit,"('d', 'c', 'a', 'h', 'b')",visit d then visit c then visit a then visit h finally visit b,F & d F & c F & a F & h F b
+sequenced_visit,"('d', 'c', 'b', 'a', 'h')",visit d then visit c then visit b then visit a finally visit h,F & d F & c F & b F & a F h
+sequenced_visit,"('d', 'c', 'b', 'h', 'a')",visit d then visit c then visit b then visit h finally visit a,F & d F & c F & b F & h F a
+sequenced_visit,"('d', 'c', 'h', 'a', 'b')",visit d then visit c then visit h then visit a finally visit b,F & d F & c F & h F & a F b
+sequenced_visit,"('d', 'c', 'h', 'b', 'a')",visit d then visit c then visit h then visit b finally visit a,F & d F & c F & h F & b F a
+sequenced_visit,"('d', 'h', 'a', 'b', 'c')",visit d then visit h then visit a then visit b finally visit c,F & d F & h F & a F & b F c
+sequenced_visit,"('d', 'h', 'a', 'c', 'b')",visit d then visit h then visit a then visit c finally visit b,F & d F & h F & a F & c F b
+sequenced_visit,"('d', 'h', 'b', 'a', 'c')",visit d then visit h then visit b then visit a finally visit c,F & d F & h F & b F & a F c
+sequenced_visit,"('d', 'h', 'b', 'c', 'a')",visit d then visit h then visit b then visit c finally visit a,F & d F & h F & b F & c F a
+sequenced_visit,"('d', 'h', 'c', 'a', 'b')",visit d then visit h then visit c then visit a finally visit b,F & d F & h F & c F & a F b
+sequenced_visit,"('d', 'h', 'c', 'b', 'a')",visit d then visit h then visit c then visit b finally visit a,F & d F & h F & c F & b F a
+sequenced_visit,"('h', 'a', 'b', 'c', 'd')",visit h then visit a then visit b then visit c finally visit d,F & h F & a F & b F & c F d
+sequenced_visit,"('h', 'a', 'b', 'd', 'c')",visit h then visit a then visit b then visit d finally visit c,F & h F & a F & b F & d F c
+sequenced_visit,"('h', 'a', 'c', 'b', 'd')",visit h then visit a then visit c then visit b finally visit d,F & h F & a F & c F & b F d
+sequenced_visit,"('h', 'a', 'c', 'd', 'b')",visit h then visit a then visit c then visit d finally visit b,F & h F & a F & c F & d F b
+sequenced_visit,"('h', 'a', 'd', 'b', 'c')",visit h then visit a then visit d then visit b finally visit c,F & h F & a F & d F & b F c
+sequenced_visit,"('h', 'a', 'd', 'c', 'b')",visit h then visit a then visit d then visit c finally visit b,F & h F & a F & d F & c F b
+sequenced_visit,"('h', 'b', 'a', 'c', 'd')",visit h then visit b then visit a then visit c finally visit d,F & h F & b F & a F & c F d
+sequenced_visit,"('h', 'b', 'a', 'd', 'c')",visit h then visit b then visit a then visit d finally visit c,F & h F & b F & a F & d F c
+sequenced_visit,"('h', 'b', 'c', 'a', 'd')",visit h then visit b then visit c then visit a finally visit d,F & h F & b F & c F & a F d
+sequenced_visit,"('h', 'b', 'c', 'd', 'a')",visit h then visit b then visit c then visit d finally visit a,F & h F & b F & c F & d F a
+sequenced_visit,"('h', 'b', 'd', 'a', 'c')",visit h then visit b then visit d then visit a finally visit c,F & h F & b F & d F & a F c
+sequenced_visit,"('h', 'b', 'd', 'c', 'a')",visit h then visit b then visit d then visit c finally visit a,F & h F & b F & d F & c F a
+sequenced_visit,"('h', 'c', 'a', 'b', 'd')",visit h then visit c then visit a then visit b finally visit d,F & h F & c F & a F & b F d
+sequenced_visit,"('h', 'c', 'a', 'd', 'b')",visit h then visit c then visit a then visit d finally visit b,F & h F & c F & a F & d F b
+sequenced_visit,"('h', 'c', 'b', 'a', 'd')",visit h then visit c then visit b then visit a finally visit d,F & h F & c F & b F & a F d
+sequenced_visit,"('h', 'c', 'b', 'd', 'a')",visit h then visit c then visit b then visit d finally visit a,F & h F & c F & b F & d F a
+sequenced_visit,"('h', 'c', 'd', 'a', 'b')",visit h then visit c then visit d then visit a finally visit b,F & h F & c F & d F & a F b
+sequenced_visit,"('h', 'c', 'd', 'b', 'a')",visit h then visit c then visit d then visit b finally visit a,F & h F & c F & d F & b F a
+sequenced_visit,"('h', 'd', 'a', 'b', 'c')",visit h then visit d then visit a then visit b finally visit c,F & h F & d F & a F & b F c
+sequenced_visit,"('h', 'd', 'a', 'c', 'b')",visit h then visit d then visit a then visit c finally visit b,F & h F & d F & a F & c F b
+sequenced_visit,"('h', 'd', 'b', 'a', 'c')",visit h then visit d then visit b then visit a finally visit c,F & h F & d F & b F & a F c
+sequenced_visit,"('h', 'd', 'b', 'c', 'a')",visit h then visit d then visit b then visit c finally visit a,F & h F & d F & b F & c F a
+sequenced_visit,"('h', 'd', 'c', 'a', 'b')",visit h then visit d then visit c then visit a finally visit b,F & h F & d F & c F & a F b
+sequenced_visit,"('h', 'd', 'c', 'b', 'a')",visit h then visit d then visit c then visit b finally visit a,F & h F & d F & c F & b F a
+sequenced_visit,"('a', 'b', 'c', 'd', 'h')",move to a then move to b then move to c then move to d finally move to h,F & a F & b F & c F & d F h
+sequenced_visit,"('a', 'b', 'c', 'h', 'd')",move to a then move to b then move to c then move to h finally move to d,F & a F & b F & c F & h F d
+sequenced_visit,"('a', 'b', 'd', 'c', 'h')",move to a then move to b then move to d then move to c finally move to h,F & a F & b F & d F & c F h
+sequenced_visit,"('a', 'b', 'd', 'h', 'c')",move to a then move to b then move to d then move to h finally move to c,F & a F & b F & d F & h F c
+sequenced_visit,"('a', 'b', 'h', 'c', 'd')",move to a then move to b then move to h then move to c finally move to d,F & a F & b F & h F & c F d
+sequenced_visit,"('a', 'b', 'h', 'd', 'c')",move to a then move to b then move to h then move to d finally move to c,F & a F & b F & h F & d F c
+sequenced_visit,"('a', 'c', 'b', 'd', 'h')",move to a then move to c then move to b then move to d finally move to h,F & a F & c F & b F & d F h
+sequenced_visit,"('a', 'c', 'b', 'h', 'd')",move to a then move to c then move to b then move to h finally move to d,F & a F & c F & b F & h F d
+sequenced_visit,"('a', 'c', 'd', 'b', 'h')",move to a then move to c then move to d then move to b finally move to h,F & a F & c F & d F & b F h
+sequenced_visit,"('a', 'c', 'd', 'h', 'b')",move to a then move to c then move to d then move to h finally move to b,F & a F & c F & d F & h F b
+sequenced_visit,"('a', 'c', 'h', 'b', 'd')",move to a then move to c then move to h then move to b finally move to d,F & a F & c F & h F & b F d
+sequenced_visit,"('a', 'c', 'h', 'd', 'b')",move to a then move to c then move to h then move to d finally move to b,F & a F & c F & h F & d F b
+sequenced_visit,"('a', 'd', 'b', 'c', 'h')",move to a then move to d then move to b then move to c finally move to h,F & a F & d F & b F & c F h
+sequenced_visit,"('a', 'd', 'b', 'h', 'c')",move to a then move to d then move to b then move to h finally move to c,F & a F & d F & b F & h F c
+sequenced_visit,"('a', 'd', 'c', 'b', 'h')",move to a then move to d then move to c then move to b finally move to h,F & a F & d F & c F & b F h
+sequenced_visit,"('a', 'd', 'c', 'h', 'b')",move to a then move to d then move to c then move to h finally move to b,F & a F & d F & c F & h F b
+sequenced_visit,"('a', 'd', 'h', 'b', 'c')",move to a then move to d then move to h then move to b finally move to c,F & a F & d F & h F & b F c
+sequenced_visit,"('a', 'd', 'h', 'c', 'b')",move to a then move to d then move to h then move to c finally move to b,F & a F & d F & h F & c F b
+sequenced_visit,"('a', 'h', 'b', 'c', 'd')",move to a then move to h then move to b then move to c finally move to d,F & a F & h F & b F & c F d
+sequenced_visit,"('a', 'h', 'b', 'd', 'c')",move to a then move to h then move to b then move to d finally move to c,F & a F & h F & b F & d F c
+sequenced_visit,"('a', 'h', 'c', 'b', 'd')",move to a then move to h then move to c then move to b finally move to d,F & a F & h F & c F & b F d
+sequenced_visit,"('a', 'h', 'c', 'd', 'b')",move to a then move to h then move to c then move to d finally move to b,F & a F & h F & c F & d F b
+sequenced_visit,"('a', 'h', 'd', 'b', 'c')",move to a then move to h then move to d then move to b finally move to c,F & a F & h F & d F & b F c
+sequenced_visit,"('a', 'h', 'd', 'c', 'b')",move to a then move to h then move to d then move to c finally move to b,F & a F & h F & d F & c F b
+sequenced_visit,"('b', 'a', 'c', 'd', 'h')",move to b then move to a then move to c then move to d finally move to h,F & b F & a F & c F & d F h
+sequenced_visit,"('b', 'a', 'c', 'h', 'd')",move to b then move to a then move to c then move to h finally move to d,F & b F & a F & c F & h F d
+sequenced_visit,"('b', 'a', 'd', 'c', 'h')",move to b then move to a then move to d then move to c finally move to h,F & b F & a F & d F & c F h
+sequenced_visit,"('b', 'a', 'd', 'h', 'c')",move to b then move to a then move to d then move to h finally move to c,F & b F & a F & d F & h F c
+sequenced_visit,"('b', 'a', 'h', 'c', 'd')",move to b then move to a then move to h then move to c finally move to d,F & b F & a F & h F & c F d
+sequenced_visit,"('b', 'a', 'h', 'd', 'c')",move to b then move to a then move to h then move to d finally move to c,F & b F & a F & h F & d F c
+sequenced_visit,"('b', 'c', 'a', 'd', 'h')",move to b then move to c then move to a then move to d finally move to h,F & b F & c F & a F & d F h
+sequenced_visit,"('b', 'c', 'a', 'h', 'd')",move to b then move to c then move to a then move to h finally move to d,F & b F & c F & a F & h F d
+sequenced_visit,"('b', 'c', 'd', 'a', 'h')",move to b then move to c then move to d then move to a finally move to h,F & b F & c F & d F & a F h
+sequenced_visit,"('b', 'c', 'd', 'h', 'a')",move to b then move to c then move to d then move to h finally move to a,F & b F & c F & d F & h F a
+sequenced_visit,"('b', 'c', 'h', 'a', 'd')",move to b then move to c then move to h then move to a finally move to d,F & b F & c F & h F & a F d
+sequenced_visit,"('b', 'c', 'h', 'd', 'a')",move to b then move to c then move to h then move to d finally move to a,F & b F & c F & h F & d F a
+sequenced_visit,"('b', 'd', 'a', 'c', 'h')",move to b then move to d then move to a then move to c finally move to h,F & b F & d F & a F & c F h
+sequenced_visit,"('b', 'd', 'a', 'h', 'c')",move to b then move to d then move to a then move to h finally move to c,F & b F & d F & a F & h F c
+sequenced_visit,"('b', 'd', 'c', 'a', 'h')",move to b then move to d then move to c then move to a finally move to h,F & b F & d F & c F & a F h
+sequenced_visit,"('b', 'd', 'c', 'h', 'a')",move to b then move to d then move to c then move to h finally move to a,F & b F & d F & c F & h F a
+sequenced_visit,"('b', 'd', 'h', 'a', 'c')",move to b then move to d then move to h then move to a finally move to c,F & b F & d F & h F & a F c
+sequenced_visit,"('b', 'd', 'h', 'c', 'a')",move to b then move to d then move to h then move to c finally move to a,F & b F & d F & h F & c F a
+sequenced_visit,"('b', 'h', 'a', 'c', 'd')",move to b then move to h then move to a then move to c finally move to d,F & b F & h F & a F & c F d
+sequenced_visit,"('b', 'h', 'a', 'd', 'c')",move to b then move to h then move to a then move to d finally move to c,F & b F & h F & a F & d F c
+sequenced_visit,"('b', 'h', 'c', 'a', 'd')",move to b then move to h then move to c then move to a finally move to d,F & b F & h F & c F & a F d
+sequenced_visit,"('b', 'h', 'c', 'd', 'a')",move to b then move to h then move to c then move to d finally move to a,F & b F & h F & c F & d F a
+sequenced_visit,"('b', 'h', 'd', 'a', 'c')",move to b then move to h then move to d then move to a finally move to c,F & b F & h F & d F & a F c
+sequenced_visit,"('b', 'h', 'd', 'c', 'a')",move to b then move to h then move to d then move to c finally move to a,F & b F & h F & d F & c F a
+sequenced_visit,"('c', 'a', 'b', 'd', 'h')",move to c then move to a then move to b then move to d finally move to h,F & c F & a F & b F & d F h
+sequenced_visit,"('c', 'a', 'b', 'h', 'd')",move to c then move to a then move to b then move to h finally move to d,F & c F & a F & b F & h F d
+sequenced_visit,"('c', 'a', 'd', 'b', 'h')",move to c then move to a then move to d then move to b finally move to h,F & c F & a F & d F & b F h
+sequenced_visit,"('c', 'a', 'd', 'h', 'b')",move to c then move to a then move to d then move to h finally move to b,F & c F & a F & d F & h F b
+sequenced_visit,"('c', 'a', 'h', 'b', 'd')",move to c then move to a then move to h then move to b finally move to d,F & c F & a F & h F & b F d
+sequenced_visit,"('c', 'a', 'h', 'd', 'b')",move to c then move to a then move to h then move to d finally move to b,F & c F & a F & h F & d F b
+sequenced_visit,"('c', 'b', 'a', 'd', 'h')",move to c then move to b then move to a then move to d finally move to h,F & c F & b F & a F & d F h
+sequenced_visit,"('c', 'b', 'a', 'h', 'd')",move to c then move to b then move to a then move to h finally move to d,F & c F & b F & a F & h F d
+sequenced_visit,"('c', 'b', 'd', 'a', 'h')",move to c then move to b then move to d then move to a finally move to h,F & c F & b F & d F & a F h
+sequenced_visit,"('c', 'b', 'd', 'h', 'a')",move to c then move to b then move to d then move to h finally move to a,F & c F & b F & d F & h F a
+sequenced_visit,"('c', 'b', 'h', 'a', 'd')",move to c then move to b then move to h then move to a finally move to d,F & c F & b F & h F & a F d
+sequenced_visit,"('c', 'b', 'h', 'd', 'a')",move to c then move to b then move to h then move to d finally move to a,F & c F & b F & h F & d F a
+sequenced_visit,"('c', 'd', 'a', 'b', 'h')",move to c then move to d then move to a then move to b finally move to h,F & c F & d F & a F & b F h
+sequenced_visit,"('c', 'd', 'a', 'h', 'b')",move to c then move to d then move to a then move to h finally move to b,F & c F & d F & a F & h F b
+sequenced_visit,"('c', 'd', 'b', 'a', 'h')",move to c then move to d then move to b then move to a finally move to h,F & c F & d F & b F & a F h
+sequenced_visit,"('c', 'd', 'b', 'h', 'a')",move to c then move to d then move to b then move to h finally move to a,F & c F & d F & b F & h F a
+sequenced_visit,"('c', 'd', 'h', 'a', 'b')",move to c then move to d then move to h then move to a finally move to b,F & c F & d F & h F & a F b
+sequenced_visit,"('c', 'd', 'h', 'b', 'a')",move to c then move to d then move to h then move to b finally move to a,F & c F & d F & h F & b F a
+sequenced_visit,"('c', 'h', 'a', 'b', 'd')",move to c then move to h then move to a then move to b finally move to d,F & c F & h F & a F & b F d
+sequenced_visit,"('c', 'h', 'a', 'd', 'b')",move to c then move to h then move to a then move to d finally move to b,F & c F & h F & a F & d F b
+sequenced_visit,"('c', 'h', 'b', 'a', 'd')",move to c then move to h then move to b then move to a finally move to d,F & c F & h F & b F & a F d
+sequenced_visit,"('c', 'h', 'b', 'd', 'a')",move to c then move to h then move to b then move to d finally move to a,F & c F & h F & b F & d F a
+sequenced_visit,"('c', 'h', 'd', 'a', 'b')",move to c then move to h then move to d then move to a finally move to b,F & c F & h F & d F & a F b
+sequenced_visit,"('c', 'h', 'd', 'b', 'a')",move to c then move to h then move to d then move to b finally move to a,F & c F & h F & d F & b F a
+sequenced_visit,"('d', 'a', 'b', 'c', 'h')",move to d then move to a then move to b then move to c finally move to h,F & d F & a F & b F & c F h
+sequenced_visit,"('d', 'a', 'b', 'h', 'c')",move to d then move to a then move to b then move to h finally move to c,F & d F & a F & b F & h F c
+sequenced_visit,"('d', 'a', 'c', 'b', 'h')",move to d then move to a then move to c then move to b finally move to h,F & d F & a F & c F & b F h
+sequenced_visit,"('d', 'a', 'c', 'h', 'b')",move to d then move to a then move to c then move to h finally move to b,F & d F & a F & c F & h F b
+sequenced_visit,"('d', 'a', 'h', 'b', 'c')",move to d then move to a then move to h then move to b finally move to c,F & d F & a F & h F & b F c
+sequenced_visit,"('d', 'a', 'h', 'c', 'b')",move to d then move to a then move to h then move to c finally move to b,F & d F & a F & h F & c F b
+sequenced_visit,"('d', 'b', 'a', 'c', 'h')",move to d then move to b then move to a then move to c finally move to h,F & d F & b F & a F & c F h
+sequenced_visit,"('d', 'b', 'a', 'h', 'c')",move to d then move to b then move to a then move to h finally move to c,F & d F & b F & a F & h F c
+sequenced_visit,"('d', 'b', 'c', 'a', 'h')",move to d then move to b then move to c then move to a finally move to h,F & d F & b F & c F & a F h
+sequenced_visit,"('d', 'b', 'c', 'h', 'a')",move to d then move to b then move to c then move to h finally move to a,F & d F & b F & c F & h F a
+sequenced_visit,"('d', 'b', 'h', 'a', 'c')",move to d then move to b then move to h then move to a finally move to c,F & d F & b F & h F & a F c
+sequenced_visit,"('d', 'b', 'h', 'c', 'a')",move to d then move to b then move to h then move to c finally move to a,F & d F & b F & h F & c F a
+sequenced_visit,"('d', 'c', 'a', 'b', 'h')",move to d then move to c then move to a then move to b finally move to h,F & d F & c F & a F & b F h
+sequenced_visit,"('d', 'c', 'a', 'h', 'b')",move to d then move to c then move to a then move to h finally move to b,F & d F & c F & a F & h F b
+sequenced_visit,"('d', 'c', 'b', 'a', 'h')",move to d then move to c then move to b then move to a finally move to h,F & d F & c F & b F & a F h
+sequenced_visit,"('d', 'c', 'b', 'h', 'a')",move to d then move to c then move to b then move to h finally move to a,F & d F & c F & b F & h F a
+sequenced_visit,"('d', 'c', 'h', 'a', 'b')",move to d then move to c then move to h then move to a finally move to b,F & d F & c F & h F & a F b
+sequenced_visit,"('d', 'c', 'h', 'b', 'a')",move to d then move to c then move to h then move to b finally move to a,F & d F & c F & h F & b F a
+sequenced_visit,"('d', 'h', 'a', 'b', 'c')",move to d then move to h then move to a then move to b finally move to c,F & d F & h F & a F & b F c
+sequenced_visit,"('d', 'h', 'a', 'c', 'b')",move to d then move to h then move to a then move to c finally move to b,F & d F & h F & a F & c F b
+sequenced_visit,"('d', 'h', 'b', 'a', 'c')",move to d then move to h then move to b then move to a finally move to c,F & d F & h F & b F & a F c
+sequenced_visit,"('d', 'h', 'b', 'c', 'a')",move to d then move to h then move to b then move to c finally move to a,F & d F & h F & b F & c F a
+sequenced_visit,"('d', 'h', 'c', 'a', 'b')",move to d then move to h then move to c then move to a finally move to b,F & d F & h F & c F & a F b
+sequenced_visit,"('d', 'h', 'c', 'b', 'a')",move to d then move to h then move to c then move to b finally move to a,F & d F & h F & c F & b F a
+sequenced_visit,"('h', 'a', 'b', 'c', 'd')",move to h then move to a then move to b then move to c finally move to d,F & h F & a F & b F & c F d
+sequenced_visit,"('h', 'a', 'b', 'd', 'c')",move to h then move to a then move to b then move to d finally move to c,F & h F & a F & b F & d F c
+sequenced_visit,"('h', 'a', 'c', 'b', 'd')",move to h then move to a then move to c then move to b finally move to d,F & h F & a F & c F & b F d
+sequenced_visit,"('h', 'a', 'c', 'd', 'b')",move to h then move to a then move to c then move to d finally move to b,F & h F & a F & c F & d F b
+sequenced_visit,"('h', 'a', 'd', 'b', 'c')",move to h then move to a then move to d then move to b finally move to c,F & h F & a F & d F & b F c
+sequenced_visit,"('h', 'a', 'd', 'c', 'b')",move to h then move to a then move to d then move to c finally move to b,F & h F & a F & d F & c F b
+sequenced_visit,"('h', 'b', 'a', 'c', 'd')",move to h then move to b then move to a then move to c finally move to d,F & h F & b F & a F & c F d
+sequenced_visit,"('h', 'b', 'a', 'd', 'c')",move to h then move to b then move to a then move to d finally move to c,F & h F & b F & a F & d F c
+sequenced_visit,"('h', 'b', 'c', 'a', 'd')",move to h then move to b then move to c then move to a finally move to d,F & h F & b F & c F & a F d
+sequenced_visit,"('h', 'b', 'c', 'd', 'a')",move to h then move to b then move to c then move to d finally move to a,F & h F & b F & c F & d F a
+sequenced_visit,"('h', 'b', 'd', 'a', 'c')",move to h then move to b then move to d then move to a finally move to c,F & h F & b F & d F & a F c
+sequenced_visit,"('h', 'b', 'd', 'c', 'a')",move to h then move to b then move to d then move to c finally move to a,F & h F & b F & d F & c F a
+sequenced_visit,"('h', 'c', 'a', 'b', 'd')",move to h then move to c then move to a then move to b finally move to d,F & h F & c F & a F & b F d
+sequenced_visit,"('h', 'c', 'a', 'd', 'b')",move to h then move to c then move to a then move to d finally move to b,F & h F & c F & a F & d F b
+sequenced_visit,"('h', 'c', 'b', 'a', 'd')",move to h then move to c then move to b then move to a finally move to d,F & h F & c F & b F & a F d
+sequenced_visit,"('h', 'c', 'b', 'd', 'a')",move to h then move to c then move to b then move to d finally move to a,F & h F & c F & b F & d F a
+sequenced_visit,"('h', 'c', 'd', 'a', 'b')",move to h then move to c then move to d then move to a finally move to b,F & h F & c F & d F & a F b
+sequenced_visit,"('h', 'c', 'd', 'b', 'a')",move to h then move to c then move to d then move to b finally move to a,F & h F & c F & d F & b F a
+sequenced_visit,"('h', 'd', 'a', 'b', 'c')",move to h then move to d then move to a then move to b finally move to c,F & h F & d F & a F & b F c
+sequenced_visit,"('h', 'd', 'a', 'c', 'b')",move to h then move to d then move to a then move to c finally move to b,F & h F & d F & a F & c F b
+sequenced_visit,"('h', 'd', 'b', 'a', 'c')",move to h then move to d then move to b then move to a finally move to c,F & h F & d F & b F & a F c
+sequenced_visit,"('h', 'd', 'b', 'c', 'a')",move to h then move to d then move to b then move to c finally move to a,F & h F & d F & b F & c F a
+sequenced_visit,"('h', 'd', 'c', 'a', 'b')",move to h then move to d then move to c then move to a finally move to b,F & h F & d F & c F & a F b
+sequenced_visit,"('h', 'd', 'c', 'b', 'a')",move to h then move to d then move to c then move to b finally move to a,F & h F & d F & c F & b F a
+sequenced_visit,"('a', 'b', 'c', 'd', 'h')",first go to a then move to b then go visit c then visit d finally reach h,F & a F & b F & c F & d F h
+sequenced_visit,"('a', 'b', 'c', 'h', 'd')",first go to a then move to b then go visit c then visit h finally reach d,F & a F & b F & c F & h F d
+sequenced_visit,"('a', 'b', 'd', 'c', 'h')",first go to a then move to b then go visit d then visit c finally reach h,F & a F & b F & d F & c F h
+sequenced_visit,"('a', 'b', 'd', 'h', 'c')",first go to a then move to b then go visit d then visit h finally reach c,F & a F & b F & d F & h F c
+sequenced_visit,"('a', 'b', 'h', 'c', 'd')",first go to a then move to b then go visit h then visit c finally reach d,F & a F & b F & h F & c F d
+sequenced_visit,"('a', 'b', 'h', 'd', 'c')",first go to a then move to b then go visit h then visit d finally reach c,F & a F & b F & h F & d F c
+sequenced_visit,"('a', 'c', 'b', 'd', 'h')",first go to a then move to c then go visit b then visit d finally reach h,F & a F & c F & b F & d F h
+sequenced_visit,"('a', 'c', 'b', 'h', 'd')",first go to a then move to c then go visit b then visit h finally reach d,F & a F & c F & b F & h F d
+sequenced_visit,"('a', 'c', 'd', 'b', 'h')",first go to a then move to c then go visit d then visit b finally reach h,F & a F & c F & d F & b F h
+sequenced_visit,"('a', 'c', 'd', 'h', 'b')",first go to a then move to c then go visit d then visit h finally reach b,F & a F & c F & d F & h F b
+sequenced_visit,"('a', 'c', 'h', 'b', 'd')",first go to a then move to c then go visit h then visit b finally reach d,F & a F & c F & h F & b F d
+sequenced_visit,"('a', 'c', 'h', 'd', 'b')",first go to a then move to c then go visit h then visit d finally reach b,F & a F & c F & h F & d F b
+sequenced_visit,"('a', 'd', 'b', 'c', 'h')",first go to a then move to d then go visit b then visit c finally reach h,F & a F & d F & b F & c F h
+sequenced_visit,"('a', 'd', 'b', 'h', 'c')",first go to a then move to d then go visit b then visit h finally reach c,F & a F & d F & b F & h F c
+sequenced_visit,"('a', 'd', 'c', 'b', 'h')",first go to a then move to d then go visit c then visit b finally reach h,F & a F & d F & c F & b F h
+sequenced_visit,"('a', 'd', 'c', 'h', 'b')",first go to a then move to d then go visit c then visit h finally reach b,F & a F & d F & c F & h F b
+sequenced_visit,"('a', 'd', 'h', 'b', 'c')",first go to a then move to d then go visit h then visit b finally reach c,F & a F & d F & h F & b F c
+sequenced_visit,"('a', 'd', 'h', 'c', 'b')",first go to a then move to d then go visit h then visit c finally reach b,F & a F & d F & h F & c F b
+sequenced_visit,"('a', 'h', 'b', 'c', 'd')",first go to a then move to h then go visit b then visit c finally reach d,F & a F & h F & b F & c F d
+sequenced_visit,"('a', 'h', 'b', 'd', 'c')",first go to a then move to h then go visit b then visit d finally reach c,F & a F & h F & b F & d F c
+sequenced_visit,"('a', 'h', 'c', 'b', 'd')",first go to a then move to h then go visit c then visit b finally reach d,F & a F & h F & c F & b F d
+sequenced_visit,"('a', 'h', 'c', 'd', 'b')",first go to a then move to h then go visit c then visit d finally reach b,F & a F & h F & c F & d F b
+sequenced_visit,"('a', 'h', 'd', 'b', 'c')",first go to a then move to h then go visit d then visit b finally reach c,F & a F & h F & d F & b F c
+sequenced_visit,"('a', 'h', 'd', 'c', 'b')",first go to a then move to h then go visit d then visit c finally reach b,F & a F & h F & d F & c F b
+sequenced_visit,"('b', 'a', 'c', 'd', 'h')",first go to b then move to a then go visit c then visit d finally reach h,F & b F & a F & c F & d F h
+sequenced_visit,"('b', 'a', 'c', 'h', 'd')",first go to b then move to a then go visit c then visit h finally reach d,F & b F & a F & c F & h F d
+sequenced_visit,"('b', 'a', 'd', 'c', 'h')",first go to b then move to a then go visit d then visit c finally reach h,F & b F & a F & d F & c F h
+sequenced_visit,"('b', 'a', 'd', 'h', 'c')",first go to b then move to a then go visit d then visit h finally reach c,F & b F & a F & d F & h F c
+sequenced_visit,"('b', 'a', 'h', 'c', 'd')",first go to b then move to a then go visit h then visit c finally reach d,F & b F & a F & h F & c F d
+sequenced_visit,"('b', 'a', 'h', 'd', 'c')",first go to b then move to a then go visit h then visit d finally reach c,F & b F & a F & h F & d F c
+sequenced_visit,"('b', 'c', 'a', 'd', 'h')",first go to b then move to c then go visit a then visit d finally reach h,F & b F & c F & a F & d F h
+sequenced_visit,"('b', 'c', 'a', 'h', 'd')",first go to b then move to c then go visit a then visit h finally reach d,F & b F & c F & a F & h F d
+sequenced_visit,"('b', 'c', 'd', 'a', 'h')",first go to b then move to c then go visit d then visit a finally reach h,F & b F & c F & d F & a F h
+sequenced_visit,"('b', 'c', 'd', 'h', 'a')",first go to b then move to c then go visit d then visit h finally reach a,F & b F & c F & d F & h F a
+sequenced_visit,"('b', 'c', 'h', 'a', 'd')",first go to b then move to c then go visit h then visit a finally reach d,F & b F & c F & h F & a F d
+sequenced_visit,"('b', 'c', 'h', 'd', 'a')",first go to b then move to c then go visit h then visit d finally reach a,F & b F & c F & h F & d F a
+sequenced_visit,"('b', 'd', 'a', 'c', 'h')",first go to b then move to d then go visit a then visit c finally reach h,F & b F & d F & a F & c F h
+sequenced_visit,"('b', 'd', 'a', 'h', 'c')",first go to b then move to d then go visit a then visit h finally reach c,F & b F & d F & a F & h F c
+sequenced_visit,"('b', 'd', 'c', 'a', 'h')",first go to b then move to d then go visit c then visit a finally reach h,F & b F & d F & c F & a F h
+sequenced_visit,"('b', 'd', 'c', 'h', 'a')",first go to b then move to d then go visit c then visit h finally reach a,F & b F & d F & c F & h F a
+sequenced_visit,"('b', 'd', 'h', 'a', 'c')",first go to b then move to d then go visit h then visit a finally reach c,F & b F & d F & h F & a F c
+sequenced_visit,"('b', 'd', 'h', 'c', 'a')",first go to b then move to d then go visit h then visit c finally reach a,F & b F & d F & h F & c F a
+sequenced_visit,"('b', 'h', 'a', 'c', 'd')",first go to b then move to h then go visit a then visit c finally reach d,F & b F & h F & a F & c F d
+sequenced_visit,"('b', 'h', 'a', 'd', 'c')",first go to b then move to h then go visit a then visit d finally reach c,F & b F & h F & a F & d F c
+sequenced_visit,"('b', 'h', 'c', 'a', 'd')",first go to b then move to h then go visit c then visit a finally reach d,F & b F & h F & c F & a F d
+sequenced_visit,"('b', 'h', 'c', 'd', 'a')",first go to b then move to h then go visit c then visit d finally reach a,F & b F & h F & c F & d F a
+sequenced_visit,"('b', 'h', 'd', 'a', 'c')",first go to b then move to h then go visit d then visit a finally reach c,F & b F & h F & d F & a F c
+sequenced_visit,"('b', 'h', 'd', 'c', 'a')",first go to b then move to h then go visit d then visit c finally reach a,F & b F & h F & d F & c F a
+sequenced_visit,"('c', 'a', 'b', 'd', 'h')",first go to c then move to a then go visit b then visit d finally reach h,F & c F & a F & b F & d F h
+sequenced_visit,"('c', 'a', 'b', 'h', 'd')",first go to c then move to a then go visit b then visit h finally reach d,F & c F & a F & b F & h F d
+sequenced_visit,"('c', 'a', 'd', 'b', 'h')",first go to c then move to a then go visit d then visit b finally reach h,F & c F & a F & d F & b F h
+sequenced_visit,"('c', 'a', 'd', 'h', 'b')",first go to c then move to a then go visit d then visit h finally reach b,F & c F & a F & d F & h F b
+sequenced_visit,"('c', 'a', 'h', 'b', 'd')",first go to c then move to a then go visit h then visit b finally reach d,F & c F & a F & h F & b F d
+sequenced_visit,"('c', 'a', 'h', 'd', 'b')",first go to c then move to a then go visit h then visit d finally reach b,F & c F & a F & h F & d F b
+sequenced_visit,"('c', 'b', 'a', 'd', 'h')",first go to c then move to b then go visit a then visit d finally reach h,F & c F & b F & a F & d F h
+sequenced_visit,"('c', 'b', 'a', 'h', 'd')",first go to c then move to b then go visit a then visit h finally reach d,F & c F & b F & a F & h F d
+sequenced_visit,"('c', 'b', 'd', 'a', 'h')",first go to c then move to b then go visit d then visit a finally reach h,F & c F & b F & d F & a F h
+sequenced_visit,"('c', 'b', 'd', 'h', 'a')",first go to c then move to b then go visit d then visit h finally reach a,F & c F & b F & d F & h F a
+sequenced_visit,"('c', 'b', 'h', 'a', 'd')",first go to c then move to b then go visit h then visit a finally reach d,F & c F & b F & h F & a F d
+sequenced_visit,"('c', 'b', 'h', 'd', 'a')",first go to c then move to b then go visit h then visit d finally reach a,F & c F & b F & h F & d F a
+sequenced_visit,"('c', 'd', 'a', 'b', 'h')",first go to c then move to d then go visit a then visit b finally reach h,F & c F & d F & a F & b F h
+sequenced_visit,"('c', 'd', 'a', 'h', 'b')",first go to c then move to d then go visit a then visit h finally reach b,F & c F & d F & a F & h F b
+sequenced_visit,"('c', 'd', 'b', 'a', 'h')",first go to c then move to d then go visit b then visit a finally reach h,F & c F & d F & b F & a F h
+sequenced_visit,"('c', 'd', 'b', 'h', 'a')",first go to c then move to d then go visit b then visit h finally reach a,F & c F & d F & b F & h F a
+sequenced_visit,"('c', 'd', 'h', 'a', 'b')",first go to c then move to d then go visit h then visit a finally reach b,F & c F & d F & h F & a F b
+sequenced_visit,"('c', 'd', 'h', 'b', 'a')",first go to c then move to d then go visit h then visit b finally reach a,F & c F & d F & h F & b F a
+sequenced_visit,"('c', 'h', 'a', 'b', 'd')",first go to c then move to h then go visit a then visit b finally reach d,F & c F & h F & a F & b F d
+sequenced_visit,"('c', 'h', 'a', 'd', 'b')",first go to c then move to h then go visit a then visit d finally reach b,F & c F & h F & a F & d F b
+sequenced_visit,"('c', 'h', 'b', 'a', 'd')",first go to c then move to h then go visit b then visit a finally reach d,F & c F & h F & b F & a F d
+sequenced_visit,"('c', 'h', 'b', 'd', 'a')",first go to c then move to h then go visit b then visit d finally reach a,F & c F & h F & b F & d F a
+sequenced_visit,"('c', 'h', 'd', 'a', 'b')",first go to c then move to h then go visit d then visit a finally reach b,F & c F & h F & d F & a F b
+sequenced_visit,"('c', 'h', 'd', 'b', 'a')",first go to c then move to h then go visit d then visit b finally reach a,F & c F & h F & d F & b F a
+sequenced_visit,"('d', 'a', 'b', 'c', 'h')",first go to d then move to a then go visit b then visit c finally reach h,F & d F & a F & b F & c F h
+sequenced_visit,"('d', 'a', 'b', 'h', 'c')",first go to d then move to a then go visit b then visit h finally reach c,F & d F & a F & b F & h F c
+sequenced_visit,"('d', 'a', 'c', 'b', 'h')",first go to d then move to a then go visit c then visit b finally reach h,F & d F & a F & c F & b F h
+sequenced_visit,"('d', 'a', 'c', 'h', 'b')",first go to d then move to a then go visit c then visit h finally reach b,F & d F & a F & c F & h F b
+sequenced_visit,"('d', 'a', 'h', 'b', 'c')",first go to d then move to a then go visit h then visit b finally reach c,F & d F & a F & h F & b F c
+sequenced_visit,"('d', 'a', 'h', 'c', 'b')",first go to d then move to a then go visit h then visit c finally reach b,F & d F & a F & h F & c F b
+sequenced_visit,"('d', 'b', 'a', 'c', 'h')",first go to d then move to b then go visit a then visit c finally reach h,F & d F & b F & a F & c F h
+sequenced_visit,"('d', 'b', 'a', 'h', 'c')",first go to d then move to b then go visit a then visit h finally reach c,F & d F & b F & a F & h F c
+sequenced_visit,"('d', 'b', 'c', 'a', 'h')",first go to d then move to b then go visit c then visit a finally reach h,F & d F & b F & c F & a F h
+sequenced_visit,"('d', 'b', 'c', 'h', 'a')",first go to d then move to b then go visit c then visit h finally reach a,F & d F & b F & c F & h F a
+sequenced_visit,"('d', 'b', 'h', 'a', 'c')",first go to d then move to b then go visit h then visit a finally reach c,F & d F & b F & h F & a F c
+sequenced_visit,"('d', 'b', 'h', 'c', 'a')",first go to d then move to b then go visit h then visit c finally reach a,F & d F & b F & h F & c F a
+sequenced_visit,"('d', 'c', 'a', 'b', 'h')",first go to d then move to c then go visit a then visit b finally reach h,F & d F & c F & a F & b F h
+sequenced_visit,"('d', 'c', 'a', 'h', 'b')",first go to d then move to c then go visit a then visit h finally reach b,F & d F & c F & a F & h F b
+sequenced_visit,"('d', 'c', 'b', 'a', 'h')",first go to d then move to c then go visit b then visit a finally reach h,F & d F & c F & b F & a F h
+sequenced_visit,"('d', 'c', 'b', 'h', 'a')",first go to d then move to c then go visit b then visit h finally reach a,F & d F & c F & b F & h F a
+sequenced_visit,"('d', 'c', 'h', 'a', 'b')",first go to d then move to c then go visit h then visit a finally reach b,F & d F & c F & h F & a F b
+sequenced_visit,"('d', 'c', 'h', 'b', 'a')",first go to d then move to c then go visit h then visit b finally reach a,F & d F & c F & h F & b F a
+sequenced_visit,"('d', 'h', 'a', 'b', 'c')",first go to d then move to h then go visit a then visit b finally reach c,F & d F & h F & a F & b F c
+sequenced_visit,"('d', 'h', 'a', 'c', 'b')",first go to d then move to h then go visit a then visit c finally reach b,F & d F & h F & a F & c F b
+sequenced_visit,"('d', 'h', 'b', 'a', 'c')",first go to d then move to h then go visit b then visit a finally reach c,F & d F & h F & b F & a F c
+sequenced_visit,"('d', 'h', 'b', 'c', 'a')",first go to d then move to h then go visit b then visit c finally reach a,F & d F & h F & b F & c F a
+sequenced_visit,"('d', 'h', 'c', 'a', 'b')",first go to d then move to h then go visit c then visit a finally reach b,F & d F & h F & c F & a F b
+sequenced_visit,"('d', 'h', 'c', 'b', 'a')",first go to d then move to h then go visit c then visit b finally reach a,F & d F & h F & c F & b F a
+sequenced_visit,"('h', 'a', 'b', 'c', 'd')",first go to h then move to a then go visit b then visit c finally reach d,F & h F & a F & b F & c F d
+sequenced_visit,"('h', 'a', 'b', 'd', 'c')",first go to h then move to a then go visit b then visit d finally reach c,F & h F & a F & b F & d F c
+sequenced_visit,"('h', 'a', 'c', 'b', 'd')",first go to h then move to a then go visit c then visit b finally reach d,F & h F & a F & c F & b F d
+sequenced_visit,"('h', 'a', 'c', 'd', 'b')",first go to h then move to a then go visit c then visit d finally reach b,F & h F & a F & c F & d F b
+sequenced_visit,"('h', 'a', 'd', 'b', 'c')",first go to h then move to a then go visit d then visit b finally reach c,F & h F & a F & d F & b F c
+sequenced_visit,"('h', 'a', 'd', 'c', 'b')",first go to h then move to a then go visit d then visit c finally reach b,F & h F & a F & d F & c F b
+sequenced_visit,"('h', 'b', 'a', 'c', 'd')",first go to h then move to b then go visit a then visit c finally reach d,F & h F & b F & a F & c F d
+sequenced_visit,"('h', 'b', 'a', 'd', 'c')",first go to h then move to b then go visit a then visit d finally reach c,F & h F & b F & a F & d F c
+sequenced_visit,"('h', 'b', 'c', 'a', 'd')",first go to h then move to b then go visit c then visit a finally reach d,F & h F & b F & c F & a F d
+sequenced_visit,"('h', 'b', 'c', 'd', 'a')",first go to h then move to b then go visit c then visit d finally reach a,F & h F & b F & c F & d F a
+sequenced_visit,"('h', 'b', 'd', 'a', 'c')",first go to h then move to b then go visit d then visit a finally reach c,F & h F & b F & d F & a F c
+sequenced_visit,"('h', 'b', 'd', 'c', 'a')",first go to h then move to b then go visit d then visit c finally reach a,F & h F & b F & d F & c F a
+sequenced_visit,"('h', 'c', 'a', 'b', 'd')",first go to h then move to c then go visit a then visit b finally reach d,F & h F & c F & a F & b F d
+sequenced_visit,"('h', 'c', 'a', 'd', 'b')",first go to h then move to c then go visit a then visit d finally reach b,F & h F & c F & a F & d F b
+sequenced_visit,"('h', 'c', 'b', 'a', 'd')",first go to h then move to c then go visit b then visit a finally reach d,F & h F & c F & b F & a F d
+sequenced_visit,"('h', 'c', 'b', 'd', 'a')",first go to h then move to c then go visit b then visit d finally reach a,F & h F & c F & b F & d F a
+sequenced_visit,"('h', 'c', 'd', 'a', 'b')",first go to h then move to c then go visit d then visit a finally reach b,F & h F & c F & d F & a F b
+sequenced_visit,"('h', 'c', 'd', 'b', 'a')",first go to h then move to c then go visit d then visit b finally reach a,F & h F & c F & d F & b F a
+sequenced_visit,"('h', 'd', 'a', 'b', 'c')",first go to h then move to d then go visit a then visit b finally reach c,F & h F & d F & a F & b F c
+sequenced_visit,"('h', 'd', 'a', 'c', 'b')",first go to h then move to d then go visit a then visit c finally reach b,F & h F & d F & a F & c F b
+sequenced_visit,"('h', 'd', 'b', 'a', 'c')",first go to h then move to d then go visit b then visit a finally reach c,F & h F & d F & b F & a F c
+sequenced_visit,"('h', 'd', 'b', 'c', 'a')",first go to h then move to d then go visit b then visit c finally reach a,F & h F & d F & b F & c F a
+sequenced_visit,"('h', 'd', 'c', 'a', 'b')",first go to h then move to d then go visit c then visit a finally reach b,F & h F & d F & c F & a F b
+sequenced_visit,"('h', 'd', 'c', 'b', 'a')",first go to h then move to d then go visit c then visit b finally reach a,F & h F & d F & c F & b F a
+sequenced_visit,"('a', 'b', 'c', 'd', 'h')",first make your way to a then you must go to b after that visit c then move to d finally reach h,F & a F & b F & c F & d F h
+sequenced_visit,"('a', 'b', 'c', 'h', 'd')",first make your way to a then you must go to b after that visit c then move to h finally reach d,F & a F & b F & c F & h F d
+sequenced_visit,"('a', 'b', 'd', 'c', 'h')",first make your way to a then you must go to b after that visit d then move to c finally reach h,F & a F & b F & d F & c F h
+sequenced_visit,"('a', 'b', 'd', 'h', 'c')",first make your way to a then you must go to b after that visit d then move to h finally reach c,F & a F & b F & d F & h F c
+sequenced_visit,"('a', 'b', 'h', 'c', 'd')",first make your way to a then you must go to b after that visit h then move to c finally reach d,F & a F & b F & h F & c F d
+sequenced_visit,"('a', 'b', 'h', 'd', 'c')",first make your way to a then you must go to b after that visit h then move to d finally reach c,F & a F & b F & h F & d F c
+sequenced_visit,"('a', 'c', 'b', 'd', 'h')",first make your way to a then you must go to c after that visit b then move to d finally reach h,F & a F & c F & b F & d F h
+sequenced_visit,"('a', 'c', 'b', 'h', 'd')",first make your way to a then you must go to c after that visit b then move to h finally reach d,F & a F & c F & b F & h F d
+sequenced_visit,"('a', 'c', 'd', 'b', 'h')",first make your way to a then you must go to c after that visit d then move to b finally reach h,F & a F & c F & d F & b F h
+sequenced_visit,"('a', 'c', 'd', 'h', 'b')",first make your way to a then you must go to c after that visit d then move to h finally reach b,F & a F & c F & d F & h F b
+sequenced_visit,"('a', 'c', 'h', 'b', 'd')",first make your way to a then you must go to c after that visit h then move to b finally reach d,F & a F & c F & h F & b F d
+sequenced_visit,"('a', 'c', 'h', 'd', 'b')",first make your way to a then you must go to c after that visit h then move to d finally reach b,F & a F & c F & h F & d F b
+sequenced_visit,"('a', 'd', 'b', 'c', 'h')",first make your way to a then you must go to d after that visit b then move to c finally reach h,F & a F & d F & b F & c F h
+sequenced_visit,"('a', 'd', 'b', 'h', 'c')",first make your way to a then you must go to d after that visit b then move to h finally reach c,F & a F & d F & b F & h F c
+sequenced_visit,"('a', 'd', 'c', 'b', 'h')",first make your way to a then you must go to d after that visit c then move to b finally reach h,F & a F & d F & c F & b F h
+sequenced_visit,"('a', 'd', 'c', 'h', 'b')",first make your way to a then you must go to d after that visit c then move to h finally reach b,F & a F & d F & c F & h F b
+sequenced_visit,"('a', 'd', 'h', 'b', 'c')",first make your way to a then you must go to d after that visit h then move to b finally reach c,F & a F & d F & h F & b F c
+sequenced_visit,"('a', 'd', 'h', 'c', 'b')",first make your way to a then you must go to d after that visit h then move to c finally reach b,F & a F & d F & h F & c F b
+sequenced_visit,"('a', 'h', 'b', 'c', 'd')",first make your way to a then you must go to h after that visit b then move to c finally reach d,F & a F & h F & b F & c F d
+sequenced_visit,"('a', 'h', 'b', 'd', 'c')",first make your way to a then you must go to h after that visit b then move to d finally reach c,F & a F & h F & b F & d F c
+sequenced_visit,"('a', 'h', 'c', 'b', 'd')",first make your way to a then you must go to h after that visit c then move to b finally reach d,F & a F & h F & c F & b F d
+sequenced_visit,"('a', 'h', 'c', 'd', 'b')",first make your way to a then you must go to h after that visit c then move to d finally reach b,F & a F & h F & c F & d F b
+sequenced_visit,"('a', 'h', 'd', 'b', 'c')",first make your way to a then you must go to h after that visit d then move to b finally reach c,F & a F & h F & d F & b F c
+sequenced_visit,"('a', 'h', 'd', 'c', 'b')",first make your way to a then you must go to h after that visit d then move to c finally reach b,F & a F & h F & d F & c F b
+sequenced_visit,"('b', 'a', 'c', 'd', 'h')",first make your way to b then you must go to a after that visit c then move to d finally reach h,F & b F & a F & c F & d F h
+sequenced_visit,"('b', 'a', 'c', 'h', 'd')",first make your way to b then you must go to a after that visit c then move to h finally reach d,F & b F & a F & c F & h F d
+sequenced_visit,"('b', 'a', 'd', 'c', 'h')",first make your way to b then you must go to a after that visit d then move to c finally reach h,F & b F & a F & d F & c F h
+sequenced_visit,"('b', 'a', 'd', 'h', 'c')",first make your way to b then you must go to a after that visit d then move to h finally reach c,F & b F & a F & d F & h F c
+sequenced_visit,"('b', 'a', 'h', 'c', 'd')",first make your way to b then you must go to a after that visit h then move to c finally reach d,F & b F & a F & h F & c F d
+sequenced_visit,"('b', 'a', 'h', 'd', 'c')",first make your way to b then you must go to a after that visit h then move to d finally reach c,F & b F & a F & h F & d F c
+sequenced_visit,"('b', 'c', 'a', 'd', 'h')",first make your way to b then you must go to c after that visit a then move to d finally reach h,F & b F & c F & a F & d F h
+sequenced_visit,"('b', 'c', 'a', 'h', 'd')",first make your way to b then you must go to c after that visit a then move to h finally reach d,F & b F & c F & a F & h F d
+sequenced_visit,"('b', 'c', 'd', 'a', 'h')",first make your way to b then you must go to c after that visit d then move to a finally reach h,F & b F & c F & d F & a F h
+sequenced_visit,"('b', 'c', 'd', 'h', 'a')",first make your way to b then you must go to c after that visit d then move to h finally reach a,F & b F & c F & d F & h F a
+sequenced_visit,"('b', 'c', 'h', 'a', 'd')",first make your way to b then you must go to c after that visit h then move to a finally reach d,F & b F & c F & h F & a F d
+sequenced_visit,"('b', 'c', 'h', 'd', 'a')",first make your way to b then you must go to c after that visit h then move to d finally reach a,F & b F & c F & h F & d F a
+sequenced_visit,"('b', 'd', 'a', 'c', 'h')",first make your way to b then you must go to d after that visit a then move to c finally reach h,F & b F & d F & a F & c F h
+sequenced_visit,"('b', 'd', 'a', 'h', 'c')",first make your way to b then you must go to d after that visit a then move to h finally reach c,F & b F & d F & a F & h F c
+sequenced_visit,"('b', 'd', 'c', 'a', 'h')",first make your way to b then you must go to d after that visit c then move to a finally reach h,F & b F & d F & c F & a F h
+sequenced_visit,"('b', 'd', 'c', 'h', 'a')",first make your way to b then you must go to d after that visit c then move to h finally reach a,F & b F & d F & c F & h F a
+sequenced_visit,"('b', 'd', 'h', 'a', 'c')",first make your way to b then you must go to d after that visit h then move to a finally reach c,F & b F & d F & h F & a F c
+sequenced_visit,"('b', 'd', 'h', 'c', 'a')",first make your way to b then you must go to d after that visit h then move to c finally reach a,F & b F & d F & h F & c F a
+sequenced_visit,"('b', 'h', 'a', 'c', 'd')",first make your way to b then you must go to h after that visit a then move to c finally reach d,F & b F & h F & a F & c F d
+sequenced_visit,"('b', 'h', 'a', 'd', 'c')",first make your way to b then you must go to h after that visit a then move to d finally reach c,F & b F & h F & a F & d F c
+sequenced_visit,"('b', 'h', 'c', 'a', 'd')",first make your way to b then you must go to h after that visit c then move to a finally reach d,F & b F & h F & c F & a F d
+sequenced_visit,"('b', 'h', 'c', 'd', 'a')",first make your way to b then you must go to h after that visit c then move to d finally reach a,F & b F & h F & c F & d F a
+sequenced_visit,"('b', 'h', 'd', 'a', 'c')",first make your way to b then you must go to h after that visit d then move to a finally reach c,F & b F & h F & d F & a F c
+sequenced_visit,"('b', 'h', 'd', 'c', 'a')",first make your way to b then you must go to h after that visit d then move to c finally reach a,F & b F & h F & d F & c F a
+sequenced_visit,"('c', 'a', 'b', 'd', 'h')",first make your way to c then you must go to a after that visit b then move to d finally reach h,F & c F & a F & b F & d F h
+sequenced_visit,"('c', 'a', 'b', 'h', 'd')",first make your way to c then you must go to a after that visit b then move to h finally reach d,F & c F & a F & b F & h F d
+sequenced_visit,"('c', 'a', 'd', 'b', 'h')",first make your way to c then you must go to a after that visit d then move to b finally reach h,F & c F & a F & d F & b F h
+sequenced_visit,"('c', 'a', 'd', 'h', 'b')",first make your way to c then you must go to a after that visit d then move to h finally reach b,F & c F & a F & d F & h F b
+sequenced_visit,"('c', 'a', 'h', 'b', 'd')",first make your way to c then you must go to a after that visit h then move to b finally reach d,F & c F & a F & h F & b F d
+sequenced_visit,"('c', 'a', 'h', 'd', 'b')",first make your way to c then you must go to a after that visit h then move to d finally reach b,F & c F & a F & h F & d F b
+sequenced_visit,"('c', 'b', 'a', 'd', 'h')",first make your way to c then you must go to b after that visit a then move to d finally reach h,F & c F & b F & a F & d F h
+sequenced_visit,"('c', 'b', 'a', 'h', 'd')",first make your way to c then you must go to b after that visit a then move to h finally reach d,F & c F & b F & a F & h F d
+sequenced_visit,"('c', 'b', 'd', 'a', 'h')",first make your way to c then you must go to b after that visit d then move to a finally reach h,F & c F & b F & d F & a F h
+sequenced_visit,"('c', 'b', 'd', 'h', 'a')",first make your way to c then you must go to b after that visit d then move to h finally reach a,F & c F & b F & d F & h F a
+sequenced_visit,"('c', 'b', 'h', 'a', 'd')",first make your way to c then you must go to b after that visit h then move to a finally reach d,F & c F & b F & h F & a F d
+sequenced_visit,"('c', 'b', 'h', 'd', 'a')",first make your way to c then you must go to b after that visit h then move to d finally reach a,F & c F & b F & h F & d F a
+sequenced_visit,"('c', 'd', 'a', 'b', 'h')",first make your way to c then you must go to d after that visit a then move to b finally reach h,F & c F & d F & a F & b F h
+sequenced_visit,"('c', 'd', 'a', 'h', 'b')",first make your way to c then you must go to d after that visit a then move to h finally reach b,F & c F & d F & a F & h F b
+sequenced_visit,"('c', 'd', 'b', 'a', 'h')",first make your way to c then you must go to d after that visit b then move to a finally reach h,F & c F & d F & b F & a F h
+sequenced_visit,"('c', 'd', 'b', 'h', 'a')",first make your way to c then you must go to d after that visit b then move to h finally reach a,F & c F & d F & b F & h F a
+sequenced_visit,"('c', 'd', 'h', 'a', 'b')",first make your way to c then you must go to d after that visit h then move to a finally reach b,F & c F & d F & h F & a F b
+sequenced_visit,"('c', 'd', 'h', 'b', 'a')",first make your way to c then you must go to d after that visit h then move to b finally reach a,F & c F & d F & h F & b F a
+sequenced_visit,"('c', 'h', 'a', 'b', 'd')",first make your way to c then you must go to h after that visit a then move to b finally reach d,F & c F & h F & a F & b F d
+sequenced_visit,"('c', 'h', 'a', 'd', 'b')",first make your way to c then you must go to h after that visit a then move to d finally reach b,F & c F & h F & a F & d F b
+sequenced_visit,"('c', 'h', 'b', 'a', 'd')",first make your way to c then you must go to h after that visit b then move to a finally reach d,F & c F & h F & b F & a F d
+sequenced_visit,"('c', 'h', 'b', 'd', 'a')",first make your way to c then you must go to h after that visit b then move to d finally reach a,F & c F & h F & b F & d F a
+sequenced_visit,"('c', 'h', 'd', 'a', 'b')",first make your way to c then you must go to h after that visit d then move to a finally reach b,F & c F & h F & d F & a F b
+sequenced_visit,"('c', 'h', 'd', 'b', 'a')",first make your way to c then you must go to h after that visit d then move to b finally reach a,F & c F & h F & d F & b F a
+sequenced_visit,"('d', 'a', 'b', 'c', 'h')",first make your way to d then you must go to a after that visit b then move to c finally reach h,F & d F & a F & b F & c F h
+sequenced_visit,"('d', 'a', 'b', 'h', 'c')",first make your way to d then you must go to a after that visit b then move to h finally reach c,F & d F & a F & b F & h F c
+sequenced_visit,"('d', 'a', 'c', 'b', 'h')",first make your way to d then you must go to a after that visit c then move to b finally reach h,F & d F & a F & c F & b F h
+sequenced_visit,"('d', 'a', 'c', 'h', 'b')",first make your way to d then you must go to a after that visit c then move to h finally reach b,F & d F & a F & c F & h F b
+sequenced_visit,"('d', 'a', 'h', 'b', 'c')",first make your way to d then you must go to a after that visit h then move to b finally reach c,F & d F & a F & h F & b F c
+sequenced_visit,"('d', 'a', 'h', 'c', 'b')",first make your way to d then you must go to a after that visit h then move to c finally reach b,F & d F & a F & h F & c F b
+sequenced_visit,"('d', 'b', 'a', 'c', 'h')",first make your way to d then you must go to b after that visit a then move to c finally reach h,F & d F & b F & a F & c F h
+sequenced_visit,"('d', 'b', 'a', 'h', 'c')",first make your way to d then you must go to b after that visit a then move to h finally reach c,F & d F & b F & a F & h F c
+sequenced_visit,"('d', 'b', 'c', 'a', 'h')",first make your way to d then you must go to b after that visit c then move to a finally reach h,F & d F & b F & c F & a F h
+sequenced_visit,"('d', 'b', 'c', 'h', 'a')",first make your way to d then you must go to b after that visit c then move to h finally reach a,F & d F & b F & c F & h F a
+sequenced_visit,"('d', 'b', 'h', 'a', 'c')",first make your way to d then you must go to b after that visit h then move to a finally reach c,F & d F & b F & h F & a F c
+sequenced_visit,"('d', 'b', 'h', 'c', 'a')",first make your way to d then you must go to b after that visit h then move to c finally reach a,F & d F & b F & h F & c F a
+sequenced_visit,"('d', 'c', 'a', 'b', 'h')",first make your way to d then you must go to c after that visit a then move to b finally reach h,F & d F & c F & a F & b F h
+sequenced_visit,"('d', 'c', 'a', 'h', 'b')",first make your way to d then you must go to c after that visit a then move to h finally reach b,F & d F & c F & a F & h F b
+sequenced_visit,"('d', 'c', 'b', 'a', 'h')",first make your way to d then you must go to c after that visit b then move to a finally reach h,F & d F & c F & b F & a F h
+sequenced_visit,"('d', 'c', 'b', 'h', 'a')",first make your way to d then you must go to c after that visit b then move to h finally reach a,F & d F & c F & b F & h F a
+sequenced_visit,"('d', 'c', 'h', 'a', 'b')",first make your way to d then you must go to c after that visit h then move to a finally reach b,F & d F & c F & h F & a F b
+sequenced_visit,"('d', 'c', 'h', 'b', 'a')",first make your way to d then you must go to c after that visit h then move to b finally reach a,F & d F & c F & h F & b F a
+sequenced_visit,"('d', 'h', 'a', 'b', 'c')",first make your way to d then you must go to h after that visit a then move to b finally reach c,F & d F & h F & a F & b F c
+sequenced_visit,"('d', 'h', 'a', 'c', 'b')",first make your way to d then you must go to h after that visit a then move to c finally reach b,F & d F & h F & a F & c F b
+sequenced_visit,"('d', 'h', 'b', 'a', 'c')",first make your way to d then you must go to h after that visit b then move to a finally reach c,F & d F & h F & b F & a F c
+sequenced_visit,"('d', 'h', 'b', 'c', 'a')",first make your way to d then you must go to h after that visit b then move to c finally reach a,F & d F & h F & b F & c F a
+sequenced_visit,"('d', 'h', 'c', 'a', 'b')",first make your way to d then you must go to h after that visit c then move to a finally reach b,F & d F & h F & c F & a F b
+sequenced_visit,"('d', 'h', 'c', 'b', 'a')",first make your way to d then you must go to h after that visit c then move to b finally reach a,F & d F & h F & c F & b F a
+sequenced_visit,"('h', 'a', 'b', 'c', 'd')",first make your way to h then you must go to a after that visit b then move to c finally reach d,F & h F & a F & b F & c F d
+sequenced_visit,"('h', 'a', 'b', 'd', 'c')",first make your way to h then you must go to a after that visit b then move to d finally reach c,F & h F & a F & b F & d F c
+sequenced_visit,"('h', 'a', 'c', 'b', 'd')",first make your way to h then you must go to a after that visit c then move to b finally reach d,F & h F & a F & c F & b F d
+sequenced_visit,"('h', 'a', 'c', 'd', 'b')",first make your way to h then you must go to a after that visit c then move to d finally reach b,F & h F & a F & c F & d F b
+sequenced_visit,"('h', 'a', 'd', 'b', 'c')",first make your way to h then you must go to a after that visit d then move to b finally reach c,F & h F & a F & d F & b F c
+sequenced_visit,"('h', 'a', 'd', 'c', 'b')",first make your way to h then you must go to a after that visit d then move to c finally reach b,F & h F & a F & d F & c F b
+sequenced_visit,"('h', 'b', 'a', 'c', 'd')",first make your way to h then you must go to b after that visit a then move to c finally reach d,F & h F & b F & a F & c F d
+sequenced_visit,"('h', 'b', 'a', 'd', 'c')",first make your way to h then you must go to b after that visit a then move to d finally reach c,F & h F & b F & a F & d F c
+sequenced_visit,"('h', 'b', 'c', 'a', 'd')",first make your way to h then you must go to b after that visit c then move to a finally reach d,F & h F & b F & c F & a F d
+sequenced_visit,"('h', 'b', 'c', 'd', 'a')",first make your way to h then you must go to b after that visit c then move to d finally reach a,F & h F & b F & c F & d F a
+sequenced_visit,"('h', 'b', 'd', 'a', 'c')",first make your way to h then you must go to b after that visit d then move to a finally reach c,F & h F & b F & d F & a F c
+sequenced_visit,"('h', 'b', 'd', 'c', 'a')",first make your way to h then you must go to b after that visit d then move to c finally reach a,F & h F & b F & d F & c F a
+sequenced_visit,"('h', 'c', 'a', 'b', 'd')",first make your way to h then you must go to c after that visit a then move to b finally reach d,F & h F & c F & a F & b F d
+sequenced_visit,"('h', 'c', 'a', 'd', 'b')",first make your way to h then you must go to c after that visit a then move to d finally reach b,F & h F & c F & a F & d F b
+sequenced_visit,"('h', 'c', 'b', 'a', 'd')",first make your way to h then you must go to c after that visit b then move to a finally reach d,F & h F & c F & b F & a F d
+sequenced_visit,"('h', 'c', 'b', 'd', 'a')",first make your way to h then you must go to c after that visit b then move to d finally reach a,F & h F & c F & b F & d F a
+sequenced_visit,"('h', 'c', 'd', 'a', 'b')",first make your way to h then you must go to c after that visit d then move to a finally reach b,F & h F & c F & d F & a F b
+sequenced_visit,"('h', 'c', 'd', 'b', 'a')",first make your way to h then you must go to c after that visit d then move to b finally reach a,F & h F & c F & d F & b F a
+sequenced_visit,"('h', 'd', 'a', 'b', 'c')",first make your way to h then you must go to d after that visit a then move to b finally reach c,F & h F & d F & a F & b F c
+sequenced_visit,"('h', 'd', 'a', 'c', 'b')",first make your way to h then you must go to d after that visit a then move to c finally reach b,F & h F & d F & a F & c F b
+sequenced_visit,"('h', 'd', 'b', 'a', 'c')",first make your way to h then you must go to d after that visit b then move to a finally reach c,F & h F & d F & b F & a F c
+sequenced_visit,"('h', 'd', 'b', 'c', 'a')",first make your way to h then you must go to d after that visit b then move to c finally reach a,F & h F & d F & b F & c F a
+sequenced_visit,"('h', 'd', 'c', 'a', 'b')",first make your way to h then you must go to d after that visit c then move to a finally reach b,F & h F & d F & c F & a F b
+sequenced_visit,"('h', 'd', 'c', 'b', 'a')",first make your way to h then you must go to d after that visit c then move to b finally reach a,F & h F & d F & c F & b F a
 ordered_visit,"('a', 'b', 'c')",go to a but not through b or c and then go to b but not through c and finally go to c,& U ! b a & U ! c b F c
 ordered_visit,"('a', 'c', 'b')",go to a but not through c or b and then go to c but not through b and finally go to b,& U ! c a & U ! b c F b
 ordered_visit,"('b', 'a', 'c')",go to b but not through a or c and then go to a but not through c and finally go to c,& U ! a b & U ! c a F c
 ordered_visit,"('b', 'c', 'a')",go to b but not through c or a and then go to c but not through a and finally go to a,& U ! c b & U ! a c F a
 ordered_visit,"('c', 'a', 'b')",go to c but not through a or b and then go to a but not through b and finally go to b,& U ! a c & U ! b a F b
 ordered_visit,"('c', 'b', 'a')",go to c but not through b or a and then go to b but not through a and finally go to a,& U ! b c & U ! a b F a
-ordered_visit,"('a', 'b', 'c')",make you way to a but keep avoiding b and c and head to b but keep avoiding c and then visit c,& U ! b a & U ! c b F c
-ordered_visit,"('a', 'c', 'b')",make you way to a but keep avoiding c and b and head to c but keep avoiding b and then visit b,& U ! c a & U ! b c F b
-ordered_visit,"('b', 'a', 'c')",make you way to b but keep avoiding a and c and head to a but keep avoiding c and then visit c,& U ! a b & U ! c a F c
-ordered_visit,"('b', 'c', 'a')",make you way to b but keep avoiding c and a and head to c but keep avoiding a and then visit a,& U ! c b & U ! a c F a
-ordered_visit,"('c', 'a', 'b')",make you way to c but keep avoiding a and b and head to a but keep avoiding b and then visit b,& U ! a c & U ! b a F b
-ordered_visit,"('c', 'b', 'a')",make you way to c but keep avoiding b and a and head to b but keep avoiding a and then visit a,& U ! b c & U ! a b F a
-ordered_visit,"('a', 'b', 'c')",direct yourself to a but keep away from b and c then go to b but bypass c and eventually make you way to c,& U ! b a & U ! c b F c
-ordered_visit,"('a', 'c', 'b')",direct yourself to a but keep away from c and b then go to c but bypass b and eventually make you way to b,& U ! c a & U ! b c F b
-ordered_visit,"('b', 'a', 'c')",direct yourself to b but keep away from a and c then go to a but bypass c and eventually make you way to c,& U ! a b & U ! c a F c
-ordered_visit,"('b', 'c', 'a')",direct yourself to b but keep away from c and a then go to c but bypass a and eventually make you way to a,& U ! c b & U ! a c F a
-ordered_visit,"('c', 'a', 'b')",direct yourself to c but keep away from a and b then go to a but bypass b and eventually make you way to b,& U ! a c & U ! b a F b
-ordered_visit,"('c', 'b', 'a')",direct yourself to c but keep away from b and a then go to b but bypass a and eventually make you way to a,& U ! b c & U ! a b F a
+ordered_visit,"('a', 'b', 'c')",make your way to a but keep avoiding b and c and head to b but keep avoiding c and then visit c,& U ! b a & U ! c b F c
+ordered_visit,"('a', 'c', 'b')",make your way to a but keep avoiding c and b and head to c but keep avoiding b and then visit b,& U ! c a & U ! b c F b
+ordered_visit,"('b', 'a', 'c')",make your way to b but keep avoiding a and c and head to a but keep avoiding c and then visit c,& U ! a b & U ! c a F c
+ordered_visit,"('b', 'c', 'a')",make your way to b but keep avoiding c and a and head to c but keep avoiding a and then visit a,& U ! c b & U ! a c F a
+ordered_visit,"('c', 'a', 'b')",make your way to c but keep avoiding a and b and head to a but keep avoiding b and then visit b,& U ! a c & U ! b a F b
+ordered_visit,"('c', 'b', 'a')",make your way to c but keep avoiding b and a and head to b but keep avoiding a and then visit a,& U ! b c & U ! a b F a
+ordered_visit,"('a', 'b', 'c')",direct yourself to a but keep away from b and c then go to b but bypass c and eventually make your way to c,& U ! b a & U ! c b F c
+ordered_visit,"('a', 'c', 'b')",direct yourself to a but keep away from c and b then go to c but bypass b and eventually make your way to b,& U ! c a & U ! b c F b
+ordered_visit,"('b', 'a', 'c')",direct yourself to b but keep away from a and c then go to a but bypass c and eventually make your way to c,& U ! a b & U ! c a F c
+ordered_visit,"('b', 'c', 'a')",direct yourself to b but keep away from c and a then go to c but bypass a and eventually make your way to a,& U ! c b & U ! a c F a
+ordered_visit,"('c', 'a', 'b')",direct yourself to c but keep away from a and b then go to a but bypass b and eventually make your way to b,& U ! a c & U ! b a F b
+ordered_visit,"('c', 'b', 'a')",direct yourself to c but keep away from b and a then go to b but bypass a and eventually make your way to a,& U ! b c & U ! a b F a
 ordered_visit,"('a', 'b', 'c')",keep away from b and c while heading to a and then keep away from c while heading to b and eventually go to c,& U ! b a & U ! c b F c
 ordered_visit,"('a', 'c', 'b')",keep away from c and b while heading to a and then keep away from b while heading to c and eventually go to b,& U ! c a & U ! b c F b
 ordered_visit,"('b', 'a', 'c')",keep away from a and c while heading to b and then keep away from c while heading to a and eventually go to c,& U ! a b & U ! c a F c
@@ -20619,13 +20624,8 @@ ordered_visit,"('b', 'a', 'c')",visit b a and c in order but keep avoiding latte
 ordered_visit,"('b', 'c', 'a')",visit b c and a in order but keep avoiding latter ones when you are heading to former ones,& U ! c b & U ! a c F a
 ordered_visit,"('c', 'a', 'b')",visit c a and b in order but keep avoiding latter ones when you are heading to former ones,& U ! a c & U ! b a F b
 ordered_visit,"('c', 'b', 'a')",visit c b and a in order but keep avoiding latter ones when you are heading to former ones,& U ! b c & U ! a b F a
-patrolling,"('a', 'b')",keep visiting a and b in any order,& G F a G F b
-patrolling,"('b', 'a')",keep visiting b and a in any order,& G F b G F a
-patrolling,"('a', 'b')",make sure a and b are visited infinitely,& G F a G F b
-patrolling,"('b', 'a')",make sure b and a are visited infinitely,& G F b G F a
-patrolling,"('a', 'b')",do not stop visiting a and b,& G F a G F b
-patrolling,"('b', 'a')",do not stop visiting b and a,& G F b G F a
-patrolling,"('a', 'b')",frequent a and b but the order can be arbitrary,& G F a G F b
-patrolling,"('b', 'a')",frequent b and a but the order can be arbitrary,& G F b G F a
-patrolling,"('a', 'b')",keep going back and forth between a and b,& G F a G F b
-patrolling,"('b', 'a')",keep going back and forth between b and a,& G F b G F a
+visit,"('a',)",go to a,F a
+visit,"('a',)",make sure you visit a at least once,F a
+visit,"('a',)",walk to a,F a
+visit,"('a',)",make your way to a,F a
+visit,"('a',)",head to a,F a
