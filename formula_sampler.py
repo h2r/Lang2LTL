@@ -149,8 +149,7 @@ def sequenced_patrol(props):
 def ordered_patrol_fixed(props):
     formula = sequenced_patrol(props[:])
     if len(props) > 1:
-        formula = f"& {formula} {utils(props[:])}"
-        formula = f"& {formula} {ordered_patrol_constraint3(props)}"
+        formula = f"& & {formula} {utils(props[:])} {ordered_patrol_constraint3(props)}"
     return formula
 
 
@@ -280,7 +279,7 @@ def utils(props):
 
 if __name__ == '__main__':
     paser = argparse.ArgumentParser()
-    paser.add_argument("--pattern_type", type=str, default="instantaneous_reaction", help="type of specification pattern.")
+    paser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
     paser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
     paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = paser.parse_args()
