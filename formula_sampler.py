@@ -198,8 +198,7 @@ def past_avoid(props):
 
 
 def global_avoid(props):
-    assert len(props) == 1, f"length of props for global_avoid must be 1, got {len(props)}"
-    return f"G ! {props[0]}"
+    return always(props, negate=True)
 
 
 def future_avoid(props):
@@ -263,6 +262,19 @@ def finals(props):
     if len(props) == 1:
         return f"F {props[0]}"
     return f"& F {props.pop(0)} " + finals(props)
+
+
+def always(props, negate=False):
+    """
+    Conjunction of always.
+    """
+    if negate:
+        operator = "G !"
+    else:
+        operator = "G"
+    if len(props) == 1:
+        return f"{operator} {props[0]}"
+    return f"& {operator} {props.pop(0)} {always(props, negate)}"
 
 
 def utils(props):
