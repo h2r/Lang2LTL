@@ -24,12 +24,8 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2022/12/10 10:55:10 PM EST,saml@princeton.edu,Sequenced Visit,4,"Eventually in some sequence, visit a, b, c, and d. Each must be followed by the next. "
 2022/12/10 10:55:10 PM EST,saml@princeton.edu,Sequenced Visit,4,Visit a. Then visit b. Then visit c. Then visit d. 
 2022/12/10 10:59:15 PM EST,saml@princeton.edu,Sequenced Visit,5,"Visit a, b, c, d, and h in this order. There can be other landmarks in between"
-2022/12/10 11:24:38 PM EST,saml@princeton.edu,Ordered Visit,2,Do not visit b until you go to a
-2022/12/10 11:24:38 PM EST,saml@princeton.edu,Ordered Visit,2,You must visit a first before going to b
 2022/12/10 11:29:59 PM EST,saml@princeton.edu,Ordered Visit,3,Do not visit c until visiting b. Do not visit b until visiting a
 2022/12/10 11:29:59 PM EST,saml@princeton.edu,Ordered Visit,3,"In strictly this order, visit a, then eventually visit b, and finally eventually c"
-2022/12/10 11:33:23 PM EST,saml@princeton.edu,Ordered Visit,4,"Visit a as many times as you want. Then visit b as many times but never visit a again. Then visit c as many times but never visit b again. Finally, visit d"
-2022/12/10 11:43:28 PM EST,saml@princeton.edu,Ordered Visit,5,"Before visiting b, c, d, and h, visit an and never visit it again. Then visit b before c, d, and h, and never visit it again. Do not visit d and h until you visit c. Never visit c again. Then visit d before h and never visit h again. Finally visit h"
 2022/12/10 11:51:39 PM EST,saml@princeton.edu,Strictly Ordered Visit,2,Only visit a once and do not visit b until you visit a. 
 2022/12/11 12:08:43 AM EST,saml@princeton.edu,Strictly Ordered Visit,3,Do not visit c until you visit b. Visit b only once. Do no visit b until you visit a. Visit a only once
 2022/12/11 5:15:29 PM EST,saml@princeton.edu,Strictly Ordered Visit,4,Do not visit d until you visit c. Visit c only once. Do not visit c until you visit b. Visit b only once. Do no visit b until you visit a. Visit a only once
@@ -611,3 +607,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,walk to a
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,make your way to a
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,head to a
+2023/01/16 11:35:18 AM EST,saml@princeton.edu,Strictly Ordered Visit,5,"Before visiting b, c, d, and h, visit an and never visit it again. Then visit b before c, d, and h, and never visit it again. Do not visit d and h until you visit c. Never visit c again. Then visit d before h and never visit h again. Finally visit h"
+2023/01/16 11:36:54 AM EST,saml@princeton.edu,Ordered Visit,2,Do not visit b until you go to a
+2023/01/16 11:36:54 AM EST,saml@princeton.edu,Ordered Visit,2,You must visit a first before going to b
+2023/01/16 11:37:51 AM EST,saml@princeton.edu,Ordered Visit,4,"Visit a as many times as you want while avoiding b, c and d. Then visit b as many times as you want while avoiding c and d. Then visit c as many times as you want while avoiding d. Finally, visit d"
