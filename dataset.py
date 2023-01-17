@@ -1,3 +1,6 @@
+"""
+Generate utterance-language dataset.
+"""
 import os
 from pathlib import Path
 import random
