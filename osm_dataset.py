@@ -44,9 +44,6 @@ def lmk_to_prop(lmk_name):
     """
     :param lmk_name: landmark name, e.g. Canal Street, TD Bank.
     :return: proposition that corresponds to input landmark name and is compatible with Spot.
-
-    References
-    https://stackoverflow.com/questions/6116978/how-to-replace-multiple-substrings-of-a-string
     """
     return "_".join(lmk_name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
 
