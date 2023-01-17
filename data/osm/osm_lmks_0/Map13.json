@@ -1,0 +1,192 @@
+{
+    "Salt & Straw": {
+        "addr:housenumber": "1670", 
+        "cuisine": "ice_cream", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "level": "0", 
+        "addr:postcode": "92101", 
+        "outdoor_seating": "no", 
+        "addr:state": "CA", 
+        "takeaway": "yes", 
+        "phone": "+1-619-542-9394", 
+        "opening_hours": "Mo-Su 11:00-23:00", 
+        "smoking": "no", 
+        "addr:street": "India Street"
+    }, 
+    "West Cedar Market": {
+        "shop": "convenience"
+    }, 
+    "Firehouse Museum": {
+        "addr:housenumber": "1570", 
+        "building": "yes", 
+        "gnis:county_name": "San Diego", 
+        "gnis:reviewed": "no", 
+        "addr:postcode": "92101", 
+        "ele": "15", 
+        "source": "USGS Geonames;SanGIS Addresses Public Domain (http://www.sangis.org/)", 
+        "wikidata": "Q64167289", 
+        "gnis:import_uuid": "57871b70-0100-4405-bb30-88b2e001a944", 
+        "gnis:feature_id": "1869944", 
+        "tourism": "museum", 
+        "addr:street": "Columbia Street"
+    }, 
+    "The Market By Buon Appetito": {
+        "shop": "supermarket"
+    }, 
+    "Sogno Di Vino": {
+        "addr:housenumber": "1607", 
+        "cuisine": "italian", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street"
+    }, 
+    "Tazza D'Oro": {
+        "addr:housenumber": "1603", 
+        "cuisine": "coffee_shop", 
+        "amenity": "cafe", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street", 
+        "internet_access": "yes"
+    }, 
+    "Wells Fargo": {
+        "amenity": "atm"
+    }, 
+    "Burger Lounge": {
+        "amenity": "restaurant"
+    }, 
+    "Indigo Grill": {
+        "source": "survey", 
+        "amenity": "restaurant"
+    }, 
+    "Ironside": {
+        "addr:housenumber": "1654", 
+        "cuisine": "regional", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street"
+    }, 
+    "ITH Eco Farm House San Diego": {
+        "building": "yes", 
+        "sangis:TYPE": "Office", 
+        "sangis:OBJECTID": "14436", 
+        "source": "SanGIS Footprints_Nonresidential_SD public domain (http://www.sangis.org/)", 
+        "building_type": "office", 
+        "tourism": "hotel"
+    }, 
+    "Farmers Market (Wed and Sat)": {
+        "amenity": "fast_food"
+    }, 
+    "Village Walk": {
+        "addr:housenumber": "1501", 
+        "source": "SanGIS Addresses Public Domain (http://www.sangis.org/)", 
+        "addr:country": "US", 
+        "addr:street": "India Street"
+    }, 
+    "Visage Beauty Salon": {
+        "shop": "beauty"
+    }, 
+    "Mexican Consulate": {
+        "addr:housenumber": "1557", 
+        "website": "https://consulmex.sre.gob.mx/sandiego/", 
+        "amenity": "embassy", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "diplomatic": "consulate", 
+        "source": "SanGIS Addresses Public Domain (http://www.sangis.org/)", 
+        "addr:country": "US", 
+        "addr:street": "India Street"
+    }, 
+    "Our Lady of the Rosary Church": {
+        "amenity": "place_of_worship", 
+        "gnis:state_id": "06", 
+        "gnis:county_id": "073", 
+        "ele": "21", 
+        "religion": "christian", 
+        "gnis:created": "06/13/2000", 
+        "gnis:feature_id": "1869960", 
+        "denomination": "catholic"
+    }, 
+    "Urban Boutique Hotel": {
+        "tourism": "hotel"
+    }, 
+    "Queenstown": {
+        "cuisine": "New zeland", 
+        "amenity": "restaurant"
+    }, 
+    "Lofty Coffee & co.": {
+        "addr:housenumber": "444", 
+        "cuisine": "vegan;sandwich;breakfast;coffee_shop", 
+        "amenity": "cafe", 
+        "name:en": "Lofty Coffee & co.", 
+        "addr:street": "West Cedar Street", 
+        "internet_access": "wlan"
+    }, 
+    "Davanti Enoteca": {
+        "addr:housenumber": "1655", 
+        "cuisine": "italian", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street"
+    }, 
+    "Princess Pub and Grille": {
+        "source": "SanGIS Business Sites Public Domain (http://www.sangis.org/)", 
+        "amenity": "pub"
+    }, 
+    "Little Italy": {
+        "place": "neighbourhood"
+    }, 
+    "Lofty": {
+        "amenity": "restaurant", 
+        "name:fr": "Lofty"
+    }, 
+    "Buon Appetito": {
+        "addr:housenumber": "1609", 
+        "cuisine": "italian", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street"
+    }, 
+    "La Vita Little Italy": {
+        "building": "yes", 
+        "building:height": "79 m", 
+        "building:levels": "24"
+    }, 
+    "Piazza della Famiglia": {
+        "website": "https://www.littleitalysd.com/explore/piazza-della-famiglia", 
+        "source": "local knowledge", 
+        "landuse": "retail", 
+        "description": "Newly constructed plaza and retail area in Little Italy with cafes and a food hall. Also hosts live music, the Saturday farmers' market and provides seating for nearby restaurants and cafes."
+    }, 
+    "iDessert": {
+        "addr:housenumber": "1608 India St", 
+        "amenity": "restaurant"
+    }, 
+    "Sorrento Ristorante": {
+        "addr:housenumber": "1646 India", 
+        "cuisine": "italian", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "addr:postcode": "92101"
+    }, 
+    "Harbor Breakfast": {
+        "amenity": "restaurant"
+    }, 
+    "Prepkitchen Little Italy": {
+        "addr:housenumber": "1660", 
+        "cuisine": "regional", 
+        "amenity": "restaurant", 
+        "addr:city": "San Diego", 
+        "level": "1", 
+        "addr:postcode": "92101", 
+        "addr:street": "India Street"
+    }, 
+    "Italian Cultural Center": {
+        "tourism": "museum"
+    }
+}

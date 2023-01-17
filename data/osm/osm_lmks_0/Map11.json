@@ -1,0 +1,438 @@
+{
+    "Wilson": {
+        "building": "dormitory", 
+        "addr:postcode": "19104", 
+        "addr:city": "Philadelphia"
+    }, 
+    "Smith": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Graduate": {
+        "building": "dormitory"
+    }, 
+    "Warwick": {
+        "building": "dormitory"
+    }, 
+    "CHOP Parking Garage": {
+        "access": "permissive", 
+        "amenity": "parking", 
+        "fee": "yes"
+    }, 
+    "Hopkinson": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Stouffer Commons": {
+        "building": "yes", 
+        "addr:postcode": "19104", 
+        "addr:city": "Philadelphia", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Irvine Auditorium": {
+        "addr:housenumber": "3401", 
+        "building": "university", 
+        "amenity": "theatre", 
+        "addr:city": "Philadelphia", 
+        "addr:postcode": "19104", 
+        "wheelchair": "yes", 
+        "wikipedia": "en:Irvine Auditorium", 
+        "wikidata": "Q15228822", 
+        "toilets:wheelchair": "yes", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Bodine": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "James G. Kaskey Memorial Park": {
+        "leisure": "park"
+    }, 
+    "Ryan Veterinary Hospital": {
+        "addr:housenumber": "3900", 
+        "building": "yes", 
+        "amenity": "veterinary", 
+        "addr:street": "Spruce Street", 
+        "addr:postcode": "19104"
+    }, 
+    "Brooks": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Biomedical Research Building II/III": {
+        "building": "yes", 
+        "building:levels": "15"
+    }, 
+    "Hospital of the University of Pennsylvania": {
+        "addr:housenumber": "3400", 
+        "website": "https://www.pennmedicine.org/for-patients-and-visitors/penn-medicine-locations/hospital-of-the-university-of-pennsylvania", 
+        "amenity": "hospital", 
+        "addr:city": "Philadelphia", 
+        "emergency": "yes", 
+        "addr:postcode": "19104", 
+        "healthcare": "hospital", 
+        "wikipedia": "en:Hospital of the University of Pennsylvania", 
+        "phone": "+1 215 662 4000", 
+        "wikidata": "Q5908783", 
+        "opening_hours": "24/7", 
+        "operator": "Penn Medicine", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Children's Hospital of Philadelphia Heliport": {
+        "aeroway": "helipad", 
+        "faa": "9PN2", 
+        "rooftop": "yes", 
+        "surface": "concrete"
+    }, 
+    "Claudia Cohen Hall": {
+        "addr:housenumber": "249", 
+        "building": "university", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "6", 
+        "addr:postcode": "19104", 
+        "old_name": "Logan Hall", 
+        "addr:street": "South 36th Street"
+    }, 
+    "Lower Quad": {
+        "leisure": "park"
+    }, 
+    "Rodney": {
+        "building": "dormitory"
+    }, 
+    "E.F. Smith": {
+        "building": "dormitory"
+    }, 
+    "Ashhurst": {
+        "building": "dormitory"
+    }, 
+    "Children's Hospital of Philadelphia": {
+        "addr:housenumber": "3401", 
+        "website": "https://www.chop.edu/", 
+        "amenity": "hospital", 
+        "addr:city": "Philadelphia", 
+        "emergency": "yes", 
+        "addr:postcode": "19104", 
+        "healthcare": "hospital", 
+        "short_name": "CHOP", 
+        "phone": "http://www.chop.edu/", 
+        "wikipedia": "en:Children's Hospital of Philadelphia", 
+        "wikidata": "Q4569202", 
+        "opening_hours": "24/7", 
+        "addr:street": "Civic Center Boulevard"
+    }, 
+    "Memorial Tower": {
+        "addr:housenumber": "3700", 
+        "building": "dormitory", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "5", 
+        "addr:postcode": "19104", 
+        "addr:state": "PA", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Au Bon Pain": {
+        "cuisine": "sandwich", 
+        "amenity": "fast_food", 
+        "brand": "Au Bon Pain", 
+        "brand:wikidata": "Q4818942", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:Au Bon Pain"
+    }, 
+    "Wistar Institute": {
+        "addr:housenumber": "3601", 
+        "building": "university", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "8", 
+        "addr:postcode": "19104", 
+        "wikidata": "Q4112246", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Leonard and Madlyn Abramson Pediatric Research Center": {
+        "building:part": "yes"
+    }, 
+    "Butcher": {
+        "building": "dormitory", 
+        "building:levels": "5"
+    }, 
+    "McIlhenney": {
+        "building": "dormitory"
+    }, 
+    "Biology Pond": {
+        "natural": "water", 
+        "created_by": "Potlatch 0.10f"
+    }, 
+    "Speakman": {
+        "building": "dormitory", 
+        "building:levels": "5"
+    }, 
+    "Chestnut": {
+        "building": "dormitory", 
+        "building:levels": "5"
+    }, 
+    "Fisher Fine Arts Library": {
+        "building": "yes", 
+        "wheelchair": "limited", 
+        "wikidata": "Q5454798", 
+        "amenity": "library"
+    }, 
+    "Children's Seashore House of CHOP": {
+        "building": "hospital"
+    }, 
+    "Leidy": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Mudd Labs": {
+        "building": "yes"
+    }, 
+    "Richards": {
+        "addr:housenumber": "3700", 
+        "building": "yes", 
+        "addr:street": "Hamilton Walk", 
+        "building:levels": "8", 
+        "addr:postcode": "19104"
+    }, 
+    "Wawa": {
+        "shop": "convenience", 
+        "brand": "Wawa", 
+        "brand:wikidata": "Q5936320", 
+        "brand:wikipedia": "en:Wawa (company)"
+    }, 
+    "Ward": {
+        "building": "dormitory"
+    }, 
+    "Anatomy Chemistry": {
+        "building": "yes"
+    }, 
+    "Baird": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Richard D Wood Pediatric Ambulatory Care Center": {
+        "building:part": "hospital"
+    }, 
+    "South Tower": {
+        "building:part": "hospital"
+    }, 
+    "Houston Hall": {
+        "building": "university", 
+        "addr:postcode": "19104", 
+        "wikidata": "Q5916568", 
+        "addr:city": "Philadelphia"
+    }, 
+    "The X": {
+        "leisure": "park"
+    }, 
+    "CHOP Main Building": {
+        "addr:housenumber": "3401", 
+        "addr:postcode": "19104", 
+        "building": "hospital", 
+        "addr:street": "Civic Center Boulevard"
+    }, 
+    "New York Alumni": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Cleemann": {
+        "building": "dormitory"
+    }, 
+    "Bishop White": {
+        "building": "dormitory"
+    }, 
+    "Kaplan Wing": {
+        "building": "yes"
+    }, 
+    "Baldwin": {
+        "building": "dormitory", 
+        "building:levels": "4", 
+        "addr:state": "PA"
+    }, 
+    "Fagin Hall": {
+        "building": "yes"
+    }, 
+    "Baby Quad": {
+        "leisure": "park"
+    }, 
+    "John Morgan": {
+        "addr:housenumber": "3620", 
+        "building": "yes", 
+        "amenity": "atm", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "8", 
+        "addr:postcode": "19104", 
+        "addr:state": "Pa", 
+        "wikidata": "Q19603957", 
+        "addr:street": "Hamilton Walk"
+    }, 
+    "The UPS Store": {
+        "amenity": "post_office", 
+        "short_name": "UPS", 
+        "wheelchair": "yes", 
+        "brand:wikidata": "Q7771029", 
+        "brand": "The UPS Store", 
+        "brand:wikipedia": "en:The UPS Store"
+    }, 
+    "Lancaster Farms CSA Drop Site": {
+        "addr:housenumber": "3400", 
+        "website": "https://lancasterfarmfresh.com/csa-pickup/", 
+        "description": "The Spruce St. Cafe at the hospital of UPenn", 
+        "addr:postcode": "19104", 
+        "addr:city": "Philadelphia", 
+        "farm_boxes": "pickup", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Vance Hall": {
+        "addr:housenumber": "3733", 
+        "building": "university", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "7", 
+        "addr:postcode": "19104", 
+        "addr:street": "Spruce Street"
+    }, 
+    "Lippincott": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Birthday": {
+        "building": "dormitory"
+    }, 
+    "Leidy Laboratories": {
+        "building": "yes"
+    }, 
+    "Stellar Chance Labs": {
+        "addr:housenumber": "422", 
+        "building": "yes", 
+        "addr:street": "Curie Boulevard", 
+        "source": "Bing"
+    }, 
+    "Magee": {
+        "building": "dormitory"
+    }, 
+    "Perelman Center for Advanced Medicine": {
+        "building": "yes"
+    }, 
+    "Franklin": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Blockley Hall": {
+        "building": "yes", 
+        "source": "Bing", 
+        "wikipedia": "en:Blockley Hall"
+    }, 
+    "Beijing": {
+        "cuisine": "chinese", 
+        "amenity": "restaurant"
+    }, 
+    "Veterans' Affairs Medical Centre": {
+        "building": "hospital", 
+        "building:levels": "9"
+    }, 
+    "Craig": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Provost Tower": {
+        "building": "dormitory"
+    }, 
+    "CHOP West Tower": {
+        "building": "hospital"
+    }, 
+    "Class of '28": {
+        "building": "dormitory", 
+        "building:levels": "5"
+    }, 
+    "Fitler": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Carruth": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "McClelland": {
+        "building": "dormitory", 
+        "building:levels": "2"
+    }, 
+    "Hamilton Field": {
+        "landuse": "grass", 
+        "leisure": "park"
+    }, 
+    "Williams Hall": {
+        "building": "yes", 
+        "building:levels": "7"
+    }, 
+    "Thomas Penn": {
+        "building": "dormitory"
+    }, 
+    "Upper Quad": {
+        "leisure": "park"
+    }, 
+    "Coxe": {
+        "building": "dormitory"
+    }, 
+    "37th Street Station": {
+        "railway": "subway_entrance", 
+        "wheelchair": "no", 
+        "toilets:wheelchair": "no"
+    }, 
+    "USPS Postbox": {
+        "amenity": "post_box"
+    }, 
+    "Morris": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "Morgan": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "McKean": {
+        "building": "dormitory", 
+        "building:levels": "4", 
+        "addr:state": "PA"
+    }, 
+    "Clinical Research Building": {
+        "building": "yes", 
+        "source": "Bing", 
+        "wikipedia": "en:Clinical Research Building (Penn Med)"
+    }, 
+    "Foerderer": {
+        "building": "dormitory", 
+        "building:levels": "4"
+    }, 
+    "College Hall": {
+        "building": "university", 
+        "building:levels": "6", 
+        "wikidata": "Q5146410", 
+        "addr:city": "Philadelphia", 
+        "addr:postcode": "19104"
+    }, 
+    "West Philly Foods CSA Drop Site": {
+        "farm_boxes": "pickup", 
+        "addr:postcode": "19104", 
+        "addr:city": "Philadelphia", 
+        "description": "Abramson Research Center Lobby and Karabots of the Children's Hospital of Philadelphia", 
+        "addr:street": "34th Street and Civic Center Boulevard"
+    }, 
+    "1920 Commons": {
+        "building": "university", 
+        "addr:postcode": "19104", 
+        "addr:city": "Philadelphia"
+    }, 
+    "Mask & Wig": {
+        "building": "dormitory"
+    }, 
+    "Steinberg-Dietrich Hall": {
+        "addr:housenumber": "3620", 
+        "building": "university", 
+        "addr:city": "Philadelphia", 
+        "building:levels": "5", 
+        "addr:postcode": "19104", 
+        "roof:material": "concrete", 
+        "building:material": "brick", 
+        "addr:street": "Locust Walk"
+    }, 
+    "Stouffer College House": {
+        "building": "dormitory"
+    }
+}

@@ -1,0 +1,528 @@
+{
+    "Joy Luck Palace": {
+        "amenity": "restaurant", 
+        "name:zh": "彩福樓"
+    }, 
+    "New ML Oro Jewelry, Inc.": {
+        "addr:housenumber": "199A", 
+        "shop": "jewelry", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "website": "https://www.newmlorojewelry.com/", 
+        "phone": "+1 212-925-0477", 
+        "opening_hours": "Mo-Su 10:30-18:00", 
+        "addr:street": "Canal Street"
+    }, 
+    "TD Bank": {
+        "addr:housenumber": "155", 
+        "amenity": "bank", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "atm": "yes", 
+        "addr:state": "NY", 
+        "opening_hours": "Mo-Fr 07:30-19:00; Sa 07:30-16:00; Su 11:00-15:00", 
+        "addr:country": "US", 
+        "addr:street": "Canal Street"
+    }, 
+    "Audrey Bakery & Cafe": {
+        "addr:housenumber": "174", 
+        "shop": "bakery", 
+        "addr:street": "Canal Street"
+    }, 
+    "Eyesmate Optical": {
+        "addr:housenumber": "107", 
+        "shop": "optician", 
+        "addr:street": "Mott Street"
+    }, 
+    "Eastern States Buddhist Temple": {
+        "amenity": "place_of_worship", 
+        "gnis:state_id": "36", 
+        "gnis:county_id": "061", 
+        "ele": "10", 
+        "religion": "buddhist", 
+        "gnis:created": "02/15/2006", 
+        "gnis:feature_id": "2083802"
+    }, 
+    "Oriental Culture Enterprises Co": {
+        "addr:housenumber": "13-17", 
+        "shop": "books", 
+        "contact:fax": "+1-212-431-6695", 
+        "addr:city": "New York", 
+        "contact:email": "ocebooks@yahoo.com", 
+        "addr:postcode": "10013", 
+        "contact:website": "http://www.oceweb.com/", 
+        "contact:phone": "+1-212-226-8461", 
+        "addr:state": "NY", 
+        "addr:floor": "2nd", 
+        "opening_hours": "Mo-Su 10:00-19:00", 
+        "name:zh": "東方文化事業公司", 
+        "addr:street": "Elizabeth Street"
+    }, 
+    "Shinka ramen & sake bar": {
+        "addr:housenumber": "93", 
+        "cuisine": "japanese", 
+        "amenity": "restaurant", 
+        "addr:street": "Bowery"
+    }, 
+    "Yee Li": {
+        "addr:housenumber": "1", 
+        "amenity": "restaurant", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "phone": "+1 212 219-3686", 
+        "name:zh": "裕利大飯店", 
+        "addr:street": "Elizabeth Street"
+    }, 
+    "Manhattan Bridge Arch": {
+        "building": "yes", 
+        "layer": "1", 
+        "height": "21.5", 
+        "historic": "city_gate", 
+        "nycdoitt:bin": "1088931", 
+        "start_date": "1912"
+    }, 
+    "Yaya Tea Garden": {
+        "addr:housenumber": "51", 
+        "cuisine": "japanese;chinese", 
+        "amenity": "cafe", 
+        "opening_hours": "Mo-Su 10:00-21:00", 
+        "website": "http://www.yayatea.com", 
+        "phone": "2122268803", 
+        "addr:street": "Chrystie Street"
+    }, 
+    "Citi Bike - Elizabeth St & Hester St": {
+        "website": "https://citibikenyc.com/", 
+        "operator": "NYC Bike Share", 
+        "amenity": "bicycle_rental", 
+        "capacity": "31", 
+        "network": "Citi Bike"
+    }, 
+    "The Bowery": {
+        "amenity": "bar"
+    }, 
+    "Kung Fu Tea": {
+        "opening_hours": "Mo-Su 11:00-22:00", 
+        "amenity": "cafe"
+    }, 
+    "house of vegetarian": {
+        "amenity": "restaurant"
+    }, 
+    "Simply Bakery": {
+        "addr:housenumber": "70", 
+        "shop": "bakery", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "phone": "+1 212 775-1188", 
+        "name:zh": "麵包工坊", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Hao Zu Dao": {
+        "addr:housenumber": "59", 
+        "shop": "massage", 
+        "addr:city": "New York", 
+        "opening_hours": "Mo-Su 09:30-22:00", 
+        "addr:state": "NY", 
+        "phone": "+1-212-796-7878", 
+        "addr:zip": "10013", 
+        "addr:street": "Mott Street"
+    }, 
+    "Penguin Ice Cream": {
+        "addr:housenumber": "196", 
+        "phone": "+1-646-288-3386", 
+        "amenity": "cafe", 
+        "addr:street": "Canal Street"
+    }, 
+    "West New Malaysia Restaurant": {
+        "addr:housenumber": "46-48", 
+        "addr:postcode": "10013", 
+        "amenity": "restaurant", 
+        "addr:street": "Bowery"
+    }, 
+    "7955 AE Comapny": {
+        "addr:housenumber": "72", 
+        "shop": "herbalist", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "name:zh": "華豐", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Chinatown Federal Savings Bank": {
+        "addr:housenumber": "172A", 
+        "phone": "+1-212-334-9191", 
+        "amenity": "bank", 
+        "addr:street": "Canal Street"
+    }, 
+    "New World Hotel": {
+        "tourism": "hotel"
+    }, 
+    "Sun Bright": {
+        "addr:housenumber": "140", 
+        "tourism": "hostel", 
+        "addr:street": "Hester Street"
+    }, 
+    "Gong Cha": {
+        "addr:housenumber": "72", 
+        "website": "https://www.gongchausa.com/new-york-chinatown-nyc-2", 
+        "amenity": "cafe", 
+        "addr:postcode": "10013", 
+        "phone": "+1 646-726-4940", 
+        "branch": "Chinatown - Bayard", 
+        "opening_hours": "10:30-21:30", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Tinma Travel & Tours": {
+        "addr:housenumber": "46", 
+        "website": "http://www.tinmatours.com", 
+        "fax": "+1-212-385-2210", 
+        "office": "travel_agent", 
+        "addr:postcode": "10013", 
+        "phone": "+1-212-385-1688", 
+        "addr:street": "Bowery"
+    }, 
+    "wonton garden": {
+        "addr:housenumber": "56", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant", 
+        "addr:street": "Mott street"
+    }, 
+    "Keki Modern Cakes": {
+        "amenity": "restaurant"
+    }, 
+    "NYPD 5 PCT": {
+        "amenity": "police"
+    }, 
+    "oo35mm": {
+        "addr:housenumber": "81", 
+        "shop": "cosmetics", 
+        "addr:unit": "2FL", 
+        "level": "1", 
+        "addr:postcode": "10013", 
+        "wheelchair": "no", 
+        "website": "https://oo35mm.com/", 
+        "phone": "+1 718-496-8163", 
+        "opening_hours": "Mo-Su 12:00-19:30", 
+        "addr:street": "Mott Street"
+    }, 
+    "XO Kitchen": {
+        "addr:housenumber": "148", 
+        "cuisine": "chinese;japanese", 
+        "amenity": "restaurant", 
+        "opening_hours": "Mo-Su 08:30-23:00", 
+        "website": "http://xokitchen.com", 
+        "phone": "2129658645"
+    }, 
+    "Tyka Pharmacy": {
+        "amenity": "pharmacy"
+    }, 
+    "IES Test Prep": {
+        "amenity": "prep_school"
+    }, 
+    "Sorbillo": {
+        "cuisine": "italian", 
+        "amenity": "restaurant"
+    }, 
+    "Unique Hype Collection": {
+        "addr:housenumber": "10", 
+        "shop": "clothes", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "contact:instagram": "https://www.instagram.com/uniquehypecollection/?hl=en", 
+        "opening_hours": "Mo-Su 12:00-20:00", 
+        "addr:street": "Elizabeth Street"
+    }, 
+    "Mott Street Optical": {
+        "shop": "optician", 
+        "addr:housenumber": "52", 
+        "payment:mastercard": "yes", 
+        "payment:discover_card": "yes", 
+        "contact:facebook": "https://www.facebook.com/MottStreetOptical/", 
+        "opening_hours": "Mo-Sa 10:00-19:00; Su 10:00-18:30", 
+        "payment:jcb": "yes", 
+        "brand": "Mott Optical Group", 
+        "fax": "+1 212-431-8177", 
+        "addr:state": "NY", 
+        "contact:instagram": "https://www.instagram.com/mottopticalgroup/", 
+        "website": "https://www.mottoptical.com/pages/mott-street-optical", 
+        "phone": "+1 212-431-8188", 
+        "addr:city": "New York", 
+        "payment:diners_club": "yes", 
+        "payment:visa": "yes", 
+        "addr:postcode": "10013", 
+        "payment:american_express": "yes", 
+        "name:zh": "永昌眼鏡公司", 
+        "email": "mott@mottoptical.com", 
+        "addr:street": "Mott Street"
+    }, 
+    "Canal Street": {
+        "tourism": "attraction"
+    }, 
+    "Tesla Supercharger": {
+        "amenity": "charging_station", 
+        "capacity": "2", 
+        "brand": "Tesla Supercharger", 
+        "brand:wikidata": "Q17089620", 
+        "operator": "Tesla Motors", 
+        "brand:wikipedia": "en:Tesla Supercharger"
+    }, 
+    "Sun's Organic Garden": {
+        "addr:postcode": "10013", 
+        "amenity": "cafe", 
+        "addr:street": "Bayard Street", 
+        "phone": "+1 212-566-3260"
+    }, 
+    "Lucky Star Bamboo Depot": {
+        "addr:housenumber": "64A", 
+        "shop": "supermarket", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "name:zh": "皇冠公司", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Citibank": {
+        "addr:housenumber": "164", 
+        "amenity": "bank", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "opening_hours": "Mo-Fr 08:30-18:00; Sa 10:00-14:00", 
+        "addr:country": "US", 
+        "addr:street": "Canal Street"
+    }, 
+    "Bake Culture": {
+        "addr:housenumber": "48", 
+        "cuisine": "coffee_shop;pastry", 
+        "amenity": "cafe", 
+        "shop": "bakery", 
+        "addr:postcode": "10013", 
+        "website": "https://bakecultureusa.com", 
+        "phone": "+1-646-858-2898", 
+        "drink:tea": "yes", 
+        "opening_hours": "Mo-Th 08:00-19:30; Fr-Sa 08:00-20:00; Su 08:00-19:30", 
+        "drink:coffee": "yes", 
+        "drink:espresso": "yes", 
+        "addr:street": "Bowery"
+    }, 
+    "Farreros Bakery": {
+        "addr:housenumber": "108", 
+        "shop": "bakery", 
+        "atm": "yes", 
+        "addr:street": "Mulberry Street"
+    }, 
+    "Chinatown": {
+        "tourism": "attraction"
+    }, 
+    "Amazing 66": {
+        "addr:housenumber": "66", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant", 
+        "addr:city": "New York City", 
+        "addr:postcode": "10013", 
+        "website": "http://amazing66.com/", 
+        "opening_hours": "Mo-Su 11:00-23:00", 
+        "opening_hours:url": "http://amazing66.com/hours", 
+        "addr:street": "Mott Street"
+    }, 
+    "New Mandarin Court": {
+        "addr:housenumber": "61", 
+        "cuisine": "Chinese", 
+        "amenity": "restaurant", 
+        "opening_hours": "Mo-Su 10:00-23:00", 
+        "phone": "212-608-3838", 
+        "cuisine:dim_sum": "yes", 
+        "addr:street": "Mott Street"
+    }, 
+    "Taipan Bakery": {
+        "addr:housenumber": "194", 
+        "opening_hours": "Mo-Su 07:00-20:30", 
+        "shop": "bakery", 
+        "addr:street": "Canal Street"
+    }, 
+    "Bakery": {
+        "shop": "bakery"
+    }, 
+    "East West Bank": {
+        "addr:housenumber": "77", 
+        "amenity": "bank", 
+        "addr:city": "New York", 
+        "addr:postcode": "10002", 
+        "atm": "yes", 
+        "addr:state": "NY", 
+        "opening_hours": "Mo-Fr 08:30-17:00; Sa 10:00-14:00", 
+        "addr:country": "US", 
+        "addr:street": "Bowery"
+    }, 
+    "Intermediate School 131": {
+        "addr:housenumber": "100", 
+        "building": "school", 
+        "amenity": "school", 
+        "gnis:state_id": "36", 
+        "addr:postcode": "10002", 
+        "gnis:county_id": "061", 
+        "ele": "13", 
+        "gnis:created": "01/01/2000", 
+        "gnis:feature_id": "954341", 
+        "height": "20.9", 
+        "nycdoitt:bin": "1082489", 
+        "addr:street": "Hester Street"
+    }, 
+    "Bayard Street Obstetrics and Gynecology": {
+        "addr:housenumber": "68", 
+        "website": "http://bayardstobgyn.com/", 
+        "amenity": "clinic", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "phone": "+1 212 226-5530", 
+        "name:zh": "擺也婦產科", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Wanda Coach": {
+        "addr:housenumber": "103", 
+        "website": "https://www.wandacoach.com", 
+        "amenity": "bus_station", 
+        "addr:postcode": "10002", 
+        "phone": "+1 917 717 4666", 
+        "addr:street": "Canal Street"
+    }, 
+    "Gee How Oak Tin Association": {
+        "amenity": "community_centre"
+    }, 
+    "Xi'an Famous Foods": {
+        "addr:housenumber": "65", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant"
+    }, 
+    "Bowery & Hester Street": {
+        "shelter": "no", 
+        "highway": "bus_stop", 
+        "bench": "no"
+    }, 
+    "Ten Ren": {
+        "website": "http://tenrenusa.com", 
+        "cuisine": "korean", 
+        "amenity": "cafe", 
+        "name:en": "Ten Ren's Tea Time"
+    }, 
+    "Citi Bike - Forsyth St & Canal St": {
+        "website": "https://citibikenyc.com/", 
+        "operator": "NYC Bike Share", 
+        "amenity": "bicycle_rental", 
+        "capacity": "29", 
+        "network": "Citi Bike"
+    }, 
+    "Hoy Wong Restaurant": {
+        "addr:housenumber": "81", 
+        "amenity": "restaurant", 
+        "addr:street": "Mott street"
+    }, 
+    "Royal Seafood Restaurant": {
+        "addr:housenumber": "103", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant", 
+        "website": "http://royal-seafood.com", 
+        "phone": "2122192338", 
+        "addr:street": "Mott Street"
+    }, 
+    "186f Kepler": {
+        "addr:housenumber": "171", 
+        "tourism": "gallery", 
+        "email": "today@186fkepler.com", 
+        "addr:street": "Canal Street"
+    }, 
+    "New Green Bo": {
+        "addr:housenumber": "66", 
+        "cuisine": "asian", 
+        "amenity": "restaurant", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "addr:street": "Bayard Street"
+    }, 
+    "Mei Lai Wah Coffee": {
+        "addr:housenumber": "64", 
+        "amenity": "restaurant", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "name:zh": "美麗華", 
+        "addr:street": "Bayard Street"
+    }, 
+    "HSBC": {
+        "opening_hours": "Mo-Fr 08:30-17:00; Sa 10:00-14:00", 
+        "amenity": "bank", 
+        "atm": "yes"
+    }, 
+    "Mahayanna Buddhist Center": {
+        "addr:housenumber": "133", 
+        "tourism": "attraction"
+    }, 
+    "Canal Pharmacy": {
+        "addr:housenumber": "196", 
+        "amenity": "pharmacy", 
+        "addr:street": "Canal Street"
+    }, 
+    "Shanghai Dumpling": {
+        "addr:housenumber": "100", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant", 
+        "toilets": "yes", 
+        "phone": "2129668698", 
+        "smoking": "no", 
+        "addr:street": "Mott Street"
+    }, 
+    "Shanghai Asian Cruisine": {
+        "amenity": "restaurant"
+    }, 
+    "Chinese Merchant's Association": {
+        "addr:housenumber": "82", 
+        "building": "yes", 
+        "gnis:county_name": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "ele": "8", 
+        "height": "16.0", 
+        "source": "USGS Geonames", 
+        "gnis:import_uuid": "57871b70-0100-4405-bb30-88b2e001a944", 
+        "gnis:feature_id": "2063263", 
+        "nycdoitt:bin": "1002386", 
+        "addr:street": "Mulberry Street"
+    }, 
+    "Jing Fong": {
+        "addr:housenumber": "20", 
+        "cuisine": "chinese", 
+        "amenity": "restaurant", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "website": "http://www.jingfongny.com/", 
+        "phone": "+1 212 964-5256", 
+        "opening_hours": "Mo-Fr 10:00-21:30; Sa-Su 09:30-21:30", 
+        "addr:street": "Elizabeth Street"
+    }, 
+    "Bayard L. C. Pharmacy": {
+        "addr:housenumber": "62", 
+        "amenity": "pharmacy", 
+        "addr:city": "New York", 
+        "addr:postcode": "10013", 
+        "addr:state": "NY", 
+        "name:zh": "惠民大藥房", 
+        "addr:street": "Bayard Street"
+    }, 
+    "New Kam Man, LLC": {
+        "addr:housenumber": "200", 
+        "phone": "+1-212-571-0330", 
+        "shop": "supermarket", 
+        "addr:street": "Canal Street"
+    }, 
+    "Chase": {
+        "wheelchair": "yes", 
+        "atm": "yes", 
+        "amenity": "bank"
+    }
+}

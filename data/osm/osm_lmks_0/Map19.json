@@ -1,0 +1,154 @@
+{
+    "Elizabeth Billiards": {
+        "amenity": "bar"
+    }, 
+    "Fuel Pizza": {
+        "building": "yes", 
+        "cuisine": "pizza", 
+        "amenity": "restaurant", 
+        "drive_through": "no", 
+        "opening_hours": "Su 11:00-10:00; Mo-We 11:00-23:00; Th 11:00-24:00; Fr,Sa 11:00-03:00", 
+        "outdoor_seating": "yes", 
+        "takeaway": "yes"
+    }, 
+    "Common Market": {
+        "addr:housenumber": "2007", 
+        "shop": "convenience", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "website": "http://www.commonmarketisgood.com", 
+        "phone": "+1-704-334-6209", 
+        "opening_hours": "Mo-Su 07:00-24:00", 
+        "addr:street": "Commonwealth Avenue"
+    }, 
+    "Wells Fargo": {
+        "addr:housenumber": "1616", 
+        "building": "yes", 
+        "amenity": "bank", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "website": "https://www.wellsfargo.com/locator/bank/1616__CENTRAL__AVE_CHARLOTTE_NC_28205/", 
+        "phone": "+1-704-383-5804", 
+        "addr:street": "Central Avenue"
+    }, 
+    "Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch": {
+        "addr:housenumber": "1623", 
+        "building": "yes", 
+        "amenity": "library", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "height": "20", 
+        "internet_access:fee": "no", 
+        "opening_hours": "Mo-Th 09:00-20:00; Fr,Sa 09:00-17:00", 
+        "addr:street": "Central Avenue", 
+        "internet_access": "yes"
+    }, 
+    "CVS": {
+        "addr:housenumber": "1235", 
+        "building": "yes", 
+        "amenity": "pharmacy", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "brand": "CVS", 
+        "addr:state": "NC", 
+        "height": "17", 
+        "phone": "+1 704 342-0584", 
+        "brand:wikidata": "Q2078880", 
+        "dispensing": "yes", 
+        "healthcare": "pharmacy", 
+        "operator": "CVS", 
+        "addr:street": "Pecan Avenue", 
+        "brand:wikipedia": "en:CVS Pharmacy"
+    }, 
+    "Nova's Bakery": {
+        "addr:housenumber": "1511", 
+        "shop": "bakery", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "website": "www.novasbakery.com", 
+        "phone": "+1-704-333-5566", 
+        "opening_hours": "Mo-Su 06:30-20:00", 
+        "addr:street": "Central Avenue"
+    }, 
+    "Commonwealth Animal Hospital": {
+        "addr:housenumber": "1909", 
+        "website": "http://commonwealthanimalhospital.net/", 
+        "amenity": "veterinary", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "phone": "+1 704 370 0767", 
+        "opening_hours": "Mo-Fr 07:30-18:00; Sa 08:00-12:00", 
+        "addr:country": "US", 
+        "addr:street": "Commonwealth Avenue"
+    }, 
+    "Diamond Restaurant": {
+        "building": "yes", 
+        "opening_hours": "Su-Th 11:00-23:00; Fr,Sa 11:00-04:00", 
+        "amenity": "restaurant"
+    }, 
+    "The Plaza Post Office": {
+        "addr:housenumber": "2133", 
+        "building": "yes", 
+        "amenity": "post_office", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "height": "22", 
+        "opening_hours": "Mo-Fr 08:30-17:00, Sa 09:30-13:00", 
+        "operator": "United States Postal Service", 
+        "addr:street": "The Plaza"
+    }, 
+    "Subway": {
+        "addr:housenumber": "1300", 
+        "cuisine": "sandwich", 
+        "amenity": "fast_food", 
+        "drive_through": "no", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "outdoor_seating": "no", 
+        "addr:state": "NC", 
+        "phone": "+1-704-375-8101", 
+        "smoking": "outside", 
+        "addr:street": "The Plaza"
+    }, 
+    "Dish": {
+        "building": "yes", 
+        "opening_hours": "Mo-Th 11:00-22:00; Fr 11:00-23:00; Sa 10:00-23:00", 
+        "amenity": "restaurant"
+    }, 
+    "Zada Jane's": {
+        "addr:housenumber": "1601", 
+        "building": "yes", 
+        "amenity": "cafe", 
+        "addr:city": "Charlotte", 
+        "addr:postcode": "28205", 
+        "addr:state": "NC", 
+        "website": "zadajanes.com", 
+        "phone": "+1-704-332-3663", 
+        "opening_hours": "Mo,Tu 08:00-15:00; We-Sa 08:00-22:00; Su 09:00-21:00", 
+        "addr:street": "Central Avenue"
+    }, 
+    "Dairy Queen": {
+        "building": "yes", 
+        "opening_hours": "Mo-Sa 11:00-22:00; Su 13:00-22:00", 
+        "amenity": "fast_food"
+    }, 
+    "Harris Teeter": {
+        "addr:housenumber": "1704", 
+        "building": "retail", 
+        "addr:city": "Charlotte", 
+        "shop": "supermarket", 
+        "addr:postcode": "28205", 
+        "brand": "Harris Teeter", 
+        "addr:state": "NC", 
+        "brand:wikidata": "Q5665067", 
+        "opening_hours": "Mo-Su 06:00-00:00", 
+        "addr:street": "Central Avenue", 
+        "brand:wikipedia": "en:Harris Teeter"
+    }
+}

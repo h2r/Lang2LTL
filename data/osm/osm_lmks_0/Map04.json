@@ -1,0 +1,166 @@
+{
+    "Edward Jones": {
+        "office": "financial"
+    }, 
+    "Ruk Sushi & Thai": {
+        "addr:housenumber": "5419", 
+        "cuisine": "sushi", 
+        "amenity": "restaurant", 
+        "addr:city": "Chicago", 
+        "addr:postcode": "60646", 
+        "addr:state": "IL", 
+        "addr:street": "West Devon Avenue"
+    }, 
+    "Central & Devon NB": {
+        "operator": "Pace Bus", 
+        "shelter": "no", 
+        "highway": "bus_stop", 
+        "bench": "no"
+    }, 
+    "Edgebrook Coffee Ship": {
+        "addr:housenumber": "6322", 
+        "cuisine": "coffee_shop", 
+        "amenity": "cafe", 
+        "addr:city": "Chicago", 
+        "addr:postcode": "60646", 
+        "addr:state": "IL", 
+        "website": "http://edgebrookcoffeeshop.com/", 
+        "phone": "+1-773-657-3974", 
+        "addr:street": "North Central Avenue"
+    }, 
+    "Domino's": {
+        "cuisine": "pizza", 
+        "amenity": "fast_food", 
+        "brand:wikipedia": "en:Domino's Pizza", 
+        "brand": "Domino's Pizza", 
+        "brand:wikidata": "Q839466"
+    }, 
+    "Associated Bank": {
+        "addr:housenumber": "6333", 
+        "addr:street:prefix": "North", 
+        "amenity": "bank", 
+        "addr:street:name": "Central", 
+        "addr:city": "Chicago", 
+        "addr:street:type": "Avenue", 
+        "building:levels": "1", 
+        "addr:postcode": "60646", 
+        "brand": "Associated Bank", 
+        "atm": "yes", 
+        "building": "yes", 
+        "addr:state": "IL", 
+        "drive_through": "yes", 
+        "brand:wikidata": "Q4809155", 
+        "addr:street": "North Central Avenue", 
+        "chicago:building_id": "27405", 
+        "brand:wikipedia": "en:Associated Banc-Corp"
+    }, 
+    "My Sister's Closet": {
+        "addr:housenumber": "5413-5417", 
+        "addr:street:prefix": "West", 
+        "addr:street:name": "Devon", 
+        "addr:city": "Chicago", 
+        "addr:street:type": "Avenue", 
+        "addr:postcode": "60646", 
+        "building": "yes", 
+        "addr:state": "IL", 
+        "shop": "second_hand", 
+        "chicago:building_id": "27193", 
+        "addr:street": "West Devon Avenue"
+    }, 
+    "Local Goods Chicago": {
+        "shop": "gift"
+    }, 
+    "Terry's Place": {
+        "shop": "hairdresser"
+    }, 
+    "Ace Hardware": {
+        "addr:housenumber": "5423", 
+        "addr:street:prefix": "West", 
+        "addr:street:name": "Devon", 
+        "addr:city": "Chicago", 
+        "addr:street:type": "Avenue", 
+        "addr:postcode": "60646", 
+        "brand": "Ace Hardware", 
+        "building": "retail", 
+        "website": "http://www.edgebrookace.com/", 
+        "shop": "doityourself", 
+        "addr:street": "West Devon Avenue", 
+        "chicago:building_id": "27198", 
+        "brand:wikipedia": "en:Ace Hardware", 
+        "brand:wikidata": "Q4672981"
+    }, 
+    "Currency Change": {
+        "building": "yes", 
+        "amenity": "bureau_de_change"
+    }, 
+    "Starbucks": {
+        "addr:housenumber": "5406", 
+        "cuisine": "coffee_shop", 
+        "amenity": "cafe", 
+        "addr:city": "Chicago", 
+        "addr:postcode": "60646", 
+        "brand": "Starbucks", 
+        "website": "https://www.starbucks.com/", 
+        "brand:wikidata": "Q37158", 
+        "addr:street": "West Devon Avenue", 
+        "brand:wikipedia": "en:Starbucks"
+    }, 
+    "North Branch Arts": {
+        "office": "educational_institution"
+    }, 
+    "Lee Nails": {
+        "shop": "beauty", 
+        "beauty": "nails"
+    }, 
+    "Creativo! Academy": {
+        "office": "educational_institution"
+    }, 
+    "King Pho": {
+        "cuisine": "vietnamese", 
+        "amenity": "restaurant"
+    }, 
+    "Little Nest Care": {
+        "addr:housenumber": "5426", 
+        "addr:street:prefix": "West", 
+        "addr:street:name": "Devon", 
+        "building": "yes", 
+        "addr:street:type": "Avenue", 
+        "building:levels": "1", 
+        "office": "educational_institution", 
+        "chicago:building_id": "26170", 
+        "addr:street": "West Devon Avenue"
+    }, 
+    "Becker Roofing Company": {
+        "office": "yes"
+    }, 
+    "Kanellos Shoe Repair": {
+        "shop": "yes"
+    }, 
+    "Baird & Warner": {
+        "building": "yes", 
+        "office": "estate_agent"
+    }, 
+    "US Post Office": {
+        "addr:housenumber": "5424", 
+        "addr:street:prefix": "West", 
+        "amenity": "post_office", 
+        "addr:street:name": "Devon", 
+        "addr:city": "Chicago", 
+        "addr:street:type": "Avenue", 
+        "building:levels": "1", 
+        "addr:postcode": "60646", 
+        "brand": "US Post Office", 
+        "building": "yes", 
+        "addr:street": "West Devon Avenue", 
+        "chicago:building_id": "26405", 
+        "operator": "USPS", 
+        "brand:wikipedia": "en:United States Postal Service", 
+        "brand:wikidata": "Q668687"
+    }, 
+    "Central & Devon SB": {
+        "operator": "Pace Bus", 
+        "shelter": "no", 
+        "highway": "bus_stop", 
+        "bench": "no"
+    }
+}

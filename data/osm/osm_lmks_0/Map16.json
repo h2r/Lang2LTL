@@ -1,0 +1,99 @@
+{
+    "Grant Medical Center": {
+        "addr:housenumber": "111", 
+        "website": "https://www.ohiohealth.com/locations/hospitals/grant-medical-center", 
+        "amenity": "hospital", 
+        "addr:city": "Columbus", 
+        "emergency": "yes", 
+        "addr:postcode": "43215", 
+        "healthcare": "hospital", 
+        "wikipedia": "en:Grant Medical Center", 
+        "phone": "+1 614 566 9000", 
+        "wikidata": "Q5596342", 
+        "opening_hours": "24/7", 
+        "operator": "OhioHealth", 
+        "gnis:feature_id": "1041046", 
+        "addr:street": "South Grant Avenue"
+    }, 
+    "CoGo Topiary Park - Town St": {
+        "website": "https://www.cogobikeshare.com/", 
+        "operator": "CoGo Bike Share", 
+        "amenity": "bicycle_rental", 
+        "ref": "29", 
+        "capacity": "11"
+    }, 
+    "Deaf School Park": {
+        "wikidata": "Q34825697", 
+        "alt_name": "Topiary Park", 
+        "leisure": "park"
+    }, 
+    "Grant Medical Center Heliport": {
+        "aeroway": "helipad", 
+        "faa": "OH01", 
+        "rooftop": "yes"
+    }, 
+    "CoGo Library - Main Branch": {
+        "website": "https://www.cogobikeshare.com/", 
+        "operator": "CoGo Bike Share", 
+        "amenity": "bicycle_rental", 
+        "ref": "28", 
+        "capacity": "15"
+    }, 
+    "Christian Spiritualist Temple": {
+        "addr:housenumber": "77", 
+        "building": "church", 
+        "amenity": "place_of_worship", 
+        "addr:city": "Columbus", 
+        "phone": "614-228-1112", 
+        "addr:postcode": "43215", 
+        "website": "http://www.christianspiritualisttemple.org/", 
+        "religion": "christian", 
+        "gnis:feature_id": "1073695", 
+        "addr:street": "South Sixth Street"
+    }, 
+    "Columbus Metropolitan Library (Main)": {
+        "addr:housenumber": "96", 
+        "building": "yes", 
+        "amenity": "library", 
+        "addr:city": "Columbus", 
+        "addr:postcode": "43215", 
+        "wikipedia": "en:Columbus Metropolitan Library", 
+        "addr:state": "OH", 
+        "ele": "235", 
+        "source": "USGS Geonames", 
+        "wikidata": "Q5150078", 
+        "alt_name": "Carnegie Main Library", 
+        "branch": "Main Library", 
+        "operator": "Columbus Metropolitan Library", 
+        "gnis:feature_id": "1069800;1083641", 
+        "addr:street": "South Grant Avenue", 
+        "addr:country": "US", 
+        "gnis:county_name": "Franklin"
+    }, 
+    "Ohio Institution for the Education of the Deaf and Dumb": {
+        "amenity": "school", 
+        "gnis:state_id": "39", 
+        "gnis:county_id": "049", 
+        "ele": "236", 
+        "gnis:created": "05/01/1992", 
+        "gnis:feature_id": "1069809"
+    }, 
+    "East Town Street Historic District": {
+        "gnis:state_id": "39", 
+        "gnis:county_id": "049", 
+        "ele": "237", 
+        "place": "neighbourhood", 
+        "gnis:created": "05/01/1992", 
+        "gnis:feature_id": "1069803"
+    }, 
+    "Capitol University Law School": {
+        "addr:housenumber": "303", 
+        "building": "school", 
+        "addr:city": "Columbus", 
+        "addr:postcode": "43215", 
+        "addr:state": "OH", 
+        "website": "https://law.capital.edu/", 
+        "phone": "(614) 236-6500", 
+        "addr:street": "East Broad Street"
+    }
+}

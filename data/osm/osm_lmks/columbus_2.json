@@ -1,0 +1,142 @@
+{
+    "Short North": {
+        "wikipedia": "en:The Short North", 
+        "wikidata": "Q7763979", 
+        "place": "neighbourhood", 
+        "area": "yes"
+    }, 
+    "Park Street Cantina": {
+        "amenity": "bar"
+    }, 
+    "North Market Parking": {
+        "amenity": "parking", 
+        "fee": "yes", 
+        "supervised": "yes", 
+        "parking": "surface"
+    }, 
+    "Dahlia Nightclub": {
+        "amenity": "nightclub"
+    }, 
+    "Mikey’s Late Night Slice": {
+        "cuisine": "pizza", 
+        "amenity": "restaurant"
+    }, 
+    "Garage Bar": {
+        "amenity": "bar"
+    }, 
+    "North Market": {
+        "building": "commercial", 
+        "shop": "supermarket", 
+        "addr:housename": "North Market"
+    }, 
+    "CoGo North Market": {
+        "website": "https://www.cogobikeshare.com/", 
+        "operator": "CoGo Bike Share", 
+        "amenity": "bicycle_rental", 
+        "ref": "20", 
+        "capacity": "11"
+    }, 
+    "Columbus Convention Center - Vine Street Garage": {
+        "addr:housenumber": "45", 
+        "building": "yes", 
+        "amenity": "parking", 
+        "fee": "yes", 
+        "capacity": "1778", 
+        "addr:city": "Columbus", 
+        "addr:postcode": "43215", 
+        "addr:state": "OH", 
+        "phone": "614-827-2500", 
+        "parking": "multi-storey", 
+        "operator": "Greater Columbus Convention Center", 
+        "park_ride": "no", 
+        "addr:street": "Vine Street"
+    }, 
+    "Brothers Bar & Grill": {
+        "website": "https://www.brothersbar.com/", 
+        "opening_hours": "Mo-Su 12:00-02:00", 
+        "amenity": "bar", 
+        "addr:street": "Park Street"
+    }, 
+    "N High St & Spruce St": {
+        "network": "COTA", 
+        "shelter": "no", 
+        "bus": "yes", 
+        "bench": "no", 
+        "public_transport": "platform", 
+        "operator": "Central Ohio Transit Authority", 
+        "ref": "4095", 
+        "highway": "bus_stop"
+    }, 
+    "Park Street Tavern": {
+        "amenity": "bar", 
+        "name:en": "Park Street Tavern"
+    }, 
+    "Martini Modern Italian": {
+        "addr:housenumber": "445", 
+        "amenity": "restaurant", 
+        "addr:street": "North High Street"
+    }, 
+    "Arnold Schwarzenegger statue": {
+        "tourism": "artwork"
+    }, 
+    "Columbus Children's Theatre": {
+        "amenity": "theatre", 
+        "gnis:county_name": "Franklin", 
+        "source": "USGS Geonames", 
+        "addr:state": "OH", 
+        "ele": "227", 
+        "gnis:reviewed": "no", 
+        "gnis:import_uuid": "57871b70-0100-4405-bb30-88b2e001a944", 
+        "gnis:feature_id": "1960241"
+    }, 
+    "Bar Louie": {
+        "amenity": "pub"
+    }, 
+    "Columbus Convention Center": {
+        "building": "yes", 
+        "building:levels": "5", 
+        "amenity": "conference_centre", 
+        "wikipedia": "en:Greater Columbus Convention Center", 
+        "wikidata": "Q5600506"
+    }, 
+    "North Market Historic District": {
+        "wikipedia": "en:Downtown Columbus, Ohio#Park Street District (North Market Historic District)", 
+        "wikidata": "Q20709842", 
+        "place": "neighbourhood", 
+        "short_name": "Park Street District"
+    }, 
+    "BBR": {
+        "amenity": "bar"
+    }, 
+    "Barley's Brewing Company": {
+        "addr:housenumber": "467", 
+        "amenity": "pub", 
+        "addr:street": "North High Street"
+    }, 
+    "Arena Crossing Apartments": {
+        "landuse": "residential"
+    }, 
+    "Market Blooms": {
+        "shop": "florist", 
+        "name:en": "Market Blooms"
+    }, 
+    "Hilton Columbus Downtown": {
+        "building": "commercial", 
+        "building:levels": "20", 
+        "tourism": "hotel"
+    }, 
+    "Char Bar": {
+        "addr:housenumber": "439", 
+        "amenity": "pub", 
+        "designation": "Tavern", 
+        "addr:postcode": "43215", 
+        "addr:housename": "Char Bar", 
+        "addr:street": "North High Street"
+    }, 
+    "Martinis": {
+        "amenity": "restaurant"
+    }, 
+    "Hampton Inn and Suites Columbus Downtown": {
+        "tourism": "hotel"
+    }
+}

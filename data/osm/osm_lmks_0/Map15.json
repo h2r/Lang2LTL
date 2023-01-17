@@ -1,0 +1,62 @@
+{
+    "Waffle House": {
+        "building": "yes", 
+        "amenity": "restaurant"
+    }, 
+    "Burrito Gallery": {
+        "building": "yes", 
+        "amenity": "restaurant"
+    }, 
+    "Publix": {
+        "building": "yes", 
+        "shop": "supermarket"
+    }, 
+    "East Coast Railway Foreman’s House #93": {
+        "building": "yes"
+    }, 
+    "Texaco": {
+        "building": "roof", 
+        "amenity": "fuel", 
+        "layer": "1"
+    }, 
+    "Cypress Productions": {
+        "building": "yes", 
+        "amenity": "studio"
+    }, 
+    "Players by the Sea": {
+        "building": "yes", 
+        "amenity": "theatre"
+    }, 
+    "Beaches Museum": {
+        "building": "yes", 
+        "tourism": "museum"
+    }, 
+    "Beaches Museum Chapel": {
+        "building": "yes"
+    }, 
+    "1903 Pablo Beach Post Office": {
+        "building": "yes"
+    }, 
+    "St Vincent de Paul Thrift Store": {
+        "building": "yes", 
+        "shop": "second_hand"
+    }, 
+    "Mayport East Coast Railway Depot": {
+        "building": "yes"
+    }, 
+    "Pet Supermarket": {
+        "building": "yes", 
+        "shop": "pet"
+    }, 
+    "The Oesterreicher-McCormick Cabin": {
+        "building": "yes"
+    }, 
+    "The 1911 Train Engine": {
+        "building": "yes"
+    }, 
+    "St Paul's Catholic Church": {
+        "religion": "christian", 
+        "landuse": "churchyard", 
+        "denomination": "catholic"
+    }
+}

@@ -1,0 +1,233 @@
+{
+    "Native Foods Cafe": {
+        "addr:housenumber": "2023", 
+        "website": "https://www.nativefoods.com/", 
+        "addr:unit": "C", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "diet:vegetarian": "yes", 
+        "amenity": "restaurant", 
+        "phone": "303-756-6040", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "Colorado Center II": {
+        "addr:housenumber": "2000", 
+        "building": "office", 
+        "addr:unit": "2", 
+        "addr:city": "Denver", 
+        "building:levels": "12", 
+        "addr:postcode": "80222", 
+        "addr:state": "CO", 
+        "source": "Bing", 
+        "alt_name": "Colorado Center Tower Two", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "Brakes Plus": {
+        "addr:housenumber": "4055", 
+        "shop": "car_repair", 
+        "addr:city": "Denver", 
+        "ref:expressoil": "BP129", 
+        "brand": "Brakes Plus", 
+        "opening_hours": "Mo-Fr 08:00-18:00;Sa 08:00-17:00", 
+        "addr:state": "CO", 
+        "website": "https://www.brakesplus.com", 
+        "phone": "+1-720-524-0500", 
+        "brand:wikidata": "Q62075246", 
+        "addr:postcode": "80222", 
+        "operator": "Brakes Plus", 
+        "addr:country": "US", 
+        "addr:street": "East Evans Avenue"
+    }, 
+    "The Sheepskin Factory": {
+        "addr:housenumber": "2040", 
+        "building": "retail", 
+        "addr:city": "Denver", 
+        "shop": "clothes", 
+        "phone": "303-329-8400", 
+        "addr:postcode": "80222", 
+        "website": "http://www.sheepskinfactory.com", 
+        "source": "Bing", 
+        "alt_name": "Sheepskin Factory", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "South Colorado Boulevard & Evans Avenue‎": {
+        "bus": "yes", 
+        "local_ref": "RTD 21 46", 
+        "public_transport": "platform", 
+        "highway": "bus_stop"
+    }, 
+    "Mad Greens": {
+        "addr:housenumber": "2073", 
+        "cuisine": "international", 
+        "addr:unit": "101", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "amenity": "restaurant", 
+        "website": "https://www.madgreens.com/", 
+        "phone": "303-756-1222", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "Wells Fargo": {
+        "addr:housenumber": "2043", 
+        "website": "https://www.wellsfargo.com", 
+        "amenity": "bank", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "brand": "Wells Fargo", 
+        "atm": "yes", 
+        "phone": "303-584-6530", 
+        "brand:wikidata": "Q744149", 
+        "operator": "Wells Fargo", 
+        "addr:street": "South Colorado Boulevard", 
+        "brand:wikipedia": "en:Wells Fargo"
+    }, 
+    "S Colorado Blvd & Buchtel Blvd": {
+        "bus": "yes", 
+        "local_ref": "RTD 21", 
+        "public_transport": "platform", 
+        "highway": "bus_stop"
+    }, 
+    "Pei Wei": {
+        "addr:housenumber": "3970", 
+        "cuisine": "asian", 
+        "addr:unit": "107", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80210", 
+        "brand": "Pei Wei", 
+        "amenity": "restaurant", 
+        "website": "http://www.peiwei.com", 
+        "phone": "303-942-3445", 
+        "brand:wikidata": "Q7160898", 
+        "addr:street": "Buchtel Boulevard", 
+        "brand:wikipedia": "en:Pei Wei Asian Diner"
+    }, 
+    "Which Wich?": {
+        "addr:housenumber": "3970", 
+        "cuisine": "sandwich", 
+        "amenity": "fast_food", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80210", 
+        "brand": "Which Wich?", 
+        "website": "https://www.whichwich.com/", 
+        "phone": "303-584-9424", 
+        "brand:wikidata": "Q7993556", 
+        "takeaway": "yes", 
+        "addr:street": "Buchtel Boulevard", 
+        "brand:wikipedia": "en:Which Wich?"
+    }, 
+    "Office Depot": {
+        "shop": "stationery", 
+        "brand": "Office Depot", 
+        "brand:wikidata": "Q1337797", 
+        "brand:wikipedia": "en:Office Depot"
+    }, 
+    "Colorado Center": {
+        "source": "Bing", 
+        "landuse": "retail"
+    }, 
+    "Westcraft Carpets": {
+        "addr:housenumber": "2024", 
+        "shop": "carpet", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "website": "https://westcraftflooringamerica.com/", 
+        "phone": "303-756-6606", 
+        "alt_name": "FlooringAmerica", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "Safelite AutoGlass": {
+        "addr:housenumber": "4055", 
+        "shop": "car_repair", 
+        "addr:city": "Denver", 
+        "operator:wikipedia": "en:Belron", 
+        "addr:postcode": "80222", 
+        "brand": "Safelite AutoGlass", 
+        "website": "https://www.safelite.com/", 
+        "phone": "303-759-4099", 
+        "addr:street": "East Evans Avenue", 
+        "brand:wikidata": "Q28797369", 
+        "opening_hours": "Mo-Fr 07:30-17:00, Sa 08:00-17:00", 
+        "operator": "Belron", 
+        "brand:wikipedia": "en:Safelite", 
+        "operator:wikidata": "Q785614"
+    }, 
+    "Vitamin Cottage Natural Grocers": {
+        "shop": "supermarket", 
+        "website": "https://www.vitamincottage.com/", 
+        "addr:city": "Denver", 
+        "opening_hours": "Mo-Sa 08:56-20:04;Su 9:56-18:06", 
+        "addr:state": "CO", 
+        "phone": "303-756-8400", 
+        "addr:postcode": "80222", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "J & K Shopping Center": {
+        "operator": "J & K Shopping Services", 
+        "source": "Bing", 
+        "landuse": "retail"
+    }, 
+    "Loan Stop": {
+        "addr:housenumber": "2020", 
+        "amenity": "bank", 
+        "addr:city": "Denver", 
+        "phone": "303-759-2274", 
+        "addr:postcode": "80222", 
+        "source": "Bing", 
+        "addr:street": "South Colorado Boulevard"
+    }, 
+    "Amira Bakery & Deli": {
+        "addr:housenumber": "4101", 
+        "shop": "bakery", 
+        "addr:street": "East Evans Avenue", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222"
+    }, 
+    "A&W": {
+        "addr:housenumber": "2096", 
+        "cuisine": "burger", 
+        "amenity": "fast_food", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "brand": "A&W", 
+        "opening_hours": "10:30-22:00", 
+        "website": "https://www.kfc.com/", 
+        "phone": "303-756-8251", 
+        "addr:street": "South Colorado Boulevard", 
+        "brand:wikidata": "Q277641", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:A&W Restaurants", 
+        "phone:catering": "303-379-5100", 
+        "alt_name": "Kentucky Fried Chicken"
+    }, 
+    "Public Storage": {
+        "addr:housenumber": "4101", 
+        "shop": "storage_rental", 
+        "addr:city": "Denver", 
+        "phone": "+1 720-466-1211", 
+        "addr:postcode": "80222", 
+        "brand": "Public Storage", 
+        "website": "http://www.publicstorage.com", 
+        "source": "Bing", 
+        "brand:wikidata": "Q1156045", 
+        "phone:tollfree": "+1 800-44-STORE", 
+        "addr:street": "East Evans Avenue", 
+        "brand:wikipedia": "en:Public Storage"
+    }, 
+    "KFC": {
+        "addr:housenumber": "2096", 
+        "cuisine": "chicken", 
+        "amenity": "fast_food", 
+        "addr:city": "Denver", 
+        "addr:postcode": "80222", 
+        "brand": "KFC", 
+        "opening_hours": "10:30-22:00", 
+        "website": "https://www.kfc.com/", 
+        "phone": "303-756-8251", 
+        "addr:street": "South Colorado Boulevard", 
+        "brand:wikidata": "Q524757", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:KFC", 
+        "phone:catering": "303-379-5100", 
+        "alt_name": "Kentucky Fried Chicken"
+    }
+}

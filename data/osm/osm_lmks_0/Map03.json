@@ -1,0 +1,363 @@
+{
+    "Neris Filipino Dining": {
+        "amenity": "restaurant"
+    }, 
+    "Equitable Life Building": {
+        "building:levels": "34", 
+        "building:part": "yes", 
+        "height": "138"
+    }, 
+    "Bongchu": {
+        "amenity": "restaurant"
+    }, 
+    "Boos": {
+        "amenity": "fast_food"
+    }, 
+    "Food & Grog": {
+        "amenity": "bar"
+    }, 
+    "The Line": {
+        "building": "yes", 
+        "website": "https://www.thelinehotel.com/", 
+        "lacounty:bld_id": "470603845067", 
+        "lacounty:ain": "5502032017", 
+        "building:units": "380", 
+        "height": "8.1", 
+        "ele": "76.5", 
+        "tourism": "hotel", 
+        "start_date": "1965"
+    }, 
+    "Mermaid Cafe": {
+        "amenity": "cafe"
+    }, 
+    "Home Cafe": {
+        "amenity": "cafe"
+    }, 
+    "Korean BBQ": {
+        "cuisine": "korean", 
+        "amenity": "restaurant"
+    }, 
+    "Bakery House": {
+        "shop": "bakery"
+    }, 
+    "Details": {
+        "shop": "hairdresser"
+    }, 
+    "Wilshire Christian Manor": {
+        "building": "residential", 
+        "lacounty:bld_id": "470783845376", 
+        "building:levels": "16", 
+        "lacounty:ain": "5502031011", 
+        "building:units": "287", 
+        "height": "50.3", 
+        "ele": "117.1", 
+        "start_date": "1969"
+    }, 
+    "Koko Pizza": {
+        "amenity": "restaurant"
+    }, 
+    "Togo's": {
+        "cuisine": "sandwich", 
+        "amenity": "fast_food", 
+        "brand": "Togo's", 
+        "brand:wikidata": "Q3530375", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:Togo's"
+    }, 
+    "Central Plaza 1": {
+        "building": "yes", 
+        "building:levels": "12", 
+        "source": "Bing"
+    }, 
+    "Crystal Spa": {
+        "addr:housenumber": "3500", 
+        "website": "http://crystalspala.com/", 
+        "addr:unit": "321", 
+        "fee": "yes", 
+        "addr:city": "Los Angeles", 
+        "addr:postcode": "90020", 
+        "addr:state": "CA", 
+        "access": "customers", 
+        "phone": "+1-213-487-5600", 
+        "leisure": "sauna", 
+        "opening_hours": "Mo-Su 06:00-00:00", 
+        "email": "info@crystalspala.com", 
+        "addr:street": "West 6th Street"
+    }, 
+    "Central Plaza 2": {
+        "building": "yes", 
+        "building:levels": "12", 
+        "source": "Bing"
+    }, 
+    "POT": {
+        "operator": "Line Hotel", 
+        "amenity": "bar"
+    }, 
+    "Eyeland Optical, Inc.": {
+        "addr:housenumber": "3500", 
+        "website": "http://eyeland.us/", 
+        "addr:unit": "Suite 122", 
+        "addr:city": "Los Angeles", 
+        "addr:postcode": "90020", 
+        "fax": "+1-213-427-3537", 
+        "addr:state": "CA", 
+        "phone": "+1-213-427-0707", 
+        "healthcare": "optometrist", 
+        "opening_hours": "Mo-Su 10:00-19:00 || Tu-Fr 10:00-19:00 open \"Optometry Checkup\"", 
+        "email": "eyelandoptical@sbcglobal.net", 
+        "addr:street": "West 6th Street"
+    }, 
+    "McDonald's": {
+        "cuisine": "burger", 
+        "amenity": "fast_food", 
+        "brand": "McDonald's", 
+        "brand:wikidata": "Q38076", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:McDonald's"
+    }, 
+    "Wasabi": {
+        "cuisine": "japanese", 
+        "amenity": "restaurant", 
+        "brand:wikipedia": "en:Wasabi (restaurant)", 
+        "brand": "Wasabi", 
+        "brand:wikidata": "Q23891278"
+    }, 
+    "Boo's Philly Cheesesteaks Ktown": {
+        "addr:housenumber": "3377", 
+        "website": "https://boosphilly.com", 
+        "addr:unit": "103", 
+        "description": "Colorful sandwich joint with a menu of traditional Philadelphia-style comfort classics.", 
+        "addr:postcode": "90010", 
+        "amenity": "restaurant", 
+        "addr:state": "CA", 
+        "phone": "+1-213-388-1955", 
+        "opening_hours": "Mo-Th 11:00-22:00; Fr-Sa 11:00-24:00; Su 11:00-21:00", 
+        "addr:street": "Wilshire Boulevard", 
+        "addr:city": "Los Angeles"
+    }, 
+    "Central Plaza 3": {
+        "building": "yes", 
+        "building:levels": "12", 
+        "source": "Bing"
+    }, 
+    "Starbucks": {
+        "cuisine": "coffee_shop", 
+        "amenity": "cafe", 
+        "brand": "Starbucks", 
+        "official_name": "Starbucks Coffee", 
+        "brand:wikidata": "Q37158", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:Starbucks"
+    }, 
+    "BBQ Premium Chicken": {
+        "cuisine": "korean", 
+        "amenity": "restaurant"
+    }, 
+    "Robeks Juice": {
+        "amenity": "cafe"
+    }, 
+    "Wako": {
+        "amenity": "restaurant"
+    }, 
+    "Etude Lounge": {
+        "addr:housenumber": "3500", 
+        "shop": "hairdresser", 
+        "addr:unit": "325", 
+        "addr:city": "Los Angeles", 
+        "addr:postcode": "90020", 
+        "addr:state": "CA", 
+        "website": "https://etudelounge.com/", 
+        "phone": "+1-213-388-6969", 
+        "opening_hours": "Mo-Sa 10:00-19:30; Su 12:00-18:00", 
+        "addr:street": "West 6th Street"
+    }, 
+    "Happy Noodle": {
+        "amenity": "restaurant"
+    }, 
+    "Chunju Han Il Kwan": {
+        "cuisine": "korean", 
+        "amenity": "restaurant"
+    }, 
+    "Metro": {
+        "shelter": "no", 
+        "source": "survey;image;usgs_imagery", 
+        "ref": "20", 
+        "highway": "bus_stop", 
+        "source_ref": "AM909_DSCR0475"
+    }, 
+    "Robert F. Kennedy Community Schools": {
+        "amenity": "school", 
+        "wikidata": "Q7344190"
+    }, 
+    "Wilshire/Normandie": {
+        "network": "LACMTA", 
+        "station": "subway", 
+        "wikidata": "Q195882", 
+        "public_transport": "station", 
+        "operator": "Los Angeles County Metropolitan Transportation Authority", 
+        "railway": "station", 
+        "subway": "yes"
+    }, 
+    "Hotel Normandie": {
+        "addr:housenumber": "605", 
+        "building": "yes", 
+        "lacounty:bld_id": "470618845571", 
+        "addr:postcode": "90005", 
+        "lacounty:ain": "5502032005", 
+        "height": "21.3", 
+        "website": "http://www.hotelnormandiela.com/", 
+        "phone": "213.388.8138", 
+        "ele": "91.9", 
+        "tourism": "hotel", 
+        "start_date": "1928", 
+        "addr:street": "South Normandie Avenue"
+    }, 
+    "Gwang Yang BBQ": {
+        "cuisine": "korean", 
+        "amenity": "restaurant"
+    }, 
+    "Coffee Bean & Tea Leaf": {
+        "amenity": "cafe"
+    }, 
+    "Philippine Consulate General": {
+        "country": "PH", 
+        "amenity": "embassy", 
+        "diplomatic": "consulate_general", 
+        "diplomatic:sending_country": "PH"
+    }, 
+    "Korean Bbq": {
+        "amenity": "restaurant"
+    }, 
+    "Mali Taste of Thailand": {
+        "amenity": "restaurant"
+    }, 
+    "The Halal Guys": {
+        "amenity": "restaurant"
+    }, 
+    "Foothill Transit": {
+        "shelter": "no", 
+        "source": "survey;image;usgs_imagery", 
+        "ref": "481", 
+        "highway": "bus_stop", 
+        "source_ref": "AM909_DSCR0475"
+    }, 
+    "Ice Cream": {
+        "amenity": "ice_cream"
+    }, 
+    "Carl's Jr.": {
+        "cuisine": "burger", 
+        "amenity": "fast_food", 
+        "brand": "Carl's Jr.", 
+        "brand:wikidata": "Q1043486", 
+        "takeaway": "yes", 
+        "brand:wikipedia": "en:Carl's Jr."
+    }, 
+    "Bayou Smokehouse": {
+        "amenity": "restaurant"
+    }, 
+    "Consulat General of the Republic of Indonesia": {
+        "building": "yes", 
+        "amenity": "embassy", 
+        "name:id": "Konsulat Jenderal Republik Indonesian", 
+        "lacounty:bld_id": "470938845107", 
+        "country": "ID", 
+        "lacounty:ain": "5502031015", 
+        "diplomatic": "consulate_general", 
+        "height": "30.1", 
+        "ele": "94.9", 
+        "start_date": "1946"
+    }, 
+    "Normandie Gardens Apartments": {
+        "building": "apartments", 
+        "lacounty:bld_id": "470559845473", 
+        "lacounty:ain": "5502032004", 
+        "building:units": "61", 
+        "ele": "80.9", 
+        "height": "8.9", 
+        "start_date": "1948"
+    }, 
+    "Big 5 Sporting Goods": {
+        "shop": "sports", 
+        "brand": "Big 5 Sporting Goods", 
+        "brand:wikidata": "Q4904902", 
+        "brand:wikipedia": "en:Big 5 Sporting Goods"
+    }, 
+    "The Gaylord Apartments": {
+        "addr:housenumber": "3355", 
+        "building": "apartments", 
+        "addr:city": "Los Angeles", 
+        "lacounty:bld_id": "471728845075", 
+        "addr:postcode": "90010", 
+        "lacounty:ain": "5502029022", 
+        "building:units": "199", 
+        "ele": "120.9", 
+        "height": "50.3", 
+        "start_date": "1923", 
+        "addr:street": "Wilshire Boulevard"
+    }, 
+    "The Boiling Crab": {
+        "amenity": "restaurant"
+    }, 
+    "Sun Nong Dan": {
+        "addr:housenumber": "3470", 
+        "cuisine": "korean", 
+        "amenity": "restaurant", 
+        "addr:postcode": "90020", 
+        "phone": "2133650303", 
+        "addr:street": "West 6th Street"
+    }, 
+    "Gogobop Korean Rice Bar": {
+        "amenity": "restaurant"
+    }, 
+    "Wilshire-Kenmore Building": {
+        "building": "commercial", 
+        "lacounty:bld_id": "471938845095", 
+        "building:levels": "12", 
+        "lacounty:ain": "5502028020", 
+        "ele": "127.5", 
+        "height": "54.9", 
+        "start_date": "1967"
+    }, 
+    "LA Dental": {
+        "amenity": "dentist"
+    }, 
+    "Tarboosh middle East kitchen": {
+        "amenity": "restaurant"
+    }, 
+    "Metroplex Wilshire": {
+        "building": "yes", 
+        "building:levels": "18", 
+        "height": "86.9"
+    }, 
+    "Seaweed": {
+        "cuisine": "korean", 
+        "amenity": "restaurant"
+    }, 
+    "Wiki Poki": {
+        "amenity": "restaurant"
+    }, 
+    "Hair News": {
+        "shop": "beauty"
+    }, 
+    "Zan ResPub": {
+        "amenity": "restaurant"
+    }, 
+    "California Design College": {
+        "amenity": "school", 
+        "gnis:state_id": "06", 
+        "gnis:county_id": "037", 
+        "ele": "62", 
+        "gnis:created": "01/04/2008", 
+        "gnis:feature_id": "2370732"
+    }, 
+    "Bank of America": {
+        "brand:wikidata": "Q487907", 
+        "amenity": "bank", 
+        "brand": "Bank of America", 
+        "brand:wikipedia": "en:Bank of America"
+    }, 
+    "Pho 24": {
+        "cuisine": "vietnamese", 
+        "amenity": "restaurant"
+    }
+}

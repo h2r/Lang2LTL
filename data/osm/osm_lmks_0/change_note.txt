@@ -1,0 +1,13 @@
+map_10
+took out:
+
+"Tribal Home": {
+   "shop": "yes"
+},
+
+because it's an OSM problem, and doesn't reflect a problem on our evaluation as they are close
+
+
+map_28
+not used in paper
+should be map of Boston
