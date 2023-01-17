@@ -107,9 +107,9 @@ def strict_ordered_visit_constraint3(props):
     assert len(props) > 1, f"length of props for strict_ordered_visit_constraint3 must be > 1, got {len(props)}"
     if len(props) == 2:
         a, b = props[0], props[1]
-        return f"U ! {a} U {a} U !{a} {b}"
+        return f"U ! {a} U {a} U ! {a} {b}"
     b, a = props[1], props.pop(0)
-    return f"& U ! {a} U {a} U !{a} {b} " + strict_ordered_visit_constraint3(props)
+    return f"& U ! {a} U {a} U ! {a} {b} " + strict_ordered_visit_constraint3(props)
 
 
 def fair_visit_fixed(props):  # TODO: to be fixed
@@ -220,7 +220,7 @@ def lower_restricted_avoid_fixed(props):
 
 def exact_restricted_avoid_fixed(props):  # TODO: to be fixed
     if len(props) == 1:
-        return f"U ! {props[0]} & {props[0]} U {props[0]} G !{props[0]}"
+        return f"U ! {props[0]} & {props[0]} U {props[0]} G ! {props[0]}"
     a = props.pop(0)
     return f"U ! {a} & {a} U {a} {exact_restricted_avoid_fixed(props)}"
 
