@@ -41,7 +41,7 @@ def generate_tar_file():
     save_to_file(pairs, "data/cleanup_corlw.csv")
 
 
-def create_osm_dataset():
+def create_osm_dataset_corlw():
     """
     To test generalization capability of LLMs, create an OSM dataset.
     """
@@ -330,7 +330,7 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
 
 if __name__ == '__main__':
     # generate_tar_file()
-    # create_osm_dataset()
+    # create_osm_dataset_corlw()
 
     # Construct train, test split for 3 types of holdout for symbolic translation
     create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
