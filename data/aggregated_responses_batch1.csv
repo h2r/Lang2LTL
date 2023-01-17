@@ -607,7 +607,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,walk to a
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,make your way to a
 2023/01/15 2:16:35 PM EST,ziyi_yang1@brown.edu,Visit,1,head to a
-2023/01/16 11:35:18 AM EST,saml@princeton.edu,Strictly Ordered Visit,5,"Before visiting b, c, d, and h, visit an and never visit it again. Then visit b before c, d, and h, and never visit it again. Do not visit d and h until you visit c. Never visit c again. Then visit d before h and never visit h again. Finally visit h"
 2023/01/16 11:36:54 AM EST,saml@princeton.edu,Ordered Visit,2,Do not visit b until you go to a
 2023/01/16 11:36:54 AM EST,saml@princeton.edu,Ordered Visit,2,You must visit a first before going to b
 2023/01/16 11:37:51 AM EST,saml@princeton.edu,Ordered Visit,4,"Visit a as many times as you want while avoiding b, c and d. Then visit b as many times as you want while avoiding c and d. Then visit c as many times as you want while avoiding d. Finally, visit d"
+2023/01/16 9:54:40 PM EST,saml@princeton.edu,Strictly Ordered Visit,5,"Before visiting b, c, d, and h, visit a and never visit it again. Then visit b before c, d, and h, and never visit it again. Do not visit d and h until you visit c. Never visit c again. Then visit d before h and never visit h again. Finally visit h"
