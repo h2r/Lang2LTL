@@ -41,7 +41,7 @@ def rename_map_files(osm_lmks_dpath):
 
 def construct_lmk2prop(osm_lmks_dpath, lmk2prop_fpath):
     """
-    Convert landmark names to propositions
+    Construct landmark names to propositions mapping.
     """
     lmk_fnames = [fname for fname in os.listdir(osm_lmks_dpath) if os.path.splitext(fname)[1] == ".json"]
     city2map = {}
