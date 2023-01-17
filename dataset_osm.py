@@ -1,5 +1,5 @@
 """
-Generate grounded utterance-language dataset for OSM dataset.
+Generate utterance-language grounded dataset, where propositions are from OSM landmarks.
 
 OSM landmarks from https://github.com/jasonxyliu/magic-skydio/tree/master/language/data/map_info_dicts
 Map ID to city name mapping from https://github.com/jasonxyliu/magic-skydio/blob/5b16d3f5151b250576ec1cdd513283f377368170/language/copynet/end2end_eval.py#L31

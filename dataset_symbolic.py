@@ -1,5 +1,5 @@
 """
-Generate utterance-language dataset for symbolic dataset.
+Generate utterance-language symbolic dataset, where propositions are letters.
 """
 import os
 from pathlib import Path
