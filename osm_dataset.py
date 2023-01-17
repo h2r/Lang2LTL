@@ -7,13 +7,14 @@ from pathlib import Path
 import string
 from pprint import pprint
 
-from utils import load_from_file, save_to_file
+from utils import load_from_file
 
 
 def rename_map_files(osm_lmks_dpath):
     """
     Change file names for better interpretation.
     e.g. Map00.json -> new_york_1.json
+    One time change after pulling dataset from CopyNet repo.
     """
     mapid2cityname = {
         "Map00": "New York #1", "Map01": "New York #2", "Map02": "Los Angeles #1",
@@ -39,37 +40,36 @@ def rename_map_files(osm_lmks_dpath):
                 os.rename(map_fpath, new_map_fpath)
 
 
-def construct_lmk2prop(osm_lmks_dpath, lmk2prop_fpath):
+def lmk_to_prop(lmk_name):
     """
+    :param lmk_name: landmark name, e.g. Canal Street, TD Bank.
+    :return: proposition that corresponds to input landmark name and is compatible with Spot.
+
+    References
+    https://stackoverflow.com/questions/6116978/how-to-replace-multiple-substrings-of-a-string
+    """
+    return "_".join(lmk_name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
+
+
+def construct_lmk2prop(osm_lmks_dpath):
+    """
+    For testing conversion of every landmark name to proposition.
     Construct landmark names to propositions mapping.
     """
     lmk_fnames = [fname for fname in os.listdir(osm_lmks_dpath) if os.path.splitext(fname)[1] == ".json"]
-    city2map = {}
     for lmk_fname in lmk_fnames:
         city_name = os.path.splitext(lmk_fname)[0]
+        print(city_name)
         lmk2prop = {}
-        print(lmk_fname)
         lmk_fpath = os.path.join(osm_lmks_dpath, lmk_fname)
         lmk_json = load_from_file(lmk_fpath)
         lmk_names = lmk_json.keys()
         for lmk_name in lmk_names:
-            prop = "_".join(lmk_name.translate(str.maketrans('', '', "'-")).lower().split())
-            lmk2prop[lmk_name] = prop
+            lmk2prop[lmk_name] = lmk_to_prop(lmk_name)
         pprint(lmk2prop)
-        city2map[city_name] = lmk2prop
-        breakpoint()
-    save_to_file(city2map, lmk2prop_fpath)
-
-    city2map = load_from_file(lmk2prop_fpath)
-    for city, lmk2prop in city2map.items():
-        print(city)
-        pprint(lmk2prop)
+        print("\n")
 
 
 if __name__ == "__main__":
     osm_lmks_dpath = os.path.join("data", "osm", "osm_lmks")
-
-    # rename_map_files(osm_lmks_dpath)
-
-    lmk2prop_fpath = os.path.join("data", "osm", "osm_lmks", "lmk2prop.pkl")
-    construct_lmk2prop(osm_lmks_dpath, lmk2prop_fpath)
+    construct_lmk2prop(osm_lmks_dpath)
