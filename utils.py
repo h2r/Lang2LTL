@@ -62,7 +62,7 @@ def substitute_single(input_str, sub_map):
 
 def substitute_single_word(in_str, sub_map):
     """
-    Substitute words and phrases in a single utterance.
+    Substitute words and phrases to words or phrases in a single utterance.
     Assume numbers are not in the input string.
     """
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
@@ -80,7 +80,7 @@ def substitute_single_word(in_str, sub_map):
 
 def substitute_single_letter(in_str, sub_map):
     """
-    Substitute English letters in a single utterance.
+    Substitute English letters to letters, words or phrases in a single utterance.
     e.g. input_str="go to a then go to b", sub_map={'a': 'b', 'b': 'a'} -> return="go to a then go to a"
 
     Require `input_str` to be normalized, i.e. all punctuations removed.
