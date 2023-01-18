@@ -203,7 +203,7 @@ def global_avoid(props):
 
 def future_avoid(props):
     assert len(props) == 2, f"length of props for future_avoid must be 2, got {len(props)}"
-    return f"G i {props[0]} G ! {props[1]}"
+    return f"G i {props[0]} X G ! {props[1]}"
 
 
 def upper_restricted_avoid_fixed(props):
