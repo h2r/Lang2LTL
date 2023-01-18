@@ -73,7 +73,15 @@ def lmk_to_prop(lmk_name):
     return "_".join(lmk_name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
 
 
-def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn):
+def lmk_to_prop_copynet(lmk_name):
+    """
+    :param lmk_name: landmark name, e.g. Canal Street, TD Bank.
+    :return: proposition in specific form required by CopyNet.
+    """
+    return f"lm( {lmk_name} )lm"
+
+
+def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn, model):
     dataset_symbolic = load_from_file(data_fpath)
     meta2data = defaultdict(list)
     for pattern_type, props, utt, ltl in dataset_symbolic:
@@ -88,12 +96,12 @@ def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn):
         train_dataset = data[:firstn] if firstn else data
         for idx, (utt, ltl) in enumerate(train_dataset):
             seed_lmk = idx
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk)
+            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk, model)
             train_iter.append((utt_grounded, ltl_grounded))
             train_meta.append((pattern_type, props, lmk_names, seed_lmk))
         for idx, (utt, ltl) in enumerate(valid_dataset):
             seed_lmk = idx + 100  # +100 sample diff lmks from train
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk)
+            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk, model)
             valid_iter.append((utt_grounded, ltl_grounded))
             valid_meta.append((pattern_type, props, lmk_names, seed_lmk))
 
@@ -102,7 +110,7 @@ def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn):
         "city": city, "size": size, "seed": seed,
     }
     dataset_name = Path(data_fpath).stem
-    osm_dataset_fpath = f"data/osm/{dataset_name}_{city}_size{size}_seed{seed}"
+    osm_dataset_fpath = f"data/osm/{model}_{dataset_name}_{city}_size{size}_seed{seed}"
     if firstn:
         osm_dataset_fpath = f"{osm_dataset_fpath}_first{firstn}.pkl"
     else:
@@ -110,14 +118,15 @@ def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn):
     save_to_file(osm_dataset, osm_dataset_fpath)
 
 
-def substitute_lmk(utt, ltl, osm_lmks, props, seed):
+def substitute_lmk(utt, ltl, osm_lmks, props, seed, model):
     random.seed(seed)
     lmk_names = random.sample(osm_lmks, len(props))
 
     sub_map = {prop: name for prop, name in zip(props, lmk_names)}
     utt_grounded = substitute_single_letter(utt, sub_map)
 
-    sub_map = {prop: lmk_to_prop(name) for prop, name in zip(props, lmk_names)}
+    lmk_to_prop_fn = lmk_to_prop if model == "lang2ltl" else lmk_to_prop_copynet
+    sub_map = {prop: lmk_to_prop_fn(name) for prop, name in zip(props, lmk_names)}
     ltl_grounded = substitute_single_letter(ltl, sub_map)
 
     return utt_grounded, ltl_grounded, lmk_names
@@ -130,6 +139,7 @@ if __name__ == "__main__":
     parser.add_argument("--size", type=float, default=0.2, help="train, test split ratio.")
     parser.add_argument("--seed", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
+    parser.add_argument("--model_name", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="fpath to symbolic dataset.")
     args = parser.parse_args()
 
     osm_dpath = os.path.join("data", "osm")
@@ -139,4 +149,4 @@ if __name__ == "__main__":
     filter_types = ["fair_visit"]
     seeds = args.seed if isinstance(args.seed, list) else [args.seed]
     for seed in seeds:
-        construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn)
+        construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model_name)
