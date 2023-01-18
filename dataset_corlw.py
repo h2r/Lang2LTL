@@ -39,18 +39,18 @@ def create_osm_dataset_corlw():
     """
     To test generalization capability of LLMs, create an OSM dataset.
     """
-    data = load_from_file('data/providence_500.csv')
+    data = load_from_file('data/osm/providence_500.csv')
     data_rand = random.sample(data[:361], 50)
 
     csv_data = [["Language Command", "LTL Formula"]]
     for symbolic_ltl, utt, ltl in data_rand:
         csv_data.append([utt.lower().strip(), ltl.strip()])
-    save_to_file(csv_data, 'data/osm_corlw.csv')
+    save_to_file(csv_data, 'data/osm/osm_corlw.csv')
 
     # manually change all names in LTLs to lower case, connected with underscores
 
     # check LTL formulas compatible with Spot
-    pairs = load_from_file('data/osm_corlw.csv')
+    pairs = load_from_file('data/osm/osm_corlw.csv')
     for utt, ltl in pairs:
         spot.formula(ltl)
 
