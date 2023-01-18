@@ -1,6 +1,7 @@
 """
 Generate utterance-language symbolic dataset, where propositions are letters.
 """
+import argparse
 import os
 from pathlib import Path
 import random
@@ -41,6 +42,7 @@ def create_symbolic_dataset(load_fpath, perm_props):
     #     print(f"{pattern_type}, {props}, {utt}")
     #     print(spot.formula(ltl))
     print(f"Total number of utt, ltl pairs: {len(pairs)}\n")
+    return save_fpath
 
 
 def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, seed):
@@ -280,24 +282,28 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
 
 
 if __name__ == '__main__':
-    # Construct train, test split for 3 types of holdout for symbolic translation
-    create_symbolic_dataset('data/aggregated_responses_batch1.csv', False)
-    create_symbolic_dataset('data/aggregated_responses_batch1.csv', True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--data_fpath", type=str, default="data/aggregated_responses_batch1.csv", help="fpath to aggregated Google form responses.")
+    parser.add_argument("--perm", action="store_true", help="construct symbolic dataset with permuted propositions.")
+    parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
+    parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
+    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples in prompt.")
+    parser.add_argument("--seed_prompt", type=int, default=None, help="random seed for choosing examples.")
+    args = parser.parse_args()
 
-    data_fpath = "data/symbolic_no_perm_batch1.csv"
+    # Construct train, test split for 3 types of holdout for symbolic translation
+    symbolic_fpath = create_symbolic_dataset(args.data_fpath, args.perm)
+
     filter_types = ["fair_visit"]
-    seeds = [0, 1, 2, 42, 111]
-    firstn = 5
+    seeds = args.seeds_split if isinstance(args.seeds_split, list) else [args.seeds_split]
     for seed in seeds:
-        construct_split_dataset_new(data_fpath, holdout_type="ltl_type", filter_types=filter_types, size=1, firstn=firstn, seed=seed)
-        construct_split_dataset_new(data_fpath, holdout_type="ltl_formula", filter_types=filter_types, size=5, firstn=firstn, seed=seed)
-        construct_split_dataset_new(data_fpath, holdout_type="utt", filter_types=filter_types, size=0.2, firstn=firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, holdout_type="ltl_type", filter_types=filter_types, size=1, firstn=args.firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, holdout_type="ltl_formula", filter_types=filter_types, size=5, firstn=args.firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, holdout_type="utt", filter_types=filter_types, size=0.2, firstn=args.firstn, seed=seed)
 
     # Generate prompts for off-the-shelf GPT-3
     split_dpath = os.path.join("data", "holdout_splits_new")
     split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
-    nexamples = [1, 2, 3]
-    seed = 42
     for split_fpath in split_fpaths:
-        for n in nexamples:
-            generate_prompts_from_split_dataset(split_fpath, n, seed)
+        for n in args.nexamples:
+            generate_prompts_from_split_dataset(split_fpath, n, args.seed_prompt)
