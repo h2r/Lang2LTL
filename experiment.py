@@ -9,7 +9,7 @@ from openai.embeddings_utils import cosine_similarity
 from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
-from dataset import load_split_dataset
+from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 from evaluation import evaluate_lang, evaluate_plan
 
