@@ -111,20 +111,21 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split_dataset_fpath", type=str, default="data/holdout_splits/split_symbolic_no_perm_batch1_utt_0.2_111.pkl", help="path to pkl file storing train, test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_splits/split_symbolic_no_perm_batch1_utt_0.2_111.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_splits/split_symbolic_no_perm_batch1_utt_0.2_111.pkl", help="path to pkl file storing test set")
     parser.add_argument("--model", type=str, default="gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_111", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     args = parser.parse_args()
-    dataset_name = Path(args.split_dataset_fpath).stem
+    dataset_name = Path(args.train_dataset_fpath).stem
 
-    if "gpt3" in args.model or "davinci" in args.model:
-        dataset = load_from_file(args.split_dataset_fpath)
-        valid_iter = dataset["valid_iter"]
-        if "utt" in args.split_dataset_fpath:  # result directory based on holdout type
+    if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
+        dataset = load_from_file(args.train_dataset_fpath)
+        valid_iter = load_from_file(args.test_dataset_fpath)["valid_iter"]
+        if "utt" in args.train_dataset_fpath:  # result directory based on holdout type
             dname = "utt"
-        elif "formula" in args.split_dataset_fpath:
+        elif "formula" in args.train_dataset_fpath:
             dname = "formula"
-        elif "type" in args.split_dataset_fpath:
+        elif "type" in args.train_dataset_fpath:
             dname = "type"
         if "finetuned" in args.model:
             engine = load_from_file("model/gpt3_models.pkl")[args.model]
@@ -135,7 +136,7 @@ if __name__ == "__main__":
             engine = args.model
             prompt_fpath = os.path.join("data", "symbolic_prompts_new", f"prompt_{args.nexamples}_{dataset_name}.txt")
             prompt = load_from_file(prompt_fpath)
-            valid_iter = [(f"{prompt}Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
+            valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
             result_log_fpath = os.path.join("result", "pretrained_gpt3", dname, f"log_{args.model}_{dataset_name}.csv")
             acc_fpath = os.path.join("result", "pretrained_gpt3", dname, f"acc_{args.model}_{dataset_name}.csv")
         dataset["valid_iter"] = valid_iter
