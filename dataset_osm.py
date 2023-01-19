@@ -151,7 +151,8 @@ if __name__ == "__main__":
     for seed in seeds:
         if args.city == "all":
             for fname in os.listdir(osm_lmks_dpath):
-                city = os.path.splitext(fname)[0]
-                construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model)
+                if ".json" in fname:
+                    city = os.path.splitext(fname)[0]
+                    construct_osm_dataset(args.data_fpath, city, filter_types, args.size, seed, args.firstn, args.model)
         else:
             construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model)
