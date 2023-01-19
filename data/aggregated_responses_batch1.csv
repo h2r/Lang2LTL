@@ -362,11 +362,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,"First go to a. Then go to b. Then go to c. Finally, go to d."
 2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Move directly from a to b to c to d
 2023/01/09 8:38:44 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,4,Visit a then b then c and then d in that strict order. 
-2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"Visit a, b, c, and d the same number of times."
-2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"Visit a, b, c, and d and then get to your goal. Then, go to d, c, b, and a to get back to the start."
-2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"If you start at a, you must also go to b, c, and d. Likewise, if you start at b, you must go to a, c, and d. If you start at c, you must go to a, b, and d. If you start at d, you must go to a, b, and c."
-2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"If you go to one of a, b, c, or d, you must go to all of them. "
-2023/01/09 8:52:49 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"You must go to a, b, c, and d the same number of times. "
 2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Patrol around the locations a, b, c, and d "
 2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Circle around a, b, c, and d"
 2023/01/09 8:59:50 PM EST,benjamin_schornstein@brown.edu,Patrolling,4,"Keep going to a, b, c, and d "
@@ -387,11 +382,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Move exactly from a to b to c
 2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,"First visit a. Then go to b. Finally, go to c."
 2023/01/10 9:48:16 PM EST,benjamin_schornstein@brown.edu,Strictly Ordered Visit,3,Go to a first. Go to b second. Go to c third.
-2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,Go to a and b the same number of times.
-2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,"If you go to a, you must also go to b and visa versa. "
-2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,Visit both a and b an equal number of times.
-2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,"If you travel to b, you must go to a. If you travel to a, you must go to b."
-2023/01/10 9:51:11 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,a and b must be seen the same amount of times.
 2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Please circle around a
 2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Keep going to a
 2023/01/10 9:56:23 PM EST,benjamin_schornstein@brown.edu,Patrolling,1,Always stop at a repeatedly
@@ -464,16 +454,6 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,Visit locations a and b and c and d and h but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one.
 2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,go to locations a and b and c and d and h but the difference between the number of times you go to any two locations is at most one.
 2023/01/11 7:49:18 PM EST,saml@princeton.edu,Fair Visit,5,fairly visit locations a and b and c and d and h. that means the number of times you go to any one location can be at most one more than the number of times you go to any other location
-2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Visit a, b, and c the same number of times."
-2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you go to one of the landmarks a, b, or c at any point, you must visit the other two you missed."
-2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Go to b, c, and a an equal number of times."
-2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"Visit a, c, and b at the same rate."
-2023/01/11 8:59:43 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you visit a, visit b and c. If you visit b, visit a and c. If you visit c, visit a and b."
-2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Visit a, h, c, b, and d the same number of times."
-2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"For each time you go to one of the landmarks a, b, d, c, or h, you must go to the others you missed."
-2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Visit c, h, a, d, and b equally. "
-2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Go to a, b, c, d, and h an equal number of times."
-2023/01/11 9:10:09 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"Please attend c, a, d, h, and b an identical number of times "
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Move around a and b
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Cycle through a and b
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Go through b and a in a cycle
@@ -611,3 +591,23 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/18 12:10:43 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Visit a, b, c, d, but make sure that any location is not visited more than once more than the others"
 2023/01/18 12:10:43 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Visit a, b, c, d fairly, i.e. at any given time the visit counts to the locations should not exceed that of any other location by more than one."
 2023/01/18 12:10:43 PM EST,ankitshah91@gmail.com,Fair Visit,4,"Go to a, b, c, and d in any order, but ensure that each location is visited at most once more than other locations at any time"
+2023/01/18 4:48:27 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"The difference among the number of times a, b, c, and d are visited is at most one."
+2023/01/18 4:48:27 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"Visit a, b, c, and d and then get to your goal. Then, go to d, c, b, and a to get back to the start."
+2023/01/18 4:48:27 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"You can only go to a at most one more time than you go to b, c, and d."
+2023/01/18 4:48:27 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"If you go to one of a, b, c, or d, you must go to all of them and can potentially visit one of them at most one more time. "
+2023/01/18 4:48:27 PM EST,benjamin_schornstein@brown.edu,Fair Visit,4,"You can only visit one of a, b, c, or d at most one more time than you visited the other landmarks. "
+2023/01/18 4:52:26 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,The difference among the number of times a and b are visited is at most one.
+2023/01/18 4:52:26 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,You can only go to a at most one more than than you go to b and visa versa.
+2023/01/18 4:52:26 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,You can only visit b one more time than you visited a. 
+2023/01/18 4:52:26 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,You can't visit b two or more times than the amount of times you visited a.
+2023/01/18 4:52:26 PM EST,benjamin_schornstein@brown.edu,Fair Visit,2,The difference between the number of times a and b were seen is no more than one. 
+2023/01/18 5:00:52 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"The difference among the number of times locations a, b, and c are visited is at most one."
+2023/01/18 5:00:52 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you go to one of the landmarks a, b, or c at any point, you can't visit one of them more than one more time without visiting them all of them again"
+2023/01/18 5:00:52 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"You can't visit one of b, a, and c two or more times more than the number of times you visited one of them. "
+2023/01/18 5:00:52 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,You can visit a at most one more time than you visited b and c. You can visit b at most one more time than you visited a and c. You can visit c at most one more time than you visited b and a.
+2023/01/18 5:00:52 PM EST,benjamin_schornstein@brown.edu,Fair Visit,3,"If you visit a, visit b and c before you visit a again. If you visit b, visit a and c before you visit b again. If you visit c, visit a and b before you visit c again."
+2023/01/18 5:06:33 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"The difference among the number of times a, b, c, d, and h are visited is at most one."
+2023/01/18 5:06:33 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"For each time you go to one of the landmarks a, b, d, c, or h, you can't visit one of them more than one again unless you visit all of them again."
+2023/01/18 5:06:33 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"You can't visit h two or more times than you visited a, b, c, and d. You can't visit d two or more times than you visited a, b, c, and h. You can't visit c two or more times than you visited a, b, h, and d. You can't visit b two or more times than you visited a, d, c, and h. You can't visit a two or more times than you visited h, b, c, and d. "
+2023/01/18 5:06:33 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"You can visit h at most one more time than you visited a, b, c, and d. You can visit d at most one more time than you visited a, b, c, and h. You can visit c at most one more time than you visited a, b, h, and d. You can visit b at most one more time than you visited a, d, c, and h. You can visit a at most one more time than you visited h, b, c, and d. "
+2023/01/18 5:06:33 PM EST,benjamin_schornstein@brown.edu,Fair Visit,5,"The difference in the number of times a, c, b, h, and d are visited is no more than one"
