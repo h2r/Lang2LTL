@@ -135,11 +135,11 @@ def substitute_lmk(utt, ltl, osm_lmks, props, seed, model):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/symbolic_no_perm_batch1_0.csv", help="fpath to symbolic dataset.")
-    parser.add_argument("--city", type=str, default="boston", help="city landmarks from. fname in data/osm/osm_lmks.")
+    parser.add_argument("--city", type=str, default="all", help="city landmarks from. fname in data/osm/osm_lmks.")
     parser.add_argument("--size", type=float, default=0.2, help="train, test split ratio.")
     parser.add_argument("--seed", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
-    parser.add_argument("--model_name", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="fpath to symbolic dataset.")
+    parser.add_argument("--model", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="fpath to symbolic dataset.")
     args = parser.parse_args()
 
     osm_dpath = os.path.join("data", "osm")
@@ -149,4 +149,9 @@ if __name__ == "__main__":
     filter_types = ["fair_visit"]
     seeds = args.seed if isinstance(args.seed, list) else [args.seed]
     for seed in seeds:
-        construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model_name)
+        if args.city == "all":
+            for fname in os.listdir(osm_lmks_dpath):
+                city = os.path.splitext(fname)[0]
+                construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model)
+        else:
+            construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model)
