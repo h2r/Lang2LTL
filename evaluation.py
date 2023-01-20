@@ -7,7 +7,7 @@ import numpy as np
 import spot
 
 from gpt3 import GPT3
-from dataset import load_split_dataset
+from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file
 
 
@@ -122,11 +122,11 @@ if __name__ == "__main__":
         dataset = load_from_file(args.train_dataset_fpath)
         valid_iter = load_from_file(args.test_dataset_fpath)["valid_iter"]
         if "utt" in args.train_dataset_fpath:  # result directory based on holdout type
-            dname = "utt"
+            dname = "utt_holdout_new"
         elif "formula" in args.train_dataset_fpath:
-            dname = "formula"
+            dname = "formula_holdout_new"
         elif "type" in args.train_dataset_fpath:
-            dname = "type"
+            dname = "type_holdout_new"
         if "finetuned" in args.model:
             engine = load_from_file("model/gpt3_models.pkl")[args.model]
             valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
