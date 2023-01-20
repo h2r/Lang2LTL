@@ -110,7 +110,7 @@ def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn, mo
         "city": city, "size": size, "seed": seed,
     }
     dataset_name = Path(data_fpath).stem
-    osm_dataset_fpath = f"data/osm/{model}_{dataset_name}_{city}_size{size}_seed{seed}"
+    osm_dataset_fpath = f"data/osm/{model}_grounded/{model}_{dataset_name}_{city}_size{size}_seed{seed}"
     if firstn:
         osm_dataset_fpath = f"{osm_dataset_fpath}_first{firstn}.pkl"
     else:
@@ -143,7 +143,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     osm_dpath = os.path.join("data", "osm")
-    osm_lmks_dpath = os.path.join(osm_dpath, "osm_lmks")
+    osm_lmks_dpath = os.path.join(osm_dpath, "lmks")
     # construct_lmk2prop(osm_lmks_dpath)  # for testing
 
     filter_types = ["fair_visit"]
