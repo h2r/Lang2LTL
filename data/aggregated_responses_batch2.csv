@@ -179,3 +179,73 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,you must reach a exactly five times
 2023/01/19 8:43:49 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,navigate to a exactly five times
 2023/01/19 8:43:49 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,"visit a exactly five times, no more no less"
+2023/01/19 10:55:56 PM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"never go to a, b or c"
+2023/01/19 10:55:56 PM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"do not go to a, b or c"
+2023/01/19 10:55:56 PM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"you can go anywhere but a, b, and c"
+2023/01/19 10:55:56 PM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"a, b, and c cannot be visited at any time"
+2023/01/19 10:55:56 PM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"always keep away from a, b, and c"
+2023/01/19 11:23:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"never go to a, b, c, or d"
+2023/01/19 11:23:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"do not go to a, b, c, or d"
+2023/01/19 11:23:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"you can go anywhere but a, b, c, and d"
+2023/01/19 11:23:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"a, b, c, and d cannot be visited at any time"
+2023/01/19 11:23:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"always keep away from a, b, c, and d"
+2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"never go to a, b, c, d, or h"
+2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"do not go to a, b, c, d, or h"
+2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"you can go anywhere but a, b, c, d, and h"
+2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"a, b, c, d, and h cannot be visited at any time"
+2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"always keep away from a, b, c, d, and h"
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,do not go to b once you have visited a
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,never go to b once you go to a
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"if you have ever visited a once, you cannot visit b afterward"
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"once a is visited, you cannot go to b any more"
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"you can visit b before a is visited, but you can never visit b afterward"
+2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,you can go to a at most once
+2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,do not visit a more than once
+2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,you can visit a but only one time at most
+2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,do not visit a again after you haven been to a once
+2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,visiting a more than once is prohibited
+2023/01/20 12:30:13 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,you can go to a at most twice
+2023/01/20 12:30:13 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,do not visit a more than twice
+2023/01/20 12:30:13 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,you can visit a but two times at most
+2023/01/20 12:30:13 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,do not visit a again after you haven been to a twice
+2023/01/20 12:30:13 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,visiting a more than twice is prohibited
+2023/01/20 12:31:42 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,you can go to a at most three times
+2023/01/20 12:31:42 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,do not visit a more than three times
+2023/01/20 12:31:42 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,you can visit a but three times at most
+2023/01/20 12:31:42 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,do not visit a again after you haven been to a three times
+2023/01/20 12:31:42 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,visiting a more than three times is prohibited
+2023/01/20 12:33:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,you can go to a at most four times
+2023/01/20 12:33:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,do not visit a more than four times
+2023/01/20 12:33:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,you can visit a but four times at most
+2023/01/20 12:33:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,do not visit a again after you haven been to a four times
+2023/01/20 12:33:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,visiting a more than four times is prohibited
+2023/01/20 12:41:34 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,you can go to a at most five times
+2023/01/20 12:41:34 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,do not visit a more than five times
+2023/01/20 12:41:34 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,you can visit a but five times at most
+2023/01/20 12:41:34 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,do not visit a again after you haven been to a five times
+2023/01/20 12:41:34 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,visiting a more than five times is prohibited
+2023/01/20 1:15:04 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,visit a at least once
+2023/01/20 1:15:04 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,you have to visit a one or more than one time
+2023/01/20 1:15:04 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,your task is to go to a one or more times
+2023/01/20 1:15:04 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,do not visit a less than one time
+2023/01/20 1:15:04 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,make sure you visit a one or more times
+2023/01/20 1:17:17 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,2,visit a at least twice
+2023/01/20 1:17:17 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,2,you have to visit a two or more than two times
+2023/01/20 1:17:17 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,2,your task is to go to a two or more times
+2023/01/20 1:17:17 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,2,do not visit a less than twice
+2023/01/20 1:17:17 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,2,make sure you visit a two or more times
+2023/01/20 1:19:05 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,3,visit a at least three times
+2023/01/20 1:19:05 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,3,you have to visit a three or more than three times
+2023/01/20 1:19:05 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,3,your task is to go to a three or more times
+2023/01/20 1:19:05 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,3,do not visit a less than three times
+2023/01/20 1:19:05 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,3,make sure you visit a three or more times
+2023/01/20 1:20:29 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,4,visit a at least four times
+2023/01/20 1:20:29 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,4,you have to visit a four or more than four times
+2023/01/20 1:20:29 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,4,your task is to go to a four or more times
+2023/01/20 1:20:29 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,4,do not visit a less than four times
+2023/01/20 1:20:29 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,4,make sure you visit a four or more times
+2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,visit a at least five times
+2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,you have to visit a five or more than five times
+2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,your task is to go to a five or more times
+2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,do not visit a less than five times
+2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,make sure you visit a five or more times
