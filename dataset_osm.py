@@ -81,7 +81,7 @@ def lmk_to_prop_copynet(lmk_name):
     return f"lm( {lmk_name} )lm"
 
 
-def construct_osm_dataset(data_fpath, city, filter_types, size, seed, firstn, model):
+def construct_osm_dataset(data_fpath, osm_lmks_dpath, city, filter_types, size, seed, firstn, model):
     dataset_symbolic = load_from_file(data_fpath)
     meta2data = defaultdict(list)
     for pattern_type, props, utt, ltl in dataset_symbolic:
@@ -150,9 +150,8 @@ if __name__ == "__main__":
     seeds = args.seed if isinstance(args.seed, list) else [args.seed]
     for seed in seeds:
         if args.city == "all":
-            for fname in os.listdir(osm_lmks_dpath):
-                if ".json" in fname:
-                    city = os.path.splitext(fname)[0]
-                    construct_osm_dataset(args.data_fpath, city, filter_types, args.size, seed, args.firstn, args.model)
+            cities = [os.path.splitext(fname)[0] for fname in os.listdir(osm_lmks_dpath) if "json" in fname]
         else:
-            construct_osm_dataset(args.data_fpath, args.city, filter_types, args.size, seed, args.firstn, args.model)
+            cities = [args.city]
+        for city in cities:
+            construct_osm_dataset(args.data_fpath, osm_lmks_dpath, city, filter_types, args.size, seed, args.firstn, args.model)

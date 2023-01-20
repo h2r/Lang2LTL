@@ -60,7 +60,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if os.path.isdir(args.lmk_path):
-        lmk_paths = [os.path.join(args.lmk_path, fname) for fname in os.listdir(args.lmk_path) if "json" in fname and "boston" not in fname]
+        lmk_paths = [os.path.join(args.lmk_path, fname) for fname in os.listdir(args.lmk_path) if "json" in fname]
     else:
         lmk_paths = [args.lmk_path]
 
