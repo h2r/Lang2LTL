@@ -28,7 +28,6 @@ class GPT3:
         return outs
 
     def generate(self, query_prompt):  # engines must match when compare two embeddings
-        
         try:
             raw_responses = openai.Completion.create(
                 model=self.engine,
