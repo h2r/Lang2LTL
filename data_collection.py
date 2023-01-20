@@ -1,3 +1,4 @@
+import argparse
 import os
 from collections import defaultdict
 
@@ -24,7 +25,7 @@ def aggregate_responses(raw_fpath, result_fpath):
     for row in raw_data:
         result_row = [None] * len(result_fields)
         for col_idx, (field, col) in enumerate(zip(fields, row)):
-            if field == "Number of Propositions":
+            if "Number" in field or "number" in field:
                 if col:
                     result_row[3] = col
             elif "Utterance" in field:
@@ -60,8 +61,12 @@ def analyze_responses(result_fpath, analysis_fpath):
 
 
 if __name__ == '__main__':
-    raw_fpath = os.path.join("data", "raw_responses_batch1.csv")
-    result_fpath = os.path.join("data", "aggregated_responses_batch1.csv")
-    analysis_fpath = os.path.join("data", "analysis_batch1.csv")
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--batch_id", type=int, default=2, help="batch id")
+    args = parser.parse_args()
+
+    raw_fpath = os.path.join("data", f"raw_responses_batch{args.batch_id}.csv")
+    result_fpath = os.path.join("data", f"aggregated_responses_batch{args.batch_id}.csv")
+    analysis_fpath = os.path.join("data", f"analysis_batch{args.batch_id}.csv")
     aggregate_responses(raw_fpath, result_fpath)
     analyze_responses(result_fpath, analysis_fpath)
