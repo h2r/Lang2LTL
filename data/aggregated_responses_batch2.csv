@@ -1,0 +1,181 @@
+Timestamp,Username,LTL template type,Number of propositions,Utterance
+2023/01/18 4:19:51 PM EST,ziyi_yang1@brown.edu,Global Avoidance,1,never go to a
+2023/01/18 4:19:51 PM EST,ziyi_yang1@brown.edu,Global Avoidance,1,do not go to a
+2023/01/18 4:19:51 PM EST,ziyi_yang1@brown.edu,Global Avoidance,1,you can go anywhere but a
+2023/01/18 4:19:51 PM EST,ziyi_yang1@brown.edu,Global Avoidance,1,a cannot be visited at any time
+2023/01/18 4:19:51 PM EST,ziyi_yang1@brown.edu,Global Avoidance,1,always keep away from a
+2023/01/19 9:26:02 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,never visit a
+2023/01/19 9:26:02 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,you can never go to a
+2023/01/19 9:26:02 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,always stay away from a
+2023/01/19 9:26:02 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,always avoid going to a
+2023/01/19 9:26:02 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,you have to avoid a at all costs
+2023/01/19 9:27:12 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,make sure you never visit a
+2023/01/19 9:27:12 AM EST,xinyu_liu@brown.edu,Global Avoidance,1,you cannot go to a at any time
+2023/01/19 9:29:11 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,never visit a or b
+2023/01/19 9:29:11 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,you can never go to a or b
+2023/01/19 9:29:11 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,you cannot go to a or b at any time
+2023/01/19 9:29:11 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,always avoid going to a and never visit b
+2023/01/19 9:29:11 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,always stay away from a and b
+2023/01/19 9:29:59 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,you have to avoid a and b at all costs
+2023/01/19 9:29:59 AM EST,xinyu_liu@brown.edu,Global Avoidance,2,make sure you never go to a or b
+2023/01/19 9:31:46 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"never go to a, b or c"
+2023/01/19 9:31:46 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"you can never visit a, b or c"
+2023/01/19 9:31:46 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"always avoid going to a, b and c"
+2023/01/19 9:31:46 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"always stay away from a, b and c"
+2023/01/19 9:31:46 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"you have to avoid a, b and c at all costs"
+2023/01/19 9:32:19 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"you cannot visit a, b or c at any time"
+2023/01/19 9:32:19 AM EST,xinyu_liu@brown.edu,Global Avoidance,3,"make sure you never visit a, b or c"
+2023/01/19 9:33:39 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"never visit a, b, c or d"
+2023/01/19 9:33:39 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"you can never go to a, b, c or d"
+2023/01/19 9:33:39 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"you cannot go to a, b, c or d at any time"
+2023/01/19 9:33:39 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"make sure you never visit a, b, c or d"
+2023/01/19 9:33:39 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"always avoid going to a, b, c or d"
+2023/01/19 9:34:18 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"always stay away from a, b, c and d"
+2023/01/19 9:34:18 AM EST,xinyu_liu@brown.edu,Global Avoidance,4,"you have to avoid a, b, c and d at all costs"
+2023/01/19 9:35:57 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"never visit a, b, c, d or h"
+2023/01/19 9:35:57 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"you can never go to a, b, c, d or h"
+2023/01/19 9:35:57 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"you cannot go to a, b, c, d or h at any time"
+2023/01/19 9:35:57 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"make sure you never visit a, b, c, d or h"
+2023/01/19 9:35:57 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"always avoid going to a, b, c, d and h"
+2023/01/19 9:36:43 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"always stay away from a, b, c, d and h"
+2023/01/19 9:36:43 AM EST,xinyu_liu@brown.edu,Global Avoidance,5,"you have to avoid a, b, c, d and h at all costs"
+2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,never go to a or b
+2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,do not go to a or b
+2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,you can go anywhere but a and b
+2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,a and b cannot be visited at any time
+2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,always keep away from a and b
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Do not go to a until you see b
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Avoid visiting a till you observe b
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Don't go to a until b has occured
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Once you observe b only then are you allowed to go to a
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,You can visit a only after seeing b
+2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,Avoid going to a
+2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,You must never go to a
+2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,a should never be reached
+2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,a must be avoided
+2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,never visit a
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Do not go to a ever and do not ever go to b
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Avoid reaching a and b
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Never visit a and b 
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Avoid going to a and avoid going to b
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Make sure to never reach both a and b
+2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"avoid going to a, b, and c"
+2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Never visit either one among a, b, and c"
+2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Ensure that you never reach the locations a, b, and c"
+2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Ensure that you never reach a, ensure that you never reach b, and ensure that you never reach c"
+2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"a, b, and c should never be visited"
+2023/01/19 3:32:28 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"Never visit any locations among a, b, c, d"
+2023/01/19 3:32:28 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"Make sure to not reach any of a, b, c, and d"
+2023/01/19 3:32:28 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"Avoid going to a, b, c, and d"
+2023/01/19 3:32:28 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"a, b, c, and d must never be visited"
+2023/01/19 3:32:28 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"Never go to a, never go to b, never go to c, and never go to d"
+2023/01/19 3:33:49 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"Never go to a, never go to b, never go to c, never reach d and never reach h"
+2023/01/19 3:33:49 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"Always avoid going to a, b, c, d, and h"
+2023/01/19 3:33:49 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"Make sure you never reach the following locations: a, b, c, d, and h"
+2023/01/19 3:33:49 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"Ensure that a, b, c, d and h are never visited"
+2023/01/19 3:33:49 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"a, b, c, d, and h should never be reached"
+2023/01/19 8:05:57 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,visit a at most once
+2023/01/19 8:05:57 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,go to a at most once
+2023/01/19 8:05:57 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,you can visit a at most once
+2023/01/19 8:05:57 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,never go to a more than once
+2023/01/19 8:05:57 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,you cannot go to a more than once
+2023/01/19 8:07:34 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,never visit a more than once
+2023/01/19 8:07:34 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,1,you can visit a zero times or once
+2023/01/19 8:09:06 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,visit a at most twice
+2023/01/19 8:09:06 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,go to a at most twice
+2023/01/19 8:09:06 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,you can visit a at most twice
+2023/01/19 8:09:06 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,never go to a more than twice
+2023/01/19 8:09:06 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,you cannot go to a more than twice
+2023/01/19 8:09:56 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,never visit a more than twice
+2023/01/19 8:09:56 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,2,"you can visit a zero times, once or twice"
+2023/01/19 8:11:31 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,visit a at most three times
+2023/01/19 8:11:31 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,go to a at most three times
+2023/01/19 8:11:31 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,you can visit a at most three times
+2023/01/19 8:11:31 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,never go to a more than three times
+2023/01/19 8:11:31 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,you cannot go to a more than three times
+2023/01/19 8:12:26 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,never visit a more than three times
+2023/01/19 8:12:26 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,3,"you can visit a zero times, once, twice or three times"
+2023/01/19 8:13:36 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,visit a at most four times
+2023/01/19 8:13:36 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,go to a at most four times
+2023/01/19 8:13:36 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,you can visit a at most four times
+2023/01/19 8:13:36 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,never go to a more than four times
+2023/01/19 8:13:36 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,you cannot go to a more than four times
+2023/01/19 8:14:35 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,never visit a more than four times
+2023/01/19 8:14:35 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,4,"you can visit a zero times, once, twice, three times or four times"
+2023/01/19 8:15:37 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,visit a at most five times
+2023/01/19 8:15:37 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,go to a at most five times
+2023/01/19 8:15:37 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,you can visit a at most five times
+2023/01/19 8:15:37 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,never go to a more than five times
+2023/01/19 8:15:37 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,you cannot go to a more than five times
+2023/01/19 8:16:22 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,never visit a more than five times
+2023/01/19 8:16:22 PM EST,xinyu_liu@brown.edu,Upper Restricted Avoidance,5,"you can visit a zero times, once, twice, three times, four times or five times"
+2023/01/19 8:23:06 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,visit a at least once
+2023/01/19 8:23:06 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,go to a at least once
+2023/01/19 8:23:06 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,make your way to a at least once
+2023/01/19 8:23:06 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,you have to visit a at least once
+2023/01/19 8:23:06 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,visit a at least once or more
+2023/01/19 8:26:05 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,never go to a less than once
+2023/01/19 8:26:05 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,1,you cannot visit a less than once
+2023/01/19 8:27:15 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,visit a at least twice
+2023/01/19 8:27:15 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,go to a at least twice
+2023/01/19 8:27:15 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,make your way to a at least twice
+2023/01/19 8:27:15 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,you have to visit a at least twice
+2023/01/19 8:27:15 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,visit a at least twice or more
+2023/01/19 8:27:57 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,you cannot visit a less than twice
+2023/01/19 8:27:57 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,2,never go to a less than twice
+2023/01/19 8:29:01 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,visit a at least three times
+2023/01/19 8:29:01 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,go to a at least three times
+2023/01/19 8:29:01 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,make your way to a at least three times
+2023/01/19 8:29:01 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,you have to visit a at least three times
+2023/01/19 8:29:01 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,visit a at least three times or more
+2023/01/19 8:29:41 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,you cannot visit a less than three times
+2023/01/19 8:29:41 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,3,never go to a less than three times
+2023/01/19 8:30:46 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,visit a at least four times
+2023/01/19 8:30:46 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,go to a at least four times
+2023/01/19 8:30:46 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,you have to visit a at least four times
+2023/01/19 8:30:46 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,make your way to a at least four times
+2023/01/19 8:30:46 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,visit a at least four times or more
+2023/01/19 8:31:40 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,you cannot visit a less than four times
+2023/01/19 8:31:40 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,4,never go to a less than four times
+2023/01/19 8:32:53 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,visit a at least five times
+2023/01/19 8:32:53 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,go to a at least five times
+2023/01/19 8:32:53 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,make your way to a at least five times
+2023/01/19 8:32:53 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,you have to visit a at least five times
+2023/01/19 8:32:53 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,visit a at least five times or more
+2023/01/19 8:33:26 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,you cannot visit a less than five times
+2023/01/19 8:33:26 PM EST,xinyu_liu@brown.edu,Lower Restricted Avoidance,5,never go to a less than five times
+2023/01/19 8:35:29 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,visit a exactly once
+2023/01/19 8:35:29 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,go to a exactly once
+2023/01/19 8:35:29 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,make your way to a exactly once
+2023/01/19 8:35:29 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,you have to visit a exactly once
+2023/01/19 8:35:29 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,you must reach a exactly once
+2023/01/19 8:36:19 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,"visit a exactly once, no more no less"
+2023/01/19 8:36:19 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,1,navigate to a exactly once
+2023/01/19 8:37:09 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,visit a exactly twice
+2023/01/19 8:37:09 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,go to a exactly twice
+2023/01/19 8:37:09 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,make your way to a exactly twice
+2023/01/19 8:37:09 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,you have to visit a exactly twice
+2023/01/19 8:37:09 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,you must reach a exactly twice
+2023/01/19 8:37:45 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,navigate to a exactly twice
+2023/01/19 8:37:45 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,2,"visit a exactly twice, no more no less"
+2023/01/19 8:38:59 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,visit a exactly three times
+2023/01/19 8:38:59 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,go to a exactly three times
+2023/01/19 8:38:59 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,make your way to a exactly three times
+2023/01/19 8:38:59 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,you have to visit a exactly three times
+2023/01/19 8:38:59 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,you must reach a exactly three times
+2023/01/19 8:39:33 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,navigate to a exactly three times
+2023/01/19 8:39:33 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,3,"visit a exactly three times, no more no less"
+2023/01/19 8:40:36 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,visit a exactly four times
+2023/01/19 8:40:36 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,go to a exactly four times
+2023/01/19 8:40:36 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,make your way to a exactly four times
+2023/01/19 8:40:36 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,you have to visit a exactly four times
+2023/01/19 8:40:36 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,you must reach a exactly four times
+2023/01/19 8:42:14 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,navigate to a exactly four times
+2023/01/19 8:42:14 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,4,"visit a exactly four times, no more no less"
+2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,visit a exactly five times
+2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,go to a exactly five times
+2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,make your way to a exactly five times
+2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,you have to visit a exactly five times
+2023/01/19 8:43:01 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,you must reach a exactly five times
+2023/01/19 8:43:49 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,navigate to a exactly five times
+2023/01/19 8:43:49 PM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,"visit a exactly five times, no more no less"
