@@ -11,7 +11,7 @@ from pprint import pprint
 import spot
 
 
-PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]  # 16
+PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"][:5]  # 16
 ALL_TYPES = [
     "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",  # batch1
 ]
@@ -24,10 +24,9 @@ def sample_formulas(pattern_type, nprops, debug):
     :return: sampled formulas with `nprops` propositions of `pattern_type` and permutation of propositions
     """
     if "restricted_avoidance" in pattern_type:
-        props_all = PROPS[:1] * nprops
+        props_perm = [tuple([prop]*nprops) for prop in PROPS]
     else:
-        props_all = PROPS[:nprops]  # props_all = [chr(ord("a")+i) for i in range(nprops)]
-    props_perm = sorted(set(permutations(props_all)))  # remove repetitions from perm, e.g. props_all = ['a', 'a']
+        props_perm = list(permutations(PROPS[:nprops]))
 
     if pattern_type == "visit":
         pattern_sampler = finals
@@ -298,6 +297,7 @@ if __name__ == '__main__':
 
     formulas, props_perm = sample_formulas(args.pattern_type, args.nprops, args.debug)
     pprint(list(zip(formulas, props_perm)))
+    print(len(formulas), len(props_perm))
 
     # props = ['a', 'b', 'c']
     # formula = ordered_patrol_constraint3(props)
