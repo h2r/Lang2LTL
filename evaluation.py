@@ -120,7 +120,9 @@ if __name__ == "__main__":
 
     if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
         dataset = load_from_file(args.train_dataset_fpath)
-        valid_iter = load_from_file(args.test_dataset_fpath)["valid_iter"]
+        test_dataset = load_from_file(args.test_dataset_fpath)
+        valid_iter = test_dataset["valid_iter"]
+        dataset["valid_meta"] = test_dataset["valid_meta"]
         if "utt" in args.train_dataset_fpath:  # result directory based on holdout type
             dname = "utt_holdout_new"
         elif "formula" in args.train_dataset_fpath:
