@@ -289,11 +289,11 @@ def utils(props):
 
 
 if __name__ == '__main__':
-    paser = argparse.ArgumentParser()
-    paser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
-    paser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
-    paser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
-    args = paser.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
+    parser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
+    parser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
+    args = parser.parse_args()
 
     formulas, props_perm = sample_formulas(args.pattern_type, args.nprops, args.debug)
     pprint(list(zip(formulas, props_perm)))
