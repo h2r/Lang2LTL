@@ -28,25 +28,29 @@ python -m spacy download en_core_web_sm
 ```
 
 # Files
-```experiment.py```: main function to start running all experiments
+```experiment.py```: main function to start running all experiments for evaluation full translation system.
 
-```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions
+```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions.
 
-```s2s_sup.py```: for inference trained supervised sequence-to-sequence model
+```s2s_sup.py```: generic supervised sequence-to-sequence model.
 
-```s2s_hf_transformers.py```: finetune pretrained transformer models from Hugging Face
+```s2s_hf_transformers.py```: finetune pretrained transformer models from Hugging Face.
 
-```s2s_pt_transformer.py```: train from scratch transformer sequence-to-sequence model implemented in PyTorch
+```s2s_pt_transformer.py```: train from scratch transformer sequence-to-sequence model implemented in PyTorch.
 
-```gpt3.py```: interface to GPT-3 model
+```gpt3.py```: interface to GPT-3 model.
 
-```get_embed.py```: interface to GPT-3 embedding feature
+```get_embed.py```: interface to GPT-3 embedding feature.
 
-```dataset.py```: construct training and test sets
+```dataset_symbolic.py```: construct symbolic train and test sets for evaluating symbolic translation module.
+
+```dataset_osm.py```: construct grounded train and test sets using OSM landmarks for evaluation full translation system.
 
 ```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
 
 ```evaluation.py```: functions to evaluate translation and planning.
+
+```tester.py```: unittests.
 
 
 # Run Experiments
