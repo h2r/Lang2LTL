@@ -13,35 +13,38 @@ from utils import load_from_file, save_to_file, substitute_single_letter
 from formula_sampler import PROPS, ALL_TYPES, sample_formulas
 
 
-def create_symbolic_dataset(load_fpath, perm_props):
+def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
     """
     Generate dataset for training symbolic translation module.
     :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
     :param perm_props: True if permute propositions in utterances and LTL formulas.
+    :param update_dataset: update existing symbolic dataset.
     """
-    data = load_from_file(load_fpath)
+    save_fpath = "data/symbolic_perm_batch1.csv" if perm_props else "data/symbolic_no_perm_batch1.csv"
 
-    csv_symbolic = [["pattern_type", "props", "utterance", "ltl_formula"]]
-    for _, _, pattern_type, nprops, utt in data:
-        utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
-        pattern_type = "_".join(pattern_type.lower().split())
-        ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)  # sample ltls w/ all possible permutations
-        if perm_props:  # all possible permutations of propositions
-            for ltl, prop_perm in zip(ltls, props_perm):
-                sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
-                utt_perm = substitute_single_letter(utt, sub_map)  # sub props in utt w/ permutation corres to ltl
-                csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
-        else:  # propositions only appear in ascending order
-            csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower().strip(), ltls[0].strip().replace('\r', '')])
+    if update_dataset or not os.path.isfile(save_fpath):
+        data = load_from_file(load_fpath)
 
-    save_fpath = 'data/symbolic_perm_batch1.csv' if perm_props else 'data/symbolic_no_perm_batch1.csv'
-    save_to_file(csv_symbolic, save_fpath)
+        csv_symbolic = [["pattern_type", "props", "utterance", "ltl_formula"]]
+        for _, _, pattern_type, nprops, utt in data:
+            utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
+            pattern_type = "_".join(pattern_type.lower().split())
+            ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)  # sample ltls w/ all possible perms
+            if perm_props:  # all possible permutations of propositions
+                for ltl, prop_perm in zip(ltls, props_perm):
+                    sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
+                    utt_perm = substitute_single_letter(utt, sub_map)  # sub props in utt w/ permutation corres to ltl
+                    csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
+            else:  # propositions only appear in ascending order
+                csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower().strip(), ltls[0].strip().replace('\r', '')])
+
+        save_to_file(csv_symbolic, save_fpath)
 
     pairs = load_from_file(save_fpath)
     # for pattern_type, props, utt, ltl in pairs:
     #     print(f"{pattern_type}, {props}, {utt}")
     #     print(spot.formula(ltl))
-    print(f"Total number of utt, ltl pairs: {len(pairs)}\n")
+    print(f"Total number of utt, ltl pairs in {save_fpath}: {len(pairs)}\n")
     return save_fpath
 
 
@@ -129,7 +132,7 @@ def construct_split_dataset(data_fpath, holdout_type, filter_types, test_size, s
     print(f"Number of validation samples: {len(valid_iter)}\n")
 
 
-def construct_split_dataset_new(data_fpath, holdout_type, filter_types, size, firstn, seed):
+def construct_split_dataset_new(data_fpath, split_dpath, holdout_type, filter_types, size, firstn, seed):
     """
     K-fold cross validation for type and formula holdout. Random sample for utterance holdout.
     :param data_fpath: path to symbolic dataset
@@ -167,9 +170,9 @@ def construct_split_dataset_new(data_fpath, holdout_type, filter_types, size, fi
                         train_meta.append((pattern_type, len(props)))
             dataset_name = Path(data_fpath).stem
             if firstn:
-                split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
+                split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
             else:
-                split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
+                split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
                                holdout_type, filter_types, size, seed)
     elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
@@ -201,9 +204,9 @@ def construct_split_dataset_new(data_fpath, holdout_type, filter_types, size, fi
                         train_meta.append((pattern_type, len(props)))
             dataset_name = Path(data_fpath).stem
             if firstn:
-                split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
+                split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
             else:
-                split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
+                split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
                                holdout_type, filter_types, size, seed)
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
@@ -229,9 +232,9 @@ def construct_split_dataset_new(data_fpath, holdout_type, filter_types, size, fi
                     valid_meta.append(meta)
         dataset_name = Path(data_fpath).stem
         if firstn:
-            split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}_first{firstn}.pkl"
+            split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_first{firstn}.pkl"
         else:
-            split_fpath = f"data/holdout_splits_new/{dataset_name}_{holdout_type}_{size}_{seed}.pkl"
+            split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}.pkl"
         save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
                            holdout_type, filter_types, size, seed)
     else:
@@ -254,7 +257,7 @@ def load_split_dataset(split_fpath):
     return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
 
 
-def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
+def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, seed):
     """
     :param split_fpath: path to pickle file containing train, test split for a holdout type
     :param nexamples: number of examples for 1 formula
@@ -277,33 +280,36 @@ def generate_prompts_from_split_dataset(split_fpath, nexamples, seed):
     prompt += "Utterance:"
 
     split_dataset_name = Path(split_fpath).stem
-    prompt_fpath = f"data/symbolic_prompts_new/prompt_{nexamples}_{split_dataset_name}.txt"
+    prompt_fpath = f"{prompt_dpath}/prompt_{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/aggregated_responses_batch1.csv", help="fpath to aggregated Google form responses.")
+    parser.add_argument("--split_dpath", type=str, default="data/holdout_splits_fullbatch1", help="dpath to save train, test split.")
+    parser.add_argument("--prompt_dpath", type=str, default="data/symbolic_prompt_fullbatch1", help="dpath to save prompts.")
     parser.add_argument("--perm", action="store_true", help="construct symbolic dataset with permuted propositions.")
+    parser.add_argument("--update", action="store_true", help="update existing symbolic dataset with new responses.")
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
-    parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
-    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples in prompt.")
-    parser.add_argument("--seed_prompt", type=int, default=None, help="random seed for choosing examples.")
+    parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
+    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples per formula in prompt.")
+    parser.add_argument("--seed_prompt", type=int, default=None, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
 
-    # Construct train, test split for 3 types of holdout for symbolic translation
-    symbolic_fpath = create_symbolic_dataset(args.data_fpath, args.perm)
+    # Construct dataset from Google Form responses
+    symbolic_fpath = create_symbolic_dataset(args.data_fpath, args.perm, args.update)
 
+    # Construct train, test split for 3 types of holdouts (utt, formula, type) for symbolic translation
     filter_types = ["fair_visit"]
     seeds = args.seeds_split if isinstance(args.seeds_split, list) else [args.seeds_split]
     for seed in seeds:
-        construct_split_dataset_new(symbolic_fpath, holdout_type="ltl_type", filter_types=filter_types, size=1, firstn=args.firstn, seed=seed)
-        construct_split_dataset_new(symbolic_fpath, holdout_type="ltl_formula", filter_types=filter_types, size=5, firstn=args.firstn, seed=seed)
-        construct_split_dataset_new(symbolic_fpath, holdout_type="utt", filter_types=filter_types, size=0.2, firstn=args.firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, args.split_dpath, holdout_type="ltl_type", filter_types=filter_types, size=1, firstn=args.firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, args.split_dpath, holdout_type="ltl_formula", filter_types=filter_types, size=5, firstn=args.firstn, seed=seed)
+        construct_split_dataset_new(symbolic_fpath, args.split_dpath, holdout_type="utt", filter_types=filter_types, size=0.2, firstn=args.firstn, seed=seed)
 
     # Generate prompts for off-the-shelf GPT-3
-    split_dpath = os.path.join("data", "holdout_splits_new")
-    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
+    split_fpaths = [os.path.join(args.split_dpath, fname) for fname in os.listdir(args.split_dpath) if "pkl" in fname]
     for split_fpath in split_fpaths:
         for n in args.nexamples:
-            generate_prompts_from_split_dataset(split_fpath, n, args.seed_prompt)
+            generate_prompts_from_split_dataset(split_fpath, args.prompt_dpath, n, args.seed_prompt)
