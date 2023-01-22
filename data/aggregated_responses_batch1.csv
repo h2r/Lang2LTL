@@ -352,7 +352,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Keep visiting b and a
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Keep on visiting a and b
 2023/01/11 9:17:20 PM EST,benjamin_schornstein@brown.edu,Patrolling,2,Travel to a and b an infinite number of times
-2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Move through a, b, and c in a circle"
+2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Visit a, b, and c infinitely often"
 2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Keep visiting c, a, and b"
 2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Go to a, c, and b an infinite number of times."
 2023/01/11 9:19:46 PM EST,benjamin_schornstein@brown.edu,Patrolling,3,"Continuously move to c, b, and a."
@@ -374,7 +374,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/13 12:25:00 PM EST,xinyu_liu@brown.edu,Strictly Ordered Visit,3,"visit a exactly once, avoid b or c before a, then reach b exactly once,  avoid c before b, finally move to c"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"go to a only once but keep away from b, and then visit b but keep away from a"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"visit a one time but not through b, and head to b after a is visited but not through a"
-2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"stay away from b until you make a single visit to a, and then go to b while staying away from a"
+2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"stay away from b until you visit a exactly once, and then go to b while staying away from a"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"avoid b initially when a is not visited and then just visit a once, and then visit b while avoiding a"
 2023/01/13 2:51:26 PM EST,ziyi_yang1@brown.edu,Strictly Ordered Visit,2,"do not visit b before you visit a, and then go to b without revisiting a"
 2023/01/13 3:07:18 PM EST,xinyu_liu@brown.edu,Sequenced Visit,3,"go to a, then go to b, then go to c"
@@ -401,7 +401,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/13 4:09:36 PM EST,saml@princeton.edu,Patrolling,4,"perpetually travel to b, c, and a"
 2023/01/13 4:09:36 PM EST,saml@princeton.edu,Patrolling,4,"explore b, a, and c endlessy"
 2023/01/13 4:09:36 PM EST,saml@princeton.edu,Patrolling,4,"you are prohibited from not infinitely going to d, c, a, and b"
-2023/01/13 4:15:33 PM EST,saml@princeton.edu,Patrolling,5,"do not go to c, a, d, h, and b a finite number of times"
+2023/01/13 4:15:33 PM EST,saml@princeton.edu,Patrolling,5,"go to c, a, d, h, and b an infinite number of times"
 2023/01/13 4:15:33 PM EST,saml@princeton.edu,Patrolling,5,"visit a, b, h, d, and c with no limits"
 2023/01/13 4:15:33 PM EST,saml@princeton.edu,Patrolling,5,"you are prohibited from not going to d, c, h, b, and a forever"
 2023/01/13 4:15:33 PM EST,saml@princeton.edu,Patrolling,5,"you cannot stop traveling to c, a, h, b, and d"
@@ -420,7 +420,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Go to a only then go to  b without returning, only after that go to c without returning, only after that go to d without returning  and finally only then go to h without returning"
 2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Go to h, but only after going to d only once, go to d only after going to c only once, go to c only after going to b only once and go to b only after going to a only once"
 2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Visit a, and only then visit b without returning to a, only then visit c without returning to b, only then visit d without returning to c, and only then visit h without returning to d"
-2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Visit a, b, c, d, and h in that exact order. Once you leave a location you cannot return to it"
+2023/01/13 8:06:27 PM EST,ankitshah91@gmail.com,Strictly Ordered Visit,5,"Visit a, b, c, d, and h in that exact order. Once you leave any location you cannot return to it"
 2023/01/14 4:21:28 AM EST,xinyu_liu@brown.edu,Ordered Visit,5,"visit a, do not visit b, c, d or h before visiting a, then visit b, do not visit c, d or h before visiting b, then visit c, do not visit d or h before visiting c, then visit d, do not visit h before visiting d, finally visit h  "
 2023/01/14 4:21:28 AM EST,xinyu_liu@brown.edu,Ordered Visit,5,"visit a, do not visit b, c, d or h until you visit a, then visit b, do not visit c, d or h until you visit b, then visit c, do not visit d or h until you visit c, then visit d, do not visit h until you visit d, finally reach h  "
 2023/01/14 4:44:48 PM EST,ziyi_yang1@brown.edu,Patrolling,2,never stop visiting a and b
