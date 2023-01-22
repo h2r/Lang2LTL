@@ -214,7 +214,7 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
     prompt += "Utterance:"
 
     split_dataset_name = Path(split_fpath).stem
-    prompt_fpath = f"{prompt_dpath}/prompt_{nexamples}_{split_dataset_name}.txt"
+    prompt_fpath = f"{prompt_dpath}/prompt_nexamples{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
 
@@ -227,7 +227,7 @@ if __name__ == "__main__":
     parser.add_argument("--update", action="store_true", help="True if update existing symbolic dataset w/ new responses.")
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=[0, 1, 2, 42, 111], help="1 or more random seeds for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
-    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples per formula in prompt.")
+    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1, 2, 3], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
 
