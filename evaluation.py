@@ -145,6 +145,8 @@ if __name__ == "__main__":
                 engine = load_from_file("model/gpt3_models.pkl")[args.model]
                 valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_log_fpath = os.path.join("results", "finetuned_gpt3", dname, f"log_{args.model}.csv")  # fintuned model name already contains dataset name
+                if not os.path.exists(os.path.join("results", "finetuned_gpt3", dname)):
+                     raise NameError(f'log path doesn\'t exist, please create: \n\t{os.path.join("results", "finetuned_gpt3", dname)}')
                 acc_fpath = os.path.join("results", "finetuned_gpt3", dname, f"acc_{args.model}.csv")
             else:
                 engine = args.model
@@ -152,6 +154,8 @@ if __name__ == "__main__":
                 prompt = load_from_file(prompt_fpath)
                 valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_log_fpath = os.path.join("results", "pretrained_gpt3", dname, f"log_{args.model}_{dataset_name}.csv")
+                if not os.path.exists(os.path.join("results", "pretrained_gpt3", dname)):
+                    raise NameError(f'log path doesn\'t exist, please create: \n\t{os.path.join("results", "pretrained_gpt3", dname)}')
                 acc_fpath = os.path.join("results", "pretrained_gpt3", dname, f"acc_{args.model}_{dataset_name}.csv")
             dataset["valid_iter"] = valid_iter
             split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
