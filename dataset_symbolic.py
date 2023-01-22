@@ -210,7 +210,7 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
         examples = random.sample(data, nexamples)
         for utt, ltl in examples:
             prompt += f"Utterance: {utt}\nLTL: {ltl}\n\n"
-            print(f"{pattern_type} | {nprop}\n{utt}\n{ltl}\n")
+            # print(f"{pattern_type} | {nprop}\n{utt}\n{ltl}\n")
     prompt += "Utterance:"
 
     split_dataset_name = Path(split_fpath).stem
