@@ -113,6 +113,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1/symbolic_perm_fullbatch1_utt_0.2_42.pkl", help="path to pkl file storing train set")
     parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1/symbolic_perm_fullbatch1_utt_0.2_42.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_perm_fullbatch1.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_perm_fullbatch1_utt_0.2_42", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
@@ -164,5 +165,12 @@ if __name__ == "__main__":
         else:
             raise ValueError(f"ERROR: model not recognized: {args.model}")
 
-        analysis_fpath = "data/analysis_batch1.csv"
-        evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(message)s',
+                            handlers=[
+                                logging.FileHandler(f'{os.path.splitext(result_log_fpath)[0]}.log', mode='w'),
+                                logging.StreamHandler()
+                            ]
+        )
+
+        evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath)
