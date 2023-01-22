@@ -23,7 +23,7 @@ class GPT3:
     def translate(self, query, prompt=""):
         if isinstance(query, list):
             query = query[0]
-        query_prompt = prompt + query + "\nLTL:"
+        query_prompt = prompt + query
         outs = self.generate(query_prompt)
         return outs
 
