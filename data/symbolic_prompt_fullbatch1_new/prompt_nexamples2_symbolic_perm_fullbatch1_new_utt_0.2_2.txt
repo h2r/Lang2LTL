@@ -63,7 +63,7 @@ LTL: & U ! c b & U ! h c F h
 Utterance: visit d one time but not through a and head to a after d is visited but not through d
 LTL: & & U ! a d F a U ! d U d U ! d a
 
-Utterance: stay away from a until you make h single visit to h and then go to a while staying away from h
+Utterance: stay away from a until you visit h exactly once and then go to a while staying away from h
 LTL: & & U ! a h F a U ! h U h U ! h a
 
 Utterance: visit b only once without visiting h then visit h one time without visiting a finally visit a in the future

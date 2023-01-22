@@ -94,6 +94,11 @@ Convert propositions in target LTLs from letters to words joined by underscores.
 
 ```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
 
+To generate symbolic dataset, train test splits for training symbolic translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset.
+```
+python dataset_symbolic.py --perm --update
+```
+
 ## Generate Grounded Dataset from Symbolic Dataset
 ```
 python dataset_osm.py --city=CITYNAME
