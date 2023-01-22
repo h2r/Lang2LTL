@@ -21,7 +21,7 @@ def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
     :param perm_props: True if permute propositions in utterances and LTL formulas.
     :param update_dataset: True if update existing symbolic dataset.
     """
-    save_fpath = "data/symbolic_perm_fullbatch1.csv" if perm_props else "data/symbolic_no_perm_fullbatch1.csv"
+    save_fpath = "data/symbolic_perm_fullbatch1_new.csv" if perm_props else "data/symbolic_no_perm_fullbatch1_new.csv"
 
     if update_dataset or not os.path.isfile(save_fpath):
         data = load_from_file(load_fpath)
@@ -221,8 +221,8 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/aggregated_responses_batch1.csv", help="fpath to aggregated Google form responses.")
-    parser.add_argument("--split_dpath", type=str, default="data/holdout_splits_fullbatch1", help="dpath to save train, test split.")
-    parser.add_argument("--prompt_dpath", type=str, default="data/symbolic_prompt_fullbatch1", help="dpath to save prompts.")
+    parser.add_argument("--split_dpath", type=str, default="data/holdout_splits_fullbatch1_new", help="dpath to save train, test split.")
+    parser.add_argument("--prompt_dpath", type=str, default="data/symbolic_prompt_fullbatch1_new", help="dpath to save prompts.")
     parser.add_argument("--perm", action="store_true", help="True if construct symbolic dataset w/ permuted props.")
     parser.add_argument("--update", action="store_true", help="True if update existing symbolic dataset w/ new responses.")
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=[0, 1, 2, 42, 111], help="1 or more random seeds for train, test split.")

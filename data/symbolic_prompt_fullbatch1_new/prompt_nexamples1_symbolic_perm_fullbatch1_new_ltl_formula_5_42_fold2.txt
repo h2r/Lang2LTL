@@ -1,0 +1,54 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: reach d
+LTL: F d
+
+Utterance: go to d and c in any order
+LTL: & F d F c
+
+Utterance: visit h go to a reach c reach d
+LTL: & F h & F a & F c F d
+
+Utterance: make sure you go to h a c d b in any order
+LTL: & F h & F a & F c & F d F b
+
+Utterance: find d first then find c
+LTL: F & d F c
+
+Utterance: go to h then go to a then go to c
+LTL: F & h F & a F c
+
+Utterance: first go to h then visit a then move to c finally reach d
+LTL: F & h F & a F & c F d
+
+Utterance: visit h then a then c then d and finally b
+LTL: F & h F & a F & c F & d F b
+
+Utterance: visit h but before visiting h you must visit b visit each location once
+LTL: & & U ! h b F h U ! b U b U ! b h
+
+Utterance: do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a F b & U ! h U h U ! h a U ! a U a U ! a b
+
+Utterance: do not go to c until b is visited and do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a & U ! c b F c & U ! h U h U ! h a & U ! a U a U ! a b U ! b U b U ! b c
+
+Utterance: visit h while staying away from a then visit a while staying away from c then visit c while staying away from d then visit d while staying away from b finally reach b without returning to any previously visited locations
+LTL: & & U ! a h & U ! c a & U ! d c & U ! b d F b & U ! h U h U ! h a & U ! a U a U ! a c & U ! c U c U ! c d U ! d U d U ! d b
+
+Utterance: go to d and then go to c but do not visit c before d is visited
+LTL: & U ! c d F c
+
+Utterance: please visit d infinitely often
+LTL: G F d
+
+Utterance: visit h a b c and d in this order without skipping any one of them
+LTL: & U ! a h & U ! b a & U ! c b & U ! d c F d
+
+Utterance: keep visiting h a c and d an infinite number of times
+LTL: & G F h & G F a & G F c G F d
+
+Utterance: keep visiting h a c d and b an infinite number of times
+LTL: & G F h & G F a & G F c & G F d G F b
+
+Utterance:

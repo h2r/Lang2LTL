@@ -1,0 +1,105 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: reach d
+LTL: F d
+
+Utterance: reach b
+LTL: F b
+
+Utterance: go to d and c in any order
+LTL: & F d F c
+
+Utterance: visit c and b
+LTL: & F b F c
+
+Utterance: you must go to c h and a at least once
+LTL: & F h & F a F c
+
+Utterance: head to h a and b in any order
+LTL: & F h & F a F b
+
+Utterance: visit h go to a reach c reach d
+LTL: & F h & F a & F c F d
+
+Utterance: go to h a b and c in arbitrary order
+LTL: & F h & F a & F b F c
+
+Utterance: make sure you go to h a c d b in any order
+LTL: & F h & F a & F c & F d F b
+
+Utterance: go to h a b c and d
+LTL: & F h & F a & F b & F c F d
+
+Utterance: find d first then find c
+LTL: F & d F c
+
+Utterance: visit b and then c
+LTL: F & b F c
+
+Utterance: visit h then a then c then d and finally b
+LTL: F & h F & a F & c F & d F b
+
+Utterance: reach h a b c and d sequentially
+LTL: F & h F & a F & b F & c F d
+
+Utterance: first go to h while staying away from a then go to a while staying away from c finally visit c
+LTL: & U ! a h & U ! c a F c
+
+Utterance: go to h only then go to a and only then go to b
+LTL: & U ! a h & U ! b a F b
+
+Utterance: do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a F b & U ! h U h U ! h a U ! a U a U ! a b
+
+Utterance: do not visit a until you visit b visit b only once do no visit b until you visit h visit h only once
+LTL: & & U ! b h & U ! a b F a & U ! h U h U ! h b U ! b U b U ! b a
+
+Utterance: do not go to c until b is visited and do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a & U ! c b F c & U ! h U h U ! h a & U ! a U a U ! a b U ! b U b U ! b c
+
+Utterance: do not visit c until you visit a visit a only once do not visit a until you visit b visit b only once do no visit b until you visit h visit h only once
+LTL: & & U ! b h & U ! a b & U ! c a F c & U ! h U h U ! h b & U ! b U b U ! b a U ! a U a U ! a c
+
+Utterance: visit h while staying away from a then visit a while staying away from c then visit c while staying away from d then visit d while staying away from b finally reach b without returning to any previously visited locations
+LTL: & & U ! a h & U ! c a & U ! d c & U ! b d F b & U ! h U h U ! h a & U ! a U a U ! a c & U ! c U c U ! c d U ! d U d U ! d b
+
+Utterance: go to h but not through a b c or d and then go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d no revisiting is allowed here
+LTL: & & U ! a h & U ! b a & U ! c b & U ! d c F d & U ! h U h U ! h a & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d
+
+Utterance: please visit d infinitely often
+LTL: G F d
+
+Utterance: go to b an infinite number of times
+LTL: G F b
+
+Utterance: first go directly to h without visiting any other waypoints then go directly to a then directly to b and finally directly to c
+LTL: & U ! a h & U ! b a & U ! c b F c
+
+Utterance: visit h b a and c in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! b h & U ! a b & U ! c a F c
+
+Utterance: visit h a b c and d in this order without skipping any one of them
+LTL: & U ! a h & U ! b a & U ! c b & U ! d c F d
+
+Utterance: go to h but not through b a c or d and then go to b but not through a c or d and then go to a but not through c or d and then go to c but not through d and finally go to d
+LTL: & U ! b h & U ! a b & U ! c a & U ! d c F d
+
+Utterance: travel to a c and h infinitely
+LTL: & G F h & G F a G F c
+
+Utterance: make sure h a and b are visited infinitely
+LTL: & G F h & G F a G F b
+
+Utterance: keep visiting h a c d and b an infinite number of times
+LTL: & G F h & G F a & G F c & G F d G F b
+
+Utterance: make sure h a b c and d are visited infinitely
+LTL: & G F h & G F a & G F b & G F c G F d
+
+Utterance: make sure b and h are visited infinitely
+LTL: & G F b G F h
+
+Utterance: repeatedly visit h and b forever
+LTL: & G F h G F b
+
+Utterance:
