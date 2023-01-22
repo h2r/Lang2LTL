@@ -247,8 +247,8 @@ if __name__ == "__main__":
     parser.add_argument("--trans", type=str, default="gpt3", choices=["gpt3", "t5-base", "t5-small", "pt_transformer"], help="translation module")
     parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup_trans_modular_prompt_15.txt", help="path to trans prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
-    parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of objects in env")
-    parser.add_argument("--name_embed", type=str, default="data/osm/osm_name2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of names in language")
+    parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of objects in env")
+    parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of names in language")
     parser.add_argument("--topk", type=int, default=2, help="top k similar known names to name entity")
     parser.add_argument("--completion_engine", type=str, default="text-davinci-003", help="gpt-3 text completion engine")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
@@ -282,7 +282,17 @@ if __name__ == "__main__":
         run_exp(save_result_path)
 
     # # Test grounding
-    # from pprint import pprint
-    # names = list(load_from_file("data/osm/lmks/boston.json").keys())
-    # name2grounds = grounding(names)
-    # pprint(name2grounds)
+    # city_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
+    # filter_cities = ["boston", "chicago_2", "jacksonville_1", "san_diego_2"]
+    # city_names = [city for city in city_names if city not in filter_cities]
+    # for city in city_names:
+    #     args.obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{city}_{args.embed_engine}.pkl"
+    #     args.name_embed = f"data/osm/lmk_name_embeds/name2embed_{city}_{args.embed_engine}.pkl"
+    #     print(args.obj_embed)
+    #     print(args.name_embed)
+    #     breakpoint()
+    #     names = list(load_from_file(f"data/osm/lmks/{city}.json").keys())
+    #     name2grounds = grounding(names)
+    #     for name, grounds in name2grounds.items():
+    #         if name != grounds[0]:
+    #             print(f"Landmark name does not match grounding\n{name}\n{grounds}\n\n")
