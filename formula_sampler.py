@@ -26,7 +26,8 @@ def sample_formulas(pattern_type, nprops, debug):
     if "restricted_avoidance" in pattern_type:
         props_perm = [tuple([prop]*nprops) for prop in PROPS]
     else:
-        props_perm = list(permutations(PROPS[:nprops]))
+        props_perm = list(permutations(PROPS, nprops))
+        # props_perm = list(permutations(PROPS[:nprops]))
 
     if pattern_type == "visit":
         pattern_sampler = finals
@@ -290,7 +291,7 @@ def utils(props):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pattern_type", type=str, default="strictly_ordered_patrolling", help="type of specification pattern.")
+    parser.add_argument("--pattern_type", type=str, default="ordered_visit", help="type of specification pattern.")
     parser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
     parser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = parser.parse_args()
