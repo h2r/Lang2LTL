@@ -84,7 +84,7 @@ def substitute_single_letter(in_str, sub_map):
     Substitute English letters to letters, words or phrases in a single utterance.
     e.g. input_str="go to a then go to b", sub_map={'a': 'b', 'b': 'a'} -> return="go to a then go to a"
 
-    # Require `input_str` to be normalized, i.e. all punctuations removed.
+    # Require `input_str` to be normalized, i.e. all punctuations removed. If not, extra space before punctuations.
     Only work with letters, e.g. a, b, c, etc, not phrases, e.g. green one -> green room.
     """
     in_str_list = nltk.word_tokenize(in_str)

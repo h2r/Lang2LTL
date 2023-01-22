@@ -1,4 +1,5 @@
 import unittest
+import string
 
 from utils import substitute_single_letter, substitute_single_word, prefix_to_infix
 
@@ -9,30 +10,38 @@ class TestUtils(unittest.TestCase):
     """
     def test_substitute_single_letter(self):
         in_out_pairs = [
-            ("F a", {"a": "b"}, "F b"),
-            ("& F a & F b F c", {"a": "b", "b": "c", "c": "a"}, "& F b & F c F a"),  # multiple subs
-            ("go to a and b", {"a": "b", "b": "a"}, "go to b and a"),  # not sub letters in words
-            ("you must visit a first before going to b", {"a": "b", "b": "a"}, "you must visit b first before going to a"),  # not sub letters in words
-            ("F a", {"b": "a"}, "F a"),  # no effect
-            ("F a", {"a": "a"}, "F a"),  # sub same letter
-            ("aabc", {"a": "b"}, "aabc"),  # no space separate
+            (("go to a.", "F a"), {"a": "b"}, ("go to b", "F b")),  # single sub
+            (("visit a, b and c.", "& & F a F b F c"), {"a": "b", "b": "c", "c": "a"}, ("visit b c and a", "& & F b F c F a")),  # multiple subs
+            (("go to a and b", "& F a F b"), {"a": "b", "b": "a"}, ("go to b and a", "& F b F a")),  # not sub letters in words
+            (("visit a then b then c, but do not visit b until a, do not visit c until b.", "& F & a F & b c & U ! b a U ! c b"),
+             {"a": "b", "b": "c", "c": "a"},
+             ("visit b then c then a but do not visit c until b do not visit a until c", "& F & b F & c a & U ! c b U ! a c")),  # multiple subs of same letter
+            (("go to a.", "F a"), {"b": "a"}, ("go to a", "F a")),  # no effect: sub letter not in string
+            (("go to a.", "F a"), {"a": "a"}, ("go to a", "F a")),  # no effect: sub same letter
+            (("visit a,b, and c.", "& & F a F b F c"), {"a": "b", "b": "c", "c": "a"}, ("visit ab and a", "& & F b F c F a")),  # no space separate
+            (("aabc", " "), {"a": "b"}, ("aabc", "")),  # no space separate
             # below only work with substitute_single_word
-            ("finally go to green one, then green", {"green": "green room", "green one": "green room"}, "finally go to green room one, then green room")
+            (("finally go to green one, then green.", "F & green one green"), {"green": "green room", "green one": "green room"},
+             ("finally go to green room one then green room", "F & green room one green room")),
         ]
-        for in_str, sub_map, true_out_str in in_out_pairs:
-            out_str = substitute_single_letter(in_str, sub_map)
-            self.assertEqual(out_str, true_out_str, "incorrect output string")
+        for idx, ((utt, ltl), sub_map, (true_utt_perm, true_ltl_perm)) in enumerate(in_out_pairs):
+            utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
+            utt_perm = substitute_single_letter(utt, sub_map)
+            ltl_perm = substitute_single_letter(ltl, sub_map)
+            self.assertEqual(utt_perm, true_utt_perm, f"incorrect output string: {idx}")
+            self.assertEqual(ltl_perm, true_ltl_perm, f"incorrect output string: {idx}")
 
     def test_substitute_single_word(self):
         in_out_pairs = [
             ("finally go to green one, then green", {"green": "green room", "green one": "green room"}, "finally go to green room, then green room"),
+            ("& U ! b a F b", {"a": "b", "b": "a"}, "& U ! a b F a"),  # multiple subs of same letter
             # below only work with substitute_single_letter
             ("aabc", {"a": "b"}, "bbbc"),
             ("go to a and b", {"a": "b", "b": "a"}, "go to b bnd a"),
         ]
-        for in_str, sub_map, true_out_str in in_out_pairs:
+        for idx, (in_str, sub_map, true_out_str) in enumerate(in_out_pairs):
             out_str = substitute_single_word(in_str, sub_map)
-            self.assertEqual(out_str, true_out_str, "incorrect output string")
+            self.assertEqual(out_str, true_out_str, f"incorrect output string: {idx}")
 
     def test_infix_to_prefix(self):
         in_out_pairs = [
