@@ -1,0 +1,57 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: travel to a
+LTL: F a
+
+Utterance: reach a and b in any order
+LTL: & F a F b
+
+Utterance: go to c a and b
+LTL: & F c & F a F b
+
+Utterance: make your way to b d a and c
+LTL: & F b & F d & F a F c
+
+Utterance: visit b d h a and c in no particular order
+LTL: & F d & F c & F b & F h F a
+
+Utterance: reach b then go to a
+LTL: F & b F a
+
+Utterance: visit a then visit c then reach b
+LTL: F & a F & c F b
+
+Utterance: visit a c d and b one after the other
+LTL: F & a F & c F & d F b
+
+Utterance: visit b then c then d then a and finally h
+LTL: F & b F & c F & d F & a F h
+
+Utterance: you must visit a exactly once while avoiding b then you can navigate to b
+LTL: & & U ! b a F b U ! a U a U ! a b
+
+Utterance: go to c first go to a second and do not visit c again go to b third and do not visit a again
+LTL: & & U ! a c & U ! b a F b & U ! c U c U ! c a U ! a U a U ! a b
+
+Utterance: make your way to d only after going to c before that make your way to c only after going to a before that make your way to a only after going to b do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! a b & U ! c a & U ! d c F d & U ! b U b U ! b a & U ! a U a U ! a c U ! c U c U ! c d
+
+Utterance: visit b followed by visiting c then visit h a and d in this exact order visit all locations once
+LTL: & & U ! c b & U ! h c & U ! a h & U ! d a F d & U ! b U b U ! b c & U ! c U c U ! c h & U ! h U h U ! h a U ! a U a U ! a d
+
+Utterance: continue to visit a
+LTL: G F a
+
+Utterance: keep going to c b and a an infinite number of times
+LTL: & G F c & G F b G F a
+
+Utterance: please keep visiting c b a and d without stopping
+LTL: & G F c & G F b & G F a G F d
+
+Utterance: you are prohibited from not going to a b h c and d forever
+LTL: & G F d & G F c & G F b & G F a G F h
+
+Utterance: please keep visiting a and b without stopping
+LTL: & G F a G F b
+
+Utterance:

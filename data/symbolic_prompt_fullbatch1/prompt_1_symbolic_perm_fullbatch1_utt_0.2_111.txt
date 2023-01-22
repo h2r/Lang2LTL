@@ -1,0 +1,69 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: stop at a
+LTL: F a
+
+Utterance: go to b and a in any order
+LTL: & F b F a
+
+Utterance: stop by c b and a in any order
+LTL: & F c & F b F a
+
+Utterance: visit a d c and b
+LTL: & F a & F d & F c F b
+
+Utterance: visit d b h a and c
+LTL: & F d & F b & F h & F a F c
+
+Utterance: go to a and sometime afterward visit b
+LTL: F & a F b
+
+Utterance: reach a then reach b and then reach c
+LTL: F & a F & b F c
+
+Utterance: ensure that you visit c a d and b in order
+LTL: F & c F & a F & d F b
+
+Utterance: visit b d a h and c sequentially
+LTL: F & b F & d F & a F & h F c
+
+Utterance: do not go to a until you visit c and do not go to c until you visit b and make sure you visit a
+LTL: & U ! c b & U ! a c F a
+
+Utterance: you must visit a exactly once while avoiding b then you can navigate to b
+LTL: & & U ! b a F b U ! a U a U ! a b
+
+Utterance: visit c b and a once do not visit b without visiting c and do not visit a without visiting b
+LTL: & & U ! b c & U ! a b F a & U ! c U c U ! c b U ! b U b U ! b a
+
+Utterance: visit c only once while avoiding a then visit a once while avoiding d only after visiting d once visit b
+LTL: & & U ! a c & U ! d a & U ! b d F b & U ! c U c U ! c a & U ! a U a U ! a d U ! d U d U ! d b
+
+Utterance: go to c without visiting h then go to h without visiting a third go to a without visiting d fourth go to d without visiting b finally go to b visit c h a and d only one time
+LTL: & & U ! h c & U ! a h & U ! d a & U ! b d F b & U ! c U c U ! c h & U ! h U h U ! h a & U ! a U a U ! a d U ! d U d U ! d b
+
+Utterance: first go to b while avoiding a then move to a
+LTL: & U ! a b F a
+
+Utterance: do not stop going to a
+LTL: G F a
+
+Utterance: go to a but do not go to a until d is visited and do not go to d until c is visited and do not go to c until b is visited
+LTL: & U ! c b & U ! d c & U ! a d F a
+
+Utterance: make your way to h only after going to b before that make your way to b only after going to c before that make your way to c only after going to a before that make your way to a only after going to d
+LTL: & U ! a d & U ! c a & U ! b c & U ! h b F h
+
+Utterance: do not stop going to a c and b
+LTL: & G F c & G F b G F a
+
+Utterance: keep visiting a b c and d
+LTL: & G F a & G F b & G F c G F d
+
+Utterance: go to b d h a and c infinitely often
+LTL: & G F b & G F d & G F h & G F a G F c
+
+Utterance: do not stop visiting b and a
+LTL: & G F b G F a
+
+Utterance:

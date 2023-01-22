@@ -1,0 +1,54 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: go to b finally go to a
+LTL: F & b F a
+
+Utterance: visit c then a then b
+LTL: F & c F & a F b
+
+Utterance: visit b d a and c one after another
+LTL: F & b F & d F & a F c
+
+Utterance: visit b c h d and a sequentially
+LTL: F & b F & c F & h F & d F a
+
+Utterance: move to b at least once do not visit c or a before b then move to c at least once do not visit a before c finally reach a
+LTL: & U ! c b & U ! a c F a
+
+Utterance: go to a and only then go to b without returning to a
+LTL: & & U ! b a F b U ! a U a U ! a b
+
+Utterance: go to b only then go to c only then go to a while visiting b and c only once
+LTL: & & U ! c b & U ! a c F a & U ! b U b U ! b c U ! c U c U ! c a
+
+Utterance: first go to d once then go to c once while avoiding a then go to a once while avoiding b finally go to b
+LTL: & & U ! c d & U ! a c & U ! b a F b & U ! d U d U ! d c & U ! c U c U ! c a U ! a U a U ! a b
+
+Utterance: do not visit b until you visit a visit a only once do not visit a until you visit h visit h only once do not visit h until you visit c visit c only once do no visit c until you visit d visit d only once
+LTL: & & U ! c d & U ! h c & U ! a h & U ! b a F b & U ! d U d U ! d c & U ! c U c U ! c h & U ! h U h U ! h a U ! a U a U ! a b
+
+Utterance: go to a while avoiding b then go to b
+LTL: & U ! b a F b
+
+Utterance: make sure a is visited infinitely
+LTL: G F a
+
+Utterance: go to c and only go to d only after c is visited and then go to a only after c and d are both visited and then go to b only after c d and a are all visited
+LTL: & U ! d c & U ! a d & U ! b a F b
+
+Utterance: visit a d b c and h in this strict order once the predecessor is visited you must visit the successor
+LTL: & U ! d a & U ! b d & U ! c b & U ! h c F h
+
+Utterance: do not stop visiting b c and a
+LTL: & G F b & G F c G F a
+
+Utterance: continue to stop at b a d and c
+LTL: & G F b & G F a & G F d G F c
+
+Utterance: cycle through a h c b and d
+LTL: & G F d & G F c & G F b & G F a G F h
+
+Utterance: keep visiting b and a forever
+LTL: & G F b G F a
+
+Utterance:

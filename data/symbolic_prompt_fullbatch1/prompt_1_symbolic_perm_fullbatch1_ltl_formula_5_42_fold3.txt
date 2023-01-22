@@ -1,0 +1,54 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: move to a
+LTL: F a
+
+Utterance: go to a then go to b or go to b then go to a
+LTL: & F a F b
+
+Utterance: visit c b and a in arbitrary order
+LTL: & F c & F b F a
+
+Utterance: go to a go to d go to b and go to c
+LTL: & F a & F d & F b F c
+
+Utterance: make sure you go to a b c h d in any order
+LTL: & F a & F b & F c & F h F d
+
+Utterance: go to b then a
+LTL: F & b F a
+
+Utterance: move to d then move to h then move to a then move to c finally move to b
+LTL: F & d F & h F & a F & c F b
+
+Utterance: in strictly this order visit a then eventually visit c and finally eventually b
+LTL: & U ! c a & U ! b c F b
+
+Utterance: visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c
+LTL: & & U ! b a & U ! c b F c & U ! a U a U ! a b U ! b U b U ! b c
+
+Utterance: go to b but do not visit c d or a and then go to c but do not visit d or a or revisit b and then go to d but do not visit a or revisit b or c and then go to a but do not revisit b c or d
+LTL: & & U ! c b & U ! d c & U ! a d F a & U ! b U b U ! b c & U ! c U c U ! c d U ! d U d U ! d a
+
+Utterance: visit d h a c and b in that exact order once you leave d location you can not return to it
+LTL: & & U ! h d & U ! a h & U ! c a & U ! b c F b & U ! d U d U ! d h & U ! h U h U ! h a & U ! a U a U ! a c U ! c U c U ! c b
+
+Utterance: keep going to a
+LTL: G F a
+
+Utterance: visit b as many times as you want while avoiding c a and d then visit c as many times as you want while avoiding a and d then visit a as many times as you want while avoiding d finally visit d
+LTL: & U ! c b & U ! a c & U ! d a F d
+
+Utterance: go to a c b d and h in that specific order
+LTL: & U ! c a & U ! b c & U ! d b & U ! h d F h
+
+Utterance: make sure you are always visiting a c and b
+LTL: & G F a & G F c G F b
+
+Utterance: keep visiting a c b h and d in any order infinitely
+LTL: & G F a & G F c & G F b & G F h G F d
+
+Utterance: frequent b and a infinitely in any order
+LTL: & G F b G F a
+
+Utterance:

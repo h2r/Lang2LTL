@@ -1,0 +1,54 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: visit a
+LTL: F a
+
+Utterance: go to b then go to a or go to a then go to b
+LTL: & F b F a
+
+Utterance: stop by d a b and c in any order
+LTL: & F d & F a & F b F c
+
+Utterance: visit b d h c a in any order required
+LTL: & F b & F d & F h & F c F a
+
+Utterance: visit b then visit a
+LTL: F & b F a
+
+Utterance: go to c after a go to a after going to b
+LTL: F & b F & a F c
+
+Utterance: travel to a then travel to b then go to c then reach d
+LTL: F & a F & b F & c F d
+
+Utterance: visit h followed by c then b then d and then a
+LTL: F & h F & c F & b F & d F a
+
+Utterance: move to b exactly once while avoiding a then find a
+LTL: & & U ! a b F a U ! b U b U ! b a
+
+Utterance: visit b but before visiting b you must visit a only after that visit c visit each location once
+LTL: & & U ! b a & U ! c b F c & U ! a U a U ! a b U ! b U b U ! b c
+
+Utterance: visit c then a then d then b follow this strict order and visit each location only once
+LTL: & & U ! a c & U ! d a & U ! b d F b & U ! c U c U ! c a & U ! a U a U ! a d U ! d U d U ! d b
+
+Utterance: do not visit b until you visit c visit c only once do not visit c until you visit h visit h only once do not visit h until you visit a visit a only once do no visit a until you visit d visit d only once
+LTL: & & U ! a d & U ! h a & U ! c h & U ! b c F b & U ! d U d U ! d a & U ! a U a U ! a h & U ! h U h U ! h c U ! c U c U ! c b
+
+Utterance: go from a to b do not go to b before visiting a
+LTL: & U ! b a F b
+
+Utterance: visit a again and again
+LTL: G F a
+
+Utterance: visit h then b then d finally c you can not visit b before h you can not visit d before b you can not visit c before d you can not visit a before c
+LTL: & U ! b h & U ! d b & U ! c d & U ! a c F a
+
+Utterance: keep visiting c a d and b in any order
+LTL: & G F c & G F a & G F d G F b
+
+Utterance: you are prohibited from not going to h d b c and a forever
+LTL: & G F a & G F c & G F d & G F h G F b
+
+Utterance:

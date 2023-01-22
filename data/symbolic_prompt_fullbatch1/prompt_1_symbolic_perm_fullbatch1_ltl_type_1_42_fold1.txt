@@ -1,0 +1,54 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: reach a
+LTL: F a
+
+Utterance: visit b and a in any order
+LTL: & F b F a
+
+Utterance: visit b c and a in any order
+LTL: & F b & F c F a
+
+Utterance: make sure to visit c b a and d in any order
+LTL: & F c & F b & F d F a
+
+Utterance: sometime visit a c b d and h
+LTL: & F a & F b & F c & F h F d
+
+Utterance: visit a and visit b after a is visited
+LTL: F & a F b
+
+Utterance: go to c then go to a then go to b
+LTL: F & c F & a F b
+
+Utterance: first go to d then visit a then move to b finally reach c
+LTL: F & d F & a F & b F c
+
+Utterance: go to h and then go to b and then go to a and then go to d and then go to c
+LTL: F & h F & b F & a F & d F c
+
+Utterance: visit b at least once do not visit c or a before b then visit c at least once do not visit a before c finally visit a
+LTL: & U ! c b & U ! a c F a
+
+Utterance: stay away from a until you make b single visit to b and then go to a while staying away from b
+LTL: & & U ! a b F a U ! b U b U ! b a
+
+Utterance: go to c exactly once then go to b exactly once finally go to a do not go to b or a before c do not go to a before b
+LTL: & & U ! b c & U ! a b F a & U ! c U c U ! c b U ! b U b U ! b a
+
+Utterance: first go to b once without visiting a then go to a once without visiting c then go to c once without visiting d finally go to d
+LTL: & & U ! a b & U ! c a & U ! d c F d & U ! b U b U ! b a & U ! a U a U ! a c U ! c U c U ! c d
+
+Utterance: go to h once without visiting a then go to a once without visiting b then go to b once without visiting c then go to c once without visiting d finally go to d
+LTL: & & U ! a h & U ! b a & U ! c b & U ! d c F d & U ! h U h U ! h a & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d
+
+Utterance: go to b after going to a do not go to b before
+LTL: & U ! b a F b
+
+Utterance: go to d but not through b a or c and then go to b but not through a or c and then go to a but not through c and finally go to c
+LTL: & U ! b d & U ! a b & U ! c a F c
+
+Utterance: visit d then b then c finally h you can not visit b before d you can not visit c before b you can not visit h before c you can not visit a before h
+LTL: & U ! b d & U ! c b & U ! h c & U ! a h F a
+
+Utterance:

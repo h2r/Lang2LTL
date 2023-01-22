@@ -21,7 +21,7 @@ def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
     :param perm_props: True if permute propositions in utterances and LTL formulas.
     :param update_dataset: True if update existing symbolic dataset.
     """
-    save_fpath = "data/symbolic_perm_batch1.csv" if perm_props else "data/symbolic_no_perm_batch1.csv"
+    save_fpath = "data/symbolic_perm_fullbatch1.csv" if perm_props else "data/symbolic_no_perm_fullbatch1.csv"
 
     if update_dataset or not os.path.isfile(save_fpath):
         data = load_from_file(load_fpath)

@@ -1,0 +1,51 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: go to c b and a in any order
+LTL: & F c & F b F a
+
+Utterance: make sure c b d and a are all visited
+LTL: & F c & F b & F d F a
+
+Utterance: find the following h b d c a
+LTL: & F h & F b & F d & F c F a
+
+Utterance: go to c then b then a
+LTL: F & c F & b F a
+
+Utterance: go to c then go to d then go to b then go to a
+LTL: F & c F & d F & b F a
+
+Utterance: visit c at least once then visit a at least once finally visit b do not visit a or b before c do not visit b before a
+LTL: & U ! a c & U ! b a F b
+
+Utterance: visit a only once then visit b but do not visit b before visiting a
+LTL: & & U ! b a F b U ! a U a U ! a b
+
+Utterance: visit a exactly once do not visit c or b before a then visit c exactly once do not visit b before c finally visit b
+LTL: & & U ! c a & U ! b c F b & U ! a U a U ! a c U ! c U c U ! c b
+
+Utterance: make your way to b only after going to a before that make your way to a only after going to d before that make your way to d only after going to c do not go back to the previous location you have visited while heading to the next
+LTL: & & U ! d c & U ! a d & U ! b a F b & U ! c U c U ! c d & U ! d U d U ! d a U ! a U a U ! a b
+
+Utterance: do not visit b until you go to a
+LTL: & U ! b a F b
+
+Utterance: visit c d b and a in this order without skipping any one of them
+LTL: & U ! d c & U ! b d & U ! a b F a
+
+Utterance: visit d a h c and b in this strict order once the predecessor is visited you must visit the successor
+LTL: & U ! a d & U ! h a & U ! c h & U ! b c F b
+
+Utterance: repeatedly keep visiting b c and a
+LTL: & G F b & G F c G F a
+
+Utterance: keep going to a d c and b an infinite number of times
+LTL: & G F a & G F d & G F c G F b
+
+Utterance: visit d b h a and c with no limits
+LTL: & G F d & G F b & G F c & G F a G F h
+
+Utterance: please keep visiting a and b without stopping
+LTL: & G F a G F b
+
+Utterance:
