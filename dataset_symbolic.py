@@ -228,7 +228,7 @@ if __name__ == "__main__":
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=[0, 1, 2, 42, 111], help="1 or more random seeds for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples per formula in prompt.")
-    parser.add_argument("--seed_prompt", type=int, default=None, help="random seed for choosing prompt examples.")
+    parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
 
     # Construct dataset from Google Form responses
