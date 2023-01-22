@@ -1,5 +1,5 @@
 """
-Generate utterance-language symbolic dataset, where propositions are letters.
+Generate utterance-language symbolic dataset, where propositions are letters, and train, test splits.
 """
 import argparse
 import os
@@ -18,14 +18,14 @@ def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
     Generate dataset for training symbolic translation module.
     :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
     :param perm_props: True if permute propositions in utterances and LTL formulas.
-    :param update_dataset: update existing symbolic dataset.
+    :param update_dataset: True if update existing symbolic dataset.
     """
     save_fpath = "data/symbolic_perm_batch1.csv" if perm_props else "data/symbolic_no_perm_batch1.csv"
 
     if update_dataset or not os.path.isfile(save_fpath):
         data = load_from_file(load_fpath)
-
         csv_symbolic = [["pattern_type", "props", "utterance", "ltl_formula"]]
+
         for _, _, pattern_type, nprops, utt in data:
             utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
             pattern_type = "_".join(pattern_type.lower().split())
@@ -34,9 +34,9 @@ def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
                 for ltl, prop_perm in zip(ltls, props_perm):
                     sub_map = {prop_old: prop_new for prop_old, prop_new in zip(PROPS[:int(nprops)], prop_perm)}
                     utt_perm = substitute_single_letter(utt, sub_map)  # sub props in utt w/ permutation corres to ltl
-                    csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower().strip(), ltl.strip().replace('\r', '')])
+                    csv_symbolic.append([pattern_type, prop_perm, utt_perm.lower(), ltl.strip().replace('\r', '')])
             else:  # propositions only appear in ascending order
-                csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower().strip(), ltls[0].strip().replace('\r', '')])
+                csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower(), ltls[0].strip().replace('\r', '')])
 
         save_to_file(csv_symbolic, save_fpath)
 
@@ -289,9 +289,9 @@ if __name__ == "__main__":
     parser.add_argument("--data_fpath", type=str, default="data/aggregated_responses_batch1.csv", help="fpath to aggregated Google form responses.")
     parser.add_argument("--split_dpath", type=str, default="data/holdout_splits_fullbatch1", help="dpath to save train, test split.")
     parser.add_argument("--prompt_dpath", type=str, default="data/symbolic_prompt_fullbatch1", help="dpath to save prompts.")
-    parser.add_argument("--perm", action="store_true", help="construct symbolic dataset with permuted propositions.")
-    parser.add_argument("--update", action="store_true", help="update existing symbolic dataset with new responses.")
-    parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
+    parser.add_argument("--perm", action="store_true", help="True if construct symbolic dataset w/ permuted props.")
+    parser.add_argument("--update", action="store_true", help="True if update existing symbolic dataset w/ new responses.")
+    parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=42, help="1 or more random seeds (0, 1, 2, 42, 111) for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=1, help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=None, help="random seed for choosing prompt examples.")
@@ -310,6 +310,7 @@ if __name__ == "__main__":
 
     # Generate prompts for off-the-shelf GPT-3
     split_fpaths = [os.path.join(args.split_dpath, fname) for fname in os.listdir(args.split_dpath) if "pkl" in fname]
+    nexamples = args.nexamples if isinstance(args.nexamples, list) else [args.nexamples]
     for split_fpath in split_fpaths:
-        for n in args.nexamples:
+        for n in nexamples:
             generate_prompts_from_split_dataset(split_fpath, args.prompt_dpath, n, args.seed_prompt)
