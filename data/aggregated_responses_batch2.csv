@@ -249,3 +249,8 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,your task is to go to a five or more times
 2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,do not visit a less than five times
 2023/01/20 1:22:24 AM EST,ziyi_yamg1@brown.edu,Lower Restricted Avoidance,5,make sure you visit a five or more times
+2023/01/22 4:56:39 PM EST,ziyi_yang1@brown.edu,Exact Restricted Avoidance,1,visit a exactly once
+2023/01/22 4:56:39 PM EST,ziyi_yang1@brown.edu,Exact Restricted Avoidance,1,go to a only one time
+2023/01/22 4:56:39 PM EST,ziyi_yang1@brown.edu,Exact Restricted Avoidance,1,you have to go to a and you cannot go there more or less than one time
+2023/01/22 4:56:39 PM EST,ziyi_yang1@brown.edu,Exact Restricted Avoidance,1,go to a more or less than one time is prohibited
+2023/01/22 4:56:39 PM EST,ziyi_yang1@brown.edu,Exact Restricted Avoidance,1,"go to a once, and do not visit it anymore"

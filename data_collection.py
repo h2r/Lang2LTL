@@ -60,13 +60,13 @@ def analyze_responses(result_fpath, analysis_fpath):
     save_to_file(analysis, analysis_fpath)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--batch_id", type=int, default=2, help="batch id")
+    parser.add_argument("--batch", type=int, default=2, help="batch id")
     args = parser.parse_args()
 
-    raw_fpath = os.path.join("data", f"raw_responses_batch{args.batch_id}.csv")
-    result_fpath = os.path.join("data", f"aggregated_responses_batch{args.batch_id}.csv")
-    analysis_fpath = os.path.join("data", f"analysis_batch{args.batch_id}.csv")
+    raw_fpath = os.path.join("data", f"raw_responses_batch{args.batch}.csv")
+    result_fpath = os.path.join("data", f"aggregated_responses_batch{args.batch}.csv")
+    analysis_fpath = os.path.join("data", f"analysis_batch{args.batch}.csv")
     aggregate_responses(raw_fpath, result_fpath)
     analyze_responses(result_fpath, analysis_fpath)
