@@ -14,15 +14,14 @@ from utils import load_from_file, save_to_file, substitute_single_letter
 from formula_sampler import PROPS, ALL_TYPES, sample_formulas
 
 
-def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
+def create_symbolic_dataset(load_fpath, save_fpath, perm_props, update_dataset):
     """
     Generate dataset for training symbolic translation module.
     :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
+    :param save_fpath: path to save symbolic dataset.
     :param perm_props: True if permute propositions in utterances and LTL formulas.
     :param update_dataset: True if update existing symbolic dataset.
     """
-    save_fpath = "data/symbolic_perm_fullbatch1_new.csv" if perm_props else "data/symbolic_no_perm_fullbatch1_new.csv"
-
     if update_dataset or not os.path.isfile(save_fpath):
         data = load_from_file(load_fpath)
 
@@ -40,7 +39,27 @@ def create_symbolic_dataset(load_fpath, perm_props, update_dataset):
                 csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower(), ltls[0].strip().replace('\r', '')])
 
         save_to_file(csv_symbolic, save_fpath)
-    return save_fpath
+
+
+def merge_batches(batch_fpaths):
+    """
+    Merge aggregated Google form responses from multiple csv files into 1.
+    Assume all csv files have same field names in same order.
+    :param batch_fpaths: aggregated responses from multiple batches of data collection.
+    :return: fpath of merged aggregated responses.
+    """
+    data_aux = load_from_file(batch_fpaths[0], noheader=False)
+    filed = data_aux[0]
+    data_merged = [filed]
+
+    for batch_fpath in batch_fpaths:
+        print(f"{batch_fpath}\nNumber of responses: {len(load_from_file(batch_fpath))}\n")
+        data_merged.extend(load_from_file(batch_fpath))
+
+    data_fpath = f"{os.path.commonprefix(batch_fpaths)}all.csv"
+    save_to_file(data_merged, data_fpath)
+
+    return data_fpath
 
 
 def analyze_symbolic_dataset(data_fpath):
@@ -220,19 +239,34 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_fpath", type=str, default="data/aggregated_responses_batch1.csv", help="fpath to aggregated Google form responses.")
+    parser.add_argument("--data_fpath", action="store", type=str, nargs="+", default=["data/aggregated_responses_batch1.csv", "data/aggregated_responses_batch2.csv"], help="fpath to aggregated Google form responses.")
     parser.add_argument("--split_dpath", type=str, default="data/holdout_splits_fullbatch1_new", help="dpath to save train, test split.")
     parser.add_argument("--prompt_dpath", type=str, default="data/symbolic_prompt_fullbatch1_new", help="dpath to save prompts.")
     parser.add_argument("--perm", action="store_true", help="True if construct symbolic dataset w/ permuted props.")
     parser.add_argument("--update", action="store_true", help="True if update existing symbolic dataset w/ new responses.")
+    parser.add_argument("--merge", action="store_true", help="True if merge Google form responses from batches.")
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=[0, 1, 2, 42, 111], help="1 or more random seeds for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1, 2, 3], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
 
-    # Construct dataset from Google Form responses
-    symbolic_fpath = create_symbolic_dataset(args.data_fpath, args.perm, args.update)
+    # Merge Google form responses from batches and construct symbolic dataset for each batch
+    data_fpaths = args.data_fpath if isinstance(args.data_fpath, list) else [args.data_fpath]
+    if args.merge:
+        for idx, data_fpath in enumerate(data_fpaths):
+            symbolic_fpath = f"data/symbolic_perm_fullbatch{idx+1}_new.csv" if args.perm else f"data/symbolic_no_perm_fullbatch{idx+1}_new.csv"
+            create_symbolic_dataset(data_fpath, symbolic_fpath, args.perm, args.update)
+            analyze_symbolic_dataset(symbolic_fpath)
+        data_fpath = merge_batches(data_fpaths)
+        postfix = "".join([f"{i}" for i in range(1, len(data_fpaths)+1)])
+        symbolic_fpath = f"data/symbolic_perm_fullbatch{postfix}_new.csv" if args.perm else f"data/symbolic_no_perm_fullbatch{postfix}_new.csv"
+    else:
+        data_fpath = data_fpaths[0]
+        symbolic_fpath = f"data/symbolic_perm_fullbatch1_new.csv" if args.perm else f"data/symbolic_no_perm_fullbatch1_new.csv"
+
+    # Construct symbolic dataset from Google Form responses
+    create_symbolic_dataset(data_fpath, symbolic_fpath, args.perm, args.update)
     analyze_symbolic_dataset(symbolic_fpath)
 
     # Construct train, test split for 3 types of holdouts (utt, formula, type) for symbolic translation
