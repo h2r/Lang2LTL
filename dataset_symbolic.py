@@ -56,7 +56,8 @@ def merge_batches(batch_fpaths):
         print(f"{batch_fpath}\nNumber of responses: {len(load_from_file(batch_fpath))}\n")
         data_merged.extend(load_from_file(batch_fpath))
 
-    data_fpath = f"{os.path.commonprefix(batch_fpaths)}all.csv"
+    postfix = "".join([f"{i}" for i in range(1, len(batch_fpaths) + 1)])
+    data_fpath = f"{os.path.commonprefix(batch_fpaths)}{postfix}.csv"
     save_to_file(data_merged, data_fpath)
 
     return data_fpath
