@@ -122,11 +122,11 @@ if __name__ == "__main__":
 
     if args.aggregate:  # aggregate acc-per-formula result files
         result_fpaths = [
-            "results/finetuned_gpt3/utt_holdout_fullbatch1/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_0.csv",
-            "results/finetuned_gpt3/utt_holdout_fullbatch1/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_1.csv",
-            "results/finetuned_gpt3/utt_holdout_fullbatch1/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_2.csv",
-            "results/finetuned_gpt3/utt_holdout_fullbatch1/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_42.csv",
-            "results/finetuned_gpt3/utt_holdout_fullbatch1/acc_gpt3_finetuned_split_symbolic_no_perm_batch1_utt_0.2_111.csv",
+            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_0.csv",
+            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_1.csv",
+            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_2.csv",
+            "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_42.csv",
+            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_111.csv",
         ]
         filter_types = ["fair_visit"]
         aggregate_results(result_fpaths, filter_types)
