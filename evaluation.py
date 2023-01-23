@@ -32,10 +32,11 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     """
     Evaluate translation accuracy per LTL pattern type.
     """
-    result_log = [["train_or_valid", "pattern_type", "nprops", "utterances", "true_ltl", "output_ltl", "is_correct"]]
+    result_log = [["train_or_valid", "pattern_type", "nprops", "prop_perm", "utterances", "true_ltl", "output_ltl", "is_correct"]]
 
     meta2accs = defaultdict(list)
-    for idx, ((utt, true_ltl), (pattern_type, nprops)) in enumerate(zip(valid_iter, valid_meta)):
+    for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(zip(valid_iter, valid_meta)):
+        nprops = len(prop_perm)
         train_or_valid = "valid" if idx < valid_iter_len else "train"  # TODO: remove after having enough data
         out_ltl = model.translate([utt])[0].strip()
         try:  # output LTL formula may have syntax error
@@ -43,8 +44,8 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
             is_correct = "True" if is_correct else "False"
         except SyntaxError:
             is_correct = "Syntax Error"
-        logging.info(f"{idx}\n{pattern_type} | {nprops}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
-        result_log.append([train_or_valid, pattern_type, nprops, utt, true_ltl, out_ltl, is_correct])
+        logging.info(f"{idx}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+        result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
         if train_or_valid == "valid":
             meta2accs[(pattern_type, nprops)].append(is_correct)
 
@@ -111,10 +112,10 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1_new/symbolic_perm_fullbatch1_new_utt_0.2_42.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1_new/symbolic_perm_fullbatch1_new_utt_0.2_42.pkl", help="path to pkl file storing test set")
-    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_perm_fullbatch1_new.csv", help="path to dataset analysis")
-    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_42", help="name of model to be evaluated")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
+    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
     args = parser.parse_args()
@@ -122,11 +123,11 @@ if __name__ == "__main__":
 
     if args.aggregate:  # aggregate acc-per-formula result files
         result_fpaths = [
-            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_0.csv",
-            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_1.csv",
-            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_2.csv",
-            "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_42.csv",
-            # "results/finetuned_gpt3/utt_holdout_fullbatch1_new/acc_gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_111.csv",
+            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_0.csv",
+            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1.csv",
+            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2.csv",
+            "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42.csv",
+            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111.csv",
         ]
         filter_types = ["fair_visit"]
         aggregate_results(result_fpaths, filter_types)
@@ -137,11 +138,11 @@ if __name__ == "__main__":
             valid_iter = test_dataset["valid_iter"]
             dataset["valid_meta"] = test_dataset["valid_meta"]
             if "utt" in args.train_dataset_fpath:  # results directory based on holdout type
-                dname = "utt_holdout_fullbatch1_new"
+                dname = "utt_holdout_batch12_perm"
             elif "formula" in args.train_dataset_fpath:
-                dname = "formula_holdout_fullbatch1_new"
+                dname = "formula_holdout_batch12_perm"
             elif "type" in args.train_dataset_fpath:
-                dname = "type_holdout_fullbatch1_new"
+                dname = "type_holdout_batch12_perm"
             if "finetuned" in args.model:
                 engine = load_from_file("model/gpt3_models.pkl")[args.model]
                 valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
@@ -151,7 +152,7 @@ if __name__ == "__main__":
                 acc_fpath = os.path.join(result_dpath, f"acc_{args.model}.csv")
             else:
                 engine = args.model
-                prompt_fpath = os.path.join("data", "symbolic_prompt_fullbatch1", f"prompt_nexamples{args.nexamples}_{dataset_name}.txt")
+                prompt_fpath = os.path.join("data", "symbolic_prompt_batch12_perm", f"prompt_nexamples{args.nexamples}_{dataset_name}.txt")
                 prompt = load_from_file(prompt_fpath)
                 valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_dpath = os.path.join("results", "pretrained_gpt3", dname)
