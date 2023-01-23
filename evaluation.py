@@ -111,10 +111,10 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1/symbolic_perm_fullbatch1_utt_0.2_42.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1/symbolic_perm_fullbatch1_utt_0.2_42.pkl", help="path to pkl file storing test set")
-    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_perm_fullbatch1.csv", help="path to dataset analysis")
-    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_perm_fullbatch1_utt_0.2_42", help="name of model to be evaluated")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1_new/symbolic_perm_fullbatch1_new_utt_0.2_42.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_splits_fullbatch1_new/symbolic_perm_fullbatch1_new_utt_0.2_42.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_perm_fullbatch1_new.csv", help="path to dataset analysis")
+    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_perm_fullbatch1_new_utt_0.2_42", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
     args = parser.parse_args()
@@ -137,11 +137,11 @@ if __name__ == "__main__":
             valid_iter = test_dataset["valid_iter"]
             dataset["valid_meta"] = test_dataset["valid_meta"]
             if "utt" in args.train_dataset_fpath:  # results directory based on holdout type
-                dname = "utt_holdout_fullbatch1"
+                dname = "utt_holdout_fullbatch1_new"
             elif "formula" in args.train_dataset_fpath:
-                dname = "formula_holdout_fullbatch1"
+                dname = "formula_holdout_fullbatch1_new"
             elif "type" in args.train_dataset_fpath:
-                dname = "type_holdout_fullbatch1"
+                dname = "type_holdout_fullbatch1_new"
             if "finetuned" in args.model:
                 engine = load_from_file("model/gpt3_models.pkl")[args.model]
                 valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
