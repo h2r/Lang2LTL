@@ -1,0 +1,23 @@
+LTL Template Type,Number of Propositions,Number of Utterances
+ordered_visit,2,520
+ordered_visit,3,1320
+ordered_visit,4,2400
+ordered_visit,5,2520
+patrolling,1,150
+patrolling,2,480
+patrolling,3,1380
+patrolling,4,2880
+patrolling,5,2880
+sequenced_visit,2,540
+sequenced_visit,3,1560
+sequenced_visit,4,2640
+sequenced_visit,5,2880
+strictly_ordered_visit,2,500
+strictly_ordered_visit,3,1260
+strictly_ordered_visit,4,2520
+strictly_ordered_visit,5,2760
+visit,1,130
+visit,2,540
+visit,3,1560
+visit,4,2880
+visit,5,2880
