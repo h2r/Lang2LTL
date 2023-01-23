@@ -66,22 +66,11 @@ patrolling,['a'],do not stop going to a,G F a
 patrolling,['a'],please visit a infinitely often,G F a
 patrolling,['a'],you must visit a infinitely often,G F a
 strictly_ordered_visit,"['a', 'b', 'c']",visit a exactly once while avoiding b and c then visit b exactly once while avoiding c finally visit c,& & U ! b a & U ! c b F c & U ! a U a U ! a b U ! b U b U ! b c
-fair_visit,"['a', 'b']",visit a and b in any order but do not visit one of them more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",reach a and b in an arbitrary order and make sure to visit one of them at most once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b in any order and make sure the difference of visits is at most one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",move to a and b in any order but do not visit one of them more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b in an arbitrary order and make sure to visit one no more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
 visit,"['a', 'b', 'c']",head to a b and c in any order,& F a & F b F c
 visit,"['a', 'b', 'c']",in any order you like go to a b and c,& F a & F b F c
 visit,"['a', 'b', 'c']",visit a b and c in any order,& F a & F b F c
 visit,"['a', 'b', 'c']",walk to a b and c in an arbitrary order,& F a & F b F c
 visit,"['a', 'b', 'c']",make sure a b and c are all visited,& F a & F b F c
-fair_visit,"['a', 'b', 'c']",ensure that you reach a b and c the  number of times you visit each location should never differ by more than one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",visit a b and c equal number of times the maximum allowable tolerance on the visit counts is one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",visit a b and c fairly ie make sure that the visit counts never differ by more than one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h fairly ie the visit counts to these locations should never differ by more than one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",go to a b c d and h ensure that you visit all locations equally and the disparity in visit counts should never exceed one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h while making sure to not visit any location at most once more than others,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 sequenced_visit,"['a', 'b', 'c']",go to a and then go to b and then go to c,F & a F & b F c
 sequenced_visit,"['a', 'b', 'c']",visit a b and c one after another,F & a F & b F c
 sequenced_visit,"['a', 'b', 'c']",go to a and go to b after a is visited and go to c after a and b are visited,F & a F & b F c
@@ -97,11 +86,6 @@ visit,"['a', 'b']",visit a and b in any order,& F a F b
 visit,"['a', 'b']",pick one from a and b go there and then head to the other one,& F a F b
 visit,"['a', 'b']",go to one of a and b and then to the other,& F a F b
 visit,"['a', 'b']",go to a and b in an arbitrary order,& F a F b
-fair_visit,"['a', 'b']",make sure you frequent a and b equally or at most one time in difference,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",visit a and b multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b any time and in any order but do not visit one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",travel between a and b multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",revisit a and b multiple times but be sure not to go to one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
 patrolling,['a'],keep visiting a,G F a
 patrolling,['a'],keep going to a,G F a
 patrolling,['a'],make sure you frequent a infinitely,G F a
@@ -152,11 +136,6 @@ sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a then visit b then visit c th
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",reach a b c d and h sequentially,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit b at least once after visiting a visit c at least once after visiting both a and b visit d at least once after visiting a b and c and visit h at least once after visiting a b c and d,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",go to a then go to b and then reach c then reach d and finally go to h,F & a F & b F & c F & d F h
-fair_visit,"['a', 'b', 'c', 'd', 'h']",make sure you frequent a b c d and h equally or at most one time in difference,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",go to a b c d and h any time and in any order but do not visit one more than the other more than once,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",travel between a b c d and h multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",revisit a b c d and h multiple times but be sure not to go to one more than the other more than once,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 ordered_visit,"['a', 'b']",visit b only after visiting a,& U ! b a F b
 ordered_visit,"['a', 'b']",go to b after going to a do not go to b before,& U ! b a F b
 ordered_visit,"['a', 'b']",go to a and only then go to b,& U ! b a F b
@@ -232,21 +211,6 @@ patrolling,"['a', 'b', 'c', 'd', 'h']",frequent a b c d and h infinitely in any 
 patrolling,"['a', 'b', 'c', 'd', 'h']",please keep visiting a b c d and h without stopping,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",make sure a b c d and h are visited infinitely,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",keep visiting a b c d h in any order,& G F a & G F b & G F c & G F d G F h
-fair_visit,"['a', 'b', 'c', 'd']",make sure you frequent a b c and d equally or at most one time in difference,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c and d multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",go to a b c and d any time and in any order but do not visit one more than the other more than once,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",travel between a b c  and d multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",revisit a b c and d multiple times but be sure not to go to one more than the other more than once,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c']",make sure you frequent a b and c equally or at most one time in difference,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",visit a b and c multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",go to a b and c any time and in any order but do not visit one more than the other more than once,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",travel between a b and c multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",revisit a b and c multiple times but be sure not to go to one more than the other more than once,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b']",make sure you frequent a and b equally or at most one time in difference,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",visit a and b multiple times in arbitrary order but do not visit one more than one time more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b any time and in any order but do not visit one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",travel between a and b multiple times in any sequence but ensure neither is visited more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",revisit a and b multiple times but be sure not to go to one more than the other more than once,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
 visit,['a'],go to a,F a
 visit,['a'],visit a,F a
 visit,['a'],stop by a,F a
@@ -335,18 +299,6 @@ visit,"['a', 'b', 'c', 'd']",visit a d c and b on your travels,& F a & F b & F c
 visit,"['a', 'b', 'c', 'd']",make sure to visit a b d and c in any order,& F a & F b & F c F d
 visit,"['a', 'b', 'c', 'd']",please visit each of d c b and a,& F a & F b & F c F d
 visit,"['a', 'b', 'c', 'd']",travel to a b c and d ,& F a & F b & F c F d
-fair_visit,"['a', 'b']",visit a and b but the number of times you visit a can never exceed the number of times you visit b by more than one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b but the difference between the number of times you go to a and b is at most one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",fairly visit a and b that means the number of times you go to one location can be at most one more than the number of times you go to the other location,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b', 'c']",visit a and b and c but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",go to a and b and c but the difference between the number of times you go to any two locations a b or a c or b c is at most one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",fairly visit a and b and c that means the number of times you go to any one location can be at most one more than the number of times you go to any other location,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c', 'd']",visit locations a and b and c and d but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",go to locations a and b and c and d but the difference between the number of times you go to any two locations is at most one,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",fairly visit locations a and b and c and d that means the number of times you go to any one location can be at most one more than the number of times you go to any other location,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit locations a and b and c and d and h but the number of times you visit any one location can never exceed the number of times you visit any other location by more than one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",go to locations a and b and c and d and h but the difference between the number of times you go to any two locations is at most one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",fairly visit locations a and b and c and d and h that means the number of times you go to any one location can be at most one more than the number of times you go to any other location,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 patrolling,"['a', 'b']",keep going between a and b,& G F a G F b
 patrolling,"['a', 'b']",keep visiting a and b,& G F a G F b
 patrolling,"['a', 'b']",keep visiting b and a,& G F a G F b
@@ -481,41 +433,10 @@ ordered_visit,"['a', 'b', 'c', 'd', 'h']",ensure that you visit h but only after
 ordered_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h in that specific order ensure to not visit locations out of turn,& U ! b a & U ! c b & U ! d c & U ! h d F h
 ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to h but only after visiting a b c d in that specific order,& U ! b a & U ! c b & U ! d c & U ! h d F h
 ordered_visit,"['a', 'b', 'c', 'd', 'h']",go to h not before going to d do not go to d before going to c do not go to c before going to b and do not go to b before going to a,& U ! b a & U ! c b & U ! d c & U ! h d F h
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c d but make sure that any location is not visited more than once more than the others,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c d fairly ie at any given time the visit counts to the locations should not exceed that of any other location by more than one,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",go to a b c and d in any order but ensure that each location is visited at most once more than other locations at any time,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",the difference among the number of times a b c and d are visited is at most one,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c and d in any order and make sure to visit one location at most once more than any other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",you can only go to anyone of a b c and d at most one more time than you go to the others,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",if you go to one of a b c or d you must go to all of them and can potentially visit one of them at most one more time ,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",you can only visit one of a b c or d at most one more time than you visited the other landmarks ,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b']",visit a and b in any order the difference among the number of times a and b are visited is at most one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",you can only go to a at most one more than than you go to b and visa versa,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",you can only visit b one more time than you visited a ,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",you cannot visit b two or more times than the amount of times you visited a,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",the difference between the number of times a and b were seen is no more than one ,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b', 'c']",the difference among the number of times locations a b and c are visited is at most one,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",if you go to one of the landmarks a b or c at any point you cannot visit one of them more than one more time without visiting them all of them again,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",you cannot visit one of b a and c two or more times more than the number of times you visited one of them ,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",you can visit a at most one more time than you visited b and c you can visit b at most one more time than you visited a and c you can visit c at most one more time than you visited b and a,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",if you visit a visit b and c before you visit a again if you visit b visit a and c before you visit b again if you visit c visit a and b before you visit c again,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",the difference among the number of times a b c d and h are visited is at most one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",for each time you go to one of the landmarks a b d c or h you cannot visit one of them more than one again unless you visit all of them again,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",you cannot visit h two or more times than you visited a b c and d you cannot visit d two or more times than you visited a b c and h you cannot visit c two or more times than you visited a b h and d you cannot visit b two or more times than you visited a d c and h you cannot visit a two or more times than you visited h b c and d ,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",you can visit h at most one more time than you visited a b c and d you can visit d at most one more time than you visited a b c and h you can visit c at most one more time than you visited a b h and d you can visit b at most one more time than you visited a d c and h you can visit a at most one more time than you visited h b c and d ,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",the difference in the number of times a c b h and d are visited is no more than one,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 patrolling,"['a', 'b']",keep going to a and b an infinite number of times,& G F a G F b
 patrolling,"['a', 'b']",keep visiting a and b an infinite number of times,& G F a G F b
 patrolling,"['a', 'b']",continue visiting  a and b an infinite number of times,& G F a G F b
 patrolling,"['a', 'b']",do not stop visiting a and b,& G F a G F b
-fair_visit,"['a', 'b']",visit a and b fairly but do not visit one location more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",go to a and b in an arbitrarily order but do not visit one more than once more than the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",visit a and b while the numbers of visits of two locations do not differ by more than one,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b']",visit a and b while the number of visits to one is at most one more than the number of visits to the other,& & F a F b & G i a W a & ! a W ! a b G i b W b & ! b W ! b a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h fairly which means do not visit one location more than once more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h and visit one place at most once more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h and make sure the difference among the number of times locations are visited is at most once,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
-fair_visit,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h while ensuring the number of times you visit one place is at most once more than the other,& & F a & F b & F c & F d F h & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d & G i d W d & ! d W ! d h G i h W h & ! h W ! h a
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a followed by b then c then d and then h,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a followed by b then b followed by c then c followed by d then d followed by h and then h,F & a F & b F & c F & d F h
 sequenced_visit,"['a', 'b', 'c', 'd', 'h']",visit a then b then c then d and then h,F & a F & b F & c F & d F h
@@ -548,14 +469,6 @@ patrolling,"['a', 'b', 'c', 'd', 'h']",keep going to a b c d and h an infinite n
 patrolling,"['a', 'b', 'c', 'd', 'h']",keep visiting a b c d and h an infinite number of times,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",do not stop visiting a b c d and h,& G F a & G F b & G F c & G F d G F h
 patrolling,"['a', 'b', 'c', 'd', 'h']",continue visiting  a b c d and h an infinite number of times,& G F a & G F b & G F c & G F d G F h
-fair_visit,"['a', 'b', 'c']",visit a b and c fairly which means do not visit one location more than once more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",go to a b and c in an arbitrary order but do not visit one location more than once more than another location,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",visit a b and c and make sure the difference among the number of times locations are visited is at most once,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c']",visit a b and c while ensuring the number of times you visit one place is at most once more than the other,& & F a & F b F c & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c G i c W c & ! c W ! c a
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c and d while the numbers of visits of two locations do not differ by more than one,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",go to a b c and d in an arbitrarily order but do not visit one more than once more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']", visit a b c and d and make sure the difference among the number of times locations are visited is at most once,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
-fair_visit,"['a', 'b', 'c', 'd']",visit a b c and d while ensuring the number of times you visit one place is at most once more than the other,& & F a & F b & F c F d & G i a W a & ! a W ! a b & G i b W b & ! b W ! b c & G i c W c & ! c W ! c d G i d W d & ! d W ! d a
 strictly_ordered_visit,"['a', 'b', 'c', 'd']",please go to a then b then c then d in that specific order without revisiting previously visited location,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d
 strictly_ordered_visit,"['a', 'b', 'c', 'd']",first go to a once without visiting b then go to b once without visiting c then go to c once without visiting d finally go to d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d
 strictly_ordered_visit,"['a', 'b', 'c', 'd']",first go to a once then go to b once while avoiding c then go to c once while avoiding d finally go to d,& & U ! b a & U ! c b & U ! d c F d & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d

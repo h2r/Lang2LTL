@@ -1,8 +1,4 @@
 LTL Template Type,Number of Propositions,Number of Utterances
-fair_visit,2,27
-fair_visit,3,20
-fair_visit,4,20
-fair_visit,5,20
 ordered_visit,2,26
 ordered_visit,3,22
 ordered_visit,4,20
