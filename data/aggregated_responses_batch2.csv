@@ -450,3 +450,33 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/23 3:04:39 AM EST,ziyi_yang1@brown.edu,Wait,2,"once b is seen, feel free to leave a. Otherwise, stay at a"
 2023/01/23 3:04:39 AM EST,ziyi_yang1@brown.edu,Wait,2,do not leave a before b is seen
 2023/01/23 3:04:39 AM EST,ziyi_yang1@brown.edu,Wait,2,you cannot go to anywhere from a before having b observed
+2023/01/23 3:56:22 PM EST,ankitshah91@gmail.com,Future Avoidance,2,Once a is reached after that you can never visit b
+2023/01/23 3:56:22 PM EST,ankitshah91@gmail.com,Future Avoidance,2,b can never be visited once a occurs
+2023/01/23 3:56:22 PM EST,ankitshah91@gmail.com,Future Avoidance,2,If you go to a you can never go to b after that
+2023/01/23 3:56:22 PM EST,ankitshah91@gmail.com,Future Avoidance,2,"If a happens, that prevents b from happening afterwards"
+2023/01/23 3:56:22 PM EST,ankitshah91@gmail.com,Future Avoidance,2,If you visit a you are not allowed to reach b afterwards
+2023/01/23 3:59:00 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,1,Once you reach a you are never allowed to visit it again
+2023/01/23 3:59:00 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,1,You can visit a at most once
+2023/01/23 3:59:00 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,1,You can not visit a two or more times
+2023/01/23 3:59:00 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,1,Visiting a locks it for future visits
+2023/01/23 3:59:00 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,1,Do not go to a more than once
+2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,You can visit a at most twice
+2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,You are not allowed to visit a three or more times
+2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,"Once you leave a for the second time, you cannot come back to it"
+2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,You can only visit a twice or fewer times
+2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,Going to a twice locks it for future visits
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,Passing through a thrice will lock it for future visits
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,You can only visit a a maximum of three times
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,Do not visit a any more than three times
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,You cannot reach a for four or more times
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,The maximum allowable visits to a is three
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,Visiting a for the fourth time will lock it for future visits
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,"Once you enter a for the fourth time, you can never reenter it"
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You can only visit a maximum of four times
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You are allowed at most four visits to a
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You are not allowed five or more visits to a
+2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,You can not visit a six or more times
+2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Visit a at most five times
+2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Do not visit a more than five times
+2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,"Once you leave a for the fifth time, it is locked for you"
+2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Never go to a more than five times
