@@ -3,25 +3,25 @@ Global Avoidance,1,22
 Global Avoidance,2,22
 Global Avoidance,3,22
 Global Avoidance,4,22
-Global Avoidance,5,19
+Global Avoidance,5,22
 Past Avoidance,2,21
-Upper Restricted Avoidance,1,13
-Upper Restricted Avoidance,2,13
-Upper Restricted Avoidance,3,13
-Upper Restricted Avoidance,4,13
-Upper Restricted Avoidance,5,13
-Lower Restricted Avoidance,1,13
-Lower Restricted Avoidance,2,13
-Lower Restricted Avoidance,3,13
-Lower Restricted Avoidance,4,13
-Lower Restricted Avoidance,5,13
-Exact Restricted Avoidance,1,13
-Exact Restricted Avoidance,2,13
-Exact Restricted Avoidance,3,13
-Exact Restricted Avoidance,4,13
-Exact Restricted Avoidance,5,13
-Future Avoidance,2,13
-Delayed Reaction,2,13
-Prompt Reaction,2,13
-Bound Delay,2,13
-Wait,2,13
+Upper Restricted Avoidance,1,16
+Upper Restricted Avoidance,2,16
+Upper Restricted Avoidance,3,16
+Upper Restricted Avoidance,4,16
+Upper Restricted Avoidance,5,16
+Lower Restricted Avoidance,1,16
+Lower Restricted Avoidance,2,16
+Lower Restricted Avoidance,3,16
+Lower Restricted Avoidance,4,16
+Lower Restricted Avoidance,5,16
+Exact Restricted Avoidance,1,16
+Exact Restricted Avoidance,2,16
+Exact Restricted Avoidance,3,16
+Exact Restricted Avoidance,4,16
+Exact Restricted Avoidance,5,16
+Future Avoidance,2,16
+Delayed Reaction,2,16
+Bound Delay,2,16
+Wait,2,16
+Prompt Reaction,2,16

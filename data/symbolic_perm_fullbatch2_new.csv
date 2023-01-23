@@ -6724,106 +6724,6 @@ delayed_reaction,"('h', 'a')",visiting h means you have to go to a afterward,G i
 delayed_reaction,"('h', 'b')",visiting h means you have to go to b afterward,G i h F b
 delayed_reaction,"('h', 'c')",visiting h means you have to go to c afterward,G i h F c
 delayed_reaction,"('h', 'd')",visiting h means you have to go to d afterward,G i h F d
-prompt_reaction,"('a', 'b')",once you visit a you have to head to b right after that,G i a X b
-prompt_reaction,"('a', 'c')",once you visit a you have to head to c right after that,G i a X c
-prompt_reaction,"('a', 'd')",once you visit a you have to head to d right after that,G i a X d
-prompt_reaction,"('a', 'h')",once you visit a you have to head to h right after that,G i a X h
-prompt_reaction,"('b', 'a')",once you visit b you have to head to a right after that,G i b X a
-prompt_reaction,"('b', 'c')",once you visit b you have to head to c right after that,G i b X c
-prompt_reaction,"('b', 'd')",once you visit b you have to head to d right after that,G i b X d
-prompt_reaction,"('b', 'h')",once you visit b you have to head to h right after that,G i b X h
-prompt_reaction,"('c', 'a')",once you visit c you have to head to a right after that,G i c X a
-prompt_reaction,"('c', 'b')",once you visit c you have to head to b right after that,G i c X b
-prompt_reaction,"('c', 'd')",once you visit c you have to head to d right after that,G i c X d
-prompt_reaction,"('c', 'h')",once you visit c you have to head to h right after that,G i c X h
-prompt_reaction,"('d', 'a')",once you visit d you have to head to a right after that,G i d X a
-prompt_reaction,"('d', 'b')",once you visit d you have to head to b right after that,G i d X b
-prompt_reaction,"('d', 'c')",once you visit d you have to head to c right after that,G i d X c
-prompt_reaction,"('d', 'h')",once you visit d you have to head to h right after that,G i d X h
-prompt_reaction,"('h', 'a')",once you visit h you have to head to a right after that,G i h X a
-prompt_reaction,"('h', 'b')",once you visit h you have to head to b right after that,G i h X b
-prompt_reaction,"('h', 'c')",once you visit h you have to head to c right after that,G i h X c
-prompt_reaction,"('h', 'd')",once you visit h you have to head to d right after that,G i h X d
-prompt_reaction,"('a', 'b')",going to a means you have to go to b immediately after that,G i a X b
-prompt_reaction,"('a', 'c')",going to a means you have to go to c immediately after that,G i a X c
-prompt_reaction,"('a', 'd')",going to a means you have to go to d immediately after that,G i a X d
-prompt_reaction,"('a', 'h')",going to a means you have to go to h immediately after that,G i a X h
-prompt_reaction,"('b', 'a')",going to b means you have to go to a immediately after that,G i b X a
-prompt_reaction,"('b', 'c')",going to b means you have to go to c immediately after that,G i b X c
-prompt_reaction,"('b', 'd')",going to b means you have to go to d immediately after that,G i b X d
-prompt_reaction,"('b', 'h')",going to b means you have to go to h immediately after that,G i b X h
-prompt_reaction,"('c', 'a')",going to c means you have to go to a immediately after that,G i c X a
-prompt_reaction,"('c', 'b')",going to c means you have to go to b immediately after that,G i c X b
-prompt_reaction,"('c', 'd')",going to c means you have to go to d immediately after that,G i c X d
-prompt_reaction,"('c', 'h')",going to c means you have to go to h immediately after that,G i c X h
-prompt_reaction,"('d', 'a')",going to d means you have to go to a immediately after that,G i d X a
-prompt_reaction,"('d', 'b')",going to d means you have to go to b immediately after that,G i d X b
-prompt_reaction,"('d', 'c')",going to d means you have to go to c immediately after that,G i d X c
-prompt_reaction,"('d', 'h')",going to d means you have to go to h immediately after that,G i d X h
-prompt_reaction,"('h', 'a')",going to h means you have to go to a immediately after that,G i h X a
-prompt_reaction,"('h', 'b')",going to h means you have to go to b immediately after that,G i h X b
-prompt_reaction,"('h', 'c')",going to h means you have to go to c immediately after that,G i h X c
-prompt_reaction,"('h', 'd')",going to h means you have to go to d immediately after that,G i h X d
-prompt_reaction,"('a', 'b')",you must go to b as soon as you go to a,G i a X b
-prompt_reaction,"('a', 'c')",you must go to c as soon as you go to a,G i a X c
-prompt_reaction,"('a', 'd')",you must go to d as soon as you go to a,G i a X d
-prompt_reaction,"('a', 'h')",you must go to h as soon as you go to a,G i a X h
-prompt_reaction,"('b', 'a')",you must go to a as soon as you go to b,G i b X a
-prompt_reaction,"('b', 'c')",you must go to c as soon as you go to b,G i b X c
-prompt_reaction,"('b', 'd')",you must go to d as soon as you go to b,G i b X d
-prompt_reaction,"('b', 'h')",you must go to h as soon as you go to b,G i b X h
-prompt_reaction,"('c', 'a')",you must go to a as soon as you go to c,G i c X a
-prompt_reaction,"('c', 'b')",you must go to b as soon as you go to c,G i c X b
-prompt_reaction,"('c', 'd')",you must go to d as soon as you go to c,G i c X d
-prompt_reaction,"('c', 'h')",you must go to h as soon as you go to c,G i c X h
-prompt_reaction,"('d', 'a')",you must go to a as soon as you go to d,G i d X a
-prompt_reaction,"('d', 'b')",you must go to b as soon as you go to d,G i d X b
-prompt_reaction,"('d', 'c')",you must go to c as soon as you go to d,G i d X c
-prompt_reaction,"('d', 'h')",you must go to h as soon as you go to d,G i d X h
-prompt_reaction,"('h', 'a')",you must go to a as soon as you go to h,G i h X a
-prompt_reaction,"('h', 'b')",you must go to b as soon as you go to h,G i h X b
-prompt_reaction,"('h', 'c')",you must go to c as soon as you go to h,G i h X c
-prompt_reaction,"('h', 'd')",you must go to d as soon as you go to h,G i h X d
-prompt_reaction,"('a', 'b')",do not go to anywhere but b after you visit a,G i a X b
-prompt_reaction,"('a', 'c')",do not go to anywhere but c after you visit a,G i a X c
-prompt_reaction,"('a', 'd')",do not go to anywhere but d after you visit a,G i a X d
-prompt_reaction,"('a', 'h')",do not go to anywhere but h after you visit a,G i a X h
-prompt_reaction,"('b', 'a')",do not go to anywhere but a after you visit b,G i b X a
-prompt_reaction,"('b', 'c')",do not go to anywhere but c after you visit b,G i b X c
-prompt_reaction,"('b', 'd')",do not go to anywhere but d after you visit b,G i b X d
-prompt_reaction,"('b', 'h')",do not go to anywhere but h after you visit b,G i b X h
-prompt_reaction,"('c', 'a')",do not go to anywhere but a after you visit c,G i c X a
-prompt_reaction,"('c', 'b')",do not go to anywhere but b after you visit c,G i c X b
-prompt_reaction,"('c', 'd')",do not go to anywhere but d after you visit c,G i c X d
-prompt_reaction,"('c', 'h')",do not go to anywhere but h after you visit c,G i c X h
-prompt_reaction,"('d', 'a')",do not go to anywhere but a after you visit d,G i d X a
-prompt_reaction,"('d', 'b')",do not go to anywhere but b after you visit d,G i d X b
-prompt_reaction,"('d', 'c')",do not go to anywhere but c after you visit d,G i d X c
-prompt_reaction,"('d', 'h')",do not go to anywhere but h after you visit d,G i d X h
-prompt_reaction,"('h', 'a')",do not go to anywhere but a after you visit h,G i h X a
-prompt_reaction,"('h', 'b')",do not go to anywhere but b after you visit h,G i h X b
-prompt_reaction,"('h', 'c')",do not go to anywhere but c after you visit h,G i h X c
-prompt_reaction,"('h', 'd')",do not go to anywhere but d after you visit h,G i h X d
-prompt_reaction,"('a', 'b')",you can go to a but you must go to b immediately afterward,G i a X b
-prompt_reaction,"('a', 'c')",you can go to a but you must go to c immediately afterward,G i a X c
-prompt_reaction,"('a', 'd')",you can go to a but you must go to d immediately afterward,G i a X d
-prompt_reaction,"('a', 'h')",you can go to a but you must go to h immediately afterward,G i a X h
-prompt_reaction,"('b', 'a')",you can go to b but you must go to a immediately afterward,G i b X a
-prompt_reaction,"('b', 'c')",you can go to b but you must go to c immediately afterward,G i b X c
-prompt_reaction,"('b', 'd')",you can go to b but you must go to d immediately afterward,G i b X d
-prompt_reaction,"('b', 'h')",you can go to b but you must go to h immediately afterward,G i b X h
-prompt_reaction,"('c', 'a')",you can go to c but you must go to a immediately afterward,G i c X a
-prompt_reaction,"('c', 'b')",you can go to c but you must go to b immediately afterward,G i c X b
-prompt_reaction,"('c', 'd')",you can go to c but you must go to d immediately afterward,G i c X d
-prompt_reaction,"('c', 'h')",you can go to c but you must go to h immediately afterward,G i c X h
-prompt_reaction,"('d', 'a')",you can go to d but you must go to a immediately afterward,G i d X a
-prompt_reaction,"('d', 'b')",you can go to d but you must go to b immediately afterward,G i d X b
-prompt_reaction,"('d', 'c')",you can go to d but you must go to c immediately afterward,G i d X c
-prompt_reaction,"('d', 'h')",you can go to d but you must go to h immediately afterward,G i d X h
-prompt_reaction,"('h', 'a')",you can go to h but you must go to a immediately afterward,G i h X a
-prompt_reaction,"('h', 'b')",you can go to h but you must go to b immediately afterward,G i h X b
-prompt_reaction,"('h', 'c')",you can go to h but you must go to c immediately afterward,G i h X c
-prompt_reaction,"('h', 'd')",you can go to h but you must go to d immediately afterward,G i h X d
 past_avoidance,"('a', 'b')",do not go to a until you go to b,U ! a b
 past_avoidance,"('a', 'c')",do not go to a until you go to c,U ! a c
 past_avoidance,"('a', 'd')",do not go to a until you go to d,U ! a d
@@ -9484,3 +9384,988 @@ wait,"('h', 'a')",you are not allowed to leave h until you get to a,U h a
 wait,"('h', 'b')",you are not allowed to leave h until you get to b,U h b
 wait,"('h', 'c')",you are not allowed to leave h until you get to c,U h c
 wait,"('h', 'd')",you are not allowed to leave h until you get to d,U h d
+global_avoidance,"('a', 'b', 'c', 'd', 'h')",avoid a b c d and h forever,& G ! a & G ! b & G ! c & G ! d G ! h
+global_avoidance,"('a', 'b', 'c', 'h', 'd')",avoid a b c h and d forever,& G ! a & G ! b & G ! c & G ! h G ! d
+global_avoidance,"('a', 'b', 'd', 'c', 'h')",avoid a b d c and h forever,& G ! a & G ! b & G ! d & G ! c G ! h
+global_avoidance,"('a', 'b', 'd', 'h', 'c')",avoid a b d h and c forever,& G ! a & G ! b & G ! d & G ! h G ! c
+global_avoidance,"('a', 'b', 'h', 'c', 'd')",avoid a b h c and d forever,& G ! a & G ! b & G ! h & G ! c G ! d
+global_avoidance,"('a', 'b', 'h', 'd', 'c')",avoid a b h d and c forever,& G ! a & G ! b & G ! h & G ! d G ! c
+global_avoidance,"('a', 'c', 'b', 'd', 'h')",avoid a c b d and h forever,& G ! a & G ! c & G ! b & G ! d G ! h
+global_avoidance,"('a', 'c', 'b', 'h', 'd')",avoid a c b h and d forever,& G ! a & G ! c & G ! b & G ! h G ! d
+global_avoidance,"('a', 'c', 'd', 'b', 'h')",avoid a c d b and h forever,& G ! a & G ! c & G ! d & G ! b G ! h
+global_avoidance,"('a', 'c', 'd', 'h', 'b')",avoid a c d h and b forever,& G ! a & G ! c & G ! d & G ! h G ! b
+global_avoidance,"('a', 'c', 'h', 'b', 'd')",avoid a c h b and d forever,& G ! a & G ! c & G ! h & G ! b G ! d
+global_avoidance,"('a', 'c', 'h', 'd', 'b')",avoid a c h d and b forever,& G ! a & G ! c & G ! h & G ! d G ! b
+global_avoidance,"('a', 'd', 'b', 'c', 'h')",avoid a d b c and h forever,& G ! a & G ! d & G ! b & G ! c G ! h
+global_avoidance,"('a', 'd', 'b', 'h', 'c')",avoid a d b h and c forever,& G ! a & G ! d & G ! b & G ! h G ! c
+global_avoidance,"('a', 'd', 'c', 'b', 'h')",avoid a d c b and h forever,& G ! a & G ! d & G ! c & G ! b G ! h
+global_avoidance,"('a', 'd', 'c', 'h', 'b')",avoid a d c h and b forever,& G ! a & G ! d & G ! c & G ! h G ! b
+global_avoidance,"('a', 'd', 'h', 'b', 'c')",avoid a d h b and c forever,& G ! a & G ! d & G ! h & G ! b G ! c
+global_avoidance,"('a', 'd', 'h', 'c', 'b')",avoid a d h c and b forever,& G ! a & G ! d & G ! h & G ! c G ! b
+global_avoidance,"('a', 'h', 'b', 'c', 'd')",avoid a h b c and d forever,& G ! a & G ! h & G ! b & G ! c G ! d
+global_avoidance,"('a', 'h', 'b', 'd', 'c')",avoid a h b d and c forever,& G ! a & G ! h & G ! b & G ! d G ! c
+global_avoidance,"('a', 'h', 'c', 'b', 'd')",avoid a h c b and d forever,& G ! a & G ! h & G ! c & G ! b G ! d
+global_avoidance,"('a', 'h', 'c', 'd', 'b')",avoid a h c d and b forever,& G ! a & G ! h & G ! c & G ! d G ! b
+global_avoidance,"('a', 'h', 'd', 'b', 'c')",avoid a h d b and c forever,& G ! a & G ! h & G ! d & G ! b G ! c
+global_avoidance,"('a', 'h', 'd', 'c', 'b')",avoid a h d c and b forever,& G ! a & G ! h & G ! d & G ! c G ! b
+global_avoidance,"('b', 'a', 'c', 'd', 'h')",avoid b a c d and h forever,& G ! b & G ! a & G ! c & G ! d G ! h
+global_avoidance,"('b', 'a', 'c', 'h', 'd')",avoid b a c h and d forever,& G ! b & G ! a & G ! c & G ! h G ! d
+global_avoidance,"('b', 'a', 'd', 'c', 'h')",avoid b a d c and h forever,& G ! b & G ! a & G ! d & G ! c G ! h
+global_avoidance,"('b', 'a', 'd', 'h', 'c')",avoid b a d h and c forever,& G ! b & G ! a & G ! d & G ! h G ! c
+global_avoidance,"('b', 'a', 'h', 'c', 'd')",avoid b a h c and d forever,& G ! b & G ! a & G ! h & G ! c G ! d
+global_avoidance,"('b', 'a', 'h', 'd', 'c')",avoid b a h d and c forever,& G ! b & G ! a & G ! h & G ! d G ! c
+global_avoidance,"('b', 'c', 'a', 'd', 'h')",avoid b c a d and h forever,& G ! b & G ! c & G ! a & G ! d G ! h
+global_avoidance,"('b', 'c', 'a', 'h', 'd')",avoid b c a h and d forever,& G ! b & G ! c & G ! a & G ! h G ! d
+global_avoidance,"('b', 'c', 'd', 'a', 'h')",avoid b c d a and h forever,& G ! b & G ! c & G ! d & G ! a G ! h
+global_avoidance,"('b', 'c', 'd', 'h', 'a')",avoid b c d h and a forever,& G ! b & G ! c & G ! d & G ! h G ! a
+global_avoidance,"('b', 'c', 'h', 'a', 'd')",avoid b c h a and d forever,& G ! b & G ! c & G ! h & G ! a G ! d
+global_avoidance,"('b', 'c', 'h', 'd', 'a')",avoid b c h d and a forever,& G ! b & G ! c & G ! h & G ! d G ! a
+global_avoidance,"('b', 'd', 'a', 'c', 'h')",avoid b d a c and h forever,& G ! b & G ! d & G ! a & G ! c G ! h
+global_avoidance,"('b', 'd', 'a', 'h', 'c')",avoid b d a h and c forever,& G ! b & G ! d & G ! a & G ! h G ! c
+global_avoidance,"('b', 'd', 'c', 'a', 'h')",avoid b d c a and h forever,& G ! b & G ! d & G ! c & G ! a G ! h
+global_avoidance,"('b', 'd', 'c', 'h', 'a')",avoid b d c h and a forever,& G ! b & G ! d & G ! c & G ! h G ! a
+global_avoidance,"('b', 'd', 'h', 'a', 'c')",avoid b d h a and c forever,& G ! b & G ! d & G ! h & G ! a G ! c
+global_avoidance,"('b', 'd', 'h', 'c', 'a')",avoid b d h c and a forever,& G ! b & G ! d & G ! h & G ! c G ! a
+global_avoidance,"('b', 'h', 'a', 'c', 'd')",avoid b h a c and d forever,& G ! b & G ! h & G ! a & G ! c G ! d
+global_avoidance,"('b', 'h', 'a', 'd', 'c')",avoid b h a d and c forever,& G ! b & G ! h & G ! a & G ! d G ! c
+global_avoidance,"('b', 'h', 'c', 'a', 'd')",avoid b h c a and d forever,& G ! b & G ! h & G ! c & G ! a G ! d
+global_avoidance,"('b', 'h', 'c', 'd', 'a')",avoid b h c d and a forever,& G ! b & G ! h & G ! c & G ! d G ! a
+global_avoidance,"('b', 'h', 'd', 'a', 'c')",avoid b h d a and c forever,& G ! b & G ! h & G ! d & G ! a G ! c
+global_avoidance,"('b', 'h', 'd', 'c', 'a')",avoid b h d c and a forever,& G ! b & G ! h & G ! d & G ! c G ! a
+global_avoidance,"('c', 'a', 'b', 'd', 'h')",avoid c a b d and h forever,& G ! c & G ! a & G ! b & G ! d G ! h
+global_avoidance,"('c', 'a', 'b', 'h', 'd')",avoid c a b h and d forever,& G ! c & G ! a & G ! b & G ! h G ! d
+global_avoidance,"('c', 'a', 'd', 'b', 'h')",avoid c a d b and h forever,& G ! c & G ! a & G ! d & G ! b G ! h
+global_avoidance,"('c', 'a', 'd', 'h', 'b')",avoid c a d h and b forever,& G ! c & G ! a & G ! d & G ! h G ! b
+global_avoidance,"('c', 'a', 'h', 'b', 'd')",avoid c a h b and d forever,& G ! c & G ! a & G ! h & G ! b G ! d
+global_avoidance,"('c', 'a', 'h', 'd', 'b')",avoid c a h d and b forever,& G ! c & G ! a & G ! h & G ! d G ! b
+global_avoidance,"('c', 'b', 'a', 'd', 'h')",avoid c b a d and h forever,& G ! c & G ! b & G ! a & G ! d G ! h
+global_avoidance,"('c', 'b', 'a', 'h', 'd')",avoid c b a h and d forever,& G ! c & G ! b & G ! a & G ! h G ! d
+global_avoidance,"('c', 'b', 'd', 'a', 'h')",avoid c b d a and h forever,& G ! c & G ! b & G ! d & G ! a G ! h
+global_avoidance,"('c', 'b', 'd', 'h', 'a')",avoid c b d h and a forever,& G ! c & G ! b & G ! d & G ! h G ! a
+global_avoidance,"('c', 'b', 'h', 'a', 'd')",avoid c b h a and d forever,& G ! c & G ! b & G ! h & G ! a G ! d
+global_avoidance,"('c', 'b', 'h', 'd', 'a')",avoid c b h d and a forever,& G ! c & G ! b & G ! h & G ! d G ! a
+global_avoidance,"('c', 'd', 'a', 'b', 'h')",avoid c d a b and h forever,& G ! c & G ! d & G ! a & G ! b G ! h
+global_avoidance,"('c', 'd', 'a', 'h', 'b')",avoid c d a h and b forever,& G ! c & G ! d & G ! a & G ! h G ! b
+global_avoidance,"('c', 'd', 'b', 'a', 'h')",avoid c d b a and h forever,& G ! c & G ! d & G ! b & G ! a G ! h
+global_avoidance,"('c', 'd', 'b', 'h', 'a')",avoid c d b h and a forever,& G ! c & G ! d & G ! b & G ! h G ! a
+global_avoidance,"('c', 'd', 'h', 'a', 'b')",avoid c d h a and b forever,& G ! c & G ! d & G ! h & G ! a G ! b
+global_avoidance,"('c', 'd', 'h', 'b', 'a')",avoid c d h b and a forever,& G ! c & G ! d & G ! h & G ! b G ! a
+global_avoidance,"('c', 'h', 'a', 'b', 'd')",avoid c h a b and d forever,& G ! c & G ! h & G ! a & G ! b G ! d
+global_avoidance,"('c', 'h', 'a', 'd', 'b')",avoid c h a d and b forever,& G ! c & G ! h & G ! a & G ! d G ! b
+global_avoidance,"('c', 'h', 'b', 'a', 'd')",avoid c h b a and d forever,& G ! c & G ! h & G ! b & G ! a G ! d
+global_avoidance,"('c', 'h', 'b', 'd', 'a')",avoid c h b d and a forever,& G ! c & G ! h & G ! b & G ! d G ! a
+global_avoidance,"('c', 'h', 'd', 'a', 'b')",avoid c h d a and b forever,& G ! c & G ! h & G ! d & G ! a G ! b
+global_avoidance,"('c', 'h', 'd', 'b', 'a')",avoid c h d b and a forever,& G ! c & G ! h & G ! d & G ! b G ! a
+global_avoidance,"('d', 'a', 'b', 'c', 'h')",avoid d a b c and h forever,& G ! d & G ! a & G ! b & G ! c G ! h
+global_avoidance,"('d', 'a', 'b', 'h', 'c')",avoid d a b h and c forever,& G ! d & G ! a & G ! b & G ! h G ! c
+global_avoidance,"('d', 'a', 'c', 'b', 'h')",avoid d a c b and h forever,& G ! d & G ! a & G ! c & G ! b G ! h
+global_avoidance,"('d', 'a', 'c', 'h', 'b')",avoid d a c h and b forever,& G ! d & G ! a & G ! c & G ! h G ! b
+global_avoidance,"('d', 'a', 'h', 'b', 'c')",avoid d a h b and c forever,& G ! d & G ! a & G ! h & G ! b G ! c
+global_avoidance,"('d', 'a', 'h', 'c', 'b')",avoid d a h c and b forever,& G ! d & G ! a & G ! h & G ! c G ! b
+global_avoidance,"('d', 'b', 'a', 'c', 'h')",avoid d b a c and h forever,& G ! d & G ! b & G ! a & G ! c G ! h
+global_avoidance,"('d', 'b', 'a', 'h', 'c')",avoid d b a h and c forever,& G ! d & G ! b & G ! a & G ! h G ! c
+global_avoidance,"('d', 'b', 'c', 'a', 'h')",avoid d b c a and h forever,& G ! d & G ! b & G ! c & G ! a G ! h
+global_avoidance,"('d', 'b', 'c', 'h', 'a')",avoid d b c h and a forever,& G ! d & G ! b & G ! c & G ! h G ! a
+global_avoidance,"('d', 'b', 'h', 'a', 'c')",avoid d b h a and c forever,& G ! d & G ! b & G ! h & G ! a G ! c
+global_avoidance,"('d', 'b', 'h', 'c', 'a')",avoid d b h c and a forever,& G ! d & G ! b & G ! h & G ! c G ! a
+global_avoidance,"('d', 'c', 'a', 'b', 'h')",avoid d c a b and h forever,& G ! d & G ! c & G ! a & G ! b G ! h
+global_avoidance,"('d', 'c', 'a', 'h', 'b')",avoid d c a h and b forever,& G ! d & G ! c & G ! a & G ! h G ! b
+global_avoidance,"('d', 'c', 'b', 'a', 'h')",avoid d c b a and h forever,& G ! d & G ! c & G ! b & G ! a G ! h
+global_avoidance,"('d', 'c', 'b', 'h', 'a')",avoid d c b h and a forever,& G ! d & G ! c & G ! b & G ! h G ! a
+global_avoidance,"('d', 'c', 'h', 'a', 'b')",avoid d c h a and b forever,& G ! d & G ! c & G ! h & G ! a G ! b
+global_avoidance,"('d', 'c', 'h', 'b', 'a')",avoid d c h b and a forever,& G ! d & G ! c & G ! h & G ! b G ! a
+global_avoidance,"('d', 'h', 'a', 'b', 'c')",avoid d h a b and c forever,& G ! d & G ! h & G ! a & G ! b G ! c
+global_avoidance,"('d', 'h', 'a', 'c', 'b')",avoid d h a c and b forever,& G ! d & G ! h & G ! a & G ! c G ! b
+global_avoidance,"('d', 'h', 'b', 'a', 'c')",avoid d h b a and c forever,& G ! d & G ! h & G ! b & G ! a G ! c
+global_avoidance,"('d', 'h', 'b', 'c', 'a')",avoid d h b c and a forever,& G ! d & G ! h & G ! b & G ! c G ! a
+global_avoidance,"('d', 'h', 'c', 'a', 'b')",avoid d h c a and b forever,& G ! d & G ! h & G ! c & G ! a G ! b
+global_avoidance,"('d', 'h', 'c', 'b', 'a')",avoid d h c b and a forever,& G ! d & G ! h & G ! c & G ! b G ! a
+global_avoidance,"('h', 'a', 'b', 'c', 'd')",avoid h a b c and d forever,& G ! h & G ! a & G ! b & G ! c G ! d
+global_avoidance,"('h', 'a', 'b', 'd', 'c')",avoid h a b d and c forever,& G ! h & G ! a & G ! b & G ! d G ! c
+global_avoidance,"('h', 'a', 'c', 'b', 'd')",avoid h a c b and d forever,& G ! h & G ! a & G ! c & G ! b G ! d
+global_avoidance,"('h', 'a', 'c', 'd', 'b')",avoid h a c d and b forever,& G ! h & G ! a & G ! c & G ! d G ! b
+global_avoidance,"('h', 'a', 'd', 'b', 'c')",avoid h a d b and c forever,& G ! h & G ! a & G ! d & G ! b G ! c
+global_avoidance,"('h', 'a', 'd', 'c', 'b')",avoid h a d c and b forever,& G ! h & G ! a & G ! d & G ! c G ! b
+global_avoidance,"('h', 'b', 'a', 'c', 'd')",avoid h b a c and d forever,& G ! h & G ! b & G ! a & G ! c G ! d
+global_avoidance,"('h', 'b', 'a', 'd', 'c')",avoid h b a d and c forever,& G ! h & G ! b & G ! a & G ! d G ! c
+global_avoidance,"('h', 'b', 'c', 'a', 'd')",avoid h b c a and d forever,& G ! h & G ! b & G ! c & G ! a G ! d
+global_avoidance,"('h', 'b', 'c', 'd', 'a')",avoid h b c d and a forever,& G ! h & G ! b & G ! c & G ! d G ! a
+global_avoidance,"('h', 'b', 'd', 'a', 'c')",avoid h b d a and c forever,& G ! h & G ! b & G ! d & G ! a G ! c
+global_avoidance,"('h', 'b', 'd', 'c', 'a')",avoid h b d c and a forever,& G ! h & G ! b & G ! d & G ! c G ! a
+global_avoidance,"('h', 'c', 'a', 'b', 'd')",avoid h c a b and d forever,& G ! h & G ! c & G ! a & G ! b G ! d
+global_avoidance,"('h', 'c', 'a', 'd', 'b')",avoid h c a d and b forever,& G ! h & G ! c & G ! a & G ! d G ! b
+global_avoidance,"('h', 'c', 'b', 'a', 'd')",avoid h c b a and d forever,& G ! h & G ! c & G ! b & G ! a G ! d
+global_avoidance,"('h', 'c', 'b', 'd', 'a')",avoid h c b d and a forever,& G ! h & G ! c & G ! b & G ! d G ! a
+global_avoidance,"('h', 'c', 'd', 'a', 'b')",avoid h c d a and b forever,& G ! h & G ! c & G ! d & G ! a G ! b
+global_avoidance,"('h', 'c', 'd', 'b', 'a')",avoid h c d b and a forever,& G ! h & G ! c & G ! d & G ! b G ! a
+global_avoidance,"('h', 'd', 'a', 'b', 'c')",avoid h d a b and c forever,& G ! h & G ! d & G ! a & G ! b G ! c
+global_avoidance,"('h', 'd', 'a', 'c', 'b')",avoid h d a c and b forever,& G ! h & G ! d & G ! a & G ! c G ! b
+global_avoidance,"('h', 'd', 'b', 'a', 'c')",avoid h d b a and c forever,& G ! h & G ! d & G ! b & G ! a G ! c
+global_avoidance,"('h', 'd', 'b', 'c', 'a')",avoid h d b c and a forever,& G ! h & G ! d & G ! b & G ! c G ! a
+global_avoidance,"('h', 'd', 'c', 'a', 'b')",avoid h d c a and b forever,& G ! h & G ! d & G ! c & G ! a G ! b
+global_avoidance,"('h', 'd', 'c', 'b', 'a')",avoid h d c b and a forever,& G ! h & G ! d & G ! c & G ! b G ! a
+global_avoidance,"('a', 'b', 'c', 'd', 'h')",do not make a single visit to a b c d or h,& G ! a & G ! b & G ! c & G ! d G ! h
+global_avoidance,"('a', 'b', 'c', 'h', 'd')",do not make a single visit to a b c h or d,& G ! a & G ! b & G ! c & G ! h G ! d
+global_avoidance,"('a', 'b', 'd', 'c', 'h')",do not make a single visit to a b d c or h,& G ! a & G ! b & G ! d & G ! c G ! h
+global_avoidance,"('a', 'b', 'd', 'h', 'c')",do not make a single visit to a b d h or c,& G ! a & G ! b & G ! d & G ! h G ! c
+global_avoidance,"('a', 'b', 'h', 'c', 'd')",do not make a single visit to a b h c or d,& G ! a & G ! b & G ! h & G ! c G ! d
+global_avoidance,"('a', 'b', 'h', 'd', 'c')",do not make a single visit to a b h d or c,& G ! a & G ! b & G ! h & G ! d G ! c
+global_avoidance,"('a', 'c', 'b', 'd', 'h')",do not make a single visit to a c b d or h,& G ! a & G ! c & G ! b & G ! d G ! h
+global_avoidance,"('a', 'c', 'b', 'h', 'd')",do not make a single visit to a c b h or d,& G ! a & G ! c & G ! b & G ! h G ! d
+global_avoidance,"('a', 'c', 'd', 'b', 'h')",do not make a single visit to a c d b or h,& G ! a & G ! c & G ! d & G ! b G ! h
+global_avoidance,"('a', 'c', 'd', 'h', 'b')",do not make a single visit to a c d h or b,& G ! a & G ! c & G ! d & G ! h G ! b
+global_avoidance,"('a', 'c', 'h', 'b', 'd')",do not make a single visit to a c h b or d,& G ! a & G ! c & G ! h & G ! b G ! d
+global_avoidance,"('a', 'c', 'h', 'd', 'b')",do not make a single visit to a c h d or b,& G ! a & G ! c & G ! h & G ! d G ! b
+global_avoidance,"('a', 'd', 'b', 'c', 'h')",do not make a single visit to a d b c or h,& G ! a & G ! d & G ! b & G ! c G ! h
+global_avoidance,"('a', 'd', 'b', 'h', 'c')",do not make a single visit to a d b h or c,& G ! a & G ! d & G ! b & G ! h G ! c
+global_avoidance,"('a', 'd', 'c', 'b', 'h')",do not make a single visit to a d c b or h,& G ! a & G ! d & G ! c & G ! b G ! h
+global_avoidance,"('a', 'd', 'c', 'h', 'b')",do not make a single visit to a d c h or b,& G ! a & G ! d & G ! c & G ! h G ! b
+global_avoidance,"('a', 'd', 'h', 'b', 'c')",do not make a single visit to a d h b or c,& G ! a & G ! d & G ! h & G ! b G ! c
+global_avoidance,"('a', 'd', 'h', 'c', 'b')",do not make a single visit to a d h c or b,& G ! a & G ! d & G ! h & G ! c G ! b
+global_avoidance,"('a', 'h', 'b', 'c', 'd')",do not make a single visit to a h b c or d,& G ! a & G ! h & G ! b & G ! c G ! d
+global_avoidance,"('a', 'h', 'b', 'd', 'c')",do not make a single visit to a h b d or c,& G ! a & G ! h & G ! b & G ! d G ! c
+global_avoidance,"('a', 'h', 'c', 'b', 'd')",do not make a single visit to a h c b or d,& G ! a & G ! h & G ! c & G ! b G ! d
+global_avoidance,"('a', 'h', 'c', 'd', 'b')",do not make a single visit to a h c d or b,& G ! a & G ! h & G ! c & G ! d G ! b
+global_avoidance,"('a', 'h', 'd', 'b', 'c')",do not make a single visit to a h d b or c,& G ! a & G ! h & G ! d & G ! b G ! c
+global_avoidance,"('a', 'h', 'd', 'c', 'b')",do not make a single visit to a h d c or b,& G ! a & G ! h & G ! d & G ! c G ! b
+global_avoidance,"('b', 'a', 'c', 'd', 'h')",do not make b single visit to b a c d or h,& G ! b & G ! a & G ! c & G ! d G ! h
+global_avoidance,"('b', 'a', 'c', 'h', 'd')",do not make b single visit to b a c h or d,& G ! b & G ! a & G ! c & G ! h G ! d
+global_avoidance,"('b', 'a', 'd', 'c', 'h')",do not make b single visit to b a d c or h,& G ! b & G ! a & G ! d & G ! c G ! h
+global_avoidance,"('b', 'a', 'd', 'h', 'c')",do not make b single visit to b a d h or c,& G ! b & G ! a & G ! d & G ! h G ! c
+global_avoidance,"('b', 'a', 'h', 'c', 'd')",do not make b single visit to b a h c or d,& G ! b & G ! a & G ! h & G ! c G ! d
+global_avoidance,"('b', 'a', 'h', 'd', 'c')",do not make b single visit to b a h d or c,& G ! b & G ! a & G ! h & G ! d G ! c
+global_avoidance,"('b', 'c', 'a', 'd', 'h')",do not make b single visit to b c a d or h,& G ! b & G ! c & G ! a & G ! d G ! h
+global_avoidance,"('b', 'c', 'a', 'h', 'd')",do not make b single visit to b c a h or d,& G ! b & G ! c & G ! a & G ! h G ! d
+global_avoidance,"('b', 'c', 'd', 'a', 'h')",do not make b single visit to b c d a or h,& G ! b & G ! c & G ! d & G ! a G ! h
+global_avoidance,"('b', 'c', 'd', 'h', 'a')",do not make b single visit to b c d h or a,& G ! b & G ! c & G ! d & G ! h G ! a
+global_avoidance,"('b', 'c', 'h', 'a', 'd')",do not make b single visit to b c h a or d,& G ! b & G ! c & G ! h & G ! a G ! d
+global_avoidance,"('b', 'c', 'h', 'd', 'a')",do not make b single visit to b c h d or a,& G ! b & G ! c & G ! h & G ! d G ! a
+global_avoidance,"('b', 'd', 'a', 'c', 'h')",do not make b single visit to b d a c or h,& G ! b & G ! d & G ! a & G ! c G ! h
+global_avoidance,"('b', 'd', 'a', 'h', 'c')",do not make b single visit to b d a h or c,& G ! b & G ! d & G ! a & G ! h G ! c
+global_avoidance,"('b', 'd', 'c', 'a', 'h')",do not make b single visit to b d c a or h,& G ! b & G ! d & G ! c & G ! a G ! h
+global_avoidance,"('b', 'd', 'c', 'h', 'a')",do not make b single visit to b d c h or a,& G ! b & G ! d & G ! c & G ! h G ! a
+global_avoidance,"('b', 'd', 'h', 'a', 'c')",do not make b single visit to b d h a or c,& G ! b & G ! d & G ! h & G ! a G ! c
+global_avoidance,"('b', 'd', 'h', 'c', 'a')",do not make b single visit to b d h c or a,& G ! b & G ! d & G ! h & G ! c G ! a
+global_avoidance,"('b', 'h', 'a', 'c', 'd')",do not make b single visit to b h a c or d,& G ! b & G ! h & G ! a & G ! c G ! d
+global_avoidance,"('b', 'h', 'a', 'd', 'c')",do not make b single visit to b h a d or c,& G ! b & G ! h & G ! a & G ! d G ! c
+global_avoidance,"('b', 'h', 'c', 'a', 'd')",do not make b single visit to b h c a or d,& G ! b & G ! h & G ! c & G ! a G ! d
+global_avoidance,"('b', 'h', 'c', 'd', 'a')",do not make b single visit to b h c d or a,& G ! b & G ! h & G ! c & G ! d G ! a
+global_avoidance,"('b', 'h', 'd', 'a', 'c')",do not make b single visit to b h d a or c,& G ! b & G ! h & G ! d & G ! a G ! c
+global_avoidance,"('b', 'h', 'd', 'c', 'a')",do not make b single visit to b h d c or a,& G ! b & G ! h & G ! d & G ! c G ! a
+global_avoidance,"('c', 'a', 'b', 'd', 'h')",do not make c single visit to c a b d or h,& G ! c & G ! a & G ! b & G ! d G ! h
+global_avoidance,"('c', 'a', 'b', 'h', 'd')",do not make c single visit to c a b h or d,& G ! c & G ! a & G ! b & G ! h G ! d
+global_avoidance,"('c', 'a', 'd', 'b', 'h')",do not make c single visit to c a d b or h,& G ! c & G ! a & G ! d & G ! b G ! h
+global_avoidance,"('c', 'a', 'd', 'h', 'b')",do not make c single visit to c a d h or b,& G ! c & G ! a & G ! d & G ! h G ! b
+global_avoidance,"('c', 'a', 'h', 'b', 'd')",do not make c single visit to c a h b or d,& G ! c & G ! a & G ! h & G ! b G ! d
+global_avoidance,"('c', 'a', 'h', 'd', 'b')",do not make c single visit to c a h d or b,& G ! c & G ! a & G ! h & G ! d G ! b
+global_avoidance,"('c', 'b', 'a', 'd', 'h')",do not make c single visit to c b a d or h,& G ! c & G ! b & G ! a & G ! d G ! h
+global_avoidance,"('c', 'b', 'a', 'h', 'd')",do not make c single visit to c b a h or d,& G ! c & G ! b & G ! a & G ! h G ! d
+global_avoidance,"('c', 'b', 'd', 'a', 'h')",do not make c single visit to c b d a or h,& G ! c & G ! b & G ! d & G ! a G ! h
+global_avoidance,"('c', 'b', 'd', 'h', 'a')",do not make c single visit to c b d h or a,& G ! c & G ! b & G ! d & G ! h G ! a
+global_avoidance,"('c', 'b', 'h', 'a', 'd')",do not make c single visit to c b h a or d,& G ! c & G ! b & G ! h & G ! a G ! d
+global_avoidance,"('c', 'b', 'h', 'd', 'a')",do not make c single visit to c b h d or a,& G ! c & G ! b & G ! h & G ! d G ! a
+global_avoidance,"('c', 'd', 'a', 'b', 'h')",do not make c single visit to c d a b or h,& G ! c & G ! d & G ! a & G ! b G ! h
+global_avoidance,"('c', 'd', 'a', 'h', 'b')",do not make c single visit to c d a h or b,& G ! c & G ! d & G ! a & G ! h G ! b
+global_avoidance,"('c', 'd', 'b', 'a', 'h')",do not make c single visit to c d b a or h,& G ! c & G ! d & G ! b & G ! a G ! h
+global_avoidance,"('c', 'd', 'b', 'h', 'a')",do not make c single visit to c d b h or a,& G ! c & G ! d & G ! b & G ! h G ! a
+global_avoidance,"('c', 'd', 'h', 'a', 'b')",do not make c single visit to c d h a or b,& G ! c & G ! d & G ! h & G ! a G ! b
+global_avoidance,"('c', 'd', 'h', 'b', 'a')",do not make c single visit to c d h b or a,& G ! c & G ! d & G ! h & G ! b G ! a
+global_avoidance,"('c', 'h', 'a', 'b', 'd')",do not make c single visit to c h a b or d,& G ! c & G ! h & G ! a & G ! b G ! d
+global_avoidance,"('c', 'h', 'a', 'd', 'b')",do not make c single visit to c h a d or b,& G ! c & G ! h & G ! a & G ! d G ! b
+global_avoidance,"('c', 'h', 'b', 'a', 'd')",do not make c single visit to c h b a or d,& G ! c & G ! h & G ! b & G ! a G ! d
+global_avoidance,"('c', 'h', 'b', 'd', 'a')",do not make c single visit to c h b d or a,& G ! c & G ! h & G ! b & G ! d G ! a
+global_avoidance,"('c', 'h', 'd', 'a', 'b')",do not make c single visit to c h d a or b,& G ! c & G ! h & G ! d & G ! a G ! b
+global_avoidance,"('c', 'h', 'd', 'b', 'a')",do not make c single visit to c h d b or a,& G ! c & G ! h & G ! d & G ! b G ! a
+global_avoidance,"('d', 'a', 'b', 'c', 'h')",do not make d single visit to d a b c or h,& G ! d & G ! a & G ! b & G ! c G ! h
+global_avoidance,"('d', 'a', 'b', 'h', 'c')",do not make d single visit to d a b h or c,& G ! d & G ! a & G ! b & G ! h G ! c
+global_avoidance,"('d', 'a', 'c', 'b', 'h')",do not make d single visit to d a c b or h,& G ! d & G ! a & G ! c & G ! b G ! h
+global_avoidance,"('d', 'a', 'c', 'h', 'b')",do not make d single visit to d a c h or b,& G ! d & G ! a & G ! c & G ! h G ! b
+global_avoidance,"('d', 'a', 'h', 'b', 'c')",do not make d single visit to d a h b or c,& G ! d & G ! a & G ! h & G ! b G ! c
+global_avoidance,"('d', 'a', 'h', 'c', 'b')",do not make d single visit to d a h c or b,& G ! d & G ! a & G ! h & G ! c G ! b
+global_avoidance,"('d', 'b', 'a', 'c', 'h')",do not make d single visit to d b a c or h,& G ! d & G ! b & G ! a & G ! c G ! h
+global_avoidance,"('d', 'b', 'a', 'h', 'c')",do not make d single visit to d b a h or c,& G ! d & G ! b & G ! a & G ! h G ! c
+global_avoidance,"('d', 'b', 'c', 'a', 'h')",do not make d single visit to d b c a or h,& G ! d & G ! b & G ! c & G ! a G ! h
+global_avoidance,"('d', 'b', 'c', 'h', 'a')",do not make d single visit to d b c h or a,& G ! d & G ! b & G ! c & G ! h G ! a
+global_avoidance,"('d', 'b', 'h', 'a', 'c')",do not make d single visit to d b h a or c,& G ! d & G ! b & G ! h & G ! a G ! c
+global_avoidance,"('d', 'b', 'h', 'c', 'a')",do not make d single visit to d b h c or a,& G ! d & G ! b & G ! h & G ! c G ! a
+global_avoidance,"('d', 'c', 'a', 'b', 'h')",do not make d single visit to d c a b or h,& G ! d & G ! c & G ! a & G ! b G ! h
+global_avoidance,"('d', 'c', 'a', 'h', 'b')",do not make d single visit to d c a h or b,& G ! d & G ! c & G ! a & G ! h G ! b
+global_avoidance,"('d', 'c', 'b', 'a', 'h')",do not make d single visit to d c b a or h,& G ! d & G ! c & G ! b & G ! a G ! h
+global_avoidance,"('d', 'c', 'b', 'h', 'a')",do not make d single visit to d c b h or a,& G ! d & G ! c & G ! b & G ! h G ! a
+global_avoidance,"('d', 'c', 'h', 'a', 'b')",do not make d single visit to d c h a or b,& G ! d & G ! c & G ! h & G ! a G ! b
+global_avoidance,"('d', 'c', 'h', 'b', 'a')",do not make d single visit to d c h b or a,& G ! d & G ! c & G ! h & G ! b G ! a
+global_avoidance,"('d', 'h', 'a', 'b', 'c')",do not make d single visit to d h a b or c,& G ! d & G ! h & G ! a & G ! b G ! c
+global_avoidance,"('d', 'h', 'a', 'c', 'b')",do not make d single visit to d h a c or b,& G ! d & G ! h & G ! a & G ! c G ! b
+global_avoidance,"('d', 'h', 'b', 'a', 'c')",do not make d single visit to d h b a or c,& G ! d & G ! h & G ! b & G ! a G ! c
+global_avoidance,"('d', 'h', 'b', 'c', 'a')",do not make d single visit to d h b c or a,& G ! d & G ! h & G ! b & G ! c G ! a
+global_avoidance,"('d', 'h', 'c', 'a', 'b')",do not make d single visit to d h c a or b,& G ! d & G ! h & G ! c & G ! a G ! b
+global_avoidance,"('d', 'h', 'c', 'b', 'a')",do not make d single visit to d h c b or a,& G ! d & G ! h & G ! c & G ! b G ! a
+global_avoidance,"('h', 'a', 'b', 'c', 'd')",do not make h single visit to h a b c or d,& G ! h & G ! a & G ! b & G ! c G ! d
+global_avoidance,"('h', 'a', 'b', 'd', 'c')",do not make h single visit to h a b d or c,& G ! h & G ! a & G ! b & G ! d G ! c
+global_avoidance,"('h', 'a', 'c', 'b', 'd')",do not make h single visit to h a c b or d,& G ! h & G ! a & G ! c & G ! b G ! d
+global_avoidance,"('h', 'a', 'c', 'd', 'b')",do not make h single visit to h a c d or b,& G ! h & G ! a & G ! c & G ! d G ! b
+global_avoidance,"('h', 'a', 'd', 'b', 'c')",do not make h single visit to h a d b or c,& G ! h & G ! a & G ! d & G ! b G ! c
+global_avoidance,"('h', 'a', 'd', 'c', 'b')",do not make h single visit to h a d c or b,& G ! h & G ! a & G ! d & G ! c G ! b
+global_avoidance,"('h', 'b', 'a', 'c', 'd')",do not make h single visit to h b a c or d,& G ! h & G ! b & G ! a & G ! c G ! d
+global_avoidance,"('h', 'b', 'a', 'd', 'c')",do not make h single visit to h b a d or c,& G ! h & G ! b & G ! a & G ! d G ! c
+global_avoidance,"('h', 'b', 'c', 'a', 'd')",do not make h single visit to h b c a or d,& G ! h & G ! b & G ! c & G ! a G ! d
+global_avoidance,"('h', 'b', 'c', 'd', 'a')",do not make h single visit to h b c d or a,& G ! h & G ! b & G ! c & G ! d G ! a
+global_avoidance,"('h', 'b', 'd', 'a', 'c')",do not make h single visit to h b d a or c,& G ! h & G ! b & G ! d & G ! a G ! c
+global_avoidance,"('h', 'b', 'd', 'c', 'a')",do not make h single visit to h b d c or a,& G ! h & G ! b & G ! d & G ! c G ! a
+global_avoidance,"('h', 'c', 'a', 'b', 'd')",do not make h single visit to h c a b or d,& G ! h & G ! c & G ! a & G ! b G ! d
+global_avoidance,"('h', 'c', 'a', 'd', 'b')",do not make h single visit to h c a d or b,& G ! h & G ! c & G ! a & G ! d G ! b
+global_avoidance,"('h', 'c', 'b', 'a', 'd')",do not make h single visit to h c b a or d,& G ! h & G ! c & G ! b & G ! a G ! d
+global_avoidance,"('h', 'c', 'b', 'd', 'a')",do not make h single visit to h c b d or a,& G ! h & G ! c & G ! b & G ! d G ! a
+global_avoidance,"('h', 'c', 'd', 'a', 'b')",do not make h single visit to h c d a or b,& G ! h & G ! c & G ! d & G ! a G ! b
+global_avoidance,"('h', 'c', 'd', 'b', 'a')",do not make h single visit to h c d b or a,& G ! h & G ! c & G ! d & G ! b G ! a
+global_avoidance,"('h', 'd', 'a', 'b', 'c')",do not make h single visit to h d a b or c,& G ! h & G ! d & G ! a & G ! b G ! c
+global_avoidance,"('h', 'd', 'a', 'c', 'b')",do not make h single visit to h d a c or b,& G ! h & G ! d & G ! a & G ! c G ! b
+global_avoidance,"('h', 'd', 'b', 'a', 'c')",do not make h single visit to h d b a or c,& G ! h & G ! d & G ! b & G ! a G ! c
+global_avoidance,"('h', 'd', 'b', 'c', 'a')",do not make h single visit to h d b c or a,& G ! h & G ! d & G ! b & G ! c G ! a
+global_avoidance,"('h', 'd', 'c', 'a', 'b')",do not make h single visit to h d c a or b,& G ! h & G ! d & G ! c & G ! a G ! b
+global_avoidance,"('h', 'd', 'c', 'b', 'a')",do not make h single visit to h d c b or a,& G ! h & G ! d & G ! c & G ! b G ! a
+global_avoidance,"('a', 'b', 'c', 'd', 'h')",you can not go to a b c d or h,& G ! a & G ! b & G ! c & G ! d G ! h
+global_avoidance,"('a', 'b', 'c', 'h', 'd')",you can not go to a b c h or d,& G ! a & G ! b & G ! c & G ! h G ! d
+global_avoidance,"('a', 'b', 'd', 'c', 'h')",you can not go to a b d c or h,& G ! a & G ! b & G ! d & G ! c G ! h
+global_avoidance,"('a', 'b', 'd', 'h', 'c')",you can not go to a b d h or c,& G ! a & G ! b & G ! d & G ! h G ! c
+global_avoidance,"('a', 'b', 'h', 'c', 'd')",you can not go to a b h c or d,& G ! a & G ! b & G ! h & G ! c G ! d
+global_avoidance,"('a', 'b', 'h', 'd', 'c')",you can not go to a b h d or c,& G ! a & G ! b & G ! h & G ! d G ! c
+global_avoidance,"('a', 'c', 'b', 'd', 'h')",you can not go to a c b d or h,& G ! a & G ! c & G ! b & G ! d G ! h
+global_avoidance,"('a', 'c', 'b', 'h', 'd')",you can not go to a c b h or d,& G ! a & G ! c & G ! b & G ! h G ! d
+global_avoidance,"('a', 'c', 'd', 'b', 'h')",you can not go to a c d b or h,& G ! a & G ! c & G ! d & G ! b G ! h
+global_avoidance,"('a', 'c', 'd', 'h', 'b')",you can not go to a c d h or b,& G ! a & G ! c & G ! d & G ! h G ! b
+global_avoidance,"('a', 'c', 'h', 'b', 'd')",you can not go to a c h b or d,& G ! a & G ! c & G ! h & G ! b G ! d
+global_avoidance,"('a', 'c', 'h', 'd', 'b')",you can not go to a c h d or b,& G ! a & G ! c & G ! h & G ! d G ! b
+global_avoidance,"('a', 'd', 'b', 'c', 'h')",you can not go to a d b c or h,& G ! a & G ! d & G ! b & G ! c G ! h
+global_avoidance,"('a', 'd', 'b', 'h', 'c')",you can not go to a d b h or c,& G ! a & G ! d & G ! b & G ! h G ! c
+global_avoidance,"('a', 'd', 'c', 'b', 'h')",you can not go to a d c b or h,& G ! a & G ! d & G ! c & G ! b G ! h
+global_avoidance,"('a', 'd', 'c', 'h', 'b')",you can not go to a d c h or b,& G ! a & G ! d & G ! c & G ! h G ! b
+global_avoidance,"('a', 'd', 'h', 'b', 'c')",you can not go to a d h b or c,& G ! a & G ! d & G ! h & G ! b G ! c
+global_avoidance,"('a', 'd', 'h', 'c', 'b')",you can not go to a d h c or b,& G ! a & G ! d & G ! h & G ! c G ! b
+global_avoidance,"('a', 'h', 'b', 'c', 'd')",you can not go to a h b c or d,& G ! a & G ! h & G ! b & G ! c G ! d
+global_avoidance,"('a', 'h', 'b', 'd', 'c')",you can not go to a h b d or c,& G ! a & G ! h & G ! b & G ! d G ! c
+global_avoidance,"('a', 'h', 'c', 'b', 'd')",you can not go to a h c b or d,& G ! a & G ! h & G ! c & G ! b G ! d
+global_avoidance,"('a', 'h', 'c', 'd', 'b')",you can not go to a h c d or b,& G ! a & G ! h & G ! c & G ! d G ! b
+global_avoidance,"('a', 'h', 'd', 'b', 'c')",you can not go to a h d b or c,& G ! a & G ! h & G ! d & G ! b G ! c
+global_avoidance,"('a', 'h', 'd', 'c', 'b')",you can not go to a h d c or b,& G ! a & G ! h & G ! d & G ! c G ! b
+global_avoidance,"('b', 'a', 'c', 'd', 'h')",you can not go to b a c d or h,& G ! b & G ! a & G ! c & G ! d G ! h
+global_avoidance,"('b', 'a', 'c', 'h', 'd')",you can not go to b a c h or d,& G ! b & G ! a & G ! c & G ! h G ! d
+global_avoidance,"('b', 'a', 'd', 'c', 'h')",you can not go to b a d c or h,& G ! b & G ! a & G ! d & G ! c G ! h
+global_avoidance,"('b', 'a', 'd', 'h', 'c')",you can not go to b a d h or c,& G ! b & G ! a & G ! d & G ! h G ! c
+global_avoidance,"('b', 'a', 'h', 'c', 'd')",you can not go to b a h c or d,& G ! b & G ! a & G ! h & G ! c G ! d
+global_avoidance,"('b', 'a', 'h', 'd', 'c')",you can not go to b a h d or c,& G ! b & G ! a & G ! h & G ! d G ! c
+global_avoidance,"('b', 'c', 'a', 'd', 'h')",you can not go to b c a d or h,& G ! b & G ! c & G ! a & G ! d G ! h
+global_avoidance,"('b', 'c', 'a', 'h', 'd')",you can not go to b c a h or d,& G ! b & G ! c & G ! a & G ! h G ! d
+global_avoidance,"('b', 'c', 'd', 'a', 'h')",you can not go to b c d a or h,& G ! b & G ! c & G ! d & G ! a G ! h
+global_avoidance,"('b', 'c', 'd', 'h', 'a')",you can not go to b c d h or a,& G ! b & G ! c & G ! d & G ! h G ! a
+global_avoidance,"('b', 'c', 'h', 'a', 'd')",you can not go to b c h a or d,& G ! b & G ! c & G ! h & G ! a G ! d
+global_avoidance,"('b', 'c', 'h', 'd', 'a')",you can not go to b c h d or a,& G ! b & G ! c & G ! h & G ! d G ! a
+global_avoidance,"('b', 'd', 'a', 'c', 'h')",you can not go to b d a c or h,& G ! b & G ! d & G ! a & G ! c G ! h
+global_avoidance,"('b', 'd', 'a', 'h', 'c')",you can not go to b d a h or c,& G ! b & G ! d & G ! a & G ! h G ! c
+global_avoidance,"('b', 'd', 'c', 'a', 'h')",you can not go to b d c a or h,& G ! b & G ! d & G ! c & G ! a G ! h
+global_avoidance,"('b', 'd', 'c', 'h', 'a')",you can not go to b d c h or a,& G ! b & G ! d & G ! c & G ! h G ! a
+global_avoidance,"('b', 'd', 'h', 'a', 'c')",you can not go to b d h a or c,& G ! b & G ! d & G ! h & G ! a G ! c
+global_avoidance,"('b', 'd', 'h', 'c', 'a')",you can not go to b d h c or a,& G ! b & G ! d & G ! h & G ! c G ! a
+global_avoidance,"('b', 'h', 'a', 'c', 'd')",you can not go to b h a c or d,& G ! b & G ! h & G ! a & G ! c G ! d
+global_avoidance,"('b', 'h', 'a', 'd', 'c')",you can not go to b h a d or c,& G ! b & G ! h & G ! a & G ! d G ! c
+global_avoidance,"('b', 'h', 'c', 'a', 'd')",you can not go to b h c a or d,& G ! b & G ! h & G ! c & G ! a G ! d
+global_avoidance,"('b', 'h', 'c', 'd', 'a')",you can not go to b h c d or a,& G ! b & G ! h & G ! c & G ! d G ! a
+global_avoidance,"('b', 'h', 'd', 'a', 'c')",you can not go to b h d a or c,& G ! b & G ! h & G ! d & G ! a G ! c
+global_avoidance,"('b', 'h', 'd', 'c', 'a')",you can not go to b h d c or a,& G ! b & G ! h & G ! d & G ! c G ! a
+global_avoidance,"('c', 'a', 'b', 'd', 'h')",you can not go to c a b d or h,& G ! c & G ! a & G ! b & G ! d G ! h
+global_avoidance,"('c', 'a', 'b', 'h', 'd')",you can not go to c a b h or d,& G ! c & G ! a & G ! b & G ! h G ! d
+global_avoidance,"('c', 'a', 'd', 'b', 'h')",you can not go to c a d b or h,& G ! c & G ! a & G ! d & G ! b G ! h
+global_avoidance,"('c', 'a', 'd', 'h', 'b')",you can not go to c a d h or b,& G ! c & G ! a & G ! d & G ! h G ! b
+global_avoidance,"('c', 'a', 'h', 'b', 'd')",you can not go to c a h b or d,& G ! c & G ! a & G ! h & G ! b G ! d
+global_avoidance,"('c', 'a', 'h', 'd', 'b')",you can not go to c a h d or b,& G ! c & G ! a & G ! h & G ! d G ! b
+global_avoidance,"('c', 'b', 'a', 'd', 'h')",you can not go to c b a d or h,& G ! c & G ! b & G ! a & G ! d G ! h
+global_avoidance,"('c', 'b', 'a', 'h', 'd')",you can not go to c b a h or d,& G ! c & G ! b & G ! a & G ! h G ! d
+global_avoidance,"('c', 'b', 'd', 'a', 'h')",you can not go to c b d a or h,& G ! c & G ! b & G ! d & G ! a G ! h
+global_avoidance,"('c', 'b', 'd', 'h', 'a')",you can not go to c b d h or a,& G ! c & G ! b & G ! d & G ! h G ! a
+global_avoidance,"('c', 'b', 'h', 'a', 'd')",you can not go to c b h a or d,& G ! c & G ! b & G ! h & G ! a G ! d
+global_avoidance,"('c', 'b', 'h', 'd', 'a')",you can not go to c b h d or a,& G ! c & G ! b & G ! h & G ! d G ! a
+global_avoidance,"('c', 'd', 'a', 'b', 'h')",you can not go to c d a b or h,& G ! c & G ! d & G ! a & G ! b G ! h
+global_avoidance,"('c', 'd', 'a', 'h', 'b')",you can not go to c d a h or b,& G ! c & G ! d & G ! a & G ! h G ! b
+global_avoidance,"('c', 'd', 'b', 'a', 'h')",you can not go to c d b a or h,& G ! c & G ! d & G ! b & G ! a G ! h
+global_avoidance,"('c', 'd', 'b', 'h', 'a')",you can not go to c d b h or a,& G ! c & G ! d & G ! b & G ! h G ! a
+global_avoidance,"('c', 'd', 'h', 'a', 'b')",you can not go to c d h a or b,& G ! c & G ! d & G ! h & G ! a G ! b
+global_avoidance,"('c', 'd', 'h', 'b', 'a')",you can not go to c d h b or a,& G ! c & G ! d & G ! h & G ! b G ! a
+global_avoidance,"('c', 'h', 'a', 'b', 'd')",you can not go to c h a b or d,& G ! c & G ! h & G ! a & G ! b G ! d
+global_avoidance,"('c', 'h', 'a', 'd', 'b')",you can not go to c h a d or b,& G ! c & G ! h & G ! a & G ! d G ! b
+global_avoidance,"('c', 'h', 'b', 'a', 'd')",you can not go to c h b a or d,& G ! c & G ! h & G ! b & G ! a G ! d
+global_avoidance,"('c', 'h', 'b', 'd', 'a')",you can not go to c h b d or a,& G ! c & G ! h & G ! b & G ! d G ! a
+global_avoidance,"('c', 'h', 'd', 'a', 'b')",you can not go to c h d a or b,& G ! c & G ! h & G ! d & G ! a G ! b
+global_avoidance,"('c', 'h', 'd', 'b', 'a')",you can not go to c h d b or a,& G ! c & G ! h & G ! d & G ! b G ! a
+global_avoidance,"('d', 'a', 'b', 'c', 'h')",you can not go to d a b c or h,& G ! d & G ! a & G ! b & G ! c G ! h
+global_avoidance,"('d', 'a', 'b', 'h', 'c')",you can not go to d a b h or c,& G ! d & G ! a & G ! b & G ! h G ! c
+global_avoidance,"('d', 'a', 'c', 'b', 'h')",you can not go to d a c b or h,& G ! d & G ! a & G ! c & G ! b G ! h
+global_avoidance,"('d', 'a', 'c', 'h', 'b')",you can not go to d a c h or b,& G ! d & G ! a & G ! c & G ! h G ! b
+global_avoidance,"('d', 'a', 'h', 'b', 'c')",you can not go to d a h b or c,& G ! d & G ! a & G ! h & G ! b G ! c
+global_avoidance,"('d', 'a', 'h', 'c', 'b')",you can not go to d a h c or b,& G ! d & G ! a & G ! h & G ! c G ! b
+global_avoidance,"('d', 'b', 'a', 'c', 'h')",you can not go to d b a c or h,& G ! d & G ! b & G ! a & G ! c G ! h
+global_avoidance,"('d', 'b', 'a', 'h', 'c')",you can not go to d b a h or c,& G ! d & G ! b & G ! a & G ! h G ! c
+global_avoidance,"('d', 'b', 'c', 'a', 'h')",you can not go to d b c a or h,& G ! d & G ! b & G ! c & G ! a G ! h
+global_avoidance,"('d', 'b', 'c', 'h', 'a')",you can not go to d b c h or a,& G ! d & G ! b & G ! c & G ! h G ! a
+global_avoidance,"('d', 'b', 'h', 'a', 'c')",you can not go to d b h a or c,& G ! d & G ! b & G ! h & G ! a G ! c
+global_avoidance,"('d', 'b', 'h', 'c', 'a')",you can not go to d b h c or a,& G ! d & G ! b & G ! h & G ! c G ! a
+global_avoidance,"('d', 'c', 'a', 'b', 'h')",you can not go to d c a b or h,& G ! d & G ! c & G ! a & G ! b G ! h
+global_avoidance,"('d', 'c', 'a', 'h', 'b')",you can not go to d c a h or b,& G ! d & G ! c & G ! a & G ! h G ! b
+global_avoidance,"('d', 'c', 'b', 'a', 'h')",you can not go to d c b a or h,& G ! d & G ! c & G ! b & G ! a G ! h
+global_avoidance,"('d', 'c', 'b', 'h', 'a')",you can not go to d c b h or a,& G ! d & G ! c & G ! b & G ! h G ! a
+global_avoidance,"('d', 'c', 'h', 'a', 'b')",you can not go to d c h a or b,& G ! d & G ! c & G ! h & G ! a G ! b
+global_avoidance,"('d', 'c', 'h', 'b', 'a')",you can not go to d c h b or a,& G ! d & G ! c & G ! h & G ! b G ! a
+global_avoidance,"('d', 'h', 'a', 'b', 'c')",you can not go to d h a b or c,& G ! d & G ! h & G ! a & G ! b G ! c
+global_avoidance,"('d', 'h', 'a', 'c', 'b')",you can not go to d h a c or b,& G ! d & G ! h & G ! a & G ! c G ! b
+global_avoidance,"('d', 'h', 'b', 'a', 'c')",you can not go to d h b a or c,& G ! d & G ! h & G ! b & G ! a G ! c
+global_avoidance,"('d', 'h', 'b', 'c', 'a')",you can not go to d h b c or a,& G ! d & G ! h & G ! b & G ! c G ! a
+global_avoidance,"('d', 'h', 'c', 'a', 'b')",you can not go to d h c a or b,& G ! d & G ! h & G ! c & G ! a G ! b
+global_avoidance,"('d', 'h', 'c', 'b', 'a')",you can not go to d h c b or a,& G ! d & G ! h & G ! c & G ! b G ! a
+global_avoidance,"('h', 'a', 'b', 'c', 'd')",you can not go to h a b c or d,& G ! h & G ! a & G ! b & G ! c G ! d
+global_avoidance,"('h', 'a', 'b', 'd', 'c')",you can not go to h a b d or c,& G ! h & G ! a & G ! b & G ! d G ! c
+global_avoidance,"('h', 'a', 'c', 'b', 'd')",you can not go to h a c b or d,& G ! h & G ! a & G ! c & G ! b G ! d
+global_avoidance,"('h', 'a', 'c', 'd', 'b')",you can not go to h a c d or b,& G ! h & G ! a & G ! c & G ! d G ! b
+global_avoidance,"('h', 'a', 'd', 'b', 'c')",you can not go to h a d b or c,& G ! h & G ! a & G ! d & G ! b G ! c
+global_avoidance,"('h', 'a', 'd', 'c', 'b')",you can not go to h a d c or b,& G ! h & G ! a & G ! d & G ! c G ! b
+global_avoidance,"('h', 'b', 'a', 'c', 'd')",you can not go to h b a c or d,& G ! h & G ! b & G ! a & G ! c G ! d
+global_avoidance,"('h', 'b', 'a', 'd', 'c')",you can not go to h b a d or c,& G ! h & G ! b & G ! a & G ! d G ! c
+global_avoidance,"('h', 'b', 'c', 'a', 'd')",you can not go to h b c a or d,& G ! h & G ! b & G ! c & G ! a G ! d
+global_avoidance,"('h', 'b', 'c', 'd', 'a')",you can not go to h b c d or a,& G ! h & G ! b & G ! c & G ! d G ! a
+global_avoidance,"('h', 'b', 'd', 'a', 'c')",you can not go to h b d a or c,& G ! h & G ! b & G ! d & G ! a G ! c
+global_avoidance,"('h', 'b', 'd', 'c', 'a')",you can not go to h b d c or a,& G ! h & G ! b & G ! d & G ! c G ! a
+global_avoidance,"('h', 'c', 'a', 'b', 'd')",you can not go to h c a b or d,& G ! h & G ! c & G ! a & G ! b G ! d
+global_avoidance,"('h', 'c', 'a', 'd', 'b')",you can not go to h c a d or b,& G ! h & G ! c & G ! a & G ! d G ! b
+global_avoidance,"('h', 'c', 'b', 'a', 'd')",you can not go to h c b a or d,& G ! h & G ! c & G ! b & G ! a G ! d
+global_avoidance,"('h', 'c', 'b', 'd', 'a')",you can not go to h c b d or a,& G ! h & G ! c & G ! b & G ! d G ! a
+global_avoidance,"('h', 'c', 'd', 'a', 'b')",you can not go to h c d a or b,& G ! h & G ! c & G ! d & G ! a G ! b
+global_avoidance,"('h', 'c', 'd', 'b', 'a')",you can not go to h c d b or a,& G ! h & G ! c & G ! d & G ! b G ! a
+global_avoidance,"('h', 'd', 'a', 'b', 'c')",you can not go to h d a b or c,& G ! h & G ! d & G ! a & G ! b G ! c
+global_avoidance,"('h', 'd', 'a', 'c', 'b')",you can not go to h d a c or b,& G ! h & G ! d & G ! a & G ! c G ! b
+global_avoidance,"('h', 'd', 'b', 'a', 'c')",you can not go to h d b a or c,& G ! h & G ! d & G ! b & G ! a G ! c
+global_avoidance,"('h', 'd', 'b', 'c', 'a')",you can not go to h d b c or a,& G ! h & G ! d & G ! b & G ! c G ! a
+global_avoidance,"('h', 'd', 'c', 'a', 'b')",you can not go to h d c a or b,& G ! h & G ! d & G ! c & G ! a G ! b
+global_avoidance,"('h', 'd', 'c', 'b', 'a')",you can not go to h d c b or a,& G ! h & G ! d & G ! c & G ! b G ! a
+future_avoidance,"('a', 'b')",do not visit b after a is visited,G i a X G ! b
+future_avoidance,"('a', 'c')",do not visit c after a is visited,G i a X G ! c
+future_avoidance,"('a', 'd')",do not visit d after a is visited,G i a X G ! d
+future_avoidance,"('a', 'h')",do not visit h after a is visited,G i a X G ! h
+future_avoidance,"('b', 'a')",do not visit a after b is visited,G i b X G ! a
+future_avoidance,"('b', 'c')",do not visit c after b is visited,G i b X G ! c
+future_avoidance,"('b', 'd')",do not visit d after b is visited,G i b X G ! d
+future_avoidance,"('b', 'h')",do not visit h after b is visited,G i b X G ! h
+future_avoidance,"('c', 'a')",do not visit a after c is visited,G i c X G ! a
+future_avoidance,"('c', 'b')",do not visit b after c is visited,G i c X G ! b
+future_avoidance,"('c', 'd')",do not visit d after c is visited,G i c X G ! d
+future_avoidance,"('c', 'h')",do not visit h after c is visited,G i c X G ! h
+future_avoidance,"('d', 'a')",do not visit a after d is visited,G i d X G ! a
+future_avoidance,"('d', 'b')",do not visit b after d is visited,G i d X G ! b
+future_avoidance,"('d', 'c')",do not visit c after d is visited,G i d X G ! c
+future_avoidance,"('d', 'h')",do not visit h after d is visited,G i d X G ! h
+future_avoidance,"('h', 'a')",do not visit a after h is visited,G i h X G ! a
+future_avoidance,"('h', 'b')",do not visit b after h is visited,G i h X G ! b
+future_avoidance,"('h', 'c')",do not visit c after h is visited,G i h X G ! c
+future_avoidance,"('h', 'd')",do not visit d after h is visited,G i h X G ! d
+future_avoidance,"('a', 'b')",you can go to a but you must not go to b after that,G i a X G ! b
+future_avoidance,"('a', 'c')",you can go to a but you must not go to c after that,G i a X G ! c
+future_avoidance,"('a', 'd')",you can go to a but you must not go to d after that,G i a X G ! d
+future_avoidance,"('a', 'h')",you can go to a but you must not go to h after that,G i a X G ! h
+future_avoidance,"('b', 'a')",you can go to b but you must not go to a after that,G i b X G ! a
+future_avoidance,"('b', 'c')",you can go to b but you must not go to c after that,G i b X G ! c
+future_avoidance,"('b', 'd')",you can go to b but you must not go to d after that,G i b X G ! d
+future_avoidance,"('b', 'h')",you can go to b but you must not go to h after that,G i b X G ! h
+future_avoidance,"('c', 'a')",you can go to c but you must not go to a after that,G i c X G ! a
+future_avoidance,"('c', 'b')",you can go to c but you must not go to b after that,G i c X G ! b
+future_avoidance,"('c', 'd')",you can go to c but you must not go to d after that,G i c X G ! d
+future_avoidance,"('c', 'h')",you can go to c but you must not go to h after that,G i c X G ! h
+future_avoidance,"('d', 'a')",you can go to d but you must not go to a after that,G i d X G ! a
+future_avoidance,"('d', 'b')",you can go to d but you must not go to b after that,G i d X G ! b
+future_avoidance,"('d', 'c')",you can go to d but you must not go to c after that,G i d X G ! c
+future_avoidance,"('d', 'h')",you can go to d but you must not go to h after that,G i d X G ! h
+future_avoidance,"('h', 'a')",you can go to h but you must not go to a after that,G i h X G ! a
+future_avoidance,"('h', 'b')",you can go to h but you must not go to b after that,G i h X G ! b
+future_avoidance,"('h', 'c')",you can go to h but you must not go to c after that,G i h X G ! c
+future_avoidance,"('h', 'd')",you can go to h but you must not go to d after that,G i h X G ! d
+future_avoidance,"('a', 'b')",any visit to b is not allowed after you visit a,G i a X G ! b
+future_avoidance,"('a', 'c')",any visit to c is not allowed after you visit a,G i a X G ! c
+future_avoidance,"('a', 'd')",any visit to d is not allowed after you visit a,G i a X G ! d
+future_avoidance,"('a', 'h')",any visit to h is not allowed after you visit a,G i a X G ! h
+future_avoidance,"('b', 'a')",any visit to a is not allowed after you visit b,G i b X G ! a
+future_avoidance,"('b', 'c')",any visit to c is not allowed after you visit b,G i b X G ! c
+future_avoidance,"('b', 'd')",any visit to d is not allowed after you visit b,G i b X G ! d
+future_avoidance,"('b', 'h')",any visit to h is not allowed after you visit b,G i b X G ! h
+future_avoidance,"('c', 'a')",any visit to a is not allowed after you visit c,G i c X G ! a
+future_avoidance,"('c', 'b')",any visit to b is not allowed after you visit c,G i c X G ! b
+future_avoidance,"('c', 'd')",any visit to d is not allowed after you visit c,G i c X G ! d
+future_avoidance,"('c', 'h')",any visit to h is not allowed after you visit c,G i c X G ! h
+future_avoidance,"('d', 'a')",any visit to a is not allowed after you visit d,G i d X G ! a
+future_avoidance,"('d', 'b')",any visit to b is not allowed after you visit d,G i d X G ! b
+future_avoidance,"('d', 'c')",any visit to c is not allowed after you visit d,G i d X G ! c
+future_avoidance,"('d', 'h')",any visit to h is not allowed after you visit d,G i d X G ! h
+future_avoidance,"('h', 'a')",any visit to a is not allowed after you visit h,G i h X G ! a
+future_avoidance,"('h', 'b')",any visit to b is not allowed after you visit h,G i h X G ! b
+future_avoidance,"('h', 'c')",any visit to c is not allowed after you visit h,G i h X G ! c
+future_avoidance,"('h', 'd')",any visit to d is not allowed after you visit h,G i h X G ! d
+upper_restricted_avoidance,"('a',)",you can not visit a more than once,! F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b',)",you can not visit b more than once,! F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c',)",you can not visit c more than once,! F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d',)",you can not visit d more than once,! F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h',)",you can not visit h more than once,! F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a',)",never visit a again if you have visited it once,! F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b',)",never visit b again if you have visited it once,! F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c',)",never visit c again if you have visited it once,! F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d',)",never visit d again if you have visited it once,! F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h',)",never visit h again if you have visited it once,! F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a',)",you are good to visit a equal or less than once,! F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b',)",you are good to visit b equal or less than once,! F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c',)",you are good to visit c equal or less than once,! F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d',)",you are good to visit d equal or less than once,! F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h',)",you are good to visit h equal or less than once,! F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a')",you can not visit a more than twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b')",you can not visit b more than twice,! F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c')",you can not visit c more than twice,! F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd')",you can not visit d more than twice,! F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h')",you can not visit h more than twice,! F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a')",never visit a again if you have visited it twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b')",never visit b again if you have visited it twice,! F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c')",never visit c again if you have visited it twice,! F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd')",never visit d again if you have visited it twice,! F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h')",never visit h again if you have visited it twice,! F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a')",you are good to visit a equal or less than twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b')",you are good to visit b equal or less than twice,! F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c')",you are good to visit c equal or less than twice,! F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd')",you are good to visit d equal or less than twice,! F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h')",you are good to visit h equal or less than twice,! F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a')",you can not visit a more than three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b')",you can not visit b more than three times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c')",you can not visit c more than three times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd')",you can not visit d more than three times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h')",you can not visit h more than three times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a')",never visit a again if you have visited it three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b')",never visit b again if you have visited it three times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c')",never visit c again if you have visited it three times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd')",never visit d again if you have visited it three times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h')",never visit h again if you have visited it three times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a')",you are good to visit a equal or less than three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b')",you are good to visit b equal or less than three times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c')",you are good to visit c equal or less than three times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd')",you are good to visit d equal or less than three times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h')",you are good to visit h equal or less than three times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a')",you can not visit a more than four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b')",you can not visit b more than four times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c')",you can not visit c more than four times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd')",you can not visit d more than four times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h')",you can not visit h more than four times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a')",never visit a again if you have visited it four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b')",never visit b again if you have visited it four times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c')",never visit c again if you have visited it four times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd')",never visit d again if you have visited it four times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h')",never visit h again if you have visited it four times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a')",you are good to visit a equal or less than four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b')",you are good to visit b equal or less than four times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c')",you are good to visit c equal or less than four times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd')",you are good to visit d equal or less than four times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h')",you are good to visit h equal or less than four times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",you can not visit a more than five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",you can not visit b more than five times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",you can not visit c more than five times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",you can not visit d more than five times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",you can not visit h more than five times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",never visit a again if you have visited it five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",never visit b again if you have visited it five times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",never visit c again if you have visited it five times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",never visit d again if you have visited it five times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",never visit h again if you have visited it five times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+upper_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",you are good to visit a equal or less than five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",you are good to visit b equal or less than five times,! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+upper_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",you are good to visit c equal or less than five times,! F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+upper_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",you are good to visit d equal or less than five times,! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+upper_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",you are good to visit h equal or less than five times,! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a',)",visit a equal or more than once,F a
+lower_restricted_avoidance,"('b',)",visit b equal or more than once,F b
+lower_restricted_avoidance,"('c',)",visit c equal or more than once,F c
+lower_restricted_avoidance,"('d',)",visit d equal or more than once,F d
+lower_restricted_avoidance,"('h',)",visit h equal or more than once,F h
+lower_restricted_avoidance,"('a',)",you have to go to a one or more than one time,F a
+lower_restricted_avoidance,"('b',)",you have to go to b one or more than one time,F b
+lower_restricted_avoidance,"('c',)",you have to go to c one or more than one time,F c
+lower_restricted_avoidance,"('d',)",you have to go to d one or more than one time,F d
+lower_restricted_avoidance,"('h',)",you have to go to h one or more than one time,F h
+lower_restricted_avoidance,"('a',)",a has to be visited at least once,F a
+lower_restricted_avoidance,"('b',)",b has to be visited at least once,F b
+lower_restricted_avoidance,"('c',)",c has to be visited at least once,F c
+lower_restricted_avoidance,"('d',)",d has to be visited at least once,F d
+lower_restricted_avoidance,"('h',)",h has to be visited at least once,F h
+lower_restricted_avoidance,"('a', 'a', 'a')",visit a equal or more than three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b')",visit b equal or more than three times,F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c')",visit c equal or more than three times,F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd')",visit d equal or more than three times,F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h')",visit h equal or more than three times,F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a')",you have to go to a three or more than three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b')",you have to go to b three or more than three times,F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c')",you have to go to c three or more than three times,F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd')",you have to go to d three or more than three times,F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h')",you have to go to h three or more than three times,F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a')",a has to be visited at least three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b')",b has to be visited at least three times,F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c')",c has to be visited at least three times,F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd')",d has to be visited at least three times,F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h')",h has to be visited at least three times,F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a')",visit a equal or more than twice,F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b')",visit b equal or more than twice,F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c')",visit c equal or more than twice,F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd')",visit d equal or more than twice,F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h')",visit h equal or more than twice,F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a')",you have to go to a two or more than two times,F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b')",you have to go to b two or more than two times,F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c')",you have to go to c two or more than two times,F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd')",you have to go to d two or more than two times,F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h')",you have to go to h two or more than two times,F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a')",a has to be visited at least twice,F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b')",b has to be visited at least twice,F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c')",c has to be visited at least twice,F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd')",d has to be visited at least twice,F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h')",h has to be visited at least twice,F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a')",visit a equal or more than four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b')",visit b equal or more than four times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c')",visit c equal or more than four times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd')",visit d equal or more than four times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h')",visit h equal or more than four times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a')",you have to go to a four or more than four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b')",you have to go to b four or more than four times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c')",you have to go to c four or more than four times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd')",you have to go to d four or more than four times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h')",you have to go to h four or more than four times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a')",a has to be visited at least four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b')",b has to be visited at least four times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c')",c has to be visited at least four times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd')",d has to be visited at least four times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h')",h has to be visited at least four times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",visit a equal or more than five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",visit b equal or more than five times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",visit c equal or more than five times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",visit d equal or more than five times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",visit h equal or more than five times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",you have to go to a five or more than five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",you have to go to b five or more than five times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",you have to go to c five or more than five times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",you have to go to d five or more than five times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",you have to go to h five or more than five times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+lower_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",a has to be visited at least five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",b has to be visited at least five times,F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+lower_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",c has to be visited at least five times,F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+lower_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",d has to be visited at least five times,F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+lower_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",h has to be visited at least five times,F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+exact_restricted_avoidance,"('a',)",visit a once and never revisit it again,U ! a & a U a G ! a
+exact_restricted_avoidance,"('b',)",visit b once and never revisit it again,U ! b & b U b G ! b
+exact_restricted_avoidance,"('c',)",visit c once and never revisit it again,U ! c & c U c G ! c
+exact_restricted_avoidance,"('d',)",visit d once and never revisit it again,U ! d & d U d G ! d
+exact_restricted_avoidance,"('h',)",visit h once and never revisit it again,U ! h & h U h G ! h
+exact_restricted_avoidance,"('a',)",you must go to a exactly once,U ! a & a U a G ! a
+exact_restricted_avoidance,"('b',)",you must go to b exactly once,U ! b & b U b G ! b
+exact_restricted_avoidance,"('c',)",you must go to c exactly once,U ! c & c U c G ! c
+exact_restricted_avoidance,"('d',)",you must go to d exactly once,U ! d & d U d G ! d
+exact_restricted_avoidance,"('h',)",you must go to h exactly once,U ! h & h U h G ! h
+exact_restricted_avoidance,"('a',)",visit a once and then stop visiting it anymore,U ! a & a U a G ! a
+exact_restricted_avoidance,"('b',)",visit b once and then stop visiting it anymore,U ! b & b U b G ! b
+exact_restricted_avoidance,"('c',)",visit c once and then stop visiting it anymore,U ! c & c U c G ! c
+exact_restricted_avoidance,"('d',)",visit d once and then stop visiting it anymore,U ! d & d U d G ! d
+exact_restricted_avoidance,"('h',)",visit h once and then stop visiting it anymore,U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a')",visit a twice and never revisit it again,U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b')",visit b twice and never revisit it again,U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c')",visit c twice and never revisit it again,U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd')",visit d twice and never revisit it again,U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h')",visit h twice and never revisit it again,U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a')",you must go to a exactly twice,U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b')",you must go to b exactly twice,U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c')",you must go to c exactly twice,U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd')",you must go to d exactly twice,U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h')",you must go to h exactly twice,U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a')",visit a twice and then stop visiting it anymore,U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b')",visit b twice and then stop visiting it anymore,U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c')",visit c twice and then stop visiting it anymore,U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd')",visit d twice and then stop visiting it anymore,U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h')",visit h twice and then stop visiting it anymore,U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a')",visit a three times and never revisit it again,U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b')",visit b three times and never revisit it again,U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c')",visit c three times and never revisit it again,U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd')",visit d three times and never revisit it again,U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h')",visit h three times and never revisit it again,U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a')",you must go to a exactly three times,U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b')",you must go to b exactly three times,U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c')",you must go to c exactly three times,U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd')",you must go to d exactly three times,U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h')",you must go to h exactly three times,U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a')",visit a three times and then stop visiting it anymore,U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b')",visit b three times and then stop visiting it anymore,U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c')",visit c three times and then stop visiting it anymore,U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd')",visit d three times and then stop visiting it anymore,U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h')",visit h three times and then stop visiting it anymore,U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a')",visit a four times and never revisit it again,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b')",visit b four times and never revisit it again,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c')",visit c four times and never revisit it again,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd')",visit d four times and never revisit it again,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h')",visit h four times and never revisit it again,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a')",you must go to a exactly four times,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b')",you must go to b exactly four times,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c')",you must go to c exactly four times,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd')",you must go to d exactly four times,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h')",you must go to h exactly four times,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a')",visit a four times and then stop visiting it anymore,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b')",visit b four times and then stop visiting it anymore,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c')",visit c four times and then stop visiting it anymore,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd')",visit d four times and then stop visiting it anymore,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h')",visit h four times and then stop visiting it anymore,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",visit a five times and never revisit it again,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",visit b five times and never revisit it again,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",visit c five times and never revisit it again,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",visit d five times and never revisit it again,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",visit h five times and never revisit it again,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",you must go to a exactly five times,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",you must go to b exactly five times,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",you must go to c exactly five times,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",you must go to d exactly five times,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",you must go to h exactly five times,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+exact_restricted_avoidance,"('a', 'a', 'a', 'a', 'a')",visit a five times and then stop visiting it anymore,U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a U ! a & a U a G ! a
+exact_restricted_avoidance,"('b', 'b', 'b', 'b', 'b')",visit b five times and then stop visiting it anymore,U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b U ! b & b U b G ! b
+exact_restricted_avoidance,"('c', 'c', 'c', 'c', 'c')",visit c five times and then stop visiting it anymore,U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c U ! c & c U c G ! c
+exact_restricted_avoidance,"('d', 'd', 'd', 'd', 'd')",visit d five times and then stop visiting it anymore,U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d U ! d & d U d G ! d
+exact_restricted_avoidance,"('h', 'h', 'h', 'h', 'h')",visit h five times and then stop visiting it anymore,U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h U ! h & h U h G ! h
+delayed_reaction,"('a', 'b')",after visiting a you have to visit b at least once,G i a F b
+delayed_reaction,"('a', 'c')",after visiting a you have to visit c at least once,G i a F c
+delayed_reaction,"('a', 'd')",after visiting a you have to visit d at least once,G i a F d
+delayed_reaction,"('a', 'h')",after visiting a you have to visit h at least once,G i a F h
+delayed_reaction,"('b', 'a')",after visiting b you have to visit a at least once,G i b F a
+delayed_reaction,"('b', 'c')",after visiting b you have to visit c at least once,G i b F c
+delayed_reaction,"('b', 'd')",after visiting b you have to visit d at least once,G i b F d
+delayed_reaction,"('b', 'h')",after visiting b you have to visit h at least once,G i b F h
+delayed_reaction,"('c', 'a')",after visiting c you have to visit a at least once,G i c F a
+delayed_reaction,"('c', 'b')",after visiting c you have to visit b at least once,G i c F b
+delayed_reaction,"('c', 'd')",after visiting c you have to visit d at least once,G i c F d
+delayed_reaction,"('c', 'h')",after visiting c you have to visit h at least once,G i c F h
+delayed_reaction,"('d', 'a')",after visiting d you have to visit a at least once,G i d F a
+delayed_reaction,"('d', 'b')",after visiting d you have to visit b at least once,G i d F b
+delayed_reaction,"('d', 'c')",after visiting d you have to visit c at least once,G i d F c
+delayed_reaction,"('d', 'h')",after visiting d you have to visit h at least once,G i d F h
+delayed_reaction,"('h', 'a')",after visiting h you have to visit a at least once,G i h F a
+delayed_reaction,"('h', 'b')",after visiting h you have to visit b at least once,G i h F b
+delayed_reaction,"('h', 'c')",after visiting h you have to visit c at least once,G i h F c
+delayed_reaction,"('h', 'd')",after visiting h you have to visit d at least once,G i h F d
+delayed_reaction,"('a', 'b')",if you visit a you also have to visit b after that,G i a F b
+delayed_reaction,"('a', 'c')",if you visit a you also have to visit c after that,G i a F c
+delayed_reaction,"('a', 'd')",if you visit a you also have to visit d after that,G i a F d
+delayed_reaction,"('a', 'h')",if you visit a you also have to visit h after that,G i a F h
+delayed_reaction,"('b', 'a')",if you visit b you also have to visit a after that,G i b F a
+delayed_reaction,"('b', 'c')",if you visit b you also have to visit c after that,G i b F c
+delayed_reaction,"('b', 'd')",if you visit b you also have to visit d after that,G i b F d
+delayed_reaction,"('b', 'h')",if you visit b you also have to visit h after that,G i b F h
+delayed_reaction,"('c', 'a')",if you visit c you also have to visit a after that,G i c F a
+delayed_reaction,"('c', 'b')",if you visit c you also have to visit b after that,G i c F b
+delayed_reaction,"('c', 'd')",if you visit c you also have to visit d after that,G i c F d
+delayed_reaction,"('c', 'h')",if you visit c you also have to visit h after that,G i c F h
+delayed_reaction,"('d', 'a')",if you visit d you also have to visit a after that,G i d F a
+delayed_reaction,"('d', 'b')",if you visit d you also have to visit b after that,G i d F b
+delayed_reaction,"('d', 'c')",if you visit d you also have to visit c after that,G i d F c
+delayed_reaction,"('d', 'h')",if you visit d you also have to visit h after that,G i d F h
+delayed_reaction,"('h', 'a')",if you visit h you also have to visit a after that,G i h F a
+delayed_reaction,"('h', 'b')",if you visit h you also have to visit b after that,G i h F b
+delayed_reaction,"('h', 'c')",if you visit h you also have to visit c after that,G i h F c
+delayed_reaction,"('h', 'd')",if you visit h you also have to visit d after that,G i h F d
+delayed_reaction,"('a', 'b')",b have to be visited after a is visited,G i a F b
+delayed_reaction,"('a', 'c')",c have to be visited after a is visited,G i a F c
+delayed_reaction,"('a', 'd')",d have to be visited after a is visited,G i a F d
+delayed_reaction,"('a', 'h')",h have to be visited after a is visited,G i a F h
+delayed_reaction,"('b', 'a')",a have to be visited after b is visited,G i b F a
+delayed_reaction,"('b', 'c')",c have to be visited after b is visited,G i b F c
+delayed_reaction,"('b', 'd')",d have to be visited after b is visited,G i b F d
+delayed_reaction,"('b', 'h')",h have to be visited after b is visited,G i b F h
+delayed_reaction,"('c', 'a')",a have to be visited after c is visited,G i c F a
+delayed_reaction,"('c', 'b')",b have to be visited after c is visited,G i c F b
+delayed_reaction,"('c', 'd')",d have to be visited after c is visited,G i c F d
+delayed_reaction,"('c', 'h')",h have to be visited after c is visited,G i c F h
+delayed_reaction,"('d', 'a')",a have to be visited after d is visited,G i d F a
+delayed_reaction,"('d', 'b')",b have to be visited after d is visited,G i d F b
+delayed_reaction,"('d', 'c')",c have to be visited after d is visited,G i d F c
+delayed_reaction,"('d', 'h')",h have to be visited after d is visited,G i d F h
+delayed_reaction,"('h', 'a')",a have to be visited after h is visited,G i h F a
+delayed_reaction,"('h', 'b')",b have to be visited after h is visited,G i h F b
+delayed_reaction,"('h', 'c')",c have to be visited after h is visited,G i h F c
+delayed_reaction,"('h', 'd')",d have to be visited after h is visited,G i h F d
+prompt_reaction,"('a', 'b')",once you visit a you have to head to b right after that,G i a X b
+prompt_reaction,"('a', 'c')",once you visit a you have to head to c right after that,G i a X c
+prompt_reaction,"('a', 'd')",once you visit a you have to head to d right after that,G i a X d
+prompt_reaction,"('a', 'h')",once you visit a you have to head to h right after that,G i a X h
+prompt_reaction,"('b', 'a')",once you visit b you have to head to a right after that,G i b X a
+prompt_reaction,"('b', 'c')",once you visit b you have to head to c right after that,G i b X c
+prompt_reaction,"('b', 'd')",once you visit b you have to head to d right after that,G i b X d
+prompt_reaction,"('b', 'h')",once you visit b you have to head to h right after that,G i b X h
+prompt_reaction,"('c', 'a')",once you visit c you have to head to a right after that,G i c X a
+prompt_reaction,"('c', 'b')",once you visit c you have to head to b right after that,G i c X b
+prompt_reaction,"('c', 'd')",once you visit c you have to head to d right after that,G i c X d
+prompt_reaction,"('c', 'h')",once you visit c you have to head to h right after that,G i c X h
+prompt_reaction,"('d', 'a')",once you visit d you have to head to a right after that,G i d X a
+prompt_reaction,"('d', 'b')",once you visit d you have to head to b right after that,G i d X b
+prompt_reaction,"('d', 'c')",once you visit d you have to head to c right after that,G i d X c
+prompt_reaction,"('d', 'h')",once you visit d you have to head to h right after that,G i d X h
+prompt_reaction,"('h', 'a')",once you visit h you have to head to a right after that,G i h X a
+prompt_reaction,"('h', 'b')",once you visit h you have to head to b right after that,G i h X b
+prompt_reaction,"('h', 'c')",once you visit h you have to head to c right after that,G i h X c
+prompt_reaction,"('h', 'd')",once you visit h you have to head to d right after that,G i h X d
+prompt_reaction,"('a', 'b')",going to a means you have to go to b immediately after that,G i a X b
+prompt_reaction,"('a', 'c')",going to a means you have to go to c immediately after that,G i a X c
+prompt_reaction,"('a', 'd')",going to a means you have to go to d immediately after that,G i a X d
+prompt_reaction,"('a', 'h')",going to a means you have to go to h immediately after that,G i a X h
+prompt_reaction,"('b', 'a')",going to b means you have to go to a immediately after that,G i b X a
+prompt_reaction,"('b', 'c')",going to b means you have to go to c immediately after that,G i b X c
+prompt_reaction,"('b', 'd')",going to b means you have to go to d immediately after that,G i b X d
+prompt_reaction,"('b', 'h')",going to b means you have to go to h immediately after that,G i b X h
+prompt_reaction,"('c', 'a')",going to c means you have to go to a immediately after that,G i c X a
+prompt_reaction,"('c', 'b')",going to c means you have to go to b immediately after that,G i c X b
+prompt_reaction,"('c', 'd')",going to c means you have to go to d immediately after that,G i c X d
+prompt_reaction,"('c', 'h')",going to c means you have to go to h immediately after that,G i c X h
+prompt_reaction,"('d', 'a')",going to d means you have to go to a immediately after that,G i d X a
+prompt_reaction,"('d', 'b')",going to d means you have to go to b immediately after that,G i d X b
+prompt_reaction,"('d', 'c')",going to d means you have to go to c immediately after that,G i d X c
+prompt_reaction,"('d', 'h')",going to d means you have to go to h immediately after that,G i d X h
+prompt_reaction,"('h', 'a')",going to h means you have to go to a immediately after that,G i h X a
+prompt_reaction,"('h', 'b')",going to h means you have to go to b immediately after that,G i h X b
+prompt_reaction,"('h', 'c')",going to h means you have to go to c immediately after that,G i h X c
+prompt_reaction,"('h', 'd')",going to h means you have to go to d immediately after that,G i h X d
+prompt_reaction,"('a', 'b')",you can go to a but you must go to b as soon as you go to a,G i a X b
+prompt_reaction,"('a', 'c')",you can go to a but you must go to c as soon as you go to a,G i a X c
+prompt_reaction,"('a', 'd')",you can go to a but you must go to d as soon as you go to a,G i a X d
+prompt_reaction,"('a', 'h')",you can go to a but you must go to h as soon as you go to a,G i a X h
+prompt_reaction,"('b', 'a')",you can go to b but you must go to a as soon as you go to b,G i b X a
+prompt_reaction,"('b', 'c')",you can go to b but you must go to c as soon as you go to b,G i b X c
+prompt_reaction,"('b', 'd')",you can go to b but you must go to d as soon as you go to b,G i b X d
+prompt_reaction,"('b', 'h')",you can go to b but you must go to h as soon as you go to b,G i b X h
+prompt_reaction,"('c', 'a')",you can go to c but you must go to a as soon as you go to c,G i c X a
+prompt_reaction,"('c', 'b')",you can go to c but you must go to b as soon as you go to c,G i c X b
+prompt_reaction,"('c', 'd')",you can go to c but you must go to d as soon as you go to c,G i c X d
+prompt_reaction,"('c', 'h')",you can go to c but you must go to h as soon as you go to c,G i c X h
+prompt_reaction,"('d', 'a')",you can go to d but you must go to a as soon as you go to d,G i d X a
+prompt_reaction,"('d', 'b')",you can go to d but you must go to b as soon as you go to d,G i d X b
+prompt_reaction,"('d', 'c')",you can go to d but you must go to c as soon as you go to d,G i d X c
+prompt_reaction,"('d', 'h')",you can go to d but you must go to h as soon as you go to d,G i d X h
+prompt_reaction,"('h', 'a')",you can go to h but you must go to a as soon as you go to h,G i h X a
+prompt_reaction,"('h', 'b')",you can go to h but you must go to b as soon as you go to h,G i h X b
+prompt_reaction,"('h', 'c')",you can go to h but you must go to c as soon as you go to h,G i h X c
+prompt_reaction,"('h', 'd')",you can go to h but you must go to d as soon as you go to h,G i h X d
+prompt_reaction,"('a', 'b')",do not go to anywhere but b once you visit a,G i a X b
+prompt_reaction,"('a', 'c')",do not go to anywhere but c once you visit a,G i a X c
+prompt_reaction,"('a', 'd')",do not go to anywhere but d once you visit a,G i a X d
+prompt_reaction,"('a', 'h')",do not go to anywhere but h once you visit a,G i a X h
+prompt_reaction,"('b', 'a')",do not go to anywhere but a once you visit b,G i b X a
+prompt_reaction,"('b', 'c')",do not go to anywhere but c once you visit b,G i b X c
+prompt_reaction,"('b', 'd')",do not go to anywhere but d once you visit b,G i b X d
+prompt_reaction,"('b', 'h')",do not go to anywhere but h once you visit b,G i b X h
+prompt_reaction,"('c', 'a')",do not go to anywhere but a once you visit c,G i c X a
+prompt_reaction,"('c', 'b')",do not go to anywhere but b once you visit c,G i c X b
+prompt_reaction,"('c', 'd')",do not go to anywhere but d once you visit c,G i c X d
+prompt_reaction,"('c', 'h')",do not go to anywhere but h once you visit c,G i c X h
+prompt_reaction,"('d', 'a')",do not go to anywhere but a once you visit d,G i d X a
+prompt_reaction,"('d', 'b')",do not go to anywhere but b once you visit d,G i d X b
+prompt_reaction,"('d', 'c')",do not go to anywhere but c once you visit d,G i d X c
+prompt_reaction,"('d', 'h')",do not go to anywhere but h once you visit d,G i d X h
+prompt_reaction,"('h', 'a')",do not go to anywhere but a once you visit h,G i h X a
+prompt_reaction,"('h', 'b')",do not go to anywhere but b once you visit h,G i h X b
+prompt_reaction,"('h', 'c')",do not go to anywhere but c once you visit h,G i h X c
+prompt_reaction,"('h', 'd')",do not go to anywhere but d once you visit h,G i h X d
+prompt_reaction,"('a', 'b')",you can go to a but you must go to b immediately afterward,G i a X b
+prompt_reaction,"('a', 'c')",you can go to a but you must go to c immediately afterward,G i a X c
+prompt_reaction,"('a', 'd')",you can go to a but you must go to d immediately afterward,G i a X d
+prompt_reaction,"('a', 'h')",you can go to a but you must go to h immediately afterward,G i a X h
+prompt_reaction,"('b', 'a')",you can go to b but you must go to a immediately afterward,G i b X a
+prompt_reaction,"('b', 'c')",you can go to b but you must go to c immediately afterward,G i b X c
+prompt_reaction,"('b', 'd')",you can go to b but you must go to d immediately afterward,G i b X d
+prompt_reaction,"('b', 'h')",you can go to b but you must go to h immediately afterward,G i b X h
+prompt_reaction,"('c', 'a')",you can go to c but you must go to a immediately afterward,G i c X a
+prompt_reaction,"('c', 'b')",you can go to c but you must go to b immediately afterward,G i c X b
+prompt_reaction,"('c', 'd')",you can go to c but you must go to d immediately afterward,G i c X d
+prompt_reaction,"('c', 'h')",you can go to c but you must go to h immediately afterward,G i c X h
+prompt_reaction,"('d', 'a')",you can go to d but you must go to a immediately afterward,G i d X a
+prompt_reaction,"('d', 'b')",you can go to d but you must go to b immediately afterward,G i d X b
+prompt_reaction,"('d', 'c')",you can go to d but you must go to c immediately afterward,G i d X c
+prompt_reaction,"('d', 'h')",you can go to d but you must go to h immediately afterward,G i d X h
+prompt_reaction,"('h', 'a')",you can go to h but you must go to a immediately afterward,G i h X a
+prompt_reaction,"('h', 'b')",you can go to h but you must go to b immediately afterward,G i h X b
+prompt_reaction,"('h', 'c')",you can go to h but you must go to c immediately afterward,G i h X c
+prompt_reaction,"('h', 'd')",you can go to h but you must go to d immediately afterward,G i h X d
+prompt_reaction,"('a', 'b')",you need to head to b immediately whenever you visit a,G i a X b
+prompt_reaction,"('a', 'c')",you need to head to c immediately whenever you visit a,G i a X c
+prompt_reaction,"('a', 'd')",you need to head to d immediately whenever you visit a,G i a X d
+prompt_reaction,"('a', 'h')",you need to head to h immediately whenever you visit a,G i a X h
+prompt_reaction,"('b', 'a')",you need to head to a immediately whenever you visit b,G i b X a
+prompt_reaction,"('b', 'c')",you need to head to c immediately whenever you visit b,G i b X c
+prompt_reaction,"('b', 'd')",you need to head to d immediately whenever you visit b,G i b X d
+prompt_reaction,"('b', 'h')",you need to head to h immediately whenever you visit b,G i b X h
+prompt_reaction,"('c', 'a')",you need to head to a immediately whenever you visit c,G i c X a
+prompt_reaction,"('c', 'b')",you need to head to b immediately whenever you visit c,G i c X b
+prompt_reaction,"('c', 'd')",you need to head to d immediately whenever you visit c,G i c X d
+prompt_reaction,"('c', 'h')",you need to head to h immediately whenever you visit c,G i c X h
+prompt_reaction,"('d', 'a')",you need to head to a immediately whenever you visit d,G i d X a
+prompt_reaction,"('d', 'b')",you need to head to b immediately whenever you visit d,G i d X b
+prompt_reaction,"('d', 'c')",you need to head to c immediately whenever you visit d,G i d X c
+prompt_reaction,"('d', 'h')",you need to head to h immediately whenever you visit d,G i d X h
+prompt_reaction,"('h', 'a')",you need to head to a immediately whenever you visit h,G i h X a
+prompt_reaction,"('h', 'b')",you need to head to b immediately whenever you visit h,G i h X b
+prompt_reaction,"('h', 'c')",you need to head to c immediately whenever you visit h,G i h X c
+prompt_reaction,"('h', 'd')",you need to head to d immediately whenever you visit h,G i h X d
+prompt_reaction,"('a', 'b')",if you visit a make your way right to b right after that,G i a X b
+prompt_reaction,"('a', 'c')",if you visit a make your way right to c right after that,G i a X c
+prompt_reaction,"('a', 'd')",if you visit a make your way right to d right after that,G i a X d
+prompt_reaction,"('a', 'h')",if you visit a make your way right to h right after that,G i a X h
+prompt_reaction,"('b', 'a')",if you visit b make your way right to a right after that,G i b X a
+prompt_reaction,"('b', 'c')",if you visit b make your way right to c right after that,G i b X c
+prompt_reaction,"('b', 'd')",if you visit b make your way right to d right after that,G i b X d
+prompt_reaction,"('b', 'h')",if you visit b make your way right to h right after that,G i b X h
+prompt_reaction,"('c', 'a')",if you visit c make your way right to a right after that,G i c X a
+prompt_reaction,"('c', 'b')",if you visit c make your way right to b right after that,G i c X b
+prompt_reaction,"('c', 'd')",if you visit c make your way right to d right after that,G i c X d
+prompt_reaction,"('c', 'h')",if you visit c make your way right to h right after that,G i c X h
+prompt_reaction,"('d', 'a')",if you visit d make your way right to a right after that,G i d X a
+prompt_reaction,"('d', 'b')",if you visit d make your way right to b right after that,G i d X b
+prompt_reaction,"('d', 'c')",if you visit d make your way right to c right after that,G i d X c
+prompt_reaction,"('d', 'h')",if you visit d make your way right to h right after that,G i d X h
+prompt_reaction,"('h', 'a')",if you visit h make your way right to a right after that,G i h X a
+prompt_reaction,"('h', 'b')",if you visit h make your way right to b right after that,G i h X b
+prompt_reaction,"('h', 'c')",if you visit h make your way right to c right after that,G i h X c
+prompt_reaction,"('h', 'd')",if you visit h make your way right to d right after that,G i h X d
+prompt_reaction,"('a', 'b')",once you visit a you can go nowhere but b immediately,G i a X b
+prompt_reaction,"('a', 'c')",once you visit a you can go nowhere but c immediately,G i a X c
+prompt_reaction,"('a', 'd')",once you visit a you can go nowhere but d immediately,G i a X d
+prompt_reaction,"('a', 'h')",once you visit a you can go nowhere but h immediately,G i a X h
+prompt_reaction,"('b', 'a')",once you visit b you can go nowhere but a immediately,G i b X a
+prompt_reaction,"('b', 'c')",once you visit b you can go nowhere but c immediately,G i b X c
+prompt_reaction,"('b', 'd')",once you visit b you can go nowhere but d immediately,G i b X d
+prompt_reaction,"('b', 'h')",once you visit b you can go nowhere but h immediately,G i b X h
+prompt_reaction,"('c', 'a')",once you visit c you can go nowhere but a immediately,G i c X a
+prompt_reaction,"('c', 'b')",once you visit c you can go nowhere but b immediately,G i c X b
+prompt_reaction,"('c', 'd')",once you visit c you can go nowhere but d immediately,G i c X d
+prompt_reaction,"('c', 'h')",once you visit c you can go nowhere but h immediately,G i c X h
+prompt_reaction,"('d', 'a')",once you visit d you can go nowhere but a immediately,G i d X a
+prompt_reaction,"('d', 'b')",once you visit d you can go nowhere but b immediately,G i d X b
+prompt_reaction,"('d', 'c')",once you visit d you can go nowhere but c immediately,G i d X c
+prompt_reaction,"('d', 'h')",once you visit d you can go nowhere but h immediately,G i d X h
+prompt_reaction,"('h', 'a')",once you visit h you can go nowhere but a immediately,G i h X a
+prompt_reaction,"('h', 'b')",once you visit h you can go nowhere but b immediately,G i h X b
+prompt_reaction,"('h', 'c')",once you visit h you can go nowhere but c immediately,G i h X c
+prompt_reaction,"('h', 'd')",once you visit h you can go nowhere but d immediately,G i h X d
+bound_delay,"('a', 'b')",if you visit a make sure you will visit b immediately after that if you visit b make sure you have visited a right before that,G e a X b
+bound_delay,"('a', 'c')",if you visit a make sure you will visit c immediately after that if you visit c make sure you have visited a right before that,G e a X c
+bound_delay,"('a', 'd')",if you visit a make sure you will visit d immediately after that if you visit d make sure you have visited a right before that,G e a X d
+bound_delay,"('a', 'h')",if you visit a make sure you will visit h immediately after that if you visit h make sure you have visited a right before that,G e a X h
+bound_delay,"('b', 'a')",if you visit b make sure you will visit a immediately after that if you visit a make sure you have visited b right before that,G e b X a
+bound_delay,"('b', 'c')",if you visit b make sure you will visit c immediately after that if you visit c make sure you have visited b right before that,G e b X c
+bound_delay,"('b', 'd')",if you visit b make sure you will visit d immediately after that if you visit d make sure you have visited b right before that,G e b X d
+bound_delay,"('b', 'h')",if you visit b make sure you will visit h immediately after that if you visit h make sure you have visited b right before that,G e b X h
+bound_delay,"('c', 'a')",if you visit c make sure you will visit a immediately after that if you visit a make sure you have visited c right before that,G e c X a
+bound_delay,"('c', 'b')",if you visit c make sure you will visit b immediately after that if you visit b make sure you have visited c right before that,G e c X b
+bound_delay,"('c', 'd')",if you visit c make sure you will visit d immediately after that if you visit d make sure you have visited c right before that,G e c X d
+bound_delay,"('c', 'h')",if you visit c make sure you will visit h immediately after that if you visit h make sure you have visited c right before that,G e c X h
+bound_delay,"('d', 'a')",if you visit d make sure you will visit a immediately after that if you visit a make sure you have visited d right before that,G e d X a
+bound_delay,"('d', 'b')",if you visit d make sure you will visit b immediately after that if you visit b make sure you have visited d right before that,G e d X b
+bound_delay,"('d', 'c')",if you visit d make sure you will visit c immediately after that if you visit c make sure you have visited d right before that,G e d X c
+bound_delay,"('d', 'h')",if you visit d make sure you will visit h immediately after that if you visit h make sure you have visited d right before that,G e d X h
+bound_delay,"('h', 'a')",if you visit h make sure you will visit a immediately after that if you visit a make sure you have visited h right before that,G e h X a
+bound_delay,"('h', 'b')",if you visit h make sure you will visit b immediately after that if you visit b make sure you have visited h right before that,G e h X b
+bound_delay,"('h', 'c')",if you visit h make sure you will visit c immediately after that if you visit c make sure you have visited h right before that,G e h X c
+bound_delay,"('h', 'd')",if you visit h make sure you will visit d immediately after that if you visit d make sure you have visited h right before that,G e h X d
+bound_delay,"('a', 'b')",you can visit a or b but you need to make sure a is visited first and b is visited right after a,G e a X b
+bound_delay,"('a', 'c')",you can visit a or c but you need to make sure a is visited first and c is visited right after a,G e a X c
+bound_delay,"('a', 'd')",you can visit a or d but you need to make sure a is visited first and d is visited right after a,G e a X d
+bound_delay,"('a', 'h')",you can visit a or h but you need to make sure a is visited first and h is visited right after a,G e a X h
+bound_delay,"('b', 'a')",you can visit b or a but you need to make sure b is visited first and a is visited right after b,G e b X a
+bound_delay,"('b', 'c')",you can visit b or c but you need to make sure b is visited first and c is visited right after b,G e b X c
+bound_delay,"('b', 'd')",you can visit b or d but you need to make sure b is visited first and d is visited right after b,G e b X d
+bound_delay,"('b', 'h')",you can visit b or h but you need to make sure b is visited first and h is visited right after b,G e b X h
+bound_delay,"('c', 'a')",you can visit c or a but you need to make sure c is visited first and a is visited right after c,G e c X a
+bound_delay,"('c', 'b')",you can visit c or b but you need to make sure c is visited first and b is visited right after c,G e c X b
+bound_delay,"('c', 'd')",you can visit c or d but you need to make sure c is visited first and d is visited right after c,G e c X d
+bound_delay,"('c', 'h')",you can visit c or h but you need to make sure c is visited first and h is visited right after c,G e c X h
+bound_delay,"('d', 'a')",you can visit d or a but you need to make sure d is visited first and a is visited right after d,G e d X a
+bound_delay,"('d', 'b')",you can visit d or b but you need to make sure d is visited first and b is visited right after d,G e d X b
+bound_delay,"('d', 'c')",you can visit d or c but you need to make sure d is visited first and c is visited right after d,G e d X c
+bound_delay,"('d', 'h')",you can visit d or h but you need to make sure d is visited first and h is visited right after d,G e d X h
+bound_delay,"('h', 'a')",you can visit h or a but you need to make sure h is visited first and a is visited right after h,G e h X a
+bound_delay,"('h', 'b')",you can visit h or b but you need to make sure h is visited first and b is visited right after h,G e h X b
+bound_delay,"('h', 'c')",you can visit h or c but you need to make sure h is visited first and c is visited right after h,G e h X c
+bound_delay,"('h', 'd')",you can visit h or d but you need to make sure h is visited first and d is visited right after h,G e h X d
+bound_delay,"('a', 'b')",if you want to visit a make sure you will visit b immediately after that if you want to visit b make sure you will visit a right before that,G e a X b
+bound_delay,"('a', 'c')",if you want to visit a make sure you will visit c immediately after that if you want to visit c make sure you will visit a right before that,G e a X c
+bound_delay,"('a', 'd')",if you want to visit a make sure you will visit d immediately after that if you want to visit d make sure you will visit a right before that,G e a X d
+bound_delay,"('a', 'h')",if you want to visit a make sure you will visit h immediately after that if you want to visit h make sure you will visit a right before that,G e a X h
+bound_delay,"('b', 'a')",if you want to visit b make sure you will visit a immediately after that if you want to visit a make sure you will visit b right before that,G e b X a
+bound_delay,"('b', 'c')",if you want to visit b make sure you will visit c immediately after that if you want to visit c make sure you will visit b right before that,G e b X c
+bound_delay,"('b', 'd')",if you want to visit b make sure you will visit d immediately after that if you want to visit d make sure you will visit b right before that,G e b X d
+bound_delay,"('b', 'h')",if you want to visit b make sure you will visit h immediately after that if you want to visit h make sure you will visit b right before that,G e b X h
+bound_delay,"('c', 'a')",if you want to visit c make sure you will visit a immediately after that if you want to visit a make sure you will visit c right before that,G e c X a
+bound_delay,"('c', 'b')",if you want to visit c make sure you will visit b immediately after that if you want to visit b make sure you will visit c right before that,G e c X b
+bound_delay,"('c', 'd')",if you want to visit c make sure you will visit d immediately after that if you want to visit d make sure you will visit c right before that,G e c X d
+bound_delay,"('c', 'h')",if you want to visit c make sure you will visit h immediately after that if you want to visit h make sure you will visit c right before that,G e c X h
+bound_delay,"('d', 'a')",if you want to visit d make sure you will visit a immediately after that if you want to visit a make sure you will visit d right before that,G e d X a
+bound_delay,"('d', 'b')",if you want to visit d make sure you will visit b immediately after that if you want to visit b make sure you will visit d right before that,G e d X b
+bound_delay,"('d', 'c')",if you want to visit d make sure you will visit c immediately after that if you want to visit c make sure you will visit d right before that,G e d X c
+bound_delay,"('d', 'h')",if you want to visit d make sure you will visit h immediately after that if you want to visit h make sure you will visit d right before that,G e d X h
+bound_delay,"('h', 'a')",if you want to visit h make sure you will visit a immediately after that if you want to visit a make sure you will visit h right before that,G e h X a
+bound_delay,"('h', 'b')",if you want to visit h make sure you will visit b immediately after that if you want to visit b make sure you will visit h right before that,G e h X b
+bound_delay,"('h', 'c')",if you want to visit h make sure you will visit c immediately after that if you want to visit c make sure you will visit h right before that,G e h X c
+bound_delay,"('h', 'd')",if you want to visit h make sure you will visit d immediately after that if you want to visit d make sure you will visit h right before that,G e h X d
+wait,"('a', 'b')",once b is seen feel free to leave a otherwise stay at a,U a b
+wait,"('a', 'c')",once c is seen feel free to leave a otherwise stay at a,U a c
+wait,"('a', 'd')",once d is seen feel free to leave a otherwise stay at a,U a d
+wait,"('a', 'h')",once h is seen feel free to leave a otherwise stay at a,U a h
+wait,"('b', 'a')",once a is seen feel free to leave b otherwise stay at b,U b a
+wait,"('b', 'c')",once c is seen feel free to leave b otherwise stay at b,U b c
+wait,"('b', 'd')",once d is seen feel free to leave b otherwise stay at b,U b d
+wait,"('b', 'h')",once h is seen feel free to leave b otherwise stay at b,U b h
+wait,"('c', 'a')",once a is seen feel free to leave c otherwise stay at c,U c a
+wait,"('c', 'b')",once b is seen feel free to leave c otherwise stay at c,U c b
+wait,"('c', 'd')",once d is seen feel free to leave c otherwise stay at c,U c d
+wait,"('c', 'h')",once h is seen feel free to leave c otherwise stay at c,U c h
+wait,"('d', 'a')",once a is seen feel free to leave d otherwise stay at d,U d a
+wait,"('d', 'b')",once b is seen feel free to leave d otherwise stay at d,U d b
+wait,"('d', 'c')",once c is seen feel free to leave d otherwise stay at d,U d c
+wait,"('d', 'h')",once h is seen feel free to leave d otherwise stay at d,U d h
+wait,"('h', 'a')",once a is seen feel free to leave h otherwise stay at h,U h a
+wait,"('h', 'b')",once b is seen feel free to leave h otherwise stay at h,U h b
+wait,"('h', 'c')",once c is seen feel free to leave h otherwise stay at h,U h c
+wait,"('h', 'd')",once d is seen feel free to leave h otherwise stay at h,U h d
+wait,"('a', 'b')",do not leave a before b is seen,U a b
+wait,"('a', 'c')",do not leave a before c is seen,U a c
+wait,"('a', 'd')",do not leave a before d is seen,U a d
+wait,"('a', 'h')",do not leave a before h is seen,U a h
+wait,"('b', 'a')",do not leave b before a is seen,U b a
+wait,"('b', 'c')",do not leave b before c is seen,U b c
+wait,"('b', 'd')",do not leave b before d is seen,U b d
+wait,"('b', 'h')",do not leave b before h is seen,U b h
+wait,"('c', 'a')",do not leave c before a is seen,U c a
+wait,"('c', 'b')",do not leave c before b is seen,U c b
+wait,"('c', 'd')",do not leave c before d is seen,U c d
+wait,"('c', 'h')",do not leave c before h is seen,U c h
+wait,"('d', 'a')",do not leave d before a is seen,U d a
+wait,"('d', 'b')",do not leave d before b is seen,U d b
+wait,"('d', 'c')",do not leave d before c is seen,U d c
+wait,"('d', 'h')",do not leave d before h is seen,U d h
+wait,"('h', 'a')",do not leave h before a is seen,U h a
+wait,"('h', 'b')",do not leave h before b is seen,U h b
+wait,"('h', 'c')",do not leave h before c is seen,U h c
+wait,"('h', 'd')",do not leave h before d is seen,U h d
+wait,"('a', 'b')",you can not go to anywhere from a before having b observed,U a b
+wait,"('a', 'c')",you can not go to anywhere from a before having c observed,U a c
+wait,"('a', 'd')",you can not go to anywhere from a before having d observed,U a d
+wait,"('a', 'h')",you can not go to anywhere from a before having h observed,U a h
+wait,"('b', 'a')",you can not go to anywhere from b before having a observed,U b a
+wait,"('b', 'c')",you can not go to anywhere from b before having c observed,U b c
+wait,"('b', 'd')",you can not go to anywhere from b before having d observed,U b d
+wait,"('b', 'h')",you can not go to anywhere from b before having h observed,U b h
+wait,"('c', 'a')",you can not go to anywhere from c before having a observed,U c a
+wait,"('c', 'b')",you can not go to anywhere from c before having b observed,U c b
+wait,"('c', 'd')",you can not go to anywhere from c before having d observed,U c d
+wait,"('c', 'h')",you can not go to anywhere from c before having h observed,U c h
+wait,"('d', 'a')",you can not go to anywhere from d before having a observed,U d a
+wait,"('d', 'b')",you can not go to anywhere from d before having b observed,U d b
+wait,"('d', 'c')",you can not go to anywhere from d before having c observed,U d c
+wait,"('d', 'h')",you can not go to anywhere from d before having h observed,U d h
+wait,"('h', 'a')",you can not go to anywhere from h before having a observed,U h a
+wait,"('h', 'b')",you can not go to anywhere from h before having b observed,U h b
+wait,"('h', 'c')",you can not go to anywhere from h before having c observed,U h c
+wait,"('h', 'd')",you can not go to anywhere from h before having d observed,U h d
