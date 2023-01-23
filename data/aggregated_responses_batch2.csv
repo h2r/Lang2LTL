@@ -480,3 +480,87 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Do not visit a more than five times
 2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,"Once you leave a for the fifth time, it is locked for you"
 2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Never go to a more than five times
+2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Visit a at least once
+2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Go to a
+2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Reach a
+2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Go through a
+2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Find a
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Visit a at least twice while leaving its region in between
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,"Find a, then leave a and then go back to it at least once again"
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Reach a minimum two times
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,You must visit and then leave a at least twice
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,"Go to a, leave and then go to a once again"
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Go to a at least three times while leaving in between
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Do not visit a any fewer than three times
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,"Go to a then leave a, repeat at least thrice"
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You must pass through a three times of more
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,"Visit a at least three times, each time you must leave before coming back"
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,You are not allowed to visit a three times or fewer. You must visit a four times or more
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,Visit a at least four times while leaving in between
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,Go to a a minimum of four times
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,"Reach a then leave a, repeat at least four times"
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,you are required to make at least four separate visits to a
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,you must visit and then leave a at least five times
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Go to a then leave a at least five times
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,You must pass through a on at least five separate occasions
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Go through a a minimum of five times
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Reach a then leave a and repeat this at least four more times
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a then leave a and never go back
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a only and only once. You can stay there for any period of time
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You are allowed to make only one visit to a
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You  can only reach and exit a exactly once
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,"Reach a and then leave a, then never come back to a"
+2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Go to a then leave a and repeat this exactly once more
+2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,You are required to make exactly two separate visits to a
+2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Visit a on exactly two separate instances
+2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Go to a then leave and and repeat exactly once more
+2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,The required number of separate visits to a is two
+2023/01/23 6:08:29 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,3,You are required to visit a on exactly three separate instances
+2023/01/23 6:08:29 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,3,The required number of separate visits to a is exactly three
+2023/01/23 6:08:29 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,3,Visit a exactly three separate times
+2023/01/23 6:08:29 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,3,Pass through a exactly three times
+2023/01/23 6:08:29 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,3,Go to a then leave a and then repeat this exactly two more times
+2023/01/23 6:09:58 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,4,You are required to make exactly four separate visits to a
+2023/01/23 6:09:58 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,4,Go to a exactly four separate times
+2023/01/23 6:09:58 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,4,Do not visit a any more or any fewer than four times
+2023/01/23 6:09:58 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,4,Go to a then leave a and repeat this exactly three more times
+2023/01/23 6:09:58 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,4,Complete exactly four separate visits to a
+2023/01/23 6:16:20 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,5,Complete exactly five separate visits to a
+2023/01/23 6:16:20 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,5,pass through a exactly five times
+2023/01/23 6:16:20 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,5,You are required to complete exactly five separate visits to a
+2023/01/23 6:16:20 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,5,Go to a then leave and repeat this exactly four more times
+2023/01/23 6:16:20 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,5,The required number of separate visits to a is exactly five
+2023/01/23 6:18:27 PM EST,ankitshah91@gmail.com,Delayed Reaction,2,If a is observed at any time then b must be visited in the future
+2023/01/23 6:18:27 PM EST,ankitshah91@gmail.com,Delayed Reaction,2,Go to b at least once after you ever see a happen
+2023/01/23 6:18:27 PM EST,ankitshah91@gmail.com,Delayed Reaction,2,"If at any time a occurs, then b must be reached once afterwards"
+2023/01/23 6:18:27 PM EST,ankitshah91@gmail.com,Delayed Reaction,2,"Whenever a occurs, in response to it b must be visited in the future"
+2023/01/23 6:18:27 PM EST,ankitshah91@gmail.com,Delayed Reaction,2,"At any point in time if a holds, then b should be visited at least once in the future"
+2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,As soon as a is observed visit b at the next time instant
+2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,"Whenever a occurs, b must occur at the very next time instant"
+2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,b should happen immediately in the next time step as soon as a is observed
+2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,If you see a then go to b at the very next time step
+2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,Always the response to a is b in the next time step
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occuring
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,a and b are always separated by one time instant with a happening before. Neither b or a can be observed independently
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If a happen only and only then is b allowed to happen at the very next time instant
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If b happens only then a must have happened just one time step in the past
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,"If a is observed only and only then should b be visited in the next time step, otherwise b should not be visited"
+2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,remain at a till you observe b
+2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,Observation of b releases a from holding true
+2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,Stay at a till b occurs
+2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,Till b occurs do not exit a
+2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,remain at a as long as b is not seen
+2023/01/23 6:26:09 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Do not visit a till you observe b
+2023/01/23 6:26:09 PM EST,ankitshah91@gmail.com,Past Avoidance,2,seeing b unlocks a
+2023/01/23 6:26:35 PM EST,ankitshah91@gmail.com,Global Avoidance,1,Never let a hold
+2023/01/23 6:26:35 PM EST,ankitshah91@gmail.com,Global Avoidance,1,a should never become true
+2023/01/23 6:27:20 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Never let any of a or b hold
+2023/01/23 6:27:20 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Do not ever visit both a and b
+2023/01/23 6:28:12 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"a, b, or c can never become true at any instant"
+2023/01/23 6:28:12 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Ensure that a, b, and c never hold true"
+2023/01/23 6:29:12 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"a, b, c, and d must never be allowed to be true"
+2023/01/23 6:29:12 PM EST,ankitshah91@gmail.com,Global Avoidance,4,"Never go through any of a, b, c, or d"
+2023/01/23 6:30:23 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"Ensure that none among a, b, c, d, and h are ever visited"
+2023/01/23 6:30:23 PM EST,ankitshah91@gmail.com,Global Avoidance,5,"a, b, c, d, and h must never be allowed to hold true"
+2023/01/23 6:31:19 PM EST,ankitshah91@gmail.com,Future Avoidance,2,Whenever you observe a this locks b from becoming true from the next instance
+2023/01/23 6:31:19 PM EST,ankitshah91@gmail.com,Future Avoidance,2,seeing a locks b from being true for all time instances starting from the next one
