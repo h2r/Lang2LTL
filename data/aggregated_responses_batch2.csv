@@ -508,7 +508,7 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a then leave a and never go back
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a exactly once. You can stay there for any period of time
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You are allowed to make only one visit to a
-2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You  can only reach and exit a exactly once
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You can only reach and exit a exactly once
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,"Reach a and then leave a, then never come back to a"
 2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Go to a then leave a and repeat this exactly once more
 2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,You are required to make exactly two separate visits to a
@@ -540,9 +540,9 @@ Timestamp,Username,LTL template type,Number of propositions,Utterance
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,b should happen immediately in the next time step as soon as a is observed
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,If you see a then go to b at the very next time step
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,Always the response to a is b in the next time step
-2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occuring
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occurring
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,a and b are always separated by one time instant with a happening before. Neither b or a can be observed independently
-2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If a happen only and only then is b allowed to happen at the very next time instant
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If a happens only and only then is b allowed to happen at the very next time instant
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If b happens only then a must have happened just one time step in the past
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,"If a is observed only and only then should b be visited in the next time step, otherwise b should not be visited"
 2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,remain at a till you observe b
