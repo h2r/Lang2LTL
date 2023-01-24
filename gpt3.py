@@ -9,7 +9,7 @@ openai.organization = os.getenv("ORG_ID")
 
 
 class GPT3:
-    def __init__(self, engine, temp=0.6, max_tokens=64, n=1):
+    def __init__(self, engine, temp=0.6, max_tokens=128, n=1):
         self.engine = engine
         self.temp = temp
         self.max_tokens = max_tokens
@@ -29,29 +29,25 @@ class GPT3:
         return outs
 
     def generate(self, query_prompt):  # engines must match when compare two embeddings
-        try:
-            raw_responses = openai.Completion.create(
-                model=self.engine,
-                prompt=query_prompt,
-                temperature=self.temp,
-                max_tokens=self.max_tokens,
-                stop=['\n'],
-                n=self.n,
-                # logprobs=5
-            )
-        except:
-            sleep(60)
-            logging.info(f"waiting for the server. sleep for 30 sec...\n{query_prompt}")
-            raw_responses = openai.Completion.create(
-                model=self.engine,
-                prompt=query_prompt,
-                temperature=self.temp,
-                max_tokens=self.max_tokens,
-                stop=['\n'],
-                n=self.n,
-                # logprobs=5
-            )
-            logging.info('OK continue')
+        complete = False
+        ntries = 0
+        while not complete:
+            try:
+                raw_responses = openai.Completion.create(
+                    model=self.engine,
+                    prompt=query_prompt,
+                    temperature=self.temp,
+                    max_tokens=self.max_tokens,
+                    stop=['\n'],
+                    n=self.n,
+                    # logprobs=5
+                )
+                complete = True
+            except:
+                sleep(30)
+                logging.info(f"{ntries}: waiting for the server. sleep for 30 sec...\n{query_prompt}")
+                logging.info('OK continue')
+                ntries += 1
         if self.n == 1:
             responses = [raw_responses['choices'][0]['text'].strip()]
         else:
