@@ -83,6 +83,7 @@ def analyze_symbolic_dataset(data_fpath):
 
     analysis = sorted(analysis)
     pprint(analysis)
+    print("\n")
 
     analysis_fpath = os.path.join("data", f"analysis_{Path(data_fpath).stem}.csv")
     save_to_file(analysis, analysis_fpath)
@@ -304,7 +305,7 @@ if __name__ == "__main__":
         create_symbolic_dataset(data_fpath, symbolic_fpath, filter_types, args.update, True)
         analyze_symbolic_dataset(symbolic_fpath)
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", filter_types, args.perm, size=1, seed=42, firstn=args.firstn)
-    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", filter_types, args.perm, size=5, seed=42, firstn=args.firstn)
+    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", filter_types, args.perm, size=9, seed=42, firstn=args.firstn)
 
     # Generate prompts for off-the-shelf GPT-3
     split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
