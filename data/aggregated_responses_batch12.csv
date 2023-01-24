@@ -663,7 +663,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/19 1:02:38 PM EST,ziyi_yang1@brown.edu,Global Avoidance,2,always keep away from a and b
 2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Do not go to a until you see b
 2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Avoid visiting a till you observe b
-2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Don't go to a until b has occured
+2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Do not go to a until b has occured
 2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,Once you observe b only then are you allowed to go to a
 2023/01/19 3:01:17 PM EST,ankitshah91@gmail.com,Past Avoidance,2,You can visit a only after seeing b
 2023/01/19 3:02:08 PM EST,ankitshah91@gmail.com,Global Avoidance,1,Avoid going to a
@@ -675,7 +675,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Avoid reaching a and b
 2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Never visit a and b 
 2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Avoid going to a and avoid going to b
-2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Make sure to never reach both a and b
+2023/01/19 3:03:28 PM EST,ankitshah91@gmail.com,Global Avoidance,2,Make sure to never reach either a or b
 2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"avoid going to a, b, and c"
 2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Never visit either one among a, b, and c"
 2023/01/19 3:04:50 PM EST,ankitshah91@gmail.com,Global Avoidance,3,"Ensure that you never reach the locations a, b, and c"
@@ -813,7 +813,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/19 11:35:27 PM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"always keep away from a, b, c, d, and h"
 2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,do not go to b once you have visited a
 2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,never go to b once you go to a
-2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"if you have ever visited a once, you cannot visit b afterward"
+2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"after you visit a, you cannot visit b afterward"
 2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"once a is visited, you cannot go to b any more"
 2023/01/20 12:07:16 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"you can visit b before a is visited, but you can never visit b afterward"
 2023/01/20 12:27:19 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,you can go to a at most once
@@ -945,7 +945,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 12:51:01 AM EST,ziyi_yang1@brown.edu,Wait,2,you cannot go to other place from a unless you see b
 2023/01/23 12:51:01 AM EST,ziyi_yang1@brown.edu,Wait,2,"util you observe b, stay at a"
 2023/01/23 12:51:01 AM EST,ziyi_yang1@brown.edu,Wait,2,"you can leave after b is observed, otherwise stay at a"
-2023/01/23 12:51:01 AM EST,ziyi_yang1@brown.edu,Wait,2,you must stay at a if you do not see b
+2023/01/23 12:51:01 AM EST,ziyi_yang1@brown.edu,Wait,2,you must stay at a until you see b
 2023/01/23 12:51:19 AM EST,xinyu_liu@brown.edu,Exact Restricted Avoidance,5,you must visit a exactly five times
 2023/01/23 12:55:29 AM EST,xinyu_liu@brown.edu,Delayed Reaction,2,"after you visit a, you have to visit b later"
 2023/01/23 12:55:29 AM EST,xinyu_liu@brown.edu,Delayed Reaction,2,you have to visit b after you visit a
@@ -964,7 +964,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 1:01:17 AM EST,xinyu_liu@brown.edu,Prompt Reaction,2,"as soon as you get to a, you have to move to b"
 2023/01/23 1:01:17 AM EST,xinyu_liu@brown.edu,Prompt Reaction,2,you have to move to b as soon as you get to a
 2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,never go to a until you see b
-2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,you cannot go to a if b is not happened yet
+2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,you cannot go to a before b happens
 2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,you can only go to a after b is seen
 2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,b must be observed before visiting a
 2023/01/23 1:02:38 AM EST,ziyi_yang1@brown.edu,Past Avoidance,2,"you can visit a, but only after you see b"
@@ -980,13 +980,13 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 1:12:52 AM EST,xinyu_liu@brown.edu,Bound Delay,2,"you must visit b once you go to a, and you must avoid b any other time"
 2023/01/23 1:12:52 AM EST,xinyu_liu@brown.edu,Bound Delay,2,"once you go to a, you must visit b, and you must avoid b any other time"
 2023/01/23 1:13:07 AM EST,ziyi_yang1@brown.edu,Global Avoidance,1,avoid a forever
-2023/01/23 1:13:07 AM EST,ziyi_yang1@brown.edu,Global Avoidance,1,do not make a single visit to a
+2023/01/23 1:13:07 AM EST,ziyi_yang1@brown.edu,Global Avoidance,1,do not make any single visit to a
 2023/01/23 1:13:07 AM EST,ziyi_yang1@brown.edu,Global Avoidance,1,you cannot go to a
 2023/01/23 1:14:54 AM EST,ziyi_yang1@brown.edu,Global Avoidance,2,avoid a and b
-2023/01/23 1:14:54 AM EST,ziyi_yang1@brown.edu,Global Avoidance,2,do not make a single visit to a or b
+2023/01/23 1:14:54 AM EST,ziyi_yang1@brown.edu,Global Avoidance,2,do not make any single visit to a or b
 2023/01/23 1:14:54 AM EST,ziyi_yang1@brown.edu,Global Avoidance,2,you cannot go to a or b
 2023/01/23 1:15:43 AM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"avoid a, b, and c forever"
-2023/01/23 1:15:43 AM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"do not make a single visit to a, b, or c"
+2023/01/23 1:15:43 AM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"do not make any single visit to a, b, or c"
 2023/01/23 1:15:43 AM EST,ziyi_yang1@brown.edu,Global Avoidance,3,"you cannot go to a, b, or c"
 2023/01/23 1:16:08 AM EST,xinyu_liu@brown.edu,Wait,2,stay on a until you reach b
 2023/01/23 1:16:08 AM EST,xinyu_liu@brown.edu,Wait,2,you must stay on a until you visit b
@@ -994,31 +994,31 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 1:16:08 AM EST,xinyu_liu@brown.edu,Wait,2,do not leave a until you reach b
 2023/01/23 1:16:08 AM EST,xinyu_liu@brown.edu,Wait,2,keep going on a until you reach b
 2023/01/23 1:17:02 AM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"avoid a, b, c, and d forever"
-2023/01/23 1:17:02 AM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"do not make a single visit to a, b, c, or d"
+2023/01/23 1:17:02 AM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"do not make any single visit to a, b, c, or d"
 2023/01/23 1:17:02 AM EST,ziyi_yang1@brown.edu,Global Avoidance,4,"you cannot go to a, b, c, or d"
 2023/01/23 1:17:37 AM EST,xinyu_liu@brown.edu,Wait,2,keep going on a until you arrive at b
 2023/01/23 1:17:37 AM EST,xinyu_liu@brown.edu,Wait,2,you must keep going on a until you get to b
 2023/01/23 1:17:37 AM EST,xinyu_liu@brown.edu,Wait,2,you are not allowed to leave a until you get to b
 2023/01/23 1:20:15 AM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"avoid a, b, c, d, and h forever"
-2023/01/23 1:20:15 AM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"do not make a single visit to a, b, c, d, or h"
+2023/01/23 1:20:15 AM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"do not make any single visit to a, b, c, d, or h"
 2023/01/23 1:20:15 AM EST,ziyi_yang1@brown.edu,Global Avoidance,5,"you cannot go to a, b, c, d, or h"
 2023/01/23 1:25:42 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,do not visit b after a is visited
 2023/01/23 1:25:42 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,"you can go to a, but you must not go to b after that"
 2023/01/23 1:25:42 AM EST,ziyi_yang1@brown.edu,Future Avoidance,2,any visit to b is not allowed after you visit a
 2023/01/23 1:30:39 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,you cannot visit a more than once
-2023/01/23 1:30:39 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,never visit a again if you have visited it once
+2023/01/23 1:30:39 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,never visit a again after you have visited it once
 2023/01/23 1:30:39 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,1,you are good to visit a equal or less than once
 2023/01/23 1:32:45 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,you cannot visit a more than twice
-2023/01/23 1:32:45 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,never visit a again if you have visited it twice
+2023/01/23 1:32:45 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,never visit a again after you have visited it twice
 2023/01/23 1:32:45 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,2,you are good to visit a equal or less than twice
 2023/01/23 1:34:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,you cannot visit a more than three times
-2023/01/23 1:34:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,never visit a again if you have visited it three times
+2023/01/23 1:34:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,never visit a again after you have visited it three times
 2023/01/23 1:34:07 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,3,you are good to visit a equal or less than three times
 2023/01/23 1:37:58 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,you cannot visit a more than four times
-2023/01/23 1:37:58 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,never visit a again if you have visited it four times
+2023/01/23 1:37:58 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,never visit a again after you have visited it four times
 2023/01/23 1:37:58 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,4,you are good to visit a equal or less than four times
 2023/01/23 1:40:01 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,you cannot visit a more than five times
-2023/01/23 1:40:01 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,never visit a again if you have visited it five times
+2023/01/23 1:40:01 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,never visit a again after you have visited it five times
 2023/01/23 1:40:01 AM EST,ziyi_yang1@brown.edu,Upper Restricted Avoidance,5,you are good to visit a equal or less than five times
 2023/01/23 1:44:51 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,visit a equal or more than once
 2023/01/23 1:44:51 AM EST,ziyi_yang1@brown.edu,Lower Restricted Avoidance,1,you have to go to a one or more than one time
@@ -1062,7 +1062,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 2:54:00 AM EST,ziyi_yang1@brown.edu,Prompt Reaction,2,"if you visit a, make your way right to b right after that"
 2023/01/23 2:54:00 AM EST,ziyi_yang1@brown.edu,Prompt Reaction,2,"once you visit a, you can go nowhere but b immediately"
 2023/01/23 3:01:13 AM EST,ziyi_yang1@brown.edu,Bound Delay,2,"if you visit a, make sure you will visit b immediately after that. If you visit b, make sure you have visited a right before that"
-2023/01/23 3:01:13 AM EST,ziyi_yang1@brown.edu,Bound Delay,2,"you can visit a or b, but you need to make sure a is visited first and b is visited right after a"
+2023/01/23 3:01:13 AM EST,ziyi_yang1@brown.edu,Bound Delay,2,"after you visit a, you must visit b right after a, and you can only visit b immediately after visiting a"
 2023/01/23 3:01:13 AM EST,ziyi_yang1@brown.edu,Bound Delay,2,"if you want to visit a, make sure you will visit b immediately after that. If you want to visit b, make sure you will visit a right before that"
 2023/01/23 3:04:39 AM EST,ziyi_yang1@brown.edu,Wait,2,"once b is seen, feel free to leave a. Otherwise, stay at a"
 2023/01/23 3:04:39 AM EST,ziyi_yang1@brown.edu,Wait,2,do not leave a before b is seen
@@ -1083,13 +1083,13 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,You can only visit a twice or fewer times
 2023/01/23 4:04:39 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,Going to a twice locks it for future visits
 2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,Passing through a thrice will lock it for future visits
-2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,You can only visit a a maximum of three times
+2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,The maximum number of times you can visit a is three
 2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,Do not visit a any more than three times
 2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,You cannot reach a for four or more times
 2023/01/23 4:06:30 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,3,The maximum allowable visits to a is three
 2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,Visiting a for the fourth time will lock it for future visits
 2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,"Once you enter a for the fourth time, you can never reenter it"
-2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You can only visit a maximum of four times
+2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,The maximum number of times you can visit a four
 2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You are allowed at most four visits to a
 2023/01/23 4:07:47 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You are not allowed five or more visits to a
 2023/01/23 4:08:49 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,You can not visit a six or more times
@@ -1104,28 +1104,28 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 5:21:29 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Find a
 2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Visit a at least twice while leaving its region in between
 2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,"Find a, then leave a and then go back to it at least once again"
-2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Reach a minimum two times
+2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,The minimum number of times you can reach a is two
 2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,You must visit and then leave a at least twice
 2023/01/23 5:38:01 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,"Go to a, leave and then go to a once again"
 2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Go to a at least three times while leaving in between
 2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Do not visit a any fewer than three times
-2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,"Go to a then leave a, repeat at least thrice"
-2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You must pass through a three times of more
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Reach a at least three times
+2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You must pass through a three times or more
 2023/01/23 5:39:48 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,"Visit a at least three times, each time you must leave before coming back"
 2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,You are not allowed to visit a three times or fewer. You must visit a four times or more
 2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,Visit a at least four times while leaving in between
-2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,Go to a a minimum of four times
-2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,"Reach a then leave a, repeat at least four times"
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,The minimum number of times you must reach a is two
+2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,Move to a at least four times
 2023/01/23 5:41:05 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,4,you are required to make at least four separate visits to a
 2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,you must visit and then leave a at least five times
 2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Go to a then leave a at least five times
 2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,You must pass through a on at least five separate occasions
-2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Go through a a minimum of five times
+2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,The minimum number of times you must visit a is five
 2023/01/23 5:53:45 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Reach a then leave a and repeat this at least four more times
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a then leave a and never go back
-2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a only and only once. You can stay there for any period of time
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a exactly once. You can stay there for any period of time
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You are allowed to make only one visit to a
-2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You  can only reach and exit a exactly once
+2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,You can only reach and exit a exactly once
 2023/01/23 5:58:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,"Reach a and then leave a, then never come back to a"
 2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Go to a then leave a and repeat this exactly once more
 2023/01/23 6:07:25 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,You are required to make exactly two separate visits to a
@@ -1157,9 +1157,9 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,b should happen immediately in the next time step as soon as a is observed
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,If you see a then go to b at the very next time step
 2023/01/23 6:20:09 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,Always the response to a is b in the next time step
-2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occuring
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occurring
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,a and b are always separated by one time instant with a happening before. Neither b or a can be observed independently
-2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If a happen only and only then is b allowed to happen at the very next time instant
+2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If a happens only and only then is b allowed to happen at the very next time instant
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,If b happens only then a must have happened just one time step in the past
 2023/01/23 6:22:46 PM EST,ankitshah91@gmail.com,Bound Delay,2,"If a is observed only and only then should b be visited in the next time step, otherwise b should not be visited"
 2023/01/23 6:25:11 PM EST,ankitshah91@gmail.com,Wait,2,remain at a till you observe b
@@ -1190,21 +1190,21 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 6:42:55 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,Do not visit a any more than two times
 2023/01/23 6:42:55 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,the maximum allowable separate passes through a are two
 2023/01/23 6:42:55 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,2,You are not permitted to visit a any more than two distinct times
-2023/01/23 6:44:27 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,Visit a on a maximum of four separate occasions
+2023/01/23 6:44:27 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,Visit a on at most four separate occasions
 2023/01/23 6:44:27 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,You are not allowed to visit a on five or more separate occasions
 2023/01/23 6:44:27 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,4,Do not visit a more than four times
 2023/01/23 6:45:15 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Do not visit a any more than five times
 2023/01/23 6:45:15 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,The maximum allowable distinct visits to a are five
 2023/01/23 6:45:15 PM EST,ankitshah91@gmail.com,Upper Restricted Avoidance,5,Make sure to not visit a on any more than five separate occasions
-2023/01/23 6:45:54 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,Visit a at least once
-2023/01/23 6:45:54 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,go to a at least once
+2023/01/23 6:45:54 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,The minimum number of visits to a is once
+2023/01/23 6:45:54 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,make you go to a at least once
 2023/01/23 6:45:54 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,1,You are required to pass through a once
 2023/01/23 6:52:33 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Reach a on at least two separate occasions
 2023/01/23 6:52:33 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,Visit a at least twice
 2023/01/23 6:52:33 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,2,You are not allowed to have any less than two separate visits to a complete the task
 2023/01/23 6:53:21 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Reach on a three separate instances
-2023/01/23 6:53:21 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Make sure to not visit a any fewer than two times
-2023/01/23 6:53:21 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You need at least two distinct visits to a
+2023/01/23 6:53:21 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Make sure to not visit a any fewer than three times
+2023/01/23 6:53:21 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You need at least three distinct visits to a
 2023/01/23 6:54:03 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,You need at least three separate visits to a
 2023/01/23 6:54:03 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Do not visit a on any fewer than three separate instances
 2023/01/23 6:54:03 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,3,Make sure that you go to a at least three times
@@ -1214,9 +1214,9 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 6:59:20 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,You cannot complete the task without visiting a on five separate occasions
 2023/01/23 6:59:20 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Do not visit a any fewer than five separate times 
 2023/01/23 6:59:20 PM EST,ankitshah91@gmail.com,Lower Restricted Avoidance,5,Ensure that you have at least five separate times where you reach a
-2023/01/23 7:00:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Go to a only and only once
+2023/01/23 7:00:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Reach a exactly once
 2023/01/23 7:00:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Visit a no fewer or greater than once
-2023/01/23 7:00:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Go to a exactly once
+2023/01/23 7:00:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,1,Go visit a exactly once
 2023/01/23 7:01:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Go to a exactly twice
 2023/01/23 7:01:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Do not visit a any greater or fewer than two times
 2023/01/23 7:01:01 PM EST,ankitshah91@gmail.com,Exact Restricted Avoidance,2,Ensure that you have exactly two distinct visits to a
@@ -1236,7 +1236,7 @@ Timestamp,Username,LTL template type,Number of Propositions,Utterance
 2023/01/23 7:09:49 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,"Always, If you observe a proceed to reach b at the very next time instant"
 2023/01/23 7:09:49 PM EST,ankitshah91@gmail.com,Prompt Reaction,2,Whenever you observe a proceed to go to reach b at the next time instant
 2023/01/23 7:11:05 PM EST,ankitshah91@gmail.com,Bound Delay,2,Proceed to reach b at the next time instant only and only if you see a
-2023/01/23 7:11:05 PM EST,ankitshah91@gmail.com,Bound Delay,2,If an only if you observe a you should ensure that you get to location b at the next time instant
+2023/01/23 7:11:05 PM EST,ankitshah91@gmail.com,Bound Delay,2,If and only if you observe a you should ensure that you get to location b at the next time instant
 2023/01/23 7:11:05 PM EST,ankitshah91@gmail.com,Bound Delay,2,You must be at b at the next time step if and only if you have seen a hold true
 2023/01/23 7:12:02 PM EST,ankitshah91@gmail.com,Wait,2,Wait at a till you see b
 2023/01/23 7:12:02 PM EST,ankitshah91@gmail.com,Wait,2,Hold position at a for as long as b does not occur

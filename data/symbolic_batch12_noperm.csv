@@ -576,7 +576,7 @@ global_avoidance,"['a', 'b']",a and b cannot be visited at any time,& G ! a G ! 
 global_avoidance,"['a', 'b']",always keep away from a and b,& G ! a G ! b
 past_avoidance,"['a', 'b']",do not go to a until you see b,U ! a b
 past_avoidance,"['a', 'b']",avoid visiting a till you observe b,U ! a b
-past_avoidance,"['a', 'b']",dont go to a until b has occured,U ! a b
+past_avoidance,"['a', 'b']",do not go to a until b has occured,U ! a b
 past_avoidance,"['a', 'b']",once you observe b only then are you allowed to go to a,U ! a b
 past_avoidance,"['a', 'b']",you can visit a only after seeing b,U ! a b
 global_avoidance,['a'],avoid going to a,G ! a
@@ -588,7 +588,7 @@ global_avoidance,"['a', 'b']",do not go to a ever and do not ever go to b,& G ! 
 global_avoidance,"['a', 'b']",avoid reaching a and b,& G ! a G ! b
 global_avoidance,"['a', 'b']",never visit a and b ,& G ! a G ! b
 global_avoidance,"['a', 'b']",avoid going to a and avoid going to b,& G ! a G ! b
-global_avoidance,"['a', 'b']",make sure to never reach both a and b,& G ! a G ! b
+global_avoidance,"['a', 'b']",make sure to never reach either a or b,& G ! a G ! b
 global_avoidance,"['a', 'b', 'c']",avoid going to a b and c,& G ! a & G ! b G ! c
 global_avoidance,"['a', 'b', 'c']",never visit either one among a b and c,& G ! a & G ! b G ! c
 global_avoidance,"['a', 'b', 'c']",ensure that you never reach the locations a b and c,& G ! a & G ! b G ! c
@@ -726,7 +726,7 @@ global_avoidance,"['a', 'b', 'c', 'd', 'h']",a b c d and h cannot be visited at 
 global_avoidance,"['a', 'b', 'c', 'd', 'h']",always keep away from a b c d and h,& G ! a & G ! b & G ! c & G ! d G ! h
 future_avoidance,"['a', 'b']",do not go to b once you have visited a,G i a X G ! b
 future_avoidance,"['a', 'b']",never go to b once you go to a,G i a X G ! b
-future_avoidance,"['a', 'b']",if you have ever visited a once you cannot visit b afterward,G i a X G ! b
+future_avoidance,"['a', 'b']",after you visit a you cannot visit b afterward,G i a X G ! b
 future_avoidance,"['a', 'b']",once a is visited you cannot go to b any more,G i a X G ! b
 future_avoidance,"['a', 'b']",you can visit b before a is visited but you can never visit b afterward,G i a X G ! b
 upper_restricted_avoidance,['a'],you can go to a at most once,! F & a U a & ! a U ! a F a
@@ -858,7 +858,7 @@ wait,"['a', 'b']",stay at a before you see b,U a b
 wait,"['a', 'b']",you cannot go to other place from a unless you see b,U a b
 wait,"['a', 'b']",util you observe b stay at a,U a b
 wait,"['a', 'b']",you can leave after b is observed otherwise stay at a,U a b
-wait,"['a', 'b']",you must stay at a if you do not see b,U a b
+wait,"['a', 'b']",you must stay at a until you see b,U a b
 exact_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you must visit a exactly five times,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a
 delayed_reaction,"['a', 'b']",after you visit a you have to visit b later,G i a F b
 delayed_reaction,"['a', 'b']",you have to visit b after you visit a,G i a F b
@@ -877,7 +877,7 @@ prompt_reaction,"['a', 'b']",right after you visit a you must go to b,G i a X b
 prompt_reaction,"['a', 'b']",as soon as you get to a you have to move to b,G i a X b
 prompt_reaction,"['a', 'b']",you have to move to b as soon as you get to a,G i a X b
 past_avoidance,"['a', 'b']",never go to a until you see b,U ! a b
-past_avoidance,"['a', 'b']",you cannot go to a if b is not happened yet,U ! a b
+past_avoidance,"['a', 'b']",you cannot go to a before b happens,U ! a b
 past_avoidance,"['a', 'b']",you can only go to a after b is seen,U ! a b
 past_avoidance,"['a', 'b']",b must be observed before visiting a,U ! a b
 past_avoidance,"['a', 'b']",you can visit a but only after you see b,U ! a b
@@ -893,13 +893,13 @@ bound_delay,"['a', 'b']",once you go to a you have to move to b and you cannot v
 bound_delay,"['a', 'b']",you must visit b once you go to a and you must avoid b any other time,G e a X b
 bound_delay,"['a', 'b']",once you go to a you must visit b and you must avoid b any other time,G e a X b
 global_avoidance,['a'],avoid a forever,G ! a
-global_avoidance,['a'],do not make a single visit to a,G ! a
+global_avoidance,['a'],do not make any single visit to a,G ! a
 global_avoidance,['a'],you cannot go to a,G ! a
 global_avoidance,"['a', 'b']",avoid a and b,& G ! a G ! b
-global_avoidance,"['a', 'b']",do not make a single visit to a or b,& G ! a G ! b
+global_avoidance,"['a', 'b']",do not make any single visit to a or b,& G ! a G ! b
 global_avoidance,"['a', 'b']",you cannot go to a or b,& G ! a G ! b
 global_avoidance,"['a', 'b', 'c']",avoid a b and c forever,& G ! a & G ! b G ! c
-global_avoidance,"['a', 'b', 'c']",do not make a single visit to a b or c,& G ! a & G ! b G ! c
+global_avoidance,"['a', 'b', 'c']",do not make any single visit to a b or c,& G ! a & G ! b G ! c
 global_avoidance,"['a', 'b', 'c']",you cannot go to a b or c,& G ! a & G ! b G ! c
 wait,"['a', 'b']",stay on a until you reach b,U a b
 wait,"['a', 'b']",you must stay on a until you visit b,U a b
@@ -907,31 +907,31 @@ wait,"['a', 'b']",you cannot leave a until you visit b,U a b
 wait,"['a', 'b']",do not leave a until you reach b,U a b
 wait,"['a', 'b']",keep going on a until you reach b,U a b
 global_avoidance,"['a', 'b', 'c', 'd']",avoid a b c and d forever,& G ! a & G ! b & G ! c G ! d
-global_avoidance,"['a', 'b', 'c', 'd']",do not make a single visit to a b c or d,& G ! a & G ! b & G ! c G ! d
+global_avoidance,"['a', 'b', 'c', 'd']",do not make any single visit to a b c or d,& G ! a & G ! b & G ! c G ! d
 global_avoidance,"['a', 'b', 'c', 'd']",you cannot go to a b c or d,& G ! a & G ! b & G ! c G ! d
 wait,"['a', 'b']",keep going on a until you arrive at b,U a b
 wait,"['a', 'b']",you must keep going on a until you get to b,U a b
 wait,"['a', 'b']",you are not allowed to leave a until you get to b,U a b
 global_avoidance,"['a', 'b', 'c', 'd', 'h']",avoid a b c d and h forever,& G ! a & G ! b & G ! c & G ! d G ! h
-global_avoidance,"['a', 'b', 'c', 'd', 'h']",do not make a single visit to a b c d or h,& G ! a & G ! b & G ! c & G ! d G ! h
+global_avoidance,"['a', 'b', 'c', 'd', 'h']",do not make any single visit to a b c d or h,& G ! a & G ! b & G ! c & G ! d G ! h
 global_avoidance,"['a', 'b', 'c', 'd', 'h']",you cannot go to a b c d or h,& G ! a & G ! b & G ! c & G ! d G ! h
 future_avoidance,"['a', 'b']",do not visit b after a is visited,G i a X G ! b
 future_avoidance,"['a', 'b']",you can go to a but you must not go to b after that,G i a X G ! b
 future_avoidance,"['a', 'b']",any visit to b is not allowed after you visit a,G i a X G ! b
 upper_restricted_avoidance,['a'],you cannot visit a more than once,! F & a U a & ! a U ! a F a
-upper_restricted_avoidance,['a'],never visit a again if you have visited it once,! F & a U a & ! a U ! a F a
+upper_restricted_avoidance,['a'],never visit a again after you have visited it once,! F & a U a & ! a U ! a F a
 upper_restricted_avoidance,['a'],you are good to visit a equal or less than once,! F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b']",you cannot visit a more than twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b']",never visit a again if you have visited it twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b']",never visit a again after you have visited it twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b']",you are good to visit a equal or less than twice,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",you cannot visit a more than three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c']",never visit a again if you have visited it three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c']",never visit a again after you have visited it three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",you are good to visit a equal or less than three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you cannot visit a more than four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c', 'd']",never visit a again if you have visited it four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c', 'd']",never visit a again after you have visited it four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you are good to visit a equal or less than four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you cannot visit a more than five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",never visit a again if you have visited it five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",never visit a again after you have visited it five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you are good to visit a equal or less than five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,['a'],visit a equal or more than once,F a
 lower_restricted_avoidance,['a'],you have to go to a one or more than one time,F a
@@ -975,7 +975,7 @@ prompt_reaction,"['a', 'b']",you need to head to b immediately whenever you visi
 prompt_reaction,"['a', 'b']",if you visit a make your way right to b right after that,G i a X b
 prompt_reaction,"['a', 'b']",once you visit a you can go nowhere but b immediately,G i a X b
 bound_delay,"['a', 'b']",if you visit a make sure you will visit b immediately after that if you visit b make sure you have visited a right before that,G e a X b
-bound_delay,"['a', 'b']",you can visit a or b but you need to make sure a is visited first and b is visited right after a,G e a X b
+bound_delay,"['a', 'b']",after you visit a you must visit b right after a and you can only visit b immediately after visiting a,G e a X b
 bound_delay,"['a', 'b']",if you want to visit a make sure you will visit b immediately after that if you want to visit b make sure you will visit a right before that,G e a X b
 wait,"['a', 'b']",once b is seen feel free to leave a otherwise stay at a,U a b
 wait,"['a', 'b']",do not leave a before b is seen,U a b
@@ -996,13 +996,13 @@ upper_restricted_avoidance,"['a', 'b']",once you leave a for the second time you
 upper_restricted_avoidance,"['a', 'b']",you can only visit a twice or fewer times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b']",going to a twice locks it for future visits,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",passing through a thrice will lock it for future visits,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c']",you can only visit a a maximum of three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c']",the maximum number of times you can visit a is three,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",do not visit a any more than three times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",you cannot reach a for four or more times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c']",the maximum allowable visits to a is three,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",visiting a for the fourth time will lock it for future visits,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",once you enter a for the fourth time you can never reenter it,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you can only visit a maximum of four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c', 'd']",the maximum number of times you can visit a four,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you are allowed at most four visits to a,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you are not allowed five or more visits to a,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you can not visit a six or more times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
@@ -1017,28 +1017,28 @@ lower_restricted_avoidance,['a'],go through a,F a
 lower_restricted_avoidance,['a'],find a,F a
 lower_restricted_avoidance,"['a', 'b']",visit a at least twice while leaving its region in between,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b']",find a then leave a and then go back to it at least once again,F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b']",reach a minimum two times,F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b']",the minimum number of times you can reach a is two,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b']",you must visit and then leave a at least twice,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b']",go to a leave and then go to a once again,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",go to a at least three times while leaving in between,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",do not visit a any fewer than three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c']",go to a then leave a repeat at least thrice,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c']",you must pass through a three times of more,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c']",reach a at least three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c']",you must pass through a three times or more,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",visit a at least three times each time you must leave before coming back,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd']",you are not allowed to visit a three times or fewer you must visit a four times or more,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd']",visit a at least four times while leaving in between,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c', 'd']",go to a a minimum of four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c', 'd']",reach a then leave a repeat at least four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c', 'd']",the minimum number of times you must reach a is two,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c', 'd']",move to a at least four times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd']",you are required to make at least four separate visits to a,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you must visit and then leave a at least five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",go to a then leave a at least five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you must pass through a on at least five separate occasions,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",go through a a minimum of five times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",the minimum number of times you must visit a is five,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",reach a then leave a and repeat this at least four more times,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 exact_restricted_avoidance,['a'],visit a then leave a and never go back,M a | ! a G | a G ! a
-exact_restricted_avoidance,['a'],visit a only and only once you can stay there for any period of time,M a | ! a G | a G ! a
+exact_restricted_avoidance,['a'],visit a exactly once you can stay there for any period of time,M a | ! a G | a G ! a
 exact_restricted_avoidance,['a'],you are allowed to make only one visit to a,M a | ! a G | a G ! a
-exact_restricted_avoidance,['a'],you  can only reach and exit a exactly once,M a | ! a G | a G ! a
+exact_restricted_avoidance,['a'],you can only reach and exit a exactly once,M a | ! a G | a G ! a
 exact_restricted_avoidance,['a'],reach a and then leave a then never come back to a,M a | ! a G | a G ! a
 exact_restricted_avoidance,"['a', 'b']",go to a then leave a and repeat this exactly once more,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a
 exact_restricted_avoidance,"['a', 'b']",you are required to make exactly two separate visits to a,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a
@@ -1070,9 +1070,9 @@ prompt_reaction,"['a', 'b']",whenever a occurs b must occur at the very next tim
 prompt_reaction,"['a', 'b']",b should happen immediately in the next time step as soon as a is observed,G i a X b
 prompt_reaction,"['a', 'b']",if you see a then go to b at the very next time step,G i a X b
 prompt_reaction,"['a', 'b']",always the response to a is b in the next time step,G i a X b
-bound_delay,"['a', 'b']",b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occuring,G e a X b
+bound_delay,"['a', 'b']",b must occur in the very next time step that a occurs and a must happen in the immediately previous time step of b occurring,G e a X b
 bound_delay,"['a', 'b']",a and b are always separated by one time instant with a happening before neither b or a can be observed independently,G e a X b
-bound_delay,"['a', 'b']",if a happen only and only then is b allowed to happen at the very next time instant,G e a X b
+bound_delay,"['a', 'b']",if a happens only and only then is b allowed to happen at the very next time instant,G e a X b
 bound_delay,"['a', 'b']",if b happens only then a must have happened just one time step in the past,G e a X b
 bound_delay,"['a', 'b']",if a is observed only and only then should b be visited in the next time step otherwise b should not be visited,G e a X b
 wait,"['a', 'b']",remain at a till you observe b,U a b
@@ -1103,21 +1103,21 @@ upper_restricted_avoidance,['a'],the maximum allowable separate visits to a is o
 upper_restricted_avoidance,"['a', 'b']",do not visit a any more than two times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b']",the maximum allowable separate passes through a are two,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b']",you are not permitted to visit a any more than two distinct times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-upper_restricted_avoidance,"['a', 'b', 'c', 'd']",visit a on a maximum of four separate occasions,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+upper_restricted_avoidance,"['a', 'b', 'c', 'd']",visit a on at most four separate occasions,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",you are not allowed to visit a on five or more separate occasions,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd']",do not visit a more than four times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",do not visit a any more than five times,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",the maximum allowable distinct visits to a are five,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 upper_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",make sure to not visit a on any more than five separate occasions,! F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,['a'],visit a at least once,F a
-lower_restricted_avoidance,['a'],go to a at least once,F a
+lower_restricted_avoidance,['a'],the minimum number of visits to a is once,F a
+lower_restricted_avoidance,['a'],make you go to a at least once,F a
 lower_restricted_avoidance,['a'],you are required to pass through a once,F a
 lower_restricted_avoidance,"['a', 'b']",reach a on at least two separate occasions,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b']",visit a at least twice,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b']",you are not allowed to have any less than two separate visits to a complete the task,F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",reach on a three separate instances,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c']",make sure to not visit a any fewer than two times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-lower_restricted_avoidance,"['a', 'b', 'c']",you need at least two distinct visits to a,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c']",make sure to not visit a any fewer than three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+lower_restricted_avoidance,"['a', 'b', 'c']",you need at least three distinct visits to a,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",you need at least three separate visits to a,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",do not visit a on any fewer than three separate instances,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c']",make sure that you go to a at least three times,F & a U a & ! a U ! a F & a U a & ! a U ! a F a
@@ -1127,9 +1127,9 @@ lower_restricted_avoidance,"['a', 'b', 'c', 'd']",you are not permitted to compl
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",you cannot complete the task without visiting a on five separate occasions,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",do not visit a any fewer than five separate times ,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
 lower_restricted_avoidance,"['a', 'b', 'c', 'd', 'h']",ensure that you have at least five separate times where you reach a,F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F & a U a & ! a U ! a F a
-exact_restricted_avoidance,['a'],go to a only and only once,M a | ! a G | a G ! a
+exact_restricted_avoidance,['a'],reach a exactly once,M a | ! a G | a G ! a
 exact_restricted_avoidance,['a'],visit a no fewer or greater than once,M a | ! a G | a G ! a
-exact_restricted_avoidance,['a'],go to a exactly once,M a | ! a G | a G ! a
+exact_restricted_avoidance,['a'],go visit a exactly once,M a | ! a G | a G ! a
 exact_restricted_avoidance,"['a', 'b']",go to a exactly twice,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a
 exact_restricted_avoidance,"['a', 'b']",do not visit a any greater or fewer than two times,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a
 exact_restricted_avoidance,"['a', 'b']",ensure that you have exactly two distinct visits to a,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a
@@ -1149,7 +1149,7 @@ prompt_reaction,"['a', 'b']",go to b in the very next time instant whenever you 
 prompt_reaction,"['a', 'b']",always if you observe a proceed to reach b at the very next time instant,G i a X b
 prompt_reaction,"['a', 'b']",whenever you observe a proceed to go to reach b at the next time instant,G i a X b
 bound_delay,"['a', 'b']",proceed to reach b at the next time instant only and only if you see a,G e a X b
-bound_delay,"['a', 'b']",if an only if you observe a you should ensure that you get to location b at the next time instant,G e a X b
+bound_delay,"['a', 'b']",if and only if you observe a you should ensure that you get to location b at the next time instant,G e a X b
 bound_delay,"['a', 'b']",you must be at b at the next time step if and only if you have seen a hold true,G e a X b
 wait,"['a', 'b']",wait at a till you see b,U a b
 wait,"['a', 'b']",hold position at a for as long as b does not occur,U a b
