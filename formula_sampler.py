@@ -218,11 +218,22 @@ def lower_restricted_avoid_fixed(props):
     return f"F & {a} U {a} & ! {a} U ! {a} {lower_restricted_avoid_fixed(props)}"
 
 
-def exact_restricted_avoid_fixed(props):  # TODO: to be fixed
+def exact_restricted_avoid_fixed(props):
+    return f"M {exact_restricted_avoid_constraint1(props[:])} {exact_restricted_avoid_constraint2(props)}"
+
+
+def exact_restricted_avoid_constraint1(props):
     if len(props) == 1:
-        return f"U ! {props[0]} & {props[0]} U {props[0]} G ! {props[0]}"
+        return f"{props[0]}"
     a = props.pop(0)
-    return f"U ! {a} & {a} U {a} {exact_restricted_avoid_fixed(props)}"
+    return f"& {a} F & ! {a} F {exact_restricted_avoid_constraint1(props)}"
+
+
+def exact_restricted_avoid_constraint2(props):
+    if len(props) == 1:
+        return f"| ! {props[0]} G | {props[0]} G ! {props[0]}"
+    a = props.pop(0)
+    return f"| ! {a} G | {a} G {exact_restricted_avoid_constraint2(props)}"
 
 
 def instantaneous_reaction(props):
@@ -291,7 +302,7 @@ def utils(props):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pattern_type", type=str, default="ordered_visit", help="type of specification pattern.")
+    parser.add_argument("--pattern_type", type=str, default="exact_restricted_avoidance", help="type of specification pattern.")
     parser.add_argument("--nprops", type=int, default=2, help="number of propositions.")
     parser.add_argument("--debug", action="store_true", help="include to show LTL formulas in Spot instead of string.")
     args = parser.parse_args()
