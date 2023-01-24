@@ -2684,7 +2684,7 @@ LTL:",& F h & F c & F b & F a F d,& F a & F c & F h & F b F d,True
 valid,visit,5,"('h', 'c', 'b', 'd', 'a')","Utterance: go to h d b a and c at least once
 LTL:",& F h & F c & F b & F d F a,& F d & F h & F a & F c F b,True
 valid,visit,5,"('h', 'c', 'd', 'a', 'b')","Utterance: go to h a d b and c at least once
-LTL:",& F h & F c & F d & F a F b,& F a & F c & F h & F d F b,True
+LTL:",& F h & F c & F d & F a F b,& F a & F h & F b & F c F d,True
 valid,visit,5,"('h', 'c', 'd', 'b', 'a')","Utterance: go to h b d a and c at least once
 LTL:",& F h & F c & F d & F b F a,& F b & F h & F a & F c F d,True
 valid,visit,5,"('h', 'd', 'a', 'b', 'c')","Utterance: go to h b a c and d at least once
@@ -2962,7 +2962,7 @@ LTL:",& F a & F c & F d & F h F b,& F d & F b & F h & F a F c,True
 valid,visit,5,"('a', 'c', 'h', 'b', 'd')","Utterance: go to d h c b and a in any order
 LTL:",& F a & F c & F h & F b F d,& F h & F d & F b & F a F c,True
 valid,visit,5,"('a', 'c', 'h', 'd', 'b')","Utterance: go to b h c d and a in any order
-LTL:",& F a & F c & F h & F d F b,& F h & F b & F d & F a F c,True
+LTL:",& F a & F c & F h & F d F b,& F c & F b & F d & F a F h,True
 valid,visit,5,"('a', 'd', 'b', 'c', 'h')","Utterance: go to h b d c and a in any order
 LTL:",& F a & F d & F b & F c F h,& F d & F h & F c & F a F b,True
 valid,visit,5,"('a', 'd', 'b', 'h', 'c')","Utterance: go to c b d h and a in any order
@@ -3006,7 +3006,7 @@ LTL:",& F b & F c & F a & F h F d,& F a & F d & F h & F b F c,True
 valid,visit,5,"('b', 'c', 'd', 'a', 'h')","Utterance: go to h d c a and b in any order
 LTL:",& F b & F c & F d & F a F h,& F h & F d & F c & F a F b,True
 valid,visit,5,"('b', 'c', 'd', 'h', 'a')","Utterance: go to a d c h and b in any order
-LTL:",& F b & F c & F d & F h F a,& F c & F a & F h & F b F d,True
+LTL:",& F b & F c & F d & F h F a,& F d & F a & F h & F b F c,True
 valid,visit,5,"('b', 'c', 'h', 'a', 'd')","Utterance: go to d h c a and b in any order
 LTL:",& F b & F c & F h & F a F d,& F h & F d & F a & F b F c,True
 valid,visit,5,"('b', 'c', 'h', 'd', 'a')","Utterance: go to a h c d and b in any order
@@ -3038,7 +3038,7 @@ LTL:",& F b & F h & F d & F c F a,& F h & F a & F c & F b F d,True
 valid,visit,5,"('c', 'a', 'b', 'd', 'h')","Utterance: go to h b a d and c in any order
 LTL:",& F c & F a & F b & F d F h,& F h & F b & F a & F d F c,True
 valid,visit,5,"('c', 'a', 'b', 'h', 'd')","Utterance: go to d b a h and c in any order
-LTL:",& F c & F a & F b & F h F d,& F a & F d & F h & F c F b,True
+LTL:",& F c & F a & F b & F h F d,& F b & F d & F h & F c F a,True
 valid,visit,5,"('c', 'a', 'd', 'b', 'h')","Utterance: go to h d a b and c in any order
 LTL:",& F c & F a & F d & F b F h,& F a & F h & F b & F c F d,True
 valid,visit,5,"('c', 'a', 'd', 'h', 'b')","Utterance: go to b d a h and c in any order
@@ -3068,7 +3068,7 @@ LTL:",& F c & F d & F b & F a F h,& F h & F b & F d & F a F c,True
 valid,visit,5,"('c', 'd', 'b', 'h', 'a')","Utterance: go to a b d h and c in any order
 LTL:",& F c & F d & F b & F h F a,& F b & F a & F h & F c F d,True
 valid,visit,5,"('c', 'd', 'h', 'a', 'b')","Utterance: go to b h d a and c in any order
-LTL:",& F c & F d & F h & F a F b,& F a & F b & F c & F h F d,True
+LTL:",& F c & F d & F h & F a F b,& F h & F b & F a & F c F d,True
 valid,visit,5,"('c', 'd', 'h', 'b', 'a')","Utterance: go to a h d b and c in any order
 LTL:",& F c & F d & F h & F b F a,& F d & F a & F b & F c F h,True
 valid,visit,5,"('c', 'h', 'a', 'b', 'd')","Utterance: go to d a h b and c in any order
@@ -3110,7 +3110,7 @@ LTL:",& F d & F b & F h & F c F a,& F h & F a & F c & F d F b,True
 valid,visit,5,"('d', 'c', 'a', 'b', 'h')","Utterance: go to h a c b and d in any order
 LTL:",& F d & F c & F a & F b F h,& F a & F h & F b & F d F c,True
 valid,visit,5,"('d', 'c', 'a', 'h', 'b')","Utterance: go to b a c h and d in any order
-LTL:",& F d & F c & F a & F h F b,& F c & F b & F h & F d F a,True
+LTL:",& F d & F c & F a & F h F b,& F a & F b & F h & F d F c,True
 valid,visit,5,"('d', 'c', 'b', 'a', 'h')","Utterance: go to h b c a and d in any order
 LTL:",& F d & F c & F b & F a F h,& F b & F h & F a & F d F c,True
 valid,visit,5,"('d', 'c', 'b', 'h', 'a')","Utterance: go to a b c h and d in any order
@@ -3124,7 +3124,7 @@ LTL:",& F d & F h & F a & F b F c,& F h & F c & F b & F d F a,True
 valid,visit,5,"('d', 'h', 'a', 'c', 'b')","Utterance: go to b a h c and d in any order
 LTL:",& F d & F h & F a & F c F b,& F h & F b & F c & F d F a,True
 valid,visit,5,"('d', 'h', 'b', 'a', 'c')","Utterance: go to c b h a and d in any order
-LTL:",& F d & F h & F b & F a F c,& F h & F c & F a & F d F b,True
+LTL:",& F d & F h & F b & F a F c,& F b & F c & F a & F d F h,True
 valid,visit,5,"('d', 'h', 'b', 'c', 'a')","Utterance: go to a b h c and d in any order
 LTL:",& F d & F h & F b & F c F a,& F b & F a & F c & F d F h,True
 valid,visit,5,"('d', 'h', 'c', 'a', 'b')","Utterance: go to b c h a and d in any order
@@ -4260,7 +4260,7 @@ LTL:",F & h F & d F b,F & h F & d F b,True
 valid,sequenced_visit,3,"('h', 'd', 'c')","Utterance: go to h then go to d then go to c
 LTL:",F & h F & d F c,F & h F & d F c,True
 valid,sequenced_visit,3,"('a', 'b', 'c')","Utterance: visit a b c one after the other
-LTL:",F & a F & b F c,F & a F & b F & c F a F b F c F,Syntax Error
+LTL:",F & a F & b F c,F & a F & b F & c F a F b F c F h,Syntax Error
 valid,sequenced_visit,3,"('a', 'b', 'd')","Utterance: visit a b d one after the other
 LTL:",F & a F & b F d,F & a F & b F & d F a F b F d F c,Syntax Error
 valid,sequenced_visit,3,"('a', 'b', 'h')","Utterance: visit a b h one after the other
@@ -4268,7 +4268,7 @@ LTL:",F & a F & b F h,F & a F & b F & h F a F b F h F,Syntax Error
 valid,sequenced_visit,3,"('a', 'c', 'b')","Utterance: visit a c b one after the other
 LTL:",F & a F & c F b,F & a F & c F & b F a F c F b F h,Syntax Error
 valid,sequenced_visit,3,"('a', 'c', 'd')","Utterance: visit a c d one after the other
-LTL:",F & a F & c F d,F & a F & c F & d F a F c F d F,Syntax Error
+LTL:",F & a F & c F d,F & a F & c F & d F a F c F d F h,Syntax Error
 valid,sequenced_visit,3,"('a', 'c', 'h')","Utterance: visit a c h one after the other
 LTL:",F & a F & c F h,F & a F & c F & h F a F c F h F,Syntax Error
 valid,sequenced_visit,3,"('a', 'd', 'b')","Utterance: visit a d b one after the other
@@ -4280,7 +4280,7 @@ LTL:",F & a F & d F h,F & a F & d F & h F a F d F h F,Syntax Error
 valid,sequenced_visit,3,"('a', 'h', 'b')","Utterance: visit a h b one after the other
 LTL:",F & a F & h F b,F & a F & h F & b F a F h F b F,Syntax Error
 valid,sequenced_visit,3,"('a', 'h', 'c')","Utterance: visit a h c one after the other
-LTL:",F & a F & h F c,F & a F & h F & c F a F h F c F,Syntax Error
+LTL:",F & a F & h F c,F & a F & h F & c F a F h F c,Syntax Error
 valid,sequenced_visit,3,"('a', 'h', 'd')","Utterance: visit a h d one after the other
 LTL:",F & a F & h F d,F & a F & h F & d F a F h F d F c,Syntax Error
 valid,sequenced_visit,3,"('b', 'a', 'c')","Utterance: visit b a c one after the other
@@ -4380,7 +4380,7 @@ LTL:",F & h F & d F b,F & h F & d F & b F h F d F b F c,Syntax Error
 valid,sequenced_visit,3,"('h', 'd', 'c')","Utterance: visit h d c one after the other
 LTL:",F & h F & d F c,F & h F & d F & c F h F d F c F,Syntax Error
 valid,sequenced_visit,4,"('a', 'b', 'c', 'd')","Utterance: eventually in some sequence visit a b c and d each must be followed by the next
-LTL:",F & a F & b F & c F d,F & a F & b F & c F d,True
+LTL:",F & a F & b F & c F d,& F a & F b & F c F d,False
 valid,sequenced_visit,4,"('a', 'b', 'c', 'h')","Utterance: eventually in some sequence visit a b c and h each must be followed by the next
 LTL:",F & a F & b F & c F h,& F a & F b & F c F h,False
 valid,sequenced_visit,4,"('a', 'b', 'd', 'c')","Utterance: eventually in some sequence visit a b d and c each must be followed by the next
@@ -4390,7 +4390,7 @@ LTL:",F & a F & b F & d F h,F & a F & b F & d F h,True
 valid,sequenced_visit,4,"('a', 'b', 'h', 'c')","Utterance: eventually in some sequence visit a b h and c each must be followed by the next
 LTL:",F & a F & b F & h F c,& F a & F b & F h F c,False
 valid,sequenced_visit,4,"('a', 'b', 'h', 'd')","Utterance: eventually in some sequence visit a b h and d each must be followed by the next
-LTL:",F & a F & b F & h F d,& F a & F b & F h F d,False
+LTL:",F & a F & b F & h F d,F & a F & b F & h F d,True
 valid,sequenced_visit,4,"('a', 'c', 'b', 'd')","Utterance: eventually in some sequence visit a c b and d each must be followed by the next
 LTL:",F & a F & c F & b F d,F & a F & c F & b F d,True
 valid,sequenced_visit,4,"('a', 'c', 'b', 'h')","Utterance: eventually in some sequence visit a c b and h each must be followed by the next
@@ -4404,9 +4404,9 @@ LTL:",F & a F & c F & h F b,& F a & F c & F h F b,False
 valid,sequenced_visit,4,"('a', 'c', 'h', 'd')","Utterance: eventually in some sequence visit a c h and d each must be followed by the next
 LTL:",F & a F & c F & h F d,& F a & F c & F h F d,False
 valid,sequenced_visit,4,"('a', 'd', 'b', 'c')","Utterance: eventually in some sequence visit a d b and c each must be followed by the next
-LTL:",F & a F & d F & b F c,& F a & F d & F c F b,False
+LTL:",F & a F & d F & b F c,F & a F & d F & b F c,True
 valid,sequenced_visit,4,"('a', 'd', 'b', 'h')","Utterance: eventually in some sequence visit a d b and h each must be followed by the next
-LTL:",F & a F & d F & b F h,F & a F & d F & b F h,True
+LTL:",F & a F & d F & b F h,& F a & F d & F h F b,False
 valid,sequenced_visit,4,"('a', 'd', 'c', 'b')","Utterance: eventually in some sequence visit a d c and b each must be followed by the next
 LTL:",F & a F & d F & c F b,& F a & F d & F b F c,False
 valid,sequenced_visit,4,"('a', 'd', 'c', 'h')","Utterance: eventually in some sequence visit a d c and h each must be followed by the next
@@ -4420,7 +4420,7 @@ LTL:",F & a F & h F & b F c,F & a F & h F & b F c,True
 valid,sequenced_visit,4,"('a', 'h', 'b', 'd')","Utterance: eventually in some sequence visit a h b and d each must be followed by the next
 LTL:",F & a F & h F & b F d,F & a F & h F & b F d,True
 valid,sequenced_visit,4,"('a', 'h', 'c', 'b')","Utterance: eventually in some sequence visit a h c and b each must be followed by the next
-LTL:",F & a F & h F & c F b,F & a F & h F & c F b,True
+LTL:",F & a F & h F & c F b,& F a & F h & F b F c,False
 valid,sequenced_visit,4,"('a', 'h', 'c', 'd')","Utterance: eventually in some sequence visit a h c and d each must be followed by the next
 LTL:",F & a F & h F & c F d,F & a F & h F & c F d,True
 valid,sequenced_visit,4,"('a', 'h', 'd', 'b')","Utterance: eventually in some sequence visit a h d and b each must be followed by the next
@@ -4454,7 +4454,7 @@ LTL:",F & b F & c F & h F d,F & b F & c F & h F d,True
 valid,sequenced_visit,4,"('b', 'd', 'a', 'c')","Utterance: eventually in some sequence visit b d a and c each must be followed by the next
 LTL:",F & b F & d F & a F c,& F b & F d & F c F a,False
 valid,sequenced_visit,4,"('b', 'd', 'a', 'h')","Utterance: eventually in some sequence visit b d a and h each must be followed by the next
-LTL:",F & b F & d F & a F h,& F b & F d & F h F a,False
+LTL:",F & b F & d F & a F h,F & b F & d F & a F h,True
 valid,sequenced_visit,4,"('b', 'd', 'c', 'a')","Utterance: eventually in some sequence visit b d c and a each must be followed by the next
 LTL:",F & b F & d F & c F a,F & b F & d F & c F a,True
 valid,sequenced_visit,4,"('b', 'd', 'c', 'h')","Utterance: eventually in some sequence visit b d c and h each must be followed by the next
@@ -4560,9 +4560,9 @@ LTL:",F & d F & c F & h F a,F & d F & c F & h F a,True
 valid,sequenced_visit,4,"('d', 'c', 'h', 'b')","Utterance: eventually in some sequence visit d c h and b each must be followed by the next
 LTL:",F & d F & c F & h F b,F & d F & c F & h F b,True
 valid,sequenced_visit,4,"('d', 'h', 'a', 'b')","Utterance: eventually in some sequence visit d h a and b each must be followed by the next
-LTL:",F & d F & h F & a F b,F & d F & h F & a F b,True
+LTL:",F & d F & h F & a F b,& F d & F h & F b F a,False
 valid,sequenced_visit,4,"('d', 'h', 'a', 'c')","Utterance: eventually in some sequence visit d h a and c each must be followed by the next
-LTL:",F & d F & h F & a F c,& F d & F h & F c F a,False
+LTL:",F & d F & h F & a F c,F & d F & h F & a F c,True
 valid,sequenced_visit,4,"('d', 'h', 'b', 'a')","Utterance: eventually in some sequence visit d h b and a each must be followed by the next
 LTL:",F & d F & h F & b F a,F & d F & h F & b F a,True
 valid,sequenced_visit,4,"('d', 'h', 'b', 'c')","Utterance: eventually in some sequence visit d h b and c each must be followed by the next
@@ -4610,7 +4610,7 @@ LTL:",F & h F & c F & d F b,F & h F & c F & d F b,True
 valid,sequenced_visit,4,"('h', 'd', 'a', 'b')","Utterance: eventually in some sequence visit h d a and b each must be followed by the next
 LTL:",F & h F & d F & a F b,F & h F & d F & a F b,True
 valid,sequenced_visit,4,"('h', 'd', 'a', 'c')","Utterance: eventually in some sequence visit h d a and c each must be followed by the next
-LTL:",F & h F & d F & a F c,F & h F & d F & a F c,True
+LTL:",F & h F & d F & a F c,& F h & F d & F c F a,False
 valid,sequenced_visit,4,"('h', 'd', 'b', 'a')","Utterance: eventually in some sequence visit h d b and a each must be followed by the next
 LTL:",F & h F & d F & b F a,F & h F & d F & b F a,True
 valid,sequenced_visit,4,"('h', 'd', 'b', 'c')","Utterance: eventually in some sequence visit h d b and c each must be followed by the next
@@ -7584,7 +7584,7 @@ LTL:",& & U ! b a & U ! c b F c & U ! a U a U ! a b U ! b U b U ! b c,& & U ! c 
 valid,strictly_ordered_visit,3,"('a', 'b', 'd')","Utterance: do not visit d until you visit b visit b only once do no visit b until you visit a visit a only once
 LTL:",& & U ! b a & U ! d b F d & U ! a U a U ! a b U ! b U b U ! b d,& & U ! d b & U ! a d F a & U ! b U b U ! b d U ! d U d U ! d a,False
 valid,strictly_ordered_visit,3,"('a', 'b', 'h')","Utterance: do not visit h until you visit b visit b only once do no visit b until you visit a visit a only once
-LTL:",& & U ! b a & U ! h b F h & U ! a U a U ! a b U ! b U b U ! b h,& & U ! b a & U ! h b F h & U ! a U a U ! a b U ! b U b U ! b h,True
+LTL:",& & U ! b a & U ! h b F h & U ! a U a U ! a b U ! b U b U ! b h,& & U ! a b & U ! h a F h & U ! b U b U ! b a U ! a U a U ! a h,False
 valid,strictly_ordered_visit,3,"('a', 'c', 'b')","Utterance: do not visit b until you visit c visit c only once do no visit c until you visit a visit a only once
 LTL:",& & U ! c a & U ! b c F b & U ! a U a U ! a c U ! c U c U ! c b,& & U ! c a & U ! b c F b & U ! a U a U ! a c U ! c U c U ! c b,True
 valid,strictly_ordered_visit,3,"('a', 'c', 'd')","Utterance: do not visit d until you visit c visit c only once do no visit c until you visit a visit a only once
@@ -8324,7 +8324,7 @@ LTL:",& & U ! h c & U ! d h & U ! a d F a & U ! c U c U ! c h & U ! h U h U ! h 
 valid,strictly_ordered_visit,4,"('c', 'h', 'd', 'b')","Utterance: do not visit b until you visit d visit d only once do not visit d until you visit h visit h only once do no visit h until you visit c visit c only once
 LTL:",& & U ! h c & U ! d h & U ! b d F b & U ! c U c U ! c h & U ! h U h U ! h d U ! d U d U ! d b,& & U ! h c & U ! d h & U ! b d F b & U ! c U c U ! c h & U ! h U h U ! h d U ! d U d U ! d b,True
 valid,strictly_ordered_visit,4,"('d', 'a', 'b', 'c')","Utterance: do not visit c until you visit b visit b only once do not visit b until you visit a visit a only once do no visit a until you visit d visit d only once
-LTL:",& & U ! a d & U ! b a & U ! c b F c & U ! d U d U ! d a & U ! a U a U ! a b U ! b U b U ! b c,& & U ! a d & U ! b a & U ! c b F c & U ! d U d U ! d a & U ! a U a U ! a b U ! b U b U ! b c,True
+LTL:",& & U ! a d & U ! b a & U ! c b F c & U ! d U d U ! d a & U ! a U a U ! a b U ! b U b U ! b c,& & U ! c b & U ! a c & U ! d a F d & U ! b U b U ! b c & U ! c U c U ! c a U ! a U a U ! a d,False
 valid,strictly_ordered_visit,4,"('d', 'a', 'b', 'h')","Utterance: do not visit h until you visit b visit b only once do not visit b until you visit a visit a only once do no visit a until you visit d visit d only once
 LTL:",& & U ! a d & U ! b a & U ! h b F h & U ! d U d U ! d a & U ! a U a U ! a b U ! b U b U ! b h,& & U ! d a & U ! a d & U ! b a & U ! h b F h & U ! a U a U ! a d & U ! d U d U ! d a & U ! b U b U ! b h U ! h U h U ! h c,False
 valid,strictly_ordered_visit,4,"('d', 'a', 'c', 'b')","Utterance: do not visit b until you visit c visit c only once do not visit c until you visit a visit a only once do no visit a until you visit d visit d only once
@@ -13648,7 +13648,7 @@ LTL:",& G F a & G F b & G F d G F c,& G F a & G F d & G F c G F b,True
 valid,patrolling,4,"('a', 'b', 'd', 'h')","Utterance: go to a b d and h over and over again
 LTL:",& G F a & G F b & G F d G F h,& G F a & G F d & G F h G F b,True
 valid,patrolling,4,"('a', 'b', 'h', 'c')","Utterance: go to a b h and c over and over again
-LTL:",& G F a & G F b & G F h G F c,& G F a & G F c & G F h G F b,True
+LTL:",& G F a & G F b & G F h G F c,& G F a & G F h & G F b G F c,True
 valid,patrolling,4,"('a', 'b', 'h', 'd')","Utterance: go to a b h and d over and over again
 LTL:",& G F a & G F b & G F h G F d,& G F a & G F h & G F b G F d,True
 valid,patrolling,4,"('a', 'c', 'b', 'd')","Utterance: go to a c b and d over and over again
@@ -13742,7 +13742,7 @@ LTL:",& G F c & G F a & G F b G F h,& G F c & G F a & G F b G F h,True
 valid,patrolling,4,"('c', 'a', 'd', 'b')","Utterance: go to c a d and b over and over again
 LTL:",& G F c & G F a & G F d G F b,& G F c & G F a & G F d G F b,True
 valid,patrolling,4,"('c', 'a', 'd', 'h')","Utterance: go to c a d and h over and over again
-LTL:",& G F c & G F a & G F d G F h,& G F c & G F d & G F a G F h,True
+LTL:",& G F c & G F a & G F d G F h,& G F c & G F a & G F d G F h,True
 valid,patrolling,4,"('c', 'a', 'h', 'b')","Utterance: go to c a h and b over and over again
 LTL:",& G F c & G F a & G F h G F b,& G F c & G F a & G F h G F b,True
 valid,patrolling,4,"('c', 'a', 'h', 'd')","Utterance: go to c a h and d over and over again
@@ -13778,7 +13778,7 @@ LTL:",& G F c & G F h & G F a G F d,& G F c & G F a & G F h & G F d G F b,False
 valid,patrolling,4,"('c', 'h', 'b', 'a')","Utterance: go to c h b and a over and over again
 LTL:",& G F c & G F h & G F b G F a,& G F c & G F b & G F h & G F a G F d,False
 valid,patrolling,4,"('c', 'h', 'b', 'd')","Utterance: go to c h b and d over and over again
-LTL:",& G F c & G F h & G F b G F d,& G F c & G F b & G F h & G F d G F a,False
+LTL:",& G F c & G F h & G F b G F d,& G F c & G F h & G F b G F d,True
 valid,patrolling,4,"('c', 'h', 'd', 'a')","Utterance: go to c h d and a over and over again
 LTL:",& G F c & G F h & G F d G F a,& G F c & G F d & G F h G F a,True
 valid,patrolling,4,"('c', 'h', 'd', 'b')","Utterance: go to c h d and b over and over again
@@ -13816,7 +13816,7 @@ LTL:",& G F d & G F c & G F b G F a,& G F d & G F c & G F b G F a,True
 valid,patrolling,4,"('d', 'c', 'b', 'h')","Utterance: go to d c b and h over and over again
 LTL:",& G F d & G F c & G F b G F h,& G F d & G F b & G F c G F h,True
 valid,patrolling,4,"('d', 'c', 'h', 'a')","Utterance: go to d c h and a over and over again
-LTL:",& G F d & G F c & G F h G F a,& G F d & G F h & G F c G F a,True
+LTL:",& G F d & G F c & G F h G F a,& G F d & G F a & G F h G F c,True
 valid,patrolling,4,"('d', 'c', 'h', 'b')","Utterance: go to d c h and b over and over again
 LTL:",& G F d & G F c & G F h G F b,& G F d & G F h & G F c G F b,True
 valid,patrolling,4,"('d', 'h', 'a', 'b')","Utterance: go to d h a and b over and over again
@@ -13842,7 +13842,7 @@ LTL:",& G F h & G F a & G F c G F d,& G F h & G F c & G F a & G F d G F b,False
 valid,patrolling,4,"('h', 'a', 'd', 'b')","Utterance: go to h a d and b over and over again
 LTL:",& G F h & G F a & G F d G F b,& G F h & G F b & G F d G F a,True
 valid,patrolling,4,"('h', 'a', 'd', 'c')","Utterance: go to h a d and c over and over again
-LTL:",& G F h & G F a & G F d G F c,& G F h & G F a & G F d G F c,True
+LTL:",& G F h & G F a & G F d G F c,& G F h & G F c & G F d G F a,True
 valid,patrolling,4,"('h', 'b', 'a', 'c')","Utterance: go to h b a and c over and over again
 LTL:",& G F h & G F b & G F a G F c,& G F h & G F b & G F a G F c,True
 valid,patrolling,4,"('h', 'b', 'a', 'd')","Utterance: go to h b a and d over and over again
@@ -13870,7 +13870,7 @@ LTL:",& G F h & G F c & G F d G F b,& G F h & G F c & G F d G F b,True
 valid,patrolling,4,"('h', 'd', 'a', 'b')","Utterance: go to h d a and b over and over again
 LTL:",& G F h & G F d & G F a G F b,& G F h & G F b & G F a G F d,True
 valid,patrolling,4,"('h', 'd', 'a', 'c')","Utterance: go to h d a and c over and over again
-LTL:",& G F h & G F d & G F a G F c,& G F h & G F d & G F a G F c,True
+LTL:",& G F h & G F d & G F a G F c,& G F h & G F a & G F d G F c,True
 valid,patrolling,4,"('h', 'd', 'b', 'a')","Utterance: go to h d b and a over and over again
 LTL:",& G F h & G F d & G F b G F a,& G F h & G F b & G F d G F a,True
 valid,patrolling,4,"('h', 'd', 'b', 'c')","Utterance: go to h d b and c over and over again
@@ -14762,7 +14762,7 @@ LTL:",& G F d & G F b & G F a G F h,& & U ! d a & U ! h d & U ! b h F b & U ! a 
 valid,patrolling,4,"('d', 'b', 'c', 'a')","Utterance: do not go to c d a and b d finite number of times
 LTL:",& G F d & G F b & G F c G F a,& G ! c & G ! d & G ! a G ! b,False
 valid,patrolling,4,"('d', 'b', 'c', 'h')","Utterance: do not go to c d h and b d finite number of times
-LTL:",& G F d & G F b & G F c G F h,& & U ! d c & U ! h d & U ! b h F b & U ! c U c U ! c d & U ! d U d U ! d h U ! h U h U ! h b,False
+LTL:",& G F d & G F b & G F c G F h,& G ! c & G ! d & G ! h G ! b,False
 valid,patrolling,4,"('d', 'b', 'h', 'a')","Utterance: do not go to h d a and b d finite number of times
 LTL:",& G F d & G F b & G F h G F a,& G ! h & G ! d & G ! a G ! b,False
 valid,patrolling,4,"('d', 'b', 'h', 'c')","Utterance: do not go to h d c and b d finite number of times
@@ -14892,7 +14892,7 @@ LTL:",& G F b & G F a & G F c & G F d G F h,& G F b & G F h & G F c & G F a G F 
 valid,patrolling,5,"('b', 'a', 'c', 'h', 'd')","Utterance: go to b a c h and d infinitely often
 LTL:",& G F b & G F a & G F c & G F h G F d,& G F b & G F d & G F c & G F a G F h,True
 valid,patrolling,5,"('b', 'a', 'd', 'c', 'h')","Utterance: go to b a d c and h infinitely often
-LTL:",& G F b & G F a & G F d & G F c G F h,& G F a & G F h & G F b & G F d G F c,True
+LTL:",& G F b & G F a & G F d & G F c G F h,& G F b & G F c & G F d & G F a G F h,True
 valid,patrolling,5,"('b', 'a', 'd', 'h', 'c')","Utterance: go to b a d h and c infinitely often
 LTL:",& G F b & G F a & G F d & G F h G F c,& G F b & G F c & G F d & G F a G F h,True
 valid,patrolling,5,"('b', 'a', 'h', 'c', 'd')","Utterance: go to b a h c and d infinitely often
@@ -14990,7 +14990,7 @@ LTL:",& G F d & G F a & G F b & G F h G F c,& G F a & G F c & G F d & G F b G F 
 valid,patrolling,5,"('d', 'a', 'c', 'b', 'h')","Utterance: go to d a c b and h infinitely often
 LTL:",& G F d & G F a & G F c & G F b G F h,& G F a & G F h & G F d & G F c G F b,True
 valid,patrolling,5,"('d', 'a', 'c', 'h', 'b')","Utterance: go to d a c h and b infinitely often
-LTL:",& G F d & G F a & G F c & G F h G F b,& G F d & G F b & G F c & G F a G F h,True
+LTL:",& G F d & G F a & G F c & G F h G F b,& G F a & G F b & G F d & G F c G F h,True
 valid,patrolling,5,"('d', 'a', 'h', 'b', 'c')","Utterance: go to d a h b and c infinitely often
 LTL:",& G F d & G F a & G F h & G F b G F c,& G F a & G F c & G F d & G F h G F b,True
 valid,patrolling,5,"('d', 'a', 'h', 'c', 'b')","Utterance: go to d a h c and b infinitely often
@@ -20400,55 +20400,55 @@ LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G 
 valid,exact_restricted_avoidance,4,"('h', 'h', 'h', 'h')","Utterance: go to h four times and do not visit it anymore
 LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,exact_restricted_avoidance,5,"('a', 'a', 'a', 'a', 'a')","Utterance: go to a exactly five times
-LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G |,Syntax Error
+LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,True
 valid,exact_restricted_avoidance,5,"('b', 'b', 'b', 'b', 'b')","Utterance: go to b exactly five times
-LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G |,Syntax Error
+LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,True
 valid,exact_restricted_avoidance,5,"('c', 'c', 'c', 'c', 'c')","Utterance: go to c exactly five times
-LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G |,Syntax Error
+LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,True
 valid,exact_restricted_avoidance,5,"('d', 'd', 'd', 'd', 'd')","Utterance: go to d exactly five times
-LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G |,Syntax Error
+LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,True
 valid,exact_restricted_avoidance,5,"('h', 'h', 'h', 'h', 'h')","Utterance: go to h exactly five times
-LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G |,Syntax Error
+LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,exact_restricted_avoidance,5,"('a', 'a', 'a', 'a', 'a')","Utterance: complete exactly five separate visits to a
-LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G |,Syntax Error
+LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,True
 valid,exact_restricted_avoidance,5,"('b', 'b', 'b', 'b', 'b')","Utterance: complete exactly five separate visits to b
-LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G |,Syntax Error
+LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,True
 valid,exact_restricted_avoidance,5,"('c', 'c', 'c', 'c', 'c')","Utterance: complete exactly five separate visits to c
-LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G |,Syntax Error
+LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,True
 valid,exact_restricted_avoidance,5,"('d', 'd', 'd', 'd', 'd')","Utterance: complete exactly five separate visits to d
-LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G |,Syntax Error
+LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,True
 valid,exact_restricted_avoidance,5,"('h', 'h', 'h', 'h', 'h')","Utterance: complete exactly five separate visits to h
-LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G |,Syntax Error
+LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,exact_restricted_avoidance,5,"('a', 'a', 'a', 'a', 'a')","Utterance: visit a exactly five times
-LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G |,Syntax Error
+LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,True
 valid,exact_restricted_avoidance,5,"('b', 'b', 'b', 'b', 'b')","Utterance: visit b exactly five times
-LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G |,Syntax Error
+LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,True
 valid,exact_restricted_avoidance,5,"('c', 'c', 'c', 'c', 'c')","Utterance: visit c exactly five times
-LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G |,Syntax Error
+LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,True
 valid,exact_restricted_avoidance,5,"('d', 'd', 'd', 'd', 'd')","Utterance: visit d exactly five times
-LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G |,Syntax Error
+LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,True
 valid,exact_restricted_avoidance,5,"('h', 'h', 'h', 'h', 'h')","Utterance: visit h exactly five times
-LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G |,Syntax Error
+LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,exact_restricted_avoidance,5,"('a', 'a', 'a', 'a', 'a')","Utterance: you are required to complete exactly five separate visits to a
-LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G |,Syntax Error
+LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,True
 valid,exact_restricted_avoidance,5,"('b', 'b', 'b', 'b', 'b')","Utterance: you are required to complete exactly five separate visits to b
-LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G |,Syntax Error
+LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,True
 valid,exact_restricted_avoidance,5,"('c', 'c', 'c', 'c', 'c')","Utterance: you are required to complete exactly five separate visits to c
-LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G |,Syntax Error
+LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,True
 valid,exact_restricted_avoidance,5,"('d', 'd', 'd', 'd', 'd')","Utterance: you are required to complete exactly five separate visits to d
-LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G |,Syntax Error
+LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,True
 valid,exact_restricted_avoidance,5,"('h', 'h', 'h', 'h', 'h')","Utterance: you are required to complete exactly five separate visits to h
-LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G |,Syntax Error
+LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,exact_restricted_avoidance,5,"('a', 'a', 'a', 'a', 'a')","Utterance: go to a five times and do not visit it anymore
-LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G |,Syntax Error
+LTL:",M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,True
 valid,exact_restricted_avoidance,5,"('b', 'b', 'b', 'b', 'b')","Utterance: go to b five times and do not visit it anymore
-LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G |,Syntax Error
+LTL:",M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,True
 valid,exact_restricted_avoidance,5,"('c', 'c', 'c', 'c', 'c')","Utterance: go to c five times and do not visit it anymore
-LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G |,Syntax Error
+LTL:",M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,True
 valid,exact_restricted_avoidance,5,"('d', 'd', 'd', 'd', 'd')","Utterance: go to d five times and do not visit it anymore
-LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G |,Syntax Error
+LTL:",M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,True
 valid,exact_restricted_avoidance,5,"('h', 'h', 'h', 'h', 'h')","Utterance: go to h five times and do not visit it anymore
-LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G |,Syntax Error
+LTL:",M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,True
 valid,future_avoidance,2,"('a', 'b')","Utterance: you must stay away from b once you have gone to a
 LTL:",G i a X G ! b,G i a X G ! b,True
 valid,future_avoidance,2,"('a', 'c')","Utterance: you must stay away from c once you have gone to a
@@ -20796,7 +20796,7 @@ LTL:",G i c F h,G i c F h,True
 valid,delayed_reaction,2,"('d', 'a')","Utterance: if at any time d occurs then a must be reached once afterwards
 LTL:",G i d F a,G i d F a,True
 valid,delayed_reaction,2,"('d', 'b')","Utterance: if at any time d occurs then b must be reached once afterwards
-LTL:",G i d F b,G i d F b,True
+LTL:",G i d F b,G i d X b,False
 valid,delayed_reaction,2,"('d', 'c')","Utterance: if at any time d occurs then c must be reached once afterwards
 LTL:",G i d F c,G i d F c,True
 valid,delayed_reaction,2,"('d', 'h')","Utterance: if at any time d occurs then h must be reached once afterwards
@@ -20848,7 +20848,7 @@ LTL:",G i h F b,G i h X b,False
 valid,delayed_reaction,2,"('h', 'c')","Utterance: once you go to h you must go to c
 LTL:",G i h F c,G i h F c,True
 valid,delayed_reaction,2,"('h', 'd')","Utterance: once you go to h you must go to d
-LTL:",G i h F d,G i h F d,True
+LTL:",G i h F d,G i h X d,False
 valid,bound_delay,2,"('a', 'b')","Utterance: immediately after you go to a you have to move to b and you can not visit b any other time
 LTL:",G e a X b,G e a X b,True
 valid,bound_delay,2,"('a', 'c')","Utterance: immediately after you go to a you have to move to c and you can not visit c any other time
