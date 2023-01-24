@@ -1,5 +1,6 @@
 import os
 from time import sleep
+import logging
 import openai
 from tenacity import retry, wait_random_exponential, stop_after_attempt
 
@@ -39,8 +40,8 @@ class GPT3:
                 # logprobs=5
             )
         except:
-            sleep(30)
-            print('waiting for the server. sleep for 30 sec...')
+            sleep(60)
+            logging.info(f"waiting for the server. sleep for 30 sec...\n{query_prompt}")
             raw_responses = openai.Completion.create(
                 model=self.engine,
                 prompt=query_prompt,
@@ -50,7 +51,7 @@ class GPT3:
                 n=self.n,
                 # logprobs=5
             )
-            print('Ok continue')
+            logging.info('OK continue')
         if self.n == 1:
             responses = [raw_responses['choices'][0]['text'].strip()]
         else:
