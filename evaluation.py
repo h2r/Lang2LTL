@@ -162,7 +162,7 @@ if __name__ == "__main__":
             dataset["valid_iter"] = valid_iter
             split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
             save_to_file(dataset, split_dataset_fpath)
-            model = GPT3(engine, temp=0, max_tokens=64)
+            model = GPT3(engine, temp=0, max_tokens=128)
         else:
             raise ValueError(f"ERROR: model not recognized: {args.model}")
 
