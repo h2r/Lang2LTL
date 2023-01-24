@@ -59,7 +59,7 @@ Temporarily set environment variables for API key and organization ID
 export OPENAI_API_KEY=<YOUR_API_KEY>
 export ORG_ID=<YOUR_ORG_ID>
 ```
-Or permanently set the above environment variables in your ```~/.bash_file``` or ```~/.bashrc```.
+Or permanently set the above environment variables in your ```~/.bash_profile``` or ```~/.bashrc```.
 
 Run end-to-end language to LTL translation using GPT-3
 ```
