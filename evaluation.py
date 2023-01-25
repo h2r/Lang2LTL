@@ -44,7 +44,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
             is_correct = "True" if is_correct else "False"
         except SyntaxError:
             is_correct = "Syntax Error"
-        logging.info(f"{idx}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+        logging.info(f"{idx}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
         result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
         if train_or_valid == "valid":
             meta2accs[(pattern_type, nprops)].append(is_correct)
