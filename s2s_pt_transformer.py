@@ -16,7 +16,7 @@ from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
 from torch.utils.tensorboard import SummaryWriter
 
-from dataset import load_split_dataset
+from dataset_symbolic import load_split_dataset
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)
@@ -239,7 +239,7 @@ def greedy_decode(model, src, src_mask, max_len, start_symbol):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_utt_0.2_42.pkl',
+    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_ltl_type_2_42.pkl',
                         help='complete file path or prefix of file paths to train and test data for supervised seq2seq')
     args = parser.parse_args()
 
@@ -274,7 +274,7 @@ if __name__ == '__main__':
             print(f'Epoch: {epoch}, Train loss: {train_loss:.3f}, Val loss: {valid_loss:.3f}\n'
                   f'Epoch time: {(end_time-start_time):.3f}s')
             writer.add_scalars("Train Loss", {"train_loss": train_loss, "valid_loss": valid_loss}, epoch)
-        model_fpath = f'model/s2s_pt_transformer_{Path(split_dataset_fpath).stem}.pth'
-        torch.save(transformer.state_dict(), model_fpath)
+            model_fpath = f'model/s2s_pt_transformer_{Path(split_dataset_fpath).stem}_epoch{epoch}.pth'
+            torch.save(transformer.state_dict(), model_fpath)
         writer.flush()
         writer.close()
