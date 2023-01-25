@@ -84,24 +84,34 @@ def aggregate_results(result_fpaths, filter_types):
     and same values for first 3 columns.
     :param result_fpaths: paths to results file to be aggregated
     """
+    total_corrects, total_samples = 0, 0
+    meta2stats = defaultdict(list)
+    for n, result_fpath in enumerate(result_fpaths):
+        result = load_from_file(result_fpath, noheader=True)
+        print(result_fpath)
+        for row_idx, row in enumerate(result):
+            pattern_type, nprops, nutts, acc = row
+            if pattern_type not in filter_types and acc != "no valid data":
+                nprops, nutts, acc = int(nprops), int(nutts), float(acc)
+                meta2stats[(pattern_type, nprops)].append((nutts*acc, nutts))
+                total_corrects += nutts * acc
+                total_samples += nutts
+
     result_aux = load_from_file(result_fpaths[0], noheader=False)
     fields = result_aux.pop(0)
     aggregated_result = [fields]
     for row in result_aux:
-        aggregated_result.append(row[:3]+[0.0])
+        aggregated_result.append(row[:3] + [0.0])
+    for row_idx, (pattern_type, nprops, nutts, _) in enumerate(aggregated_result[1:]):
+        nprops, nutts = int(nprops), int(nutts)
+        stats = meta2stats[(pattern_type, nprops)]
+        corrects = sum([corrects_formula for corrects_formula, _ in stats])
+        nutts = sum([nutts_formula for _, nutts_formula in stats])
+        acc = corrects / nutts if nutts != 0 else "no valid data"
+        aggregated_result[row_idx+1] = [pattern_type, nprops, nutts, acc]
 
-    total_corrects, total_samples = 0, 0
-    for n, result_fpath in enumerate(result_fpaths):
-        result = load_from_file(result_fpath, noheader=True)
-
-        for row_idx, row in enumerate(result):
-            if row[0] not in filter_types and row[3] != "no valid data":
-                acc, nsamples = float(row[3]), int(row[2])
-                aggregated_result[row_idx+1][3] += 1 / (n + 1) * (acc - aggregated_result[row_idx+1][3])  # running average
-                total_corrects += nsamples * acc
-                total_samples += nsamples
-
-    aggregated_result_fpath = f"{os.path.commonprefix(result_fpaths)}.csv"
+    result_fnames = [os.path.splitext(result_fpath)[0] for result_fpath in result_fpaths]
+    aggregated_result_fpath = f"{os.path.commonprefix(result_fnames)}_aggregated.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
     print(f"total accuracy: {total_corrects / total_samples}")
 
@@ -112,10 +122,10 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_1.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_1.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
-    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1", help="name of model to be evaluated")
+    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
     args = parser.parse_args()
