@@ -118,17 +118,17 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
                 props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
                 if pattern_type in holdout_types:
                     valid_iter.append((utt, ltl))
-                    valid_meta.append((pattern_type, len(props)))
+                    valid_meta.append((pattern_type, props))
                 elif pattern_type in all_types:
                     if firstn:
                         formula = (pattern_type, len(props))
                         if formula2count[formula] < firstn:
                             train_iter.append((utt, ltl))
-                            train_meta.append((pattern_type, len(props)))
+                            train_meta.append((pattern_type, props))
                             formula2count[formula] += 1
                     else:
                         train_iter.append((utt, ltl))
-                        train_meta.append((pattern_type, len(props)))
+                        train_meta.append((pattern_type, props))
             dataset_name = Path(data_fpath).stem
             if firstn:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
@@ -153,16 +153,16 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
                 formula = (pattern_type, len(props))
                 if formula in holdout_formulas:
                     valid_iter.append((utt, ltl))
-                    valid_meta.append((pattern_type, len(props)))
+                    valid_meta.append((pattern_type, props))
                 elif formula in all_formulas:
                     if firstn:
                         if formula2count[formula] < firstn:
                             train_iter.append((utt, ltl))
-                            train_meta.append((pattern_type, len(props)))
+                            train_meta.append((pattern_type, props))
                             formula2count[formula] += 1
                     else:
                         train_iter.append((utt, ltl))
-                        train_meta.append((pattern_type, len(props)))
+                        train_meta.append((pattern_type, props))
             if firstn:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}_first{firstn}.pkl"
             else:
@@ -239,8 +239,8 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
     train_iter, train_meta, _, _ = load_split_dataset(split_fpath)
 
     meta2data = defaultdict(list)
-    for idx, ((utt, ltl), (pattern_type, nprop)) in enumerate(zip(train_iter, train_meta)):
-        meta2data[(pattern_type, nprop)].append((utt, ltl))
+    for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(train_iter, train_meta)):
+        meta2data[(pattern_type, len(props))].append((utt, ltl))
     sorted(meta2data.items(), key=lambda kv: kv[0])
 
     prompt = "Your task is to translate English utterances into linear temporal logic (LTL) formulas.\n\n"
