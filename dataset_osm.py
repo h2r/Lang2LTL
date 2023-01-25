@@ -1,8 +1,5 @@
 """
 Generate utterance-language grounded dataset, where propositions are from OSM landmarks.
-
-OSM landmarks from https://github.com/jasonxyliu/magic-skydio/tree/master/language/data/map_info_dicts
-Map ID to city name mapping from https://github.com/jasonxyliu/magic-skydio/blob/5b16d3f5151b250576ec1cdd513283f377368170/language/copynet/end2end_eval.py#L31
 """
 import argparse
 import os
@@ -10,8 +7,6 @@ from pathlib import Path
 import string
 from pprint import pprint
 import random
-from collections import defaultdict
-from sklearn.model_selection import train_test_split
 
 from utils import load_from_file, save_to_file, substitute_single_letter
 
@@ -81,41 +76,32 @@ def lmk_to_prop_copynet(lmk_name):
     return f"lm( {lmk_name} )lm"
 
 
-def construct_osm_dataset(data_fpath, osm_lmks_dpath, city, filter_types, size, seed, firstn, model):
-    dataset_symbolic = load_from_file(data_fpath)
-    meta2data = defaultdict(list)
-    for pattern_type, props, utt, ltl in dataset_symbolic:
-        if pattern_type not in filter_types:
-            meta2data[(pattern_type, props)].append((utt, ltl))
+def construct_osm_dataset(split_dpath, osm_lmks, city, seed, firstn, model, save_dpath):
+    print(f"Constructing grounded dataset for city: {city}")
+    split_fnames = [fname for fname in os.listdir(split_dpath) if "pkl" in fname]
+    save_dpath = os.path.join(save_dpath, "grounded", city)
+    os.makedirs(save_dpath, exist_ok=True)
 
-    train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data (type, props, lmk_names, seed_lmk)
-    osm_lmks = list(load_from_file(os.path.join(osm_lmks_dpath, f"{city}.json")).keys())
-    for (pattern_type, props), data in meta2data.items():
-        props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
-        _, valid_dataset = train_test_split(data, test_size=size, random_state=seed)
-        train_dataset = data[:firstn] if firstn else data
-        for idx, (utt, ltl) in enumerate(train_dataset):
-            seed_lmk = idx
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk, model)
-            train_iter.append((utt_grounded, ltl_grounded))
-            train_meta.append((pattern_type, props, lmk_names, seed_lmk))
-        for idx, (utt, ltl) in enumerate(valid_dataset):
-            seed_lmk = idx + 100  # +100 sample diff lmks from train
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed_lmk, model)
-            valid_iter.append((utt_grounded, ltl_grounded))
-            valid_meta.append((pattern_type, props, lmk_names, seed_lmk))
+    for split_fname in split_fnames:
+        print(split_fname)
+        dataset = load_from_file(os.path.join(split_dpath, split_fname))
+        train_iter, train_meta, valid_iter, valid_meta = dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
+        if firstn:
+            train_iter, train_meta = train_iter[:firstn], train_meta[:firstn]
+        dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, osm_lmks, seed, model)
+        dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, osm_lmks, seed+100000, model)  # avoid sampling lmks w/ same seeds for valid set
+        dataset["city"], dataset["seed_lmk"], dataset["firstn"], dataset["model"] = city, seed, firstn, model
+        save_to_file(dataset, os.path.join(save_dpath, split_fname))
 
-    osm_dataset = {
-        "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
-        "city": city, "size": size, "seed": seed,
-    }
-    dataset_name = Path(data_fpath).stem
-    osm_dataset_fpath = f"data/osm/{model}_grounded/{model}_{dataset_name}_{city}_size{size}_seed{seed}"
-    if firstn:
-        osm_dataset_fpath = f"{osm_dataset_fpath}_first{firstn}.pkl"
-    else:
-        osm_dataset_fpath = f"{osm_dataset_fpath}.pkl"
-    save_to_file(osm_dataset, osm_dataset_fpath)
+
+def substitute_lmks(data, meta_data, osm_lmks, seed, model):
+    data_grounded, meta_data_grounded = [], []
+    for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(data, meta_data)):
+        seed += idx  # diff seed to sample diff lmks for each utt-ltl pair
+        utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed, model)
+        data_grounded.append((utt_grounded, ltl_grounded))
+        meta_data_grounded.append((utt, ltl, pattern_type, props, lmk_names, seed))
+    return data_grounded, meta_data_grounded
 
 
 def substitute_lmk(utt, ltl, osm_lmks, props, seed, model):
@@ -134,10 +120,9 @@ def substitute_lmk(utt, ltl, osm_lmks, props, seed, model):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_fpath", type=str, default="data/symbolic_no_perm_batch1_0.csv", help="fpath to symbolic dataset.")
-    parser.add_argument("--city", type=str, default="all", help="city landmarks from. fname in data/osm/osm_lmks.")
-    parser.add_argument("--size", type=float, default=0.2, help="train, test split ratio.")
-    parser.add_argument("--seed", action="store", type=int, nargs="+", default=42, help="random seed for train, test split.")
+    parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm", help="dpath to all split datasets.")
+    parser.add_argument("--city", type=str, default="all", help="city landmarks from json files in data/osm/osm_lmks.")
+    parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
     parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
     parser.add_argument("--model", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="fpath to symbolic dataset.")
     args = parser.parse_args()
@@ -145,13 +130,11 @@ if __name__ == "__main__":
     osm_dpath = os.path.join("data", "osm")
     osm_lmks_dpath = os.path.join(osm_dpath, "lmks")
     # construct_lmk2prop(osm_lmks_dpath)  # for testing
+    if args.city == "all":
+        cities = [os.path.splitext(fname)[0] for fname in os.listdir(osm_lmks_dpath) if "json" in fname]
+    else:
+        cities = [args.city]
 
-    filter_types = ["fair_visit"]
-    seeds = args.seed if isinstance(args.seed, list) else [args.seed]
-    for seed in seeds:
-        if args.city == "all":
-            cities = [os.path.splitext(fname)[0] for fname in os.listdir(osm_lmks_dpath) if "json" in fname]
-        else:
-            cities = [args.city]
-        for city in cities:
-            construct_osm_dataset(args.data_fpath, osm_lmks_dpath, city, filter_types, args.size, seed, args.firstn, args.model)
+    for city in cities:
+        osm_lmks = list(load_from_file(os.path.join(osm_lmks_dpath, f"{city}.json")).keys())
+        construct_osm_dataset(args.split_dpath, osm_lmks, city, args.seed, args.firstn, args.model, osm_dpath)
