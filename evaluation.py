@@ -112,10 +112,10 @@ def evaluate_plan(out_traj, true_traj):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_1.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_1.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
-    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="name of model to be evaluated")
+    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1", help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
     args = parser.parse_args()
@@ -123,11 +123,11 @@ if __name__ == "__main__":
 
     if args.aggregate:  # aggregate acc-per-formula result files
         result_fpaths = [
-            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_0.csv",
-            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1.csv",
-            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2.csv",
+            "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_0.csv",
+            "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1.csv",
+            "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2.csv",
             "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42.csv",
-            # "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111.csv",
+            "results/finetuned_gpt3/utt_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111.csv",
         ]
         filter_types = ["fair_visit"]
         aggregate_results(result_fpaths, filter_types)
