@@ -115,7 +115,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
             train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pair
             formula2count = defaultdict(int)
             for pattern_type, props, utt, ltl in dataset:
-                props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+                props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
                 if pattern_type in holdout_types:
                     valid_iter.append((utt, ltl))
                     valid_meta.append((pattern_type, props))
@@ -139,7 +139,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
     elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
         all_formulas = []
         for pattern_type, props, _, _ in dataset:
-            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+            props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
             formula = (pattern_type, len(props))
             if pattern_type not in filter_types and formula not in all_formulas:
                 all_formulas.append(formula)
@@ -149,7 +149,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
             train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
             formula2count = defaultdict(int)
             for pattern_type, props, utt, ltl in dataset:
-                props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+                props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
                 formula = (pattern_type, len(props))
                 if formula in holdout_formulas:
                     valid_iter.append((utt, ltl))
