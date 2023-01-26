@@ -3,6 +3,7 @@ import logging
 import json
 import dill
 import csv
+import string
 from collections import defaultdict
 import numpy as np
 import nltk
@@ -141,6 +142,16 @@ def prefix_to_infix(formula):
             stack.insert(0, op)
 
     return stack[0]
+
+
+def convert_props_str(props_str):
+    """
+    Deserialize json string of propositions.
+    :param props_str: "('a',)", "('a', 'b')", "['a',]", "['a', 'b']",
+    :return: ['a'], ['a', 'b'], ['a'], ['a', 'b']
+    """
+    props = [prop.translate(str.maketrans('', '', string.punctuation)).strip() for prop in list(props_str.strip("()[]").split(", "))]
+    return props
 
 
 def save_to_file(data, fpth):

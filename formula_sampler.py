@@ -13,8 +13,17 @@ import spot
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"][:5]  # 16
 ALL_TYPES = [
-    "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",  # batch1
+    "visit", "sequenced_visit", "ordered_visit", "strictly_ordered_visit", "fair_visit", "patrolling",
+    "sequenced_patrolling", "ordered_patrolling", "strictly_ordered_patrolling", "fair_patrolling",  # batch1
+    "past_avoidance", "global_avoidance", "future_avoidance", "upper_restricted_avoidance",
+    "lower_restricted_avoidance", "exact_restricted_avoidance",
+    "instantaneous_reaction", "delayed_reaction", "prompt_reaction", "bound_reaction", "bound_delay", "wait",  # batch2
 ]
+FILTER_TYPES = [
+    "fair_visit", "sequenced_patrolling", "ordered_patrolling", "strictly_ordered_patrolling", "fair_patrolling",  # batch1
+    "instantaneous_reaction", "bound_reaction"  # batch2
+]
+FEASIBLE_TYPES = [typ for typ in ALL_TYPES if typ not in FILTER_TYPES]
 
 
 def sample_formulas(pattern_type, nprops, debug):
