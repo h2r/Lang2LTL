@@ -89,7 +89,7 @@ def construct_osm_dataset(split_dpath, osm_lmks, city, seed, firstn, model, save
         if firstn:
             train_iter, train_meta = train_iter[:firstn], train_meta[:firstn]
         dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, osm_lmks, seed, model)
-        dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, osm_lmks, seed+100000, model)  # avoid sampling lmks w/ same seeds for valid set
+        dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, osm_lmks, seed+10000000, model)  # +10000000 avoid sampele lmks w/ same seeds as train set
         dataset["city"], dataset["seed_lmk"], dataset["firstn"], dataset["model"] = city, seed, firstn, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
 
@@ -97,8 +97,11 @@ def construct_osm_dataset(split_dpath, osm_lmks, city, seed, firstn, model, save
 def substitute_lmks(data, meta_data, osm_lmks, seed, model):
     data_grounded, meta_data_grounded = [], []
     for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(data, meta_data)):
+        props = [prop.translate(str.maketrans('', '', string.punctuation)).strip() for prop in props]  # ['a,'] -> ['a']
         seed += idx  # diff seed to sample diff lmks for each utt-ltl pair
         utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, osm_lmks, props, seed, model)
+        if utt == utt_grounded or ltl == ltl_grounded:
+            raise ValueError(f"ERROR\n{utt}=={utt_grounded}\n{ltl}=={ltl_grounded}")
         data_grounded.append((utt_grounded, ltl_grounded))
         meta_data_grounded.append((utt, ltl, pattern_type, props, lmk_names, seed))
     return data_grounded, meta_data_grounded
