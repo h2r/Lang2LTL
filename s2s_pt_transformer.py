@@ -43,11 +43,12 @@ class Seq2SeqTransformer(nn.Module):
                                        num_encoder_layers=num_encoder_layers,
                                        num_decoder_layers=num_decoder_layers,
                                        dim_feedforward=dim_feedforward,
-                                       dropout=dropout)
-        self.generator = nn.Linear(embed_size, tar_vocab_size)
-        self.src_token_embed = TokenEmbedding(src_vocab_size, embed_size)
-        self.tar_token_embed = TokenEmbedding(tar_vocab_size, embed_size)
-        self.positional_encoding = PositionalEncoding(embed_size, dropout)
+                                       dropout=dropout,
+                                       device=DEVICE)
+        self.generator = nn.Linear(embed_size, tar_vocab_size).to(DEVICE)
+        self.src_token_embed = TokenEmbedding(src_vocab_size, embed_size).to(DEVICE)
+        self.tar_token_embed = TokenEmbedding(tar_vocab_size, embed_size).to(DEVICE)
+        self.positional_encoding = PositionalEncoding(embed_size, dropout).to(DEVICE)
 
     def forward(self, src, tar, src_mask, tar_mask, src_padding_mask, tar_padding_mask,
                 memory_key_padding_mask):
