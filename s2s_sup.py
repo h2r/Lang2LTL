@@ -13,7 +13,7 @@ from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
 from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
-from dataset import load_split_dataset
+from dataset_symbolic import load_split_dataset
 from evaluation import evaluate_lang_from_file
 from utils import count_params
 
