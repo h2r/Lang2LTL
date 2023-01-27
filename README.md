@@ -3,7 +3,7 @@
 conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
 conda activate lang2ltl
 pip install openai
-pip install nltk
+pip install nltk seaborn
 conda install pytorch torchtext torchdata -c pytorch
 pip install tensorboard
 pip install transformers datasets evaluate
