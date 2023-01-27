@@ -24,6 +24,14 @@ FILTER_TYPES = [
     "instantaneous_reaction", "bound_reaction"  # batch2
 ]
 FEASIBLE_TYPES = [typ for typ in ALL_TYPES if typ not in FILTER_TYPES]
+TYPE2NPROPS = {
+    "visit": [1, 2, 3, 4, 5], "sequenced_visit": [2, 3, 4, 5], "ordered_visit": [2, 3, 4, 5],
+    "strictly_ordered_visit": [2, 3, 4, 5], "patrolling": [1, 2, 3, 4, 5],  # batch1
+    "past_avoidance": [2], "global_avoidance": [1, 2, 3, 4, 5], "future_avoidance": [2],
+    "upper_restricted_avoidance": [1, 2, 3, 4, 5], "lower_restricted_avoidance": [1, 2, 3, 4, 5],
+    "exact_restricted_avoidance": [1, 2, 3, 4, 5], "delayed_reaction": [2], "prompt_reaction": [2],
+    "bound_delay": [2], "wait": [2]  # batch2
+}
 
 
 def sample_formulas(pattern_type, nprops, debug):
