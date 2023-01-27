@@ -10,8 +10,8 @@ import string
 from collections import defaultdict
 from sklearn.model_selection import train_test_split, KFold
 
-from utils import load_from_file, save_to_file, substitute_single_letter
-from formula_sampler import PROPS, ALL_TYPES, sample_formulas
+from utils import load_from_file, save_to_file, deserialize_props_str, substitute_single_letter
+from formula_sampler import PROPS, FEASIBLE_TYPES, FILTER_TYPES, sample_formulas
 
 
 def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset, perm_props=False):
@@ -89,13 +89,14 @@ def analyze_symbolic_dataset(data_fpath):
     save_to_file(analysis, analysis_fpath)
 
 
-def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types, perm_props, size, seed, firstn):
+def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_types, filter_types, perm_props, size, seed, firstn):
     """
     K-fold cross validation for type and formula holdout. Random sample for utterance holdout.
     If perm_props=True, assume data_fpath non-permuted for utt holdout, permuted for formula, type holdouts.
     :param data_fpath: path to symbolic dataset.
     :param split_dpath: directory to save train, test split.
     :param holdout_type: type of holdout test. choices are ltl_type, ltl_formula, utt.
+    :param feasible_types: all LTL types except filter types
     :param filter_types: LTL types to filter out.
     :param perm_props: True if permute propositions in utterances and their corresponding LTL formula.
     :param size: size of each fold for type and formula holdout; ratio of utterances to holdout for utterance holdout.
@@ -108,18 +109,17 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
     dataset_name = f"{'_'.join(Path(data_fpath).stem.split('_')[:2])}_perm" if perm_props else Path(data_fpath).stem  # remove noperm identifier from dataset name if perm_props=True
 
     if holdout_type == "ltl_type":  # hold out specified pattern types
-        all_types = [typ for typ in ALL_TYPES if typ not in filter_types]
-        kf = KFold(n_splits=len(all_types)//size, random_state=seed, shuffle=True)
-        for fold_idx, (train_indices, holdout_indices) in enumerate(kf.split(all_types)):
-            holdout_types = [all_types[idx] for idx in holdout_indices]
+        kf = KFold(n_splits=len(feasible_types)//size, random_state=seed, shuffle=True)
+        for fold_idx, (train_indices, holdout_indices) in enumerate(kf.split(feasible_types)):
+            holdout_types = [feasible_types[idx] for idx in holdout_indices]
             train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pair
             formula2count = defaultdict(int)
-            for pattern_type, props, utt, ltl in dataset:
-                props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
+            for pattern_type, props_str, utt, ltl in dataset:
+                props = deserialize_props_str(props_str)
                 if pattern_type in holdout_types:
                     valid_iter.append((utt, ltl))
                     valid_meta.append((pattern_type, props))
-                elif pattern_type in all_types:
+                elif pattern_type in feasible_types:
                     if firstn:
                         formula = (pattern_type, len(props))
                         if formula2count[formula] < firstn:
@@ -135,11 +135,11 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
             else:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                               holdout_type, filter_types, size, seed)
+                               holdout_type, holdout_types, size, seed)
     elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
         all_formulas = []
-        for pattern_type, props, _, _ in dataset:
-            props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
+        for pattern_type, props_str, _, _ in dataset:
+            props = deserialize_props_str(props_str)
             formula = (pattern_type, len(props))
             if pattern_type not in filter_types and formula not in all_formulas:
                 all_formulas.append(formula)
@@ -148,8 +148,8 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
             holdout_formulas = [all_formulas[idx] for idx in holdout_indices]
             train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
             formula2count = defaultdict(int)
-            for pattern_type, props, utt, ltl in dataset:
-                props = [prop.replace("'", "") for prop in list(props.strip(")(").split(", "))]  # "('a', 'b')" -> ['a', 'b']
+            for pattern_type, props_str, utt, ltl in dataset:
+                props = deserialize_props_str(props_str)
                 formula = (pattern_type, len(props))
                 if formula in holdout_formulas:
                     valid_iter.append((utt, ltl))
@@ -168,12 +168,12 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
             else:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                               holdout_type, filter_types, size, seed)
+                               holdout_type, holdout_formulas, size, seed)
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
         train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
         meta2data = defaultdict(list)
-        for pattern_type, props, utt, ltl in dataset:
-            props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
+        for pattern_type, props_str, utt, ltl in dataset:
+            props = deserialize_props_str(props_str)
             if pattern_type not in filter_types:
                 meta2data[(pattern_type, len(props))].append((utt, ltl))
         for (pattern_type, nprops), data in meta2data.items():
@@ -197,7 +197,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, filter_types,
         else:
             split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}.pkl"
         save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                           holdout_type, filter_types, size, seed)
+                           holdout_type, list(meta2data.keys()), size, seed)
     else:
         raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
 
@@ -214,11 +214,11 @@ def permute(pattern_type, nprops, utt, data, meta):
         meta.append((pattern_type, prop_perm))
 
 
-def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta, holdout_type, filter_types, size, seed):
+def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta, holdout_type, holdout_meta, size, seed):
     split_dataset = {
         "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
         "holdout_type": holdout_type,
-        "filter_types": filter_types,
+        "holdout_meta": holdout_meta,
         "size": size,
         "seed": seed
     }
@@ -268,7 +268,6 @@ if __name__ == "__main__":
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1, 2, 3], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
-    filter_types = ["fair_visit"]
 
     # Merge Google form responses from batches and construct non-permuted symbolic dataset for each batch
     data_fpaths = args.data_fpath if isinstance(args.data_fpath, list) else [args.data_fpath]
@@ -276,7 +275,7 @@ if __name__ == "__main__":
     if args.merge:
         for idx, data_fpath in enumerate(data_fpaths):
             symbolic_fpath = f"data/symbolic_batch{idx+1}_noperm.csv"
-            create_symbolic_dataset(data_fpath, symbolic_fpath, filter_types, args.update)
+            create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update)
             analyze_symbolic_dataset(symbolic_fpath)
         data_fpath = merge_batches(data_fpaths)
         symbolic_fpath = f"data/symbolic_batch{postfix}_noperm.csv"
@@ -291,21 +290,21 @@ if __name__ == "__main__":
     os.makedirs(prompt_dpath, exist_ok=True)
 
     # Construct non-permuted symbolic dataset from Google form responses
-    create_symbolic_dataset(data_fpath, symbolic_fpath, filter_types, args.update)
+    create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update)
     analyze_symbolic_dataset(symbolic_fpath)
 
     # Construct train, test split for utt holdout; permute if asked
     seeds = args.seeds_split if isinstance(args.seeds_split, list) else [args.seeds_split]
     for seed in seeds:
-        construct_split_dataset(symbolic_fpath, split_dpath, "utt", filter_types, args.perm, size=0.2, seed=seed, firstn=args.firstn)
+        construct_split_dataset(symbolic_fpath, split_dpath, "utt", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=0.2, seed=seed, firstn=args.firstn)
 
     # Construct train, test split for formula, type holdout; permute if asked
     if args.perm:
         symbolic_fpath = f"data/symbolic_batch{postfix}_perm.csv" if args.merge else f"data/symbolic_batch1_perm.csv"
-        create_symbolic_dataset(data_fpath, symbolic_fpath, filter_types, args.update, True)
+        create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, True)
         analyze_symbolic_dataset(symbolic_fpath)
-    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", filter_types, args.perm, size=1, seed=42, firstn=args.firstn)
-    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", filter_types, args.perm, size=9, seed=42, firstn=args.firstn)
+    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=3, seed=42, firstn=args.firstn)
+    construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=9, seed=42, firstn=args.firstn)
 
     # Generate prompts for off-the-shelf GPT-3
     split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]

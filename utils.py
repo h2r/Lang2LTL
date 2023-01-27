@@ -144,7 +144,7 @@ def prefix_to_infix(formula):
     return stack[0]
 
 
-def convert_props_str(props_str):
+def deserialize_props_str(props_str):
     """
     Deserialize json string of propositions.
     :param props_str: "('a',)", "('a', 'b')", "['a',]", "['a', 'b']",
