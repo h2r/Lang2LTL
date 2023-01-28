@@ -12,9 +12,9 @@ from utils import load_from_file, deserialize_props_str
 from formula_sampler import TYPE2NPROPS, sample_formulas
 
 
-def plot_cm(results_fpath, type2nprops):
+def plot_cm(results_fpath, type2nprops, debug):
     print(f"plotting confusion matrix for:\n{Path(results_fpath)}")
-    cm, all_types = construct_cm(results_fpath, type2nprops)
+    cm, all_types = construct_cm(results_fpath, type2nprops, debug)
 
     if "utt" in results_fpath:
         holdout_type = "Utterance Holdout"
@@ -37,10 +37,11 @@ def plot_cm(results_fpath, type2nprops):
     plt.show()
 
 
-def construct_cm(results_fpath, type2nprops):
+def construct_cm(results_fpath, type2nprops, debug):
     formula2type, formula2prop = find_all_formulas(type2nprops, "noperm" in results_fpath)
-    print(f"Total number of unique LTL formulas: {len(formula2type)}, {len(formula2prop)}")
-    print(f"Number of LTL type: {len(set(formula2type.values()))}")
+    if debug:
+        print(f"Total number of unique LTL formulas: {len(formula2type)}, {len(formula2prop)}")
+        print(f"Number of LTL type: {len(set(formula2type.values()))}")
 
     # pprint(formula2type)
     # breakpoint()
@@ -50,12 +51,12 @@ def construct_cm(results_fpath, type2nprops):
     total_errs = 0
     results = load_from_file(results_fpath)
     for idx, result in enumerate(results):
-        # print(f"result {idx}")
+        if debug:
+            print(f"result {idx}")
         result = result[1:]  # remove train_or_valid
         pattern_type, nprops, true_prop_perm_str, utt, true_ltl, output_ltl, is_correct = result
         if is_correct != "True":
             total_errs += 1
-        nprops = int(nprops)
         true_prop_perm = deserialize_props_str(true_prop_perm_str)
 
         if is_correct == "Syntax Error":
@@ -66,22 +67,26 @@ def construct_cm(results_fpath, type2nprops):
 
                 if len(true_prop_perm) != len(pred_prop_perm):
                     type2errs["incorrect_nprops"].append(result)
-                    print(f"Incorrect Nprop:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                    if debug:
+                        print(f"Incorrect Nprop:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                     # breakpoint()
                 elif true_prop_perm != pred_prop_perm and is_correct != "True":  # diff prop order and not spot equivalent, e.g visit 2
                     type2errs["incorrect_orders"].append(result)
-                    print(f"Incorrect Prop Order:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                    if debug:
+                        print(f"Incorrect Prop Order:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                     # breakpoint()
                 else:
                     if is_correct != "True":
                         type2errs["misclassified_types"].append(result)
-                        print(f"Misclassified Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{pattern_type} {formula2type[output_ltl]}\n")
+                        if debug:
+                            print(f"Misclassified Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{pattern_type} {formula2type[output_ltl]}\n")
                         # breakpoint()
                     y_true.append(pattern_type)
                     y_pred.append(formula2type[output_ltl])
             else:
                 type2errs["unknow_types"].append(result)
-                print(f"Unknown Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                if debug:
+                    print(f"Unknown Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                 # breakpoint()
 
     print(f"total number of errors:\t{total_errs}/{len(results)}\t= {total_errs/len(results)}")
@@ -118,6 +123,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--results_fpath", type=str, default="results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42.csv", help="fpath of results to analyze.")
     parser.add_argument("--split_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="fpath to split dataset used to produce results.")
+    parser.add_argument("--debug", action="store_true", help="True to print debug trace.")
     args = parser.parse_args()
 
-    plot_cm(args.results_fpath, TYPE2NPROPS)
+    plot_cm(args.results_fpath, TYPE2NPROPS, args.debug)
