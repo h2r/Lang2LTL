@@ -5,10 +5,12 @@ import argparse
 import os
 from pathlib import Path
 import string
-from pprint import pprint
 import random
+from collections import defaultdict
+from pprint import pprint
 
 from utils import load_from_file, save_to_file, substitute_single_letter
+from formula_sampler import PROPS
 
 
 def rename_map_files(osm_lmks_dpath):
@@ -76,9 +78,9 @@ def lmk_to_prop_copynet(lmk_name):
     return f"lm( {lmk_name} )lm"
 
 
-def construct_osm_dataset(split_dpath, osm_lmks, city, seed, firstn, model, save_dpath):
+def construct_osm_dataset(split_dpath, osm_lmks, city, seed, remove_perm, model, save_dpath):
     print(f"Constructing grounded dataset for city: {city}")
-    split_fnames = [fname for fname in os.listdir(split_dpath) if "pkl" in fname]
+    split_fnames = sorted([fname for fname in os.listdir(split_dpath) if "pkl" in fname])
     save_dpath = os.path.join(save_dpath, "grounded", city)
     os.makedirs(save_dpath, exist_ok=True)
 
@@ -86,11 +88,27 @@ def construct_osm_dataset(split_dpath, osm_lmks, city, seed, firstn, model, save
         print(split_fname)
         dataset = load_from_file(os.path.join(split_dpath, split_fname))
         train_iter, train_meta, valid_iter, valid_meta = dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
-        if firstn:
-            train_iter, train_meta = train_iter[:firstn], train_meta[:firstn]
+        print(f"before remove_perm: {len(valid_iter)} {len(valid_meta)}")
+        if remove_perm:
+            valid_iter_noperm, valid_meta_noperm = [], []
+            formula2data = defaultdict(set)  # keep unique utts
+            for (utt, ltl), (pattern_type, props) in zip(valid_iter, valid_meta):
+                props = list(props)
+                sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, PROPS[:len(props)])}  # remove perm
+                utt_noperm = substitute_single_letter(utt, sub_map)
+                ltl_noperm = substitute_single_letter(ltl, sub_map)
+                formula2data[(pattern_type, len(props))].add((utt_noperm, ltl_noperm))
+            for (pattern_type, nprops), data in formula2data.items():
+                for utt, ltl in data:
+                    valid_iter_noperm.append((utt, ltl))
+                    valid_meta_noperm.append((pattern_type, PROPS[:nprops]))
+            valid_iter, valid_meta = valid_iter_noperm, valid_meta_noperm
+        print(f"num of unique formulas: {len(set([(pattern_type, len(props)) for pattern_type, props in valid_meta]))}")
+        print(f"unique formulas:\n{set([(pattern_type, len(props)) for pattern_type, props in valid_meta])}")
+        print(f"after remove_perm: {len(valid_iter)} {len(valid_meta)}")
         dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, osm_lmks, seed, model)
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, osm_lmks, seed+10000000, model)  # +10000000 avoid sampele lmks w/ same seeds as train set
-        dataset["city"], dataset["seed_lmk"], dataset["firstn"], dataset["model"] = city, seed, firstn, model
+        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
 
 
@@ -126,7 +144,7 @@ if __name__ == "__main__":
     parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm", help="dpath to all split datasets.")
     parser.add_argument("--city", type=str, default="all", help="city landmarks from json files in data/osm/osm_lmks.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
-    parser.add_argument("--firstn", type=int, default=None, help="first n training samples.")
+    parser.add_argument("--remove_perm", action="store_true", help="True to remove permutations in validation set.")
     parser.add_argument("--model", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="fpath to symbolic dataset.")
     args = parser.parse_args()
 
@@ -140,4 +158,4 @@ if __name__ == "__main__":
 
     for city in cities:
         osm_lmks = list(load_from_file(os.path.join(osm_lmks_dpath, f"{city}.json")).keys())
-        construct_osm_dataset(args.split_dpath, osm_lmks, city, args.seed, args.firstn, args.model, osm_dpath)
+        construct_osm_dataset(args.split_dpath, osm_lmks, city, args.seed, args.remove_perm, args.model, osm_dpath)
