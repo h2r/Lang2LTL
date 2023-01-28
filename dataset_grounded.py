@@ -1,5 +1,5 @@
 """
-Generate utterance-language grounded dataset, where propositions are from given landmarks in OSM, CleanUp.
+Generate utterance-language grounded dataset with props substituted by lmks from a specific domain, e.g. OSM, CleanUp.
 """
 import argparse
 import os
