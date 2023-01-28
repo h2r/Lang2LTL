@@ -1,5 +1,5 @@
 """
-Generate utterance-language grounded dataset, where propositions are from OSM landmarks.
+Generate utterance-language grounded dataset, where propositions are from given landmarks in OSM, CleanUp.
 """
 import argparse
 import os
@@ -15,7 +15,7 @@ from formula_sampler import PROPS
 
 def rename_map_files(osm_lmks_dpath):
     """
-    Change file names for better interpretation.
+    Change OSM map file names for better interpretation.
     e.g. Map00.json -> new_york_1.json
     One time change after pulling dataset from CopyNet repo.
     """
