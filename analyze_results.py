@@ -65,28 +65,30 @@ def construct_cm(results_fpath, type2nprops, debug):
             if output_ltl in formula2type:
                 pred_prop_perm = formula2prop[output_ltl]
 
-                if len(true_prop_perm) != len(pred_prop_perm):
+                if formula2type[true_ltl] != formula2type[output_ltl]:
+                    type2errs["misclassified_type"].append(result)
+                    # print(f"Misclassified Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{pattern_type} {formula2type[output_ltl]}\n")
+                    # breakpoint()
+                    y_true.append(pattern_type)
+                    y_pred.append(formula2type[output_ltl])
+                elif len(true_prop_perm) != len(pred_prop_perm):
                     type2errs["incorrect_nprops"].append(result)
-                    if debug:
-                        print(f"Incorrect Nprop:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                    # print(f"Incorrect Nprops:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{true_prop_perm}\n{pred_prop_perm}")
+                    # breakpoint()
+                elif sorted(true_prop_perm) != sorted(pred_prop_perm):
+                    type2errs["incorrect_props"].append(result)
+                    # print(f"Incorrect Props:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{sorted(true_prop_perm)}, {sorted(pred_prop_perm)}")
                     # breakpoint()
                 elif true_prop_perm != pred_prop_perm and is_correct != "True":  # diff prop order and not spot equivalent, e.g visit 2
                     type2errs["incorrect_orders"].append(result)
-                    if debug:
-                        print(f"Incorrect Prop Order:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                    # print(f"Incorrect Prop Order:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                     # breakpoint()
                 else:
-                    if is_correct != "True":
-                        type2errs["misclassified_types"].append(result)
-                        if debug:
-                            print(f"Misclassified Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n{pattern_type} {formula2type[output_ltl]}\n")
-                        # breakpoint()
                     y_true.append(pattern_type)
                     y_pred.append(formula2type[output_ltl])
             else:
                 type2errs["unknow_types"].append(result)
-                if debug:
-                    print(f"Unknown Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
+                # print(f"Unknown Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                 # breakpoint()
 
     print(f"total number of errors:\t{total_errs}/{len(results)}\t= {total_errs/len(results)}")
