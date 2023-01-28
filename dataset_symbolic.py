@@ -71,8 +71,7 @@ def analyze_symbolic_dataset(data_fpath):
 
     counter = defaultdict(lambda: defaultdict(int))
     for ltl_type, props, utt, ltl in data:
-        # print(f"{ltl_type}, {props}, {utt}")
-        # print(spot.formula(ltl))
+        # print(f"{ltl_type}, {props}, {utt}\n{spot.formula(ltl)}")
         props = [prop.replace("'", "") for prop in list(props.strip("][").split(", "))]  # "['a', 'b']" -> ['a', 'b']
         counter[ltl_type][len(props)] += 1
 
@@ -105,7 +104,6 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_type
     """
     print(f"Generating train, test split for holdout type: {holdout_type}; seed: {seed}")
     dataset = load_from_file(data_fpath)
-
     dataset_name = f"{'_'.join(Path(data_fpath).stem.split('_')[:2])}_perm" if perm_props else Path(data_fpath).stem  # remove noperm identifier from dataset name if perm_props=True
 
     if holdout_type == "ltl_type":  # hold out specified pattern types
@@ -273,8 +271,9 @@ if __name__ == "__main__":
     data_fpaths = args.data_fpath if isinstance(args.data_fpath, list) else [args.data_fpath]
     postfix = "".join([f"{i}" for i in range(1, len(data_fpaths) + 1)])
     if args.merge:
-        for idx, data_fpath in enumerate(data_fpaths):
-            symbolic_fpath = f"data/symbolic_batch{idx+1}_noperm.csv"
+        for data_fpath in data_fpaths:
+            batch_id = Path(data_fpath).stem.split('_')[-1]
+            symbolic_fpath = f"data/symbolic_{batch_id}_noperm.csv"
             create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update)
             analyze_symbolic_dataset(symbolic_fpath)
         data_fpath = merge_batches(data_fpaths)
@@ -283,9 +282,10 @@ if __name__ == "__main__":
         prompt_dpath = f"data/prompt_symbolic_batch{postfix}_perm" if args.perm else f"data/prompt_symbolic_batch{postfix}_noperm"  # dpath to save prompts
     else:
         data_fpath = data_fpaths[0]
-        symbolic_fpath = f"data/symbolic_batch1_noperm.csv"
-        split_dpath = f"data/holdout_split_batch1_perm" if args.perm else f"data/holdout_split_batch1_noperm"  # dpath to save train, test split
-        prompt_dpath = f"data/prompt_symbolic_batch1_perm" if args.perm else f"data/prompt_symbolic_batch1_noperm"  # dpath to save prompts
+        batch_id = Path(data_fpath).stem.split('_')[-1]
+        symbolic_fpath = f"data/symbolic_{batch_id}_noperm.csv"
+        split_dpath = f"data/holdout_split_{batch_id}_perm" if args.perm else f"data/holdout_split_{batch_id}_noperm"  # dpath to save train, test split
+        prompt_dpath = f"data/prompt_symbolic_{batch_id}_perm" if args.perm else f"data/prompt_symbolic_{batch_id}_noperm"  # dpath to save prompts
     os.makedirs(split_dpath, exist_ok=True)
     os.makedirs(prompt_dpath, exist_ok=True)
 
@@ -300,7 +300,7 @@ if __name__ == "__main__":
 
     # Construct train, test split for formula, type holdout; permute if asked
     if args.perm:
-        symbolic_fpath = f"data/symbolic_batch{postfix}_perm.csv" if args.merge else f"data/symbolic_batch1_perm.csv"
+        symbolic_fpath = f"data/symbolic_batch{postfix}_perm.csv" if args.merge else f"data/symbolic_{batch_id}_perm.csv"
         create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, True)
         analyze_symbolic_dataset(symbolic_fpath)
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=3, seed=42, firstn=args.firstn)
