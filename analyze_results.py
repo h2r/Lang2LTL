@@ -108,8 +108,8 @@ def analyze_errs(result_fpath, type2nprops, debug):
         print(f"number of {typ}:\t{len(errs)}/{total_errs}\t= {len(errs)/total_errs}")
         out_str += f"number of {typ}:\t{len(errs)}/{total_errs}\t= {len(errs)/total_errs}\n"
         nerrs_caught += len(errs)
-    print(f"total number of errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}")
-    out_str += f"total number of errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}\n"
+    print(f"number of all errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}")
+    out_str += f"number of all errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}\n\n"
 
     # errs_caught = []
     # for errs in type2errs.values():
