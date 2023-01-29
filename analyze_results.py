@@ -42,19 +42,22 @@ def analyze_errs(result_fpath, type2nprops, debug):
     if debug:
         print(f"Total number of unique LTL formulas: {len(formula2type)}, {len(formula2prop)}")
         print(f"Number of LTL type: {len(set(formula2type.values()))}")
-
     # pprint(formula2type)
     # breakpoint()
 
+    results = load_from_file(result_fpath)
+    formula2nutts = defaultdict(int)
     y_true, y_pred = [], []
     type2errs = defaultdict(list)
     total_errs = 0
-    results = load_from_file(result_fpath)
     for idx, result in enumerate(results):
         if debug:
             print(f"result {idx}")
         result = result[1:]  # remove train_or_valid column because all results are valid
         pattern_type, nprops, true_prop_perm_str, utt, true_ltl, output_ltl, is_correct = result
+
+        formula2nutts[(pattern_type, nprops)] += 1
+
         if is_correct != "True":
             total_errs += 1
         true_prop_perm = deserialize_props_str(true_prop_perm_str)
@@ -102,13 +105,17 @@ def analyze_errs(result_fpath, type2nprops, debug):
                     # print(f"Unknown Type:\n{pattern_type}, {nprops}, {true_prop_perm_str}\n{utt}\n{true_ltl}\n{output_ltl}\n")
                     # breakpoint()
 
+    formula2nutts_sorted = sorted(formula2nutts.items(), key=lambda kv: kv[1], reverse=True)
+    print(formula2nutts_sorted)
+    out_str += f"{formula2nutts_sorted}\n"
+
     type2errs_sorted = sorted(type2errs.items(), key=lambda kv: len(kv[1]), reverse=True)
     nerrs_caught = 0
     for typ, errs in type2errs_sorted:
         print(f"number of {typ}:\t{len(errs)}/{total_errs}\t= {len(errs)/total_errs}")
         out_str += f"number of {typ}:\t{len(errs)}/{total_errs}\t= {len(errs)/total_errs}\n"
         nerrs_caught += len(errs)
-    print(f"number of all errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}")
+    print(f"number of all errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}\n")
     out_str += f"number of all errors:\t{total_errs}/{len(results)}\t= {total_errs / len(results)}\n\n"
 
     # errs_caught = []
@@ -144,7 +151,7 @@ def find_all_formulas(type2nprops, perm):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--result_path", type=str, default="results/finetuned_gpt3/utt_holdout_batch12_perm", help="fpath or dpath of holdout result to analyze.")
+    parser.add_argument("--result_path", type=str, default="results/finetuned_gpt3/formula_holdout_batch12_perm", help="fpath or dpath of holdout result to analyze.")
     parser.add_argument("--split_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_42.pkl", help="fpath to split dataset used to produce results.")
     parser.add_argument("--debug", action="store_true", help="True to print debug trace.")
     args = parser.parse_args()
