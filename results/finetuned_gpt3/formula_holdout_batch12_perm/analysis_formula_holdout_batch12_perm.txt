@@ -1,0 +1,46 @@
+results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv
+number of misclassified_type:	831/1993	= 0.41695935775213244
+number of syntax_errors:	593/1993	= 0.2975413948820873
+number of incorrect_nprops:	462/1993	= 0.23181133968891118
+number of unknow_types:	92/1993	= 0.04616156547917712
+number of incorrect_orders:	15/1993	= 0.007526342197691922
+number of all errors:	1993/8380	= 0.23782816229116946
+
+results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold3.csv
+number of incorrect_nprops:	1146/2775	= 0.412972972972973
+number of misclassified_type:	703/2775	= 0.25333333333333335
+number of syntax_errors:	643/2775	= 0.2317117117117117
+number of unknow_types:	283/2775	= 0.10198198198198198
+number of all errors:	2775/4415	= 0.6285390713476784
+
+results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold2.csv
+number of misclassified_type:	894/1804	= 0.4955654101995565
+number of incorrect_nprops:	589/1804	= 0.32649667405764965
+number of syntax_errors:	202/1804	= 0.11197339246119734
+number of unknow_types:	104/1804	= 0.057649667405764965
+number of incorrect_orders:	13/1804	= 0.007206208425720621
+number of incorrect_props:	2/1804	= 0.0011086474501108647
+number of all errors:	1804/5410	= 0.333456561922366
+
+results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold0.csv
+number of syntax_errors:	2295/4422	= 0.5189959294436907
+number of misclassified_type:	1082/4422	= 0.24468566259611035
+number of incorrect_nprops:	836/4422	= 0.1890547263681592
+number of unknow_types:	209/4422	= 0.0472636815920398
+number of all errors:	4422/16660	= 0.2654261704681873
+
+results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold1.csv
+number of syntax_errors:	3097/7675	= 0.40351791530944625
+number of incorrect_nprops:	1761/7675	= 0.22944625407166125
+number of unknow_types:	1638/7675	= 0.21342019543973942
+number of misclassified_type:	1029/7675	= 0.13407166123778502
+number of incorrect_orders:	150/7675	= 0.019543973941368076
+number of all errors:	7675/14790	= 0.5189317106152807
+
+number of syntax_errors:	6830/18669	= 0.36584712625207566
+number of incorrect_nprops:	4794/18669	= 0.25678932990519043
+number of misclassified_type:	4539/18669	= 0.24313032299533988
+number of unknow_types:	2326/18669	= 0.12459156891102897
+number of incorrect_orders:	178/18669	= 0.009534522470405486
+number of incorrect_props:	2/18669	= 0.00010712946595961219
+total number of errors:	18669/49655	= 0.37597422213271575

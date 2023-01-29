@@ -1,0 +1,46 @@
+results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111.csv
+number of misclassified_type:	310/526	= 0.5893536121673004
+number of incorrect_nprops:	125/526	= 0.2376425855513308
+number of incorrect_orders:	60/526	= 0.11406844106463879
+number of unknow_types:	17/526	= 0.03231939163498099
+number of syntax_errors:	14/526	= 0.026615969581749048
+number of all errors:	526/10725	= 0.04904428904428904
+
+results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42.csv
+number of misclassified_type:	441/634	= 0.695583596214511
+number of incorrect_orders:	61/634	= 0.09621451104100946
+number of syntax_errors:	47/634	= 0.07413249211356467
+number of unknow_types:	43/634	= 0.06782334384858044
+number of incorrect_nprops:	42/634	= 0.06624605678233439
+number of all errors:	634/10725	= 0.059114219114219116
+
+results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_0.csv
+number of unknow_types:	297/698	= 0.42550143266475643
+number of misclassified_type:	222/698	= 0.31805157593123207
+number of incorrect_nprops:	173/698	= 0.24785100286532952
+number of incorrect_orders:	4/698	= 0.0057306590257879654
+number of syntax_errors:	2/698	= 0.0028653295128939827
+number of all errors:	698/10725	= 0.06508158508158508
+
+results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_1.csv
+number of misclassified_type:	497/831	= 0.5980746089049338
+number of incorrect_nprops:	225/831	= 0.27075812274368233
+number of incorrect_orders:	55/831	= 0.06618531889290012
+number of unknow_types:	31/831	= 0.03730445246690734
+number of syntax_errors:	23/831	= 0.027677496991576414
+number of all errors:	831/10725	= 0.07748251748251749
+
+results/finetuned_gpt3/utt_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2.csv
+number of misclassified_type:	218/630	= 0.346031746031746
+number of unknow_types:	136/630	= 0.21587301587301588
+number of syntax_errors:	126/630	= 0.2
+number of incorrect_nprops:	125/630	= 0.1984126984126984
+number of incorrect_orders:	25/630	= 0.03968253968253968
+number of all errors:	630/10725	= 0.05874125874125874
+
+total number of misclassified_type:	1688/3319	= 0.5085869237722206
+total number of incorrect_nprops:	690/3319	= 0.2078939439590238
+total number of unknow_types:	524/3319	= 0.15787887918047605
+total number of syntax_errors:	212/3319	= 0.06387466104248267
+total number of incorrect_orders:	205/3319	= 0.06176559204579693
+total number of errors:	3319/53625	= 0.061892773892773895

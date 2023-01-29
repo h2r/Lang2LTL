@@ -1,0 +1,37 @@
+results/finetuned_gpt3/type_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold4_new.csv
+number of misclassified_type:	13796/14944	= 0.9231798715203426
+number of unknow_types:	985/14944	= 0.0659127408993576
+number of syntax_errors:	145/14944	= 0.009702890792291221
+number of incorrect_nprops:	11/14944	= 0.0007360813704496788
+number of incorrect_props:	7/14944	= 0.0004684154175588865
+number of all errors:	14944/15320	= 0.9754569190600523
+
+results/finetuned_gpt3/type_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold2_new.csv
+number of misclassified_type:	14406/14860	= 0.9694481830417228
+number of syntax_errors:	228/14860	= 0.015343203230148048
+number of unknow_types:	226/14860	= 0.015208613728129206
+number of all errors:	14860/14860	= 1.0
+
+results/finetuned_gpt3/type_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold3_new.csv
+number of misclassified_type:	8679/8850	= 0.9806779661016949
+number of syntax_errors:	128/8850	= 0.014463276836158192
+number of unknow_types:	43/8850	= 0.004858757062146893
+number of all errors:	8850/8850	= 1.0
+
+results/finetuned_gpt3/type_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold1_new.csv
+number of misclassified_type:	1444/1537	= 0.9394925178919974
+number of unknow_types:	56/1537	= 0.03643461288223813
+number of syntax_errors:	37/1537	= 0.024072869225764477
+number of all errors:	1537/1540	= 0.9980519480519481
+
+results/finetuned_gpt3/type_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold0_new.csv
+number of misclassified_type:	8879/9074	= 0.9785100286532952
+number of syntax_errors:	195/9074	= 0.02148997134670487
+number of all errors:	9074/9085	= 0.9987892129884425
+
+number of misclassified_type:	47204/49265	= 0.9581650258804425
+number of unknow_types:	1310/49265	= 0.02659088602456105
+number of syntax_errors:	733/49265	= 0.014878717141987212
+number of incorrect_nprops:	11/49265	= 0.00022328224906119964
+number of incorrect_props:	7/49265	= 0.00014208870394803613
+total number of errors:	49265/49655	= 0.9921458060618266
