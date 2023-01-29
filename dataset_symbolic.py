@@ -14,6 +14,28 @@ from utils import load_from_file, save_to_file, deserialize_props_str, substitut
 from formula_sampler import PROPS, FEASIBLE_TYPES, FILTER_TYPES, sample_formulas
 
 
+def merge_batches(batch_fpaths):
+    """
+    Merge aggregated Google form responses from multiple csv files into 1.
+    Assume all csv files have same field names in same order.
+    :param batch_fpaths: aggregated responses from multiple batches of data collection.
+    :return: fpath of merged aggregated responses.
+    """
+    data_aux = load_from_file(batch_fpaths[0], noheader=False)
+    field = data_aux[0]
+    data_merged = [field]
+
+    for batch_fpath in batch_fpaths:
+        print(f"{batch_fpath}\nNumber of responses: {len(load_from_file(batch_fpath))}\n")
+        data_merged.extend(load_from_file(batch_fpath))
+
+    postfix = "".join([f"{i}" for i in range(1, len(batch_fpaths) + 1)])
+    data_fpath = f"{os.path.commonprefix(batch_fpaths)}{postfix}.csv"
+    save_to_file(data_merged, data_fpath)
+
+    return data_fpath
+
+
 def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset, perm_props=False):
     """
     Generate non-permuted symbolic dataset for training symbolic translation module.
@@ -41,28 +63,6 @@ def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset
                     csv_symbolic.append([pattern_type, PROPS[:int(nprops)], utt.lower(), ltls[0].strip().replace('\r', '')])
 
         save_to_file(csv_symbolic, save_fpath)
-
-
-def merge_batches(batch_fpaths):
-    """
-    Merge aggregated Google form responses from multiple csv files into 1.
-    Assume all csv files have same field names in same order.
-    :param batch_fpaths: aggregated responses from multiple batches of data collection.
-    :return: fpath of merged aggregated responses.
-    """
-    data_aux = load_from_file(batch_fpaths[0], noheader=False)
-    field = data_aux[0]
-    data_merged = [field]
-
-    for batch_fpath in batch_fpaths:
-        print(f"{batch_fpath}\nNumber of responses: {len(load_from_file(batch_fpath))}\n")
-        data_merged.extend(load_from_file(batch_fpath))
-
-    postfix = "".join([f"{i}" for i in range(1, len(batch_fpaths) + 1)])
-    data_fpath = f"{os.path.commonprefix(batch_fpaths)}{postfix}.csv"
-    save_to_file(data_merged, data_fpath)
-
-    return data_fpath
 
 
 def analyze_symbolic_dataset(data_fpath):
