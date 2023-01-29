@@ -1,4 +1,5 @@
 results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv
+[(('patrolling', '5'), 2880), (('sequenced_visit', '4'), 2640), (('patrolling', '3'), 1380), (('ordered_visit', '2'), 520), (('prompt_reaction', '2'), 480), (('global_avoidance', '1'), 120), (('upper_restricted_avoidance', '1'), 120), (('exact_restricted_avoidance', '1'), 120), (('exact_restricted_avoidance', '5'), 120)]
 number of misclassified_type:	831/1993	= 0.41695935775213244
 number of syntax_errors:	593/1993	= 0.2975413948820873
 number of incorrect_nprops:	462/1993	= 0.23181133968891118
@@ -7,6 +8,7 @@ number of incorrect_orders:	15/1993	= 0.007526342197691922
 number of all errors:	1993/8380	= 0.23782816229116946
 
 results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold3.csv
+[(('visit', '3'), 1560), (('visit', '2'), 540), (('strictly_ordered_visit', '2'), 500), (('patrolling', '2'), 480), (('global_avoidance', '2'), 480), (('delayed_reaction', '2'), 480), (('lower_restricted_avoidance', '3'), 135), (('lower_restricted_avoidance', '4'), 120), (('exact_restricted_avoidance', '4'), 120)]
 number of incorrect_nprops:	1146/2775	= 0.412972972972973
 number of misclassified_type:	703/2775	= 0.25333333333333335
 number of syntax_errors:	643/2775	= 0.2317117117117117
@@ -14,6 +16,7 @@ number of unknow_types:	283/2775	= 0.10198198198198198
 number of all errors:	2775/4415	= 0.6285390713476784
 
 results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold2.csv
+[(('ordered_visit', '4'), 2400), (('strictly_ordered_visit', '3'), 1260), (('sequenced_visit', '2'), 540), (('wait', '2'), 480), (('visit', '1'), 130), (('upper_restricted_avoidance', '2'), 120), (('upper_restricted_avoidance', '3'), 120), (('upper_restricted_avoidance', '4'), 120), (('upper_restricted_avoidance', '5'), 120), (('lower_restricted_avoidance', '2'), 120)]
 number of misclassified_type:	894/1804	= 0.4955654101995565
 number of incorrect_nprops:	589/1804	= 0.32649667405764965
 number of syntax_errors:	202/1804	= 0.11197339246119734
@@ -23,6 +26,7 @@ number of incorrect_props:	2/1804	= 0.0011086474501108647
 number of all errors:	1804/5410	= 0.333456561922366
 
 results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold0.csv
+[(('visit', '5'), 2880), (('patrolling', '4'), 2880), (('global_avoidance', '4'), 2880), (('global_avoidance', '5'), 2880), (('strictly_ordered_visit', '4'), 2520), (('global_avoidance', '3'), 1440), (('future_avoidance', '2'), 480), (('past_avoidance', '2'), 460), (('lower_restricted_avoidance', '5'), 120), (('exact_restricted_avoidance', '3'), 120)]
 number of syntax_errors:	2295/4422	= 0.5189959294436907
 number of misclassified_type:	1082/4422	= 0.24468566259611035
 number of incorrect_nprops:	836/4422	= 0.1890547263681592
@@ -30,6 +34,7 @@ number of unknow_types:	209/4422	= 0.0472636815920398
 number of all errors:	4422/16660	= 0.2654261704681873
 
 results/finetuned_gpt3/formula_holdout_batch12_perm/log_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold1.csv
+[(('visit', '4'), 2880), (('sequenced_visit', '5'), 2880), (('strictly_ordered_visit', '5'), 2760), (('ordered_visit', '5'), 2520), (('sequenced_visit', '3'), 1560), (('ordered_visit', '3'), 1320), (('bound_delay', '2'), 480), (('patrolling', '1'), 150), (('lower_restricted_avoidance', '1'), 120), (('exact_restricted_avoidance', '2'), 120)]
 number of syntax_errors:	3097/7675	= 0.40351791530944625
 number of incorrect_nprops:	1761/7675	= 0.22944625407166125
 number of unknow_types:	1638/7675	= 0.21342019543973942
