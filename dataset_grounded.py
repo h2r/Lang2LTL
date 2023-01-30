@@ -98,7 +98,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, add_comma, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
         logging.info(f"generate valid took: {(time.time()-start_time) / 60}")
         start_time = time.time()
-        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"], dataset["lmks"] = city, seed, remove_perm, model, lmks
+        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
         logging.info(f"saving took: {(time.time() - start_time) / 60}")
         logging.info(f"{os.path.join(save_dpath, split_fname)}")
