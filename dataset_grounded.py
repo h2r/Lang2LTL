@@ -152,7 +152,7 @@ def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm", help="dpath to all split datasets.")
+    parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm_pun", help="dpath to all split datasets.")
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--city", type=str, default="boston", help="city landmarks from 1 or all json files in data/osm/osm_lmks.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
