@@ -64,7 +64,7 @@ def construct_lmk2prop(osm_lmks_dpath, model):
         print("\n")
 
 
-def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamples, model, save_dpath):
+def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamples, add_comma, model, save_dpath):
     print(f"Constructing grounded dataset for city: {city}")
     split_fnames = sorted([fname for fname in os.listdir(split_dpath) if "pkl" in fname])
     save_dpath = os.path.join(save_dpath, "grounded", city)
@@ -101,10 +101,10 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         print(f"num of lmks: {len(lmks)}")
 
         print("generating grounded train")
-        dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, lmks, seed, model)
+        dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, lmks, seed, add_comma, model)
         print("generating grounded valid")
         start_time = time.time()
-        dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
+        dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, add_comma, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
         print(f"generate valid took: {(time.time()-start_time) / 60}")
         start_time = time.time()
         dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
@@ -114,7 +114,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         print(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}")
 
 
-def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms=None, nsamples=None):
+def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkperms=None, nsamples=None):
     data_grounded, meta_data_grounded = [], []
 
     for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(data, meta_data)):
@@ -131,7 +131,7 @@ def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms=None, ns
         else:
             lmk_subs = [lmks]
         for lmk_sub in lmk_subs:
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props, seed, model)
+            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props, seed, add_comma, model)
             if utt == utt_grounded or ltl == ltl_grounded:
                 raise ValueError(f"ERROR\n{utt}=={utt_grounded}\n{ltl}=={ltl_grounded}")
             data_grounded.append((utt_grounded, ltl_grounded))
@@ -139,15 +139,18 @@ def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms=None, ns
     return data_grounded, meta_data_grounded
 
 
-def substitute_lmk(utt, ltl, lmks, props, seed, model):
+def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
     if len(lmks) == len(props):  # already sample lmks from all perms for valid_iter
         lmk_names = lmks
     else:  # randomly sample lmks from complete lmk list for train_iter
         random.seed(seed)
         lmk_names = random.sample(lmks, len(props))
 
-    sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
-    utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, last line add extra comma
+    if add_comma:
+        sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
+    else:
+        sub_map = {prop: name for prop, name in zip(props, lmk_names)}
+    utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, remove extra comma if add
 
     sub_map = {prop: name_to_prop(name, model) for prop, name in zip(props, lmk_names)}
     ltl_grounded = substitute_single_letter(ltl, sub_map)
@@ -163,6 +166,7 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
     parser.add_argument("--nsamples", type=int, default=15, help="number of samples per utt strucutre when perm lmks for valid set.")
     parser.add_argument("--remove_perm", action="store_true", help="True to remove permutations in validation set.")
+    parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
     parser.add_argument("--model", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="model name.")
     args = parser.parse_args()
 
@@ -176,4 +180,4 @@ if __name__ == "__main__":
             cities = [args.city]
         for city in cities:
             city_lmks = list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())
-            construct_grounded_dataset(args.split_dpath, city_lmks, city, args.remove_perm, args.seed, args.nsamples, args.model, env_dpath)
+            construct_grounded_dataset(args.split_dpath, city_lmks, city, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, env_dpath)
