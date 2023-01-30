@@ -72,9 +72,9 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
 
     nprops2lmkperms = {} if nsamples else None
 
-    if len(lmks) > 50:
+    if len(lmks) > 40:
         random.seed(seed)
-        lmks = random.sample(lmks, 50)  # down sample lmks to save memory during perms
+        lmks = random.sample(lmks, 40)  # down sample lmks to save memory during perms
 
     for split_fname in split_fnames:
         logging.info(f"{split_fname}")
