@@ -11,22 +11,6 @@ import nltk
 from gpt3 import GPT3
 
 
-def name_to_prop(name, convert_rule):
-    """
-    :param name: name, e.g. Canal Street, TD Bank.
-    :param convert_rule: identifier for conversion rule.
-    :return: proposition that corresponds to input landmark name and is compatible with Spot.
-    """
-    if convert_rule == "lang2ltl":
-        return "_".join(name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
-    elif convert_rule == "copynet":
-        return f"lm( {name} )lm"
-    elif convert_rule == "cleanup":
-        return "_".join(name.split()).strip()
-    else:
-        raise ValueError(f"ERROR: unrecognized conversion rule: {convert_rule}")
-
-
 def build_placeholder_map(name_entities, convert_rule):
     placeholder_map, placeholder_map_inv = {}, {}
     letter = "a"
@@ -122,42 +106,20 @@ def substitute_single_letter(in_str, sub_map):
     return ' '.join(in_str_list).strip()
 
 
-def count_params(model):
+def name_to_prop(name, convert_rule):
     """
-    :param model: a PyTorch module
-    :return: the number of trainable paramters in input PyTorch module
+    :param name: name, e.g. Canal Street, TD Bank.
+    :param convert_rule: identifier for conversion rule.
+    :return: proposition that corresponds to input landmark name and is compatible with Spot.
     """
-    return sum(param.numel() for param in model.parameters() if param.requires_grad)
-
-
-def prefix_to_infix(formula):
-    """
-    :param formula: LTL formula string in prefix order
-    :return: LTL formula string in infix order
-    Spot's prefix parser uses i for implies and e for equivalent. https://spot.lre.epita.fr/ioltl.html#prefix
-    """
-    BINARY_OPERATORS = {"&", "|", "U", "W", "R", "->", "i", "<->", "e"}
-    UNARY_OPERATORS = {"!", "X", "F", "G"}
-    formula_in = formula.split()
-    stack = []  # stack
-
-    while formula_in:
-        op = formula_in.pop(-1)
-        if op == ">":
-            op += formula_in.pop(-1)  # implication operator has 2 chars, ->
-        if formula_in and formula_in[-1] == "<":
-            op += formula_in.pop(-1)  # equivalent operator has 3 chars, <->
-
-        if op in BINARY_OPERATORS:
-            formula_out = "(" + stack.pop(0) + " " + op + " " + stack.pop(0) + ")"
-            stack.insert(0, formula_out)
-        elif op in UNARY_OPERATORS:
-            formula_out = op + "(" + stack.pop(0) + ")"
-            stack.insert(0, formula_out)
-        else:
-            stack.insert(0, op)
-
-    return stack[0]
+    if convert_rule == "lang2ltl":
+        return "_".join(name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
+    elif convert_rule == "copynet":
+        return f"lm( {name} )lm"
+    elif convert_rule == "cleanup":
+        return "_".join(name.split()).strip()
+    else:
+        raise ValueError(f"ERROR: unrecognized conversion rule: {convert_rule}")
 
 
 def deserialize_props_str(props_str):
@@ -212,6 +174,44 @@ def load_from_file(fpath, noheader=True):
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
+
+
+def prefix_to_infix(formula):
+    """
+    :param formula: LTL formula string in prefix order
+    :return: LTL formula string in infix order
+    Spot's prefix parser uses i for implies and e for equivalent. https://spot.lre.epita.fr/ioltl.html#prefix
+    """
+    BINARY_OPERATORS = {"&", "|", "U", "W", "R", "->", "i", "<->", "e"}
+    UNARY_OPERATORS = {"!", "X", "F", "G"}
+    formula_in = formula.split()
+    stack = []  # stack
+
+    while formula_in:
+        op = formula_in.pop(-1)
+        if op == ">":
+            op += formula_in.pop(-1)  # implication operator has 2 chars, ->
+        if formula_in and formula_in[-1] == "<":
+            op += formula_in.pop(-1)  # equivalent operator has 3 chars, <->
+
+        if op in BINARY_OPERATORS:
+            formula_out = "(" + stack.pop(0) + " " + op + " " + stack.pop(0) + ")"
+            stack.insert(0, formula_out)
+        elif op in UNARY_OPERATORS:
+            formula_out = op + "(" + stack.pop(0) + ")"
+            stack.insert(0, formula_out)
+        else:
+            stack.insert(0, op)
+
+    return stack[0]
+
+
+def count_params(model):
+    """
+    :param model: a PyTorch module
+    :return: the number of trainable paramters in input PyTorch module
+    """
+    return sum(param.numel() for param in model.parameters() if param.requires_grad)
 
 
 def equal(item1, item2):
