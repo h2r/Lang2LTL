@@ -7,6 +7,7 @@ from pathlib import Path
 import string
 from itertools import permutations
 import random
+import logging
 from pprint import pprint
 import time
 
@@ -64,40 +65,40 @@ def construct_lmk2prop(osm_lmks_dpath, model):
 
 
 def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamples, add_comma, model, save_dpath):
-    print(f"Constructing grounded dataset for city: {city}")
+    logging.info(f"Constructing grounded dataset for city: {city}")
     split_fnames = sorted([fname for fname in os.listdir(split_dpath) if "pkl" in fname])
-    save_dpath = os.path.join(save_dpath, "grounded", city)
+    save_dpath = os.path.join(save_dpath, model, city)
     os.makedirs(save_dpath, exist_ok=True)
 
     nprops2lmkperms = {} if nsamples else None
 
     for split_fname in split_fnames:
-        print(split_fname)
+        logging.info(f"{split_fname}")
         dataset = load_from_file(os.path.join(split_dpath, split_fname))
         train_iter, train_meta, valid_iter, valid_meta = dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
 
-        print(f"old train, test size: {len(train_iter)} {len(train_meta)} {len(valid_iter)} {len(valid_meta)}")
-        print(f"test size before remove_perm: {len(valid_iter)} {len(valid_meta)}")
+        logging.info(f"old train, test size: {len(train_iter)} {len(train_meta)} {len(valid_iter)} {len(valid_meta)}")
+        logging.info(f"test size before remove prop perm: {len(valid_iter)} {len(valid_meta)}")
         if remove_perm:  # remove prop perms from valid_iter
             valid_iter, valid_meta = remove_prop_perms(valid_iter, valid_meta, PROPS)
         unique_formulas = set([(pattern_type, len(props)) for pattern_type, props in valid_meta])
-        print(f"num of unique formulas: {len(unique_formulas)}")
-        print(f"unique formulas:\n{unique_formulas}")
-        print(f"test size after remove_perm: {len(valid_iter)} {len(valid_meta)}")
-        print(f"num of lmks: {len(lmks)}")
+        logging.info(f"num of unique formulas: {len(unique_formulas)}")
+        logging.info(f"unique formulas:\n{unique_formulas}")
+        logging.info(f"num of lmks: {len(lmks)}")
+        logging.info(f"test size after remove prop perm: {len(valid_iter)} {len(valid_meta)}\n")
 
-        print("generating grounded train")
+        logging.info("generating grounded train")
         dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, lmks, seed, add_comma, model)
-        print("generating grounded valid")
+        logging.info("generating grounded valid")
         start_time = time.time()
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, add_comma, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
-        print(f"generate valid took: {(time.time()-start_time) / 60}")
+        logging.info(f"generate valid took: {(time.time()-start_time) / 60}")
         start_time = time.time()
         dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
-        print(f"saving took: {(time.time() - start_time) / 60}")
+        logging.info(f"saving took: {(time.time() - start_time) / 60}")
 
-        print(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}\n")
+        logging.info(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}\n\n")
 
 
 def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkperms=None, nsamples=None):
@@ -150,15 +151,24 @@ if __name__ == "__main__":
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--city", type=str, default="boston", help="city landmarks from 1 or all json files in data/osm/osm_lmks.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
-    parser.add_argument("--nsamples", type=int, default=15, help="number of samples per utt strucutre when perm lmks for valid set.")
-    parser.add_argument("--remove_perm", action="store_true", help="True to remove permutations in validation set.")
+    parser.add_argument("--nsamples", type=int, default=None, help="number of samples per utt strucutre when perm lmks for valid set.")
+    parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
-    parser.add_argument("--model", type=str, default="copynet", choices=["lang2ltl", "copynet"], help="model name.")
+    parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
     args = parser.parse_args()
 
     env_dpath = os.path.join("data", args.env)
     env_lmks_dpath = os.path.join(env_dpath, "lmks")
     # construct_lmk2prop(osm_lmks_dpath, args.model)  # for testing
+
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(os.path.join(env_dpath, args.model, f'log_gen_grounded_{args.city}.log'), mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
+
     if args.env == "osm":
         if args.city == "all":
             cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
