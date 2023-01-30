@@ -11,12 +11,28 @@ import nltk
 from gpt3 import GPT3
 
 
-def build_placeholder_map(name_entities):
+def name_to_prop(name, convert_rule):
+    """
+    :param name: name, e.g. Canal Street, TD Bank.
+    :param convert_rule: identifier for conversion rule.
+    :return: proposition that corresponds to input landmark name and is compatible with Spot.
+    """
+    if convert_rule == "lang2ltl":
+        return "_".join(name.translate(str.maketrans('/()-–', '     ', "'’,.!?")).lower().split())
+    elif convert_rule == "copynet":
+        return f"lm( {name} )lm"
+    elif convert_rule == "cleanup":
+        return "_".join(name.split()).strip()
+    else:
+        raise ValueError(f"ERROR: unrecognized conversion rule: {convert_rule}")
+
+
+def build_placeholder_map(name_entities, convert_rule):
     placeholder_map, placeholder_map_inv = {}, {}
-    letter = "A"
-    for ne in name_entities:
-        placeholder_map[ne] = letter
-        placeholder_map_inv[letter] = "_".join(ne.split()).strip()
+    letter = "a"
+    for name in name_entities:
+        placeholder_map[name] = letter
+        placeholder_map_inv[letter] = name_to_prop(name, convert_rule)
         letter = chr(ord(letter) + 1)  # increment placeholder using its ascii value
     return placeholder_map, placeholder_map_inv
 
