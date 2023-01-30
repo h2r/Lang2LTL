@@ -10,7 +10,7 @@ import string
 from collections import defaultdict
 from sklearn.model_selection import train_test_split, KFold
 
-from utils import load_from_file, save_to_file, deserialize_props_str, substitute_single_letter
+from utils import load_from_file, save_to_file, append_ids_to_path, remove_id_from_path, deserialize_props_str, substitute_single_letter
 from formula_sampler import PROPS, FEASIBLE_TYPES, FILTER_TYPES, sample_formulas
 
 
@@ -36,13 +36,14 @@ def merge_batches(batch_fpaths):
     return data_fpath
 
 
-def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset, perm_props=False):
+def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset, remove_pun, perm_props=False):
     """
     Generate non-permuted symbolic dataset for training symbolic translation module.
     :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
     :param save_fpath: path to save symbolic dataset.
     :param filter_types: LTL types to filter out.
     :param update_dataset: True if update existing symbolic dataset.
+    :param remove_pun: True if remove all punctuations in utt.
     :param perm_props: True if permute props in utterances and LTL formulas.
     """
     if update_dataset or not os.path.isfile(save_fpath):
@@ -50,7 +51,8 @@ def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset
 
         csv_symbolic = [["pattern_type", "props", "utterance", "ltl_formula"]]
         for _, _, pattern_type, nprops, utt in data:
-            utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
+            if remove_pun:
+                utt = utt.translate(str.maketrans('', '', string.punctuation))  # remove punctuations for substitution
             pattern_type = "_".join(pattern_type.lower().split())
             if pattern_type not in filter_types:
                 ltls, props_perm = sample_formulas(pattern_type, int(nprops), False)  # sample ltls w/ all possible perms
@@ -261,11 +263,14 @@ if __name__ == "__main__":
     parser.add_argument("--perm", action="store_true", help="True if permute props after train, test split.")
     parser.add_argument("--update", action="store_true", help="True if update existing symbolic dataset w/ new responses.")
     parser.add_argument("--merge", action="store_true", help="True if merge Google form responses from batches.")
+    parser.add_argument("--remove_pun", action="store_true", help="True if remove punctuations.")
     parser.add_argument("--seeds_split", action="store", type=int, nargs="+", default=[0, 1, 2, 42, 111], help="1 or more random seeds for train, test split.")
     parser.add_argument("--firstn", type=int, default=None, help="only use first n training samples.")
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1, 2, 3], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
+
+    # python dataset_symbolic.py --perm --update --merge --nexamples=1
 
     # Merge Google form responses from batches and construct non-permuted symbolic dataset for each batch
     data_fpaths = args.data_fpath if isinstance(args.data_fpath, list) else [args.data_fpath]
@@ -273,25 +278,25 @@ if __name__ == "__main__":
     if args.merge:
         for data_fpath in data_fpaths:
             batch_id = Path(data_fpath).stem.split('_')[-1]
-            symbolic_fpath = f"data/symbolic_{batch_id}_noperm.csv"
-            create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update)
-            analyze_symbolic_dataset(symbolic_fpath)
+            symbolic_fpath = append_ids_to_path(f"data/symbolic_{batch_id}_noperm.csv", args.remove_pun, "nopun", "pun")
+            create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, args.remove_pun)
+            analyze_symbolic_dataset(remove_id_from_path(symbolic_fpath, "pun"))
         data_fpath = merge_batches(data_fpaths)
-        symbolic_fpath = f"data/symbolic_batch{postfix}_noperm.csv"
-        split_dpath = f"data/holdout_split_batch{postfix}_perm" if args.perm else f"data/holdout_split_batch{postfix}_noperm"  # dpath to save train, test split
-        prompt_dpath = f"data/prompt_symbolic_batch{postfix}_perm" if args.perm else f"data/prompt_symbolic_batch{postfix}_noperm"  # dpath to save prompts
+        symbolic_fpath = append_ids_to_path(f"data/symbolic_batch{postfix}_noperm.csv", args.remove_pun, "nopun", "pun")
+        split_dpath = append_ids_to_path(f"data/holdout_split_batch{postfix}", [args.perm, args.remove_pun], ["perm", "nopun"], ["noperm", "pun"])  # dpath to save train, test split
+        prompt_dpath = append_ids_to_path(f"data/prompt_symbolic_batch{postfix}", [args.perm, args.remove_pun], ["perm", "nopun"], ["noperm", "pun"])  # dpath to save prompts
     else:
         data_fpath = data_fpaths[0]
         batch_id = Path(data_fpath).stem.split('_')[-1]
         symbolic_fpath = f"data/symbolic_{batch_id}_noperm.csv"
-        split_dpath = f"data/holdout_split_{batch_id}_perm" if args.perm else f"data/holdout_split_{batch_id}_noperm"  # dpath to save train, test split
-        prompt_dpath = f"data/prompt_symbolic_{batch_id}_perm" if args.perm else f"data/prompt_symbolic_{batch_id}_noperm"  # dpath to save prompts
+        split_dpath = append_ids_to_path(f"data/holdout_split_{batch_id}", args.perm, "perm", "noperm")  # dpath to save train, test split
+        prompt_dpath = append_ids_to_path(f"data/prompt_symbolic_{batch_id}", args.perm, "perm", "noperm")  # dpath to save prompts
     os.makedirs(split_dpath, exist_ok=True)
     os.makedirs(prompt_dpath, exist_ok=True)
 
     # Construct non-permuted symbolic dataset from Google form responses
-    create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update)
-    analyze_symbolic_dataset(symbolic_fpath)
+    create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, args.remove_pun)
+    analyze_symbolic_dataset(remove_id_from_path(symbolic_fpath, "pun"))
 
     # Construct train, test split for utt holdout; permute if asked
     seeds = args.seeds_split if isinstance(args.seeds_split, list) else [args.seeds_split]
@@ -301,8 +306,9 @@ if __name__ == "__main__":
     # Construct train, test split for formula, type holdout; permute if asked
     if args.perm:
         symbolic_fpath = f"data/symbolic_batch{postfix}_perm.csv" if args.merge else f"data/symbolic_{batch_id}_perm.csv"
-        create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, True)
-        analyze_symbolic_dataset(symbolic_fpath)
+        symbolic_fpath = append_ids_to_path(symbolic_fpath, args.remove_pun, "nopun", "pun")
+        create_symbolic_dataset(data_fpath, symbolic_fpath, FILTER_TYPES, args.update, args.remove_pun, True)
+        analyze_symbolic_dataset(remove_id_from_path(symbolic_fpath, "pun"))
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=3, seed=42, firstn=args.firstn)
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=9, seed=42, firstn=args.firstn)
 
