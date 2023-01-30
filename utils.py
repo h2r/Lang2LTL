@@ -152,6 +152,7 @@ def sample_smaller_dataset(data_fpath, all_props):
     """
     dataset = load_from_file(data_fpath)
     data, meta = dataset["valid_iter"], dataset["valid_meta"]
+    meta = [(pattern_type, props) for _, _, pattern_type, props, _, _ in meta]
     formula2data = construct_formula2data(data, meta, all_props)
     data_small, meta_small = [], []
     for (pattern_type, nprops), utt_ltl in formula2data.items():
@@ -161,7 +162,7 @@ def sample_smaller_dataset(data_fpath, all_props):
         data_small.append(utt_ltl_random)
         meta_small.append((pattern_type, nprops))
     dataset["valid_iter"], dataset["valid_meta"] = data_small, meta_small
-    save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.dirname}")
+    save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.basename(data_fpath)}")
     save_to_file(dataset, save_fpath)
 
 
