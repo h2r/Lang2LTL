@@ -293,6 +293,18 @@ def count_params(model):
     return sum(param.numel() for param in model.parameters() if param.requires_grad)
 
 
+def count_lmk_ntokens():
+    """
+    Count total number of tokens in all lmks in an OSM city
+    """
+    env_lmks_dpath = os.path.join("data", "osm", "lmks")
+    cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
+    for city in cities:
+        lmks = list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())
+        print(f"{city}:\t {', '.join(lmks)}\n")
+        # then copy and past output string to https://platform.openai.com/tokenizer
+
+
 def equal(item1, item2):
     """
     For testing.
