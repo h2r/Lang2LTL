@@ -85,17 +85,22 @@ def aggregate_results(result_fpaths, filter_types):
     :param result_fpaths: paths to results file to be aggregated
     """
     total_corrects, total_samples = 0, 0
+    acc_list = []
     meta2stats = defaultdict(list)
     for n, result_fpath in enumerate(result_fpaths):
         result = load_from_file(result_fpath, noheader=True)
         print(result_fpath)
+        corrects, samples = 0, 0
         for row_idx, row in enumerate(result):
             pattern_type, nprops, nutts, acc = row
             if pattern_type not in filter_types and acc != "no valid data":
                 nprops, nutts, acc = int(nprops), int(nutts), float(acc)
                 meta2stats[(pattern_type, nprops)].append((nutts*acc, nutts))
-                total_corrects += nutts * acc
-                total_samples += nutts
+                corrects += nutts * acc
+                samples += nutts
+        total_corrects += corrects
+        total_samples += samples
+        acc_list.append(corrects / samples)
 
     result_aux = load_from_file(result_fpaths[0], noheader=False)
     fields = result_aux.pop(0)
@@ -114,6 +119,7 @@ def aggregate_results(result_fpaths, filter_types):
     aggregated_result_fpath = f"{os.path.commonprefix(result_fnames)}_aggregated.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
     print(f"total accuracy: {total_corrects / total_samples}")
+    print(f'standard deviation: {np.std(acc_list)}')
 
 
 def evaluate_plan(out_traj, true_traj):
@@ -133,11 +139,11 @@ if __name__ == "__main__":
 
     if args.aggregate:  # aggregate acc-per-formula result files
         result_fpaths = [
-            "results/finetuned_gpt3/type_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold0_new.csv",
-            "results/finetuned_gpt3/type_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold1_new.csv",
-            "results/finetuned_gpt3/type_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold2_new.csv",
-            "results/finetuned_gpt3/type_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold3_new.csv",
-            "results/finetuned_gpt3/type_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_type_3_42_fold4_new.csv",
+            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold0.csv",
+            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold1.csv",
+            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold2.csv",
+            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold3.csv",
+            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv",
         ]
         filter_types = ["fair_visit"]
         aggregate_results(result_fpaths, filter_types)
@@ -162,7 +168,7 @@ if __name__ == "__main__":
                 acc_fpath = os.path.join(result_dpath, f"acc_{args.model}.csv")
             else:
                 engine = args.model
-                prompt_fpath = os.path.join("data", "symbolic_prompt_batch12_perm", f"prompt_nexamples{args.nexamples}_{dataset_name}.txt")
+                prompt_fpath = os.path.join("data", "prompt_symbolic_batch12_perm", f"prompt_nexamples{args.nexamples}_{dataset_name}.txt")
                 prompt = load_from_file(prompt_fpath)
                 valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_dpath = os.path.join("results", "pretrained_gpt3", dname)
