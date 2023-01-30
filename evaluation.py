@@ -15,6 +15,8 @@ def evaluate_lang(output_ltls, true_ltls):
     """
     Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
     """
+    # TODO: catch errors
+
     accs = []
     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
         try:  # output LTL formula may have syntax error
@@ -85,7 +87,7 @@ def aggregate_results(result_fpaths, filter_types):
     :param result_fpaths: paths to results file to be aggregated
     """
     total_corrects, total_samples = 0, 0
-    acc_list = []
+    accs = []
     meta2stats = defaultdict(list)
     for n, result_fpath in enumerate(result_fpaths):
         result = load_from_file(result_fpath, noheader=True)
@@ -100,7 +102,7 @@ def aggregate_results(result_fpaths, filter_types):
                 samples += nutts
         total_corrects += corrects
         total_samples += samples
-        acc_list.append(corrects / samples)
+        accs.append(corrects / samples)
 
     result_aux = load_from_file(result_fpaths[0], noheader=False)
     fields = result_aux.pop(0)
@@ -119,7 +121,7 @@ def aggregate_results(result_fpaths, filter_types):
     aggregated_result_fpath = f"{os.path.commonprefix(result_fnames)}_aggregated.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
     print(f"total accuracy: {total_corrects / total_samples}")
-    print(f'standard deviation: {np.std(acc_list)}')
+    print(f'standard deviation: {np.std(accs)}')
 
 
 def evaluate_plan(out_traj, true_traj):
