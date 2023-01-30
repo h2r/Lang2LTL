@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import logging
 import json
 import dill
@@ -104,7 +105,16 @@ def substitute_single_letter(in_str, sub_map):
         for idx in indices:
             in_str_list[idx] = v
 
-    return ' '.join(in_str_list).strip()
+    # Remove extra space before punctuations, e.g. go to a , then b . -> go to a, then b.
+    out_str = ' '.join(in_str_list).strip()
+    out_str_strip = ""
+    for idx, char in enumerate(out_str):
+        if char == " " and (idx != len(out_str) and out_str[idx+1] in string.punctuation):
+            continue
+        else:
+            out_str_strip += char
+
+    return out_str_strip
 
 
 def remove_prop_perms(data, meta, all_props):
@@ -223,6 +233,26 @@ def load_from_file(fpath, noheader=True):
     else:
         raise ValueError(f"ERROR: file type {ftype} not recognized")
     return out
+
+
+def append_ids_to_path(pth, appends, id_trues, id_falses):
+    """
+    Append identifier at the end of file or directory path based on `append`.
+    """
+    if not isinstance(appends, list):
+        appends, id_trues, id_falses = [appends], [id_trues], [id_falses]
+    for append, id_true, id_false in zip(appends, id_trues, id_falses):
+        if os.path.isfile(pth):
+            base_pth = os.path.join(os.path.dirname(pth), f"{Path(pth).stem}")
+            pth = f"{base_pth}_{id_true}{os.path.splitext(pth)[1]}" if append else f"{base_pth}_{id_false}{os.path.splitext(pth)[1]}"
+        else:
+            pth = f"{pth}_{id_true}" if append else f"{pth}_{id_false}"
+    return pth
+
+
+def remove_id_from_path(pth, identifier):
+    fname = [fname_sub for fname_sub in Path(pth).stem.split("_") if fname_sub != identifier]
+    return os.path.join(os.path.dirname(pth), f"{'_'.join(fname)}{os.path.splitext(pth)[1]}")
 
 
 def prefix_to_infix(formula):
