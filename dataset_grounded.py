@@ -72,6 +72,10 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
 
     nprops2lmkperms = {} if nsamples else None
 
+    if len(lmks) > 50:
+        random.seed(seed)
+        lmks = random.sample(lmks, 50)  # down sample lmks to save memory during perms
+
     for split_fname in split_fnames:
         logging.info(f"{split_fname}")
         dataset = load_from_file(os.path.join(split_dpath, split_fname))
@@ -94,7 +98,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, add_comma, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
         logging.info(f"generate valid took: {(time.time()-start_time) / 60}")
         start_time = time.time()
-        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
+        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"], dataset["lmks"] = city, seed, remove_perm, model, lmks
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
         logging.info(f"saving took: {(time.time() - start_time) / 60}")
         logging.info(f"{os.path.join(save_dpath, split_fname)}")
