@@ -51943,1085 +51943,1085 @@ F & h F & d F & c F b
 True
 
 7420/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 never go to a
 G ! a
 G i a X G ! a
 False
 
 7421/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 never go to b
 G ! b
 G i b X G ! h
 False
 
 7422/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 never go to c
 G ! c
 G i c X G ! c
 False
 
 7423/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 never go to d
 G ! d
 G i d X G ! d
 False
 
 7424/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 never go to h
 G ! h
 G i h X G ! h
 False
 
 7425/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 do not go to a
 G ! a
 G i a X G ! b
 False
 
 7426/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 do not go to b
 G ! b
 G i b X G ! h
 False
 
 7427/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 do not go to c
 G ! c
 G i c X G ! c
 False
 
 7428/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 do not go to d
 G ! d
 G i d X G ! c
 False
 
 7429/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 do not go to h
 G ! h
 G i h X G ! h
 False
 
 7430/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you can go anywhere but a
 G ! a
 G i a X G ! a
 False
 
 7431/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you can go anywhere but b
 G ! b
 G i b X G ! h
 False
 
 7432/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you can go anywhere but c
 G ! c
 G i c X G ! c
 False
 
 7433/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you can go anywhere but d
 G ! d
 G i d X G ! d
 False
 
 7434/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you can go anywhere but h
 G ! h
 G i h X G ! b
 False
 
 7435/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 a can not be visited at any time
 G ! a
 G i a X G ! b
 False
 
 7436/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 b can not be visited at any time
 G ! b
 G i b X G ! h
 False
 
 7437/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 c can not be visited at any time
 G ! c
 G i c X G ! c
 False
 
 7438/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 d can not be visited at any time
 G ! d
 G i d X G ! d
 False
 
 7439/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 h can not be visited at any time
 G ! h
 G i h X G ! b
 False
 
 7440/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 always keep away from a
 G ! a
 & G ! a G ! b
 False
 
 7441/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 always keep away from b
 G ! b
 G i b X G ! h
 False
 
 7442/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 always keep away from c
 G ! c
 G i c X G ! c
 False
 
 7443/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 always keep away from d
 G ! d
 G i d X G ! d
 False
 
 7444/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 always keep away from h
 G ! h
 G i h X G ! b
 False
 
 7445/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 never visit a
 G ! a
 G i a X G ! a
 False
 
 7446/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 never visit b
 G ! b
 G i b X G ! h
 False
 
 7447/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 never visit c
 G ! c
 F c
 False
 
 7448/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 never visit d
 G ! d
 G i d X G ! d
 False
 
 7449/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 never visit h
 G ! h
 G i h X G ! b
 False
 
 7450/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you can never go to a
 G ! a
 G i a X G ! b
 False
 
 7451/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you can never go to b
 G ! b
 G i b X G ! h
 False
 
 7452/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you can never go to c
 G ! c
 G i c X G ! c
 False
 
 7453/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you can never go to d
 G ! d
 G i d X G ! d
 False
 
 7454/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you can never go to h
 G ! h
 G i h X G ! b
 False
 
 7455/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 always stay away from a
 G ! a
 & G ! a G ! b
 False
 
 7456/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 always stay away from b
 G ! b
 G i b X G ! h
 False
 
 7457/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 always stay away from c
 G ! c
 G i c X G ! c
 False
 
 7458/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 always stay away from d
 G ! d
 G i d X G ! h
 False
 
 7459/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 always stay away from h
 G ! h
 G i h X G ! b
 False
 
 7460/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 always avoid going to a
 G ! a
 & G ! a G ! b
 False
 
 7461/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 always avoid going to b
 G ! b
 G i b X G ! h
 False
 
 7462/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 always avoid going to c
 G ! c
 G i c X G ! c
 False
 
 7463/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 always avoid going to d
 G ! d
 G i d X G ! h
 False
 
 7464/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 always avoid going to h
 G ! h
 G i h X G ! b
 False
 
 7465/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you have to avoid a at all costs
 G ! a
 G i a X G ! b
 False
 
 7466/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you have to avoid b at all costs
 G ! b
 G i b X G ! h
 False
 
 7467/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you have to avoid c at all costs
 G ! c
 G i c X G ! c
 False
 
 7468/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you have to avoid d at all costs
 G ! d
 G i d X G ! d
 False
 
 7469/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you have to avoid h at all costs
 G ! h
 G i h X G ! b
 False
 
 7470/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 make sure you never visit a
 G ! a
 G i a X G ! b
 False
 
 7471/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 make sure you never visit b
 G ! b
 G i b X G ! c
 False
 
 7472/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 make sure you never visit c
 G ! c
 G i c X G ! c
 False
 
 7473/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 make sure you never visit d
 G ! d
 G i d X G ! d
 False
 
 7474/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 make sure you never visit h
 G ! h
 G i h X G ! b
 False
 
 7475/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you can not go to a at any time
 G ! a
 G i a X G ! b
 False
 
 7476/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you can not go to b at any time
 G ! b
 G i b X G ! h
 False
 
 7477/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you can not go to c at any time
 G ! c
 G i c X G ! c
 False
 
 7478/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you can not go to d at any time
 G ! d
 G i d X G ! d
 False
 
 7479/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you can not go to h at any time
 G ! h
 G i h X G ! b
 False
 
 7480/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 avoid going to a
 G ! a
 G i a X G ! b
 False
 
 7481/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 avoid going to b
 G ! b
 G i b X G ! h
 False
 
 7482/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 avoid going to c
 G ! c
 G i c X G ! c
 False
 
 7483/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 avoid going to d
 G ! d
 G i d X G ! d
 False
 
 7484/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 avoid going to h
 G ! h
 G i h X G ! b
 False
 
 7485/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you must never go to a
 G ! a
 G i a X G ! a
 False
 
 7486/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you must never go to b
 G ! b
 G i b X G ! b
 False
 
 7487/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you must never go to c
 G ! c
 G i c X G ! c
 False
 
 7488/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you must never go to d
 G ! d
 G i d X G ! d
 False
 
 7489/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you must never go to h
 G ! h
 G i h X G ! h
 False
 
 7490/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 a should never be reached
 G ! a
 G i a X G ! b
 False
 
 7491/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 b should never be reached
 G ! b
 G i b X G ! c
 False
 
 7492/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 c should never be reached
 G ! c
 G i c X G ! c
 False
 
 7493/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 d should never be reached
 G ! d
 G i d X G ! c
 False
 
 7494/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 h should never be reached
 G ! h
 G i h X G ! h
 False
 
 7495/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 a must be avoided
 G ! a
 G i a F a
 False
 
 7496/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 b must be avoided
 G ! b
 G F b
 False
 
 7497/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 c must be avoided
 G ! c
 F c
 False
 
 7498/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 d must be avoided
 G ! d
 F d
 False
 
 7499/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 h must be avoided
 G ! h
 G F h
 False
 
 7500/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 never visit a
 G ! a
 G i a X G ! a
 False
 
 7501/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 never visit b
 G ! b
 G i b X G ! h
 False
 
 7502/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 never visit c
 G ! c
 F c
 False
 
 7503/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 never visit d
 G ! d
 G i d X G ! d
 False
 
 7504/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 never visit h
 G ! h
 G i h X G ! b
 False
 
 7505/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 visit a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U !
 Syntax Error
 
 7506/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 visit b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U !
 Syntax Error
 
 7507/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 visit c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U !
 Syntax Error
 
 7508/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 visit d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U !
 Syntax Error
 
 7509/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 visit h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U !
 Syntax Error
 
 7510/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 go to a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a
 Syntax Error
 
 7511/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 go to b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b
 Syntax Error
 
 7512/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 go to c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c
 Syntax Error
 
 7513/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 go to d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d
 Syntax Error
 
 7514/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 go to h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h
 Syntax Error
 
 7515/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can visit a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 7516/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can visit b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 7517/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can visit c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 7518/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can visit d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 7519/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can visit h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 7520/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 never go to a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 7521/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 never go to b more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 7522/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 never go to c more than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 7523/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 never go to d more than once
 ! F & d U d & ! d U ! d F d
 ! F d
 False
 
 7524/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 never go to h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 7525/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can not go to a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a
 Syntax Error
 
 7526/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can not go to b more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b
 Syntax Error
 
 7527/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can not go to c more than once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c
 Syntax Error
 
 7528/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can not go to d more than once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d
 Syntax Error
 
 7529/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can not go to h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h
 Syntax Error
 
 7530/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 never visit a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a
 Syntax Error
 
 7531/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 never visit b more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b
 Syntax Error
 
 7532/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 never visit c more than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 7533/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 never visit d more than once
 ! F & d U d & ! d U ! d F d
 ! F d
 False
 
 7534/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 never visit h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h
 Syntax Error
 
 7535/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can visit a zero times or once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F &
 Syntax Error
 
 7536/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can visit b zero times or once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F &
 Syntax Error
 
 7537/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can visit c zero times or once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F &
 Syntax Error
 
 7538/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can visit d zero times or once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F &
 Syntax Error
 
 7539/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can visit h zero times or once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F &
 Syntax Error
 
 7540/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a |
 Syntax Error
 
 7541/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b |
 Syntax Error
 
 7542/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c |
 Syntax Error
 
 7543/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d exactly once
 M d | ! d G | d G ! d
 & & U ! d h F d U !
 Syntax Error
 
 7544/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U !
 Syntax Error
 
 7545/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 go to a exactly once
 M a | ! a G | a G ! a
 & & U ! a b F a U ! b
 Syntax Error
 
 7546/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 go to b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | !
 Syntax Error
 
 7547/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 go to c exactly once
 M c | ! c G | c G ! c
 & & U ! c b F c U ! b
 Syntax Error
 
 7548/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 go to d exactly once
 M d | ! d G | d G ! d
 & & U ! d h F d U ! d
 Syntax Error
 
 7549/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 go to h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U ! b
 Syntax Error
 
 7550/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 make your way to a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G
 Syntax Error
 
 7551/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 make your way to b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G
 Syntax Error
 
 7552/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 make your way to c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G
 Syntax Error
 
 7553/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 make your way to d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G
 Syntax Error
 
 7554/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 make your way to h exactly once
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G
 Syntax Error
 
 7555/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you have to visit a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G
 Syntax Error
 
 7556/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you have to visit b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G
 Syntax Error
 
 7557/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you have to visit c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G
 Syntax Error
 
 7558/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you have to visit d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G
 Syntax Error
 
 7559/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you have to visit h exactly once
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G
 Syntax Error
 
 7560/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you must reach a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a
 Syntax Error
 
 7561/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you must reach b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b
 Syntax Error
 
 7562/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you must reach c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c
 Syntax Error
 
 7563/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you must reach d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d
 Syntax Error
 
 7564/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you must reach h exactly once
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h
 Syntax Error
 
 7565/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a exactly once no more no less
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G |
 Syntax Error
 
 7566/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b exactly once no more no less
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G |
 Syntax Error
 
 7567/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c exactly once no more no less
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G |
 Syntax Error
 
 7568/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d exactly once no more no less
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G |
 Syntax Error
 
 7569/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h exactly once no more no less
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G |
 Syntax Error
 
 7570/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 navigate to a exactly once
 M a | ! a G | a G ! a
 & & U ! a b F a U ! b
 Syntax Error
 
 7571/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 navigate to b exactly once
 M b | ! b G | b G ! b
 & & U ! b c F b U ! c
 Syntax Error
 
 7572/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 navigate to c exactly once
 M c | ! c G | c G ! c
 & & U ! c b F c U ! b
 Syntax Error
 
 7573/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 navigate to d exactly once
 M d | ! d G | d G ! d
 & & U ! d b F d U ! d
 Syntax Error
 
 7574/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 navigate to h exactly once
 M h | ! h G | h G ! h
 & & U ! h c F h U ! c
@@ -53273,350 +53273,350 @@ M & h F & ! h F & h F & ! h F
 Syntax Error
 
 7610/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can go to a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F &
 Syntax Error
 
 7611/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can go to b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F &
 Syntax Error
 
 7612/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can go to c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F &
 Syntax Error
 
 7613/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can go to d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F &
 Syntax Error
 
 7614/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can go to h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F &
 Syntax Error
 
 7615/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 do not visit a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 7616/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 do not visit b more than once
 ! F & b U b & ! b U ! b F b
 ! F b
 False
 
 7617/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 do not visit c more than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 7618/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 do not visit d more than once
 ! F & d U d & ! d U ! d F d
 ! F d
 False
 
 7619/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 do not visit h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 7620/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can visit a but only one time at most
 ! F & a U a & ! a U ! a F a
 U ! a h
 False
 
 7621/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can visit b but only one time at most
 ! F & b U b & ! b U ! b F b
 U ! b h
 False
 
 7622/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can visit c but only one time at most
 ! F & c U c & ! c U ! c F c
 U ! c h
 False
 
 7623/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can visit d but only one time at most
 ! F & d U d & ! d U ! d F d
 U ! d h
 False
 
 7624/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can visit h but only one time at most
 ! F & h U h & ! h U ! h F h
 U ! h c
 False
 
 7625/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 do not visit a again after you haven been to a once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a U a &
 Syntax Error
 
 7626/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 do not visit b again after you haven been to b once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b U b &
 Syntax Error
 
 7627/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 do not visit c again after you haven been to c once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c U c &
 Syntax Error
 
 7628/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 do not visit d again after you haven been to d once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d U d &
 Syntax Error
 
 7629/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 do not visit h again after you haven been to h once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h U h &
 Syntax Error
 
 7630/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 visiting a more than once is prohibited
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 7631/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 visiting b more than once is prohibited
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 7632/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 visiting c more than once is prohibited
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 7633/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 visiting d more than once is prohibited
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 7634/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 visiting h more than once is prohibited
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 7635/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a |
 Syntax Error
 
 7636/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b |
 Syntax Error
 
 7637/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c |
 Syntax Error
 
 7638/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d exactly once
 M d | ! d G | d G ! d
 & & U ! d h F d U !
 Syntax Error
 
 7639/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U !
 Syntax Error
 
 7640/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 go to a only one time
 M a | ! a G | a G ! a
 U ! a h
 False
 
 7641/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 go to b only one time
 M b | ! b G | b G ! b
 U ! b h
 False
 
 7642/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 go to c only one time
 M c | ! c G | c G ! c
 U ! c h
 False
 
 7643/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 go to d only one time
 M d | ! d G | d G ! d
 U ! d h
 False
 
 7644/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 go to h only one time
 M h | ! h G | h G ! h
 U ! h c
 False
 
 7645/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you have to go to a and you can not go there more or less than one time
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G | a G | ! a G | a G !
 Syntax Error
 
 7646/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you have to go to b and you can not go there more or less than one time
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G | b G | ! b G | b G !
 Syntax Error
 
 7647/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you have to go to c and you can not go there more or less than one time
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G | c G | ! c G | c G !
 Syntax Error
 
 7648/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you have to go to d and you can not go there more or less than one time
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G | d G | ! d G | d G !
 Syntax Error
 
 7649/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you have to go to h and you can not go there more or less than one time
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G | h G | ! h G | h G !
 Syntax Error
 
 7650/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 go to a more or less than one time is prohibited
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G | a G |
 Syntax Error
 
 7651/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 go to b more or less than one time is prohibited
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G | b G |
 Syntax Error
 
 7652/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 go to c more or less than one time is prohibited
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G | c G |
 Syntax Error
 
 7653/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 go to d more or less than one time is prohibited
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G | d G |
 Syntax Error
 
 7654/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 go to h more or less than one time is prohibited
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G | h G |
 Syntax Error
 
 7655/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 go to a once and do not visit it anymore
 M a | ! a G | a G ! a
 G i a X G ! h
 False
 
 7656/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 go to b once and do not visit it anymore
 M b | ! b G | b G ! b
 G i b X G ! h
 False
 
 7657/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 go to c once and do not visit it anymore
 M c | ! c G | c G ! c
 ! F & c U c & ! c U ! c F & c U
 Syntax Error
 
 7658/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 go to d once and do not visit it anymore
 M d | ! d G | d G ! d
 G i d X G ! h
 False
 
 7659/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 go to h once and do not visit it anymore
 M h | ! h G | h G ! h
 ! F & h U h & ! h U ! h F & h U
@@ -53798,140 +53798,140 @@ M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h 
 Syntax Error
 
 7685/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you must avoid a at all costs
 G ! a
 G i a X G ! b
 False
 
 7686/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you must avoid b at all costs
 G ! b
 G i b X G ! h
 False
 
 7687/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you must avoid c at all costs
 G ! c
 G i c X G ! c
 False
 
 7688/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you must avoid d at all costs
 G ! d
 G i d X G ! d
 False
 
 7689/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you must avoid h at all costs
 G ! h
 G i h X G ! b
 False
 
 7690/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you can not go to a
 G ! a
 G i a X G ! b
 False
 
 7691/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you can not go to b
 G ! b
 G i b X G ! h
 False
 
 7692/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you can not go to c
 G ! c
 G i c X G ! b
 False
 
 7693/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you can not go to d
 G ! d
 G i d X G ! d
 False
 
 7694/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you can not go to h
 G ! h
 G i h X G ! b
 False
 
 7695/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you are allowed to go to a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a U
 Syntax Error
 
 7696/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you are allowed to go to b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b U
 Syntax Error
 
 7697/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you are allowed to go to c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c U
 Syntax Error
 
 7698/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you are allowed to go to d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d U
 Syntax Error
 
 7699/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you are allowed to go to h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h U
 Syntax Error
 
 7700/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you must visit a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a
 Syntax Error
 
 7701/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you must visit b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b
 Syntax Error
 
 7702/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you must visit c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c
 Syntax Error
 
 7703/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you must visit d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d
 Syntax Error
 
 7704/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you must visit h exactly once
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h
@@ -55093,315 +55093,315 @@ U d h
 False
 
 7870/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 avoid a forever
 G ! a
 G i a X G ! b
 False
 
 7871/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 avoid b forever
 G ! b
 G i b X G ! h
 False
 
 7872/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 avoid c forever
 G ! c
 G i c X G ! c
 False
 
 7873/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 avoid d forever
 G ! d
 G i d X G ! h
 False
 
 7874/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 avoid h forever
 G ! h
 G i h X G ! b
 False
 
 7875/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 do not make any single visit to a
 G ! a
 & G ! a G ! b
 False
 
 7876/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 do not make any single visit to b
 G ! b
 & G ! b G ! h
 False
 
 7877/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 do not make any single visit to c
 G ! c
 G i c X G ! c
 False
 
 7878/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 do not make any single visit to d
 G ! d
 & G ! d G ! h
 False
 
 7879/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 do not make any single visit to h
 G ! h
 & G ! h G ! b
 False
 
 7880/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 you can not go to a
 G ! a
 G i a X G ! b
 False
 
 7881/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 you can not go to b
 G ! b
 G i b X G ! h
 False
 
 7882/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 you can not go to c
 G ! c
 G i c X G ! b
 False
 
 7883/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 you can not go to d
 G ! d
 G i d X G ! d
 False
 
 7884/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 you can not go to h
 G ! h
 G i h X G ! b
 False
 
 7885/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can not visit a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F &
 Syntax Error
 
 7886/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can not visit b more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F &
 Syntax Error
 
 7887/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can not visit c more than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 7888/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can not visit d more than once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F &
 Syntax Error
 
 7889/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can not visit h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F &
 Syntax Error
 
 7890/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 never visit a again after you have visited it once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a U
 Syntax Error
 
 7891/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 never visit b again after you have visited it once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b U
 Syntax Error
 
 7892/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 never visit c again after you have visited it once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c U
 Syntax Error
 
 7893/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 never visit d again after you have visited it once
 ! F & d U d & ! d U ! d F d
 G i d X G ! h
 False
 
 7894/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 never visit h again after you have visited it once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h U
 Syntax Error
 
 7895/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you are good to visit a equal or less than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a U a
 Syntax Error
 
 7896/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you are good to visit b equal or less than once
 ! F & b U b & ! b U ! b F b
 ! F b
 False
 
 7897/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you are good to visit c equal or less than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 7898/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you are good to visit d equal or less than once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d U d
 Syntax Error
 
 7899/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you are good to visit h equal or less than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h U h
 Syntax Error
 
 7900/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a once and never revisit it again
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G |
 Syntax Error
 
 7901/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b once and never revisit it again
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G |
 Syntax Error
 
 7902/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c once and never revisit it again
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G |
 Syntax Error
 
 7903/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d once and never revisit it again
 M d | ! d G | d G ! d
 & & U ! d h F d U ! d U d U
 Syntax Error
 
 7904/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h once and never revisit it again
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G |
 Syntax Error
 
 7905/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you must go to a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G
 Syntax Error
 
 7906/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you must go to b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G
 Syntax Error
 
 7907/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you must go to c exactly once
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G
 Syntax Error
 
 7908/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you must go to d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G
 Syntax Error
 
 7909/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you must go to h exactly once
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G
 Syntax Error
 
 7910/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a once and then stop visiting it anymore
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G | a
 Syntax Error
 
 7911/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b once and then stop visiting it anymore
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G | b
 Syntax Error
 
 7912/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c once and then stop visiting it anymore
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G | c
 Syntax Error
 
 7913/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d once and then stop visiting it anymore
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G | d
 Syntax Error
 
 7914/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h once and then stop visiting it anymore
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G | h
@@ -56633,350 +56633,350 @@ U ! h d
 False
 
 8090/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 once you reach a you are never allowed to visit it again
 ! F & a U a & ! a U ! a F a
 G i a X G ! h
 False
 
 8091/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 once you reach b you are never allowed to visit it again
 ! F & b U b & ! b U ! b F b
 G i b X G ! h
 False
 
 8092/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 once you reach c you are never allowed to visit it again
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c U c &
 Syntax Error
 
 8093/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 once you reach d you are never allowed to visit it again
 ! F & d U d & ! d U ! d F d
 G i d X G ! h
 False
 
 8094/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 once you reach h you are never allowed to visit it again
 ! F & h U h & ! h U ! h F h
 G i h X G ! c
 False
 
 8095/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can visit a at most once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 8096/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can visit b at most once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 8097/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can visit c at most once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 8098/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can visit d at most once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 8099/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can visit h at most once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 8100/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 you can not visit a two or more times
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a
 Syntax Error
 
 8101/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 you can not visit b two or more times
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b
 Syntax Error
 
 8102/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 you can not visit c two or more times
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c
 Syntax Error
 
 8103/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 you can not visit d two or more times
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d
 Syntax Error
 
 8104/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 you can not visit h two or more times
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h
 Syntax Error
 
 8105/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 visiting a locks it for future visits
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 8106/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 visiting b locks it for future visits
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 8107/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 visiting c locks it for future visits
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 8108/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 visiting d locks it for future visits
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 8109/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 visiting h locks it for future visits
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 8110/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 do not go to a more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F &
 Syntax Error
 
 8111/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 do not go to b more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F &
 Syntax Error
 
 8112/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 do not go to c more than once
 ! F & c U c & ! c U ! c F c
 ! F c
 False
 
 8113/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 do not go to d more than once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F &
 Syntax Error
 
 8114/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 do not go to h more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F &
 Syntax Error
 
 8115/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a then leave a and never go back
 M a | ! a G | a G ! a
 F & a U a & ! a U ! a F a
 False
 
 8116/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b then leave b and never go back
 M b | ! b G | b G ! b
 F & b U b & ! b U ! b F b
 False
 
 8117/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c then leave c and never go back
 M c | ! c G | c G ! c
 F & c U c & ! c U ! c F c
 False
 
 8118/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d then leave d and never go back
 M d | ! d G | d G ! d
 F & d U d & ! d U ! d F d
 False
 
 8119/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h then leave h and never go back
 M h | ! h G | h G ! h
 U h b
 False
 
 8120/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a exactly once you can stay there for any period of time
 M a | ! a G | a G ! a
 M & a F & ! a F a | ! a G | a G | ! a
 Syntax Error
 
 8121/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b exactly once you can stay there for any period of time
 M b | ! b G | b G ! b
 M & b F & ! b F b | ! b G | b G | ! b
 Syntax Error
 
 8122/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c exactly once you can stay there for any period of time
 M c | ! c G | c G ! c
 M & c F & ! c F c | ! c G | c G | ! c
 Syntax Error
 
 8123/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d exactly once you can stay there for any period of time
 M d | ! d G | d G ! d
 M & d F & ! d F d | ! d G | d G | ! d
 Syntax Error
 
 8124/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h exactly once you can stay there for any period of time
 M h | ! h G | h G ! h
 M & h F & ! h F h | ! h G | h G | ! h
 Syntax Error
 
 8125/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you are allowed to make only one visit to a
 M a | ! a G | a G ! a
 U ! a c
 False
 
 8126/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you are allowed to make only one visit to b
 M b | ! b G | b G ! b
 U ! b h
 False
 
 8127/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you are allowed to make only one visit to c
 M c | ! c G | c G ! c
 U ! c h
 False
 
 8128/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you are allowed to make only one visit to d
 M d | ! d G | d G ! d
 U ! d h
 False
 
 8129/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you are allowed to make only one visit to h
 M h | ! h G | h G ! h
 U ! h b
 False
 
 8130/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 you can only reach and exit a exactly once
 M a | ! a G | a G ! a
 & & U ! a b F a U ! b U b U !
 Syntax Error
 
 8131/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 you can only reach and exit b exactly once
 M b | ! b G | b G ! b
 & & U ! b h F b U ! h U h U !
 Syntax Error
 
 8132/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 you can only reach and exit c exactly once
 M c | ! c G | c G ! c
 & & U ! c b F c U ! b U b U !
 Syntax Error
 
 8133/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 you can only reach and exit d exactly once
 M d | ! d G | d G ! d
 & & U ! d h F d U ! h U h U !
 Syntax Error
 
 8134/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 you can only reach and exit h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U ! b U b U !
 Syntax Error
 
 8135/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 reach a and then leave a then never come back to a
 M a | ! a G | a G ! a
 F & a U a & ! a U ! a F a
 False
 
 8136/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 reach b and then leave b then never come back to b
 M b | ! b G | b G ! b
 F & b U b & ! b U ! b F b
 False
 
 8137/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 reach c and then leave c then never come back to c
 M c | ! c G | c G ! c
 F & c U c & ! c U ! c F c
 False
 
 8138/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 reach d and then leave d then never come back to d
 M d | ! d G | d G ! d
 F & d U d & ! d U ! d F d
 False
 
 8139/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 reach h and then leave h then never come back to h
 M h | ! h G | h G ! h
 F & h U h & ! h U ! h F h
@@ -57858,280 +57858,280 @@ G i h F d
 False
 
 8265/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 never let a hold
 G ! a
 & G ! a G ! b
 False
 
 8266/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 never let b hold
 G ! b
 G i b X G ! b
 False
 
 8267/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 never let c hold
 G ! c
 G F c
 False
 
 8268/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 never let d hold
 G ! d
 G F d
 False
 
 8269/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 never let h hold
 G ! h
 G i h X G ! b
 False
 
 8270/8380
-global_avoidance | 1 ['a,']
+global_avoidance | 1 ['a']
 a should never become true
 G ! a
 G i a X G ! b
 False
 
 8271/8380
-global_avoidance | 1 ['b,']
+global_avoidance | 1 ['b']
 b should never become true
 G ! b
 G i b X G ! c
 False
 
 8272/8380
-global_avoidance | 1 ['c,']
+global_avoidance | 1 ['c']
 c should never become true
 G ! c
 G i c X G ! c
 False
 
 8273/8380
-global_avoidance | 1 ['d,']
+global_avoidance | 1 ['d']
 d should never become true
 G ! d
 G i d X G ! d
 False
 
 8274/8380
-global_avoidance | 1 ['h,']
+global_avoidance | 1 ['h']
 h should never become true
 G ! h
 ! F & h U h & ! h U !
 Syntax Error
 
 8275/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 do not visit a any more than once
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F &
 Syntax Error
 
 8276/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 do not visit b any more than once
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F &
 Syntax Error
 
 8277/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 do not visit c any more than once
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F &
 Syntax Error
 
 8278/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 do not visit d any more than once
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F &
 Syntax Error
 
 8279/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 do not visit h any more than once
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F &
 Syntax Error
 
 8280/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 do not reach a for more than one distinct visit
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a U
 Syntax Error
 
 8281/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 do not reach b for more than one distinct visit
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b U
 Syntax Error
 
 8282/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 do not reach c for more than one distinct visit
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c U
 Syntax Error
 
 8283/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 do not reach d for more than one distinct visit
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d U
 Syntax Error
 
 8284/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 do not reach h for more than one distinct visit
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h U
 Syntax Error
 
 8285/8380
-upper_restricted_avoidance | 1 ['a,']
+upper_restricted_avoidance | 1 ['a']
 the maximum allowable separate visits to a is one
 ! F & a U a & ! a U ! a F a
 ! F & a U a & ! a U ! a F & a
 Syntax Error
 
 8286/8380
-upper_restricted_avoidance | 1 ['b,']
+upper_restricted_avoidance | 1 ['b']
 the maximum allowable separate visits to b is one
 ! F & b U b & ! b U ! b F b
 ! F & b U b & ! b U ! b F & b
 Syntax Error
 
 8287/8380
-upper_restricted_avoidance | 1 ['c,']
+upper_restricted_avoidance | 1 ['c']
 the maximum allowable separate visits to c is one
 ! F & c U c & ! c U ! c F c
 ! F & c U c & ! c U ! c F & c
 Syntax Error
 
 8288/8380
-upper_restricted_avoidance | 1 ['d,']
+upper_restricted_avoidance | 1 ['d']
 the maximum allowable separate visits to d is one
 ! F & d U d & ! d U ! d F d
 ! F & d U d & ! d U ! d F & d
 Syntax Error
 
 8289/8380
-upper_restricted_avoidance | 1 ['h,']
+upper_restricted_avoidance | 1 ['h']
 the maximum allowable separate visits to h is one
 ! F & h U h & ! h U ! h F h
 ! F & h U h & ! h U ! h F & h
 Syntax Error
 
 8290/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 reach a exactly once
 M a | ! a G | a G ! a
 M & a F & ! a F a |
 Syntax Error
 
 8291/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 reach b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b |
 Syntax Error
 
 8292/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 reach c exactly once
 M c | ! c G | c G ! c
 & & U ! c b F c U !
 Syntax Error
 
 8293/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 reach d exactly once
 M d | ! d G | d G ! d
 M & d F & ! d F d |
 Syntax Error
 
 8294/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 reach h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U !
 Syntax Error
 
 8295/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 visit a no fewer or greater than once
 M a | ! a G | a G ! a
 F & a U a & ! a U ! a F a
 False
 
 8296/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 visit b no fewer or greater than once
 M b | ! b G | b G ! b
 F b
 False
 
 8297/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 visit c no fewer or greater than once
 M c | ! c G | c G ! c
 F c
 False
 
 8298/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 visit d no fewer or greater than once
 M d | ! d G | d G ! d
 F d
 False
 
 8299/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 visit h no fewer or greater than once
 M h | ! h G | h G ! h
 F & h U h & ! h U ! h F h
 False
 
 8300/8380
-exact_restricted_avoidance | 1 ['a,']
+exact_restricted_avoidance | 1 ['a']
 go visit a exactly once
 M a | ! a G | a G ! a
 & & U ! a b F a U ! b
 Syntax Error
 
 8301/8380
-exact_restricted_avoidance | 1 ['b,']
+exact_restricted_avoidance | 1 ['b']
 go visit b exactly once
 M b | ! b G | b G ! b
 M & b F & ! b F b | !
 Syntax Error
 
 8302/8380
-exact_restricted_avoidance | 1 ['c,']
+exact_restricted_avoidance | 1 ['c']
 go visit c exactly once
 M c | ! c G | c G ! c
 & & U ! c b F c U ! b
 Syntax Error
 
 8303/8380
-exact_restricted_avoidance | 1 ['d,']
+exact_restricted_avoidance | 1 ['d']
 go visit d exactly once
 M d | ! d G | d G ! d
 & & U ! d h F d U ! d
 Syntax Error
 
 8304/8380
-exact_restricted_avoidance | 1 ['h,']
+exact_restricted_avoidance | 1 ['h']
 go visit h exactly once
 M h | ! h G | h G ! h
 & & U ! h b F h U ! b

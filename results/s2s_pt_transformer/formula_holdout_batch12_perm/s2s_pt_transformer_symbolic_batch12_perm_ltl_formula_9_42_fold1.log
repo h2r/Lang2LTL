@@ -7563,245 +7563,245 @@ eventually visit h afterward eventually visit d afterward eventually visit c aft
 Syntax Error
 
 1080/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep visiting a
 G F a
 G ! a
 False
 
 1081/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep visiting b
 G F b
 G ! b
 False
 
 1082/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep visiting c
 G F c
 G ! c
 False
 
 1083/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep visiting d
 G F d
 G ! d
 False
 
 1084/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep visiting h
 G F h
 F h
 False
 
 1085/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 go to a an infinite number of times
 G F a
 & G ! a G ! c
 False
 
 1086/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 go to b an infinite number of times
 G F b
 & G F b G F c
 False
 
 1087/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 go to c an infinite number of times
 G F c
 & G ! c G ! c G ! c
 Syntax Error
 
 1088/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 go to d an infinite number of times
 G F d
 & G F d G F c
 False
 
 1089/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 go to h an infinite number of times
 G F h
 & G F h G F b
 False
 
 1090/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 continue moving to a
 G F a
 G ! a
 False
 
 1091/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 continue moving to b
 G F b
 G ! b
 False
 
 1092/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 continue moving to c
 G F c
 G ! c
 False
 
 1093/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 continue moving to d
 G F d
 G ! d
 False
 
 1094/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 continue moving to h
 G F h
 G i h F b
 False
 
 1095/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 do not stop visiting a
 G F a
 G ! a
 False
 
 1096/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 do not stop visiting b
 G F b
 G i b F c
 False
 
 1097/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 do not stop visiting c
 G F c
 G ! c
 False
 
 1098/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 do not stop visiting d
 G F d
 G ! d
 False
 
 1099/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 do not stop visiting h
 G F h
 G ! h
 False
 
 1100/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 do not stop going to a
 G F a
 G ! a
 False
 
 1101/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 do not stop going to b
 G F b
 G ! b
 False
 
 1102/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 do not stop going to c
 G F c
 G ! c
 False
 
 1103/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 do not stop going to d
 G F d
 G ! d
 False
 
 1104/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 do not stop going to h
 G F h
 G ! h
 False
 
 1105/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 please visit a infinitely often
 G F a
 G i a F b
 False
 
 1106/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 please visit b infinitely often
 G F b
 G i b F c
 False
 
 1107/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 please visit c infinitely often
 G F c
 G i c F c
 False
 
 1108/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 please visit d infinitely often
 G F d
 G i d F c
 False
 
 1109/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 please visit h infinitely often
 G F h
 & G F h G F b
 False
 
 1110/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 you must visit a infinitely often
 G F a
 G i a F b
 False
 
 1111/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 you must visit b infinitely often
 G F b
 G i b F c
 False
 
 1112/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 you must visit c infinitely often
 G F c
 G i c F c
 False
 
 1113/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 you must visit d infinitely often
 G F d
 G i d F c
 False
 
 1114/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 you must visit h infinitely often
 G F h
 & G F h G F b
@@ -9908,175 +9908,175 @@ F & h F & d F c
 False
 
 1415/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep visiting a
 G F a
 G ! a
 False
 
 1416/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep visiting b
 G F b
 G ! b
 False
 
 1417/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep visiting c
 G F c
 G ! c
 False
 
 1418/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep visiting d
 G F d
 G ! d
 False
 
 1419/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep visiting h
 G F h
 F h
 False
 
 1420/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep going to a
 G F a
 G ! a
 False
 
 1421/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep going to b
 G F b
 G ! b
 False
 
 1422/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep going to c
 G F c
 G ! c
 False
 
 1423/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep going to d
 G F d
 G ! d
 False
 
 1424/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep going to h
 G F h
 G ! h
 False
 
 1425/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 make sure you frequent a infinitely
 G F a
 G i a F b
 False
 
 1426/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 make sure you frequent b infinitely
 G F b
 G i b F c
 False
 
 1427/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 make sure you frequent c infinitely
 G F c
 G i c F c
 False
 
 1428/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 make sure you frequent d infinitely
 G F d
 G i d F c
 False
 
 1429/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 make sure you frequent h infinitely
 G F h
 & G F h G F b
 False
 
 1430/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 do not stop visiting a
 G F a
 G ! a
 False
 
 1431/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 do not stop visiting b
 G F b
 G i b F c
 False
 
 1432/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 do not stop visiting c
 G F c
 G ! c
 False
 
 1433/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 do not stop visiting d
 G F d
 G ! d
 False
 
 1434/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 do not stop visiting h
 G F h
 G ! h
 False
 
 1435/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 make sure you visit a infinite times
 G F a
 M & a F & ! a F & a F & !
 Syntax Error
 
 1436/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 make sure you visit b infinite times
 G F b
 M & b F & ! b F & b F & !
 Syntax Error
 
 1437/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 make sure you visit c infinite times
 G F c
 M & c F & ! c F & c F & !
 Syntax Error
 
 1438/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 make sure you visit d infinite times
 G F d
 M & d F & ! d F & d F & !
 Syntax Error
 
 1439/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 make sure you visit h infinite times
 G F h
 M & h F & ! h F & h F & !
@@ -33183,280 +33183,280 @@ U ! c d & U ! h c & U ! b h F b
 Syntax Error
 
 4740/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep on visiting a forever
 G F a
 & G F a G F b
 False
 
 4741/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep on visiting b forever
 G F b
 & G F b G F c
 False
 
 4742/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep on visiting c forever
 G F c
 G c
 False
 
 4743/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep on visiting d forever
 G F d
 & G F d G F c
 False
 
 4744/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep on visiting h forever
 G F h
 & G F h G F b
 False
 
 4745/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 go to a repeatedly
 G F a
 G ! a
 False
 
 4746/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 go to b repeatedly
 G F b
 G i b F c
 False
 
 4747/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 go to c repeatedly
 G F c
 G ! c
 False
 
 4748/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 go to d repeatedly
 G F d
 G ! d
 False
 
 4749/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 go to h repeatedly
 G F h
 G i h F b
 False
 
 4750/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 visit a infinitely often
 G F a
 G i a F c
 False
 
 4751/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 visit b infinitely often
 G F b
 G i b F c
 False
 
 4752/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 visit c infinitely often
 G F c
 G ! c
 False
 
 4753/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 visit d infinitely often
 G F d
 G i d F c
 False
 
 4754/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 visit h infinitely often
 G F h
 & G F h G F b
 False
 
 4755/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 make sure at any point in time you will visit a at least once in the future
 G F a
 G i a F b
 False
 
 4756/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 make sure at any point in time you will visit b at least once in the future
 G F b
 G i b F c
 False
 
 4757/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 make sure at any point in time you will visit c at least once in the future
 G F c
 G i c F c
 False
 
 4758/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 make sure at any point in time you will visit d at least once in the future
 G F d
 G i d F b
 False
 
 4759/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 make sure at any point in time you will visit h at least once in the future
 G F h
 G i h F b
 False
 
 4760/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep visiting a forever
 G F a
 G ! a
 False
 
 4761/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep visiting b forever
 G F b
 G ! b
 False
 
 4762/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep visiting c forever
 G F c
 G ! c
 False
 
 4763/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep visiting d forever
 G F d
 G ! d
 False
 
 4764/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep visiting h forever
 G F h
 G ! h
 False
 
 4765/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep visiting a
 G F a
 G ! a
 False
 
 4766/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep visiting b
 G F b
 G ! b
 False
 
 4767/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep visiting c
 G F c
 G ! c
 False
 
 4768/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep visiting d
 G F d
 G ! d
 False
 
 4769/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep visiting h
 G F h
 F h
 False
 
 4770/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 continue to visit a
 G F a
 G ! a
 False
 
 4771/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 continue to visit b
 G F b
 G ! b
 False
 
 4772/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 continue to visit c
 G F c
 G ! c
 False
 
 4773/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 continue to visit d
 G F d
 G ! d
 False
 
 4774/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 continue to visit h
 G F h
 G ! h
 False
 
 4775/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 visit a again and again
 G F a
 ! F & a U a & ! a U !
 Syntax Error
 
 4776/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 visit b again and again
 G F b
 F & b U b & ! b U ! b
 Syntax Error
 
 4777/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 visit c again and again
 G F c
 ! F & c U c & ! c U !
 Syntax Error
 
 4778/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 visit d again and again
 G F d
 ! F & d U d & ! d U !
 Syntax Error
 
 4779/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 visit h again and again
 G F h
 ! F & h U h & ! h U !
@@ -43543,175 +43543,175 @@ stop by h d c and b in any order
 True
 
 6220/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 please keep visiting a
 G F a
 G ! a
 False
 
 6221/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 please keep visiting b
 G F b
 G i b F c
 False
 
 6222/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 please keep visiting c
 G F c
 G ! c
 False
 
 6223/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 please keep visiting d
 G F d
 G ! d
 False
 
 6224/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 please keep visiting h
 G F h
 G ! h
 False
 
 6225/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep going to a
 G F a
 G ! a
 False
 
 6226/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep going to b
 G F b
 G ! b
 False
 
 6227/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep going to c
 G F c
 G ! c
 False
 
 6228/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep going to d
 G F d
 G ! d
 False
 
 6229/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep going to h
 G F h
 G ! h
 False
 
 6230/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 always stop at a repeatedly
 G F a
 G i a F b
 False
 
 6231/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 always stop at b repeatedly
 G F b
 G i b F c
 False
 
 6232/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 always stop at c repeatedly
 G F c
 G ! c
 False
 
 6233/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 always stop at d repeatedly
 G F d
 G ! d
 False
 
 6234/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 always stop at h repeatedly
 G F h
 G i h F b
 False
 
 6235/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 keep visiting a
 G F a
 G ! a
 False
 
 6236/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 keep visiting b
 G F b
 G ! b
 False
 
 6237/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 keep visiting c
 G F c
 G ! c
 False
 
 6238/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 keep visiting d
 G F d
 G ! d
 False
 
 6239/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 keep visiting h
 G F h
 F h
 False
 
 6240/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 patrol a repeatedly
 G F a
 G i a F b
 False
 
 6241/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 patrol b repeatedly
 G F b
 G i b F c
 False
 
 6242/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 patrol c repeatedly
 G F c
 G ! c
 False
 
 6243/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 patrol d repeatedly
 G F d
 G ! d
 False
 
 6244/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 patrol h repeatedly
 G F h
 G i h F d
@@ -57998,175 +57998,175 @@ visit h do not visit d c b or a until you visit h then visit d do not visit c b 
 False
 
 8285/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 never stop visiting a
 G F a
 G ! a
 False
 
 8286/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 never stop visiting b
 G F b
 G i b F c
 False
 
 8287/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 never stop visiting c
 G F c
 G ! c
 False
 
 8288/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 never stop visiting d
 G F d
 G ! d
 False
 
 8289/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 never stop visiting h
 G F h
 G ! h
 False
 
 8290/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 make sure a is visited infinitely
 G F a
 G i a F b
 False
 
 8291/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 make sure b is visited infinitely
 G F b
 G i b F c
 False
 
 8292/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 make sure c is visited infinitely
 G F c
 G i c F c
 False
 
 8293/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 make sure d is visited infinitely
 G F d
 G i d X G ! b
 False
 
 8294/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 make sure h is visited infinitely
 G F h
 & G F h G F b
 False
 
 8295/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 visit a an infinite number of times
 G F a
 & G F a G F c
 False
 
 8296/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 visit b an infinite number of times
 G F b
 & G F b G F c
 False
 
 8297/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 visit c an infinite number of times
 G F c
 & G ! c G ! c G ! c
 Syntax Error
 
 8298/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 visit d an infinite number of times
 G F d
 & G F d G F c
 False
 
 8299/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 visit h an infinite number of times
 G F h
 & G F h G F a
 False
 
 8300/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 frequent a infinitely
 G F a
 G i a F c
 False
 
 8301/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 frequent b infinitely
 G F b
 G i b F c
 False
 
 8302/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 frequent c infinitely
 G F c
 G i c F c
 False
 
 8303/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 frequent d infinitely
 G F d
 G i d F c
 False
 
 8304/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 frequent h infinitely
 G F h
 & G F h G F b
 False
 
 8305/14790
-patrolling | 1 ['a,']
+patrolling | 1 ['a']
 please keep visiting a without stopping
 G F a
 G i a F c
 False
 
 8306/14790
-patrolling | 1 ['b,']
+patrolling | 1 ['b']
 please keep visiting b without stopping
 G F b
 G i b F c
 False
 
 8307/14790
-patrolling | 1 ['c,']
+patrolling | 1 ['c']
 please keep visiting c without stopping
 G F c
 G i c F c
 False
 
 8308/14790
-patrolling | 1 ['d,']
+patrolling | 1 ['d']
 please keep visiting d without stopping
 G F d
 G i d F c
 False
 
 8309/14790
-patrolling | 1 ['h,']
+patrolling | 1 ['h']
 please keep visiting h without stopping
 G F h
 G i h F b
@@ -98493,245 +98493,245 @@ visit h only after h is visited go to d only after d is visited go to c only aft
 Syntax Error
 
 14070/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 visit a at least once
 F a
 F a
 True
 
 14071/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 visit b at least once
 F b
 F & b U b & ! b U ! b
 Syntax Error
 
 14072/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 visit c at least once
 F c
 F & c U c & ! c U ! c
 Syntax Error
 
 14073/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 visit d at least once
 F d
 F & d U d & ! d U ! d
 Syntax Error
 
 14074/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 visit h at least once
 F h
 F & h U h & ! h U ! h
 Syntax Error
 
 14075/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 go to a at least once
 F a
 F a
 True
 
 14076/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 go to b at least once
 F b
 F b
 True
 
 14077/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 go to c at least once
 F c
 F c
 True
 
 14078/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 go to d at least once
 F d
 F d
 True
 
 14079/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 go to h at least once
 F h
 F h
 True
 
 14080/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 make your way to a at least once
 F a
 F a
 True
 
 14081/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 make your way to b at least once
 F b
 F b
 True
 
 14082/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 make your way to c at least once
 F c
 F c
 True
 
 14083/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 make your way to d at least once
 F d
 F d
 True
 
 14084/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 make your way to h at least once
 F h
 F h
 True
 
 14085/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you have to visit a at least once
 F a
 G i a F c
 False
 
 14086/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you have to visit b at least once
 F b
 G i b F c
 False
 
 14087/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you have to visit c at least once
 F c
 G i c F b
 False
 
 14088/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you have to visit d at least once
 F d
 G i d F c
 False
 
 14089/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you have to visit h at least once
 F h
 G i h F b
 False
 
 14090/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 visit a at least once or more
 F a
 F & a U a & ! a U ! a F a
 False
 
 14091/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 visit b at least once or more
 F b
 F & b U b & ! b U ! b F b
 False
 
 14092/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 visit c at least once or more
 F c
 F & c U c & ! c U ! c F c
 False
 
 14093/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 visit d at least once or more
 F d
 F & d U d & ! d U ! d F d
 False
 
 14094/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 visit h at least once or more
 F h
 F & h U h & ! h U ! h F h
 False
 
 14095/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 never go to a less than once
 F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 14096/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 never go to b less than once
 F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 14097/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 never go to c less than once
 F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 14098/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 never go to d less than once
 F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 14099/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 never go to h less than once
 F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 14100/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you can not visit a less than once
 F a
 ! F & a U a & ! a U ! a F a
 False
 
 14101/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you can not visit b less than once
 F b
 ! F & b U b & ! b U ! b F b
 False
 
 14102/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you can not visit c less than once
 F c
 ! F & c U c & ! c U ! c F c
 False
 
 14103/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you can not visit d less than once
 F d
 ! F & d U d & ! d U ! d F d
 False
 
 14104/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you can not visit h less than once
 F h
 ! F & h U h & ! h U ! h F h
@@ -98983,175 +98983,175 @@ M & h F & ! h F & h F & ! h
 Syntax Error
 
 14140/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 visit a at least once
 F a
 F a
 True
 
 14141/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 visit b at least once
 F b
 F & b U b & ! b U ! b
 Syntax Error
 
 14142/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 visit c at least once
 F c
 F & c U c & ! c U ! c
 Syntax Error
 
 14143/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 visit d at least once
 F d
 F & d U d & ! d U ! d
 Syntax Error
 
 14144/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 visit h at least once
 F h
 F & h U h & ! h U ! h
 Syntax Error
 
 14145/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you have to visit a one or more than one time
 F a
 ! F & a U a & ! a U ! a F a
 False
 
 14146/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you have to visit b one or more than one time
 F b
 ! F & b U b & ! b U ! b F b
 False
 
 14147/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you have to visit c one or more than one time
 F c
 ! F & c U c & ! c U ! c F c
 False
 
 14148/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you have to visit d one or more than one time
 F d
 ! F & d U d & ! d U ! d F d
 False
 
 14149/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you have to visit h one or more than one time
 F h
 ! F & h U h & ! h U ! h F h
 False
 
 14150/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 your task is to go to a one or more times
 F a
 F & a U a & ! a U ! a F & a U a &
 Syntax Error
 
 14151/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 your task is to go to b one or more times
 F b
 F & b U b & ! b U ! b F & b U b &
 Syntax Error
 
 14152/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 your task is to go to c one or more times
 F c
 F & c U c & ! c U ! c F & c U c &
 Syntax Error
 
 14153/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 your task is to go to d one or more times
 F d
 F & d U d & ! d U ! d F & d U d &
 Syntax Error
 
 14154/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 your task is to go to h one or more times
 F h
 F & h U h & ! h U ! h F & h U h &
 Syntax Error
 
 14155/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 do not visit a less than one time
 F a
 M a | ! a G | a G ! a
 False
 
 14156/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 do not visit b less than one time
 F b
 M b | ! b G | b G ! b
 False
 
 14157/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 do not visit c less than one time
 F c
 ! F & c U c & ! c U ! c F c
 False
 
 14158/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 do not visit d less than one time
 F d
 M d | ! d G | d G ! d
 False
 
 14159/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 do not visit h less than one time
 F h
 M h | ! h G | h G ! h
 False
 
 14160/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 make sure you visit a one or more times
 F a
 F & a U a & ! a U ! a F a
 False
 
 14161/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 make sure you visit b one or more times
 F b
 F & b U b & ! b U ! b F & b U
 Syntax Error
 
 14162/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 make sure you visit c one or more times
 F c
 F & c U c & ! c U ! c F c
 False
 
 14163/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 make sure you visit d one or more times
 F d
 F & d U d & ! d U ! d F d
 False
 
 14164/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 make sure you visit h one or more times
 F h
 F & h U h & ! h U ! h F & h U
@@ -100033,35 +100033,35 @@ G i h X d
 False
 
 14290/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you have to reach a at least once
 F a
 G i c F a
 False
 
 14291/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you have to reach b at least once
 F b
 G i b F c
 False
 
 14292/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you have to reach c at least once
 F c
 G i c F c F b
 Syntax Error
 
 14293/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you have to reach d at least once
 F d
 G i d F c
 False
 
 14294/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you have to reach h at least once
 F h
 G i h F b
@@ -101223,105 +101223,105 @@ G i h X G ! d
 False
 
 14460/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 visit a equal or more than once
 F a
 ! F & a U a & ! a U ! a F
 Syntax Error
 
 14461/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 visit b equal or more than once
 F b
 ! F & b U b & ! b U ! b F
 Syntax Error
 
 14462/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 visit c equal or more than once
 F c
 ! F & c U c & ! c U ! c F
 Syntax Error
 
 14463/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 visit d equal or more than once
 F d
 ! F & d U d & ! d U ! d F
 Syntax Error
 
 14464/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 visit h equal or more than once
 F h
 ! F & h U h & ! h U ! h F
 Syntax Error
 
 14465/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you have to go to a one or more than one time
 F a
 M a | ! a G | a G ! a
 False
 
 14466/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you have to go to b one or more than one time
 F b
 ! F & b U b & ! b U ! b F b
 False
 
 14467/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you have to go to c one or more than one time
 F c
 ! F & c U c & ! c U ! c F c
 False
 
 14468/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you have to go to d one or more than one time
 F d
 ! F & d U d & ! d U ! d F d
 False
 
 14469/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you have to go to h one or more than one time
 F h
 M h | ! h G | h G ! h
 False
 
 14470/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 a has to be visited at least once
 F a
 F a
 True
 
 14471/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 b has to be visited at least once
 F b
 F & b U b & ! b U ! b F b
 False
 
 14472/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 c has to be visited at least once
 F c
 F c
 True
 
 14473/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 d has to be visited at least once
 F d
 F d
 True
 
 14474/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 h has to be visited at least once
 F h
 F h
@@ -101853,175 +101853,175 @@ U h d
 False
 
 14550/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 visit a at least once
 F a
 F a
 True
 
 14551/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 visit b at least once
 F b
 F & b U b & ! b U ! b
 Syntax Error
 
 14552/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 visit c at least once
 F c
 F & c U c & ! c U ! c
 Syntax Error
 
 14553/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 visit d at least once
 F d
 F & d U d & ! d U ! d
 Syntax Error
 
 14554/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 visit h at least once
 F h
 F & h U h & ! h U ! h
 Syntax Error
 
 14555/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 go to a
 F a
 F a
 True
 
 14556/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 go to b
 F b
 F b
 True
 
 14557/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 go to c
 F c
 F c
 True
 
 14558/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 go to d
 F d
 F d
 True
 
 14559/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 go to h
 F h
 F h
 True
 
 14560/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 reach a
 F a
 F a
 True
 
 14561/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 reach b
 F b
 F b
 True
 
 14562/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 reach c
 F c
 F c
 True
 
 14563/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 reach d
 F d
 F d
 True
 
 14564/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 reach h
 F h
 F h
 True
 
 14565/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 go through a
 F a
 F & a U a & ! a U
 Syntax Error
 
 14566/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 go through b
 F b
 F & b F b
 True
 
 14567/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 go through c
 F c
 F c
 True
 
 14568/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 go through d
 F d
 F & d U d & ! d U
 Syntax Error
 
 14569/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 go through h
 F h
 F & h F h F h F h
 Syntax Error
 
 14570/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 find a
 F a
 F a
 True
 
 14571/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 find b
 F b
 F b
 True
 
 14572/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 find c
 F c
 F c
 True
 
 14573/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 find d
 F d
 F d
 True
 
 14574/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 find h
 F h
 F h
@@ -102903,105 +102903,105 @@ U h d
 False
 
 14700/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 the minimum number of visits to a is once
 F a
 ! F & a U a & ! a U ! a F a
 False
 
 14701/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 the minimum number of visits to b is once
 F b
 ! F & b U b & ! b U ! b F b
 False
 
 14702/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 the minimum number of visits to c is once
 F c
 ! F & c U c & ! c U ! c F c
 False
 
 14703/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 the minimum number of visits to d is once
 F d
 ! F & d U d & ! d U ! d F d
 False
 
 14704/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 the minimum number of visits to h is once
 F h
 ! F & h U h & ! h U ! h F h
 False
 
 14705/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 make you go to a at least once
 F a
 F a
 True
 
 14706/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 make you go to b at least once
 F b
 F b
 True
 
 14707/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 make you go to c at least once
 F c
 F c
 True
 
 14708/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 make you go to d at least once
 F d
 F d
 True
 
 14709/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 make you go to h at least once
 F h
 F h
 True
 
 14710/14790
-lower_restricted_avoidance | 1 ['a,']
+lower_restricted_avoidance | 1 ['a']
 you are required to pass through a once
 F a
 G i a F b
 False
 
 14711/14790
-lower_restricted_avoidance | 1 ['b,']
+lower_restricted_avoidance | 1 ['b']
 you are required to pass through b once
 F b
 G i b F c
 False
 
 14712/14790
-lower_restricted_avoidance | 1 ['c,']
+lower_restricted_avoidance | 1 ['c']
 you are required to pass through c once
 F c
 G i c F c F c
 Syntax Error
 
 14713/14790
-lower_restricted_avoidance | 1 ['d,']
+lower_restricted_avoidance | 1 ['d']
 you are required to pass through d once
 F d
 G i d F c
 False
 
 14714/14790
-lower_restricted_avoidance | 1 ['h,']
+lower_restricted_avoidance | 1 ['h']
 you are required to pass through h once
 F h
 ! F & h U h & ! h U ! h F h

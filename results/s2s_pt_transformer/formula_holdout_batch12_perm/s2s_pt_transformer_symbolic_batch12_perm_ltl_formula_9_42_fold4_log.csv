@@ -7419,161 +7419,161 @@ valid,sequenced_visit,4,"['h', 'd', 'b', 'a']",first go to h then visit d then m
 valid,sequenced_visit,4,"['h', 'd', 'b', 'c']",first go to h then visit d then move to b finally reach c,F & h F & d F & b F c,F & h F & d F & b F c,True
 valid,sequenced_visit,4,"['h', 'd', 'c', 'a']",first go to h then visit d then move to c finally reach a,F & h F & d F & c F a,F & h F & d F & c F a,True
 valid,sequenced_visit,4,"['h', 'd', 'c', 'b']",first go to h then visit d then move to c finally reach b,F & h F & d F & c F b,F & h F & d F & c F b,True
-valid,global_avoidance,1,"['a,']",never go to a,G ! a,G i a X G ! a,False
-valid,global_avoidance,1,"['b,']",never go to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",never go to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",never go to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",never go to h,G ! h,G i h X G ! h,False
-valid,global_avoidance,1,"['a,']",do not go to a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",do not go to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",do not go to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",do not go to d,G ! d,G i d X G ! c,False
-valid,global_avoidance,1,"['h,']",do not go to h,G ! h,G i h X G ! h,False
-valid,global_avoidance,1,"['a,']",you can go anywhere but a,G ! a,G i a X G ! a,False
-valid,global_avoidance,1,"['b,']",you can go anywhere but b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you can go anywhere but c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you can go anywhere but d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you can go anywhere but h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",a can not be visited at any time,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",b can not be visited at any time,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",c can not be visited at any time,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",d can not be visited at any time,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",h can not be visited at any time,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",always keep away from a,G ! a,& G ! a G ! b,False
-valid,global_avoidance,1,"['b,']",always keep away from b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",always keep away from c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",always keep away from d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",always keep away from h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",never visit a,G ! a,G i a X G ! a,False
-valid,global_avoidance,1,"['b,']",never visit b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",never visit c,G ! c,F c,False
-valid,global_avoidance,1,"['d,']",never visit d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",never visit h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",you can never go to a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you can never go to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you can never go to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you can never go to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you can never go to h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",always stay away from a,G ! a,& G ! a G ! b,False
-valid,global_avoidance,1,"['b,']",always stay away from b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",always stay away from c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",always stay away from d,G ! d,G i d X G ! h,False
-valid,global_avoidance,1,"['h,']",always stay away from h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",always avoid going to a,G ! a,& G ! a G ! b,False
-valid,global_avoidance,1,"['b,']",always avoid going to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",always avoid going to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",always avoid going to d,G ! d,G i d X G ! h,False
-valid,global_avoidance,1,"['h,']",always avoid going to h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",you have to avoid a at all costs,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you have to avoid b at all costs,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you have to avoid c at all costs,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you have to avoid d at all costs,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you have to avoid h at all costs,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",make sure you never visit a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",make sure you never visit b,G ! b,G i b X G ! c,False
-valid,global_avoidance,1,"['c,']",make sure you never visit c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",make sure you never visit d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",make sure you never visit h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",you can not go to a at any time,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you can not go to b at any time,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you can not go to c at any time,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you can not go to d at any time,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you can not go to h at any time,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",avoid going to a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",avoid going to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",avoid going to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",avoid going to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",avoid going to h,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",you must never go to a,G ! a,G i a X G ! a,False
-valid,global_avoidance,1,"['b,']",you must never go to b,G ! b,G i b X G ! b,False
-valid,global_avoidance,1,"['c,']",you must never go to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you must never go to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you must never go to h,G ! h,G i h X G ! h,False
-valid,global_avoidance,1,"['a,']",a should never be reached,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",b should never be reached,G ! b,G i b X G ! c,False
-valid,global_avoidance,1,"['c,']",c should never be reached,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",d should never be reached,G ! d,G i d X G ! c,False
-valid,global_avoidance,1,"['h,']",h should never be reached,G ! h,G i h X G ! h,False
-valid,global_avoidance,1,"['a,']",a must be avoided,G ! a,G i a F a,False
-valid,global_avoidance,1,"['b,']",b must be avoided,G ! b,G F b,False
-valid,global_avoidance,1,"['c,']",c must be avoided,G ! c,F c,False
-valid,global_avoidance,1,"['d,']",d must be avoided,G ! d,F d,False
-valid,global_avoidance,1,"['h,']",h must be avoided,G ! h,G F h,False
-valid,global_avoidance,1,"['a,']",never visit a,G ! a,G i a X G ! a,False
-valid,global_avoidance,1,"['b,']",never visit b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",never visit c,G ! c,F c,False
-valid,global_avoidance,1,"['d,']",never visit d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",never visit h,G ! h,G i h X G ! b,False
-valid,upper_restricted_avoidance,1,"['a,']",visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",never go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",never go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",never go to c more than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",never go to d more than once,! F & d U d & ! d U ! d F d,! F d,False
-valid,upper_restricted_avoidance,1,"['h,']",never go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can not go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can not go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can not go to c more than once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can not go to d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can not go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",never visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",never visit b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",never visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",never visit d more than once,! F & d U d & ! d U ! d F d,! F d,False
-valid,upper_restricted_avoidance,1,"['h,']",never visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can visit a zero times or once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can visit b zero times or once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can visit c zero times or once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can visit d zero times or once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can visit h zero times or once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c |,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",go to a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",go to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | !,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",go to c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",go to d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",go to h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",make your way to a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",make your way to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",make your way to c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",make your way to d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",make your way to h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",you have to visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you have to visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you have to visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you have to visit d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you have to visit h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",you must reach a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you must reach b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you must reach c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you must reach d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you must reach h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a exactly once no more no less,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b exactly once no more no less,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c exactly once no more no less,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d exactly once no more no less,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h exactly once no more no less,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",navigate to a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",navigate to b exactly once,M b | ! b G | b G ! b,& & U ! b c F b U ! c,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",navigate to c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",navigate to d exactly once,M d | ! d G | d G ! d,& & U ! d b F d U ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",navigate to h exactly once,M h | ! h G | h G ! h,& & U ! h c F h U ! c,Syntax Error
+valid,global_avoidance,1,['a'],never go to a,G ! a,G i a X G ! a,False
+valid,global_avoidance,1,['b'],never go to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],never go to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],never go to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],never go to h,G ! h,G i h X G ! h,False
+valid,global_avoidance,1,['a'],do not go to a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],do not go to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],do not go to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],do not go to d,G ! d,G i d X G ! c,False
+valid,global_avoidance,1,['h'],do not go to h,G ! h,G i h X G ! h,False
+valid,global_avoidance,1,['a'],you can go anywhere but a,G ! a,G i a X G ! a,False
+valid,global_avoidance,1,['b'],you can go anywhere but b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you can go anywhere but c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you can go anywhere but d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you can go anywhere but h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],a can not be visited at any time,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],b can not be visited at any time,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],c can not be visited at any time,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],d can not be visited at any time,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],h can not be visited at any time,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],always keep away from a,G ! a,& G ! a G ! b,False
+valid,global_avoidance,1,['b'],always keep away from b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],always keep away from c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],always keep away from d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],always keep away from h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],never visit a,G ! a,G i a X G ! a,False
+valid,global_avoidance,1,['b'],never visit b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],never visit c,G ! c,F c,False
+valid,global_avoidance,1,['d'],never visit d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],never visit h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],you can never go to a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you can never go to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you can never go to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you can never go to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you can never go to h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],always stay away from a,G ! a,& G ! a G ! b,False
+valid,global_avoidance,1,['b'],always stay away from b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],always stay away from c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],always stay away from d,G ! d,G i d X G ! h,False
+valid,global_avoidance,1,['h'],always stay away from h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],always avoid going to a,G ! a,& G ! a G ! b,False
+valid,global_avoidance,1,['b'],always avoid going to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],always avoid going to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],always avoid going to d,G ! d,G i d X G ! h,False
+valid,global_avoidance,1,['h'],always avoid going to h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],you have to avoid a at all costs,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you have to avoid b at all costs,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you have to avoid c at all costs,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you have to avoid d at all costs,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you have to avoid h at all costs,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],make sure you never visit a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],make sure you never visit b,G ! b,G i b X G ! c,False
+valid,global_avoidance,1,['c'],make sure you never visit c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],make sure you never visit d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],make sure you never visit h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],you can not go to a at any time,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you can not go to b at any time,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you can not go to c at any time,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you can not go to d at any time,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you can not go to h at any time,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],avoid going to a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],avoid going to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],avoid going to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],avoid going to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],avoid going to h,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],you must never go to a,G ! a,G i a X G ! a,False
+valid,global_avoidance,1,['b'],you must never go to b,G ! b,G i b X G ! b,False
+valid,global_avoidance,1,['c'],you must never go to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you must never go to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you must never go to h,G ! h,G i h X G ! h,False
+valid,global_avoidance,1,['a'],a should never be reached,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],b should never be reached,G ! b,G i b X G ! c,False
+valid,global_avoidance,1,['c'],c should never be reached,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],d should never be reached,G ! d,G i d X G ! c,False
+valid,global_avoidance,1,['h'],h should never be reached,G ! h,G i h X G ! h,False
+valid,global_avoidance,1,['a'],a must be avoided,G ! a,G i a F a,False
+valid,global_avoidance,1,['b'],b must be avoided,G ! b,G F b,False
+valid,global_avoidance,1,['c'],c must be avoided,G ! c,F c,False
+valid,global_avoidance,1,['d'],d must be avoided,G ! d,F d,False
+valid,global_avoidance,1,['h'],h must be avoided,G ! h,G F h,False
+valid,global_avoidance,1,['a'],never visit a,G ! a,G i a X G ! a,False
+valid,global_avoidance,1,['b'],never visit b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],never visit c,G ! c,F c,False
+valid,global_avoidance,1,['d'],never visit d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],never visit h,G ! h,G i h X G ! b,False
+valid,upper_restricted_avoidance,1,['a'],visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U !,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U !,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U !,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U !,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U !,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],never go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],never go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],never go to c more than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],never go to d more than once,! F & d U d & ! d U ! d F d,! F d,False
+valid,upper_restricted_avoidance,1,['h'],never go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can not go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can not go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can not go to c more than once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can not go to d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can not go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],never visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],never visit b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],never visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],never visit d more than once,! F & d U d & ! d U ! d F d,! F d,False
+valid,upper_restricted_avoidance,1,['h'],never visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can visit a zero times or once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can visit b zero times or once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can visit c zero times or once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can visit d zero times or once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can visit h zero times or once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c |,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U !,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],go to a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],go to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | !,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],go to c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],go to d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],go to h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],make your way to a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],make your way to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],make your way to c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],make your way to d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],make your way to h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],you have to visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you have to visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you have to visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you have to visit d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you have to visit h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],you must reach a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you must reach b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you must reach c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you must reach d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you must reach h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a exactly once no more no less,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b exactly once no more no less,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c exactly once no more no less,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G |,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d exactly once no more no less,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G |,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h exactly once no more no less,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G |,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],navigate to a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],navigate to b exactly once,M b | ! b G | b G ! b,& & U ! b c F b U ! c,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],navigate to c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],navigate to d exactly once,M d | ! d G | d G ! d,& & U ! d b F d U ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],navigate to h exactly once,M h | ! h G | h G ! h,& & U ! h c F h U ! c,Syntax Error
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",visit a exactly five times,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",visit b exactly five times,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",visit c exactly five times,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U !,Syntax Error
@@ -7609,56 +7609,56 @@ valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",visit b exactly f
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",visit c exactly five times no more no less,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U ! c F & c,Syntax Error
 valid,exact_restricted_avoidance,5,"['d', 'd', 'd', 'd', 'd']",visit d exactly five times no more no less,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d F,Syntax Error
 valid,exact_restricted_avoidance,5,"['h', 'h', 'h', 'h', 'h']",visit h exactly five times no more no less,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",do not visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",do not visit b more than once,! F & b U b & ! b U ! b F b,! F b,False
-valid,upper_restricted_avoidance,1,"['c,']",do not visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",do not visit d more than once,! F & d U d & ! d U ! d F d,! F d,False
-valid,upper_restricted_avoidance,1,"['h,']",do not visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can visit a but only one time at most,! F & a U a & ! a U ! a F a,U ! a h,False
-valid,upper_restricted_avoidance,1,"['b,']",you can visit b but only one time at most,! F & b U b & ! b U ! b F b,U ! b h,False
-valid,upper_restricted_avoidance,1,"['c,']",you can visit c but only one time at most,! F & c U c & ! c U ! c F c,U ! c h,False
-valid,upper_restricted_avoidance,1,"['d,']",you can visit d but only one time at most,! F & d U d & ! d U ! d F d,U ! d h,False
-valid,upper_restricted_avoidance,1,"['h,']",you can visit h but only one time at most,! F & h U h & ! h U ! h F h,U ! h c,False
-valid,upper_restricted_avoidance,1,"['a,']",do not visit a again after you haven been to a once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U a &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",do not visit b again after you haven been to b once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U b &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",do not visit c again after you haven been to c once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U c &,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",do not visit d again after you haven been to d once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U d &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",do not visit h again after you haven been to h once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U h &,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",visiting a more than once is prohibited,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",visiting b more than once is prohibited,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",visiting c more than once is prohibited,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",visiting d more than once is prohibited,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",visiting h more than once is prohibited,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c |,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",go to a only one time,M a | ! a G | a G ! a,U ! a h,False
-valid,exact_restricted_avoidance,1,"['b,']",go to b only one time,M b | ! b G | b G ! b,U ! b h,False
-valid,exact_restricted_avoidance,1,"['c,']",go to c only one time,M c | ! c G | c G ! c,U ! c h,False
-valid,exact_restricted_avoidance,1,"['d,']",go to d only one time,M d | ! d G | d G ! d,U ! d h,False
-valid,exact_restricted_avoidance,1,"['h,']",go to h only one time,M h | ! h G | h G ! h,U ! h c,False
-valid,exact_restricted_avoidance,1,"['a,']",you have to go to a and you can not go there more or less than one time,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G | ! a G | a G !,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you have to go to b and you can not go there more or less than one time,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G | ! b G | b G !,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you have to go to c and you can not go there more or less than one time,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G | ! c G | c G !,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you have to go to d and you can not go there more or less than one time,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G | ! d G | d G !,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you have to go to h and you can not go there more or less than one time,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G | ! h G | h G !,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",go to a more or less than one time is prohibited,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",go to b more or less than one time is prohibited,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",go to c more or less than one time is prohibited,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",go to d more or less than one time is prohibited,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",go to h more or less than one time is prohibited,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",go to a once and do not visit it anymore,M a | ! a G | a G ! a,G i a X G ! h,False
-valid,exact_restricted_avoidance,1,"['b,']",go to b once and do not visit it anymore,M b | ! b G | b G ! b,G i b X G ! h,False
-valid,exact_restricted_avoidance,1,"['c,']",go to c once and do not visit it anymore,M c | ! c G | c G ! c,! F & c U c & ! c U ! c F & c U,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",go to d once and do not visit it anymore,M d | ! d G | d G ! d,G i d X G ! h,False
-valid,exact_restricted_avoidance,1,"['h,']",go to h once and do not visit it anymore,M h | ! h G | h G ! h,! F & h U h & ! h U ! h F & h U,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],do not visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],do not visit b more than once,! F & b U b & ! b U ! b F b,! F b,False
+valid,upper_restricted_avoidance,1,['c'],do not visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],do not visit d more than once,! F & d U d & ! d U ! d F d,! F d,False
+valid,upper_restricted_avoidance,1,['h'],do not visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can visit a but only one time at most,! F & a U a & ! a U ! a F a,U ! a h,False
+valid,upper_restricted_avoidance,1,['b'],you can visit b but only one time at most,! F & b U b & ! b U ! b F b,U ! b h,False
+valid,upper_restricted_avoidance,1,['c'],you can visit c but only one time at most,! F & c U c & ! c U ! c F c,U ! c h,False
+valid,upper_restricted_avoidance,1,['d'],you can visit d but only one time at most,! F & d U d & ! d U ! d F d,U ! d h,False
+valid,upper_restricted_avoidance,1,['h'],you can visit h but only one time at most,! F & h U h & ! h U ! h F h,U ! h c,False
+valid,upper_restricted_avoidance,1,['a'],do not visit a again after you haven been to a once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U a &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],do not visit b again after you haven been to b once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U b &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],do not visit c again after you haven been to c once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U c &,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],do not visit d again after you haven been to d once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U d &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],do not visit h again after you haven been to h once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U h &,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],visiting a more than once is prohibited,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],visiting b more than once is prohibited,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],visiting c more than once is prohibited,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],visiting d more than once is prohibited,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],visiting h more than once is prohibited,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c |,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U !,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],go to a only one time,M a | ! a G | a G ! a,U ! a h,False
+valid,exact_restricted_avoidance,1,['b'],go to b only one time,M b | ! b G | b G ! b,U ! b h,False
+valid,exact_restricted_avoidance,1,['c'],go to c only one time,M c | ! c G | c G ! c,U ! c h,False
+valid,exact_restricted_avoidance,1,['d'],go to d only one time,M d | ! d G | d G ! d,U ! d h,False
+valid,exact_restricted_avoidance,1,['h'],go to h only one time,M h | ! h G | h G ! h,U ! h c,False
+valid,exact_restricted_avoidance,1,['a'],you have to go to a and you can not go there more or less than one time,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G | ! a G | a G !,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you have to go to b and you can not go there more or less than one time,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G | ! b G | b G !,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you have to go to c and you can not go there more or less than one time,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G | ! c G | c G !,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you have to go to d and you can not go there more or less than one time,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G | ! d G | d G !,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you have to go to h and you can not go there more or less than one time,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G | ! h G | h G !,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],go to a more or less than one time is prohibited,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],go to b more or less than one time is prohibited,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],go to c more or less than one time is prohibited,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G |,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],go to d more or less than one time is prohibited,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G |,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],go to h more or less than one time is prohibited,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G |,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],go to a once and do not visit it anymore,M a | ! a G | a G ! a,G i a X G ! h,False
+valid,exact_restricted_avoidance,1,['b'],go to b once and do not visit it anymore,M b | ! b G | b G ! b,G i b X G ! h,False
+valid,exact_restricted_avoidance,1,['c'],go to c once and do not visit it anymore,M c | ! c G | c G ! c,! F & c U c & ! c U ! c F & c U,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],go to d once and do not visit it anymore,M d | ! d G | d G ! d,G i d X G ! h,False
+valid,exact_restricted_avoidance,1,['h'],go to h once and do not visit it anymore,M h | ! h G | h G ! h,! F & h U h & ! h U ! h F & h U,Syntax Error
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",visit a exactly five times,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",visit b exactly five times,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",visit c exactly five times,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U !,Syntax Error
@@ -7684,26 +7684,26 @@ valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",go to b five time
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",go to c five times and do not visit it anymore,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U ! c F & c U c,Syntax Error
 valid,exact_restricted_avoidance,5,"['d', 'd', 'd', 'd', 'd']",go to d five times and do not visit it anymore,M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d,! F & d U d & ! d U ! d F & d U d,Syntax Error
 valid,exact_restricted_avoidance,5,"['h', 'h', 'h', 'h', 'h']",go to h five times and do not visit it anymore,M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h,! F & h U h & ! h U ! h F & h U h,Syntax Error
-valid,global_avoidance,1,"['a,']",you must avoid a at all costs,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you must avoid b at all costs,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you must avoid c at all costs,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",you must avoid d at all costs,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you must avoid h at all costs,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",you can not go to a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you can not go to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you can not go to c,G ! c,G i c X G ! b,False
-valid,global_avoidance,1,"['d,']",you can not go to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you can not go to h,G ! h,G i h X G ! b,False
-valid,upper_restricted_avoidance,1,"['a,']",you are allowed to go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you are allowed to go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you are allowed to go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you are allowed to go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you are allowed to go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",you must visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you must visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you must visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you must visit d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you must visit h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h,Syntax Error
+valid,global_avoidance,1,['a'],you must avoid a at all costs,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you must avoid b at all costs,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you must avoid c at all costs,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],you must avoid d at all costs,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you must avoid h at all costs,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],you can not go to a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you can not go to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you can not go to c,G ! c,G i c X G ! b,False
+valid,global_avoidance,1,['d'],you can not go to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you can not go to h,G ! h,G i h X G ! b,False
+valid,upper_restricted_avoidance,1,['a'],you are allowed to go to a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you are allowed to go to b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you are allowed to go to c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you are allowed to go to d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you are allowed to go to h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],you must visit a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you must visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you must visit c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you must visit d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you must visit h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h,Syntax Error
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",you must visit a exactly five times,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & !,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",you must visit b exactly five times,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & !,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",you must visit c exactly five times,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & !,Syntax Error
@@ -7869,51 +7869,51 @@ valid,prompt_reaction,2,"['h', 'a']",you have to move to a as soon as you get to
 valid,prompt_reaction,2,"['h', 'b']",you have to move to b as soon as you get to h,G i h X b,U b h,False
 valid,prompt_reaction,2,"['h', 'c']",you have to move to c as soon as you get to h,G i h X c,U c h,False
 valid,prompt_reaction,2,"['h', 'd']",you have to move to d as soon as you get to h,G i h X d,U d h,False
-valid,global_avoidance,1,"['a,']",avoid a forever,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",avoid b forever,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",avoid c forever,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",avoid d forever,G ! d,G i d X G ! h,False
-valid,global_avoidance,1,"['h,']",avoid h forever,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",do not make any single visit to a,G ! a,& G ! a G ! b,False
-valid,global_avoidance,1,"['b,']",do not make any single visit to b,G ! b,& G ! b G ! h,False
-valid,global_avoidance,1,"['c,']",do not make any single visit to c,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",do not make any single visit to d,G ! d,& G ! d G ! h,False
-valid,global_avoidance,1,"['h,']",do not make any single visit to h,G ! h,& G ! h G ! b,False
-valid,global_avoidance,1,"['a,']",you can not go to a,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",you can not go to b,G ! b,G i b X G ! h,False
-valid,global_avoidance,1,"['c,']",you can not go to c,G ! c,G i c X G ! b,False
-valid,global_avoidance,1,"['d,']",you can not go to d,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",you can not go to h,G ! h,G i h X G ! b,False
-valid,upper_restricted_avoidance,1,"['a,']",you can not visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can not visit b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can not visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",you can not visit d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can not visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",never visit a again after you have visited it once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",never visit b again after you have visited it once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",never visit c again after you have visited it once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",never visit d again after you have visited it once,! F & d U d & ! d U ! d F d,G i d X G ! h,False
-valid,upper_restricted_avoidance,1,"['h,']",never visit h again after you have visited it once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you are good to visit a equal or less than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you are good to visit b equal or less than once,! F & b U b & ! b U ! b F b,! F b,False
-valid,upper_restricted_avoidance,1,"['c,']",you are good to visit c equal or less than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",you are good to visit d equal or less than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U d,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you are good to visit h equal or less than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U h,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a once and never revisit it again,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b once and never revisit it again,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c once and never revisit it again,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d once and never revisit it again,M d | ! d G | d G ! d,& & U ! d h F d U ! d U d U,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h once and never revisit it again,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G |,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",you must go to a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you must go to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you must go to c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you must go to d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you must go to h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a once and then stop visiting it anymore,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b once and then stop visiting it anymore,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c once and then stop visiting it anymore,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d once and then stop visiting it anymore,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h once and then stop visiting it anymore,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h,Syntax Error
+valid,global_avoidance,1,['a'],avoid a forever,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],avoid b forever,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],avoid c forever,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],avoid d forever,G ! d,G i d X G ! h,False
+valid,global_avoidance,1,['h'],avoid h forever,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],do not make any single visit to a,G ! a,& G ! a G ! b,False
+valid,global_avoidance,1,['b'],do not make any single visit to b,G ! b,& G ! b G ! h,False
+valid,global_avoidance,1,['c'],do not make any single visit to c,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],do not make any single visit to d,G ! d,& G ! d G ! h,False
+valid,global_avoidance,1,['h'],do not make any single visit to h,G ! h,& G ! h G ! b,False
+valid,global_avoidance,1,['a'],you can not go to a,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],you can not go to b,G ! b,G i b X G ! h,False
+valid,global_avoidance,1,['c'],you can not go to c,G ! c,G i c X G ! b,False
+valid,global_avoidance,1,['d'],you can not go to d,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],you can not go to h,G ! h,G i h X G ! b,False
+valid,upper_restricted_avoidance,1,['a'],you can not visit a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can not visit b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can not visit c more than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],you can not visit d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can not visit h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],never visit a again after you have visited it once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],never visit b again after you have visited it once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],never visit c again after you have visited it once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],never visit d again after you have visited it once,! F & d U d & ! d U ! d F d,G i d X G ! h,False
+valid,upper_restricted_avoidance,1,['h'],never visit h again after you have visited it once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you are good to visit a equal or less than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you are good to visit b equal or less than once,! F & b U b & ! b U ! b F b,! F b,False
+valid,upper_restricted_avoidance,1,['c'],you are good to visit c equal or less than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],you are good to visit d equal or less than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U d,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you are good to visit h equal or less than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U h,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a once and never revisit it again,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b once and never revisit it again,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c once and never revisit it again,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G |,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d once and never revisit it again,M d | ! d G | d G ! d,& & U ! d h F d U ! d U d U,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h once and never revisit it again,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G |,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],you must go to a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you must go to b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you must go to c exactly once,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you must go to d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you must go to h exactly once,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a once and then stop visiting it anymore,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b once and then stop visiting it anymore,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c once and then stop visiting it anymore,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d once and then stop visiting it anymore,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h once and then stop visiting it anymore,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h,Syntax Error
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",visit a five times and never revisit it again,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,! F & a U a & ! a U ! a F & a,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",visit b five times and never revisit it again,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,! F & b U b & ! b U ! b F & b,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",visit c five times and never revisit it again,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U ! c F & c,Syntax Error
@@ -8089,56 +8089,56 @@ valid,prompt_reaction,2,"['h', 'a']",once you visit h you can go nowhere but a i
 valid,prompt_reaction,2,"['h', 'b']",once you visit h you can go nowhere but b immediately,G i h X b,G i h X G ! b,False
 valid,prompt_reaction,2,"['h', 'c']",once you visit h you can go nowhere but c immediately,G i h X c,G i h X G ! c,False
 valid,prompt_reaction,2,"['h', 'd']",once you visit h you can go nowhere but d immediately,G i h X d,U ! h d,False
-valid,upper_restricted_avoidance,1,"['a,']",once you reach a you are never allowed to visit it again,! F & a U a & ! a U ! a F a,G i a X G ! h,False
-valid,upper_restricted_avoidance,1,"['b,']",once you reach b you are never allowed to visit it again,! F & b U b & ! b U ! b F b,G i b X G ! h,False
-valid,upper_restricted_avoidance,1,"['c,']",once you reach c you are never allowed to visit it again,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U c &,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",once you reach d you are never allowed to visit it again,! F & d U d & ! d U ! d F d,G i d X G ! h,False
-valid,upper_restricted_avoidance,1,"['h,']",once you reach h you are never allowed to visit it again,! F & h U h & ! h U ! h F h,G i h X G ! c,False
-valid,upper_restricted_avoidance,1,"['a,']",you can visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",you can not visit a two or more times,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",you can not visit b two or more times,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",you can not visit c two or more times,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",you can not visit d two or more times,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",you can not visit h two or more times,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",visiting a locks it for future visits,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",visiting b locks it for future visits,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",visiting c locks it for future visits,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",visiting d locks it for future visits,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",visiting h locks it for future visits,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",do not go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",do not go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",do not go to c more than once,! F & c U c & ! c U ! c F c,! F c,False
-valid,upper_restricted_avoidance,1,"['d,']",do not go to d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",do not go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a then leave a and never go back,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
-valid,exact_restricted_avoidance,1,"['b,']",visit b then leave b and never go back,M b | ! b G | b G ! b,F & b U b & ! b U ! b F b,False
-valid,exact_restricted_avoidance,1,"['c,']",visit c then leave c and never go back,M c | ! c G | c G ! c,F & c U c & ! c U ! c F c,False
-valid,exact_restricted_avoidance,1,"['d,']",visit d then leave d and never go back,M d | ! d G | d G ! d,F & d U d & ! d U ! d F d,False
-valid,exact_restricted_avoidance,1,"['h,']",visit h then leave h and never go back,M h | ! h G | h G ! h,U h b,False
-valid,exact_restricted_avoidance,1,"['a,']",visit a exactly once you can stay there for any period of time,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G | ! a,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",visit b exactly once you can stay there for any period of time,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G | ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",visit c exactly once you can stay there for any period of time,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G | ! c,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",visit d exactly once you can stay there for any period of time,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G | ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",visit h exactly once you can stay there for any period of time,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G | ! h,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",you are allowed to make only one visit to a,M a | ! a G | a G ! a,U ! a c,False
-valid,exact_restricted_avoidance,1,"['b,']",you are allowed to make only one visit to b,M b | ! b G | b G ! b,U ! b h,False
-valid,exact_restricted_avoidance,1,"['c,']",you are allowed to make only one visit to c,M c | ! c G | c G ! c,U ! c h,False
-valid,exact_restricted_avoidance,1,"['d,']",you are allowed to make only one visit to d,M d | ! d G | d G ! d,U ! d h,False
-valid,exact_restricted_avoidance,1,"['h,']",you are allowed to make only one visit to h,M h | ! h G | h G ! h,U ! h b,False
-valid,exact_restricted_avoidance,1,"['a,']",you can only reach and exit a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b U b U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",you can only reach and exit b exactly once,M b | ! b G | b G ! b,& & U ! b h F b U ! h U h U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",you can only reach and exit c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b U b U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",you can only reach and exit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! h U h U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",you can only reach and exit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b U b U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",reach a and then leave a then never come back to a,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
-valid,exact_restricted_avoidance,1,"['b,']",reach b and then leave b then never come back to b,M b | ! b G | b G ! b,F & b U b & ! b U ! b F b,False
-valid,exact_restricted_avoidance,1,"['c,']",reach c and then leave c then never come back to c,M c | ! c G | c G ! c,F & c U c & ! c U ! c F c,False
-valid,exact_restricted_avoidance,1,"['d,']",reach d and then leave d then never come back to d,M d | ! d G | d G ! d,F & d U d & ! d U ! d F d,False
-valid,exact_restricted_avoidance,1,"['h,']",reach h and then leave h then never come back to h,M h | ! h G | h G ! h,F & h U h & ! h U ! h F h,False
+valid,upper_restricted_avoidance,1,['a'],once you reach a you are never allowed to visit it again,! F & a U a & ! a U ! a F a,G i a X G ! h,False
+valid,upper_restricted_avoidance,1,['b'],once you reach b you are never allowed to visit it again,! F & b U b & ! b U ! b F b,G i b X G ! h,False
+valid,upper_restricted_avoidance,1,['c'],once you reach c you are never allowed to visit it again,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U c &,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],once you reach d you are never allowed to visit it again,! F & d U d & ! d U ! d F d,G i d X G ! h,False
+valid,upper_restricted_avoidance,1,['h'],once you reach h you are never allowed to visit it again,! F & h U h & ! h U ! h F h,G i h X G ! c,False
+valid,upper_restricted_avoidance,1,['a'],you can visit a at most once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can visit b at most once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can visit c at most once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can visit d at most once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can visit h at most once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],you can not visit a two or more times,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],you can not visit b two or more times,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],you can not visit c two or more times,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],you can not visit d two or more times,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],you can not visit h two or more times,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],visiting a locks it for future visits,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],visiting b locks it for future visits,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],visiting c locks it for future visits,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],visiting d locks it for future visits,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],visiting h locks it for future visits,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],do not go to a more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],do not go to b more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],do not go to c more than once,! F & c U c & ! c U ! c F c,! F c,False
+valid,upper_restricted_avoidance,1,['d'],do not go to d more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],do not go to h more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a then leave a and never go back,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
+valid,exact_restricted_avoidance,1,['b'],visit b then leave b and never go back,M b | ! b G | b G ! b,F & b U b & ! b U ! b F b,False
+valid,exact_restricted_avoidance,1,['c'],visit c then leave c and never go back,M c | ! c G | c G ! c,F & c U c & ! c U ! c F c,False
+valid,exact_restricted_avoidance,1,['d'],visit d then leave d and never go back,M d | ! d G | d G ! d,F & d U d & ! d U ! d F d,False
+valid,exact_restricted_avoidance,1,['h'],visit h then leave h and never go back,M h | ! h G | h G ! h,U h b,False
+valid,exact_restricted_avoidance,1,['a'],visit a exactly once you can stay there for any period of time,M a | ! a G | a G ! a,M & a F & ! a F a | ! a G | a G | ! a,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],visit b exactly once you can stay there for any period of time,M b | ! b G | b G ! b,M & b F & ! b F b | ! b G | b G | ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],visit c exactly once you can stay there for any period of time,M c | ! c G | c G ! c,M & c F & ! c F c | ! c G | c G | ! c,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],visit d exactly once you can stay there for any period of time,M d | ! d G | d G ! d,M & d F & ! d F d | ! d G | d G | ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],visit h exactly once you can stay there for any period of time,M h | ! h G | h G ! h,M & h F & ! h F h | ! h G | h G | ! h,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],you are allowed to make only one visit to a,M a | ! a G | a G ! a,U ! a c,False
+valid,exact_restricted_avoidance,1,['b'],you are allowed to make only one visit to b,M b | ! b G | b G ! b,U ! b h,False
+valid,exact_restricted_avoidance,1,['c'],you are allowed to make only one visit to c,M c | ! c G | c G ! c,U ! c h,False
+valid,exact_restricted_avoidance,1,['d'],you are allowed to make only one visit to d,M d | ! d G | d G ! d,U ! d h,False
+valid,exact_restricted_avoidance,1,['h'],you are allowed to make only one visit to h,M h | ! h G | h G ! h,U ! h b,False
+valid,exact_restricted_avoidance,1,['a'],you can only reach and exit a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b U b U !,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],you can only reach and exit b exactly once,M b | ! b G | b G ! b,& & U ! b h F b U ! h U h U !,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],you can only reach and exit c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b U b U !,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],you can only reach and exit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! h U h U !,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],you can only reach and exit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b U b U !,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],reach a and then leave a then never come back to a,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
+valid,exact_restricted_avoidance,1,['b'],reach b and then leave b then never come back to b,M b | ! b G | b G ! b,F & b U b & ! b U ! b F b,False
+valid,exact_restricted_avoidance,1,['c'],reach c and then leave c then never come back to c,M c | ! c G | c G ! c,F & c U c & ! c U ! c F c,False
+valid,exact_restricted_avoidance,1,['d'],reach d and then leave d then never come back to d,M d | ! d G | d G ! d,F & d U d & ! d U ! d F d,False
+valid,exact_restricted_avoidance,1,['h'],reach h and then leave h then never come back to h,M h | ! h G | h G ! h,F & h U h & ! h U ! h F h,False
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",complete exactly five separate visits to a,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & !,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",complete exactly five separate visits to b,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & !,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",complete exactly five separate visits to c,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & !,Syntax Error
@@ -8264,46 +8264,46 @@ valid,prompt_reaction,2,"['h', 'a']",always the response to h is a in the next t
 valid,prompt_reaction,2,"['h', 'b']",always the response to h is b in the next time step,G i h X b,G i h F b,False
 valid,prompt_reaction,2,"['h', 'c']",always the response to h is c in the next time step,G i h X c,G i h F c,False
 valid,prompt_reaction,2,"['h', 'd']",always the response to h is d in the next time step,G i h X d,G i h F d,False
-valid,global_avoidance,1,"['a,']",never let a hold,G ! a,& G ! a G ! b,False
-valid,global_avoidance,1,"['b,']",never let b hold,G ! b,G i b X G ! b,False
-valid,global_avoidance,1,"['c,']",never let c hold,G ! c,G F c,False
-valid,global_avoidance,1,"['d,']",never let d hold,G ! d,G F d,False
-valid,global_avoidance,1,"['h,']",never let h hold,G ! h,G i h X G ! b,False
-valid,global_avoidance,1,"['a,']",a should never become true,G ! a,G i a X G ! b,False
-valid,global_avoidance,1,"['b,']",b should never become true,G ! b,G i b X G ! c,False
-valid,global_avoidance,1,"['c,']",c should never become true,G ! c,G i c X G ! c,False
-valid,global_avoidance,1,"['d,']",d should never become true,G ! d,G i d X G ! d,False
-valid,global_avoidance,1,"['h,']",h should never become true,G ! h,! F & h U h & ! h U !,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",do not visit a any more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",do not visit b any more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",do not visit c any more than once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",do not visit d any more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",do not visit h any more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",do not reach a for more than one distinct visit,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",do not reach b for more than one distinct visit,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",do not reach c for more than one distinct visit,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",do not reach d for more than one distinct visit,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",do not reach h for more than one distinct visit,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
-valid,upper_restricted_avoidance,1,"['a,']",the maximum allowable separate visits to a is one,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
-valid,upper_restricted_avoidance,1,"['b,']",the maximum allowable separate visits to b is one,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
-valid,upper_restricted_avoidance,1,"['c,']",the maximum allowable separate visits to c is one,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
-valid,upper_restricted_avoidance,1,"['d,']",the maximum allowable separate visits to d is one,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
-valid,upper_restricted_avoidance,1,"['h,']",the maximum allowable separate visits to h is one,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",reach a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",reach b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",reach c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",reach d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d |,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",reach h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
-valid,exact_restricted_avoidance,1,"['a,']",visit a no fewer or greater than once,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
-valid,exact_restricted_avoidance,1,"['b,']",visit b no fewer or greater than once,M b | ! b G | b G ! b,F b,False
-valid,exact_restricted_avoidance,1,"['c,']",visit c no fewer or greater than once,M c | ! c G | c G ! c,F c,False
-valid,exact_restricted_avoidance,1,"['d,']",visit d no fewer or greater than once,M d | ! d G | d G ! d,F d,False
-valid,exact_restricted_avoidance,1,"['h,']",visit h no fewer or greater than once,M h | ! h G | h G ! h,F & h U h & ! h U ! h F h,False
-valid,exact_restricted_avoidance,1,"['a,']",go visit a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['b,']",go visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | !,Syntax Error
-valid,exact_restricted_avoidance,1,"['c,']",go visit c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
-valid,exact_restricted_avoidance,1,"['d,']",go visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! d,Syntax Error
-valid,exact_restricted_avoidance,1,"['h,']",go visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b,Syntax Error
+valid,global_avoidance,1,['a'],never let a hold,G ! a,& G ! a G ! b,False
+valid,global_avoidance,1,['b'],never let b hold,G ! b,G i b X G ! b,False
+valid,global_avoidance,1,['c'],never let c hold,G ! c,G F c,False
+valid,global_avoidance,1,['d'],never let d hold,G ! d,G F d,False
+valid,global_avoidance,1,['h'],never let h hold,G ! h,G i h X G ! b,False
+valid,global_avoidance,1,['a'],a should never become true,G ! a,G i a X G ! b,False
+valid,global_avoidance,1,['b'],b should never become true,G ! b,G i b X G ! c,False
+valid,global_avoidance,1,['c'],c should never become true,G ! c,G i c X G ! c,False
+valid,global_avoidance,1,['d'],d should never become true,G ! d,G i d X G ! d,False
+valid,global_avoidance,1,['h'],h should never become true,G ! h,! F & h U h & ! h U !,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],do not visit a any more than once,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F &,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],do not visit b any more than once,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F &,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],do not visit c any more than once,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F &,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],do not visit d any more than once,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F &,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],do not visit h any more than once,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F &,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],do not reach a for more than one distinct visit,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a U,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],do not reach b for more than one distinct visit,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b U,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],do not reach c for more than one distinct visit,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c U,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],do not reach d for more than one distinct visit,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d U,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],do not reach h for more than one distinct visit,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h U,Syntax Error
+valid,upper_restricted_avoidance,1,['a'],the maximum allowable separate visits to a is one,! F & a U a & ! a U ! a F a,! F & a U a & ! a U ! a F & a,Syntax Error
+valid,upper_restricted_avoidance,1,['b'],the maximum allowable separate visits to b is one,! F & b U b & ! b U ! b F b,! F & b U b & ! b U ! b F & b,Syntax Error
+valid,upper_restricted_avoidance,1,['c'],the maximum allowable separate visits to c is one,! F & c U c & ! c U ! c F c,! F & c U c & ! c U ! c F & c,Syntax Error
+valid,upper_restricted_avoidance,1,['d'],the maximum allowable separate visits to d is one,! F & d U d & ! d U ! d F d,! F & d U d & ! d U ! d F & d,Syntax Error
+valid,upper_restricted_avoidance,1,['h'],the maximum allowable separate visits to h is one,! F & h U h & ! h U ! h F h,! F & h U h & ! h U ! h F & h,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],reach a exactly once,M a | ! a G | a G ! a,M & a F & ! a F a |,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],reach b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b |,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],reach c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U !,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],reach d exactly once,M d | ! d G | d G ! d,M & d F & ! d F d |,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],reach h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U !,Syntax Error
+valid,exact_restricted_avoidance,1,['a'],visit a no fewer or greater than once,M a | ! a G | a G ! a,F & a U a & ! a U ! a F a,False
+valid,exact_restricted_avoidance,1,['b'],visit b no fewer or greater than once,M b | ! b G | b G ! b,F b,False
+valid,exact_restricted_avoidance,1,['c'],visit c no fewer or greater than once,M c | ! c G | c G ! c,F c,False
+valid,exact_restricted_avoidance,1,['d'],visit d no fewer or greater than once,M d | ! d G | d G ! d,F d,False
+valid,exact_restricted_avoidance,1,['h'],visit h no fewer or greater than once,M h | ! h G | h G ! h,F & h U h & ! h U ! h F h,False
+valid,exact_restricted_avoidance,1,['a'],go visit a exactly once,M a | ! a G | a G ! a,& & U ! a b F a U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['b'],go visit b exactly once,M b | ! b G | b G ! b,M & b F & ! b F b | !,Syntax Error
+valid,exact_restricted_avoidance,1,['c'],go visit c exactly once,M c | ! c G | c G ! c,& & U ! c b F c U ! b,Syntax Error
+valid,exact_restricted_avoidance,1,['d'],go visit d exactly once,M d | ! d G | d G ! d,& & U ! d h F d U ! d,Syntax Error
+valid,exact_restricted_avoidance,1,['h'],go visit h exactly once,M h | ! h G | h G ! h,& & U ! h b F h U ! b,Syntax Error
 valid,exact_restricted_avoidance,5,"['a', 'a', 'a', 'a', 'a']",do not go to a any more or any fewer than five different times,M & a F & ! a F & a F & ! a F & a F & ! a F & a F & ! a F a | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G | ! a G | a G ! a,! F & a U a & ! a U ! a F & a U a & ! a,Syntax Error
 valid,exact_restricted_avoidance,5,"['b', 'b', 'b', 'b', 'b']",do not go to b any more or any fewer than five different times,M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b,! F & b U b & ! b U ! b F & b U b & ! b,Syntax Error
 valid,exact_restricted_avoidance,5,"['c', 'c', 'c', 'c', 'c']",do not go to c any more or any fewer than five different times,M & c F & ! c F & c F & ! c F & c F & ! c F & c F & ! c F c | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U ! c F & c U c & ! c,Syntax Error

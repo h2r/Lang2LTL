@@ -3,105 +3,105 @@ Number of training samples: 44245
 Number of validation samples: 5410
 
 0/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 visit a
 F a
 F a
 True
 
 1/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 visit b
 F b
 F b
 True
 
 2/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 visit c
 F c
 F c
 True
 
 3/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 visit d
 F d
 F d
 True
 
 4/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 visit h
 F h
 F h
 True
 
 5/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 reach a
 F a
 F a
 True
 
 6/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 reach b
 F b
 F b
 True
 
 7/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 reach c
 F c
 F c
 True
 
 8/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 reach d
 F d
 F d
 True
 
 9/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 reach h
 F h
 F h
 True
 
 10/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 eventually you must go to a
 F a
 F a
 True
 
 11/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 eventually you must go to b
 F b
 F b
 True
 
 12/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 eventually you must go to c
 F c
 F & c U c & ! c U ! c F
 Syntax Error
 
 13/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 eventually you must go to d
 F d
 F & d U d & ! d U ! d F
 Syntax Error
 
 14/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 eventually you must go to h
 F h
 F & h U h & ! h U ! h F
@@ -948,175 +948,175 @@ do not visit c until you visit d visit d only once do no visit d until you visit
 False
 
 135/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 move to a
 F a
 F a
 True
 
 136/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 move to b
 F b
 F b
 True
 
 137/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 move to c
 F c
 F c
 True
 
 138/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 move to d
 F d
 F d
 True
 
 139/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 move to h
 F h
 F h
 True
 
 140/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 go to a
 F a
 F a
 True
 
 141/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 go to b
 F b
 F b
 True
 
 142/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 go to c
 F c
 F c
 True
 
 143/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 go to d
 F d
 F d
 True
 
 144/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 go to h
 F h
 F h
 True
 
 145/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 reach a
 F a
 F a
 True
 
 146/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 reach b
 F b
 F b
 True
 
 147/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 reach c
 F c
 F c
 True
 
 148/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 reach d
 F d
 F d
 True
 
 149/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 reach h
 F h
 F h
 True
 
 150/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 navigate to a
 F a
 ! F & a U a & ! a
 Syntax Error
 
 151/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 navigate to b
 F b
 ! F & b U b & ! b
 Syntax Error
 
 152/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 navigate to c
 F c
 F c
 True
 
 153/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 navigate to d
 F d
 F d
 True
 
 154/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 navigate to h
 F h
 F h
 True
 
 155/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 find a
 F a
 F a
 True
 
 156/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 find b
 F b
 F b
 True
 
 157/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 find c
 F c
 F c
 True
 
 158/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 find d
 F d
 F d
 True
 
 159/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 find h
 F h
 F h
@@ -2943,175 +2943,175 @@ F & h F d
 True
 
 420/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 go to a
 F a
 F a
 True
 
 421/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 go to b
 F b
 F b
 True
 
 422/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 go to c
 F c
 F c
 True
 
 423/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 go to d
 F d
 F d
 True
 
 424/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 go to h
 F h
 F h
 True
 
 425/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 reach a
 F a
 F a
 True
 
 426/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 reach b
 F b
 F b
 True
 
 427/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 reach c
 F c
 F c
 True
 
 428/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 reach d
 F d
 F d
 True
 
 429/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 reach h
 F h
 F h
 True
 
 430/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 visit a
 F a
 F a
 True
 
 431/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 visit b
 F b
 F b
 True
 
 432/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 visit c
 F c
 F c
 True
 
 433/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 visit d
 F d
 F d
 True
 
 434/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 visit h
 F h
 F h
 True
 
 435/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 find a
 F a
 F a
 True
 
 436/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 find b
 F b
 F b
 True
 
 437/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 find c
 F c
 F c
 True
 
 438/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 find d
 F d
 F d
 True
 
 439/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 find h
 F h
 F h
 True
 
 440/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 approach a
 F a
 F a
 True
 
 441/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 approach b
 F b
 F b
 True
 
 442/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 approach c
 F c
 F c
 True
 
 443/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 approach d
 F d
 F d
 True
 
 444/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 approach h
 F h
 F h
@@ -14318,105 +14318,105 @@ G e d X c
 False
 
 2045/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 go to a
 F a
 F a
 True
 
 2046/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 go to b
 F b
 F b
 True
 
 2047/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 go to c
 F c
 F c
 True
 
 2048/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 go to d
 F d
 F d
 True
 
 2049/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 go to h
 F h
 F h
 True
 
 2050/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 visit a
 F a
 F a
 True
 
 2051/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 visit b
 F b
 F b
 True
 
 2052/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 visit c
 F c
 F c
 True
 
 2053/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 visit d
 F d
 F d
 True
 
 2054/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 visit h
 F h
 F h
 True
 
 2055/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 stop by a
 F a
 F a
 True
 
 2056/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 stop by b
 F b
 F b
 True
 
 2057/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 stop by c
 F c
 F c
 True
 
 2058/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 stop by d
 F d
 F d
 True
 
 2059/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 stop by h
 F h
 F h
@@ -16663,175 +16663,175 @@ only visit h once followed by visiting d then visiting c once
 Syntax Error
 
 2380/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 please go to a
 F a
 F a
 True
 
 2381/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 please go to b
 F b
 G ! b
 False
 
 2382/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 please go to c
 F c
 G ! c
 False
 
 2383/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 please go to d
 F d
 G ! d
 False
 
 2384/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 please go to h
 F h
 G ! h
 False
 
 2385/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 travel to a
 F a
 F a
 True
 
 2386/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 travel to b
 F b
 F b
 True
 
 2387/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 travel to c
 F c
 F c
 True
 
 2388/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 travel to d
 F d
 F d
 True
 
 2389/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 travel to h
 F h
 F h
 True
 
 2390/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 visit a
 F a
 F a
 True
 
 2391/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 visit b
 F b
 F b
 True
 
 2392/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 visit c
 F c
 F c
 True
 
 2393/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 visit d
 F d
 F d
 True
 
 2394/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 visit h
 F h
 F h
 True
 
 2395/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 stop at a
 F a
 G F a
 False
 
 2396/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 stop at b
 F b
 G F b
 False
 
 2397/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 stop at c
 F c
 G F c
 False
 
 2398/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 stop at d
 F d
 G F d
 False
 
 2399/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 stop at h
 F h
 G F h
 False
 
 2400/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 make your way to a
 F a
 F a
 True
 
 2401/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 make your way to b
 F b
 G ! b
 False
 
 2402/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 make your way to c
 F c
 G ! c
 False
 
 2403/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 make your way to d
 F d
 F d
 True
 
 2404/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 make your way to h
 F h
 G ! h
@@ -18938,175 +18938,175 @@ visit h exactly once avoid d or c before h then reach d exactly once avoid c bef
 Syntax Error
 
 2705/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 go to a
 F a
 F a
 True
 
 2706/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 go to b
 F b
 F b
 True
 
 2707/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 go to c
 F c
 F c
 True
 
 2708/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 go to d
 F d
 F d
 True
 
 2709/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 go to h
 F h
 F h
 True
 
 2710/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 make sure you visit a at least once
 F a
 F a
 True
 
 2711/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 make sure you visit b at least once
 F b
 F b
 True
 
 2712/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 make sure you visit c at least once
 F c
 F c
 True
 
 2713/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 make sure you visit d at least once
 F d
 F d
 True
 
 2714/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 make sure you visit h at least once
 F h
 F h
 True
 
 2715/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 walk to a
 F a
 F a
 True
 
 2716/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 walk to b
 F b
 F b
 True
 
 2717/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 walk to c
 F c
 F c
 True
 
 2718/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 walk to d
 F d
 F d
 True
 
 2719/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 walk to h
 F h
 F h
 True
 
 2720/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 make your way to a
 F a
 F a
 True
 
 2721/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 make your way to b
 F b
 G ! b
 False
 
 2722/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 make your way to c
 F c
 G ! c
 False
 
 2723/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 make your way to d
 F d
 F d
 True
 
 2724/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 make your way to h
 F h
 G ! h
 False
 
 2725/5410
-visit | 1 ['a,']
+visit | 1 ['a']
 head to a
 F a
 F a
 True
 
 2726/5410
-visit | 1 ['b,']
+visit | 1 ['b']
 head to b
 F b
 F b
 True
 
 2727/5410
-visit | 1 ['c,']
+visit | 1 ['c']
 head to c
 F c
 F c
 True
 
 2728/5410
-visit | 1 ['d,']
+visit | 1 ['d']
 head to d
 F d
 F d
 True
 
 2729/5410
-visit | 1 ['h,']
+visit | 1 ['h']
 head to h
 F h
 F h
