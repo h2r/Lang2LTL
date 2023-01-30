@@ -11,7 +11,7 @@ from collections import defaultdict
 from pprint import pprint
 import time
 
-from utils import load_from_file, save_to_file, substitute_single_letter, name_to_prop
+from utils import load_from_file, save_to_file, substitute_single_letter, remove_prop_perms, name_to_prop
 from formula_sampler import PROPS
 
 
@@ -80,20 +80,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         print(f"old train, test size: {len(train_iter)} {len(train_meta)} {len(valid_iter)} {len(valid_meta)}")
         print(f"test size before remove_perm: {len(valid_iter)} {len(valid_meta)}")
         if remove_perm:  # remove prop perms from valid_iter
-            valid_iter_noperm, valid_meta_noperm = [], []
-            formula2data = defaultdict(list)
-            for (utt, ltl), (pattern_type, props) in zip(valid_iter, valid_meta):
-                props = list(props)
-                sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, PROPS[:len(props)])}  # remove perm
-                utt_noperm = substitute_single_letter(utt, sub_map)
-                ltl_noperm = substitute_single_letter(ltl, sub_map)
-                formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
-            for (pattern_type, nprops), data in formula2data.items():
-                data = list(dict.fromkeys(data))  # unique utt structures per formula in data. same order across runs
-                for utt, ltl in data:
-                    valid_iter_noperm.append((utt, ltl))
-                    valid_meta_noperm.append((pattern_type, PROPS[:nprops]))
-            valid_iter, valid_meta = valid_iter_noperm, valid_meta_noperm
+            valid_iter, valid_meta = remove_prop_perms(valid_iter, valid_meta, PROPS)
         unique_formulas = set([(pattern_type, len(props)) for pattern_type, props in valid_meta])
         print(f"num of unique formulas: {len(unique_formulas)}")
         print(f"unique formulas:\n{unique_formulas}")
