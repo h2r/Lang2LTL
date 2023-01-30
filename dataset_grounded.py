@@ -97,6 +97,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
         logging.info(f"saving took: {(time.time() - start_time) / 60}")
+        logging.info(f"{os.path.join(save_dpath, split_fname)}")
 
         logging.info(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}\n\n")
 
