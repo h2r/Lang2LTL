@@ -6,6 +6,7 @@ import csv
 import string
 from collections import defaultdict
 import numpy as np
+import random
 import nltk
 
 from gpt3 import GPT3
@@ -132,6 +133,22 @@ def construct_formula2data(data, meta, all_props):
         ltl_noperm = substitute_single_letter(ltl, sub_map)
         formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
     return formula2data
+
+
+def sample_smaller_dataset(data, meta, all_props):
+    """
+    Sample smaller dataset for testing, mostly full pipeline with GPT-3.
+    1 utt per unique formula (type, nprops). Permuted props replaced by non-permute props starting at a.
+    """
+    formula2data = construct_formula2data(data, meta, all_props)
+    data_small, meta_small = [], []
+    for (pattern_type, nprops), utt_ltl in formula2data.items():
+        utt_ltl = list(dict.fromkeys(utt_ltl))  # unique utt structures per formula in data. same order across runs
+        random.seed(42)
+        utt_ltl_random = random.sample(utt_ltl, 1)
+        data_small.append(utt_ltl_random)
+        meta_small.append((pattern_type, nprops))
+    return data_small, meta_small
 
 
 def name_to_prop(name, convert_rule):
