@@ -135,11 +135,13 @@ def construct_formula2data(data, meta, all_props):
     return formula2data
 
 
-def sample_smaller_dataset(data, meta, all_props):
+def sample_smaller_dataset(data_fpath, all_props):
     """
     Sample smaller dataset for testing, mostly full pipeline with GPT-3.
     1 utt per unique formula (type, nprops). Permuted props replaced by non-permute props starting at a.
     """
+    dataset = load_from_file(data_fpath)
+    data, meta = dataset["valid_iter"], dataset["valid_meta"]
     formula2data = construct_formula2data(data, meta, all_props)
     data_small, meta_small = [], []
     for (pattern_type, nprops), utt_ltl in formula2data.items():
@@ -148,7 +150,9 @@ def sample_smaller_dataset(data, meta, all_props):
         utt_ltl_random = random.sample(utt_ltl, 1)
         data_small.append(utt_ltl_random)
         meta_small.append((pattern_type, nprops))
-    return data_small, meta_small
+    dataset["valid_iter"], dataset["valid_meta"] = data_small, meta_small
+    save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.dirname}")
+    save_to_file(dataset, save_fpath)
 
 
 def name_to_prop(name, convert_rule):
