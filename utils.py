@@ -107,13 +107,7 @@ def substitute_single_letter(in_str, sub_map):
 
 
 def remove_prop_perms(data, meta, all_props):
-    formula2data = defaultdict(list)
-    for (utt, ltl), (pattern_type, props) in zip(data, meta):
-        props = list(props)
-        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
-        utt_noperm = substitute_single_letter(utt, sub_map)
-        ltl_noperm = substitute_single_letter(ltl, sub_map)
-        formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
+    formula2data = construct_formula2data(data, meta, all_props)
     data_noperm, meta_noperm = [], []
     for (pattern_type, nprops), data in formula2data.items():
         data = list(dict.fromkeys(data))  # unique utt structures per formula in data. same order across runs
@@ -121,6 +115,23 @@ def remove_prop_perms(data, meta, all_props):
             data_noperm.append((utt, ltl))
             meta_noperm.append((pattern_type, all_props[:nprops]))
     return data_noperm, meta_noperm
+
+
+def construct_formula2data(data, meta, all_props):
+    """
+    :param data: list of (utt, ltl)
+    :param meta: list of (pattern_type, props)
+    :param all_props: all possible propos
+    :return: dict of (pattern_type, nprops) to (utt, ltl) w/ permuted props replaced by non-permute props starting at a
+    """
+    formula2data = defaultdict(list)
+    for (utt, ltl), (pattern_type, props) in zip(data, meta):
+        props = list(props)
+        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
+        utt_noperm = substitute_single_letter(utt, sub_map)
+        ltl_noperm = substitute_single_letter(ltl, sub_map)
+        formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
+    return formula2data
 
 
 def name_to_prop(name, convert_rule):

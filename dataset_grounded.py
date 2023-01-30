@@ -7,7 +7,6 @@ from pathlib import Path
 import string
 from itertools import permutations
 import random
-from collections import defaultdict
 from pprint import pprint
 import time
 
@@ -98,7 +97,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
         print(f"saving took: {(time.time() - start_time) / 60}")
 
-        print(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}")
+        print(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}\n")
 
 
 def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkperms=None, nsamples=None):
