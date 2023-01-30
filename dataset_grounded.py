@@ -9,6 +9,7 @@ from itertools import permutations
 import random
 from collections import defaultdict
 from pprint import pprint
+import time
 
 from utils import load_from_file, save_to_file, substitute_single_letter, name_to_prop
 from formula_sampler import PROPS
@@ -97,16 +98,23 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         print(f"num of unique formulas: {len(unique_formulas)}")
         print(f"unique formulas:\n{unique_formulas}")
         print(f"test size after remove_perm: {len(valid_iter)} {len(valid_meta)}")
+        print(f"num of lmks: {len(lmks)}")
 
+        print("generating grounded train")
         dataset["train_iter"], dataset["train_meta"] = substitute_lmks(train_iter, train_meta, lmks, seed, model)
+        print("generating grounded valid")
+        start_time = time.time()
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
+        print(f"generate valid took: {(time.time()-start_time) / 60}")
+        start_time = time.time()
         dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
+        print(f"saving took: {(time.time() - start_time) / 60}")
 
-        print(f"new train, test size: {len(train_iter)} {len(train_meta)} {len(valid_iter)} {len(valid_meta)}")
+        print(f"new train, test size: {len(dataset['train_iter'])} {len(dataset['train_meta'])} {len(dataset['valid_iter'])} {len(dataset['valid_meta'])}")
 
 
-def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms, nsamples=None):
+def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms=None, nsamples=None):
     data_grounded, meta_data_grounded = [], []
 
     for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(data, meta_data)):
@@ -118,7 +126,8 @@ def substitute_lmks(data, meta_data, lmks, seed, model, nprops2lmkperms, nsample
             lmk_perms = nprops2lmkperms[len(props)]
             random.seed(seed)
             lmk_subs = random.sample(lmk_perms, nsamples)  # sample nsamples lmk perms
-            breakpoint()
+            # print(f"{idx}: {pattern_type} {props}\n{utt}\n{ltl}")
+            # breakpoint()
         else:
             lmk_subs = [lmks]
         for lmk_sub in lmk_subs:
@@ -137,8 +146,8 @@ def substitute_lmk(utt, ltl, lmks, props, seed, model):
         random.seed(seed)
         lmk_names = random.sample(lmks, len(props))
 
-    sub_map = {prop: name for prop, name in zip(props, lmk_names)}
-    utt_grounded = substitute_single_letter(utt, sub_map)
+    sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
+    utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, last line add extra comma
 
     sub_map = {prop: name_to_prop(name, model) for prop, name in zip(props, lmk_names)}
     ltl_grounded = substitute_single_letter(ltl, sub_map)
