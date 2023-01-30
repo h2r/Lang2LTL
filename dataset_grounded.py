@@ -151,7 +151,7 @@ if __name__ == "__main__":
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--city", type=str, default="boston", help="city landmarks from 1 or all json files in data/osm/osm_lmks.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
-    parser.add_argument("--nsamples", type=int, default=None, help="number of samples per utt strucutre when perm lmks for valid set.")
+    parser.add_argument("--nsamples", type=int, default=2, help="number of samples per utt strucutre when perm lmks for valid set.")
     parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
     parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
