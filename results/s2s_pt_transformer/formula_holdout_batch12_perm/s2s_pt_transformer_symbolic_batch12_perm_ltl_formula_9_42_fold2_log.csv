@@ -1,19 +1,19 @@
 train_or_valid,pattern_type,nprops,prop_perm,utterances,true_ltl,output_ltl,is_correct
-valid,visit,1,"['a,']",visit a,F a,F a,True
-valid,visit,1,"['b,']",visit b,F b,F b,True
-valid,visit,1,"['c,']",visit c,F c,F c,True
-valid,visit,1,"['d,']",visit d,F d,F d,True
-valid,visit,1,"['h,']",visit h,F h,F h,True
-valid,visit,1,"['a,']",reach a,F a,F a,True
-valid,visit,1,"['b,']",reach b,F b,F b,True
-valid,visit,1,"['c,']",reach c,F c,F c,True
-valid,visit,1,"['d,']",reach d,F d,F d,True
-valid,visit,1,"['h,']",reach h,F h,F h,True
-valid,visit,1,"['a,']",eventually you must go to a,F a,F a,True
-valid,visit,1,"['b,']",eventually you must go to b,F b,F b,True
-valid,visit,1,"['c,']",eventually you must go to c,F c,F & c U c & ! c U ! c F,Syntax Error
-valid,visit,1,"['d,']",eventually you must go to d,F d,F & d U d & ! d U ! d F,Syntax Error
-valid,visit,1,"['h,']",eventually you must go to h,F h,F & h U h & ! h U ! h F,Syntax Error
+valid,visit,1,['a'],visit a,F a,F a,True
+valid,visit,1,['b'],visit b,F b,F b,True
+valid,visit,1,['c'],visit c,F c,F c,True
+valid,visit,1,['d'],visit d,F d,F d,True
+valid,visit,1,['h'],visit h,F h,F h,True
+valid,visit,1,['a'],reach a,F a,F a,True
+valid,visit,1,['b'],reach b,F b,F b,True
+valid,visit,1,['c'],reach c,F c,F c,True
+valid,visit,1,['d'],reach d,F d,F d,True
+valid,visit,1,['h'],reach h,F h,F h,True
+valid,visit,1,['a'],eventually you must go to a,F a,F a,True
+valid,visit,1,['b'],eventually you must go to b,F b,F b,True
+valid,visit,1,['c'],eventually you must go to c,F c,F & c U c & ! c U ! c F,Syntax Error
+valid,visit,1,['d'],eventually you must go to d,F d,F & d U d & ! d U ! d F,Syntax Error
+valid,visit,1,['h'],eventually you must go to h,F h,F & h U h & ! h U ! h F,Syntax Error
 valid,sequenced_visit,2,"['a', 'b']",eventually first visit a and then b after,F & a F b,F & a F b,True
 valid,sequenced_visit,2,"['a', 'c']",eventually first visit a and then c after,F & a F c,F & a F c,True
 valid,sequenced_visit,2,"['a', 'd']",eventually first visit a and then d after,F & a F d,F & a F & d F a,False
@@ -134,31 +134,31 @@ valid,strictly_ordered_visit,3,"['h', 'c', 'd']",do not visit d until you visit 
 valid,strictly_ordered_visit,3,"['h', 'd', 'a']",do not visit a until you visit d visit d only once do no visit d until you visit h visit h only once,& & U ! d h & U ! a d F a & U ! h U h U ! h d U ! d U d U ! d a,& & U ! d h F d U ! h U h U ! h d,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'b']",do not visit b until you visit d visit d only once do no visit d until you visit h visit h only once,& & U ! d h & U ! b d F b & U ! h U h U ! h d U ! d U d U ! d b,& & U ! d h F d U ! h U h U ! h d,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'c']",do not visit c until you visit d visit d only once do no visit d until you visit h visit h only once,& & U ! d h & U ! c d F c & U ! h U h U ! h d U ! d U d U ! d c,& & U ! h d F h U ! d U d U ! d h,False
-valid,visit,1,"['a,']",move to a,F a,F a,True
-valid,visit,1,"['b,']",move to b,F b,F b,True
-valid,visit,1,"['c,']",move to c,F c,F c,True
-valid,visit,1,"['d,']",move to d,F d,F d,True
-valid,visit,1,"['h,']",move to h,F h,F h,True
-valid,visit,1,"['a,']",go to a,F a,F a,True
-valid,visit,1,"['b,']",go to b,F b,F b,True
-valid,visit,1,"['c,']",go to c,F c,F c,True
-valid,visit,1,"['d,']",go to d,F d,F d,True
-valid,visit,1,"['h,']",go to h,F h,F h,True
-valid,visit,1,"['a,']",reach a,F a,F a,True
-valid,visit,1,"['b,']",reach b,F b,F b,True
-valid,visit,1,"['c,']",reach c,F c,F c,True
-valid,visit,1,"['d,']",reach d,F d,F d,True
-valid,visit,1,"['h,']",reach h,F h,F h,True
-valid,visit,1,"['a,']",navigate to a,F a,! F & a U a & ! a,Syntax Error
-valid,visit,1,"['b,']",navigate to b,F b,! F & b U b & ! b,Syntax Error
-valid,visit,1,"['c,']",navigate to c,F c,F c,True
-valid,visit,1,"['d,']",navigate to d,F d,F d,True
-valid,visit,1,"['h,']",navigate to h,F h,F h,True
-valid,visit,1,"['a,']",find a,F a,F a,True
-valid,visit,1,"['b,']",find b,F b,F b,True
-valid,visit,1,"['c,']",find c,F c,F c,True
-valid,visit,1,"['d,']",find d,F d,F d,True
-valid,visit,1,"['h,']",find h,F h,F h,True
+valid,visit,1,['a'],move to a,F a,F a,True
+valid,visit,1,['b'],move to b,F b,F b,True
+valid,visit,1,['c'],move to c,F c,F c,True
+valid,visit,1,['d'],move to d,F d,F d,True
+valid,visit,1,['h'],move to h,F h,F h,True
+valid,visit,1,['a'],go to a,F a,F a,True
+valid,visit,1,['b'],go to b,F b,F b,True
+valid,visit,1,['c'],go to c,F c,F c,True
+valid,visit,1,['d'],go to d,F d,F d,True
+valid,visit,1,['h'],go to h,F h,F h,True
+valid,visit,1,['a'],reach a,F a,F a,True
+valid,visit,1,['b'],reach b,F b,F b,True
+valid,visit,1,['c'],reach c,F c,F c,True
+valid,visit,1,['d'],reach d,F d,F d,True
+valid,visit,1,['h'],reach h,F h,F h,True
+valid,visit,1,['a'],navigate to a,F a,! F & a U a & ! a,Syntax Error
+valid,visit,1,['b'],navigate to b,F b,! F & b U b & ! b,Syntax Error
+valid,visit,1,['c'],navigate to c,F c,F c,True
+valid,visit,1,['d'],navigate to d,F d,F d,True
+valid,visit,1,['h'],navigate to h,F h,F h,True
+valid,visit,1,['a'],find a,F a,F a,True
+valid,visit,1,['b'],find b,F b,F b,True
+valid,visit,1,['c'],find c,F c,F c,True
+valid,visit,1,['d'],find d,F d,F d,True
+valid,visit,1,['h'],find h,F h,F h,True
 valid,sequenced_visit,2,"['a', 'b']",move to a then move to b,F & a F b,G i a F b,False
 valid,sequenced_visit,2,"['a', 'c']",move to a then move to c,F & a F c,F a,False
 valid,sequenced_visit,2,"['a', 'd']",move to a then move to d,F & a F d,F a,False
@@ -419,31 +419,31 @@ valid,sequenced_visit,2,"['h', 'a']",go to h and then go to a,F & h F a,F & h F 
 valid,sequenced_visit,2,"['h', 'b']",go to h and then go to b,F & h F b,F & h F b,True
 valid,sequenced_visit,2,"['h', 'c']",go to h and then go to c,F & h F c,F & h F c,True
 valid,sequenced_visit,2,"['h', 'd']",go to h and then go to d,F & h F d,F & h F d,True
-valid,visit,1,"['a,']",go to a,F a,F a,True
-valid,visit,1,"['b,']",go to b,F b,F b,True
-valid,visit,1,"['c,']",go to c,F c,F c,True
-valid,visit,1,"['d,']",go to d,F d,F d,True
-valid,visit,1,"['h,']",go to h,F h,F h,True
-valid,visit,1,"['a,']",reach a,F a,F a,True
-valid,visit,1,"['b,']",reach b,F b,F b,True
-valid,visit,1,"['c,']",reach c,F c,F c,True
-valid,visit,1,"['d,']",reach d,F d,F d,True
-valid,visit,1,"['h,']",reach h,F h,F h,True
-valid,visit,1,"['a,']",visit a,F a,F a,True
-valid,visit,1,"['b,']",visit b,F b,F b,True
-valid,visit,1,"['c,']",visit c,F c,F c,True
-valid,visit,1,"['d,']",visit d,F d,F d,True
-valid,visit,1,"['h,']",visit h,F h,F h,True
-valid,visit,1,"['a,']",find a,F a,F a,True
-valid,visit,1,"['b,']",find b,F b,F b,True
-valid,visit,1,"['c,']",find c,F c,F c,True
-valid,visit,1,"['d,']",find d,F d,F d,True
-valid,visit,1,"['h,']",find h,F h,F h,True
-valid,visit,1,"['a,']",approach a,F a,F a,True
-valid,visit,1,"['b,']",approach b,F b,F b,True
-valid,visit,1,"['c,']",approach c,F c,F c,True
-valid,visit,1,"['d,']",approach d,F d,F d,True
-valid,visit,1,"['h,']",approach h,F h,F h,True
+valid,visit,1,['a'],go to a,F a,F a,True
+valid,visit,1,['b'],go to b,F b,F b,True
+valid,visit,1,['c'],go to c,F c,F c,True
+valid,visit,1,['d'],go to d,F d,F d,True
+valid,visit,1,['h'],go to h,F h,F h,True
+valid,visit,1,['a'],reach a,F a,F a,True
+valid,visit,1,['b'],reach b,F b,F b,True
+valid,visit,1,['c'],reach c,F c,F c,True
+valid,visit,1,['d'],reach d,F d,F d,True
+valid,visit,1,['h'],reach h,F h,F h,True
+valid,visit,1,['a'],visit a,F a,F a,True
+valid,visit,1,['b'],visit b,F b,F b,True
+valid,visit,1,['c'],visit c,F c,F c,True
+valid,visit,1,['d'],visit d,F d,F d,True
+valid,visit,1,['h'],visit h,F h,F h,True
+valid,visit,1,['a'],find a,F a,F a,True
+valid,visit,1,['b'],find b,F b,F b,True
+valid,visit,1,['c'],find c,F c,F c,True
+valid,visit,1,['d'],find d,F d,F d,True
+valid,visit,1,['h'],find h,F h,F h,True
+valid,visit,1,['a'],approach a,F a,F a,True
+valid,visit,1,['b'],approach b,F b,F b,True
+valid,visit,1,['c'],approach c,F c,F c,True
+valid,visit,1,['d'],approach d,F d,F d,True
+valid,visit,1,['h'],approach h,F h,F h,True
 valid,sequenced_visit,2,"['a', 'b']",go to a then go to b,F & a F b,F a,False
 valid,sequenced_visit,2,"['a', 'c']",go to a then go to c,F & a F c,F a,False
 valid,sequenced_visit,2,"['a', 'd']",go to a then go to d,F & a F d,F & a U a & ! a U ! a F d,False
@@ -2044,21 +2044,21 @@ valid,strictly_ordered_visit,3,"['h', 'c', 'd']",visit h c and d in this order w
 valid,strictly_ordered_visit,3,"['h', 'd', 'a']",visit h d and a in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! d h & U ! a d F a & U ! h U h U ! h d U ! d U d U ! d a,G e d X h,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'b']",visit h d and b in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! d h & U ! b d F b & U ! h U h U ! h d U ! d U d U ! d b,G e d X b,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'c']",visit h d and c in this order without skipping any one of them do not revisit any one of them once after you have been there,& & U ! d h & U ! c d F c & U ! h U h U ! h d U ! d U d U ! d c,G e d X c,False
-valid,visit,1,"['a,']",go to a,F a,F a,True
-valid,visit,1,"['b,']",go to b,F b,F b,True
-valid,visit,1,"['c,']",go to c,F c,F c,True
-valid,visit,1,"['d,']",go to d,F d,F d,True
-valid,visit,1,"['h,']",go to h,F h,F h,True
-valid,visit,1,"['a,']",visit a,F a,F a,True
-valid,visit,1,"['b,']",visit b,F b,F b,True
-valid,visit,1,"['c,']",visit c,F c,F c,True
-valid,visit,1,"['d,']",visit d,F d,F d,True
-valid,visit,1,"['h,']",visit h,F h,F h,True
-valid,visit,1,"['a,']",stop by a,F a,F a,True
-valid,visit,1,"['b,']",stop by b,F b,F b,True
-valid,visit,1,"['c,']",stop by c,F c,F c,True
-valid,visit,1,"['d,']",stop by d,F d,F d,True
-valid,visit,1,"['h,']",stop by h,F h,F h,True
+valid,visit,1,['a'],go to a,F a,F a,True
+valid,visit,1,['b'],go to b,F b,F b,True
+valid,visit,1,['c'],go to c,F c,F c,True
+valid,visit,1,['d'],go to d,F d,F d,True
+valid,visit,1,['h'],go to h,F h,F h,True
+valid,visit,1,['a'],visit a,F a,F a,True
+valid,visit,1,['b'],visit b,F b,F b,True
+valid,visit,1,['c'],visit c,F c,F c,True
+valid,visit,1,['d'],visit d,F d,F d,True
+valid,visit,1,['h'],visit h,F h,F h,True
+valid,visit,1,['a'],stop by a,F a,F a,True
+valid,visit,1,['b'],stop by b,F b,F b,True
+valid,visit,1,['c'],stop by c,F c,F c,True
+valid,visit,1,['d'],stop by d,F d,F d,True
+valid,visit,1,['h'],stop by h,F h,F h,True
 valid,sequenced_visit,2,"['a', 'b']",visit a then visit b,F & a F b,F a,False
 valid,sequenced_visit,2,"['a', 'c']",visit a then visit c,F & a F c,F a,False
 valid,sequenced_visit,2,"['a', 'd']",visit a then visit d,F & a F d,F & a F d,True
@@ -2379,31 +2379,31 @@ valid,strictly_ordered_visit,3,"['h', 'c', 'd']",only visit h once followed by v
 valid,strictly_ordered_visit,3,"['h', 'd', 'a']",only visit h once followed by visiting d then visiting a once,& & U ! d h & U ! a d F a & U ! h U h U ! h d U ! d U d U ! d a,& & U ! d h F d U ! h U h U ! h d,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'b']",only visit h once followed by visiting d then visiting b once,& & U ! d h & U ! b d F b & U ! h U h U ! h d U ! d U d U ! d b,& & U ! d h F d U ! h U h U ! h d,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'c']",only visit h once followed by visiting d then visiting c once,& & U ! d h & U ! c d F c & U ! h U h U ! h d U ! d U d U ! d c,& & U ! d h F d U ! c U h U ! c,Syntax Error
-valid,visit,1,"['a,']",please go to a,F a,F a,True
-valid,visit,1,"['b,']",please go to b,F b,G ! b,False
-valid,visit,1,"['c,']",please go to c,F c,G ! c,False
-valid,visit,1,"['d,']",please go to d,F d,G ! d,False
-valid,visit,1,"['h,']",please go to h,F h,G ! h,False
-valid,visit,1,"['a,']",travel to a,F a,F a,True
-valid,visit,1,"['b,']",travel to b,F b,F b,True
-valid,visit,1,"['c,']",travel to c,F c,F c,True
-valid,visit,1,"['d,']",travel to d,F d,F d,True
-valid,visit,1,"['h,']",travel to h,F h,F h,True
-valid,visit,1,"['a,']",visit a,F a,F a,True
-valid,visit,1,"['b,']",visit b,F b,F b,True
-valid,visit,1,"['c,']",visit c,F c,F c,True
-valid,visit,1,"['d,']",visit d,F d,F d,True
-valid,visit,1,"['h,']",visit h,F h,F h,True
-valid,visit,1,"['a,']",stop at a,F a,G F a,False
-valid,visit,1,"['b,']",stop at b,F b,G F b,False
-valid,visit,1,"['c,']",stop at c,F c,G F c,False
-valid,visit,1,"['d,']",stop at d,F d,G F d,False
-valid,visit,1,"['h,']",stop at h,F h,G F h,False
-valid,visit,1,"['a,']",make your way to a,F a,F a,True
-valid,visit,1,"['b,']",make your way to b,F b,G ! b,False
-valid,visit,1,"['c,']",make your way to c,F c,G ! c,False
-valid,visit,1,"['d,']",make your way to d,F d,F d,True
-valid,visit,1,"['h,']",make your way to h,F h,G ! h,False
+valid,visit,1,['a'],please go to a,F a,F a,True
+valid,visit,1,['b'],please go to b,F b,G ! b,False
+valid,visit,1,['c'],please go to c,F c,G ! c,False
+valid,visit,1,['d'],please go to d,F d,G ! d,False
+valid,visit,1,['h'],please go to h,F h,G ! h,False
+valid,visit,1,['a'],travel to a,F a,F a,True
+valid,visit,1,['b'],travel to b,F b,F b,True
+valid,visit,1,['c'],travel to c,F c,F c,True
+valid,visit,1,['d'],travel to d,F d,F d,True
+valid,visit,1,['h'],travel to h,F h,F h,True
+valid,visit,1,['a'],visit a,F a,F a,True
+valid,visit,1,['b'],visit b,F b,F b,True
+valid,visit,1,['c'],visit c,F c,F c,True
+valid,visit,1,['d'],visit d,F d,F d,True
+valid,visit,1,['h'],visit h,F h,F h,True
+valid,visit,1,['a'],stop at a,F a,G F a,False
+valid,visit,1,['b'],stop at b,F b,G F b,False
+valid,visit,1,['c'],stop at c,F c,G F c,False
+valid,visit,1,['d'],stop at d,F d,G F d,False
+valid,visit,1,['h'],stop at h,F h,G F h,False
+valid,visit,1,['a'],make your way to a,F a,F a,True
+valid,visit,1,['b'],make your way to b,F b,G ! b,False
+valid,visit,1,['c'],make your way to c,F c,G ! c,False
+valid,visit,1,['d'],make your way to d,F d,F d,True
+valid,visit,1,['h'],make your way to h,F h,G ! h,False
 valid,strictly_ordered_visit,3,"['a', 'b', 'c']",visit a exactly once do not visit b or c before a then visit b exactly once do not visit c before b finally visit c,& & U ! b a & U ! c b F c & U ! a U a U ! a b U ! b U b U ! b c,& & U ! b a F b U ! c U a U ! c b,False
 valid,strictly_ordered_visit,3,"['a', 'b', 'd']",visit a exactly once do not visit b or d before a then visit b exactly once do not visit d before b finally visit d,& & U ! b a & U ! d b F d & U ! a U a U ! a b U ! b U b U ! b d,& & U ! b a F b U ! a U a U ! a b,False
 valid,strictly_ordered_visit,3,"['a', 'b', 'h']",visit a exactly once do not visit b or h before a then visit b exactly once do not visit h before b finally visit h,& & U ! b a & U ! h b F h & U ! a U a U ! a b U ! b U b U ! b h,& & U ! b a & U ! h b F h & U ! a h U ! a U a U ! a b & U ! b U,Syntax Error
@@ -2704,31 +2704,31 @@ valid,strictly_ordered_visit,3,"['h', 'c', 'd']",visit h exactly once avoid c or
 valid,strictly_ordered_visit,3,"['h', 'd', 'a']",visit h exactly once avoid d or a before h then reach d exactly once avoid a before d finally move to a,& & U ! d h & U ! a d F a & U ! h U h U ! h d U ! d U d U ! d a,& & U ! d h & U ! a d F a,Syntax Error
 valid,strictly_ordered_visit,3,"['h', 'd', 'b']",visit h exactly once avoid d or b before h then reach d exactly once avoid b before d finally move to b,& & U ! d h & U ! b d F b & U ! h U h U ! h d U ! d U d U ! d b,& & U ! h d F h U ! d U d U ! d h,False
 valid,strictly_ordered_visit,3,"['h', 'd', 'c']",visit h exactly once avoid d or c before h then reach d exactly once avoid c before d finally move to c,& & U ! d h & U ! c d F c & U ! h U h U ! h d U ! d U d U ! d c,& & U ! d h & U ! c d F c,Syntax Error
-valid,visit,1,"['a,']",go to a,F a,F a,True
-valid,visit,1,"['b,']",go to b,F b,F b,True
-valid,visit,1,"['c,']",go to c,F c,F c,True
-valid,visit,1,"['d,']",go to d,F d,F d,True
-valid,visit,1,"['h,']",go to h,F h,F h,True
-valid,visit,1,"['a,']",make sure you visit a at least once,F a,F a,True
-valid,visit,1,"['b,']",make sure you visit b at least once,F b,F b,True
-valid,visit,1,"['c,']",make sure you visit c at least once,F c,F c,True
-valid,visit,1,"['d,']",make sure you visit d at least once,F d,F d,True
-valid,visit,1,"['h,']",make sure you visit h at least once,F h,F h,True
-valid,visit,1,"['a,']",walk to a,F a,F a,True
-valid,visit,1,"['b,']",walk to b,F b,F b,True
-valid,visit,1,"['c,']",walk to c,F c,F c,True
-valid,visit,1,"['d,']",walk to d,F d,F d,True
-valid,visit,1,"['h,']",walk to h,F h,F h,True
-valid,visit,1,"['a,']",make your way to a,F a,F a,True
-valid,visit,1,"['b,']",make your way to b,F b,G ! b,False
-valid,visit,1,"['c,']",make your way to c,F c,G ! c,False
-valid,visit,1,"['d,']",make your way to d,F d,F d,True
-valid,visit,1,"['h,']",make your way to h,F h,G ! h,False
-valid,visit,1,"['a,']",head to a,F a,F a,True
-valid,visit,1,"['b,']",head to b,F b,F b,True
-valid,visit,1,"['c,']",head to c,F c,F c,True
-valid,visit,1,"['d,']",head to d,F d,F d,True
-valid,visit,1,"['h,']",head to h,F h,F h,True
+valid,visit,1,['a'],go to a,F a,F a,True
+valid,visit,1,['b'],go to b,F b,F b,True
+valid,visit,1,['c'],go to c,F c,F c,True
+valid,visit,1,['d'],go to d,F d,F d,True
+valid,visit,1,['h'],go to h,F h,F h,True
+valid,visit,1,['a'],make sure you visit a at least once,F a,F a,True
+valid,visit,1,['b'],make sure you visit b at least once,F b,F b,True
+valid,visit,1,['c'],make sure you visit c at least once,F c,F c,True
+valid,visit,1,['d'],make sure you visit d at least once,F d,F d,True
+valid,visit,1,['h'],make sure you visit h at least once,F h,F h,True
+valid,visit,1,['a'],walk to a,F a,F a,True
+valid,visit,1,['b'],walk to b,F b,F b,True
+valid,visit,1,['c'],walk to c,F c,F c,True
+valid,visit,1,['d'],walk to d,F d,F d,True
+valid,visit,1,['h'],walk to h,F h,F h,True
+valid,visit,1,['a'],make your way to a,F a,F a,True
+valid,visit,1,['b'],make your way to b,F b,G ! b,False
+valid,visit,1,['c'],make your way to c,F c,G ! c,False
+valid,visit,1,['d'],make your way to d,F d,F d,True
+valid,visit,1,['h'],make your way to h,F h,G ! h,False
+valid,visit,1,['a'],head to a,F a,F a,True
+valid,visit,1,['b'],head to b,F b,F b,True
+valid,visit,1,['c'],head to c,F c,F c,True
+valid,visit,1,['d'],head to d,F d,F d,True
+valid,visit,1,['h'],head to h,F h,F h,True
 valid,ordered_visit,4,"['a', 'b', 'c', 'd']",visit a as many times as you want while avoiding b c and d then visit b as many times as you want while avoiding c and d then visit c as many times as you want while avoiding d finally visit d,& U ! b a & U ! c b & U ! d c F d,& U ! c a & U ! b c & U ! d b F d,False
 valid,ordered_visit,4,"['a', 'b', 'c', 'h']",visit a as many times as you want while avoiding b c and h then visit b as many times as you want while avoiding c and h then visit c as many times as you want while avoiding h finally visit h,& U ! b a & U ! c b & U ! h c F h,& U ! c a & U ! h c & U ! b h F b,False
 valid,ordered_visit,4,"['a', 'b', 'd', 'c']",visit a as many times as you want while avoiding b d and c then visit b as many times as you want while avoiding d and c then visit d as many times as you want while avoiding c finally visit c,& U ! b a & U ! d b & U ! c d F c,& U ! c a & U ! b c F b,False

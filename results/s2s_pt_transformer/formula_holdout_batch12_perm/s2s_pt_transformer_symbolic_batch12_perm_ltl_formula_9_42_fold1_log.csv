@@ -1079,41 +1079,41 @@ valid,strictly_ordered_visit,5,"['h', 'd', 'b', 'a', 'c']",eventually visit h af
 valid,strictly_ordered_visit,5,"['h', 'd', 'b', 'c', 'a']",eventually visit h afterward eventually visit d afterward eventually visit b afterward eventually visit c afterward eventually visit a visit each landmark only once,& & U ! d h & U ! b d & U ! c b & U ! a c F a & U ! h U h U ! h d & U ! d U d U ! d b & U ! b U b U ! b c U ! c U c U ! c a,& & U ! d h & U ! c d & U ! b c & U ! a & U ! b U ! b d & U,Syntax Error
 valid,strictly_ordered_visit,5,"['h', 'd', 'c', 'a', 'b']",eventually visit h afterward eventually visit d afterward eventually visit c afterward eventually visit a afterward eventually visit b visit each landmark only once,& & U ! d h & U ! c d & U ! a c & U ! b a F b & U ! h U h U ! h d & U ! d U d U ! d c & U ! c U c U ! c a U ! a U a U ! a b,& & U ! d h & U ! a d & U ! c a & U ! b U ! b U ! b U ! b &,Syntax Error
 valid,strictly_ordered_visit,5,"['h', 'd', 'c', 'b', 'a']",eventually visit h afterward eventually visit d afterward eventually visit c afterward eventually visit b afterward eventually visit a visit each landmark only once,& & U ! d h & U ! c d & U ! b c & U ! a b F a & U ! h U h U ! h d & U ! d U d U ! d c & U ! c U c U ! c b U ! b U b U ! b a,& & U ! d h & U ! b d & U ! c b F c & U ! h U h U ! h d & U,Syntax Error
-valid,patrolling,1,"['a,']",keep visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep visiting b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep visiting h,G F h,F h,False
-valid,patrolling,1,"['a,']",go to a an infinite number of times,G F a,& G ! a G ! c,False
-valid,patrolling,1,"['b,']",go to b an infinite number of times,G F b,& G F b G F c,False
-valid,patrolling,1,"['c,']",go to c an infinite number of times,G F c,& G ! c G ! c G ! c,Syntax Error
-valid,patrolling,1,"['d,']",go to d an infinite number of times,G F d,& G F d G F c,False
-valid,patrolling,1,"['h,']",go to h an infinite number of times,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",continue moving to a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",continue moving to b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",continue moving to c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",continue moving to d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",continue moving to h,G F h,G i h F b,False
-valid,patrolling,1,"['a,']",do not stop visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",do not stop visiting b,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",do not stop visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",do not stop visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",do not stop visiting h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",do not stop going to a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",do not stop going to b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",do not stop going to c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",do not stop going to d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",do not stop going to h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",please visit a infinitely often,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",please visit b infinitely often,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",please visit c infinitely often,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",please visit d infinitely often,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",please visit h infinitely often,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",you must visit a infinitely often,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",you must visit b infinitely often,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",you must visit c infinitely often,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",you must visit d infinitely often,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",you must visit h infinitely often,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],keep visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep visiting b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep visiting h,G F h,F h,False
+valid,patrolling,1,['a'],go to a an infinite number of times,G F a,& G ! a G ! c,False
+valid,patrolling,1,['b'],go to b an infinite number of times,G F b,& G F b G F c,False
+valid,patrolling,1,['c'],go to c an infinite number of times,G F c,& G ! c G ! c G ! c,Syntax Error
+valid,patrolling,1,['d'],go to d an infinite number of times,G F d,& G F d G F c,False
+valid,patrolling,1,['h'],go to h an infinite number of times,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],continue moving to a,G F a,G ! a,False
+valid,patrolling,1,['b'],continue moving to b,G F b,G ! b,False
+valid,patrolling,1,['c'],continue moving to c,G F c,G ! c,False
+valid,patrolling,1,['d'],continue moving to d,G F d,G ! d,False
+valid,patrolling,1,['h'],continue moving to h,G F h,G i h F b,False
+valid,patrolling,1,['a'],do not stop visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],do not stop visiting b,G F b,G i b F c,False
+valid,patrolling,1,['c'],do not stop visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],do not stop visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],do not stop visiting h,G F h,G ! h,False
+valid,patrolling,1,['a'],do not stop going to a,G F a,G ! a,False
+valid,patrolling,1,['b'],do not stop going to b,G F b,G ! b,False
+valid,patrolling,1,['c'],do not stop going to c,G F c,G ! c,False
+valid,patrolling,1,['d'],do not stop going to d,G F d,G ! d,False
+valid,patrolling,1,['h'],do not stop going to h,G F h,G ! h,False
+valid,patrolling,1,['a'],please visit a infinitely often,G F a,G i a F b,False
+valid,patrolling,1,['b'],please visit b infinitely often,G F b,G i b F c,False
+valid,patrolling,1,['c'],please visit c infinitely often,G F c,G i c F c,False
+valid,patrolling,1,['d'],please visit d infinitely often,G F d,G i d F c,False
+valid,patrolling,1,['h'],please visit h infinitely often,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],you must visit a infinitely often,G F a,G i a F b,False
+valid,patrolling,1,['b'],you must visit b infinitely often,G F b,G i b F c,False
+valid,patrolling,1,['c'],you must visit c infinitely often,G F c,G i c F c,False
+valid,patrolling,1,['d'],you must visit d infinitely often,G F d,G i d F c,False
+valid,patrolling,1,['h'],you must visit h infinitely often,G F h,& G F h G F b,False
 valid,sequenced_visit,3,"['a', 'b', 'c']",go to a and then go to b and then go to c,F & a F & b F c,F & a F & b F c,True
 valid,sequenced_visit,3,"['a', 'b', 'd']",go to a and then go to b and then go to d,F & a F & b F d,F & a F & b F d,True
 valid,sequenced_visit,3,"['a', 'b', 'h']",go to a and then go to b and then go to h,F & a F & b F h,F & a F & b F h,True
@@ -1414,31 +1414,31 @@ valid,sequenced_visit,3,"['h', 'c', 'd']",head to h c and d in order,F & h F & c
 valid,sequenced_visit,3,"['h', 'd', 'a']",head to h d and a in order,F & h F & d F a,& F h & F d F a,False
 valid,sequenced_visit,3,"['h', 'd', 'b']",head to h d and b in order,F & h F & d F b,& F h & F d F b,False
 valid,sequenced_visit,3,"['h', 'd', 'c']",head to h d and c in order,F & h F & d F c,& F h & F d F c,False
-valid,patrolling,1,"['a,']",keep visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep visiting b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep visiting h,G F h,F h,False
-valid,patrolling,1,"['a,']",keep going to a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep going to b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep going to c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep going to d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep going to h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",make sure you frequent a infinitely,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",make sure you frequent b infinitely,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",make sure you frequent c infinitely,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",make sure you frequent d infinitely,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",make sure you frequent h infinitely,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",do not stop visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",do not stop visiting b,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",do not stop visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",do not stop visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",do not stop visiting h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",make sure you visit a infinite times,G F a,M & a F & ! a F & a F & !,Syntax Error
-valid,patrolling,1,"['b,']",make sure you visit b infinite times,G F b,M & b F & ! b F & b F & !,Syntax Error
-valid,patrolling,1,"['c,']",make sure you visit c infinite times,G F c,M & c F & ! c F & c F & !,Syntax Error
-valid,patrolling,1,"['d,']",make sure you visit d infinite times,G F d,M & d F & ! d F & d F & !,Syntax Error
-valid,patrolling,1,"['h,']",make sure you visit h infinite times,G F h,M & h F & ! h F & h F & !,Syntax Error
+valid,patrolling,1,['a'],keep visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep visiting b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep visiting h,G F h,F h,False
+valid,patrolling,1,['a'],keep going to a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep going to b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep going to c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep going to d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep going to h,G F h,G ! h,False
+valid,patrolling,1,['a'],make sure you frequent a infinitely,G F a,G i a F b,False
+valid,patrolling,1,['b'],make sure you frequent b infinitely,G F b,G i b F c,False
+valid,patrolling,1,['c'],make sure you frequent c infinitely,G F c,G i c F c,False
+valid,patrolling,1,['d'],make sure you frequent d infinitely,G F d,G i d F c,False
+valid,patrolling,1,['h'],make sure you frequent h infinitely,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],do not stop visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],do not stop visiting b,G F b,G i b F c,False
+valid,patrolling,1,['c'],do not stop visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],do not stop visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],do not stop visiting h,G F h,G ! h,False
+valid,patrolling,1,['a'],make sure you visit a infinite times,G F a,M & a F & ! a F & a F & !,Syntax Error
+valid,patrolling,1,['b'],make sure you visit b infinite times,G F b,M & b F & ! b F & b F & !,Syntax Error
+valid,patrolling,1,['c'],make sure you visit c infinite times,G F c,M & c F & ! c F & c F & !,Syntax Error
+valid,patrolling,1,['d'],make sure you visit d infinite times,G F d,M & d F & ! d F & d F & !,Syntax Error
+valid,patrolling,1,['h'],make sure you visit h infinite times,G F h,M & h F & ! h F & h F & !,Syntax Error
 valid,sequenced_visit,5,"['a', 'b', 'c', 'd', 'h']",visit a b c d and h sequentially,F & a F & b F & c F & d F h,& F a & F b & F c & F d F h,False
 valid,sequenced_visit,5,"['a', 'b', 'c', 'h', 'd']",visit a b c h and d sequentially,F & a F & b F & c F & h F d,& F a & F b & F c & F h F d,False
 valid,sequenced_visit,5,"['a', 'b', 'd', 'c', 'h']",visit a b d c and h sequentially,F & a F & b F & d F & c F h,& F a & F b & F d & F c F h,False
@@ -4739,46 +4739,46 @@ valid,ordered_visit,5,"['h', 'd', 'b', 'a', 'c']",do not go to c until a is visi
 valid,ordered_visit,5,"['h', 'd', 'b', 'c', 'a']",do not go to a until c is visited and do not go to c until b is visited and do not go to b until d is visited and do not go to d until h is visited,& U ! d h & U ! b d & U ! c b & U ! a c F a,U b d & U ! c & U ! h b & U ! a h F a,Syntax Error
 valid,ordered_visit,5,"['h', 'd', 'c', 'a', 'b']",do not go to b until a is visited and do not go to a until c is visited and do not go to c until d is visited and do not go to d until h is visited,& U ! d h & U ! c d & U ! a c & U ! b a F b,U ! c d & U ! h c & U ! a h F a,Syntax Error
 valid,ordered_visit,5,"['h', 'd', 'c', 'b', 'a']",do not go to a until b is visited and do not go to b until c is visited and do not go to c until d is visited and do not go to d until h is visited,& U ! d h & U ! c d & U ! b c & U ! a b F a,U ! c d & U ! h c & U ! b h F b,Syntax Error
-valid,patrolling,1,"['a,']",keep on visiting a forever,G F a,& G F a G F b,False
-valid,patrolling,1,"['b,']",keep on visiting b forever,G F b,& G F b G F c,False
-valid,patrolling,1,"['c,']",keep on visiting c forever,G F c,G c,False
-valid,patrolling,1,"['d,']",keep on visiting d forever,G F d,& G F d G F c,False
-valid,patrolling,1,"['h,']",keep on visiting h forever,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",go to a repeatedly,G F a,G ! a,False
-valid,patrolling,1,"['b,']",go to b repeatedly,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",go to c repeatedly,G F c,G ! c,False
-valid,patrolling,1,"['d,']",go to d repeatedly,G F d,G ! d,False
-valid,patrolling,1,"['h,']",go to h repeatedly,G F h,G i h F b,False
-valid,patrolling,1,"['a,']",visit a infinitely often,G F a,G i a F c,False
-valid,patrolling,1,"['b,']",visit b infinitely often,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",visit c infinitely often,G F c,G ! c,False
-valid,patrolling,1,"['d,']",visit d infinitely often,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",visit h infinitely often,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",make sure at any point in time you will visit a at least once in the future,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",make sure at any point in time you will visit b at least once in the future,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",make sure at any point in time you will visit c at least once in the future,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",make sure at any point in time you will visit d at least once in the future,G F d,G i d F b,False
-valid,patrolling,1,"['h,']",make sure at any point in time you will visit h at least once in the future,G F h,G i h F b,False
-valid,patrolling,1,"['a,']",keep visiting a forever,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep visiting b forever,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep visiting c forever,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep visiting d forever,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep visiting h forever,G F h,G ! h,False
-valid,patrolling,1,"['a,']",keep visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep visiting b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep visiting h,G F h,F h,False
-valid,patrolling,1,"['a,']",continue to visit a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",continue to visit b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",continue to visit c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",continue to visit d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",continue to visit h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",visit a again and again,G F a,! F & a U a & ! a U !,Syntax Error
-valid,patrolling,1,"['b,']",visit b again and again,G F b,F & b U b & ! b U ! b,Syntax Error
-valid,patrolling,1,"['c,']",visit c again and again,G F c,! F & c U c & ! c U !,Syntax Error
-valid,patrolling,1,"['d,']",visit d again and again,G F d,! F & d U d & ! d U !,Syntax Error
-valid,patrolling,1,"['h,']",visit h again and again,G F h,! F & h U h & ! h U !,Syntax Error
+valid,patrolling,1,['a'],keep on visiting a forever,G F a,& G F a G F b,False
+valid,patrolling,1,['b'],keep on visiting b forever,G F b,& G F b G F c,False
+valid,patrolling,1,['c'],keep on visiting c forever,G F c,G c,False
+valid,patrolling,1,['d'],keep on visiting d forever,G F d,& G F d G F c,False
+valid,patrolling,1,['h'],keep on visiting h forever,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],go to a repeatedly,G F a,G ! a,False
+valid,patrolling,1,['b'],go to b repeatedly,G F b,G i b F c,False
+valid,patrolling,1,['c'],go to c repeatedly,G F c,G ! c,False
+valid,patrolling,1,['d'],go to d repeatedly,G F d,G ! d,False
+valid,patrolling,1,['h'],go to h repeatedly,G F h,G i h F b,False
+valid,patrolling,1,['a'],visit a infinitely often,G F a,G i a F c,False
+valid,patrolling,1,['b'],visit b infinitely often,G F b,G i b F c,False
+valid,patrolling,1,['c'],visit c infinitely often,G F c,G ! c,False
+valid,patrolling,1,['d'],visit d infinitely often,G F d,G i d F c,False
+valid,patrolling,1,['h'],visit h infinitely often,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],make sure at any point in time you will visit a at least once in the future,G F a,G i a F b,False
+valid,patrolling,1,['b'],make sure at any point in time you will visit b at least once in the future,G F b,G i b F c,False
+valid,patrolling,1,['c'],make sure at any point in time you will visit c at least once in the future,G F c,G i c F c,False
+valid,patrolling,1,['d'],make sure at any point in time you will visit d at least once in the future,G F d,G i d F b,False
+valid,patrolling,1,['h'],make sure at any point in time you will visit h at least once in the future,G F h,G i h F b,False
+valid,patrolling,1,['a'],keep visiting a forever,G F a,G ! a,False
+valid,patrolling,1,['b'],keep visiting b forever,G F b,G ! b,False
+valid,patrolling,1,['c'],keep visiting c forever,G F c,G ! c,False
+valid,patrolling,1,['d'],keep visiting d forever,G F d,G ! d,False
+valid,patrolling,1,['h'],keep visiting h forever,G F h,G ! h,False
+valid,patrolling,1,['a'],keep visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep visiting b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep visiting h,G F h,F h,False
+valid,patrolling,1,['a'],continue to visit a,G F a,G ! a,False
+valid,patrolling,1,['b'],continue to visit b,G F b,G ! b,False
+valid,patrolling,1,['c'],continue to visit c,G F c,G ! c,False
+valid,patrolling,1,['d'],continue to visit d,G F d,G ! d,False
+valid,patrolling,1,['h'],continue to visit h,G F h,G ! h,False
+valid,patrolling,1,['a'],visit a again and again,G F a,! F & a U a & ! a U !,Syntax Error
+valid,patrolling,1,['b'],visit b again and again,G F b,F & b U b & ! b U ! b,Syntax Error
+valid,patrolling,1,['c'],visit c again and again,G F c,! F & c U c & ! c U !,Syntax Error
+valid,patrolling,1,['d'],visit d again and again,G F d,! F & d U d & ! d U !,Syntax Error
+valid,patrolling,1,['h'],visit h again and again,G F h,! F & h U h & ! h U !,Syntax Error
 valid,sequenced_visit,3,"['a', 'b', 'c']",visit a then b then c,F & a F & b F c,F & a F & b F c,True
 valid,sequenced_visit,3,"['a', 'b', 'd']",visit a then b then d,F & a F & b F d,F & a F & b F d,True
 valid,sequenced_visit,3,"['a', 'b', 'h']",visit a then b then h,F & a F & b F h,F & a F & b F h,True
@@ -6219,31 +6219,31 @@ valid,visit,4,"['h', 'd', 'b', 'a']",stop by h d b and a in any order,& F h & F 
 valid,visit,4,"['h', 'd', 'b', 'c']",stop by h d b and c in any order,& F h & F d & F b F c,& F h & F d & F b F c,True
 valid,visit,4,"['h', 'd', 'c', 'a']",stop by h d c and a in any order,& F h & F d & F c F a,& F h & F d & F c F a,True
 valid,visit,4,"['h', 'd', 'c', 'b']",stop by h d c and b in any order,& F h & F d & F c F b,& F h & F d & F c F b,True
-valid,patrolling,1,"['a,']",please keep visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",please keep visiting b,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",please keep visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",please keep visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",please keep visiting h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",keep going to a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep going to b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep going to c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep going to d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep going to h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",always stop at a repeatedly,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",always stop at b repeatedly,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",always stop at c repeatedly,G F c,G ! c,False
-valid,patrolling,1,"['d,']",always stop at d repeatedly,G F d,G ! d,False
-valid,patrolling,1,"['h,']",always stop at h repeatedly,G F h,G i h F b,False
-valid,patrolling,1,"['a,']",keep visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",keep visiting b,G F b,G ! b,False
-valid,patrolling,1,"['c,']",keep visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",keep visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",keep visiting h,G F h,F h,False
-valid,patrolling,1,"['a,']",patrol a repeatedly,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",patrol b repeatedly,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",patrol c repeatedly,G F c,G ! c,False
-valid,patrolling,1,"['d,']",patrol d repeatedly,G F d,G ! d,False
-valid,patrolling,1,"['h,']",patrol h repeatedly,G F h,G i h F d,False
+valid,patrolling,1,['a'],please keep visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],please keep visiting b,G F b,G i b F c,False
+valid,patrolling,1,['c'],please keep visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],please keep visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],please keep visiting h,G F h,G ! h,False
+valid,patrolling,1,['a'],keep going to a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep going to b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep going to c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep going to d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep going to h,G F h,G ! h,False
+valid,patrolling,1,['a'],always stop at a repeatedly,G F a,G i a F b,False
+valid,patrolling,1,['b'],always stop at b repeatedly,G F b,G i b F c,False
+valid,patrolling,1,['c'],always stop at c repeatedly,G F c,G ! c,False
+valid,patrolling,1,['d'],always stop at d repeatedly,G F d,G ! d,False
+valid,patrolling,1,['h'],always stop at h repeatedly,G F h,G i h F b,False
+valid,patrolling,1,['a'],keep visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],keep visiting b,G F b,G ! b,False
+valid,patrolling,1,['c'],keep visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],keep visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],keep visiting h,G F h,F h,False
+valid,patrolling,1,['a'],patrol a repeatedly,G F a,G i a F b,False
+valid,patrolling,1,['b'],patrol b repeatedly,G F b,G i b F c,False
+valid,patrolling,1,['c'],patrol c repeatedly,G F c,G ! c,False
+valid,patrolling,1,['d'],patrol d repeatedly,G F d,G ! d,False
+valid,patrolling,1,['h'],patrol h repeatedly,G F h,G i h F d,False
 valid,visit,4,"['a', 'b', 'c', 'd']",go to b d a and c in any order,& F a & F b & F c F d,& F c & F a & F d F b,True
 valid,visit,4,"['a', 'b', 'c', 'h']",go to b h a and c in any order,& F a & F b & F c F h,& F c & F a & F h & F b F c,True
 valid,visit,4,"['a', 'b', 'd', 'c']",go to b c a and d in any order,& F a & F b & F d F c,& F b & F c & F a F d,True
@@ -8284,31 +8284,31 @@ valid,ordered_visit,5,"['h', 'd', 'b', 'a', 'c']",visit h do not visit d b a or 
 valid,ordered_visit,5,"['h', 'd', 'b', 'c', 'a']",visit h do not visit d b c or a until you visit h then visit d do not visit b c or a until you visit d then visit b do not visit c or a until you visit b then visit c do not visit a until you visit c finally reach a,& U ! d h & U ! b d & U ! c b & U ! a c F a,& & U ! d h & U ! b d & U ! c b F c & U ! h U h U ! h d & U ! d U d U ! d b U ! b U b U ! b c,False
 valid,ordered_visit,5,"['h', 'd', 'c', 'a', 'b']",visit h do not visit d c a or b until you visit h then visit d do not visit c a or b until you visit d then visit c do not visit a or b until you visit c then visit a do not visit b until you visit a finally reach b,& U ! d h & U ! c d & U ! a c & U ! b a F b,& & U ! d h & U ! c d & U ! a c F b & U ! h U h U ! h d & U ! d U d U ! d c U ! c U c U ! c a,False
 valid,ordered_visit,5,"['h', 'd', 'c', 'b', 'a']",visit h do not visit d c b or a until you visit h then visit d do not visit c b or a until you visit d then visit c do not visit b or a until you visit c then visit b do not visit a until you visit b finally reach a,& U ! d h & U ! c d & U ! b c & U ! a b F a,& & U ! d h & U ! c d & U ! a c F a & U ! h U h U ! h d & U ! d U d U ! d c U ! c U c U ! c a,False
-valid,patrolling,1,"['a,']",never stop visiting a,G F a,G ! a,False
-valid,patrolling,1,"['b,']",never stop visiting b,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",never stop visiting c,G F c,G ! c,False
-valid,patrolling,1,"['d,']",never stop visiting d,G F d,G ! d,False
-valid,patrolling,1,"['h,']",never stop visiting h,G F h,G ! h,False
-valid,patrolling,1,"['a,']",make sure a is visited infinitely,G F a,G i a F b,False
-valid,patrolling,1,"['b,']",make sure b is visited infinitely,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",make sure c is visited infinitely,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",make sure d is visited infinitely,G F d,G i d X G ! b,False
-valid,patrolling,1,"['h,']",make sure h is visited infinitely,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",visit a an infinite number of times,G F a,& G F a G F c,False
-valid,patrolling,1,"['b,']",visit b an infinite number of times,G F b,& G F b G F c,False
-valid,patrolling,1,"['c,']",visit c an infinite number of times,G F c,& G ! c G ! c G ! c,Syntax Error
-valid,patrolling,1,"['d,']",visit d an infinite number of times,G F d,& G F d G F c,False
-valid,patrolling,1,"['h,']",visit h an infinite number of times,G F h,& G F h G F a,False
-valid,patrolling,1,"['a,']",frequent a infinitely,G F a,G i a F c,False
-valid,patrolling,1,"['b,']",frequent b infinitely,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",frequent c infinitely,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",frequent d infinitely,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",frequent h infinitely,G F h,& G F h G F b,False
-valid,patrolling,1,"['a,']",please keep visiting a without stopping,G F a,G i a F c,False
-valid,patrolling,1,"['b,']",please keep visiting b without stopping,G F b,G i b F c,False
-valid,patrolling,1,"['c,']",please keep visiting c without stopping,G F c,G i c F c,False
-valid,patrolling,1,"['d,']",please keep visiting d without stopping,G F d,G i d F c,False
-valid,patrolling,1,"['h,']",please keep visiting h without stopping,G F h,G i h F b,False
+valid,patrolling,1,['a'],never stop visiting a,G F a,G ! a,False
+valid,patrolling,1,['b'],never stop visiting b,G F b,G i b F c,False
+valid,patrolling,1,['c'],never stop visiting c,G F c,G ! c,False
+valid,patrolling,1,['d'],never stop visiting d,G F d,G ! d,False
+valid,patrolling,1,['h'],never stop visiting h,G F h,G ! h,False
+valid,patrolling,1,['a'],make sure a is visited infinitely,G F a,G i a F b,False
+valid,patrolling,1,['b'],make sure b is visited infinitely,G F b,G i b F c,False
+valid,patrolling,1,['c'],make sure c is visited infinitely,G F c,G i c F c,False
+valid,patrolling,1,['d'],make sure d is visited infinitely,G F d,G i d X G ! b,False
+valid,patrolling,1,['h'],make sure h is visited infinitely,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],visit a an infinite number of times,G F a,& G F a G F c,False
+valid,patrolling,1,['b'],visit b an infinite number of times,G F b,& G F b G F c,False
+valid,patrolling,1,['c'],visit c an infinite number of times,G F c,& G ! c G ! c G ! c,Syntax Error
+valid,patrolling,1,['d'],visit d an infinite number of times,G F d,& G F d G F c,False
+valid,patrolling,1,['h'],visit h an infinite number of times,G F h,& G F h G F a,False
+valid,patrolling,1,['a'],frequent a infinitely,G F a,G i a F c,False
+valid,patrolling,1,['b'],frequent b infinitely,G F b,G i b F c,False
+valid,patrolling,1,['c'],frequent c infinitely,G F c,G i c F c,False
+valid,patrolling,1,['d'],frequent d infinitely,G F d,G i d F c,False
+valid,patrolling,1,['h'],frequent h infinitely,G F h,& G F h G F b,False
+valid,patrolling,1,['a'],please keep visiting a without stopping,G F a,G i a F c,False
+valid,patrolling,1,['b'],please keep visiting b without stopping,G F b,G i b F c,False
+valid,patrolling,1,['c'],please keep visiting c without stopping,G F c,G i c F c,False
+valid,patrolling,1,['d'],please keep visiting d without stopping,G F d,G i d F c,False
+valid,patrolling,1,['h'],please keep visiting h without stopping,G F h,G i h F b,False
 valid,sequenced_visit,5,"['a', 'b', 'c', 'd', 'h']",go to a then go to b then go to c then go to d finally go to h,F & a F & b F & c F & d F h,F & a F & b F & c F d,False
 valid,sequenced_visit,5,"['a', 'b', 'c', 'h', 'd']",go to a then go to b then go to c then go to h finally go to d,F & a F & b F & c F & h F d,F & a F & b F & c F h,False
 valid,sequenced_visit,5,"['a', 'b', 'd', 'c', 'h']",go to a then go to b then go to d then go to c finally go to h,F & a F & b F & d F & c F h,F & a F & b F & d F c,False
@@ -14069,41 +14069,41 @@ valid,ordered_visit,5,"['h', 'd', 'b', 'a', 'c']",visit h only after h is visite
 valid,ordered_visit,5,"['h', 'd', 'b', 'c', 'a']",visit h only after h is visited go to d only after d is visited go to b only after b is visited go to c only after c is visited go to a,& U ! d h & U ! b d & U ! c b & U ! a c F a,& U ! c a & U ! h c & U ! d h & U ! b & U ! a d U ! d & U ! d U ! d h U ! d h U,Syntax Error
 valid,ordered_visit,5,"['h', 'd', 'c', 'a', 'b']",visit h only after h is visited go to d only after d is visited go to c only after c is visited go to a only after a is visited go to b,& U ! d h & U ! c d & U ! a c & U ! b a F b,& U ! c a & U ! d c & U ! h d & U ! b,Syntax Error
 valid,ordered_visit,5,"['h', 'd', 'c', 'b', 'a']",visit h only after h is visited go to d only after d is visited go to c only after c is visited go to b only after b is visited go to a,& U ! d h & U ! c d & U ! b c & U ! a b F a,& U ! c a & U ! h c & U ! d h & U ! b,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",visit a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",go to a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",go to b at least once,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",go to c at least once,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",go to d at least once,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",go to h at least once,F h,F h,True
-valid,lower_restricted_avoidance,1,"['a,']",make your way to a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",make your way to b at least once,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",make your way to c at least once,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",make your way to d at least once,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",make your way to h at least once,F h,F h,True
-valid,lower_restricted_avoidance,1,"['a,']",you have to visit a at least once,F a,G i a F c,False
-valid,lower_restricted_avoidance,1,"['b,']",you have to visit b at least once,F b,G i b F c,False
-valid,lower_restricted_avoidance,1,"['c,']",you have to visit c at least once,F c,G i c F b,False
-valid,lower_restricted_avoidance,1,"['d,']",you have to visit d at least once,F d,G i d F c,False
-valid,lower_restricted_avoidance,1,"['h,']",you have to visit h at least once,F h,G i h F b,False
-valid,lower_restricted_avoidance,1,"['a,']",visit a at least once or more,F a,F & a U a & ! a U ! a F a,False
-valid,lower_restricted_avoidance,1,"['b,']",visit b at least once or more,F b,F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",visit c at least once or more,F c,F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",visit d at least once or more,F d,F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",visit h at least once or more,F h,F & h U h & ! h U ! h F h,False
-valid,lower_restricted_avoidance,1,"['a,']",never go to a less than once,F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,lower_restricted_avoidance,1,"['b,']",never go to b less than once,F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",never go to c less than once,F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",never go to d less than once,F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",never go to h less than once,F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",you can not visit a less than once,F a,! F & a U a & ! a U ! a F a,False
-valid,lower_restricted_avoidance,1,"['b,']",you can not visit b less than once,F b,! F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",you can not visit c less than once,F c,! F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",you can not visit d less than once,F d,! F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",you can not visit h less than once,F h,! F & h U h & ! h U ! h F h,False
+valid,lower_restricted_avoidance,1,['a'],visit a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],go to a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],go to b at least once,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],go to c at least once,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],go to d at least once,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],go to h at least once,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],make your way to a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],make your way to b at least once,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],make your way to c at least once,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],make your way to d at least once,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],make your way to h at least once,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],you have to visit a at least once,F a,G i a F c,False
+valid,lower_restricted_avoidance,1,['b'],you have to visit b at least once,F b,G i b F c,False
+valid,lower_restricted_avoidance,1,['c'],you have to visit c at least once,F c,G i c F b,False
+valid,lower_restricted_avoidance,1,['d'],you have to visit d at least once,F d,G i d F c,False
+valid,lower_restricted_avoidance,1,['h'],you have to visit h at least once,F h,G i h F b,False
+valid,lower_restricted_avoidance,1,['a'],visit a at least once or more,F a,F & a U a & ! a U ! a F a,False
+valid,lower_restricted_avoidance,1,['b'],visit b at least once or more,F b,F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],visit c at least once or more,F c,F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],visit d at least once or more,F d,F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],visit h at least once or more,F h,F & h U h & ! h U ! h F h,False
+valid,lower_restricted_avoidance,1,['a'],never go to a less than once,F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,lower_restricted_avoidance,1,['b'],never go to b less than once,F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],never go to c less than once,F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],never go to d less than once,F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],never go to h less than once,F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],you can not visit a less than once,F a,! F & a U a & ! a U ! a F a,False
+valid,lower_restricted_avoidance,1,['b'],you can not visit b less than once,F b,! F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],you can not visit c less than once,F c,! F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],you can not visit d less than once,F d,! F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],you can not visit h less than once,F h,! F & h U h & ! h U ! h F h,False
 valid,exact_restricted_avoidance,2,"['a', 'a']",visit a exactly twice,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",visit b exactly twice,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",visit c exactly twice,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c,Syntax Error
@@ -14139,31 +14139,31 @@ valid,exact_restricted_avoidance,2,"['b', 'b']",visit b exactly twice no more no
 valid,exact_restricted_avoidance,2,"['c', 'c']",visit c exactly twice no more no less,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c,Syntax Error
 valid,exact_restricted_avoidance,2,"['d', 'd']",visit d exactly twice no more no less,M & d F & ! d F d | ! d G | d G | ! d G | d G ! d,M & d F & ! d F & d F & ! d,Syntax Error
 valid,exact_restricted_avoidance,2,"['h', 'h']",visit h exactly twice no more no less,M & h F & ! h F h | ! h G | h G | ! h G | h G ! h,M & h F & ! h F & h F & ! h,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",visit a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",you have to visit a one or more than one time,F a,! F & a U a & ! a U ! a F a,False
-valid,lower_restricted_avoidance,1,"['b,']",you have to visit b one or more than one time,F b,! F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",you have to visit c one or more than one time,F c,! F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",you have to visit d one or more than one time,F d,! F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",you have to visit h one or more than one time,F h,! F & h U h & ! h U ! h F h,False
-valid,lower_restricted_avoidance,1,"['a,']",your task is to go to a one or more times,F a,F & a U a & ! a U ! a F & a U a &,Syntax Error
-valid,lower_restricted_avoidance,1,"['b,']",your task is to go to b one or more times,F b,F & b U b & ! b U ! b F & b U b &,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",your task is to go to c one or more times,F c,F & c U c & ! c U ! c F & c U c &,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",your task is to go to d one or more times,F d,F & d U d & ! d U ! d F & d U d &,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",your task is to go to h one or more times,F h,F & h U h & ! h U ! h F & h U h &,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",do not visit a less than one time,F a,M a | ! a G | a G ! a,False
-valid,lower_restricted_avoidance,1,"['b,']",do not visit b less than one time,F b,M b | ! b G | b G ! b,False
-valid,lower_restricted_avoidance,1,"['c,']",do not visit c less than one time,F c,! F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",do not visit d less than one time,F d,M d | ! d G | d G ! d,False
-valid,lower_restricted_avoidance,1,"['h,']",do not visit h less than one time,F h,M h | ! h G | h G ! h,False
-valid,lower_restricted_avoidance,1,"['a,']",make sure you visit a one or more times,F a,F & a U a & ! a U ! a F a,False
-valid,lower_restricted_avoidance,1,"['b,']",make sure you visit b one or more times,F b,F & b U b & ! b U ! b F & b U,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",make sure you visit c one or more times,F c,F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",make sure you visit d one or more times,F d,F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",make sure you visit h one or more times,F h,F & h U h & ! h U ! h F & h U,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],visit a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],you have to visit a one or more than one time,F a,! F & a U a & ! a U ! a F a,False
+valid,lower_restricted_avoidance,1,['b'],you have to visit b one or more than one time,F b,! F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],you have to visit c one or more than one time,F c,! F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],you have to visit d one or more than one time,F d,! F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],you have to visit h one or more than one time,F h,! F & h U h & ! h U ! h F h,False
+valid,lower_restricted_avoidance,1,['a'],your task is to go to a one or more times,F a,F & a U a & ! a U ! a F & a U a &,Syntax Error
+valid,lower_restricted_avoidance,1,['b'],your task is to go to b one or more times,F b,F & b U b & ! b U ! b F & b U b &,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],your task is to go to c one or more times,F c,F & c U c & ! c U ! c F & c U c &,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],your task is to go to d one or more times,F d,F & d U d & ! d U ! d F & d U d &,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],your task is to go to h one or more times,F h,F & h U h & ! h U ! h F & h U h &,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],do not visit a less than one time,F a,M a | ! a G | a G ! a,False
+valid,lower_restricted_avoidance,1,['b'],do not visit b less than one time,F b,M b | ! b G | b G ! b,False
+valid,lower_restricted_avoidance,1,['c'],do not visit c less than one time,F c,! F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],do not visit d less than one time,F d,M d | ! d G | d G ! d,False
+valid,lower_restricted_avoidance,1,['h'],do not visit h less than one time,F h,M h | ! h G | h G ! h,False
+valid,lower_restricted_avoidance,1,['a'],make sure you visit a one or more times,F a,F & a U a & ! a U ! a F a,False
+valid,lower_restricted_avoidance,1,['b'],make sure you visit b one or more times,F b,F & b U b & ! b U ! b F & b U,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],make sure you visit c one or more times,F c,F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],make sure you visit d one or more times,F d,F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],make sure you visit h one or more times,F h,F & h U h & ! h U ! h F & h U,Syntax Error
 valid,exact_restricted_avoidance,2,"['a', 'a']",visit a exactly twice,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",visit b exactly twice,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",visit c exactly twice,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c,Syntax Error
@@ -14289,11 +14289,11 @@ valid,bound_delay,2,"['h', 'a']",once you go to h you must go to a right next ri
 valid,bound_delay,2,"['h', 'b']",once you go to h you must go to b right next right before you go to b you must go to h,G e h X b,G i h X b,False
 valid,bound_delay,2,"['h', 'c']",once you go to h you must go to c right next right before you go to c you must go to h,G e h X c,G i h X c,False
 valid,bound_delay,2,"['h', 'd']",once you go to h you must go to d right next right before you go to d you must go to h,G e h X d,G i h X d,False
-valid,lower_restricted_avoidance,1,"['a,']",you have to reach a at least once,F a,G i c F a,False
-valid,lower_restricted_avoidance,1,"['b,']",you have to reach b at least once,F b,G i b F c,False
-valid,lower_restricted_avoidance,1,"['c,']",you have to reach c at least once,F c,G i c F c F b,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",you have to reach d at least once,F d,G i d F c,False
-valid,lower_restricted_avoidance,1,"['h,']",you have to reach h at least once,F h,G i h F b,False
+valid,lower_restricted_avoidance,1,['a'],you have to reach a at least once,F a,G i c F a,False
+valid,lower_restricted_avoidance,1,['b'],you have to reach b at least once,F b,G i b F c,False
+valid,lower_restricted_avoidance,1,['c'],you have to reach c at least once,F c,G i c F c F b,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],you have to reach d at least once,F d,G i d F c,False
+valid,lower_restricted_avoidance,1,['h'],you have to reach h at least once,F h,G i h F b,False
 valid,exact_restricted_avoidance,2,"['a', 'a']",you must visit a exactly twice,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F &,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",you must visit b exactly twice,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F &,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",you must visit c exactly twice,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F &,Syntax Error
@@ -14459,21 +14459,21 @@ valid,bound_delay,2,"['h', 'a']",once you go to h you must visit a and you must 
 valid,bound_delay,2,"['h', 'b']",once you go to h you must visit b and you must avoid b any other time,G e h X b,G i h X G ! b,False
 valid,bound_delay,2,"['h', 'c']",once you go to h you must visit c and you must avoid c any other time,G e h X c,G i h X G ! c,False
 valid,bound_delay,2,"['h', 'd']",once you go to h you must visit d and you must avoid d any other time,G e h X d,G i h X G ! d,False
-valid,lower_restricted_avoidance,1,"['a,']",visit a equal or more than once,F a,! F & a U a & ! a U ! a F,Syntax Error
-valid,lower_restricted_avoidance,1,"['b,']",visit b equal or more than once,F b,! F & b U b & ! b U ! b F,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",visit c equal or more than once,F c,! F & c U c & ! c U ! c F,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",visit d equal or more than once,F d,! F & d U d & ! d U ! d F,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",visit h equal or more than once,F h,! F & h U h & ! h U ! h F,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",you have to go to a one or more than one time,F a,M a | ! a G | a G ! a,False
-valid,lower_restricted_avoidance,1,"['b,']",you have to go to b one or more than one time,F b,! F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",you have to go to c one or more than one time,F c,! F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",you have to go to d one or more than one time,F d,! F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",you have to go to h one or more than one time,F h,M h | ! h G | h G ! h,False
-valid,lower_restricted_avoidance,1,"['a,']",a has to be visited at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",b has to be visited at least once,F b,F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",c has to be visited at least once,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",d has to be visited at least once,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",h has to be visited at least once,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],visit a equal or more than once,F a,! F & a U a & ! a U ! a F,Syntax Error
+valid,lower_restricted_avoidance,1,['b'],visit b equal or more than once,F b,! F & b U b & ! b U ! b F,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],visit c equal or more than once,F c,! F & c U c & ! c U ! c F,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],visit d equal or more than once,F d,! F & d U d & ! d U ! d F,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],visit h equal or more than once,F h,! F & h U h & ! h U ! h F,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],you have to go to a one or more than one time,F a,M a | ! a G | a G ! a,False
+valid,lower_restricted_avoidance,1,['b'],you have to go to b one or more than one time,F b,! F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],you have to go to c one or more than one time,F c,! F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],you have to go to d one or more than one time,F d,! F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],you have to go to h one or more than one time,F h,M h | ! h G | h G ! h,False
+valid,lower_restricted_avoidance,1,['a'],a has to be visited at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],b has to be visited at least once,F b,F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],c has to be visited at least once,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],d has to be visited at least once,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],h has to be visited at least once,F h,F h,True
 valid,exact_restricted_avoidance,2,"['a', 'a']",visit a twice and never revisit it again,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",visit b twice and never revisit it again,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",visit c twice and never revisit it again,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,! F & c U c & ! c U ! c F &,Syntax Error
@@ -14549,31 +14549,31 @@ valid,bound_delay,2,"['h', 'a']",if you want to visit h make sure you will visit
 valid,bound_delay,2,"['h', 'b']",if you want to visit h make sure you will visit b immediately after that if you want to visit b make sure you will visit h right before that,G e h X b,U h b,False
 valid,bound_delay,2,"['h', 'c']",if you want to visit h make sure you will visit c immediately after that if you want to visit c make sure you will visit h right before that,G e h X c,U h c,False
 valid,bound_delay,2,"['h', 'd']",if you want to visit h make sure you will visit d immediately after that if you want to visit d make sure you will visit h right before that,G e h X d,U h d,False
-valid,lower_restricted_avoidance,1,"['a,']",visit a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
-valid,lower_restricted_avoidance,1,"['c,']",visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",go to a,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",go to b,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",go to c,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",go to d,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",go to h,F h,F h,True
-valid,lower_restricted_avoidance,1,"['a,']",reach a,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",reach b,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",reach c,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",reach d,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",reach h,F h,F h,True
-valid,lower_restricted_avoidance,1,"['a,']",go through a,F a,F & a U a & ! a U,Syntax Error
-valid,lower_restricted_avoidance,1,"['b,']",go through b,F b,F & b F b,True
-valid,lower_restricted_avoidance,1,"['c,']",go through c,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",go through d,F d,F & d U d & ! d U,Syntax Error
-valid,lower_restricted_avoidance,1,"['h,']",go through h,F h,F & h F h F h F h,Syntax Error
-valid,lower_restricted_avoidance,1,"['a,']",find a,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",find b,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",find c,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",find d,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",find h,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],visit a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],visit b at least once,F b,F & b U b & ! b U ! b,Syntax Error
+valid,lower_restricted_avoidance,1,['c'],visit c at least once,F c,F & c U c & ! c U ! c,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],visit d at least once,F d,F & d U d & ! d U ! d,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],visit h at least once,F h,F & h U h & ! h U ! h,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],go to a,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],go to b,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],go to c,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],go to d,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],go to h,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],reach a,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],reach b,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],reach c,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],reach d,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],reach h,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],go through a,F a,F & a U a & ! a U,Syntax Error
+valid,lower_restricted_avoidance,1,['b'],go through b,F b,F & b F b,True
+valid,lower_restricted_avoidance,1,['c'],go through c,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],go through d,F d,F & d U d & ! d U,Syntax Error
+valid,lower_restricted_avoidance,1,['h'],go through h,F h,F & h F h F h F h,Syntax Error
+valid,lower_restricted_avoidance,1,['a'],find a,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],find b,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],find c,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],find d,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],find h,F h,F h,True
 valid,exact_restricted_avoidance,2,"['a', 'a']",go to a then leave a and repeat this exactly once more,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F & ! a F a | !,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",go to b then leave b and repeat this exactly once more,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F & ! b F b | !,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",go to c then leave c and repeat this exactly once more,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F & ! c F c | !,Syntax Error
@@ -14699,21 +14699,21 @@ valid,bound_delay,2,"['h', 'a']",if h is observed only and only then should a be
 valid,bound_delay,2,"['h', 'b']",if h is observed only and only then should b be visited in the next time step otherwise b should not be visited,G e h X b,U h b,False
 valid,bound_delay,2,"['h', 'c']",if h is observed only and only then should c be visited in the next time step otherwise c should not be visited,G e h X c,U h c,False
 valid,bound_delay,2,"['h', 'd']",if h is observed only and only then should d be visited in the next time step otherwise d should not be visited,G e h X d,U h d,False
-valid,lower_restricted_avoidance,1,"['a,']",the minimum number of visits to a is once,F a,! F & a U a & ! a U ! a F a,False
-valid,lower_restricted_avoidance,1,"['b,']",the minimum number of visits to b is once,F b,! F & b U b & ! b U ! b F b,False
-valid,lower_restricted_avoidance,1,"['c,']",the minimum number of visits to c is once,F c,! F & c U c & ! c U ! c F c,False
-valid,lower_restricted_avoidance,1,"['d,']",the minimum number of visits to d is once,F d,! F & d U d & ! d U ! d F d,False
-valid,lower_restricted_avoidance,1,"['h,']",the minimum number of visits to h is once,F h,! F & h U h & ! h U ! h F h,False
-valid,lower_restricted_avoidance,1,"['a,']",make you go to a at least once,F a,F a,True
-valid,lower_restricted_avoidance,1,"['b,']",make you go to b at least once,F b,F b,True
-valid,lower_restricted_avoidance,1,"['c,']",make you go to c at least once,F c,F c,True
-valid,lower_restricted_avoidance,1,"['d,']",make you go to d at least once,F d,F d,True
-valid,lower_restricted_avoidance,1,"['h,']",make you go to h at least once,F h,F h,True
-valid,lower_restricted_avoidance,1,"['a,']",you are required to pass through a once,F a,G i a F b,False
-valid,lower_restricted_avoidance,1,"['b,']",you are required to pass through b once,F b,G i b F c,False
-valid,lower_restricted_avoidance,1,"['c,']",you are required to pass through c once,F c,G i c F c F c,Syntax Error
-valid,lower_restricted_avoidance,1,"['d,']",you are required to pass through d once,F d,G i d F c,False
-valid,lower_restricted_avoidance,1,"['h,']",you are required to pass through h once,F h,! F & h U h & ! h U ! h F h,False
+valid,lower_restricted_avoidance,1,['a'],the minimum number of visits to a is once,F a,! F & a U a & ! a U ! a F a,False
+valid,lower_restricted_avoidance,1,['b'],the minimum number of visits to b is once,F b,! F & b U b & ! b U ! b F b,False
+valid,lower_restricted_avoidance,1,['c'],the minimum number of visits to c is once,F c,! F & c U c & ! c U ! c F c,False
+valid,lower_restricted_avoidance,1,['d'],the minimum number of visits to d is once,F d,! F & d U d & ! d U ! d F d,False
+valid,lower_restricted_avoidance,1,['h'],the minimum number of visits to h is once,F h,! F & h U h & ! h U ! h F h,False
+valid,lower_restricted_avoidance,1,['a'],make you go to a at least once,F a,F a,True
+valid,lower_restricted_avoidance,1,['b'],make you go to b at least once,F b,F b,True
+valid,lower_restricted_avoidance,1,['c'],make you go to c at least once,F c,F c,True
+valid,lower_restricted_avoidance,1,['d'],make you go to d at least once,F d,F d,True
+valid,lower_restricted_avoidance,1,['h'],make you go to h at least once,F h,F h,True
+valid,lower_restricted_avoidance,1,['a'],you are required to pass through a once,F a,G i a F b,False
+valid,lower_restricted_avoidance,1,['b'],you are required to pass through b once,F b,G i b F c,False
+valid,lower_restricted_avoidance,1,['c'],you are required to pass through c once,F c,G i c F c F c,Syntax Error
+valid,lower_restricted_avoidance,1,['d'],you are required to pass through d once,F d,G i d F c,False
+valid,lower_restricted_avoidance,1,['h'],you are required to pass through h once,F h,! F & h U h & ! h U ! h F h,False
 valid,exact_restricted_avoidance,2,"['a', 'a']",go to a exactly twice,M & a F & ! a F a | ! a G | a G | ! a G | a G ! a,M & a F & ! a F & a F,Syntax Error
 valid,exact_restricted_avoidance,2,"['b', 'b']",go to b exactly twice,M & b F & ! b F b | ! b G | b G | ! b G | b G ! b,M & b F & ! b F & b F,Syntax Error
 valid,exact_restricted_avoidance,2,"['c', 'c']",go to c exactly twice,M & c F & ! c F c | ! c G | c G | ! c G | c G ! c,M & c F & ! c F & c F,Syntax Error
