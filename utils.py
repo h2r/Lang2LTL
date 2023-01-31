@@ -112,7 +112,7 @@ def substitute_single_letter(in_str, sub_map):
 
 
 def remove_prop_perms(data, meta, all_props):
-    formula2data = defaultdict(list)
+    formula2data = defaultdict(list)  # expensive: entire symbolic iter, meta in memory
     for (utt, ltl), (pattern_type, props) in zip(data, meta):
         props = list(props)
         sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
@@ -137,7 +137,7 @@ def sample_small_dataset(data_fpath):
     dataset = load_from_file(data_fpath)
     data, meta = dataset["valid_iter"], dataset["valid_meta"]
 
-    formula2data = defaultdict(list)
+    formula2data = defaultdict(list)  # expensive: entire grounded iter, meta in memory
     for (utt_grounded, ltl_grounded), (utt, ltl, pattern_type, props, lmk_names, seed) in zip(data, meta):
         props = list(props)
         formula2data[(pattern_type, len(props))].append((utt_grounded, ltl_grounded, utt, ltl, pattern_type, tuple(props), lmk_names, seed))
