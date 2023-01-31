@@ -124,6 +124,11 @@ def aggregate_results(result_fpaths, filter_types):
     print(f'standard deviation: {np.std(accs)}')
 
 
+def evaluate_rer(out_lmks_str, true_lmks):
+    out_lmks = out_lmks_str.split(" | ")
+    return out_lmks == true_lmks
+
+
 def evaluate_plan(out_traj, true_traj):
     return out_traj == true_traj
 
