@@ -27,8 +27,8 @@ Propositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Ci
 Utterance: go to the red area then to green area
 Propositions: the red area | green area
 
-Utterance: go to Chinatown without visiting New Saigon Sandwich then go to New Saigon Sandwich without visiting Dumpling Cafe then go to Dumpling Cafe without visiting Emerson College - Little Building finally go to Emerson College - Little Building while only visiting each location once
-Propositions: New Saigon Sandwich | Dumpling Cafe | Emerson College - Little Building
+Utterance: go to Chinatown, without visiting New Saigon Sandwich, then go to New Saigon Sandwich, without visiting Dumpling Cafe, then go to Dumpling Cafe, without visiting Emerson College - Little Building, finally go to Emerson College - Little Building, while only visiting each location once
+Propositions: Chinatown | New Saigon Sandwich | Dumpling Cafe | Emerson College - Little Building
 
 Utterance: take a path to reach the blue box but avoid the red path
 Propositions: the blue box | the red path
