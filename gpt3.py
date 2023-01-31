@@ -15,8 +15,8 @@ class GPT3:
         self.max_tokens = max_tokens
         self.n = n
 
-    def extract_ne(self, query, prompt):
-        query_prompt = prompt + query + "\nLandmarks:"
+    def extract_ne(self, query, prompt=""):
+        query_prompt = prompt + query
         outs = self.generate(query_prompt)
         name_entities = outs[0].split(' | ')
         return name_entities
