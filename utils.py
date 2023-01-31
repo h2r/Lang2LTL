@@ -32,7 +32,9 @@ def substitute(input_strs, substitute_maps):
     """
     output_strs, subs_per_str = [], []
     for input_str, sub_map in zip(input_strs, substitute_maps):
-        out_str, subs_done = substitute_single(input_str, sub_map)
+        breakpoint()
+        out_str, subs_done = substitute_single_word(input_str, sub_map)
+        out_str = out_str.translate(str.maketrans('', '', ',.'))  # remove comma, period since sym translation module finetuned on utts w/o puns
         output_strs.append(out_str)
         subs_per_str.append(subs_done)
     return output_strs, subs_per_str
@@ -73,11 +75,11 @@ def substitute_single_word(in_str, sub_map):
 
     # swap every key with a unique number
     for n, (k, v) in enumerate(sub_map):
-        in_str = in_str.replace(k, str(n))
+        in_str = in_str.replace(k, f"[{n}]")  # escape number
 
     # swap every number with corresponding v
     for n, (k, v) in enumerate(sub_map):
-        in_str = in_str.replace(str(n), v)
+        in_str = in_str.replace(f"[{n}]", v)  # escape number
 
     return in_str.strip()
 
