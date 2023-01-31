@@ -126,7 +126,7 @@ def aggregate_results(result_fpaths, filter_types):
 
 def evaluate_rer(out_lmks_str, true_lmks):
     out_lmks = out_lmks_str.split(" | ")
-    return out_lmks == true_lmks
+    return set(out_lmks) == set(true_lmks)
 
 
 def evaluate_plan(out_traj, true_traj):
