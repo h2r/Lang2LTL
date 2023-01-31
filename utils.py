@@ -112,7 +112,14 @@ def substitute_single_letter(in_str, sub_map):
 
 
 def remove_prop_perms(data, meta, all_props):
-    formula2data = construct_formula2data(data, meta, all_props)
+    formula2data = defaultdict(list)
+    for (utt, ltl), (pattern_type, props) in zip(data, meta):
+        props = list(props)
+        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
+        utt_noperm = substitute_single_letter(utt, sub_map)
+        ltl_noperm = substitute_single_letter(ltl, sub_map)
+        formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
+
     data_noperm, meta_noperm = [], []
     for (pattern_type, nprops), data in formula2data.items():
         data = list(dict.fromkeys(data))  # unique utt structures per formula in data. same order across runs
@@ -122,39 +129,26 @@ def remove_prop_perms(data, meta, all_props):
     return data_noperm, meta_noperm
 
 
-def construct_formula2data(data, meta, all_props):
-    """
-    :param data: list of (utt, ltl)
-    :param meta: list of (pattern_type, props)
-    :param all_props: all possible propos
-    :return: dict of (pattern_type, nprops) to (utt, ltl) w/ permuted props replaced by non-permute props starting at a
-    """
-    formula2data = defaultdict(list)
-    for (utt, ltl), (pattern_type, props) in zip(data, meta):
-        props = list(props)
-        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
-        utt_noperm = substitute_single_letter(utt, sub_map)
-        ltl_noperm = substitute_single_letter(ltl, sub_map)
-        formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
-    return formula2data
-
-
-def sample_smaller_dataset(data_fpath, all_props):
+def sample_small_dataset(data_fpath):
     """
     Sample smaller dataset for testing, mostly full pipeline with GPT-3.
     1 utt per unique formula (type, nprops). Permuted props replaced by non-permute props starting at a.
     """
     dataset = load_from_file(data_fpath)
     data, meta = dataset["valid_iter"], dataset["valid_meta"]
-    meta = [(pattern_type, props) for _, _, pattern_type, props, _, _ in meta]
-    formula2data = construct_formula2data(data, meta, all_props)
+
+    formula2data = defaultdict(list)
+    for (utt_grounded, ltl_grounded), (utt, ltl, pattern_type, props, lmk_names, seed) in zip(data, meta):
+        props = list(props)
+        formula2data[(pattern_type, len(props))].append((utt_grounded, ltl_grounded, utt, ltl, pattern_type, tuple(props), lmk_names, seed))
+
     data_small, meta_small = [], []
-    for (pattern_type, nprops), utt_ltl in formula2data.items():
-        utt_ltl = list(dict.fromkeys(utt_ltl))  # unique utt structures per formula in data. same order across runs
+    for _, formula_data in formula2data.items():
         random.seed(42)
-        utt_ltl_random = random.sample(utt_ltl, 1)
-        data_small.extend(utt_ltl_random)
-        meta_small.append((pattern_type, nprops))
+        formula_data_random = random.sample(formula_data, 1)[0]
+        utt_grounded, ltl_grounded, utt, ltl, pattern_type, props, lmk_names, seed = formula_data_random
+        data_small.append((utt_grounded, ltl_grounded))
+        meta_small.append((utt, ltl, pattern_type, props, lmk_names, seed))
     dataset["valid_iter"], dataset["valid_meta"] = data_small, meta_small
     save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.basename(data_fpath)}")
     save_to_file(dataset, save_fpath)
