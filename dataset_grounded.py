@@ -124,8 +124,10 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
             lmk_subs = [lmks]
         for lmk_sub in lmk_subs:
             utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props, seed, add_comma, model)
-            if utt == utt_grounded or ltl == ltl_grounded:
-                raise ValueError(f"ERROR\n{utt}=={utt_grounded}\n{ltl}=={ltl_grounded}")
+            if utt == utt_grounded:
+                raise ValueError(f"ERROR\n{utt}\n==\n{utt_grounded}")
+            if ltl == ltl_grounded:
+                raise ValueError(f"ERROR\n{ltl}\n==\n{ltl_grounded}")
             data_grounded.append((utt_grounded, ltl_grounded))
             meta_data_grounded.append((utt, ltl, pattern_type, props, lmk_names, seed))
     return data_grounded, meta_data_grounded
@@ -142,7 +144,7 @@ def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
         sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
     else:
         sub_map = {prop: name for prop, name in zip(props, lmk_names)}
-    utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, remove extra comma if add
+    utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, remove extra comma if add_comma=True
 
     sub_map = {prop: name_to_prop(name, model) for prop, name in zip(props, lmk_names)}
     ltl_grounded = substitute_single_letter(ltl, sub_map)
