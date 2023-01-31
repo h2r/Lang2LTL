@@ -1,11 +1,14 @@
 import os
 import argparse
 import logging
+from pathlib import Path
 import random
 import numpy as np
 import spot
 from openai.embeddings_utils import cosine_similarity
 
+from formula_sampler import TYPE2NPROPS
+from analyze_results import find_all_formulas
 from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
@@ -15,14 +18,14 @@ from evaluation import evaluate_lang, evaluate_plan
 
 
 def run_exp(save_result_path):
-    # Language tasks: grounding, NER, translation
+    # Language tasks: RER, grounding translation
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3(args.completion_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
         output_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
     else:  # Modular
         names, utt2names = ner()
-        name2grounds = grounding(names)
+        name2grounds = ground_names(names)
         grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
         if args.trans_e2e:
             output_ltls = translate_e2e(grounded_utts)
@@ -60,6 +63,8 @@ def ner():
     """
     ner_prompt = load_from_file(args.ner_prompt)
 
+    breakpoint()
+
     if args.ner == "gpt3":
         ner_module = GPT3(args.completion_engine)
     # elif args.ner == "bert":
@@ -86,10 +91,13 @@ def ner():
 
         names.update(names_per_utt)
         utt2names.append((utt, names_per_utt))
+
+    breakpoint()
+
     return names, utt2names
 
 
-def grounding(names):
+def ground_names(names):
     """
     Find groundings (objects in given environment) of name entities in input utterances.
     """
@@ -106,11 +114,13 @@ def grounding(names):
     else:
         raise ValueError(f"ERROR: grounding module not recognized: {args.ground}")
 
+    breakpoint()
+
     name2grounds, is_embed_added = {}, False
     for name in names:
-        if args.debug:
-            print(f"grounding landmark: {name}")
+        logging.info(f"grounding landmark: {name}")
         if name in name2embed:  # use cached embedding if exists
+            logging.info(f"use cached embedding: {name}")
             embed = name2embed[name]
         else:
             embed = ground_module.get_embedding(name)
@@ -124,6 +134,8 @@ def grounding(names):
         if is_embed_added:
             save_to_file(name2embed, args.name_embed)
 
+    breakpoint()
+
     return name2grounds
 
 
@@ -134,17 +146,10 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     grounding_maps = []  # name to grounding map per utterance
     for _, names in utt2names:
         grounding_maps.append({name: name2grounds[name][0] for name in names})
+
+    breakpoint()
+
     return substitute(input_strs, grounding_maps)
-
-
-def translate_e2e(grounded_utts):
-    """
-    Translation language to LTL using a single GPT-3.
-    """
-    trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
-    model = GPT3(args.completion_engine)
-    output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
-    return output_ltls
 
 
 def translate_modular(grounded_utts, objs_per_utt):
@@ -154,7 +159,12 @@ def translate_modular(grounded_utts, objs_per_utt):
     :param objs_per_utt: grounding objects for each input utterance
     :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
-    trans_modular_prompt = load_from_file(args.trans_modular_prompt)
+    if "ft" in args.completion_engine:
+        trans_modular_prompt = ""
+    elif "text-davinci" in args.completion_engine:
+        trans_modular_prompt = load_from_file(args.trans_modular_prompt)
+    else:
+        raise ValueError(f"ERROR: Unrecognized completion_engine: {args.completion_engine}")
 
     if args.trans == "gpt3":
         trans_module = GPT3(args.completion_engine)
@@ -170,24 +180,41 @@ def translate_modular(grounded_utts, objs_per_utt):
     else:
         raise ValueError(f"ERROR: translation module not recognized: {args.trans}")
 
+    breakpoint()
+
     placeholder_maps, placeholder_maps_inv = [], []
     for objs in objs_per_utt:
-        placeholder_map, placeholder_map_inv = build_placeholder_map(objs)
+        placeholder_map, placeholder_map_inv = build_placeholder_map(objs, args.convert_rule)
         placeholder_maps.append(placeholder_map)
         placeholder_maps_inv.append(placeholder_map_inv)
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
 
+    breakpoint()
+
     symbolic_ltls = []
     for query in trans_queries:
         ltl = trans_module.translate(query, trans_modular_prompt)
-        try:
-            spot.formula(ltl)
-        except SyntaxError:
-            ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
+        # try:
+        #     spot.formula(ltl)
+        # except SyntaxError:
+        #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
         symbolic_ltls.append(ltl)
 
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
+
+    breakpoint()
+
     return output_ltls, symbolic_ltls, placeholder_maps
+
+
+def translate_e2e(grounded_utts):
+    """
+    Translation language to LTL using a single GPT-3.
+    """
+    trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
+    model = GPT3(args.completion_engine)
+    output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
+    return output_ltls
 
 
 def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=100):
@@ -234,32 +261,39 @@ def plan(output_ltls, true_trajs, name2grounds):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--pairs", type=str, default="data/cleanup_corlw.csv", help="file path to utterance, ltl pairs")
-    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
-    parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model")
-    parser.add_argument("--true_trajs", type=str, default="data/true_trajs.pkl", help="path to true trajectories")
+    parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
+    parser.add_argument("--ner", type=str, default="gpt3", choices=["gpt3", "bert"], help="NER module")
+    parser.add_argument("--ner_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to NER prompt")
+    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
+    parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
+    parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="embedding of known obj in env")
+    parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="embedding of re in language")
+    parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re")
+    parser.add_argument("--trans", type=str, default="gpt3", choices=["gpt3", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
+    parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
+    parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
+    parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
+    # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
+    # parser.add_argument("--result_fpath", type=str, default="results/corlw/modular_prompt15_cleanup_test.json", help="file path to save outputs of each model in a json file")
+    parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model")
+    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
     parser.add_argument("--trans_e2e", action="store_true", help="solve translation task end-to-end using GPT-3")
     parser.add_argument("--trans_e2e_prompt", type=str, default="data/cleanup_trans_e2e_prompt_15.txt", help="path to translation end-to-end prompt")
-    parser.add_argument("--ner", type=str, default="gpt3", choices=["gpt3", "bert"], help="NER module")
-    parser.add_argument("--ner_prompt", type=str, default="data/cleanup_ner_prompt_15.txt", help="path to NER prompt")
-    parser.add_argument("--trans", type=str, default="gpt3", choices=["gpt3", "t5-base", "t5-small", "pt_transformer"], help="translation module")
-    parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup_trans_modular_prompt_15.txt", help="path to trans prompt")
-    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
-    parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of objects in env")
-    parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="path to embedding of names in language")
-    parser.add_argument("--topk", type=int, default=2, help="top k similar known names to name entity")
-    parser.add_argument("--completion_engine", type=str, default="text-davinci-003", help="gpt-3 text completion engine")
-    parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
     parser.add_argument("--s2s_sup_data", type=str, default="data/symbolic_pairs.csv", help="file path to train and test data for supervised seq2seq")
-    parser.add_argument("--save_result_path", type=str, default="results/modular_prompt15_cleanup_test.json", help="file path to save outputs of each model in a json file")
+    parser.add_argument("--true_trajs", type=str, default="data/true_trajs.pkl", help="path to true trajectories")
     parser.add_argument("--debug", action="store_true", help="True to print debug trace.")
     args = parser.parse_args()
 
-    pairs = load_from_file(args.pairs)
+    dataset = load_from_file(args.data_fpath)
+    if "pkl" in args.data_fpath:
+        valid_iter = dataset["valid_iter"]
+        meta_iter = dataset["valid_meta"]
+    elif "csv" in args.data_fpath:  # corlw dataset
+        valid_iter = dataset
     input_utts, true_ltls = [], []
-    for utt, ltl in pairs:
+    for utt, ltl in valid_iter:
         input_utts.append(utt)
         true_ltls.append(ltl)
     assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
@@ -267,19 +301,35 @@ if __name__ == "__main__":
         random.seed(42)
         input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
 
+    if "finetuned" in args.completion_engine:
+        dataset_name = "_".join(args.completion_engine.split("_")[2:])
+        if dataset_name not in args.data_fpath:
+            raise ValueError(f"ERROR: test dataset does not match finetuned dataset\n{args.data_fpath}\n{dataset_name}")
+        args.completion_engine = load_from_file("model/gpt3_models.pkl")[args.completion_engine]
+
+    os.makedirs(args.result_dpath, exist_ok=True)
+    if os.path.basename(args.result_dpath) not in args.data_fpath:
+        raise ValueError(f"ERROR: result dpath does not match test dataset\n{args.result_dpath}\n{args.data_fpath}")
+    result_fpath = os.path.join(args.result_dpath, f"{Path(args.data_fpath).stem}.json")
+
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(f'{os.path.splitext(args.save_result_path)[0]}.log', mode='w'),
+                            logging.FileHandler(f'{os.path.splitext(result_fpath)[0]}.log', mode='w'),
                             logging.StreamHandler()
                         ]
     )
 
+    formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in args.pairs)
+
     for run in range(args.nruns):
-        fpath_tup = os.path.splitext(args.save_result_path)
-        save_result_path = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
+        # fpath_tup = os.path.splitext(args.result_fpath)
+        # result_fpath = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
         logging.info(f"\n\n\nRUN: {run}")
-        run_exp(save_result_path)
+
+        breakpoint()
+
+        run_exp(result_fpath)
 
     # # Test grounding
     # city_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
