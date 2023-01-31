@@ -84,10 +84,13 @@ def substitute_single_word(in_str, sub_map):
 
 def substitute_single_letter(in_str, sub_map):
     """
+    :param in_str: input string can utterance or LTL formula.
+    :param sub_map: dict maps letters to noun phrases for lmk names (for utterance) or letters (for LTL formula).
+
     Substitute English letters to letters, words or phrases in a single utterance.
     e.g. input_str="go to a then go to b", sub_map={'a': 'b', 'b': 'a'} -> return="go to a then go to a"
 
-    # Require `input_str` to be normalized, i.e. all punctuations removed. If not, extra space before punctuations.
+    Require `input_str` to be normalized, i.e. all punctuations removed. If not, "go to a. after that go to b." not tokenized correctly
     Only work with letters, e.g. a, b, c, etc, not phrases, e.g. green one -> green room.
     """
     in_str_list = nltk.word_tokenize(in_str)
@@ -105,16 +108,7 @@ def substitute_single_letter(in_str, sub_map):
         for idx in indices:
             in_str_list[idx] = v
 
-    # Remove extra space before punctuations, e.g. go to a , then b . -> go to a, then b.
-    out_str = ' '.join(in_str_list).strip()
-    out_str_strip = ""
-    for idx, char in enumerate(out_str):
-        if char == " " and (idx != len(out_str) and out_str[idx+1] in string.punctuation):
-            continue
-        else:
-            out_str_strip += char
-
-    return out_str_strip
+    return ' '.join(in_str_list).strip()
 
 
 def remove_prop_perms(data, meta, all_props):
@@ -159,7 +153,7 @@ def sample_smaller_dataset(data_fpath, all_props):
         utt_ltl = list(dict.fromkeys(utt_ltl))  # unique utt structures per formula in data. same order across runs
         random.seed(42)
         utt_ltl_random = random.sample(utt_ltl, 1)
-        data_small.append(utt_ltl_random[0])
+        data_small.extend(utt_ltl_random)
         meta_small.append((pattern_type, nprops))
     dataset["valid_iter"], dataset["valid_meta"] = data_small, meta_small
     save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.basename(data_fpath)}")
