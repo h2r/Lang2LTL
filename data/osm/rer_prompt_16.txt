@@ -9,8 +9,8 @@ Propositions: Cutler Majestic Theater
 Utterance: robot c move to big red room and then move to green area
 Propositions: big red room | green area
 
-Utterance: sometime along the way go to Dumpling Cafe, and Panera Bread
-Propositions: Dumpling Cafe | Panera Bread
+Utterance: you have to visit Panera Bread, four or more than four times
+Propositions: Panera Bread
 
 Utterance: i want you to go into yellow region
 Propositions: yellow region
@@ -18,8 +18,8 @@ Propositions: yellow region
 Utterance: Visit The Kensington, HI Boston, and Dunkin' Donuts in that specific order. make sure not to visit waypoints out of turn
 Propositions: The Kensington | HI Boston | Dunkin' Donuts'
 
-Utterance: enter blue room then enter green rectangular room
-Propositions: blue room | green rectangular room
+Utterance: go to Cutler Majestic Theater - Emerson College, exactly three times
+Propositions: Cutler Majestic Theater - Emerson College
 
 Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another
 Propositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank
