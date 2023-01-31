@@ -40,13 +40,14 @@ def run_exp(save_result_path):
     logging.info(f"Language to LTL translation accuracy: {acc_lang}")
 
     final_results = {
-        "NER": utt2names if not args.full_e2e else None,
+        "RER": utt2names if not args.full_e2e else None,
         "Grounding": name2grounds if not args.full_e2e else None,
         "Placeholder maps": placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
         "Input utterances": input_utts,
         "Symbolic LTLs": symbolic_ltls if not (args.trans_e2e or args.full_e2e) else None,
         "Output LTLs": output_ltls,
         "Ground truth": true_ltls,
+        "Meta": meta_iter,
         "Accuracy": acc_lang
     }
     save_to_file(final_results, save_result_path)
@@ -63,8 +64,6 @@ def ner():
     """
     ner_prompt = load_from_file(args.ner_prompt)
 
-    breakpoint()
-
     if args.ner == "gpt3":
         ner_module = GPT3(args.completion_engine)
     # elif args.ner == "bert":
@@ -74,25 +73,33 @@ def ner():
 
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for idx_utt, utt in enumerate(input_utts):
-        logging.info(f"Extracting name entities from utterance: {idx_utt}")
-        names_per_utt = [name.lower().strip() for name in ner_module.extract_ne(utt, prompt=ner_prompt)]
 
-        extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate NER error
-        for name in names_per_utt:
-            name_words = name.split()
-            if name_words[0] == 'the':
-                extra_name = ' '.join(name_words[1:])
-            else:
-                name_words.insert(0, 'the')
-                extra_name = ' '.join(name_words)
-            if extra_name not in names_per_utt:
-                extra_names.append(extra_name)
-        names_per_utt += extra_names
+        # print(f"{ner_prompt.strip()} {utt}\nPropositions:\n{idx_utt}")
+        # breakpoint()
+
+        logging.info(f"Extracting name entities from utterance: {idx_utt}")
+        names_per_utt = [name.strip() for name in ner_module.extract_ne(query=f"{ner_prompt.strip()} {utt}\nPropositions:")]
+        names_per_utt = list(set(names_per_utt))  # remove duplicated RE
+
+        # print(names_per_utt)
+        # breakpoint()
+
+        # extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate NER error
+        # for name in names_per_utt:
+        #     name_words = name.split()
+        #     if name_words[0] == "the":
+        #         extra_name = " ".join(name_words[1:])
+        #     else:
+        #         name_words.insert(0, "the")
+        #         extra_name = " ".join(name_words)
+        #     if extra_name not in names_per_utt:
+        #         extra_names.append(extra_name)
+        # names_per_utt += extra_names
 
         names.update(names_per_utt)
         utt2names.append((utt, names_per_utt))
 
-    breakpoint()
+    # breakpoint()
 
     return names, utt2names
 
@@ -114,9 +121,8 @@ def ground_names(names):
     else:
         raise ValueError(f"ERROR: grounding module not recognized: {args.ground}")
 
-    breakpoint()
-
-    name2grounds, is_embed_added = {}, False
+    name2grounds = {}
+    is_embed_added = False
     for name in names:
         logging.info(f"grounding landmark: {name}")
         if name in name2embed:  # use cached embedding if exists
@@ -134,8 +140,6 @@ def ground_names(names):
         if is_embed_added:
             save_to_file(name2embed, args.name_embed)
 
-    breakpoint()
-
     return name2grounds
 
 
@@ -147,9 +151,11 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     for _, names in utt2names:
         grounding_maps.append({name: name2grounds[name][0] for name in names})
 
-    breakpoint()
+    output_strs, subs_per_str = substitute(input_strs, grounding_maps)
 
-    return substitute(input_strs, grounding_maps)
+    # breakpoint()
+
+    return output_strs, subs_per_str
 
 
 def translate_modular(grounded_utts, objs_per_utt):
@@ -180,7 +186,7 @@ def translate_modular(grounded_utts, objs_per_utt):
     else:
         raise ValueError(f"ERROR: translation module not recognized: {args.trans}")
 
-    breakpoint()
+    # breakpoint()
 
     placeholder_maps, placeholder_maps_inv = [], []
     for objs in objs_per_utt:
@@ -189,16 +195,19 @@ def translate_modular(grounded_utts, objs_per_utt):
         placeholder_maps_inv.append(placeholder_map_inv)
     trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
 
-    breakpoint()
+    # breakpoint()
 
     symbolic_ltls = []
     for query in trans_queries:
-        ltl = trans_module.translate(query, trans_modular_prompt)
+        query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
+        ltl = trans_module.translate(query, trans_modular_prompt)[0]
         # try:
         #     spot.formula(ltl)
         # except SyntaxError:
         #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
         symbolic_ltls.append(ltl)
+
+    breakpoint()
 
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
 
@@ -275,10 +284,10 @@ if __name__ == "__main__":
     parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
+    parser.add_argument("--nsamples", type=int, default=3, help="randomly sample nsamples pairs or None to use all")
     # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
     # parser.add_argument("--result_fpath", type=str, default="results/corlw/modular_prompt15_cleanup_test.json", help="file path to save outputs of each model in a json file")
     parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model")
-    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
     parser.add_argument("--trans_e2e", action="store_true", help="solve translation task end-to-end using GPT-3")
     parser.add_argument("--trans_e2e_prompt", type=str, default="data/cleanup_trans_e2e_prompt_15.txt", help="path to translation end-to-end prompt")
     parser.add_argument("--s2s_sup_data", type=str, default="data/symbolic_pairs.csv", help="file path to train and test data for supervised seq2seq")
@@ -299,7 +308,7 @@ if __name__ == "__main__":
     assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
     if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
         random.seed(42)
-        input_utts, true_ltls = zip(*random.sample(list(zip(input_utts, true_ltls)), args.nsamples))
+        input_utts, true_ltls, meta_iter = zip(*random.sample(list(zip(input_utts, true_ltls, meta_iter)), args.nsamples))
 
     if "finetuned" in args.completion_engine:
         dataset_name = "_".join(args.completion_engine.split("_")[2:])
@@ -320,15 +329,12 @@ if __name__ == "__main__":
                         ]
     )
 
-    formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in args.pairs)
+    formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in args.data_fpath)
 
     for run in range(args.nruns):
         # fpath_tup = os.path.splitext(args.result_fpath)
         # result_fpath = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
         logging.info(f"\n\n\nRUN: {run}")
-
-        breakpoint()
-
         run_exp(result_fpath)
 
     # # Test grounding
@@ -342,7 +348,7 @@ if __name__ == "__main__":
     #     print(args.name_embed)
     #     breakpoint()
     #     names = list(load_from_file(f"data/osm/lmks/{city}.json").keys())
-    #     name2grounds = grounding(names)
+    #     name2grounds = ground_names(names)
     #     for name, grounds in name2grounds.items():
     #         if name != grounds[0]:
     #             print(f"Landmark name does not match grounding\n{name}\n{grounds}\n\n")
