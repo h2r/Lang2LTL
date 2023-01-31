@@ -159,7 +159,7 @@ def sample_smaller_dataset(data_fpath, all_props):
         utt_ltl = list(dict.fromkeys(utt_ltl))  # unique utt structures per formula in data. same order across runs
         random.seed(42)
         utt_ltl_random = random.sample(utt_ltl, 1)
-        data_small.append(utt_ltl_random)
+        data_small.append(utt_ltl_random[0])
         meta_small.append((pattern_type, nprops))
     dataset["valid_iter"], dataset["valid_meta"] = data_small, meta_small
     save_fpath = os.path.join(os.path.dirname(data_fpath), f"small_{os.path.basename(data_fpath)}")
