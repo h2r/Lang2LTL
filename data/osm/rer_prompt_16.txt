@@ -15,14 +15,14 @@ Propositions: Dumpling Cafe | Panera Bread
 Utterance: i want you to go into yellow region
 Propositions: yellow region
 
-Utterance: eventually reach The Kensington, HI Boston, and Dunkin' Donuts
+Utterance: Visit The Kensington, HI Boston, and Dunkin' Donuts in that specific order. make sure not to visit waypoints out of turn
 Propositions: The Kensington | HI Boston | Dunkin' Donuts'
 
 Utterance: enter blue room then enter green rectangular room
 Propositions: blue room | green rectangular room
 
-Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another
-Propositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank
+Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another
+Propositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank
 
 Utterance: go to green area then to blue room
 Propositions: green area | blue room
@@ -45,7 +45,7 @@ Propositions: Wilbur Theatre | Dunkin' Donuts | Montien | New Saigon Sandwich | 
 Utterance: move the robot through yellow region or small red room and then to large green room
 Propositions: yellow region | small red room | large green room
 
-Utterance: make your way to Wirth Building, only after going to New Saigon Sandwich, before that make your way to New Saigon Sandwich, only after going to Seybolt Park, before that make your way to Seybolt Park, only after going to Tufts University School of Medicine, before that make your way to Tufts University School of Medicine, only after going to Wang Theater
-Propositions: Wirth Building | New Saigon Sandwich | Seybolt Park | Tufts University School of Medicine | Wang Theater
+Utterance: make your way to Wirth Building, only after going to Tremont and Stuart Streets, before that make your way to Tremont and Stuart Streets, only after going to Seybolt Park, before that make your way to Seybolt Park, only after going to Tufts University School of Medicine, before that make your way to Tufts University School of Medicine, only after going to Wang Theater
+Propositions: Wirth Building | Tremont and Stuart Streets | Seybolt Park | Tufts University School of Medicine | Wang Theater
 
 Utterance:
