@@ -120,8 +120,11 @@ def aggregate_results(result_fpaths, filter_types):
     result_fnames = [os.path.splitext(result_fpath)[0] for result_fpath in result_fpaths]
     aggregated_result_fpath = f"{os.path.commonprefix(result_fnames)}_aggregated.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
-    print(f"total accuracy: {total_corrects / total_samples}")
-    print(f'standard deviation: {np.std(accs)}')
+    accumulated_acc = total_corrects / total_samples
+    accumulated_std = np.std(accs)
+    print(f"total accuracy: {accumulated_acc}")
+    print(f'standard deviation: {accumulated_std}')
+    return accumulated_acc, accumulated_std
 
 
 def evaluate_rer(out_lmks_str, true_lmks):
@@ -153,7 +156,7 @@ if __name__ == "__main__":
             "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv",
         ]
         filter_types = ["fair_visit"]
-        aggregate_results(result_fpaths, filter_types)
+        accumulated_acc, accumulated_std = aggregate_results(result_fpaths, filter_types)
     else:
         if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
             dataset = load_from_file(args.train_dataset_fpath)
