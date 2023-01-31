@@ -9,7 +9,7 @@ openai.organization = os.getenv("ORG_ID")
 
 
 class GPT3:
-    def __init__(self, engine, temp=0.6, max_tokens=128, n=1):
+    def __init__(self, engine, temp=0, max_tokens=128, n=1):
         self.engine = engine
         self.temp = temp
         self.max_tokens = max_tokens
