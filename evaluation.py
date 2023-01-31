@@ -5,6 +5,7 @@ import logging
 from collections import defaultdict
 import numpy as np
 import spot
+from pprint import pprint
 
 from gpt3 import GPT3
 from dataset_symbolic import load_split_dataset
@@ -148,15 +149,12 @@ if __name__ == "__main__":
     dataset_name = Path(args.train_dataset_fpath).stem
 
     if args.aggregate:  # aggregate acc-per-formula result files
-        result_fpaths = [
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold0.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold1.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold2.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold3.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv",
-        ]
+        result_dpath = "results/finetuned_gpt3/formula_holdout_batch12_perm"
+        result_fpaths = [os.path.join(result_dpath, fname) for fname in os.listdir(result_dpath) if "acc" in fname and "csv" in fname and "aggregated" not in fname]
         filter_types = ["fair_visit"]
         accumulated_acc, accumulated_std = aggregate_results(result_fpaths, filter_types)
+        print("Please verify results files")
+        pprint(result_fpaths)
     else:
         if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
             dataset = load_from_file(args.train_dataset_fpath)
