@@ -12,7 +12,7 @@ from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
-from evaluation import evaluate_lang, evaluate_lang_new, evaluate_plan
+from evaluation import evaluate_lang_new, evaluate_lang, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 
@@ -58,7 +58,7 @@ def run_exp():
                      f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\n"
                      f"{acc}\n")
         pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, acc))
-    logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
+    logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
     save_to_file(pair_results, pair_result_fpath)
 
     all_results = {
@@ -324,6 +324,14 @@ if __name__ == "__main__":
     env_dpath = os.path.join("data", args.env)
     env_lmks_dpath = os.path.join(env_dpath, "lmks")
 
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(os.path.join("results", "lang2ltl", 'log_raw_results.log'), mode='w'),
+                            logging.StreamHandler()
+                        ]
+                        )
+
     if args.env == "osm":
         if args.city == "all":
             cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
@@ -371,16 +379,16 @@ if __name__ == "__main__":
 
                 result_dpath = os.path.join("results", "lang2ltl", args.env, city, result_subd)
                 os.makedirs(result_dpath, exist_ok=True)
-                all_result_fpath = os.path.join(result_dpath, f"{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
-                pair_result_fpath = os.path.join(result_dpath, f"{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
+                all_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
+                pair_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
 
-                logging.basicConfig(level=logging.DEBUG,
-                                    format='%(message)s',
-                                    handlers=[
-                                        logging.FileHandler(f'{os.path.splitext(all_result_fpath)[0]}.log', mode='w'),
-                                        logging.StreamHandler()
-                                    ]
-                )
+                # logging.basicConfig(level=logging.DEBUG,
+                #                     format='%(message)s',
+                #                     handlers=[
+                #                         logging.FileHandler(f'{os.path.splitext(all_result_fpath)[0]}.log', mode='w'),
+                #                         logging.StreamHandler()
+                #                     ]
+                # )
 
                 logging.info(data_fpath)
 
