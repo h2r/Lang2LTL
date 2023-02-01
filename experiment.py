@@ -330,11 +330,11 @@ if __name__ == "__main__":
                             logging.FileHandler(os.path.join("results", "lang2ltl", 'log_raw_results.log'), mode='w'),
                             logging.StreamHandler()
                         ]
-                        )
+    )
 
     if args.env == "osm":
         if args.city == "all":
-            cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
+            cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
         else:
             cities = [args.city]
         for city in cities:
