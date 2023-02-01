@@ -98,7 +98,7 @@
     "BarleyMash": {
         "amenity": "pub"
     }, 
-    "Ike’s Place": {
+    "Ike's Place": {
         "addr:housenumber": "542", 
         "cuisine": "sandwich", 
         "amenity": "fast_food", 

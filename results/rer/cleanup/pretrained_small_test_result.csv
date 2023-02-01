@@ -1,0 +1,49 @@
+Type,Number of props,Utterance,Ground truth,Response,Success
+visit,1,find the red room,['the red room'],the red room,True
+visit,2,"pick one from the red room, and the blue room, go there and then head to the other one","['the red room', 'the blue room']",the red room | the blue room,True
+visit,3,"the yellow room, the green room, and the red room, must be visited","['the yellow room', 'the green room', 'the red room']",the yellow room | the green room | the red room,True
+visit,4,"move to the green room, the yellow room, the green room, and the red room, in any order","['the green room', 'the yellow room', 'the green room', 'the red room']",the green room | the yellow room | the red room,True
+visit,5,"make sure the green room, the green room, the red room, the yellow room, and the blue room, are all visited","['the green room', 'the green room', 'the red room', 'the yellow room', 'the blue room']",the green room | the red room | the yellow room | the blue room,True
+sequenced_visit,2,"go to the red room, and move on to the yellow room, once you have been to the red room","['the red room', 'the yellow room']",the red room | the yellow room,True
+sequenced_visit,3,"go to the green room, then go to the yellow room, then go to the red room","['the green room', 'the yellow room', 'the red room']",the green room | the yellow room | the red room,True
+sequenced_visit,4,"travel from the red room, to the green room, to the red room, to the red room","['the red room', 'the green room', 'the red room', 'the red room']",the red room | the green room,True
+sequenced_visit,5,"go to the red room, then go to the blue room, then go to the red room, then go to the green room, finally go to the red room","['the red room', 'the blue room', 'the red room', 'the green room', 'the red room']",the red room | the blue room | the green room,True
+ordered_visit,3,"first go to the green room, then go to the green room, only after the green room, finally go to the yellow room, only after the green room","['the green room', 'the green room', 'the yellow room']",the green room | the yellow room,True
+strictly_ordered_visit,2,"you must visit the red room, exactly once while avoiding the green room, then you can navigate to the green room","['the red room', 'the green room']",the red room | the green room,True
+strictly_ordered_visit,3,"visit the blue room, only once without visiting the red room, then visit the red room, one time without visiting the blue room, finally visit the blue room, in the future","['the blue room', 'the red room', 'the blue room']",the blue room | the red room,True
+strictly_ordered_visit,4,"visit the blue room, one time but not through the green room, the yellow room, or the red room, and then visit the green room, once but not through the blue room, the yellow room, or the red room, and then visit the yellow room, once but not through the blue room, the green room, or the red room, and then visit the red room, once but not through the blue room, the green room, or the yellow room","['the blue room', 'the green room', 'the yellow room', 'the red room']",the blue room | the green room | the yellow room | the red room,True
+strictly_ordered_visit,5,"visit the red room, followed by visiting the red room, then visit the green room, the red room, and the red room, in this exact order visit all locations once","['the red room', 'the red room', 'the green room', 'the red room', 'the red room']",the red room | the green room,True
+ordered_visit,2,"go to the blue room, after going to the red room, do not go to the blue room, before","['the red room', 'the blue room']",the blue room | the red room,True
+patrolling,1,"patrol the yellow room, repeatedly",['the yellow room'],the yellow room,True
+ordered_visit,4,"first go to the yellow room, while avoiding the blue room, then go to the blue room, while staying away from the yellow room, then go to the yellow room, while staying away from the green room, then visit the green room","['the yellow room', 'the blue room', 'the yellow room', 'the green room']",the yellow room | the blue room | the green room,True
+ordered_visit,5,"ensure that you visit the green room, but only after the blue room, in turn only visit the blue room, after the green room, only visit the green room, after the yellow room, and only visit the yellow room, after the yellow room","['the yellow room', 'the yellow room', 'the green room', 'the blue room', 'the green room']",the green room | the blue room | the yellow room,True
+patrolling,3,"keep visiting the green room, the red room, and the blue room, an infinite number of times","['the green room', 'the red room', 'the blue room']",the green room | the red room | the blue room,True
+patrolling,4,"do not go to the red room, the blue room, the yellow room, and the yellow room, the blue room, finite number of times","['the blue room', 'the yellow room', 'the red room', 'the yellow room']",the red room | the blue room | the yellow room,True
+patrolling,5,"visit the blue room, the blue room, the green room, the blue room, and the yellow room, with no limits","['the blue room', 'the blue room', 'the yellow room', 'the blue room', 'the green room']",the blue room | the green room | the yellow room,True
+patrolling,2,"frequent the green room, and the yellow room, infinitely in any order","['the green room', 'the yellow room']",the green room | the yellow room,True
+global_avoidance,1,"you can not go to the green room, at any time",['the green room'],the green room,True
+global_avoidance,2,"always keep away from the yellow room, and the green room","['the yellow room', 'the green room']",the yellow room | the green room,True
+global_avoidance,3,"the red room, the yellow room, and the red room, should never be visited","['the red room', 'the yellow room', 'the red room']",the red room | the yellow room,True
+global_avoidance,4,"never go to the yellow room, never go to the yellow room, never go to the red room, and never go to the blue room","['the yellow room', 'the yellow room', 'the red room', 'the blue room']",the yellow room | the red room | the blue room,True
+global_avoidance,5,"the green room, the green room, the yellow room, the blue room, and the red room, should never be reached","['the green room', 'the green room', 'the yellow room', 'the blue room', 'the red room']",the green room | the yellow room | the blue room | the red room,True
+past_avoidance,2,"until you have gone to the blue room, you can not go to the red room","['the red room', 'the blue room']",the blue room | the red room,True
+upper_restricted_avoidance,1,"visiting the green room, more than once is prohibited",['the green room'],the green room,True
+upper_restricted_avoidance,2,"visiting the red room, more than twice is prohibited","['the green room', 'the red room']",the red room,False
+upper_restricted_avoidance,3,"visiting the yellow room, more than three times is prohibited","['the green room', 'the green room', 'the yellow room']",the yellow room,False
+upper_restricted_avoidance,4,"visiting the blue room, more than four times is prohibited","['the red room', 'the yellow room', 'the blue room', 'the blue room']",the blue room,False
+upper_restricted_avoidance,5,"visiting the blue room, more than five times is prohibited","['the red room', 'the yellow room', 'the yellow room', 'the green room', 'the blue room']",the blue room,False
+lower_restricted_avoidance,1,"make sure you visit the green room, one or more times",['the green room'],the green room,True
+lower_restricted_avoidance,2,"make sure you visit the yellow room, two or more times","['the green room', 'the yellow room']",the yellow room,False
+lower_restricted_avoidance,3,"make sure you visit the yellow room, three or more times","['the yellow room', 'the blue room', 'the yellow room']",the yellow room,False
+lower_restricted_avoidance,4,"make sure you visit the green room, four or more times","['the green room', 'the yellow room', 'the green room', 'the green room']",the green room,False
+lower_restricted_avoidance,5,"make sure you visit the blue room, five or more times","['the red room', 'the green room', 'the red room', 'the blue room', 'the blue room']",the blue room,False
+exact_restricted_avoidance,1,"go to the green room, once and do not visit it anymore",['the green room'],the green room,True
+exact_restricted_avoidance,2,"go to the yellow room, twice and do not visit it anymore","['the yellow room', 'the yellow room']",the yellow room,True
+exact_restricted_avoidance,3,"go to the green room, three times and do not visit it anymore","['the green room', 'the yellow room', 'the green room']",the green room,False
+exact_restricted_avoidance,4,"go to the green room, four times and do not visit it anymore","['the green room', 'the blue room', 'the green room', 'the green room']",the green room,False
+exact_restricted_avoidance,5,"go to the red room, five times and do not visit it anymore","['the green room', 'the yellow room', 'the green room', 'the red room', 'the red room']",the red room,False
+future_avoidance,2,"once you go to the red room, you have to avoid the green room, at all costs","['the red room', 'the green room']",the red room | the green room,True
+delayed_reaction,2,"once you go to the blue room, you must go to the green room","['the blue room', 'the green room']",the blue room | the green room,True
+bound_delay,2,"you must visit the green room, once you go to the red room, and you must avoid the green room, any other time","['the red room', 'the green room']",the green room | the red room,True
+wait,2,"you must keep going on the blue room, until you get to the yellow room","['the blue room', 'the yellow room']",the blue room | the yellow room,True
+prompt_reaction,2,"do not go to anywhere but the blue room, once you visit the blue room","['the blue room', 'the blue room']",the blue room,True

@@ -182,5 +182,5 @@ if __name__ == "__main__":
         else:
             cities = [args.city]
         for city in cities:
-            city_lmks = list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())
+            city_lmks = [name.replace(u'\xa0', u' ') for name in list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())]  # remove unicode space \xa0 or NBSP
             construct_grounded_dataset(args.split_dpath, city_lmks, city, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, env_dpath)

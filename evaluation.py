@@ -5,10 +5,37 @@ import logging
 from collections import defaultdict
 import numpy as np
 import spot
+from pprint import pprint
 
 from gpt3 import GPT3
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file
+
+
+def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
+    accs = []
+    for true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd in zip(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
+        if true_ltl == out_ltl:
+            is_correct = "True"
+        else:
+            try:  # output LTL formula may have syntax error
+                spot_correct = spot.are_equivalent(spot.formula(true_sym_ltl), spot.formula(out_sym_ltl))
+                if spot_correct:
+                    if set(true_name) == set(out_name):  # TODO: check only work if RE == lmk_name when generate grounded dataset
+                        if set(true_name) == set(out_grnd):
+                            is_correct = "True"
+                        else:
+                            is_correct = "Grounding Error"
+                    else:
+                        is_correct = "RER Error"
+                else:
+                    is_correct = "Symbolic Translation Error"
+            except SyntaxError:
+                logging.info(f"Syntax error: {true_sym_ltl}\n{out_sym_ltl}\n")
+                is_correct = "Syntax Error"
+        accs.append(is_correct)
+    acc = np.mean([True if acc == "True" else False for acc in accs])
+    return accs, acc
 
 
 def evaluate_lang(output_ltls, true_ltls):
@@ -19,13 +46,16 @@ def evaluate_lang(output_ltls, true_ltls):
 
     accs = []
     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-        try:  # output LTL formula may have syntax error
-            is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-            is_correct = "True" if is_correct else "False"
-        except SyntaxError:
-            logging.info(f"Syntax error: {true_ltl}\n{out_ltl}\n")
-            is_correct = "Syntax Error"
-        accs.append(is_correct)
+        if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
+            accs.append("True")
+        else:
+            try:  # output LTL formula may have syntax error
+                is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
+                is_correct = "True" if is_correct else "False"
+            except SyntaxError:
+                logging.info(f"Syntax error: {true_ltl}\n{out_ltl}\n")
+                is_correct = "Syntax Error"
+            accs.append(is_correct)
     acc = np.mean([True if acc == "True" else False for acc in accs])
     return accs, acc
 
@@ -120,8 +150,11 @@ def aggregate_results(result_fpaths, filter_types):
     result_fnames = [os.path.splitext(result_fpath)[0] for result_fpath in result_fpaths]
     aggregated_result_fpath = f"{os.path.commonprefix(result_fnames)}_aggregated.csv"
     save_to_file(aggregated_result, aggregated_result_fpath)
-    print(f"total accuracy: {total_corrects / total_samples}")
-    print(f'standard deviation: {np.std(accs)}')
+    accumulated_acc = total_corrects / total_samples
+    accumulated_std = np.std(accs)
+    print(f"total accuracy: {accumulated_acc}")
+    print(f'standard deviation: {accumulated_std}')
+    return accumulated_acc, accumulated_std
 
 
 def evaluate_rer(out_lmks_str, true_lmks):
@@ -145,15 +178,12 @@ if __name__ == "__main__":
     dataset_name = Path(args.train_dataset_fpath).stem
 
     if args.aggregate:  # aggregate acc-per-formula result files
-        result_fpaths = [
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold0.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold1.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold2.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold3.csv",
-            "results/finetuned_gpt3/formula_holdout_batch12_perm/acc_gpt3_finetuned_symbolic_batch12_perm_ltl_formula_9_42_fold4.csv",
-        ]
+        result_dpath = "results/finetuned_gpt3/formula_holdout_batch12_perm"
+        result_fpaths = [os.path.join(result_dpath, fname) for fname in os.listdir(result_dpath) if "acc" in fname and "csv" in fname and "aggregated" not in fname]
         filter_types = ["fair_visit"]
-        aggregate_results(result_fpaths, filter_types)
+        accumulated_acc, accumulated_std = aggregate_results(result_fpaths, filter_types)
+        print("Please verify results files")
+        pprint(result_fpaths)
     else:
         if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
             dataset = load_from_file(args.train_dataset_fpath)

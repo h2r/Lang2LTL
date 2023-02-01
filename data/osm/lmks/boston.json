@@ -68,11 +68,11 @@
         "gnis:import_uuid": "57871b70-0100-4405-bb30-88b2e001a944", 
         "gnis:feature_id": "607015"
     }, 
-    "Emerson College – Union Bank Building": {
+    "Emerson College - Union Bank Building": {
         "building": "yes", 
         "building:height": "34"
     }, 
-    "Cutler Majestic Theater – Emerson College": {
+    "Cutler Majestic Theater - Emerson College": {
         "addr:housenumber": "219", 
         "building": "theatre", 
         "addr:city": "Boston", 

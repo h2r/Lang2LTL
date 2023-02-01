@@ -23,63 +23,45 @@ def build_placeholder_map(name_entities, convert_rule):
     return placeholder_map, placeholder_map_inv
 
 
-def substitute(input_strs, substitute_maps):
+def substitute(input_strs, substitute_maps, is_utt):
     """
     Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
     :param input_strs: input strings
     :param substitute_maps: map substring to substitutions
+    :param is_utt: True if input_strs are utts; False if input_strs are LTL formulas
     :return: substituted strings and their corresponding substitutions
     """
     output_strs, subs_per_str = [], []
     for input_str, sub_map in zip(input_strs, substitute_maps):
-        out_str, subs_done = substitute_single(input_str, sub_map)
+        if is_utt:
+            out_str, subs_done = substitute_single_word(input_str, sub_map)
+        else:
+            out_str = substitute_single_letter(input_str, sub_map)
+            subs_done = set()
+        out_str = out_str.translate(str.maketrans('', '', ',.'))  # remove comma, period since sym translation module finetuned on utts w/o puns
         output_strs.append(out_str)
         subs_per_str.append(subs_done)
     return output_strs, subs_per_str
 
 
-def substitute_single(input_str, sub_map):
-    """
-    Substitute words and phrases from a single utterance.
-
-    Assume no swaps in `sub_map`, e.g. {key: val, val: key}
-    TODO: handle substitution map: {green one: green room, green place: green room, green: green room}
-    TODO: handle substitution map: {a: b, b: a}
-    """
-    sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
-    subs_done = set()  # sub key once when diff keys map to same val, e.g. {green one: green room, green: green room}
-
-    for k, v in sub_map:
-        if k not in input_str:
-            logging.info(f"Name entity {k} not found in input string: {input_str}")
-        else:
-            # k_v_overlap = False  # to handle substitution map {green one: green room, green: green room}
-            # for sub_done in subs_done:
-            #     if k in sub_done:
-            #         k_v_overlap = True
-            # if not k_v_overlap:
-            if v not in subs_done:  # TODO: 'the name' sub first then 'name' sub again. redundant if same grounding, wrong otherwise
-                subs_done.add(v)
-                input_str = input_str.replace(k, v)
-    return input_str.strip(), subs_done
-
-
 def substitute_single_word(in_str, sub_map):
     """
     Substitute words and phrases to words or phrases in a single utterance.
-    Assume numbers are not in the input string.
+    Assume numbers are not keys of sub_map.
     """
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
+    subs_done = set()
 
-    # swap every key with a unique number
+    # swap every k with a unique number
     for n, (k, v) in enumerate(sub_map):
-        in_str = in_str.replace(k, str(n))
+        in_str = in_str.replace(k, f"[{n}]")  # escape number
 
     # swap every number with corresponding v
     for n, (k, v) in enumerate(sub_map):
-        in_str = in_str.replace(str(n), v)
+        in_str = in_str.replace(f"[{n}]", v)  # escape number
+        subs_done.add(v)
 
-    return in_str.strip()
+    return in_str.strip(), subs_done
 
 
 def substitute_single_letter(in_str, sub_map):
