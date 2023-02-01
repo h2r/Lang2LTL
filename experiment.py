@@ -50,14 +50,14 @@ def run_exp():
 
     accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
 
-    pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Accuracy"]]
-    for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, accs)):
+    pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
+    for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
         logging.info(f"{idx}\n{pattern_type} {props} Input utterance: {input_utt}\n"
                      f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
                      f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
-                     f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\n"
+                     f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
                      f"{acc}\n")
-        pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, acc))
+        pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
     logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
     save_to_file(pair_results, pair_result_fpath)
 
