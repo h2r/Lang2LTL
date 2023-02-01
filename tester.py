@@ -33,15 +33,19 @@ class TestUtils(unittest.TestCase):
 
     def test_substitute_single_word(self):
         in_out_pairs = [
-            ("finally go to green one, then green", {"green": "green room", "green one": "green room"}, "finally go to green room, then green room"),
+            ("go to green one, then green", {"green": "green room", "green one": "green room"}, "go to green room, then green room"),
+            # ("go to 60 park, then stuart and george street.", {"60 park": "cafe", "stuart and george street": "main street", "0": "2"},
+            #  "go to cafe, then main street."),  # number as key of sub_map
+            ("go to Emerson College - Union Bank Building, then Emerson College", {"Emerson College - Union Bank Building": "building", "Emerson College": "college"},
+             "go to building, then college"),  # RE is substring of another RE
             ("& U ! b a F b", {"a": "b", "b": "a"}, "& U ! a b F a"),  # multiple subs of same letter
             # below only work with substitute_single_letter
             ("aabc", {"a": "b"}, "bbbc"),
             ("go to a and b", {"a": "b", "b": "a"}, "go to b bnd a"),
         ]
         for idx, (in_str, sub_map, true_out_str) in enumerate(in_out_pairs):
-            out_str = substitute_single_word(in_str, sub_map)
-            self.assertEqual(out_str, true_out_str, f"incorrect output string: {idx}")
+            out_str, subs_done = substitute_single_word(in_str, sub_map)
+            self.assertEqual(out_str, true_out_str, f"incorrect output string: {idx}\n{true_out_str}\n{out_str}")
 
     def test_infix_to_prefix(self):
         in_out_pairs = [
