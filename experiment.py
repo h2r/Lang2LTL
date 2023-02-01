@@ -11,52 +11,70 @@ from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
-from utils import load_from_file, save_to_file, build_placeholder_map, substitute
-from evaluation import evaluate_lang, evaluate_plan
+from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
+from evaluation import evaluate_lang, evaluate_lang_new, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
+
+PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
 
 
 def run_exp():
     # Language tasks: RER, grounding translation
     if args.full_e2e:  # Full end-to-end from language to LTL
-        full_e2e_module = GPT3(args.completion_engine)
+        full_e2e_module = GPT3(completion_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        output_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
+        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
     else:  # Modular
-        names, utt2names = ner()
+        names, utt2names = rer()
+        out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
         name2grounds = ground_names(names)
         grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
         if args.trans_e2e:
-            output_ltls = translate_e2e(grounded_utts)
+            out_ltls = translate_e2e(grounded_utts)
         else:
-            output_ltls, symbolic_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
+            out_ltls, out_sym_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
-    if len(input_utts) != len(output_ltls):
-        logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}")
-    accs_lang, accumulated_acc_lang = evaluate_lang(output_ltls, true_ltls)
-    for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, output_ltls, true_ltls, accs_lang)):
-        logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
-    logging.info(f"Language to LTL translation accuracy: {accumulated_acc_lang}")
+    if len(input_utts) != len(out_ltls):
+        logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(out_ltls)}")
+
+    # accs, accumulated_acc = evaluate_lang(out_grd_ltls, true_ltls)
+    # for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, out_grd_ltls, true_ltls, accs_lang)):
+    #     logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
+    # logging.info(f"Language to LTL translation accuracy: {accumulated_acc_lang}")
+
+    # out_sym_ltls_sub = []
+    # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
+    #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
+    # out_sym_ltls = out_sym_ltls_sub
+
+    accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
+
+    pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Accuracy"]]
+    for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, accs)):
+        logging.info(f"{idx}\n{pattern_type} {props} Input utterance: {input_utt}\n"
+                     f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
+                     f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
+                     f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\n"
+                     f"{acc}\n")
+        pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, acc))
+    logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
+    save_to_file(pair_results, pair_result_fpath)
 
     all_results = {
         "RER": utt2names if not args.full_e2e else None,
         "Grounding": name2grounds if not args.full_e2e else None,
         "Placeholder maps": placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
         "Input utterances": input_utts,
-        "Symbolic LTLs": symbolic_ltls if not (args.trans_e2e or args.full_e2e) else None,
-        "Output LTLs": output_ltls,
-        "Ground truth": true_ltls,
+        "Output Symbolic LTLs": out_sym_ltls if not (args.trans_e2e or args.full_e2e) else None,
+        "Output Grounded LTLs": out_ltls,
+        "True Grounded LTLs": true_ltls,
         "Meta": meta_iter,
-        "Accuracies": accs_lang,
-        "Accumulated Accuracy": accumulated_acc_lang
+        "Accuracies": accs,
+        "Accumulated Accuracy": accumulated_acc
     }
     save_to_file(all_results, all_result_fpath)
-
-    pair_results = [["Utterance", "Output LTL", "True LTL", "Accuracy"]]
-    for utt, out_ltl, true_ltl, is_correct in zip(input_utts, true_ltls, output_ltls, accs_lang):
-        pair_results.append((utt, out_ltl, true_ltl, is_correct))
-    save_to_file(pair_results, pair_result_fpath)
+    save_to_file(all_results, os.path.join(os.path.dirname(all_result_fpath), f"{Path(all_result_fpath).stem}.pkl"))  # also save to pkl to preserve data type
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
@@ -64,33 +82,33 @@ def run_exp():
     # logging.info(f"Planning accuracy: {acc_plan}")
 
 
-def ner():
+def rer():
     """
-    Name Entity Recognition: extract name entities from input utterances.
+    Referring Expression Recognition: extract name entities from input utterances.
     """
-    ner_prompt = load_from_file(args.ner_prompt)
+    rer_prompt = load_from_file(args.rer_prompt)
 
-    if args.ner == "gpt3":
-        ner_module = GPT3(args.completion_engine)
-    # elif args.ner == "bert":
-    #     ner_module = BERT()
+    if args.rer == "gpt3":
+        rer_module = GPT3(completion_engine)
+    # elif args.rer == "bert":
+    #     rer_module = BERT()
     else:
-        raise ValueError(f"ERROR: NER module not recognized: {args.ner}")
+        raise ValueError(f"ERROR: RER module not recognized: {args.rer}")
 
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for idx_utt, utt in enumerate(input_utts):
 
-        # print(f"{ner_prompt.strip()} {utt}\nPropositions:\n{idx_utt}")
+        # print(f"{rer_prompt.strip()} {utt}\nPropositions:\n{idx_utt}")
         # breakpoint()
 
         logging.info(f"Extracting name entities from utterance: {idx_utt}")
-        names_per_utt = [name.strip() for name in ner_module.extract_ne(query=f"{ner_prompt.strip()} {utt}\nPropositions:")]
+        names_per_utt = [name.strip() for name in rer_module.extract_ne(query=f"{rer_prompt.strip()} {utt}\nPropositions:")]
         names_per_utt = list(set(names_per_utt))  # remove duplicated RE
 
         # print(names_per_utt)
         # breakpoint()
 
-        # extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate NER error
+        # extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate RER error
         # for name in names_per_utt:
         #     name_words = name.split()
         #     if name_words[0] == "the":
@@ -171,32 +189,32 @@ def translate_modular(grounded_utts, objs_per_utt):
     :param objs_per_utt: grounding objects for each input utterance
     :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
-    if "ft" in args.completion_engine:
+    if "ft" in completion_engine:
         trans_modular_prompt = ""
-    elif "text-davinci" in args.completion_engine:
+    elif "text-davinci" in completion_engine:
         trans_modular_prompt = load_from_file(args.trans_modular_prompt)
     else:
-        raise ValueError(f"ERROR: Unrecognized completion_engine: {args.completion_engine}")
+        raise ValueError(f"ERROR: Unrecognized completion_engine: {completion_engine}")
 
-    if args.trans == "gpt3":
-        trans_module = GPT3(args.completion_engine)
-    elif args.trans in T5_MODELS:
-        trans_module = Seq2Seq(args.trans)
-    elif args.trans == "pt_transformer":
+    if "gpt3" in args.sym_trans:
+        trans_module = GPT3(completion_engine)
+    elif args.sym_trans in T5_MODELS:
+        trans_module = Seq2Seq(args.sym_trans)
+    elif args.sym_trans == "pt_transformer":
         train_iter, _, _, _ = load_split_dataset(args.s2s_sup_data)
         vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{args.trans}.pth"
-        trans_module = Seq2Seq(args.trans,
+        model_params = f"model/s2s_{args.sym_trans}.pth"
+        trans_module = Seq2Seq(args.sym_trans,
                                vocab_transform=vocab_transform, text_transform=text_transform,
                                src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
     else:
-        raise ValueError(f"ERROR: translation module not recognized: {args.trans}")
+        raise ValueError(f"ERROR: translation module not recognized: {args.sym_trans}")
 
     # breakpoint()
 
     placeholder_maps, placeholder_maps_inv = [], []
     for objs in objs_per_utt:
-        placeholder_map, placeholder_map_inv = build_placeholder_map(objs, args.convert_rule)
+        placeholder_map, placeholder_map_inv = build_placeholder_map(objs, args.convert_rule, PROPS)
         placeholder_maps.append(placeholder_map)
         placeholder_maps_inv.append(placeholder_map_inv)
     trans_queries, _ = substitute(grounded_utts, placeholder_maps, is_utt=True)  # replace names by symbols
@@ -227,7 +245,7 @@ def translate_e2e(grounded_utts):
     Translation language to LTL using a single GPT-3.
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
-    model = GPT3(args.completion_engine)
+    model = GPT3(completion_engine)
     output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
     return output_ltls
 
@@ -278,19 +296,19 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--city", type=str, default="boston", help="1 or all cities.")
-    parser.add_argument("--ner", type=str, default="gpt3", choices=["gpt3", "bert"], help="NER module")
-    parser.add_argument("--ner_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to NER prompt")
+    parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "bert"], help="Referring Expressoin Recognition module")
+    parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
     parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="embedding of known obj in env")
     parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="embedding of re in language")
     parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re")
-    parser.add_argument("--trans", type=str, default="gpt3", choices=["gpt3", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
-    parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
+    parser.add_argument("--sym_trans", type=str, default="gpt3_finetuned", choices=["gpt3_finetuned", "gpt3_pretrained", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
     parser.add_argument("--nsamples", type=int, default=10, help="randomly sample nsamples pairs or None to use all")
+    # parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
     # parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
     # parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
@@ -321,20 +339,26 @@ if __name__ == "__main__":
                 valid_iter = dataset["valid_iter"]
                 meta_iter = dataset["valid_meta"]
 
-                input_utts, true_ltls = [], []
-                for utt, ltl in valid_iter:
+                input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_names, propositions = [], [], [], [], [], [], []
+                for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, lmk_names, seed) in zip(valid_iter, meta_iter):
                     input_utts.append(utt)
                     true_ltls.append(ltl)
-                assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
+                    true_sym_utts.append(sym_utt)
+                    pattern_types.append(pattern_type)
+                    if "restricted_avoidance" in pattern_type:
+                        true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
+                        true_names.append(lmk_names[-1:])
+                        propositions.append(props[-1:])
+                    else:
+                        true_sym_ltls.append(sym_ltl)
+                        true_names.append(lmk_names)
+                        propositions.append(props)
+
+                assert len(input_utts) == len(true_ltls) == len(true_sym_utts) == len(true_sym_ltls) == len(pattern_types) == len(true_names) == len(propositions), \
+                    f"ERROR: input len != # out len: {len(input_utts)} {len(true_ltls)} {len(true_sym_utts)} {len(true_sym_ltls)} {len(pattern_types)} {len(true_names)} {len(propositions)}"
                 if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
                     random.seed(42)
-                    input_utts, true_ltls, meta_iter = zip(*random.sample(list(zip(input_utts, true_ltls, meta_iter)), args.nsamples))
-
-                if "finetuned" in args.completion_engine:
-                    dataset_name = "_".join(args.completion_engine.split("_")[2:])
-                    if dataset_name not in data_fpath:
-                        raise ValueError(f"ERROR: test dataset does not match finetuned dataset\n{data_fpath}\n{dataset_name}")
-                    args.completion_engine = load_from_file("model/gpt3_models.pkl")[args.completion_engine]
+                    input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions = zip(*random.sample(list(zip(input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions)), args.nsamples))
 
                 if "utt" in data_fpath:
                     result_subd = "utt_holdout_batch12"
@@ -358,9 +382,18 @@ if __name__ == "__main__":
                                     ]
                 )
 
+                logging.info(data_fpath)
+
+                if args.sym_trans == "gpt3_finetuned":
+                    completion_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+                    logging.info(f"completion_enging: {completion_engine}")
+                    completion_engine = load_from_file("model/gpt3_models.pkl")[completion_engine]
+                elif args.sym_trans == "gpt3_pretrained":
+                    completion_engine = "text-davinci-003"
+                    logging.info(f"completion_enging: {completion_engine}")
+
                 # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
 
-                logging.info(data_fpath)
                 for run in range(args.nruns):
                     logging.info(f"\n\n\nRUN: {run}")
                     run_exp()
