@@ -360,9 +360,8 @@ if __name__ == "__main__":
 
                 # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
 
+                logging.info(data_fpath)
                 for run in range(args.nruns):
-                    # fpath_tup = os.path.splitext(args.result_fpath)
-                    # result_fpath = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
                     logging.info(f"\n\n\nRUN: {run}")
                     run_exp()
 
