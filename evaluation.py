@@ -21,11 +21,11 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
             try:  # output LTL formula may have syntax error
                 spot_correct = spot.are_equivalent(spot.formula(true_sym_ltl), spot.formula(out_sym_ltl))
                 if spot_correct:
-                    if set(true_name) == set(out_name):
+                    if set(true_name) == set(out_name):  # TODO: check only work if RE == lmk_name when generate grounded dataset
                         if set(true_name) == set(out_grnd):
                             is_correct = "True"
                         else:
-                            is_correct = "Grouding Error"
+                            is_correct = "Grounding Error"
                     else:
                         is_correct = "RER Error"
                 else:
