@@ -35,6 +35,24 @@ def run_exp():
         else:
             out_ltls, out_sym_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
+            # out_sym_ltls_sub = []
+            # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
+            #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
+            # out_sym_ltls = out_sym_ltls_sub
+
+            accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
+
+            pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
+            for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
+                logging.info(f"{idx}\n{pattern_type} {props} Input utterance: {input_utt}\n"
+                             f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
+                             f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
+                             f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
+                             f"{acc}\n")
+                pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
+            logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
+            save_to_file(pair_results, pair_result_fpath)
+
     if len(input_utts) != len(out_ltls):
         logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(out_ltls)}")
 
@@ -42,24 +60,6 @@ def run_exp():
     # for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, out_grd_ltls, true_ltls, accs_lang)):
     #     logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
     # logging.info(f"Language to LTL translation accuracy: {accumulated_acc_lang}")
-
-    # out_sym_ltls_sub = []
-    # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
-    #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
-    # out_sym_ltls = out_sym_ltls_sub
-
-    accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
-
-    pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
-    for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
-        logging.info(f"{idx}\n{pattern_type} {props} Input utterance: {input_utt}\n"
-                     f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
-                     f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
-                     f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
-                     f"{acc}\n")
-        pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
-    logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
-    save_to_file(pair_results, pair_result_fpath)
 
     all_results = {
         "RER": utt2names if not args.full_e2e else None,
