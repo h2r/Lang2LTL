@@ -23,16 +23,21 @@ def build_placeholder_map(name_entities, convert_rule):
     return placeholder_map, placeholder_map_inv
 
 
-def substitute(input_strs, substitute_maps):
+def substitute(input_strs, substitute_maps, is_utt):
     """
     Substitute every occurrence of key in the input string by its corresponding value in substitute_maps.
     :param input_strs: input strings
     :param substitute_maps: map substring to substitutions
+    :param is_utt: True if input_strs are utts; False if input_strs are LTL formulas
     :return: substituted strings and their corresponding substitutions
     """
     output_strs, subs_per_str = [], []
     for input_str, sub_map in zip(input_strs, substitute_maps):
-        out_str, subs_done = substitute_single_word(input_str, sub_map)
+        if is_utt:
+            out_str, subs_done = substitute_single_word(input_str, sub_map)
+        else:
+            out_str = substitute_single_letter(input_str, sub_map)
+            subs_done = set()
         out_str = out_str.translate(str.maketrans('', '', ',.'))  # remove comma, period since sym translation module finetuned on utts w/o puns
         output_strs.append(out_str)
         subs_per_str.append(subs_done)
@@ -42,12 +47,12 @@ def substitute(input_strs, substitute_maps):
 def substitute_single_word(in_str, sub_map):
     """
     Substitute words and phrases to words or phrases in a single utterance.
-    Assume numbers are not in the input string.
+    Assume numbers are not keys of sub_map.
     """
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
     subs_done = set()
 
-    # swap every key with a unique number
+    # swap every k with a unique number
     for n, (k, v) in enumerate(sub_map):
         in_str = in_str.replace(k, f"[{n}]")  # escape number
 
