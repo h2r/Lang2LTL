@@ -7,17 +7,17 @@ import numpy as np
 import spot
 from openai.embeddings_utils import cosine_similarity
 
-from formula_sampler import TYPE2NPROPS
-from analyze_results import find_all_formulas
 from gpt3 import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 from evaluation import evaluate_lang, evaluate_plan
+from formula_sampler import TYPE2NPROPS
+from analyze_results import find_all_formulas
 
 
-def run_exp(save_result_path):
+def run_exp():
     # Language tasks: RER, grounding translation
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3(args.completion_engine)
@@ -34,12 +34,12 @@ def run_exp(save_result_path):
 
     if len(input_utts) != len(output_ltls):
         logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(output_ltls)}")
-    accs_lang, acc_lang = evaluate_lang(output_ltls, true_ltls)
+    accs_lang, accumulated_acc_lang = evaluate_lang(output_ltls, true_ltls)
     for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, output_ltls, true_ltls, accs_lang)):
         logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
-    logging.info(f"Language to LTL translation accuracy: {acc_lang}")
+    logging.info(f"Language to LTL translation accuracy: {accumulated_acc_lang}")
 
-    final_results = {
+    all_results = {
         "RER": utt2names if not args.full_e2e else None,
         "Grounding": name2grounds if not args.full_e2e else None,
         "Placeholder maps": placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
@@ -48,9 +48,15 @@ def run_exp(save_result_path):
         "Output LTLs": output_ltls,
         "Ground truth": true_ltls,
         "Meta": meta_iter,
-        "Accuracy": acc_lang
+        "Accuracies": accs_lang,
+        "Accumulated Accuracy": accumulated_acc_lang
     }
-    save_to_file(final_results, save_result_path)
+    save_to_file(all_results, all_result_fpath)
+
+    pair_results = [["Utterance", "Output LTL", "True LTL", "Accuracy"]]
+    for utt, out_ltl, true_ltl, is_correct in zip(input_utts, true_ltls, output_ltls, accs_lang):
+        pair_results.append((utt, out_ltl, true_ltl, is_correct))
+    save_to_file(pair_results, pair_result_fpath)
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
@@ -151,7 +157,7 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     for _, names in utt2names:
         grounding_maps.append({name: name2grounds[name][0] for name in names})
 
-    output_strs, subs_per_str = substitute(input_strs, grounding_maps)
+    output_strs, subs_per_str = substitute(input_strs, grounding_maps, is_utt=True)
 
     # breakpoint()
 
@@ -193,7 +199,7 @@ def translate_modular(grounded_utts, objs_per_utt):
         placeholder_map, placeholder_map_inv = build_placeholder_map(objs, args.convert_rule)
         placeholder_maps.append(placeholder_map)
         placeholder_maps_inv.append(placeholder_map_inv)
-    trans_queries, _ = substitute(grounded_utts, placeholder_maps)  # replace name entities by symbols
+    trans_queries, _ = substitute(grounded_utts, placeholder_maps, is_utt=True)  # replace names by symbols
 
     # breakpoint()
 
@@ -207,11 +213,11 @@ def translate_modular(grounded_utts, objs_per_utt):
         #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
         symbolic_ltls.append(ltl)
 
-    breakpoint()
+    # breakpoint()
 
-    output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv)  # replace symbols by name entities
+    output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv, is_utt=False)  # replace symbols by props
 
-    breakpoint()
+    # breakpoint()
 
     return output_ltls, symbolic_ltls, placeholder_maps
 
@@ -270,7 +276,8 @@ def plan(output_ltls, true_trajs, name2grounds):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
+    parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
+    parser.add_argument("--city", type=str, default="boston", help="1 or all cities.")
     parser.add_argument("--ner", type=str, default="gpt3", choices=["gpt3", "bert"], help="NER module")
     parser.add_argument("--ner_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to NER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
@@ -281,10 +288,11 @@ if __name__ == "__main__":
     parser.add_argument("--trans", type=str, default="gpt3", choices=["gpt3", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
     parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
-    parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
-    parser.add_argument("--nsamples", type=int, default=3, help="randomly sample nsamples pairs or None to use all")
+    parser.add_argument("--nsamples", type=int, default=10, help="randomly sample nsamples pairs or None to use all")
+    # parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
+    # parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
     # parser.add_argument("--result_fpath", type=str, default="results/corlw/modular_prompt15_cleanup_test.json", help="file path to save outputs of each model in a json file")
     parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model")
@@ -295,47 +303,68 @@ if __name__ == "__main__":
     parser.add_argument("--debug", action="store_true", help="True to print debug trace.")
     args = parser.parse_args()
 
-    dataset = load_from_file(args.data_fpath)
-    if "pkl" in args.data_fpath:
-        valid_iter = dataset["valid_iter"]
-        meta_iter = dataset["valid_meta"]
-    elif "csv" in args.data_fpath:  # corlw dataset
-        valid_iter = dataset
-    input_utts, true_ltls = [], []
-    for utt, ltl in valid_iter:
-        input_utts.append(utt)
-        true_ltls.append(ltl)
-    assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
-    if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
-        random.seed(42)
-        input_utts, true_ltls, meta_iter = zip(*random.sample(list(zip(input_utts, true_ltls, meta_iter)), args.nsamples))
+    env_dpath = os.path.join("data", args.env)
+    env_lmks_dpath = os.path.join(env_dpath, "lmks")
 
-    if "finetuned" in args.completion_engine:
-        dataset_name = "_".join(args.completion_engine.split("_")[2:])
-        if dataset_name not in args.data_fpath:
-            raise ValueError(f"ERROR: test dataset does not match finetuned dataset\n{args.data_fpath}\n{dataset_name}")
-        args.completion_engine = load_from_file("model/gpt3_models.pkl")[args.completion_engine]
+    if args.env == "osm":
+        if args.city == "all":
+            cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
+        else:
+            cities = [args.city]
+        for city in cities:
+            city_dpath = os.path.join(env_dpath, "lang2ltl", city)
+            data_fpaths = [os.path.join(city_dpath, fname) for fname in os.listdir(city_dpath) if fname.startswith("symbolic")]
+            data_fpaths = sorted(data_fpaths, reverse=True)
 
-    os.makedirs(args.result_dpath, exist_ok=True)
-    if os.path.basename(args.result_dpath) not in args.data_fpath:
-        raise ValueError(f"ERROR: result dpath does not match test dataset\n{args.result_dpath}\n{args.data_fpath}")
-    result_fpath = os.path.join(args.result_dpath, f"{Path(args.data_fpath).stem}.json")
+            for data_fpath in data_fpaths:
+                dataset = load_from_file(data_fpath)
+                valid_iter = dataset["valid_iter"]
+                meta_iter = dataset["valid_meta"]
 
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(f'{os.path.splitext(result_fpath)[0]}.log', mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
+                input_utts, true_ltls = [], []
+                for utt, ltl in valid_iter:
+                    input_utts.append(utt)
+                    true_ltls.append(ltl)
+                assert len(input_utts) == len(true_ltls), f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(true_ltls)}"
+                if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
+                    random.seed(42)
+                    input_utts, true_ltls, meta_iter = zip(*random.sample(list(zip(input_utts, true_ltls, meta_iter)), args.nsamples))
 
-    formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in args.data_fpath)
+                if "finetuned" in args.completion_engine:
+                    dataset_name = "_".join(args.completion_engine.split("_")[2:])
+                    if dataset_name not in data_fpath:
+                        raise ValueError(f"ERROR: test dataset does not match finetuned dataset\n{data_fpath}\n{dataset_name}")
+                    args.completion_engine = load_from_file("model/gpt3_models.pkl")[args.completion_engine]
 
-    for run in range(args.nruns):
-        # fpath_tup = os.path.splitext(args.result_fpath)
-        # result_fpath = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
-        logging.info(f"\n\n\nRUN: {run}")
-        run_exp(result_fpath)
+                if "utt" in data_fpath:
+                    result_subd = "utt_holdout_batch12"
+                elif "formula" in data_fpath:
+                    result_subd = "formula_holdout_batch12"
+                elif "type" in data_fpath:
+                    result_subd = "type_holdout_batch12"
+                else:
+                    raise ValueError(f"ERROR: unrecognized data fpath\n{data_fpath}")
+
+                result_dpath = os.path.join("results", "lang2ltl", args.env, city, result_subd)
+                os.makedirs(result_dpath, exist_ok=True)
+                all_result_fpath = os.path.join(result_dpath, f"{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
+                pair_result_fpath = os.path.join(result_dpath, f"{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
+
+                logging.basicConfig(level=logging.DEBUG,
+                                    format='%(message)s',
+                                    handlers=[
+                                        logging.FileHandler(f'{os.path.splitext(all_result_fpath)[0]}.log', mode='w'),
+                                        logging.StreamHandler()
+                                    ]
+                )
+
+                # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
+
+                for run in range(args.nruns):
+                    # fpath_tup = os.path.splitext(args.result_fpath)
+                    # result_fpath = f"{fpath_tup[0]}_run{run}" + fpath_tup[1]
+                    logging.info(f"\n\n\nRUN: {run}")
+                    run_exp()
 
     # # Test grounding
     # city_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
