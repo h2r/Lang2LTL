@@ -12,21 +12,27 @@ from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file
 
 
-def evaluate_lang_new(true_sym_ltls, out_sym_ltls, true_names, out_names, pattern_types):
+def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
     accs = []
-    for true_sym_ltl, out_sym_ltl, true_name, out_name, pattern_type in zip(true_sym_ltls, out_sym_ltls, true_names, out_names, pattern_types):
-        try:  # output LTL formula may have syntax error
-            spot_correct = spot.are_equivalent(spot.formula(true_sym_ltl), spot.formula(out_sym_ltl))
-            if spot_correct:
-                if set(true_name) == set(out_name):
-                    is_correct = "True"
+    for true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd in zip(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
+        if true_ltl == out_ltl:
+            is_correct = "True"
+        else:
+            try:  # output LTL formula may have syntax error
+                spot_correct = spot.are_equivalent(spot.formula(true_sym_ltl), spot.formula(out_sym_ltl))
+                if spot_correct:
+                    if set(true_name) == set(out_name):
+                        if set(true_name) == set(out_grnd):
+                            is_correct = "True"
+                        else:
+                            is_correct = "Grouding Error"
+                    else:
+                        is_correct = "RER Error"
                 else:
-                    is_correct = "RER or Grouding Error"
-            else:
-                is_correct = "Symbolic Translation Error"
-        except SyntaxError:
-            logging.info(f"Syntax error: {true_sym_ltl}\n{out_sym_ltl}\n")
-            is_correct = "Syntax Error"
+                    is_correct = "Symbolic Translation Error"
+            except SyntaxError:
+                logging.info(f"Syntax error: {true_sym_ltl}\n{out_sym_ltl}\n")
+                is_correct = "Syntax Error"
         accs.append(is_correct)
     acc = np.mean([True if acc == "True" else False for acc in accs])
     return accs, acc
