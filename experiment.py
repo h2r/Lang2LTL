@@ -40,7 +40,8 @@ def run_exp():
             #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
             # out_sym_ltls = out_sym_ltls_sub
 
-            accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
+            accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_names, out_names, objs_per_utt, args.convert_rule, PROPS)
+            # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
 
             pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
             for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
@@ -222,7 +223,9 @@ def translate_modular(grounded_utts, objs_per_utt):
     # breakpoint()
 
     symbolic_ltls = []
-    for query in trans_queries:
+    for idx, query in enumerate(trans_queries):
+        logging.info(f"Symbolic Translation: {idx}/{len(trans_queries)}")
+        query = query.translate(str.maketrans('', '', ',.'))
         query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
         ltl = trans_module.translate(query, trans_modular_prompt)[0]
         # try:
@@ -295,7 +298,7 @@ def plan(output_ltls, true_trajs, name2grounds):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
-    parser.add_argument("--city", type=str, default="boston", help="1 or all cities.")
+    parser.add_argument("--cities", action="store", type=str, nargs="+", default=["boston"], help="list of cities.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "bert"], help="Referring Expressoin Recognition module")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
@@ -307,7 +310,7 @@ if __name__ == "__main__":
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
-    parser.add_argument("--nsamples", type=int, default=10, help="randomly sample nsamples pairs or None to use all")
+    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
     # parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
     # parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
     # parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
@@ -333,11 +336,11 @@ if __name__ == "__main__":
     )
 
     if args.env == "osm":
-        if args.city == "all":
-            cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
-        else:
-            cities = [args.city]
-        for city in cities:
+        # if args.city == "all":
+        #     cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
+        # else:
+        #     cities = [args.city]
+        for city in args.cities:
             city_dpath = os.path.join(env_dpath, "lang2ltl", city)
             data_fpaths = [os.path.join(city_dpath, fname) for fname in os.listdir(city_dpath) if fname.startswith("symbolic")]
             data_fpaths = sorted(data_fpaths, reverse=True)

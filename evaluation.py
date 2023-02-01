@@ -9,7 +9,45 @@ from pprint import pprint
 
 from gpt3 import GPT3
 from dataset_symbolic import load_split_dataset
-from utils import load_from_file, save_to_file
+from utils import load_from_file, save_to_file, name_to_prop, substitute_single_word
+
+
+def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert_rule, all_props):
+    accs = []
+    for true_ltl, out_ltl, true_name, out_name, out_grnd in zip(true_ltls, out_ltls, true_names, out_names, out_grnds):
+        if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
+            is_correct = "True"
+        else:
+            try:  # output LTL formula may have syntax error
+                spot_correct = spot.are_equivalent(spot.formula(true_ltl), spot.formula(out_ltl))
+                is_correct = "True" if spot_correct else "False"
+            except SyntaxError:
+                logging.info(f"Syntax error OR formula too long:\n{true_ltl}\n{out_ltl}")
+                # breakpoint()
+
+                if set(true_name) == set(out_grnd):
+                    true_props = [name_to_prop(name, convert_rule) for name in true_name]
+                    true_sub_map = {prop: sym for prop, sym in zip(true_props, all_props[:len(true_props)])}
+                    true_ltl_short = substitute_single_word(true_ltl, true_sub_map)[0]
+
+                    out_props = [name_to_prop(name, convert_rule) for name in true_name]
+                    out_sub_map = {prop: sym for prop, sym in zip(out_props, all_props[:len(out_props)])}
+                    out_ltl_short = substitute_single_word(out_ltl, out_sub_map)[0]
+
+                    logging.info(f"shorten LTLs:\n{true_ltl_short}\n{out_ltl_short}\n")
+                    try:  # output LTL formula may have syntax error
+                        spot_correct = spot.are_equivalent(spot.formula(true_ltl_short), spot.formula(out_ltl_short))
+                        is_correct = "True" if spot_correct else "False"
+                    except SyntaxError:
+                        logging.info(f"Syntax error:\n{true_ltl_short}\n{out_ltl_short}\n")
+                        # breakpoint()
+
+                        is_correct = "Syntax Error"
+                else:
+                    is_correct = "RER or Grounding Error"
+        accs.append(is_correct)
+    acc = np.mean([True if acc == "True" else False for acc in accs])
+    return accs, acc
 
 
 def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
@@ -30,6 +68,10 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
                         is_correct = "RER Error"
                 else:
                     is_correct = "Symbolic Translation Error"
+                    if set(true_name) != set(out_name):
+                        is_correct += " | RER Error"
+                    if set(true_name) != set(out_grnd):
+                        is_correct += " | Grounding Error"
             except SyntaxError:
                 logging.info(f"Syntax error: {true_sym_ltl}\n{out_sym_ltl}\n")
                 is_correct = "Syntax Error"
@@ -38,26 +80,26 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
     return accs, acc
 
 
-def evaluate_lang(output_ltls, true_ltls):
-    """
-    Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
-    """
-    # TODO: catch errors
-
-    accs = []
-    for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-        if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
-            accs.append("True")
-        else:
-            try:  # output LTL formula may have syntax error
-                is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-                is_correct = "True" if is_correct else "False"
-            except SyntaxError:
-                logging.info(f"Syntax error: {true_ltl}\n{out_ltl}\n")
-                is_correct = "Syntax Error"
-            accs.append(is_correct)
-    acc = np.mean([True if acc == "True" else False for acc in accs])
-    return accs, acc
+# def evaluate_lang(output_ltls, true_ltls):
+#     """
+#     Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
+#     """
+#     # TODO: catch errors
+#
+#     accs = []
+#     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
+#         if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
+#             accs.append("True")
+#         else:
+#             try:  # output LTL formula may have syntax error
+#                 is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
+#                 is_correct = "True" if is_correct else "False"
+#             except SyntaxError:
+#                 logging.info(f"Syntax error: {true_ltl}\n{out_ltl}\n")
+#                 is_correct = "Syntax Error"
+#             accs.append(is_correct)
+#     acc = np.mean([True if acc == "True" else False for acc in accs])
+#     return accs, acc
 
 
 def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len):
