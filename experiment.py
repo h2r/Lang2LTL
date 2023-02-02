@@ -22,7 +22,7 @@ PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "
 def run_exp():
     # Language tasks: RER, grounding translation
     if args.full_e2e:  # Full end-to-end from language to LTL
-        full_e2e_module = GPT3(completion_engine)
+        full_e2e_module = GPT3(translation_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
         out_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
     else:  # Modular
@@ -190,15 +190,15 @@ def translate_modular(grounded_utts, objs_per_utt):
     :param objs_per_utt: grounding objects for each input utterance
     :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
-    if "ft" in completion_engine:
+    if "ft" in translation_engine:
         trans_modular_prompt = ""
-    elif "text-davinci" in completion_engine:
+    elif "text-davinci" in translation_engine:
         trans_modular_prompt = load_from_file(args.trans_modular_prompt)
     else:
-        raise ValueError(f"ERROR: Unrecognized completion_engine: {completion_engine}")
+        raise ValueError(f"ERROR: Unrecognized translation engine: {translation_engine}")
 
     if "gpt3" in args.sym_trans:
-        trans_module = GPT3(completion_engine)
+        trans_module = GPT3(translation_engine)
     elif args.sym_trans in T5_MODELS:
         trans_module = Seq2Seq(args.sym_trans)
     elif args.sym_trans == "pt_transformer":
@@ -248,7 +248,7 @@ def translate_e2e(grounded_utts):
     Translation language to LTL using a single GPT-3.
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
-    model = GPT3(completion_engine)
+    model = GPT3(translation_engine)
     output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
     return output_ltls
 
@@ -312,7 +312,7 @@ if __name__ == "__main__":
     parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
     # parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="embedding of known obj in env")
     # parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="embedding of re in language")
-    # parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
+    # parser.add_argument("--translation_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
     # parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
     # parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
     # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
@@ -404,13 +404,13 @@ if __name__ == "__main__":
                     logging.info(f"Embedding engine: {args.embed_engine}")
 
                     if args.sym_trans == "gpt3_finetuned":
-                        completion_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
-                        completion_engine = load_from_file("model/gpt3_models.pkl")[completion_engine]
+                        translation_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+                        translation_engine = load_from_file("model/gpt3_models.pkl")[translation_engine]
                     elif args.sym_trans == "gpt3_pretrained":
-                        completion_engine = "text-davinci-003"
+                        translation_engine = "text-davinci-003"
                     else:
                         raise ValueError(f"ERROR: unrecognized symbolic translation model: {args.sym_trans}")
-                    logging.info(f"Symbolic translation engine: {completion_engine}")
+                    logging.info(f"Symbolic translation engine: {translation_engine}")
 
                     logging.info(f"known lmk embed: {obj_embed}")
                     logging.info(f"cached lmk embed: {name_embed}")
