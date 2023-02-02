@@ -90,7 +90,7 @@ def rer():
     rer_prompt = load_from_file(args.rer_prompt)
 
     if args.rer == "gpt3":
-        rer_module = GPT3(completion_engine)
+        rer_module = GPT3(args.rer_engine)
     # elif args.rer == "bert":
     #     rer_module = BERT()
     else:
@@ -300,6 +300,7 @@ if __name__ == "__main__":
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--cities", action="store", type=str, nargs="+", default=["charlotte_1", "new_york_1"], help="list of cities.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "bert"], help="Referring Expressoin Recognition module")
+    parser.add_argument("--rer_engine", type=str, default="text-davinci-003", help="pretrained GPT-3 for RER.")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
