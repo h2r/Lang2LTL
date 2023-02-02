@@ -50,6 +50,22 @@ def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert
     return accs, acc
 
 
+def evaluate_lang_0(true_ltls, out_ltls):
+    accs = []
+    for true_ltl, out_ltl in zip(true_ltls, out_ltls):
+        if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
+            is_correct = "True"
+        else:
+            try:  # output LTL formula may have syntax error
+                spot_correct = spot.are_equivalent(spot.formula(true_ltl), spot.formula(out_ltl))
+                is_correct = "True" if spot_correct else "False"
+            except SyntaxError:
+                is_correct = "Syntax Error"
+        accs.append(is_correct)
+    acc = np.mean([True if acc == "True" else False for acc in accs])
+    return accs, acc
+
+
 def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
     accs = []
     for true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd in zip(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, out_grnds):
@@ -78,28 +94,6 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
         accs.append(is_correct)
     acc = np.mean([True if acc == "True" else False for acc in accs])
     return accs, acc
-
-
-# def evaluate_lang(output_ltls, true_ltls):
-#     """
-#     Parse LTL formulas in infix or prefix (spot.formula) then check semantic equivalence (spot.are_equivalent).
-#     """
-#     # TODO: catch errors
-#
-#     accs = []
-#     for out_ltl, true_ltl in zip(output_ltls, true_ltls):
-#         if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
-#             accs.append("True")
-#         else:
-#             try:  # output LTL formula may have syntax error
-#                 is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-#                 is_correct = "True" if is_correct else "False"
-#             except SyntaxError:
-#                 logging.info(f"Syntax error: {true_ltl}\n{out_ltl}\n")
-#                 is_correct = "Syntax Error"
-#             accs.append(is_correct)
-#     acc = np.mean([True if acc == "True" else False for acc in accs])
-#     return accs, acc
 
 
 def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len):
