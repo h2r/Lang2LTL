@@ -154,15 +154,6 @@ def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
 
 
 def construct_cleanup_lmks(env_lmks_dpath):
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(
-                                os.path.join(env_lmks_dpath, f'log_construct_lmks_{args.city}.log'), mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
-
     sizes = ["", "big", "small"]
     colors = ["green", "blue", "red", "yellow"]
     shapes = [""]
@@ -191,20 +182,22 @@ if __name__ == "__main__":
 
     env_dpath = os.path.join("data", args.env)
     env_lmks_dpath = os.path.join(env_dpath, "lmks")
+    model_dpath = os.path.join(env_dpath, args.model)
+    os.makedirs(model_dpath, exist_ok=True)
     # construct_lmk2prop(osm_lmks_dpath, args.model)  # for testing
-    if args.cleanup_lmk:
-        construct_cleanup_lmks(env_lmks_dpath)  # uncomment to construct lmk json for CleanUp World
-    else:
-        model_dpath = os.path.join(env_dpath, args.model)
-        os.makedirs(model_dpath, exist_ok=True)
-        logging.basicConfig(level=logging.DEBUG,
-                            format='%(message)s',
-                            handlers=[
-                                logging.FileHandler(os.path.join(model_dpath, f'log_gen_grounded_{args.city}.log'), mode='w'),
-                                logging.StreamHandler()
-                            ]
-        )
 
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(os.path.join(model_dpath, f'log_gen_grounded_{args.city}.log'),
+                                                mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
+
+    if args.cleanup_lmk:
+        construct_cleanup_lmks(env_lmks_dpath)  # construct lmk json file for CleanUp World
+    else:
         if args.city == "all":
             cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
         else:
