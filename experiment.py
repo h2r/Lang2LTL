@@ -400,13 +400,17 @@ if __name__ == "__main__":
 
                     logging.info(data_fpath)
 
+                    logging.info(f"RER engine: {args.rer_engine}")
+                    logging.info(f"Embedding engine: {args.embed_engine}")
+
                     if args.sym_trans == "gpt3_finetuned":
                         completion_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
-                        logging.info(f"completion_enging: {completion_engine}")
                         completion_engine = load_from_file("model/gpt3_models.pkl")[completion_engine]
                     elif args.sym_trans == "gpt3_pretrained":
                         completion_engine = "text-davinci-003"
-                        logging.info(f"completion_enging: {completion_engine}")
+                    else:
+                        raise ValueError(f"ERROR: unrecognized symbolic translation model: {args.sym_trans}")
+                    logging.info(f"Symbolic translation engine: {completion_engine}")
 
                     logging.info(f"known lmk embed: {obj_embed}")
                     logging.info(f"cached lmk embed: {name_embed}")
