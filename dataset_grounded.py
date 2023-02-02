@@ -3,11 +3,12 @@ Generate utterance-language grounded dataset with props substituted by lmks from
 """
 import argparse
 import os
+import logging
 from pathlib import Path
 import string
+import re
 from itertools import permutations
 import random
-import logging
 from pprint import pprint
 import time
 
@@ -152,31 +153,58 @@ def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
     return utt_grounded, ltl_grounded, lmk_names
 
 
+def construct_cleanup_lmks(env_lmks_dpath):
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(
+                                os.path.join(env_lmks_dpath, f'log_construct_lmks_{args.city}.log'), mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
+
+    sizes = ["", "big", "small"]
+    colors = ["green", "blue", "red", "yellow"]
+    shapes = [""]
+    amenities = ["room", "region"]
+
+    sem_lmks = {re.sub(' +', ' ', f"{size} {color} {shape} {amenity}".strip()): {} for color in colors for size in sizes for shape in shapes for amenity in amenities}
+
+    os.makedirs(env_lmks_dpath, exist_ok=True)
+    city_fpath = os.path.join(env_lmks_dpath, "cleanup.json")  # call cleanup city to be consistent with OSM env
+    save_to_file(sem_lmks, city_fpath)
+    logging.info(f"generated {len(sem_lmks)} lmks for CleanUp\nfrom\nsizes: {sizes}\ncolors: {colors}\nshapes: {shapes}\namenities: {amenities}")
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm", help="dpath to all split datasets.")
-    parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
-    parser.add_argument("--city", type=str, default="boston", help="city landmarks from 1 or all json files in data/osm/osm_lmks.")
+    parser.add_argument("--env", type=str, default="cleanup", choices=["osm", "cleanup"], help="environment name.")
+    parser.add_argument("--city", type=str, default="cleanup", help="city lmks from 1 or all json files in data/osm/lmks or data/clenaup/lmks.")
+    parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
     parser.add_argument("--nsamples", type=int, default=2, help="number of samples per utt strucutre when perm lmks for valid set.")
     parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
-    parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
+    parser.add_argument("--cleanup_lmk", action="store_true", help="True if construct json for CleanUp lmks.")
     args = parser.parse_args()
 
     env_dpath = os.path.join("data", args.env)
     env_lmks_dpath = os.path.join(env_dpath, "lmks")
     # construct_lmk2prop(osm_lmks_dpath, args.model)  # for testing
+    if args.cleanup_lmk:
+        construct_cleanup_lmks(env_lmks_dpath)  # uncomment to construct lmk json for CleanUp World
+    else:
+        model_dpath = os.path.join(env_dpath, args.model)
+        os.makedirs(model_dpath, exist_ok=True)
+        logging.basicConfig(level=logging.DEBUG,
+                            format='%(message)s',
+                            handlers=[
+                                logging.FileHandler(os.path.join(model_dpath, f'log_gen_grounded_{args.city}.log'), mode='w'),
+                                logging.StreamHandler()
+                            ]
+        )
 
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(os.path.join(env_dpath, args.model, f'log_gen_grounded_{args.city}.log'), mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
-
-    if args.env == "osm":
         if args.city == "all":
             cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
         else:
