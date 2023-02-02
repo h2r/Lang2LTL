@@ -1,7 +1,7 @@
 import unittest
 import string
 
-from utils import substitute_single_letter, substitute_single_word, prefix_to_infix
+from utils import substitute_single_letter, substitute_single_word, shorten_prop, prefix_to_infix
 
 
 class TestUtils(unittest.TestCase):
@@ -46,6 +46,17 @@ class TestUtils(unittest.TestCase):
         for idx, (in_str, sub_map, true_out_str) in enumerate(in_out_pairs):
             out_str, subs_done = substitute_single_word(in_str, sub_map)
             self.assertEqual(out_str, true_out_str, f"incorrect output string: {idx}\n{true_out_str}\n{out_str}")
+
+    def test_shorten_prop(self):
+        in_out_pairs = [
+            ("massachusetts_state_transportation_building", "ma_st_tr_bu"),
+            ("washington_st_@_kneeland_st", "wa_st_@_kn_st"),
+            ("montien", "mo"),
+            ("62_on_the_park", "62_on_th_pa"),
+        ]
+        for prop_long, true_prop_short in in_out_pairs:
+            out_prop_short = shorten_prop(prop_long)
+            self.assertEqual(true_prop_short, out_prop_short, "incorrect shorten prop")
 
     def test_infix_to_prefix(self):
         in_out_pairs = [
