@@ -46,9 +46,9 @@ def store_embeds(model, lmk_path, keep_keys, gpt3_embed_engine=None):
 
     lmk_fname = Path(lmk_path).stem
     if model == "gpt3":
-        save_fpath = f"data/osm/lmk_embeds/obj2embed_{lmk_fname}_{gpt3_embed_engine}.pkl"
+        save_fpath = f"data/osm/lmk_sem_embeds/obj2embed_{lmk_fname}_{gpt3_embed_engine}.pkl"
     else:
-        save_fpath = f"data/osm/lmk_embeds/obj2embed_{lmk_fname}_{model}.pkl"
+        save_fpath = f"data/osm/lmk_sem_embeds/obj2embed_{lmk_fname}_{model}.pkl"
     save_to_file(name2embed, save_fpath)
     return save_fpath
 

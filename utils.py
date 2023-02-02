@@ -13,13 +13,13 @@ import nltk
 from gpt3 import GPT3
 
 
-def build_placeholder_map(name_entities, convert_rule):
+def build_placeholder_map(name_entities, convert_rule, props):
+    # breakpoint()
+
     placeholder_map, placeholder_map_inv = {}, {}
-    letter = "a"
-    for name in name_entities:
+    for name, letter in zip(name_entities, props[:len(name_entities)]):
         placeholder_map[name] = letter
         placeholder_map_inv[letter] = name_to_prop(name, convert_rule)
-        letter = chr(ord(letter) + 1)  # increment placeholder using its ascii value
     return placeholder_map, placeholder_map_inv
 
 
@@ -31,6 +31,8 @@ def substitute(input_strs, substitute_maps, is_utt):
     :param is_utt: True if input_strs are utts; False if input_strs are LTL formulas
     :return: substituted strings and their corresponding substitutions
     """
+    # breakpoint()
+
     output_strs, subs_per_str = [], []
     for input_str, sub_map in zip(input_strs, substitute_maps):
         if is_utt:
@@ -38,9 +40,11 @@ def substitute(input_strs, substitute_maps, is_utt):
         else:
             out_str = substitute_single_letter(input_str, sub_map)
             subs_done = set()
-        out_str = out_str.translate(str.maketrans('', '', ',.'))  # remove comma, period since sym translation module finetuned on utts w/o puns
+        # out_str = out_str.translate(str.maketrans('', '', ',.'))  # remove comma, period since sym translation module finetuned on utts w/o puns
         output_strs.append(out_str)
         subs_per_str.append(subs_done)
+    # breakpoint()
+
     return output_strs, subs_per_str
 
 
@@ -49,6 +53,8 @@ def substitute_single_word(in_str, sub_map):
     Substitute words and phrases to words or phrases in a single utterance.
     Assume numbers are not keys of sub_map.
     """
+    # breakpoint()
+
     sub_map = sorted(sub_map.items(), key=lambda kv: len(kv[0]), reverse=True)  # start substitution with long strings
     subs_done = set()
 
@@ -60,6 +66,8 @@ def substitute_single_word(in_str, sub_map):
     for n, (k, v) in enumerate(sub_map):
         in_str = in_str.replace(f"[{n}]", v)  # escape number
         subs_done.add(v)
+
+    # breakpoint()
 
     return in_str.strip(), subs_done
 
@@ -150,6 +158,10 @@ def name_to_prop(name, convert_rule):
         return "_".join(name.split()).strip()
     else:
         raise ValueError(f"ERROR: unrecognized conversion rule: {convert_rule}")
+
+
+def shorten_prop(prop):
+    return '_'.join([word[:2] for word in prop.split('_')])
 
 
 def deserialize_props_str(props_str):
