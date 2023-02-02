@@ -102,7 +102,7 @@ def rer():
         # print(f"{rer_prompt.strip()} {utt}\nPropositions:\n{idx_utt}")
         # breakpoint()
 
-        logging.info(f"Extracting name entities from utterance: {idx_utt}")
+        logging.info(f"Extracting referring expressions from utterance: {idx_utt}/{len(input_utts)}")
         names_per_utt = [name.strip() for name in rer_module.extract_ne(query=f"{rer_prompt.strip()} {utt}\nPropositions:")]
         names_per_utt = list(set(names_per_utt))  # remove duplicated RE
 
@@ -133,9 +133,9 @@ def ground_names(names):
     """
     Find groundings (objects in given environment) of name entities in input utterances.
     """
-    obj2embed = load_from_file(args.obj_embed)  # load embeddings of known objects in given environment
-    if os.path.exists(args.name_embed):  # load cached embeddings of name entities
-        name2embed = load_from_file(args.name_embed)
+    obj2embed = load_from_file(obj_embed)  # load embeddings of known objects in given environment
+    if os.path.exists(name_embed):  # load cached embeddings of name entities
+        name2embed = load_from_file(name_embed)
     else:
         name2embed = {}
 
@@ -163,7 +163,7 @@ def ground_names(names):
         name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
 
         if is_embed_added:
-            save_to_file(name2embed, args.name_embed)
+            save_to_file(name2embed, name_embed)
 
     return name2grounds
 
@@ -298,19 +298,19 @@ def plan(output_ltls, true_trajs, name2grounds):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
-    parser.add_argument("--cities", action="store", type=str, nargs="+", default=["boston"], help="list of cities.")
+    parser.add_argument("--cities", action="store", type=str, nargs="+", default=["charlotte_1", "new_york_1"], help="list of cities.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "bert"], help="Referring Expressoin Recognition module")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
-    parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="embedding of known obj in env")
-    parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="embedding of re in language")
     parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re")
     parser.add_argument("--sym_trans", type=str, default="gpt3_finetuned", choices=["gpt3_finetuned", "gpt3_pretrained", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
     parser.add_argument("--full_e2e", action="store_true", help="solve translation and ground end-to-end using GPT-3")
     parser.add_argument("--full_e2e_prompt", type=str, default="data/cleanup_full_e2e_prompt_15.txt", help="path to full end-to-end prompt")
     parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
+    # parser.add_argument("--obj_embed", type=str, default="data/osm/lmk_sem_embeds/obj2embed_boston_text-embedding-ada-002.pkl", help="embedding of known obj in env")
+    # parser.add_argument("--name_embed", type=str, default="data/osm/lmk_name_embeds/name2embed_boston_text-embedding-ada-002.pkl", help="embedding of re in language")
     # parser.add_argument("--completion_engine", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", help="finetuned or pretrained gpt-3 for symbolic translation.")
     # parser.add_argument("--data_fpath", type=str, default="data/osm/lang2ltl/boston/small_symbolic_batch12_perm_utt_0.2_42.pkl", help="test dataset.")
     # parser.add_argument("--result_dpath", type=str, default="results/lang2ltl/osm/boston", help="dpath to save outputs of each model in a json file")
@@ -330,7 +330,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join("results", "lang2ltl", 'log_raw_results.log'), mode='w'),
+                            logging.FileHandler(os.path.join("results", "lang2ltl", f'log_raw_results_{"_".join(args.cities)}.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
@@ -344,6 +344,9 @@ if __name__ == "__main__":
             city_dpath = os.path.join(env_dpath, "lang2ltl", city)
             data_fpaths = [os.path.join(city_dpath, fname) for fname in os.listdir(city_dpath) if fname.startswith("symbolic")]
             data_fpaths = sorted(data_fpaths, reverse=True)
+
+            obj_embed = os.path.join(env_dpath, "lmk_sem_embeds", f"obj2embed_{city}_{args.embed_engine}.pkl")
+            name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{city}_{args.embed_engine}.pkl")
 
             for data_fpath in data_fpaths:
                 dataset = load_from_file(data_fpath)
@@ -403,6 +406,9 @@ if __name__ == "__main__":
                     completion_engine = "text-davinci-003"
                     logging.info(f"completion_enging: {completion_engine}")
 
+                logging.info(f"known lmk embed: {obj_embed}")
+                logging.info(f"cached lmk embed: {name_embed}")
+
                 # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
 
                 for run in range(args.nruns):
@@ -414,10 +420,10 @@ if __name__ == "__main__":
     # filter_cities = ["boston", "chicago_2", "jacksonville_1", "san_diego_2"]
     # city_names = [city for city in city_names if city not in filter_cities]
     # for city in city_names:
-    #     args.obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{city}_{args.embed_engine}.pkl"
-    #     args.name_embed = f"data/osm/lmk_name_embeds/name2embed_{city}_{args.embed_engine}.pkl"
-    #     print(args.obj_embed)
-    #     print(args.name_embed)
+    #     obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{city}_{embed_engine}.pkl"
+    #     name_embed = f"data/osm/lmk_name_embeds/name2embed_{city}_{embed_engine}.pkl"
+    #     print(obj_embed)
+    #     print(name_embed)
     #     breakpoint()
     #     names = list(load_from_file(f"data/osm/lmks/{city}.json").keys())
     #     name2grounds = ground_names(names)
