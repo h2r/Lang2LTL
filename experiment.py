@@ -330,7 +330,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join("results", "lang2ltl", f'log_raw_results_{"_".join(args.cities)}.log'), mode='w'),
+                            logging.FileHandler(os.path.join("results", "lang2ltl", f'log_raw_results_{"_".join(args.cities)}_new.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
@@ -349,31 +349,6 @@ if __name__ == "__main__":
             name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{city}_{args.embed_engine}.pkl")
 
             for data_fpath in data_fpaths:
-                dataset = load_from_file(data_fpath)
-                valid_iter = dataset["valid_iter"]
-                meta_iter = dataset["valid_meta"]
-
-                input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_names, propositions = [], [], [], [], [], [], []
-                for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, lmk_names, seed) in zip(valid_iter, meta_iter):
-                    input_utts.append(utt)
-                    true_ltls.append(ltl)
-                    true_sym_utts.append(sym_utt)
-                    pattern_types.append(pattern_type)
-                    if "restricted_avoidance" in pattern_type:
-                        true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
-                        true_names.append(lmk_names[-1:])
-                        propositions.append(props[-1:])
-                    else:
-                        true_sym_ltls.append(sym_ltl)
-                        true_names.append(lmk_names)
-                        propositions.append(props)
-
-                assert len(input_utts) == len(true_ltls) == len(true_sym_utts) == len(true_sym_ltls) == len(pattern_types) == len(true_names) == len(propositions), \
-                    f"ERROR: input len != # out len: {len(input_utts)} {len(true_ltls)} {len(true_sym_utts)} {len(true_sym_ltls)} {len(pattern_types)} {len(true_names)} {len(propositions)}"
-                if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
-                    random.seed(42)
-                    input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions = zip(*random.sample(list(zip(input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions)), args.nsamples))
-
                 if "utt" in data_fpath:
                     result_subd = "utt_holdout_batch12"
                 elif "formula" in data_fpath:
@@ -388,32 +363,58 @@ if __name__ == "__main__":
                 all_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
                 pair_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
 
-                # logging.basicConfig(level=logging.DEBUG,
-                #                     format='%(message)s',
-                #                     handlers=[
-                #                         logging.FileHandler(f'{os.path.splitext(all_result_fpath)[0]}.log', mode='w'),
-                #                         logging.StreamHandler()
-                #                     ]
-                # )
+                if os.path.basename(pair_result_fpath) not in os.listdir(result_dpath):  # only run unfinished exps
+                    dataset = load_from_file(data_fpath)
+                    valid_iter = dataset["valid_iter"]
+                    meta_iter = dataset["valid_meta"]
 
-                logging.info(data_fpath)
+                    input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_names, propositions = [], [], [], [], [], [], []
+                    for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, lmk_names, seed) in zip(valid_iter, meta_iter):
+                        input_utts.append(utt)
+                        true_ltls.append(ltl)
+                        true_sym_utts.append(sym_utt)
+                        pattern_types.append(pattern_type)
+                        if "restricted_avoidance" in pattern_type:
+                            true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
+                            true_names.append(lmk_names[-1:])
+                            propositions.append(props[-1:])
+                        else:
+                            true_sym_ltls.append(sym_ltl)
+                            true_names.append(lmk_names)
+                            propositions.append(props)
 
-                if args.sym_trans == "gpt3_finetuned":
-                    completion_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
-                    logging.info(f"completion_enging: {completion_engine}")
-                    completion_engine = load_from_file("model/gpt3_models.pkl")[completion_engine]
-                elif args.sym_trans == "gpt3_pretrained":
-                    completion_engine = "text-davinci-003"
-                    logging.info(f"completion_enging: {completion_engine}")
+                    assert len(input_utts) == len(true_ltls) == len(true_sym_utts) == len(true_sym_ltls) == len(pattern_types) == len(true_names) == len(propositions), \
+                        f"ERROR: input len != # out len: {len(input_utts)} {len(true_ltls)} {len(true_sym_utts)} {len(true_sym_ltls)} {len(pattern_types)} {len(true_names)} {len(propositions)}"
+                    if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
+                        random.seed(42)
+                        input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions = zip(*random.sample(list(zip(input_utts, true_ltls, true_sym_ltls, pattern_types, true_names, propositions)), args.nsamples))
 
-                logging.info(f"known lmk embed: {obj_embed}")
-                logging.info(f"cached lmk embed: {name_embed}")
+                    # logging.basicConfig(level=logging.DEBUG,
+                    #                     format='%(message)s',
+                    #                     handlers=[
+                    #                         logging.FileHandler(f'{os.path.splitext(all_result_fpath)[0]}.log', mode='w'),
+                    #                         logging.StreamHandler()
+                    #                     ]
+                    # )
 
-                # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
+                    logging.info(data_fpath)
 
-                for run in range(args.nruns):
-                    logging.info(f"\n\n\nRUN: {run}")
-                    run_exp()
+                    if args.sym_trans == "gpt3_finetuned":
+                        completion_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+                        logging.info(f"completion_enging: {completion_engine}")
+                        completion_engine = load_from_file("model/gpt3_models.pkl")[completion_engine]
+                    elif args.sym_trans == "gpt3_pretrained":
+                        completion_engine = "text-davinci-003"
+                        logging.info(f"completion_enging: {completion_engine}")
+
+                    logging.info(f"known lmk embed: {obj_embed}")
+                    logging.info(f"cached lmk embed: {name_embed}")
+
+                    # formula2type, formula2prop = find_all_formulas(TYPE2NPROPS, "noperm" in data_fpath)
+
+                    for run in range(args.nruns):
+                        logging.info(f"\n\n\nRUN: {run}")
+                        run_exp()
 
     # # Test grounding
     # city_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
