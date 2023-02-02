@@ -1,0 +1,420 @@
+Pattern Type,Number of Propositions,Utterance,True LTL
+visit,2,go to the blue room keep going and stop when you reach the green room,F & blue_room F green_room
+visit,2,go to the green room via the blue room,F & blue_room F green_room
+visit,2,go through the blue room into the green room,F & blue_room F green_room
+visit,2,go over towards the blue room and up through it to the green rectangular room,F & blue_room F green_room
+visit,2,go through the blue to get to the green,F & blue_room F green_room
+visit,2,go through blue room to green room,F & blue_room F green_room
+visit,2,follow the path through the blue room to get to the green room,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,go through blue rooms to get to the green one,F & blue_room F green_room
+visit,2,take the blue room first which leads to the green room,F & blue_room F green_room
+visit,2,only go to the green room by first entering the blue room,F & blue_room F green_room
+visit,2,go to the green room through the blue one,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,go to the green area through blue area,F & blue_room F green_room
+visit,2,go through blue to get to green,F & blue_room F green_room
+visit,2,go through blue room to get to green room,F & blue_room F green_room
+visit,2,go through blue to green room,F & blue_room F green_room
+visit,2,please go to the green room through the blue room,F & blue_room F green_room
+visit,2,travel through the blue square room to the large green rectangular room,F & blue_room F green_room
+visit,2,go through the blue room to get to the green room,F & blue_room F green_room
+visit,2,move through a blue room and into the green room,F & blue_room F green_room
+visit,2,go through blue to reach green,F & blue_room F green_room
+visit,2,go to the green room through blue,F & blue_room F green_room
+visit,2,move through the blue room into the green room,F & blue_room F green_room
+visit,2,go into the green room through the blue room,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,go through the blue room to get to the green room,F & blue_room F green_room
+visit,2,go into the blue room and then the green room,F & blue_room F green_room
+visit,2,go to green rectangle via blue square,F & blue_room F green_room
+visit,2,go to the green room through the blue room,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,go to the blue room then to the green room,F & blue_room F green_room
+visit,2,go to the green room via the blue room,F & blue_room F green_room
+visit,2,travel through the blue room into the green room,F & blue_room F green_room
+visit,2,go to large green room through blue room,F & blue_room F green_room
+visit,2,go to the blue room only and then the green room only,F & blue_room F green_room
+visit,2,navigate through blue to reach green,F & blue_room F green_room
+visit,2,enter the green room through the blue room,F & blue_room F green_room
+visit,2,make your way to the green room by going through the blue room,F & blue_room F green_room
+visit,2,the robot moves through the blue room to get to the green room,F & blue_room F green_room
+visit,2,enter the blue room and proceed until the green room,F & blue_room F green_room
+visit,2,go through the blue room towards the green room,F & blue_room F green_room
+visit,2,go through the blue room into the green room,F & blue_room F green_room
+visit,2,go to the green room by passing through the blue room,F & blue_room F green_room
+visit,2,enter the door to the blue room and exit the other door into the green room,F & blue_room F green_room
+visit,2,travel through the blue room to the green room,F & blue_room F green_room
+visit,2,enter green room via blue room,F & blue_room F green_room
+visit,2,go through blue room to green room,F & blue_room F green_room
+visit,2,go through the blue room until you get to the green,F & blue_room F green_room
+visit,2,move through the blue room to the green room,F & blue_room F green_room
+visit,2,travel through the blue room to go into the green room,F & blue_room F green_room
+visit,2,go to the green room via the blue room,F & blue_room F green_room
+visit,2,always walk through the blue room to get to the green room,F & blue_room F green_room
+visit,2,the robot moves towards the green room through the blue room,F & blue_room F green_room
+visit,2,go thru the blue box to get to the green box,F & blue_room F green_room
+visit,2,move to the blue room and then to the green room,F & blue_room F green_room
+visit,2,instead of going through the red room move through the blue room to enter the green room,F & blue_room F green_room
+visit,2,go to the blue room then to the green room,F & blue_room F green_room
+visit,2,go through the blue room in to the green room,F & blue_room F green_room
+visit,2,go thru the blue to get to the green,F & blue_room F green_room
+visit,2,go through the blue room to get to the green room,F & blue_room F green_room
+visit,2,go through the blue room to enter the green room,F & blue_room F green_room
+visit,2,the robot goes to the blue to get to the green,F & blue_room F green_room
+visit,2,walk pass the blue room into the green room,F & blue_room F green_room
+visit,2,move to the large green room by passing through the small blue room,F & blue_room F green_room
+visit,2,enter the blue room and then the green room,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,you must walk through the blue room to get to the green room,F & blue_room F green_room
+visit,2,move through the blue room to the green room,F & blue_room F green_room
+visit,2,go to the green room only through the blue room,F & blue_room F green_room
+visit,2,go through the blue room and enter the green room,F & blue_room F green_room
+visit,2,walk through the blue room until you reach the green room,F & blue_room F green_room
+visit,2,cross the blue room only to reach the green room,F & blue_room F green_room
+visit,2,go to blue room then go to green room,F & blue_room F green_room
+visit,2,go through the blue room to get to the green room,F & blue_room F green_room
+visit,2,go to the blue room then go to the green room,F & blue_room F green_room
+visit,2,go to the green room via the blue room,F & blue_room F green_room
+visit,2,go through the door to the blue room and continue into the green room,F & blue_room F green_room
+visit,2,first enter the blue room and then proceed to the green room,F & blue_room F green_room
+visit,2,move toward the blue room then into the green room,F & blue_room F green_room
+visit,2,move into the green room while being sure to pass through only the blue room,F & blue_room F green_room
+visit,2,go to the green room by first entering the blue room,F & blue_room F green_room
+visit,2,pass through the blue room to reach the green room,F & blue_room F green_room
+visit,2,the robot goes through the blue to get to the green,F & blue_room F green_room
+visit,2,go through the blue room to the green room,F & blue_room F green_room
+visit,2,go through the blue room to reach the green room,F & blue_room F green_room
+visit,2,go into the green room by way of the blue room,F & blue_room F green_room
+visit,2,go through the blue room while moving to the green room,F & blue_room F green_room
+visit,2,pass through the small blue room to get to the large green room,F & blue_room F green_room
+visit,2,go through the blue room to get to the green room,F & blue_room F green_room
+visit,2,move through the green rooms to get to the blue room,F & green_room F blue_room
+visit,2,go from the pink room to the blue room by going through the green room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,pass through the small green room to get to the large blue room,F & green_room F blue_room
+visit,2,move to the blue room by going through the green room first,F & green_room F blue_room
+visit,2,move into the blue room through the green room,F & green_room F blue_room
+visit,2,travel through the green room to the blue room,F & green_room F blue_room
+visit,2,go through the green box to get to the blue area,F & green_room F blue_room
+visit,2,go through the green room in to the blue room,F & green_room F blue_room
+visit,2,enter blue room through green room,F & green_room F blue_room
+visit,2,robot goes through green and ends up in blue,F & green_room F blue_room
+visit,2,move into the blue room but only via the green room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,enter the blue room through the green door only,F & green_room F blue_room
+visit,2,the robot must go into the blue room by going through the green room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,go to the blue area through green area,F & green_room F blue_room
+visit,2,go to green room before blue room,F & green_room F blue_room
+visit,2,go to the blue room via the green room,F & green_room F blue_room
+visit,2,go up through the green box to the blue box,F & green_room F blue_room
+visit,2,go to blue room through green room,F & green_room F blue_room
+visit,2,go to the blue room but only go through the green room to get there,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,only go through green rooms to get to blue rooms,F & green_room F blue_room
+visit,2,go via green color path to reach blue room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,go through the green room and then into the blue room,F & green_room F blue_room
+visit,2,go through green to get to blue,F & green_room F blue_room
+visit,2,go to the green room and then go to the blue room,F & green_room F blue_room
+visit,2,the robot goes through the green to get to blue,F & green_room F blue_room
+visit,2,go to the blue room and make sure to go through the green room,F & green_room F blue_room
+visit,2,move through the green room to gain access to the large blue room,F & green_room F blue_room
+visit,2,go through the green room to reach the blue room,F & green_room F blue_room
+visit,2,pass through the small green room to get to the large blue room,F & green_room F blue_room
+visit,2,move through the green room to the blue room,F & green_room F blue_room
+visit,2,go to green room then to blue room,F & green_room F blue_room
+visit,2,go through green rooms to get to the blue one,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,pass through the green room to the blue room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,move through green room to the blue room,F & green_room F blue_room
+visit,2,go through the green room and into the blue room,F & green_room F blue_room
+visit,2,avoiding all but the green rectangle travel to the blue area,F & green_room F blue_room
+visit,2,move to reach the blue place by taking a path which has green colour and white colour in it while avoiding black yellow and red colour,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,move to blue room through the green room,F & green_room F blue_room
+visit,2,pass through the green room to the blue room,F & green_room F blue_room
+visit,2,go to the blue room through the green room,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,enter the blue room by going though the green room,F & green_room F blue_room
+visit,2,go towards the blue room through the green room,F & green_room F blue_room
+visit,2,go through the green room to reach the blue room,F & green_room F blue_room
+visit,2,move through the green room to the blue room,F & green_room F blue_room
+visit,2,the robot goes through green to get to blue,F & green_room F blue_room
+visit,2,enter the blue room through the green room,F & green_room F blue_room
+visit,2,enter the blue room by way of the green room,F & green_room F blue_room
+visit,2,progress through green rectangle room to the large blue room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,go to the blue room via the green room,F & green_room F blue_room
+visit,2,to reach the blue go through the green,F & green_room F blue_room
+visit,2,enter the green room and exit into the blue room,F & green_room F blue_room
+visit,2,travel through the green room to the blue rectangular room,F & green_room F blue_room
+visit,2,go through the green and to the blue,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,enter blue room via green room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,go through the green room to the blue room,F & green_room F blue_room
+visit,2,go up through the green room into the blue room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,follow the green room to the blue room,F & green_room F blue_room
+visit,2,go to blue via green,F & green_room F blue_room
+visit,2,first enter the green room and then move to the blue room,F & green_room F blue_room
+visit,2,move toward the green room then into the blue room,F & green_room F blue_room
+visit,2,go through the green room in to the blue room,F & green_room F blue_room
+visit,2,move through the green room and into the blue room,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,go through green to get to blue,F & green_room F blue_room
+visit,2,move through the green room and out into the blue room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,move through the hallway to the blue room but only if it takes you through a green room,F & green_room F blue_room
+visit,2,go to the green room then go to the blue room,F & green_room F blue_room
+visit,2,go through the green room and into the blue room,F & green_room F blue_room
+visit,2,go through the green room to get to the blue room,F & green_room F blue_room
+visit,2,go through the green room into the blue room,F & green_room F blue_room
+visit,2,move through the green room to get to the blue room,F & green_room F blue_room
+visit,2,go through green rooms to get to the blue one,F & green_room F blue_room
+visit,2,move to the large blue room by passing through the small green room,F & green_room F blue_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move from your room to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go in to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move into the red room and stay on the first square you end up on,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move into the red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move into red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room and stop after entering,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,enter the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,i want you to go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go into the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move into the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,move to red room,F red_room
+visit,1,go to red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,move to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,1,go to the red room,F red_room
+visit,2,go from the blue room to the red room then go from the red room to the green room,F & red_room F green_room
+visit,2,go to red room and then green room,F & red_room F green_room
+visit,2,go into the red room and then go into the green room,F & red_room F green_room
+visit,2,go to the red room then go to the green room,F & red_room F green_room
+visit,2,go to the red room go to the green room,F & red_room F green_room
+visit,2,go to red room go to green room,F & red_room F green_room
+visit,2,move to the red room then go to the green room,F & red_room F green_room
+visit,2,enter the red room then enter the green room,F & red_room F green_room
+visit,2,move to the red room move to the green room,F & red_room F green_room
+visit,2,go to the red room and then go to the green room,F & red_room F green_room
+visit,2,first go to red room then go to green room,F & red_room F green_room
+visit,2,go from the blue room to the red room and then go from the red room to the green room,F & red_room F green_room
+visit,2,go into the red room and enter the green room,F & red_room F green_room
+visit,2,move to red room move to green room,F & red_room F green_room
+visit,2,go to the red room and then the green room,F & red_room F green_room
+visit,2,go to the red room and then go into the green room,F & red_room F green_room
+visit,2,move to the red room then move to the green room,F & red_room F green_room
+visit,2,go to the red room then the green room,F & red_room F green_room
+visit,2,go to the red room then the green room,F & red_room F green_room
+visit,2,go to the red room and then go to the green room,F & red_room F green_room
+visit,2,move to the red room and move into the green room,F & red_room F green_room
+visit,2,go into the red room then go into the green room,F & red_room F green_room
+visit,2,move to the red room move to the green room,F & red_room F green_room
+visit,2,go to the red room then to the green room,F & red_room F green_room
+visit,2,go to the red room and then to green room,F & red_room F green_room
+visit,2,robot c move to the red room and then move to the green room,F & red_room F green_room
+visit,2,move from blue room to red room then move to green room,F & red_room F green_room
+visit,2,move to red room then move to green room,F & red_room F green_room
+visit,2,move into the red room then move into the green room,F & red_room F green_room
+visit,2,go to the red room and then go to the green room,F & red_room F green_room
+visit,2,go to the red room go to the green room,F & red_room F green_room
+visit,2,go to the red room and then go to the green room,F & red_room F green_room
+visit,2,move to the red room then move to the green room,F & red_room F green_room
+visit,2,go into the red room and then into the green room,F & red_room F green_room
+visit,2,move to the red room and then move to the green room,F & red_room F green_room
+visit,2,go to red room go to green room,F & red_room F green_room
+visit,2,go to red room go to green room,F & red_room F green_room
+visit,2,go to red room go to green room,F & red_room F green_room
+visit,2,go to red room go to green room,F & red_room F green_room
+visit,2,move to the red room and then move to the green room,F & red_room F green_room
+visit,2,go to the red room go to the green room,F & red_room F green_room
+visit,1,move to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,go in and then go into the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,go in and then go to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,move to the middle of the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go into the green room,F green_room
+visit,1,move to green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move until you are one square into the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,leave this room and go into the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move to the green room,F green_room
+visit,1,move to green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,move to green room,F green_room
+visit,1,go into the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,exit room and go right to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go into the green room,F green_room
+visit,1,go from the blue room to the red room then to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
+visit,1,go to the green room,F green_room
