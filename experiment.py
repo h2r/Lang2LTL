@@ -249,7 +249,7 @@ def translate_e2e(grounded_utts):
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
     model = GPT3(translation_engine)
-    output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
+    output_ltls = [model.translate(utt, trans_e2e_prompt)[0] for utt in grounded_utts]
     return output_ltls
 
 
