@@ -282,26 +282,26 @@ visit,2,Navigate through Viet's Express and enter the TGF Hair salon,F & viets_e
 visit,2,go to the vietnamese restaurant and then the hair salon,F & viets_express F tgf_hair_salon,Houston
 visit,2,Visit Viet's Express restaurant on your way to the Hair Salon,F & viets_express F tgf_hair_salon,Houston
 visit,2,Navigate to the vietnamese restaurant and then to the hair salon.,F & viets_express F tgf_hair_salon,Houston
-visit,1,Enter tomo Sushi,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,Navigate straight to Tomo Sushi and Ramen.,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,go to the sushi restaurant,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,Turn right across Arch Street until you reach Tomo Sushi & Ramen.,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,"Go to Tomo Sushi & Ramen, avoiding the intersection.",F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,"Do not turn towardsBriar Village, go straight instead to Tomo Sushi & Ramen.",F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,"Make a slight loop to head to your destination, which is Tomo Sushi & Ramen",F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,Navigate to Tomo Sushi & Ramen while avoiding Briar Vintage.,F tomo_sushi_and_ramen,Philadelphia #1
-visit,1,Stay away from Briar Vintage on your way to the sushi restaurant.,F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Make your way through the sush restaurant and then enter Tribal home.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Go to Tomo Sushi and Ramen while on your way to Tribal Home Interiors,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Go to the sushi restaurant then to the art gallery.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Tomo Sushi and Ramen is the first stop on your route.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Go to the sushi restaurant and then to the art gallery,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Turn left to Tomo Sushi & Ramen before heading southwest to Tribal Home.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Go to Tribal Home Interiors just before Briar Village.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,"Make your way to Tomo Sushi & Ramen, then head to Tribal Home",F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,Navigate to Tribal Home (Interiors) while passing through Tomo Sushi & Ramen.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
-visit,2,First go to the Japanese restaurant and then visit Tribal Home interiors.,F & tomo_sushi_and_ramen F tribal_home_interiors,Philadelphia #1
+visit,1,Enter tomo Sushi,F tomo_sushiramen,Philadelphia #1
+visit,1,Navigate straight to Tomo Sushi and Ramen.,F tomo_sushiramen,Philadelphia #1
+visit,1,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F tomo_sushiramen,Philadelphia #1
+visit,1,go to the sushi restaurant,F tomo_sushiramen,Philadelphia #1
+visit,1,Turn right across Arch Street until you reach Tomo Sushi & Ramen.,F tomo_sushiramen,Philadelphia #1
+visit,1,"Go to Tomo Sushi & Ramen, avoiding the intersection.",F tomo_sushiramen,Philadelphia #1
+visit,1,"Do not turn towardsBriar Village, go straight instead to Tomo Sushi & Ramen.",F tomo_sushiramen,Philadelphia #1
+visit,1,"Make a slight loop to head to your destination, which is Tomo Sushi & Ramen",F tomo_sushiramen,Philadelphia #1
+visit,1,Navigate to Tomo Sushi & Ramen while avoiding Briar Vintage.,F tomo_sushiramen,Philadelphia #1
+visit,1,Stay away from Briar Vintage on your way to the sushi restaurant.,F tomo_sushiramen,Philadelphia #1
+visit,2,Make your way through the sush restaurant and then enter Tribal home.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to Tomo Sushi and Ramen while on your way to Tribal Home Interiors,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to the sushi restaurant then to the art gallery.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Tomo Sushi and Ramen is the first stop on your route.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to the sushi restaurant and then to the art gallery,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Turn left to Tomo Sushi & Ramen before heading southwest to Tribal Home.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to Tribal Home Interiors just before Briar Village.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,"Make your way to Tomo Sushi & Ramen, then head to Tribal Home",F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Navigate to Tribal Home (Interiors) while passing through Tomo Sushi & Ramen.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,First go to the Japanese restaurant and then visit Tribal Home interiors.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
 visit,2,Enter Tribal home on your way to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
 visit,2,Navigate to Tribal Home and then to Briar Village.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
 visit,2,Go to Tribal Home Interiors while on your way to Briar Vintage,F & tribal_home_interiors F briar_vintage,Philadelphia #1
@@ -312,16 +312,16 @@ visit,2,Go to Tribal Home (interiors) then go directly to Briar Vintage.,F & tri
 visit,2,Make your first stop at Tribal Home before making your next stop at Briar Vintage,F & tribal_home_interiors F briar_vintage,Philadelphia #1
 visit,2,Go around Tribal Home to show up at the vintage clothing store in PA.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
 visit,2,Go to Tribal Home and then go over to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
-visit,2,First go to Tribal Home and then stop by Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Navigate to Tomo Sushi & Ramen after going to Tribal Home(Interiors),F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Go to the art gallery and to get sushi,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Go to Tribal Home (interiors) but avoid Briar Vintange along the way.,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,"Head to your first stop, Tribal Home, before continuing on to Tomo Sushi & Ramen",F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Navigate to Tomo Sushi & Ramen while passing through Tribal Home (Interiors).,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,"Visit Tribal Home Interiors, then proceed to Tomo Sushi and Ramen",F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Go through Tribal Home Interiors on your way to Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
-visit,2,Go around Brian Vintage to show up at the Sushi & Ramen place.,F & tribal_home_interiors F tomo_sushi_and_ramen,Philadelphia #1
+visit,2,First go to Tribal Home and then stop by Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Navigate to Tomo Sushi & Ramen after going to Tribal Home(Interiors),F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go to the art gallery and to get sushi,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go to Tribal Home (interiors) but avoid Briar Vintange along the way.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,"Head to your first stop, Tribal Home, before continuing on to Tomo Sushi & Ramen",F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Navigate to Tomo Sushi & Ramen while passing through Tribal Home (Interiors).,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,"Visit Tribal Home Interiors, then proceed to Tomo Sushi and Ramen",F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go through Tribal Home Interiors on your way to Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go around Brian Vintage to show up at the Sushi & Ramen place.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
 visit,1,Proceed to Wawa but do not go through the restaurant.,F wawa,Philadelphia #2
 visit,1,Navigate to Wawa by passing a college house,F wawa,Philadelphia #2
 visit,1,"In nearly a straight line, make your way to Wawa",F wawa,Philadelphia #2
@@ -332,26 +332,26 @@ visit,1,Navigate to the Wawa,F wawa,Philadelphia #2
 visit,1,Navigate straight ot Wawa,F wawa,Philadelphia #2
 visit,1,Go straight across the street to Wawa.,F wawa,Philadelphia #2
 visit,1,Go to Wawa.,F wawa,Philadelphia #2
-visit,2,"Go to Wawa, then to the Beijing Restaurant.",F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Navigate to the Beijing Restaurant while avoiding the Wawa.,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Proceed through Wawa on your way to the Chinese Restaurant.,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Head to the wawa and from there turn and proceed straight to Beijing Restaraunt,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,"Move over to Wawa, then keep going to Beijing Restaurant.",F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,"Stop at Wawa on your way to Beijing Restaurant,",F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Go to Wawa while on your way to Beijing Restaurant,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Go straight across the street to Wawa and then turn right to Beijing.,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Heading towards Wawa switch to the left and arrive at Beijing Chinese place.,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Travel to Wawa and then proceed to Beijing Restaurant.,F & wawa F beijing_restaurant,Philadelphia #2
-visit,2,Go to Beijing Restaurant while on your way to 37th St Trolley Station,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Navigate to the Beijing Restaurant and then on to the 37th St Trolley Station,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Head right through Beijing Restaurant to show up at 37th street station.,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Go straight to Beijing and then turn right on to Spruce Street.,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,"Your first stop is Beijing Restaurant, then from there your second stop is going to be 37th St Trolley Station",F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Stop at Beijing Restaurant on your way to 37th St Trolley Station.,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Visit Beijing Restaurant on the way to the 37th St Trolley Station,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Go through the Beijing Restaurant on your way to the 37th St Trolley Station.,F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,"Go to the Beijing Restaurant, then head to the 37th St Trolley Station.",F & beijing_restaurant F 37th_street_station,Philadelphia #2
-visit,2,Proceed through the Chinese restaurant on your way to the 37th st trolley Station.,F & beijing_restaurant F 37th_street_station,Philadelphia #2
+visit,2,"Go to Wawa, then to the Beijing Restaurant.",F & wawa F beijing,Philadelphia #2
+visit,2,Navigate to the Beijing Restaurant while avoiding the Wawa.,F & wawa F beijing,Philadelphia #2
+visit,2,Proceed through Wawa on your way to the Chinese Restaurant.,F & wawa F beijing,Philadelphia #2
+visit,2,Head to the wawa and from there turn and proceed straight to Beijing Restaraunt,F & wawa F beijing,Philadelphia #2
+visit,2,"Move over to Wawa, then keep going to Beijing Restaurant.",F & wawa F beijing,Philadelphia #2
+visit,2,"Stop at Wawa on your way to Beijing Restaurant,",F & wawa F beijing,Philadelphia #2
+visit,2,Go to Wawa while on your way to Beijing Restaurant,F & wawa F beijing,Philadelphia #2
+visit,2,Go straight across the street to Wawa and then turn right to Beijing.,F & wawa F beijing,Philadelphia #2
+visit,2,Heading towards Wawa switch to the left and arrive at Beijing Chinese place.,F & wawa F beijing,Philadelphia #2
+visit,2,Travel to Wawa and then proceed to Beijing Restaurant.,F & wawa F beijing,Philadelphia #2
+visit,2,Go to Beijing Restaurant while on your way to 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Navigate to the Beijing Restaurant and then on to the 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Head right through Beijing Restaurant to show up at 37th street station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Go straight to Beijing and then turn right on to Spruce Street.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,"Your first stop is Beijing Restaurant, then from there your second stop is going to be 37th St Trolley Station",F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Stop at Beijing Restaurant on your way to 37th St Trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Visit Beijing Restaurant on the way to the 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Go through the Beijing Restaurant on your way to the 37th St Trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,"Go to the Beijing Restaurant, then head to the 37th St Trolley Station.",F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Proceed through the Chinese restaurant on your way to the 37th st trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
 visit,2,Go straight to 37th Street Station before turning left to head to Wawa.,F & 37th_street_station F wawa,Philadelphia #2
 visit,2,Head to 37th Street Station then take Spruce Street to Wawa avoiding any other restaurants along the way.,F & 37th_street_station F wawa,Philadelphia #2
 visit,2,Avoid Beijing Restaurant while on your way to Wawa,F & 37th_street_station F wawa,Philadelphia #2
@@ -362,26 +362,26 @@ visit,2,Pass the Upper Quad to make your way to 37th St Trolley Station,F & 37th
 visit,2,Move to 37th Street Station adn than navigate to Wawa.,F & 37th_street_station F wawa,Philadelphia #2
 visit,2,Navigate to the convenience store after you stop at 37th St Trolley Station.,F & 37th_street_station F wawa,Philadelphia #2
 visit,2,Navigate to the Wawa while passing through the 37th Street Trolley Station.,F & 37th_street_station F wawa,Philadelphia #2
-visit,1,Navigate directly to Nikki & Co. Fine Jewelers,F nikki_cofine_jewelers,San Diego #1
-visit,1,Go straight to Nikki Fine Jewelers,F nikki_cofine_jewelers,San Diego #1
-visit,1,Go right over to the jewelry store,F nikki_cofine_jewelers,San Diego #1
-visit,1,Go to Nikki & Co. Fine Jewelers.,F nikki_cofine_jewelers,San Diego #1
-visit,1,Navigate to the jewelers while avoiding the museum.,F nikki_cofine_jewelers,San Diego #1
-visit,1,Head straight to Nikki Fine Jewelers.,F nikki_cofine_jewelers,San Diego #1
-visit,1,Navigate to the jewelry store.,F nikki_cofine_jewelers,San Diego #1
-visit,1,Move to Nikki Co. & Fine Jewelers,F nikki_cofine_jewelers,San Diego #1
-visit,1,Go directly to Nikki Fine Jewelers and make no stops along the way.,F nikki_cofine_jewelers,San Diego #1
-visit,1,Head  straight to Nikki & Co. Do not stop anywhere else,F nikki_cofine_jewelers,San Diego #1
-visit,2,Go to the jewelry store on your way to CVS.,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,When you get to Nikki & Co. Fine Jewelers turn left and head to CVS.,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,Go to Nikki Fine Jewelers while on your way to CVS,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,Navigate to CVS while passing through Nikki & Co Fine Jewelers.,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,Go straight to Nikki Fine Jewelers and then turn right to CVS.,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,Navigate to Nikki & Co. and then to the pharmacy.,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,go to the jewelry store and then to the drug store,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,"Make a straight line to your first stop, which is Nikki & Co. Fine Jewelers, before moving on to your next stop of CVS",F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,Proceed first to Nikki & Co. and then turn straight to the CVS. At no point should you go near the William Health Davis House,F & nikki_cofine_jewelers F cvs,San Diego #1
-visit,2,"Go to Nikki & Co. Fine Jewelers, then go to CVS.",F & nikki_cofine_jewelers F cvs,San Diego #1
+visit,1,Navigate directly to Nikki & Co. Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go straight to Nikki Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go right over to the jewelry store,F nikki_fine_jewelers,San Diego #1
+visit,1,Go to Nikki & Co. Fine Jewelers.,F nikki_fine_jewelers,San Diego #1
+visit,1,Navigate to the jewelers while avoiding the museum.,F nikki_fine_jewelers,San Diego #1
+visit,1,Head straight to Nikki Fine Jewelers.,F nikki_fine_jewelers,San Diego #1
+visit,1,Navigate to the jewelry store.,F nikki_fine_jewelers,San Diego #1
+visit,1,Move to Nikki Co. & Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go directly to Nikki Fine Jewelers and make no stops along the way.,F nikki_fine_jewelers,San Diego #1
+visit,1,Head  straight to Nikki & Co. Do not stop anywhere else,F nikki_fine_jewelers,San Diego #1
+visit,2,Go to the jewelry store on your way to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,When you get to Nikki & Co. Fine Jewelers turn left and head to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Go to Nikki Fine Jewelers while on your way to CVS,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Navigate to CVS while passing through Nikki & Co Fine Jewelers.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Go straight to Nikki Fine Jewelers and then turn right to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Navigate to Nikki & Co. and then to the pharmacy.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,go to the jewelry store and then to the drug store,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,"Make a straight line to your first stop, which is Nikki & Co. Fine Jewelers, before moving on to your next stop of CVS",F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Proceed first to Nikki & Co. and then turn straight to the CVS. At no point should you go near the William Health Davis House,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,"Go to Nikki & Co. Fine Jewelers, then go to CVS.",F & nikki_fine_jewelers F cvs,San Diego #1
 visit,2,"Go to CVS, then go to William Heath Davis House Museum.",F & cvs F william_heath_davis_house_museum,San Diego #1
 visit,2,Navigate to CVS on your way to William Heath Davis House.,F & cvs F william_heath_davis_house_museum,San Diego #1
 visit,2,Go to the CVS and then head southwest to William Heath Davis House Museum.,F & cvs F william_heath_davis_house_museum,San Diego #1
@@ -392,16 +392,16 @@ visit,2,Navigate to the William Heath Davis House while passing through the CVS.
 visit,2,Make your way through the cvs on your way to the museum.,F & cvs F william_heath_davis_house_museum,San Diego #1
 visit,2,Make your first stop at CVS before moving on to William Heath Davis House,F & cvs F william_heath_davis_house_museum,San Diego #1
 visit,2,Go to CVS while on your way to William Heath Davis House Museum,F & cvs F william_heath_davis_house_museum,San Diego #1
-visit,2,Go to the jewelry store and then head over to William Heath Davis House.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Navigate to Nikki & Co. Fine Jewelers and then go to William Heath Davis House.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Navigate to the museum while avoiding the jewelers.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Go to Nikki Fine Jewelers while on your way to William Health Davis House,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Head straight to Nikki & Co. and from there proceed to William Health Davis House,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,head over to the jewelry store and then to the museum,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Navigate to Nikki Fine Jewelers on your way to William Heath David House Museum.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,"Go to Nikki & Co. Fine Jewelers, then go to William Heath Davis House Museum.",F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Navigate to Nikki & Co. On your way to William Heath Davis House.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
-visit,2,Go straight to Nikki Fine Jewelers and then head to the south end of the block.,F & nikki_cofine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to the jewelry store and then head over to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki & Co. Fine Jewelers and then go to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to the museum while avoiding the jewelers.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to Nikki Fine Jewelers while on your way to William Health Davis House,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Head straight to Nikki & Co. and from there proceed to William Health Davis House,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,head over to the jewelry store and then to the museum,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki Fine Jewelers on your way to William Heath David House Museum.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,"Go to Nikki & Co. Fine Jewelers, then go to William Heath Davis House Museum.",F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki & Co. On your way to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Go straight to Nikki Fine Jewelers and then head to the south end of the block.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
 visit,1,Head straight over to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
 visit,1,Go directly to the Italian Cultural Center of San Diego.,F italian_cultural_center,San Diego #2
 visit,1,Move directly to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
@@ -412,16 +412,16 @@ visit,1,Head over to the Italian Cultural Center.,F italian_cultural_center,San 
 visit,1,Proceed directly to Italian Cultural Center.,F italian_cultural_center,San Diego #2
 visit,1,Go straight to Italian Cultural Center,F italian_cultural_center,San Diego #2
 visit,1,Go in a short straight line to the Italian Cultural Center,F italian_cultural_center,San Diego #2
-visit,2,Go to the Italian restaurant on your way to the language school.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Navigate straight to Buon Appetito Restaurant and from there head to the Italian Cultural Center,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Make your first stop at Buon Appetito Restaurant before moving on to your next stop at the Italian Cultural Center,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Head straight to Buon Appetito and then turn slightly right.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Go to Buon Appetito Restaurant and then head to the Italian Cultural Center of San Diego.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Ride past the Buon Appetito and end up at the Italian Cultural center.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,"Go to Buon Appetito Restaurant, then continue to the Italian Cultural Center.",F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Go to Buon Appetito Restaurant and then go to the Italian Cultural Center.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Go to Buon Appetito Restaurant while on your way to Italian Cultural Center,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
-visit,2,Proceed through Buon Appetito on way to Language school.,F & buon_appetito_restaurant F italian_cultural_center,San Diego #2
+visit,2,Go to the Italian restaurant on your way to the language school.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Navigate straight to Buon Appetito Restaurant and from there head to the Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Make your first stop at Buon Appetito Restaurant before moving on to your next stop at the Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Head straight to Buon Appetito and then turn slightly right.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant and then head to the Italian Cultural Center of San Diego.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Ride past the Buon Appetito and end up at the Italian Cultural center.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,"Go to Buon Appetito Restaurant, then continue to the Italian Cultural Center.",F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant and then go to the Italian Cultural Center.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant while on your way to Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Proceed through Buon Appetito on way to Language school.,F & buon_appetito F italian_cultural_center,San Diego #2
 visit,2,Navigate first to the Italian Cultural Center and then onward to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
 visit,2,Go to Italian Cultural Center of San Diego while on your way to Firehouse Museum,F & italian_cultural_center F firehouse_museum,San Diego #2
 visit,2,Stop by the language school on your way to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
@@ -564,16 +564,16 @@ visit,2,Turn right at Grant Medical Center and continue to  the library.,F & gra
 visit,2,Head to the Grant Medical center and after that go straight to the Columbus Metropolitan Library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
 visit,2,proceed to the medical center then advance to the library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
 visit,2,Navigate to the library by first entering the Medical center.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
-visit,1,Go straight to Dahlia Nightclub.,F dahlia_night_club,Columbus #2
-visit,1,Go straight to Dahlia Nightclub.,F dahlia_night_club,Columbus #2
-visit,1,Head in a straight line to Dahlia Nightclub,F dahlia_night_club,Columbus #2
-visit,1,Go right to the night club.,F dahlia_night_club,Columbus #2
-visit,1,Go in the opposite direction of the tavern and head straight to the nightclub.,F dahlia_night_club,Columbus #2
-visit,1,Go to Dahlia Nightclub.,F dahlia_night_club,Columbus #2
-visit,1,Go straight to Dahlia Nightclub,F dahlia_night_club,Columbus #2
-visit,1,Advance to Dahlia Nightclub,F dahlia_night_club,Columbus #2
-visit,1,Go directly to Dahlia Nightclub.,F dahlia_night_club,Columbus #2
-visit,1,Proceed to Dahlia Nightclub.,F dahlia_night_club,Columbus #2
+visit,1,Go straight to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go straight to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Head in a straight line to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Go right to the night club.,F dahlia_nightclub,Columbus #2
+visit,1,Go in the opposite direction of the tavern and head straight to the nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go straight to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Advance to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Go directly to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Proceed to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
 visit,2,Head east to Park Street Tavern and then go across the street east to Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
 visit,2,Go to Park Street Tavern and then to Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
 visit,2,Navigate first to the Park Street Tavern and then forward to the Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
@@ -584,26 +584,26 @@ visit,2,Go to Park Street Tavern and then to Market Blooms.,F & park_street_tave
 visit,2,Go to Park Street while on your way to Market Blooms,F & park_street_tavern F market_blooms,Columbus #2
 visit,2,Go to Market Blooms and stop at Park Street Tavern along the way.,F & park_street_tavern F market_blooms,Columbus #2
 visit,2,"Go straight to Park Street Tavern, then go straight from there to Market Blooms",F & park_street_tavern F market_blooms,Columbus #2
-visit,2,Go southwest to Market Blooms and then head straight to Dahlia Nightclub.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Move to Market Blooms and than navigate to Dahlia Nightclub.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,"Go straight to Market Blooms for your first stop, then stop at Dahlia Nightclub",F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Go to Dahlia Nightclub but be sure to go around Park Street Tavern.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Stop at the florist on your way to the night club.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Go to Market Blooms while on your way to Dahlia Nightclub,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Move through Market Blooms on the way to Dahlia Nightclub.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Go to the flower shop before going to the nightclub.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Go to Market Blooms and then navigate to the night club.,F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,"Go to Market Blooms, then go to Dahlia Nightclub.",F & market_blooms F dahlia_night_club,Columbus #2
-visit,2,Visit the night club on your way to the bar.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,"Head to Dahlia Nightclub first, then proceed to Park Street Tavern.",F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Travel to Dahlia Nightclub and then to Park Street Tavern,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Navigate to Dahlia Nightclub then navigate to Park Street Tavern.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,go to the nightclub and then to the bar,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,drive to dahlia Nightclub while navigating to Park Street Tavern.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Move directly to Dahlia Nightclub then head to Park Street Tavern.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Enter the nightclub on way to the tavern.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Move to Dahlia Club and than navigate to Park street Tavern.,F & dahlia_night_club F park_street_tavern,Columbus #2
-visit,2,Go to Dahlia Night Club while on your way to Park Street Tavern,F & dahlia_night_club F park_street_tavern,Columbus #2
+visit,2,Go southwest to Market Blooms and then head straight to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Move to Market Blooms and than navigate to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,"Go straight to Market Blooms for your first stop, then stop at Dahlia Nightclub",F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Dahlia Nightclub but be sure to go around Park Street Tavern.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Stop at the florist on your way to the night club.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Market Blooms while on your way to Dahlia Nightclub,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Move through Market Blooms on the way to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to the flower shop before going to the nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Market Blooms and then navigate to the night club.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,"Go to Market Blooms, then go to Dahlia Nightclub.",F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Visit the night club on your way to the bar.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,"Head to Dahlia Nightclub first, then proceed to Park Street Tavern.",F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Travel to Dahlia Nightclub and then to Park Street Tavern,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Navigate to Dahlia Nightclub then navigate to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,go to the nightclub and then to the bar,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,drive to dahlia Nightclub while navigating to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Move directly to Dahlia Nightclub then head to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Enter the nightclub on way to the tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Move to Dahlia Club and than navigate to Park street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Go to Dahlia Night Club while on your way to Park Street Tavern,F & dahlia_nightclub F park_street_tavern,Columbus #2
 visit,1,"Instead of heading in the direction of the library, go straight to Halton Theater.",F halton_theatre,Charlotte #1
 visit,1,Navigate to the theater while avoiding the auditorium.,F halton_theatre,Charlotte #1
 visit,1,Head in a straight line and stop at Halton Theatre,F halton_theatre,Charlotte #1
@@ -684,37 +684,37 @@ visit,2,Go to Elizabeth Billiards then navigate to Commonwealth Animal Hospital 
 visit,2,Navigate to Elizabeth Billiards before continuing to the animal hospital.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
 visit,2,Go to Elizabeth Billiards on your way to Commonwealth Animal Hospital.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
 visit,2,Go to Elizabeth Billiards on your way to Commonwealth Animal Hospital,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
-visit,1,Navigate to El Arado while avoiding Pnc Bank,F el_arado_mexican_grill,Indianapolis
-visit,1,You will proceed northeast until you reach the El Dorado restaurant.,F el_arado_mexican_grill,Indianapolis
-visit,1,Move to El Arado Mexican Grill while avoiding the PNC Bank,F el_arado_mexican_grill,Indianapolis
-visit,1,Move to the El Arado eatery but avoid the PNC Bank,F el_arado_mexican_grill,Indianapolis
-visit,1,Move straight to El Arado Mexican Grill.,F el_arado_mexican_grill,Indianapolis
-visit,1,Travel straight to El Arado Mexican Grill.,F el_arado_mexican_grill,Indianapolis
-visit,1,Move to El Arado.,F el_arado_mexican_grill,Indianapolis
-visit,1,Go straight along Prospect Street to El Arado.,F el_arado_mexican_grill,Indianapolis
-visit,1,"Make a short and straight line to El Arado, which is your stop.",F el_arado_mexican_grill,Indianapolis
-visit,1,Go straight to El Arado,F el_arado_mexican_grill,Indianapolis
-visit,2,Go through La margarita fountain square to the El dorado,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Go to La Margarita Fountain Square and then too El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Head to El Arado by first going through La Margarita Fountain Square.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,"Travel to La Margarita Fountain Square first, then to El Arado Mexican Grill after.",F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Move to margarita fountain square than move to El Arado while avoiding PNC bank.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
+visit,1,Navigate to El Arado while avoiding Pnc Bank,F el_arado,Indianapolis
+visit,1,You will proceed northeast until you reach the El Dorado restaurant.,F el_arado,Indianapolis
+visit,1,Move to El Arado Mexican Grill while avoiding the PNC Bank,F el_arado,Indianapolis
+visit,1,Move to the El Arado eatery but avoid the PNC Bank,F el_arado,Indianapolis
+visit,1,Move straight to El Arado Mexican Grill.,F el_arado,Indianapolis
+visit,1,Travel straight to El Arado Mexican Grill.,F el_arado,Indianapolis
+visit,1,Move to El Arado.,F el_arado,Indianapolis
+visit,1,Go straight along Prospect Street to El Arado.,F el_arado,Indianapolis
+visit,1,"Make a short and straight line to El Arado, which is your stop.",F el_arado,Indianapolis
+visit,1,Go straight to El Arado,F el_arado,Indianapolis
+visit,2,Go through La margarita fountain square to the El dorado,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Go to La Margarita Fountain Square and then too El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Head to El Arado by first going through La Margarita Fountain Square.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,"Travel to La Margarita Fountain Square first, then to El Arado Mexican Grill after.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Move to margarita fountain square than move to El Arado while avoiding PNC bank.,F & la_margarita_fountain_square F el_arado,Indianapolis
 visit,2,"Navigate to La Margarita Fountain Square then
-Move to El Arado while avoiding the bank.",F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Make your way to La Margarita Fountain Square then go around PNC bank on your way to El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Stop at La Margarita Fountain Square on the way to El Arado.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Move through La Margarita and around on route to El Arado.,F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,"Your first stop is going to be La Margarita Fountain Square. After that, pass by PNC Bank and make your next stop at El Arado Mexican Grill.",F & la_margarita_fountain_square F el_arado_mexican_grill,Indianapolis
-visit,2,Navigate to PNC bank by avoiding El Arado restaurant,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Go past El Arado restaurant on the way to the PNC Bank directly to the left of it.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Move to El Arado Mexican Grill on your way to PNC Bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Move through El Arado on your path to the bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Move to El Arado than to PNC Bank,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Go to El Arado on your way to PNC Bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Go straight and through El Arado to arrive at PNC Bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Make your first stop at El Arado before passing onto your next stop at PNC Bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,"First go to El Arado, then go to PNC Bank",F & el_arado_mexican_grill F pnc_bank,Indianapolis
-visit,2,Stop at the El Arado Mexican Grill on the way to the PNC Bank.,F & el_arado_mexican_grill F pnc_bank,Indianapolis
+Move to El Arado while avoiding the bank.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Make your way to La Margarita Fountain Square then go around PNC bank on your way to El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Stop at La Margarita Fountain Square on the way to El Arado.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Move through La Margarita and around on route to El Arado.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,"Your first stop is going to be La Margarita Fountain Square. After that, pass by PNC Bank and make your next stop at El Arado Mexican Grill.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Navigate to PNC bank by avoiding El Arado restaurant,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go past El Arado restaurant on the way to the PNC Bank directly to the left of it.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move to El Arado Mexican Grill on your way to PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move through El Arado on your path to the bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move to El Arado than to PNC Bank,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go to El Arado on your way to PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go straight and through El Arado to arrive at PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Make your first stop at El Arado before passing onto your next stop at PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,"First go to El Arado, then go to PNC Bank",F & el_arado F pnc_bank,Indianapolis
+visit,2,Stop at the El Arado Mexican Grill on the way to the PNC Bank.,F & el_arado F pnc_bank,Indianapolis
 visit,2,"Travel aross Virginia Avenue until PNC Bank is in front of you, then turn right and head for La Margarita Fountain Square on your left at the corner.",F & pnc_bank F la_margarita_fountain_square,Indianapolis
 visit,2,Go to PNC Bank and then go to La Margarita Fountain Square.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
 visit,2,"Navigate first to the bank, and then to La Margarita Fountain Square after.",F & pnc_bank F la_margarita_fountain_square,Indianapolis

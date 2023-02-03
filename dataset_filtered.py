@@ -30,17 +30,17 @@ def filter_cleanup(env):
 
 
 def filter_osm(env):
-    def convert_prop(ltl_list):
-        ltl_list_new = []
-        for op in ltl_list:  # try to match prop in true LTL to prop converted from complete lmk name
-            op = op.replace("tomo_sushiramen", "tomo_sushi_and_ramen")
-            op = op.replace("beijing", "beijing_restaurant")
-            op = op.replace("nikki_fine_jewelers", "nikki_cofine_jewelers")
-            op = op.replace("buon_appetito", "buon_appetito_restaurant")
-            op = op.replace("dahlia_nightclub", "dahlia_night_club")
-            op = op.replace("el_arado", "el_arado_mexican_grill")
-            ltl_list_new.append(op)
-        return ltl_list_new
+    # def convert_prop(ltl_list):
+    #     ltl_list_new = []
+    #     for op in ltl_list:  # try to match prop in true LTL to prop converted from complete lmk name
+    #         op = op.replace("tomo_sushiramen", "tomo_sushi_and_ramen")
+    #         op = op.replace("beijing", "beijing_restaurant")
+    #         op = op.replace("nikki_fine_jewelers", "nikki_cofine_jewelers")
+    #         op = op.replace("buon_appetito", "buon_appetito_restaurant")
+    #         op = op.replace("dahlia_nightclub", "dahlia_night_club")
+    #         op = op.replace("el_arado", "el_arado_mexican_grill")
+    #         ltl_list_new.append(op)
+    #     return ltl_list_new
 
     osm_dpath = os.path.join("data", env)
     osm_fpath = os.path.join(osm_dpath, "osm_berg.csv")
@@ -58,13 +58,13 @@ def filter_osm(env):
                 ltl = ltl.translate(str.maketrans('', '', "()&'")).strip()
                 ltl = re.sub(' +', ' ', ltl)
                 ltl_list = ltl.split(" ")
-                ltl_list = convert_prop(ltl_list)
+                # ltl_list = convert_prop(ltl_list)
                 ltl = " ".join(ltl_list)
             elif nprops == 2:
                 ltl = ltl.translate(str.maketrans('', '', "()&'")).strip()
                 ltl = re.sub(' +', ' ', ltl)
                 ltl_list = ltl.split(" ")
-                ltl_list = convert_prop(ltl_list)
+                # ltl_list = convert_prop(ltl_list)
                 ltl_list.insert(1, "&")
                 ltl = " ".join(ltl_list)
             else:
