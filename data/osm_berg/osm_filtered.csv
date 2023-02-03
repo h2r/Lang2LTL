@@ -1,0 +1,894 @@
+Pattern Type,Number of Propositions,Utterance,True LTL,City
+visit,1,Move to the Taipan Bakery while avoiding the Joy Luck Palace.,F taipan_bakery,New York #1
+visit,1,Go straight to the Taipan Bakery.,F taipan_bakery,New York #1
+visit,1,Head straight to the Taipan Bakery past the Unique Hype Collection.,F taipan_bakery,New York #1
+visit,1,Proceed directly to the Tai Pan Bakery.,F taipan_bakery,New York #1
+visit,1,Avoid the Unique Hype Collection while on your way to Tai Pan Bakery,F taipan_bakery,New York #1
+visit,1,Go to the Tai Pan Bakery.,F taipan_bakery,New York #1
+visit,1,Go to Taipan Bakery but avoid Unique Hype Collection.,F taipan_bakery,New York #1
+visit,1,Head to the Tai Pan bakery by going below the Joy Luck Palace,F taipan_bakery,New York #1
+visit,1,"Avoid the Unique Hype Collection while navigating to the Tai Pan Bakery.
+Head towards the bakery while avoiding the collectors store.",F taipan_bakery,New York #1
+visit,1,Make your way to Taipan bakery but do not enter Joy luck Palace on your right.,F taipan_bakery,New York #1
+visit,2,Travel to the bakery followed by traveling to the Chinese restaurant.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Go through the Tai Pan Bakery on your way to Joy luck palace,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,"Travel to Taipan Bakery, then continue to Joy Luck Palace.",F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,"Go to Tai Pan Bakery, then go to Joy Luck Palace.",F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Navigate to Tai Pan Bakery and then to Joy Luck Palace.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,"Go to Taipan Bakery first, then on to Joy Luck Palace.",F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Move to Taipan Bakery and then too Joy Luck Palace.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Turn right at the Taipan Bakery before heading straight to the Joy Luck Palace.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Avoid the drug store and head right towards the bakery shop.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Navigate to the Tai Pan bakery and then move to Joy Luck Palace.,F & taipan_bakery F joy_luck_palace,New York #1
+visit,2,Go to Joy Luck Palace on your way to Unique Hype Collection,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Go to the Joy Luck Palace restaurant and then proceed to the Unique Hype Collection store.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Head northwest to the joy luck palace restaurant and then head south to the Unique Hype Collection store.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Turn left at the Joy Luck Palace heading to the Unique Hype Collection.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Navigate to Unique Hype Collection while avoiding the Chinese restaurant.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,"Head to Joy Luck Palace, then go downwards towards Unique Hype Collection.",F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Go to the clothing store while stopping at the Chinese restaurant on your way.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,"Navigate to Joy Luck Palace, then navigate to the Unique Hype Collection and avoid the Tai Pan Bakery.",F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,Stop by Joy Luck Palace and continue to Unique Hype Collection.,F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,"Go to the Joy Luck Palace, then go to Unique Hype Collection.",F & joy_luck_palace F unique_hype_collection,New York #1
+visit,2,"Go to Unique Hype Collection, then go to Tai Pan Bakery.",F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Go past the Unique Hype Collection on your way to the Taipan Bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Go to the clothing store and then head to the bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,"Go to Unique Hype Collection, then head to Tai Pan Bakery.",F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Pass through Unique Hype collection on the way to Taipan Bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Navigate to the Unique Hype Collection and then on to the Tai Pan Bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Go through the Unique Hype Collection on your way to the Tai Pan Bakery,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Head to the clothing store and then to Taipan Bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,First go to Unique Hype Collection and then continue to Taipan Bakery.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,2,Navigate to Tain Pan Bakery avoid Eastern States Buddhist Temple.,F & unique_hype_collection F taipan_bakery,New York #1
+visit,1,Head straight to Andaz,F andaz,New York #2
+visit,1,Move directly to the 4-star hotel.,F andaz,New York #2
+visit,1,Go to Andaz 5th Avenue hotel.,F andaz,New York #2
+visit,1,Go past the New York Public Library and head straight to Aridaz.,F andaz,New York #2
+visit,1,Move to the right and avoid the library and Bravo pizza.,F andaz,New York #2
+visit,1,Avoid the New York Public Library on your way to Andaz,F andaz,New York #2
+visit,1,Navigate straight to Andaz 5th Avenue.,F andaz,New York #2
+visit,1,Avoid the New York Public Library as much as possible while navigating to Andaz 5th Avenue.,F andaz,New York #2
+visit,1,Pass the New York Public Library on your route to Andaz 5th Avenue,F andaz,New York #2
+visit,1,Go past the New York Library then straight to Andaz on 5th Avenue.,F andaz,New York #2
+visit,2,Go to Bravo Pizza then advance to Andaz,F & bravo_pizza F andaz,New York #2
+visit,2,Make a stop at Bravo Pizza on the way to Andaz.,F & bravo_pizza F andaz,New York #2
+visit,2,Travel to the pizza restaurant on your way to the 4-star hotel.,F & bravo_pizza F andaz,New York #2
+visit,2,Hit Bravo Pizza then to down to Andaz hotel.,F & bravo_pizza F andaz,New York #2
+visit,2,Go to Bravo Pizza on your way to Andaz,F & bravo_pizza F andaz,New York #2
+visit,2,Turn right at Bravo Pizza and head to the Aridaz.,F & bravo_pizza F andaz,New York #2
+visit,2,First go to Bravo Pizza and then to Andaz 5th Avenue.,F & bravo_pizza F andaz,New York #2
+visit,2,"Head to Bravo Pizza, then go to the Andaz 5th Avenue hotel.",F & bravo_pizza F andaz,New York #2
+visit,2,Enter then exit Bravo pizza and then navigate to the New York Public Library.,F & bravo_pizza F andaz,New York #2
+visit,2,First go directly to Bravo Pizza and then move to Andaz.,F & bravo_pizza F andaz,New York #2
+visit,2,Navigate to Bravo Pizza by avoiding the New York Library.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Navigate to New York Public Library on you way to Bravo Pizza.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Navigate to the library and then to the pizza restaurant.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Go to New York Public Library on your way to Bravo Pizza,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Stop at the New York Public Library before heading to Bravo Pizza.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Move to New York Public Library and after that move to Bravo Pizza,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,"Go to the New York Public Library, then go to Bravo Pizza.",F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Hit the New York Library building and then go right towards Bravo's restaurant.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Move to New York Pizza and than navigate to Bravo Pizza,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Move to Bravo Pizza by going through the New York Public Library.,F & new_york_public_library F bravo_pizza,New York #2
+visit,2,Navigate to the New York Public Library by avoiding Andaz hotel,F & andaz F new_york_public_library,New York #2
+visit,2,Go to the hotel and then hit the Library.,F & andaz F new_york_public_library,New York #2
+visit,2,Proceed first to the hotel and then to the public library.,F & andaz F new_york_public_library,New York #2
+visit,2,Navigate to the Andaz hotel and then make your way to the New York Public Library.,F & andaz F new_york_public_library,New York #2
+visit,2,"Go to Andaz hotel, then go to the New York Public Library.",F & andaz F new_york_public_library,New York #2
+visit,2,First go to Andaz and then after that go to the New York Public Library.,F & andaz F new_york_public_library,New York #2
+visit,2,Go through Andaz while on your way to the New York Public Library,F & andaz F new_york_public_library,New York #2
+visit,2,Stop at the Aridaz before heading to the New York Public Library.,F & andaz F new_york_public_library,New York #2
+visit,2,go to the hotel and then the library,F & andaz F new_york_public_library,New York #2
+visit,2,Go to Andaz 5th Avenue and then too New York Public Library.,F & andaz F new_york_public_library,New York #2
+visit,1,Go straight towards Novel Cafe Westwood,F novel_cafe_westwood,Los Angeles #1
+visit,1,Move straight to Novel Cafe.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Go straight to Novel Café.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Navigate to the Novel Cafe.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Go straight to the other side of the block at the Novel Cafe Westwood.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Drive past Native foods than land at Novel Cafe.,F novel_cafe_westwood,Los Angeles #1
+visit,1,"Avoid Veggie Grill on your way to Novel Cafe.
+Navigate to the cafe and avoid turning left to the grill.
+Proceed to the Novel Cafe Westwood while avoiding the vegan restaurant.",F novel_cafe_westwood,Los Angeles #1
+visit,1,Go to Novel Cafe.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Avoid the Veggie Grill on your way to the Novel Cafe.,F novel_cafe_westwood,Los Angeles #1
+visit,1,Make your way in a straight line to Novel Cafe Westwood,F novel_cafe_westwood,Los Angeles #1
+visit,2,Navigate to Novel Café on your way to Veggie Grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,"Go to the Novel Cafe, then continue on to the Veggie Grill, avoiding Urban Outfitters on the way.",F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go to Novel Cafe Westwood on your way to Veggie Grill,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Proceed to the cafe and then to Veggie Grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,"Go to the Novel Cafe Westwood, then head to the Veggie Grill.",F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Move to Movel Cafe Westwood and than navigate to veggie grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go straight and stop at the Novel Cafe Westwood before heading in a 45 degree angle to the Veggie Grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go to Novel Cafe and then over to the vegan grill,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go to Novel Cafe and then turn to go to Veggie Grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go to Novel Cafe then directly to Veggie Grill.,F & novel_cafe_westwood F veggie_grill,Los Angeles #1
+visit,2,Go to Urban Outfitters on your way to Novel Cafe Westwood,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,First navigate to Urban Outfitters and then to Novel Café.,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Hit Urban Outfitters than swing left to the novel cafe.,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Go across Westwood Boulevard to Urban Outfitters and then reverse to Novel Cafe.,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,"Go to Urban Outfitters, then go to Novel Cafe.",F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Go straight until you read the Urban Outfitters and then go left to Novel Cafe Westwood.,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Go straight to the Novel Cafe while avoiding the Veggie Grill.,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Head to Urban Outfitters and then over to Novel Cafe,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Go in a straight line to Urban Outfitters before making your next stop at Novel Cafe,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,navigate to Urban Outfitters then proceed to the cafe,F & urban_outfitters F novel_cafe_westwood,Los Angeles #1
+visit,2,Navigate to Urban Outfitters while passing through the Veggie Grill.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,First go to Veggie Grill and then go to Urban Outfitters.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Go to Veggie Grill on your way to Urban Outfitters,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Go to the vegan restaurant on your way to Urban Outfitters.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,"Go to the Veggie Grill, then go to Urban Outfitters.",F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Go straight before turning at the Veggie Grill and then turn left.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Move toward veggie grill.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Disregard the Novel Cafe Westwood entirely on the way to Veggie Grill.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Make a stop at the Veggie Grill on your way to Urban Outfitters.,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,2,Go to Veggie Grill for your first stop and then head to Urban Outfitters,F & veggie_grill F urban_outfitters,Los Angeles #1
+visit,1,Pass the Indonesian Consulate and stop outside Robek's Juice on Wilshire.,F robeks_juice,Los Angeles #2
+visit,1,Navigate to Robeks Juice,F robeks_juice,Los Angeles #2
+visit,1,Proceed straight to the juice shop.,F robeks_juice,Los Angeles #2
+visit,1,Go straight to Robeks Juice,F robeks_juice,Los Angeles #2
+visit,1,Can you show me where exactly is Robeks Juice is located,F robeks_juice,Los Angeles #2
+visit,1,Navigate to Robeks Juice but avoid Big 5 Sporting Goods along the way.,F robeks_juice,Los Angeles #2
+visit,1,Travel straight to Robeks Fresh Juices & Smoothies.,F robeks_juice,Los Angeles #2
+visit,1,Go to Robeks Juice.,F robeks_juice,Los Angeles #2
+visit,1,Go straight across Wilshire Boulevard and stop at Robek's Juice.,F robeks_juice,Los Angeles #2
+visit,1,Proceed straight to Robeks Juice,F robeks_juice,Los Angeles #2
+visit,2,Go to Big 5 Sporting Goods while on your way to Robeks Juice,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Go to the sporting goods store and then to the juice shop.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Navigate to Big 5 Sporting Goods and than move to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Go straight until you reach Big 5 Sporting Goods and then go west to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Pass by Big 5 Sporting Good to arrive at Robeks Juice,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,proceed to Big 5 Sporting goods then advance to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Navigate to Big 5 Sporting Goods and then Robeks Fresh Juices & Smoothies.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,"Go to Big 5 Sporting Goods, then go to Robeks Juice.",F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Swing by Big 5 Sporting Goods on your way to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Proceed to Robek's juice shop through Big 5 sporting goods.,F & big_5_sporting_goods F robeks_juice,Los Angeles #2
+visit,2,Navigate to Big 5 Sporting Goods while passing through Robeks Juice,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Move to the juice shop followed by the sporting goods store.,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Nagivate to Robeks Fresh Juices & Smoothies and then move to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Go to Robeks Juice while on your way to Big 5 Sporting Goods,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,First travel to Robeks Fresh Juices & Smoothies and then to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Head towards Robeks Huice and than navigate to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Stop at Robek's Juice befrore going east to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,"Go to Robeks Fresh Juices & Smoothies, then head to Big 5 Sporting Goods.",F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Go to the Smoothie shop and then head to the Sporting Goods store,F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,"Go down to Robeks Fresh Juices & Smoothies, then head over to Big 5 Sporting Goods.",F & robeks_juice F big_5_sporting_goods,Los Angeles #2
+visit,2,Go to The Line then on to Robeks Juice.,F & the_line F robeks_juice,Los Angeles #2
+visit,2,Go to The Line while on your way to Robeks Juice,F & the_line F robeks_juice,Los Angeles #2
+visit,2,Go to Robeks Juice and stop by The Line along the way.,F & the_line F robeks_juice,Los Angeles #2
+visit,2,Navigate to The Line and than head towards Robeks Juice.,F & the_line F robeks_juice,Los Angeles #2
+visit,2,"Go to The Line, then go to Robeks Juice.",F & the_line F robeks_juice,Los Angeles #2
+visit,2,Go straight to The Line and then head southeast to Robek's Juice.,F & the_line F robeks_juice,Los Angeles #2
+visit,2,Go to The LINE Los Angeles and then to Robeks Fresh Juices & Smoothies.,F & the_line F robeks_juice,Los Angeles #2
+visit,2,"Advance to The Line, then proceed to the Juice Store.",F & the_line F robeks_juice,Los Angeles #2
+visit,2,Check in at the hotel and then go to get some juice at Robeks,F & the_line F robeks_juice,Los Angeles #2
+visit,2,Go to The Line before heading to Robeks Juice.,F & the_line F robeks_juice,Los Angeles #2
+visit,1,Avoid Big 5 Sporting Goods while on your way to Robeks Juice,F dominos,Chicago #1
+visit,1,Go around Big 5 Sporting Goods and go to Robeks Juice.,F dominos,Chicago #1
+visit,1,Navigate to Robeks Juice and avoid Big 5 Sporting Goods,F dominos,Chicago #1
+visit,1,Go around Big 5 on your route to Robek's Juice,F dominos,Chicago #1
+visit,1,Make a half loop around Big 5 Sporting Goods and head straight to Robek's Juice.,F dominos,Chicago #1
+visit,1,Proceed to Robeks Juice while avoiding Big 5 Sporting Goods,F dominos,Chicago #1
+visit,1,Take a detour around Big 5 Sporting Goods on the way to Robeks Juice.,F dominos,Chicago #1
+visit,1,Go right around Big S Sporting Goods and the Juice Shop.,F dominos,Chicago #1
+visit,1,Go to Robeks Juice while avoiding Big 5 Sporting Goods along the way.,F dominos,Chicago #1
+visit,1,Bypass Big 5 as you enter the juice shop.,F dominos,Chicago #1
+visit,2,Go to Lee Nails while on your way to Domino's,F & lee_nails F dominos,Chicago #1
+visit,2,Go straight to Lee Nails and then cross West Devon Avenue.,F & lee_nails F dominos,Chicago #1
+visit,2,"Head down to Lee Nail Salon, then go to Domino's Pizza.",F & lee_nails F dominos,Chicago #1
+visit,2,Go to the nail salon on your way to Domino's Pizza.,F & lee_nails F dominos,Chicago #1
+visit,2,Pass by Lees Nails on the way to Domino's Pizza,F & lee_nails F dominos,Chicago #1
+visit,2,Make your way to Domino's while passing through the nail shop.,F & lee_nails F dominos,Chicago #1
+visit,2,"Go to Lee Nail Salon, then Domino's Pizza.",F & lee_nails F dominos,Chicago #1
+visit,2,Navigate to  Lee Nail Salon and then to Domino's Pizza.,F & lee_nails F dominos,Chicago #1
+visit,2,navigate to Lee Nails then proceed to Dominos Pizza.,F & lee_nails F dominos,Chicago #1
+visit,2,Navigate to Domino's while avoiding Lee's Nail's.,F & lee_nails F dominos,Chicago #1
+visit,2,Go straight to Domino's and then turn left to My Sister's Closet.,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Navigate to Domino's and than move to My Sister's Closet.,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Navigate to Domino's Pizza and then move to My Sister's Closet Resale,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Go to the pizza place and then to the resale shop,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Go straight to Dominoes then head to My sister's closet.,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Go to Dominos while on your way to My Sister's Closet Resale,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Travel to Domino's Pizza  on your way to My Sister's Closet.,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Navigate to Lee Nail Salon by passing by Domino's Pizza,F & dominos F my_sisters_closet,Chicago #1
+visit,2,Navigate between Domino's and Lee Nails to My Sister's Closet.,F & dominos F my_sisters_closet,Chicago #1
+visit,2,"Go to Domino's Pizza, then to My Sister's Closet.",F & dominos F my_sisters_closet,Chicago #1
+visit,2,Go through My Sister's Closet Resale and end up at Lee Nails.,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,"Travel to My Sister's Closet Resale, then keep going to Lee Nail Salon.",F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Go to Lee Nail Salon by passing by My Sister's Closet Resale,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Navigate to My Sister's Closet Resale and then on to Lee Nail Salon,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Proceed to Lee Nails while passing by My Sister's Closet.,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Move to My Sister's Closet and than navigate to Lee Nails.,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Go to My Sister's Closet on your way to Lee Nail Salon.,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Go to My Sister's Closet while on your way to Lee Nails Salon,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Go straight past My Sister's Closet and on to Lee Nails.,F & my_sisters_closet F lee_nails,Chicago #1
+visit,2,Make your first stop at My Sister's Closet before making your next stop at Lee's Nails,F & my_sisters_closet F lee_nails,Chicago #1
+visit,1,Go straight to The Chicago Diner,F the_chicago_diner,Chicago #2
+visit,1,Go past 7-Eleven on the way to The Chicago Diner.,F the_chicago_diner,Chicago #2
+visit,1,Go to the Chicago Diner.,F the_chicago_diner,Chicago #2
+visit,1,Navigate to the Chicago Diner while avoiding Beatnix to the left.,F the_chicago_diner,Chicago #2
+visit,1,Take me to Chicago Diner but avoid Beatnix at all costs.,F the_chicago_diner,Chicago #2
+visit,1,Go Straight past 7 Eleven convenience store to arrive at the Chicago Diner.,F the_chicago_diner,Chicago #2
+visit,1,Go straight to the vegan restaurant.,F the_chicago_diner,Chicago #2
+visit,1,Head in a straight line to Chicago Diner,F the_chicago_diner,Chicago #2
+visit,1,Head straight to Chicago Diner,F the_chicago_diner,Chicago #2
+visit,1,Go directly to The Chicago Diner.,F the_chicago_diner,Chicago #2
+visit,2,Navigate to Wood and avoid Beatnix.,F & beatnix F wood,Chicago #2
+visit,2,"Head straight for Beatrix, then make your way to Wood",F & beatnix F wood,Chicago #2
+visit,2,Go to Beatnix while on your way to Wood,F & beatnix F wood,Chicago #2
+visit,2,Visit Beatnix on your way to Wood restaurant.,F & beatnix F wood,Chicago #2
+visit,2,Stop at Beatrix on your way to Wood,F & beatnix F wood,Chicago #2
+visit,2,Go straight to Beatnix and then head south to Wood.,F & beatnix F wood,Chicago #2
+visit,2,Navigate to the restaurant while avoiding Beatnix.,F & beatnix F wood,Chicago #2
+visit,2,Go over to Beatnix then travel down to Wood.,F & beatnix F wood,Chicago #2
+visit,2,Drive to Beatnix and then proceed to Wood,F & beatnix F wood,Chicago #2
+visit,2,"Go to Beatnix, then go to Wood.",F & beatnix F wood,Chicago #2
+visit,2,"Head in a straight line to your first stop at Beatrix, and then go to Chicago Diner",F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Go to Beatnix while on your way to The Chicago Diner,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,"When you get to Beatnix, turn right and head to The Chicago Diner.",F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Head straight to Beatnix and then across the street to the Chicago Diner,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Proceed to Beatrix then on to The Chicago Diner.,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Go to the clothing store and then to Chicago Diner.,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Avoid Beatnix only to land at the Diner.,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Head west on West Roscoe Street and stop at Beatnix on the way to The Chicago Diner.,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,"Go to Beatnix, then go to the Chicago Diner.",F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Go straight to Beatnix and then head north to The Chicago Diner.,F & beatnix F the_chicago_diner,Chicago #2
+visit,2,Advance to Wood then proceed to the diner.,F & wood F the_chicago_diner,Chicago #2
+visit,2,"Proceed first to the restaurant named Wood, then straight from there to the Chicago Diner",F & wood F the_chicago_diner,Chicago #2
+visit,2,"Go to Wood, then go to the Chicago Diner.",F & wood F the_chicago_diner,Chicago #2
+visit,2,Navigate to The Wood and than move to The Chicago Diner.,F & wood F the_chicago_diner,Chicago #2
+visit,2,Go to Wood while on your way to Chicago Diner,F & wood F the_chicago_diner,Chicago #2
+visit,2,First go to Wood. After Wood go to The Chicago Diner.,F & wood F the_chicago_diner,Chicago #2
+visit,2,Go straight to Wood and then head north to The Chicago Diner.,F & wood F the_chicago_diner,Chicago #2
+visit,2,"Go to Wood, it's the Stylish spot with handcrafted drinks, and then go to The Chicago Diner.",F & wood F the_chicago_diner,Chicago #2
+visit,2,Go to the American restaurant named Wood then move to Chicago Diner.,F & wood F the_chicago_diner,Chicago #2
+visit,2,"Go to Wood, and then turn right and head to The Chicago Diner.",F & wood F the_chicago_diner,Chicago #2
+visit,1,Move to Cajun restaurant.,F catfish_station,Houston
+visit,1,"In a straight line, make your way to Catfish Station, which is your stop",F catfish_station,Houston
+visit,1,Go straight across Kirby Drive until you reach Catfish Station.,F catfish_station,Houston
+visit,1,Go straight to Catfish Station.,F catfish_station,Houston
+visit,1,Go straight to Catfish Station,F catfish_station,Houston
+visit,1,Travel to Catfish Station but avoid Viet's Express.,F catfish_station,Houston
+visit,1,move to Catfish Station and avoid Viet's Express,F catfish_station,Houston
+visit,1,Navigate West on La Concha Lane and arrive at Catfish Station without going near TGF Hair Salon.,F catfish_station,Houston
+visit,1,Navigate to the Catfish Station while avoiding Viet's Express.,F catfish_station,Houston
+visit,1,Go to Catfish Station.,F catfish_station,Houston
+visit,2,Navigate to Viet's Express while passing through Catfish Station.,F & catfish_station F viets_express,Houston
+visit,2,Go straight until you reach Catfish station and then head northeast to Wet's Express.,F & catfish_station F viets_express,Houston
+visit,2,"Move to Viet's Express, but go to Catfish Station first.",F & catfish_station F viets_express,Houston
+visit,2,"Make your way to Catfish Station and stop, then make your next stop at Viet's Express",F & catfish_station F viets_express,Houston
+visit,2,Proceed through the restaurant and make your way to Viet's Express.,F & catfish_station F viets_express,Houston
+visit,2,Go to the Cajun restaurant and then to Viet's Express,F & catfish_station F viets_express,Houston
+visit,2,Move to the Cajun restaurant and then to the Vietnamese restaurant.,F & catfish_station F viets_express,Houston
+visit,2,Navigate straight ahead to the Catfish Station and then travel northeast until you arrive at the Viet's Express.,F & catfish_station F viets_express,Houston
+visit,2,Go to Catfish Station while on your way to Viet's Express,F & catfish_station F viets_express,Houston
+visit,2,Proceed to Catfish Station and take a sharp right  45 degree turn.,F & catfish_station F viets_express,Houston
+visit,2,Travel directly to TGF Hair Salon then go to Catfish Station.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Pass the Hair Salon and land at your destination Catfish Station.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,"Head to TGF Hair Salon, then go to Catfish Station.",F & tgf_hair_salon F catfish_station,Houston
+visit,2,Navigate to the Catfish Station from the TGF Hair Salon,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Go to TGF Hair Salon while on your way to Catfish Station,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Navigate to Catfish Station while passing through TGF Hair Salon.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Make a stop at TGF Hair Salon on the way to Catfish Station,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Navigate to TGF hair salon on your way to the Cajun restaurant.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Move to Catfish station but be sure to proceed through TGF hair salon.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Go straight to TGF Hair Salon and then go northeast to Catfish Station.,F & tgf_hair_salon F catfish_station,Houston
+visit,2,Avoid Catfish Station on the way to TGF Hair Salon.,F & viets_express F tgf_hair_salon,Houston
+visit,2,Navigate to Viet 's Express on your way to TGT Hair Salon.,F & viets_express F tgf_hair_salon,Houston
+visit,2,Avoid Catfish Station while on your way to TGF Hair Salon,F & viets_express F tgf_hair_salon,Houston
+visit,2,Go straight to Wet's Express and then turn left to TGF Hair Salon.,F & viets_express F tgf_hair_salon,Houston
+visit,2,Take the most direct route to Viet's Express then continue southwest to TGF Hair Salon.,F & viets_express F tgf_hair_salon,Houston
+visit,2,Please go to Viet's Express and then head to TGF Hair Salon,F & viets_express F tgf_hair_salon,Houston
+visit,2,Navigate through Viet's Express and enter the TGF Hair salon,F & viets_express F tgf_hair_salon,Houston
+visit,2,go to the vietnamese restaurant and then the hair salon,F & viets_express F tgf_hair_salon,Houston
+visit,2,Visit Viet's Express restaurant on your way to the Hair Salon,F & viets_express F tgf_hair_salon,Houston
+visit,2,Navigate to the vietnamese restaurant and then to the hair salon.,F & viets_express F tgf_hair_salon,Houston
+visit,1,Enter tomo Sushi,F tomo_sushiramen,Philadelphia #1
+visit,1,Navigate straight to Tomo Sushi and Ramen.,F tomo_sushiramen,Philadelphia #1
+visit,1,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F tomo_sushiramen,Philadelphia #1
+visit,1,go to the sushi restaurant,F tomo_sushiramen,Philadelphia #1
+visit,1,Turn right across Arch Street until you reach Tomo Sushi & Ramen.,F tomo_sushiramen,Philadelphia #1
+visit,1,"Go to Tomo Sushi & Ramen, avoiding the intersection.",F tomo_sushiramen,Philadelphia #1
+visit,1,"Do not turn towardsBriar Village, go straight instead to Tomo Sushi & Ramen.",F tomo_sushiramen,Philadelphia #1
+visit,1,"Make a slight loop to head to your destination, which is Tomo Sushi & Ramen",F tomo_sushiramen,Philadelphia #1
+visit,1,Navigate to Tomo Sushi & Ramen while avoiding Briar Vintage.,F tomo_sushiramen,Philadelphia #1
+visit,1,Stay away from Briar Vintage on your way to the sushi restaurant.,F tomo_sushiramen,Philadelphia #1
+visit,2,Make your way through the sush restaurant and then enter Tribal home.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to Tomo Sushi and Ramen while on your way to Tribal Home Interiors,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to the sushi restaurant then to the art gallery.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Tomo Sushi and Ramen is the first stop on your route.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to the sushi restaurant and then to the art gallery,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Turn left to Tomo Sushi & Ramen before heading southwest to Tribal Home.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Go to Tribal Home Interiors just before Briar Village.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,"Make your way to Tomo Sushi & Ramen, then head to Tribal Home",F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Navigate to Tribal Home (Interiors) while passing through Tomo Sushi & Ramen.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,First go to the Japanese restaurant and then visit Tribal Home interiors.,F & tomo_sushiramen F tribal_home_interiors,Philadelphia #1
+visit,2,Enter Tribal home on your way to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Navigate to Tribal Home and then to Briar Village.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Go to Tribal Home Interiors while on your way to Briar Vintage,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Travel to the art gallery followed by the clothing store.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Go straight to Tribal home and then turn left to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,"Go to Tribal Home, then go to Briar Vintage.",F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Go to Tribal Home (interiors) then go directly to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Make your first stop at Tribal Home before making your next stop at Briar Vintage,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Go around Tribal Home to show up at the vintage clothing store in PA.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,Go to Tribal Home and then go over to Briar Vintage.,F & tribal_home_interiors F briar_vintage,Philadelphia #1
+visit,2,First go to Tribal Home and then stop by Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Avoid Briar Vintage while on your way to Tomo Sushi and Ramen,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Navigate to Tomo Sushi & Ramen after going to Tribal Home(Interiors),F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go to the art gallery and to get sushi,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go to Tribal Home (interiors) but avoid Briar Vintange along the way.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,"Head to your first stop, Tribal Home, before continuing on to Tomo Sushi & Ramen",F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Navigate to Tomo Sushi & Ramen while passing through Tribal Home (Interiors).,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,"Visit Tribal Home Interiors, then proceed to Tomo Sushi and Ramen",F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go through Tribal Home Interiors on your way to Tomo Sushi & Ramen.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,2,Go around Brian Vintage to show up at the Sushi & Ramen place.,F & tribal_home_interiors F tomo_sushiramen,Philadelphia #1
+visit,1,Proceed to Wawa but do not go through the restaurant.,F wawa,Philadelphia #2
+visit,1,Navigate to Wawa by passing a college house,F wawa,Philadelphia #2
+visit,1,"In nearly a straight line, make your way to Wawa",F wawa,Philadelphia #2
+visit,1,Navigate to Wawa while avoiding Beijing Restaurant.,F wawa,Philadelphia #2
+visit,1,Navigate to Wawa.,F wawa,Philadelphia #2
+visit,1,Avoid Beijing while on your way to wawa,F wawa,Philadelphia #2
+visit,1,Navigate to the Wawa,F wawa,Philadelphia #2
+visit,1,Navigate straight ot Wawa,F wawa,Philadelphia #2
+visit,1,Go straight across the street to Wawa.,F wawa,Philadelphia #2
+visit,1,Go to Wawa.,F wawa,Philadelphia #2
+visit,2,"Go to Wawa, then to the Beijing Restaurant.",F & wawa F beijing,Philadelphia #2
+visit,2,Navigate to the Beijing Restaurant while avoiding the Wawa.,F & wawa F beijing,Philadelphia #2
+visit,2,Proceed through Wawa on your way to the Chinese Restaurant.,F & wawa F beijing,Philadelphia #2
+visit,2,Head to the wawa and from there turn and proceed straight to Beijing Restaraunt,F & wawa F beijing,Philadelphia #2
+visit,2,"Move over to Wawa, then keep going to Beijing Restaurant.",F & wawa F beijing,Philadelphia #2
+visit,2,"Stop at Wawa on your way to Beijing Restaurant,",F & wawa F beijing,Philadelphia #2
+visit,2,Go to Wawa while on your way to Beijing Restaurant,F & wawa F beijing,Philadelphia #2
+visit,2,Go straight across the street to Wawa and then turn right to Beijing.,F & wawa F beijing,Philadelphia #2
+visit,2,Heading towards Wawa switch to the left and arrive at Beijing Chinese place.,F & wawa F beijing,Philadelphia #2
+visit,2,Travel to Wawa and then proceed to Beijing Restaurant.,F & wawa F beijing,Philadelphia #2
+visit,2,Go to Beijing Restaurant while on your way to 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Navigate to the Beijing Restaurant and then on to the 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Head right through Beijing Restaurant to show up at 37th street station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Go straight to Beijing and then turn right on to Spruce Street.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,"Your first stop is Beijing Restaurant, then from there your second stop is going to be 37th St Trolley Station",F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Stop at Beijing Restaurant on your way to 37th St Trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Visit Beijing Restaurant on the way to the 37th St Trolley Station,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Go through the Beijing Restaurant on your way to the 37th St Trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,"Go to the Beijing Restaurant, then head to the 37th St Trolley Station.",F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Proceed through the Chinese restaurant on your way to the 37th st trolley Station.,F & beijing F 37th_street_station,Philadelphia #2
+visit,2,Go straight to 37th Street Station before turning left to head to Wawa.,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Head to 37th Street Station then take Spruce Street to Wawa avoiding any other restaurants along the way.,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Avoid Beijing Restaurant while on your way to Wawa,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,First head to the 37th St Trolley and then turn and head to the Wawa,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Go to the 37th St Trolley Station and then head back to Beijing Restaurant.,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Travel to the trolley station and then to Wawa,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Pass the Upper Quad to make your way to 37th St Trolley Station,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Move to 37th Street Station adn than navigate to Wawa.,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Navigate to the convenience store after you stop at 37th St Trolley Station.,F & 37th_street_station F wawa,Philadelphia #2
+visit,2,Navigate to the Wawa while passing through the 37th Street Trolley Station.,F & 37th_street_station F wawa,Philadelphia #2
+visit,1,Navigate directly to Nikki & Co. Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go straight to Nikki Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go right over to the jewelry store,F nikki_fine_jewelers,San Diego #1
+visit,1,Go to Nikki & Co. Fine Jewelers.,F nikki_fine_jewelers,San Diego #1
+visit,1,Navigate to the jewelers while avoiding the museum.,F nikki_fine_jewelers,San Diego #1
+visit,1,Head straight to Nikki Fine Jewelers.,F nikki_fine_jewelers,San Diego #1
+visit,1,Navigate to the jewelry store.,F nikki_fine_jewelers,San Diego #1
+visit,1,Move to Nikki Co. & Fine Jewelers,F nikki_fine_jewelers,San Diego #1
+visit,1,Go directly to Nikki Fine Jewelers and make no stops along the way.,F nikki_fine_jewelers,San Diego #1
+visit,1,Head  straight to Nikki & Co. Do not stop anywhere else,F nikki_fine_jewelers,San Diego #1
+visit,2,Go to the jewelry store on your way to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,When you get to Nikki & Co. Fine Jewelers turn left and head to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Go to Nikki Fine Jewelers while on your way to CVS,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Navigate to CVS while passing through Nikki & Co Fine Jewelers.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Go straight to Nikki Fine Jewelers and then turn right to CVS.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Navigate to Nikki & Co. and then to the pharmacy.,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,go to the jewelry store and then to the drug store,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,"Make a straight line to your first stop, which is Nikki & Co. Fine Jewelers, before moving on to your next stop of CVS",F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,Proceed first to Nikki & Co. and then turn straight to the CVS. At no point should you go near the William Health Davis House,F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,"Go to Nikki & Co. Fine Jewelers, then go to CVS.",F & nikki_fine_jewelers F cvs,San Diego #1
+visit,2,"Go to CVS, then go to William Heath Davis House Museum.",F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to CVS on your way to William Heath Davis House.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to the CVS and then head southwest to William Heath Davis House Museum.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Head to CVS and then proceed straight to William Health Davis House.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,"When you get to CVS, turn right and head to William Heath Davis House.",F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Stop at CVS on the way to William Heath Davis House Museum taking the most direct route to either destination.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to the William Heath Davis House while passing through the CVS.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Make your way through the cvs on your way to the museum.,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Make your first stop at CVS before moving on to William Heath Davis House,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to CVS while on your way to William Heath Davis House Museum,F & cvs F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to the jewelry store and then head over to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki & Co. Fine Jewelers and then go to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to the museum while avoiding the jewelers.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Go to Nikki Fine Jewelers while on your way to William Health Davis House,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Head straight to Nikki & Co. and from there proceed to William Health Davis House,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,head over to the jewelry store and then to the museum,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki Fine Jewelers on your way to William Heath David House Museum.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,"Go to Nikki & Co. Fine Jewelers, then go to William Heath Davis House Museum.",F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Navigate to Nikki & Co. On your way to William Heath Davis House.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,2,Go straight to Nikki Fine Jewelers and then head to the south end of the block.,F & nikki_fine_jewelers F william_heath_davis_house_museum,San Diego #1
+visit,1,Head straight over to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
+visit,1,Go directly to the Italian Cultural Center of San Diego.,F italian_cultural_center,San Diego #2
+visit,1,Move directly to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
+visit,1,Navigate across State Street to the Italian Cultural Center of San Diego.,F italian_cultural_center,San Diego #2
+visit,1,Go straight to the cultural center instead of heading in the direction of the museum.,F italian_cultural_center,San Diego #2
+visit,1,Go straight across the street to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
+visit,1,Head over to the Italian Cultural Center.,F italian_cultural_center,San Diego #2
+visit,1,Proceed directly to Italian Cultural Center.,F italian_cultural_center,San Diego #2
+visit,1,Go straight to Italian Cultural Center,F italian_cultural_center,San Diego #2
+visit,1,Go in a short straight line to the Italian Cultural Center,F italian_cultural_center,San Diego #2
+visit,2,Go to the Italian restaurant on your way to the language school.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Navigate straight to Buon Appetito Restaurant and from there head to the Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Make your first stop at Buon Appetito Restaurant before moving on to your next stop at the Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Head straight to Buon Appetito and then turn slightly right.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant and then head to the Italian Cultural Center of San Diego.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Ride past the Buon Appetito and end up at the Italian Cultural center.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,"Go to Buon Appetito Restaurant, then continue to the Italian Cultural Center.",F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant and then go to the Italian Cultural Center.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Go to Buon Appetito Restaurant while on your way to Italian Cultural Center,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Proceed through Buon Appetito on way to Language school.,F & buon_appetito F italian_cultural_center,San Diego #2
+visit,2,Navigate first to the Italian Cultural Center and then onward to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Go to Italian Cultural Center of San Diego while on your way to Firehouse Museum,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Stop by the language school on your way to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,"Navigate to the Italian Cultural Center of San Diego, and then to the Firehouse Museum",F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,"Move to Italian Cultural Center of San Diego, and then move the Firehouse Museum",F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Turn left at the Italian Cultural Center before heading to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Proceed to the museum while visiting the language school on the way.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Stop at the cultural center and then continue to the museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,First go to the cultural center and then head over to Firehouse Museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,2,Hit the cultural center of SA only to land at the Firehouse museum.,F & italian_cultural_center F firehouse_museum,San Diego #2
+visit,1,Navigate to Seawalk Pavilion,F seawalk_pavilion,Jacksonville #1
+visit,1,Move to the seawalk pavilion and avoid surfer the bar,F seawalk_pavilion,Jacksonville #1
+visit,1,Go to SeaWalk Pavillion while on your way to Surfer the Bar,F seawalk_pavilion,Jacksonville #1
+visit,1,Move directly to Seawalk Pavilion.,F seawalk_pavilion,Jacksonville #1
+visit,1,Head directly to your end destination the Seawalk Pavilion.,F seawalk_pavilion,Jacksonville #1
+visit,1,Navigate to Seawalk Pavillion,F seawalk_pavilion,Jacksonville #1
+visit,1,Head straight ahead to Seawalk Pavilion.,F seawalk_pavilion,Jacksonville #1
+visit,1,Go to the Seawalk Pavilion.,F seawalk_pavilion,Jacksonville #1
+visit,1,Navigate straight to the Seawalk Pavilion,F seawalk_pavilion,Jacksonville #1
+visit,1,Go directly to the Seawalk Pavilion and avoid Surfer [the Bar].,F seawalk_pavilion,Jacksonville #1
+visit,2,Proceed through the restaurant before moving towards the Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,"Move to Sea Walk Pavilion, but first go to the Carrabba's Italian Grill.",F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Go to Carrabba's Italian Grill while on your way to Seawalk Pavilion,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Head to Carrabba's and then to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Navigate to Carrabba's Italian Grill then navigate to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,"Go to Carrabba's Italian Grill, then keep going until you reach SeaWalk Pavillion.",F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,"Go to Carrabba's Italian Grill, then go to Seawalk Pavilion.",F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,"Make a straight line to Carrabba's Italian Grill and stop, then head to Seawalk Pavilion",F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Visit Carrabba's Italian Grill and then the SeaWalk Pavilion,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Go to the italian grill before heading over to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,Jacksonville #1
+visit,2,Bypass Seawalk Pavilion on your way to Surfer (the bar),F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Navigate to Seawalk Pavilion and then to Surfer the Bar.,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Go to Seawalk Pavillion while on your way to Surfer the Bar,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Go to Seawalk Pavilion and then to the bar & grill.,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,"Go up to SeaWalk Pavillion then continue to Surfer the Bar, right next to it.",F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,"Go to the Seawalk Pavilion, then go to Surfer (the Bar).",F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Head straight to Seawalk Pavilion then head left to stop at Surfer [The Bar],F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Navigate to the bar while avoiding the pavilion.,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Turn left just past the Seawalk Pavilion and go the bar.,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,Head towards Seawalk Pavilion and turn to go to Surfer.,F & seawalk_pavilion F surfer_the_bar,Jacksonville #1
+visit,2,go to the Italian grill then navigate to the Surfer bar.,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,Travel to Carrabba's Italian Grill and then to Surfer the Bar.,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,Go to Carrabba's Italian Grill while on your way to Surfer the Bar,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,First go to Carrabba's Italian Grill then proceed to Surfer[The Bar].,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,Head straight to Carrabba's Italian Grill and then head northeast.,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,"Go to Carrabba's Italian Grill, then go to Surfer (the Bar).",F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,Go to Carrabba's Italian Grill and then head to Surfer The Bar.,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,"Go straight and stop at Carrabba's Italian Grill, then veer right and make a stop at Surfer the Bar",F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,"Navigate first to Carrabba's Italian Grill, and then to Surfer the Bar",F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,2,When you get to the Italian Grill make a sharp right turn and head back to the bar.,F & carrabbas_italian_grill F surfer_the_bar,Jacksonville #1
+visit,1,Travel forward along Shetter ave to Beaches Museum.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Go directly to the history museum.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Go straight to Beaches Museum.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Proceed in a straight line to Beaches museum chapel.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Move directly towards the Beaches Museum without taking any detours.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Go directly to the Beaches Museum Chapel.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Head towards the museum and avoid Players by the sea.,F beaches_museum_chapel,Jacksonville #2
+visit,1,Go directly to Beaches Museum.,F beaches_museum_chapel,Jacksonville #2
+visit,1,"From your location, make a straight line and head for Beaches Museum Chapel.",F beaches_museum_chapel,Jacksonville #2
+visit,1,Head directly to the Beaches Museum while avoiding Players By the Sea and Publix.,F beaches_museum_chapel,Jacksonville #2
+visit,2,Make a a right turn at the Beaches Museum on your way to Players By the Sea.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,"Travel first to the history museum, and then to the arts theater after.",F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,Move to Beaches Museum Chapel then turn left and head to Players By the Sea.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,Stop by Beaches Museum on the way to Players By The Sea.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,fly north east and over us 90 towards beaches museum chapel.  turn left or north west at the chapel flying above pablo street to reach players by the sea one black away from beaches museum chapel.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,Go straight to the Beaches Museum.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,Go through Beaches Museum on your way to the community theater.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,"Be careful with crossing US 90 and make sure to cross Beach Museum Chapel first, before going to the Players By the Sea.",F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,"Make a straight line toward Beaches Museum Chapel for your first stop. After that, make another straight line to Players By the Sea.",F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,First go to the Museum Chapel and than move to Players by the sea.,F & beaches_museum_chapel F players_by_the_sea,Jacksonville #2
+visit,2,Go to Players By The Sea on your way to Publix.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,"Move to Player by the sea.
+Navigate to the Publix market and avoid the Beaches Museum.
+Move to Publix Super Market.",F & players_by_the_sea F publix,Jacksonville #2
+visit,2,First head to Players By the Sea then turn right and head straight to Publix.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,Go Straight through Players by the sea avoiding Beaches Museum on route to Publix.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,"Your first stop is Players by the Sea, followed with a straight line to Publix.",F & players_by_the_sea F publix,Jacksonville #2
+visit,2,Turn right at Players By the Sea.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,Move towards Players by the sea and than navigate towards Publix.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,Navigate to Players by the Sea and then to Publix avoiding Beaches Museum Chapel.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,Go to the community theater and then proceed to the super market.,F & players_by_the_sea F publix,Jacksonville #2
+visit,2,"Go to the performing arts theater first, and then to the grocery store after.",F & players_by_the_sea F publix,Jacksonville #2
+visit,2,"Go in a straight line and make your first stop at Publix. After that, go in another straight line all the way to Players By the Sea.",F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Stop at Publix on your way to the theater.,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Travel to the Player By The Sea avoiding the Publix,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Navigate to Publix Super Market and then navigate to Players By the Sea.,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Head to Publix and then go to Players By the Sea but avoid the Beaches Museum Chapel.,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Move to Publix Super Market at Middle Beach Commons and then to Players By the Sea,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Move to Publix and than move to Players by the sea while avoiding the Museum Chapel.,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Go by publix on your way to Players By The Sea,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Go to the performing arts theater while stopping at the grocery store first.,F & publix F players_by_the_sea,Jacksonville #2
+visit,2,Navigate to Publix and then Player's by the Sea.,F & publix F players_by_the_sea,Jacksonville #2
+visit,1,Head straight across the street to Christian Spiritualist Temple.,F christian_spiritualist_temple,Columbus #1
+visit,1,Head straight to the Christian Spiritualist Temple,F christian_spiritualist_temple,Columbus #1
+visit,1,Head right to the church.,F christian_spiritualist_temple,Columbus #1
+visit,1,Navigate to the Christian Spiritualist Temple but don't go near Grant Medical Center on the way there.,F christian_spiritualist_temple,Columbus #1
+visit,1,Head in a straight line to Christian Spiritualist Temple.,F christian_spiritualist_temple,Columbus #1
+visit,1,Go straight to Christian Spiritualist Temple,F christian_spiritualist_temple,Columbus #1
+visit,1,Move directly to the Christian Spiritualist Temple,F christian_spiritualist_temple,Columbus #1
+visit,1,advance to the temple.,F christian_spiritualist_temple,Columbus #1
+visit,1,Move to Christian Spiritualist Temple.,F christian_spiritualist_temple,Columbus #1
+visit,1,Head directly to the Christian Spiritualist Temple.,F christian_spiritualist_temple,Columbus #1
+visit,2,Move through the medical center as you proceed to the church.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,stop by the hospital on the way to the church,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Go to Grant Medical Center while on your way to Christian Spiritualist Temple,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,"Go to Grant Medical Center, then go to the Christian Spiritualist Temple.",F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Go straight to Grant Medical Center and then continue to the temple.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Stop by Grant Medical Center on your way to the Church.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,First go to Grand Medical Center and then head to Christian Spiritualist Temple.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Navigate to the Temple and avoid the Library.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Move to Grant Medical Center and than navigate to Christian Spiritualist Temple.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,navigat to the medical center then continue to the temple.,F & grant_medical_center F christian_spiritualist_temple,Columbus #1
+visit,2,Go to Christian Spiritualist Temple while on your way to Columbus Metropolitan Library,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Avoid the Medical Center on your way to the Columbus Library.,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Go south to Christian Spiritualist Temple and then head east to the Library.,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Make your first stop at Christian Spiritualist before moving on to Columbus Metropolitan Library,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,"When you get to the religious temple, turn left and go straight to the Columbus Metropolitan Library.",F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,"Go to the Christian Spiritualist Temple, then go to the Columbus Metropolitan Library.",F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Enter the church on the path to the library.,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Travel to the library while visiting the church on the way there.,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,Go to the temple then continue to the library,F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,"Go down to Christian Spiritualist Temple, then travel over to the Columbus Metropolitan Library.",F & christian_spiritualist_temple F columbus_metropolitan_library_main,Columbus #1
+visit,2,"Go to the Columbus Metropolitan Library, then go to Grant Medical Center.",F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Head straight to Columbus Metropolitan Library and make your second stop at Grant Medical Center,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,"Navigate first to the Columbus Metropolitan Library, and then to the Grant Medical Center",F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Go to Columbus Metropolitan Library while on your way to Grant Medical Center,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Enter the library then proceed to the medical center.,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Navigate to Columbus Metropolitan Library then proceed onto Grant Medical Center.,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Go straight to Columbus Metropolitan Library then proceed to Grant Medical Center.,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Go straight to the Columbus Metropolitan Library and then west to Grant Medical Center.,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,proceed to the library then continue to the medical center.,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,go to the library and then the hospital,F & columbus_metropolitan_library_main F grant_medical_center,Columbus #1
+visit,2,Navigate To Grant Medical center then proceed to Columbus Metropolitan Library,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Go to Grant Medical Center while on your way to Columbus Metropolitan Library,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Move to Colombus Metropolitan Library after stopping by the Grant Medical Center,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Go to the medical center before going over to the library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,"Travel to Grant Medical Center, then keep going until you reach Columbus Metropolitan Library.",F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,"Head straight to Grant Medical Center, and from there navigate to the Columbus Metropolitan Library",F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Turn right at Grant Medical Center and continue to  the library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Head to the Grant Medical center and after that go straight to the Columbus Metropolitan Library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,proceed to the medical center then advance to the library.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,2,Navigate to the library by first entering the Medical center.,F & grant_medical_center F columbus_metropolitan_library_main,Columbus #1
+visit,1,Go straight to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go straight to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Head in a straight line to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Go right to the night club.,F dahlia_nightclub,Columbus #2
+visit,1,Go in the opposite direction of the tavern and head straight to the nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Go straight to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Advance to Dahlia Nightclub,F dahlia_nightclub,Columbus #2
+visit,1,Go directly to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,1,Proceed to Dahlia Nightclub.,F dahlia_nightclub,Columbus #2
+visit,2,Head east to Park Street Tavern and then go across the street east to Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Go to Park Street Tavern and then to Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Navigate first to the Park Street Tavern and then forward to the Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,"Go first to Park Street Tavern, and then Market Blooms florist.",F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Enter the tavern on way to the florist.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Naviate to park street tavern and than move to Market Blooms,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Go to Park Street Tavern and then to Market Blooms.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Go to Park Street while on your way to Market Blooms,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Go to Market Blooms and stop at Park Street Tavern along the way.,F & park_street_tavern F market_blooms,Columbus #2
+visit,2,"Go straight to Park Street Tavern, then go straight from there to Market Blooms",F & park_street_tavern F market_blooms,Columbus #2
+visit,2,Go southwest to Market Blooms and then head straight to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Move to Market Blooms and than navigate to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,"Go straight to Market Blooms for your first stop, then stop at Dahlia Nightclub",F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Dahlia Nightclub but be sure to go around Park Street Tavern.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Stop at the florist on your way to the night club.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Market Blooms while on your way to Dahlia Nightclub,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Move through Market Blooms on the way to Dahlia Nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to the flower shop before going to the nightclub.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Go to Market Blooms and then navigate to the night club.,F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,"Go to Market Blooms, then go to Dahlia Nightclub.",F & market_blooms F dahlia_nightclub,Columbus #2
+visit,2,Visit the night club on your way to the bar.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,"Head to Dahlia Nightclub first, then proceed to Park Street Tavern.",F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Travel to Dahlia Nightclub and then to Park Street Tavern,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Navigate to Dahlia Nightclub then navigate to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,go to the nightclub and then to the bar,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,drive to dahlia Nightclub while navigating to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Move directly to Dahlia Nightclub then head to Park Street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Enter the nightclub on way to the tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Move to Dahlia Club and than navigate to Park street Tavern.,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,2,Go to Dahlia Night Club while on your way to Park Street Tavern,F & dahlia_nightclub F park_street_tavern,Columbus #2
+visit,1,"Instead of heading in the direction of the library, go straight to Halton Theater.",F halton_theatre,Charlotte #1
+visit,1,Navigate to the theater while avoiding the auditorium.,F halton_theatre,Charlotte #1
+visit,1,Head in a straight line and stop at Halton Theatre,F halton_theatre,Charlotte #1
+visit,1,Head straight over to Halton Theatre.,F halton_theatre,Charlotte #1
+visit,1,Go to the Dale F. Halton Theater.,F halton_theatre,Charlotte #1
+visit,1,Go straight to Halton Theatre,F halton_theatre,Charlotte #1
+visit,1,Take the most direct route to Dale F. Halton Theater.,F halton_theatre,Charlotte #1
+visit,1,Navigate straight to Halton Theater.,F halton_theatre,Charlotte #1
+visit,1,Go straight to Halton Theatre.,F halton_theatre,Charlotte #1
+visit,1,Go west to the Halton Theatre.,F halton_theatre,Charlotte #1
+visit,2,"would you please go to the CPCC Pease Auditorium, but also lets first go to the Halton Theatre.",F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,"Your first stop will be Halton Theatre, then make your second stop at CPCC Pease Auditorium",F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Go to Halton Theater while on your way to CPCC Pease Auditorium,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Stop by Halton theater on your way to Pease Auditorium.,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,First go to Halton Theatre and after that navigate to Pease Auditorium.,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,First move to the Halton Theatre and then on to the Pease Auditorium while ignoring the CPCC Library,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Navigate to Halton Theater and then to Pease Auditorium.,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Make a stop at the theater on  your way to the auditorium.,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,"Go to the Dale F. Halton Theater, then go to CPCC Pease Auditorium.",F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Go to Dale F. Halton Theater then head straight to CPCC Library - Central Campus.,F & halton_theatre F cpcc_pease_auditorium,Charlotte #1
+visit,2,Navigate through the Pease Auditorium to the CPCC Library.,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Navigate to Pease Auditorium and then to CPCC Library,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,"Go to the Pease Auditorium, then go to the CPCC Library.",F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,"After you get to Pease Auditorium, continue to the library.",F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Drive right through CPCC and end up at the CPCC Library shortly after.,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,"I want you to go to the CPCC Libray, but first I want you to go to the CPCC Pease Auditorium.",F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Navigate to pease auditorium and then to the CPCC Library.,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,go to the library and then the auditorium,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Make your first stop at CPCC Pease Auditorium then make your second stop at CPCC Library,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Head to CPCC Library - Central Campus but avoid the CPCC Pease Auditorium.,F & cpcc_pease_auditorium F cpcc_library,Charlotte #1
+visit,2,Go to the CPCC Library and from there to the Halton Theatre.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Go straight to CPCC Library and then travel to Halton Theater.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Go around the CPCC Library and arrive at Halton theater.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,"Start out by moving to the CPCC Library, and then go to the Halton Theatre.",F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Navigate to CPCC Library then navigate to  Halton Theater.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,head to the library and then the theater,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Move to the theater while visiting the library on the way there.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Head to CPCC Library and than move to Halton Theatre.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,The CPCC Library will be your first destination.,F & cpcc_library F halton_theatre,Charlotte #1
+visit,2,Go to CPCC Library while on your way to Halton Theatre,F & cpcc_library F halton_theatre,Charlotte #1
+visit,1,Head straight down past the Diamond Restaurant to get at Commonwealth animal shelter.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Go directly to the Commonwealth Animal Hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Go directly to Commonwealth Animal Hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,"Instead of going to Zada Janes, go straight to the animal Hospital.",F commonwealth_animal_hospital,Charlotte #2
+visit,1,Proceed to the animal hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Go south while avoding Elizabeth Billiards on your way to Commonwealth Animal Hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Navigate straight to Commonwealth Animal Hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,I want to go to the Commonwealth Animal Hospital please.,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Navigate straight to Commonwealth Animal Hospital,F commonwealth_animal_hospital,Charlotte #2
+visit,1,Navigate the most direct route possible to Commonwealth Animal Hospital.,F commonwealth_animal_hospital,Charlotte #2
+visit,2,"Go to Commonweath Animal Hospital, then continue to Zada Jane's.",F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Head to the Commonwealth Animal Hospital before heading to Zada Jane's.,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,"On your way to Zada Janes, go to the animal hospital.",F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,"Go to Commonwealth Animal Hospital, then go to Zada Jane's Corner Cafe.",F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Navigate to the cafe while avoiding the animal hospital.,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,proceed to the animal hospital and then advance to Zada Jane's,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Navigate to Commonwealth Animal Hospital on your way to Zada Jane's Corner Café.,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Go to Commonwealth Animal Hospital while on your way to Zada Jane's Corner Cafe,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Go to Commonwealth Animal Hospital first then proceed to Zada Janes.,F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,"Please move to the Commonwealth Animal Hospital, and then to Zada Jane's Corner Cafe.",F & commonwealth_animal_hospital F zada_janes,Charlotte #2
+visit,2,Navigate to Zada Jane's Corner Cafe then go to the destination called Elizabeth Billiards.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Navigate to Elizabeth Billiards while passing through the cafe.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Turn right at Zada Jane's before heading to Elizabeth Billiards.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,"please move to Elizabeth Billiards, but first stop at Zada Jane's Corner Cafe for some food.",F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,go by Zada Jane's on the way to Wlizabeth Billiards.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,"Travel to Zada Jane's, then go to Elizabeth Billiards.",F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Pass over Pecan Avenue avoiding CVS on your right.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,"Go to Zada Jane's Corner Cafe, then go to Elizabeth Billiards.",F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Go by Zada Jane's Corner Café and then to Elizabeth Billiards.,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Go to Zada Jane's while on your way to Elizabeth Billiards,F & zada_janes F elizabeth_billiards,Charlotte #2
+visit,2,Go down to Elizabeth Billards and then turn left to Commonwealth Animal Hospital.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,"Go to Elizabeth Billards, then continue to Commonwealth Animal Hospital.",F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Go towards the pool hall then arrive at Commonwealth Animal shelter.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Cross over Central Avenue in front of the Dairy Queen heading South West.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,while navigating to the animal hospital go by Elizabeth Billiards.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,"Lets go to Elizabeth Billiards, and then the Commonwealth Animal Hospital, please.",F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Go to Elizabeth Billiards then navigate to Commonwealth Animal Hospital next.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Navigate to Elizabeth Billiards before continuing to the animal hospital.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Go to Elizabeth Billiards on your way to Commonwealth Animal Hospital.,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,2,Go to Elizabeth Billiards on your way to Commonwealth Animal Hospital,F & elizabeth_billiards F commonwealth_animal_hospital,Charlotte #2
+visit,1,Navigate to El Arado while avoiding Pnc Bank,F el_arado,Indianapolis
+visit,1,You will proceed northeast until you reach the El Dorado restaurant.,F el_arado,Indianapolis
+visit,1,Move to El Arado Mexican Grill while avoiding the PNC Bank,F el_arado,Indianapolis
+visit,1,Move to the El Arado eatery but avoid the PNC Bank,F el_arado,Indianapolis
+visit,1,Move straight to El Arado Mexican Grill.,F el_arado,Indianapolis
+visit,1,Travel straight to El Arado Mexican Grill.,F el_arado,Indianapolis
+visit,1,Move to El Arado.,F el_arado,Indianapolis
+visit,1,Go straight along Prospect Street to El Arado.,F el_arado,Indianapolis
+visit,1,"Make a short and straight line to El Arado, which is your stop.",F el_arado,Indianapolis
+visit,1,Go straight to El Arado,F el_arado,Indianapolis
+visit,2,Go through La margarita fountain square to the El dorado,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Go to La Margarita Fountain Square and then too El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Head to El Arado by first going through La Margarita Fountain Square.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,"Travel to La Margarita Fountain Square first, then to El Arado Mexican Grill after.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Move to margarita fountain square than move to El Arado while avoiding PNC bank.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,"Navigate to La Margarita Fountain Square then
+Move to El Arado while avoiding the bank.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Make your way to La Margarita Fountain Square then go around PNC bank on your way to El Arado Mexican Grill.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Stop at La Margarita Fountain Square on the way to El Arado.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Move through La Margarita and around on route to El Arado.,F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,"Your first stop is going to be La Margarita Fountain Square. After that, pass by PNC Bank and make your next stop at El Arado Mexican Grill.",F & la_margarita_fountain_square F el_arado,Indianapolis
+visit,2,Navigate to PNC bank by avoiding El Arado restaurant,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go past El Arado restaurant on the way to the PNC Bank directly to the left of it.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move to El Arado Mexican Grill on your way to PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move through El Arado on your path to the bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Move to El Arado than to PNC Bank,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go to El Arado on your way to PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Go straight and through El Arado to arrive at PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,Make your first stop at El Arado before passing onto your next stop at PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,"First go to El Arado, then go to PNC Bank",F & el_arado F pnc_bank,Indianapolis
+visit,2,Stop at the El Arado Mexican Grill on the way to the PNC Bank.,F & el_arado F pnc_bank,Indianapolis
+visit,2,"Travel aross Virginia Avenue until PNC Bank is in front of you, then turn right and head for La Margarita Fountain Square on your left at the corner.",F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Go to PNC Bank and then go to La Margarita Fountain Square.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,"Navigate first to the bank, and then to La Margarita Fountain Square after.",F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Move to PNC Bank and than move to Margarita fountain,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Head to the PNC bank and then to La Margarita Fountain Square and nowhere else,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Move to the PNC Bank and then turn right to reach La Margarita Fountain Square.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Stop at PNC Bank on your way to La Margarita Fountain Square.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Move forward then around PNC Bank on route to La Margarita Fountain.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,"Make your way to PNC Bank. After you're done, make your way to La Margarita Fountain Square.",F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,2,Navigate first to PNC Bank and then navigate again to La Margarita Fountain Square.,F & pnc_bank F la_margarita_fountain_square,Indianapolis
+visit,1,Move directly to the chiropractor.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,"Move to Amasia Acupunture, Chiropractic, Massage & Herbs Clinic while bypassing TCG Printing and Imaging.",F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Navigate to the chiropractor while avoiding the commercial printer.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,"Make a direct South-East beeline to the Amasia Acupuncture, Chiropractic, Massage and Herbs Clinic, avoiding TCC Printing and Imaging below it.",F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Head straight for Amasia Acupuncture.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Proceed straight to Amasia Acupuncture Massage Herbs Center.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Move to the Amasia Acupuncture Clinic and avoid Alice's Floral Designs and TCC Printing and Imaging.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Navigate straight to Amasia Acupuncture Massage Herbs Center,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,"navigate to Amasia Acupunture, Chiropractix,Massage& Herbs Clinic while avoiding Alice's Floral Designs.",F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,Begin at China and end at Amasia Acupunture.,F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Head east to Alice's floral, take the passasage infront of Alices's and head south till you reach TCC on your right.",F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Go to the florist followed by going to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,"Stop at Alice's Floral Designs on your way to TCC Printing.
+A quick pit stop at Alice's before continuing on to TCC.
+Don't forget to stop at Alice's before you head to TCC.",F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,"go over cvs and across the street to alice's floral design's
+go down and over the bistro and across the street
+go to the  right of young tea to amasia acupunture, chiropractic, massage & herbs clinic
+go down to the left to tcc printing and imaging",F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Move to Alice's Floral Design and than navigate to TCC Printing and Imaging,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Navigate to Alice's Floral Design's while going to TCC Printing and Imaging,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,go toward Alice's Floral Designs and then to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Make a stop at Alice's Floral Designs and then make a sharp left turn before heading down to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Navigate to the commercial printer while passing through the florist.,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Navigate to Alice's Floral Designs then navigate to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,Seattle
+visit,2,Navigate to the chiropractor while passing through the commercial printer.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Curve around to TCC printing and Imaging and go straight to Amasia Acupuncture.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Navigate to Amasia Acupuncture with a stop at TCC Printing and Imaging on the way.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Move to Acupuncture store by avoiding printing store.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Make a stop at TCC Printing and Imaging before going across the street to Amasia Acupuncture.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Head to TCC Printing and Imaging and then the chiropractor.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Move to TCC Printing & Imaging and than navigate to Amazia Acupuncture, Chiropractic, Massage & Herbs Clinic",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Heda to TCC Printing and Imaging first, then go to Amasia Acupuncture.",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Navigate to the printing and imaging business, and then continue to Amasia's.",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Go to TCC Printing and Imaging while navigating to Amasia Acupuncture Massage Herbs Center,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Go to Alice's Floral Designs while navigating to Amasia Acupuncture Massage Herbs Center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Avoid Alice's Floral Designs to get to Amasia Accupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Pass through Alice's Floral Designs before heading to Amasia Acupuncture Massage Herbs Center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Navigate to Alice's Floral Designs and avoid AA Travel and New An Dong Chinese herb & Grocery,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,move from Cushing street to Soban,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Navigate to the chiropractor while passing through the flower shop.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Head to Alice's Floral Designs and then navigate to Amasia Acupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Go to the florist and then to the chiropractor.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,Go to Alice's Floral Designs before heading to Amasia.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,2,"Go through Alice's Floral Designs on your way to Amasia Acupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,Seattle
+visit,1,"Navigate directly to Native American Trading Company, staying west of Clyfford Still Museum.",F native_american_trading_company,Denver #1
+visit,1,Head directly to the art gallery.,F native_american_trading_company,Denver #1
+visit,1,Head straight to Native American Trading Company.,F native_american_trading_company,Denver #1
+visit,1,Avoid Clyfford Still Museum  on your way to Native American Trading Company,F native_american_trading_company,Denver #1
+visit,1,Travel to the art gallery while avoiding the museum.,F native_american_trading_company,Denver #1
+visit,1,Head straight across the street to the Native American Trading Company.,F native_american_trading_company,Denver #1
+visit,1,"Instead of heading to Clyfford Museum, go straight to the Native American Trading Company.",F native_american_trading_company,Denver #1
+visit,1,Go straight to the Native American Trading Company without stopping.,F native_american_trading_company,Denver #1
+visit,1,Navigate straight to Native American Trading Company,F native_american_trading_company,Denver #1
+visit,1,Native American Trading Company is your final destination-cross west 13th in a northeastern direction to get there.,F native_american_trading_company,Denver #1
+visit,2,Go to the Center for Colorado Women's History and then navigate to Clyfford Still Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Navigate to the Clyfford Still Museum while passing through the Center for Colorado Women's History.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Navigate to the Clyfford Still Museum while traveling over the Center for Colorado Women's History.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Go to Byers-Evans House Museum and then continue to the Clyfford Still Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Navigate to the CVS pharmacy by avoiding the Center of Colorodo Women's Hisory and the Byers-Evans House Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Go to the Byers-Evans House Museum and then to the Clyfford Still Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,"Move to the Center for Colorado Women's History, and then the Clyfford Still Museum, but avoid the Native American Trading Company",F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Stop off at the Center for Colorado Women's History before proceeding to Clyfford Still Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Navigate to Center for Colorado Women's History while going to Clyfford Still Museum,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Stop at the Center for Colorado Women's History before heading to Clyfford Still Museum.,F & center_for_colorado_womens_history F clyfford_still_museum,Denver #1
+visit,2,Navigate to Clyfford Still Museum and than move to Native American Trading Company,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Stop off at the Clyfford Still Museum before proceeding on to the Native American Trading Company.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Stop at the Museum before heading north to the Native American Trading Company.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Travel to Native American Trading Company via Clyfford Still Museum.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,"Go through the clyfford still museum on your way to Native American Trading company.
+Move through the clyfford still museum while passing through the Native American Trading company.",F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Navigate to the art gallery while passing through the museum.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,"Navigate to Clyfford Still Museum, and then continue to the Native American Trading Company.",F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Go to Clyfford Still Museum while navigating to Native American Trading Company,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Navigate to the museum and then go to the Native American Trading Company.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Visit the Clyfford Still Museum on your way to the art gallery.,F & clyfford_still_museum F native_american_trading_company,Denver #1
+visit,2,Navigate to Native American Trading Company while on your way to Clyfford Still Museum,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Travel to the museum while avoiding the art gallery.,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,"Navigate to the Native American Trading Company, and then continue to Clyfford Still Museum.",F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Visit the art gallery on your way to the Clyfford Still Museum.,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,"First, go to the Native American trading company and then proceed to Clyfford Still Museum.",F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Go through the Native American Trading Company and then towards Clyfford Still Museum.,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Go to the Native American Trading Company and from there proceed to Clifford Still Museum.,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Stop at the Native American Trading Company before heading across the street to the museum.,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,Go through the Native American trading company to the Clyfford museum,F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,2,"First, make your way to the Native American Trading Company, and then head to Clyfford Still museum.",F & native_american_trading_company F clyfford_still_museum,Denver #1
+visit,1,Navigate to Natural Grocers.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Navigate to the grocery store.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Navigate south to arrive at Vitamin Cottage.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Go to the Vitamin cottage natural grocers,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Navigate straight to Vitamin Cottage Natural Grocers,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Go across the shopping center in to Natural Grocers.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,"Navigate straight to Vitamin Cottage Natural Grocers, staying to the west of Safelite AutoGlass.",F vitamin_cottage_natural_grocers,Denver #2
+visit,1,navigate to Vitamin Cottage Natural Groceries without passing through safelite AutoGlass.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Go straight to the Vitamin Cottage Natural Grocers.,F vitamin_cottage_natural_grocers,Denver #2
+visit,1,Cross Buchtel Boulevard heading slightly southwest.,F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Head to the Native Foods Cafe before arriving at Safelite AutoGlass.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Navigate to the auto glass shop while passing through the cafe.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,On your way to satelite Autoglass stop by Native Foods Cafe.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Go to Native Foods Cafe while navigating to Safelite AutoGlass,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Navigate to Natural Grocers the navigate to Safelite AutoGlass.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,"Go southeast to Native Foods Cafe, then southeast again to Safelite.",F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Go to the Native Foods Cafe and from there to Safelite AutoGlass.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,"Begin at the x, continue on the dark blue path, go around the light blue circle until you hit the dark blue path again. Stop at the light blue circle.",F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Stop at Native Foods Cafe before crossing the street to Safelite Autoglass.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Move to Native Foods Cafe and then continue to Safelite.,F & native_foods_cafe F safelite_autoglass,Denver #2
+visit,2,Navigate to the grocery store while passing through the auto glass shop.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Go to Vitamin Cottage Natural Grocers but first stop at Safelite AutoGlass on the way.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Get to Natural Grocers via the auto glass shop.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,"Navigate to the Safelite AutoGlass.
+Move to the Vitamin Cottage Natural Grocers store.",F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Visit the auto glass shop on your way to the grocery store.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Go to Safelite Autoglass while navigating to Vitamin Cottage Natural Grocers,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Make a stop at the Safelite AutoGlass before crossing the street to Natural Grocers.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,"Move to Safelite, and then continue to the natural grocers store",F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Cross South Colorado Boulevard heading west directly to the south of Wells Fargo.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Go to Safelite AutoGlass before proceeding to Natural Grocers.,F & safelite_autoglass F vitamin_cottage_natural_grocers,Denver #2
+visit,2,Visit the grocery store on your way to the auto glass shop.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Move to Vitamin Cottage natural Grocers and than anvigate to Satelite AutoGlass,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Pass through Vitamin Cottage Natural Grocers on the way to Safelite AutoGlass.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Navigate to the auto glass shop while passing through the grocer.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,"Go south to Vitamin Cottage, then head east to Safelite AutoGlass.",F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Navigate to Vitamin Cottage Natural Grocers on your way to Safelite AutoGlass,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Stop at the Natural Grocers before heading over to Safelite Autoglass.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,"Go to the grocers, and then continue to Safelite AutoGlass.",F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,Stop off at Vitamin Cottage Natural Grocers before proceeding to Safelite AutoGlass.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,2,go to Safelite AutoGlass without passing through Vitamin Cottage Natural Grocers.,F & vitamin_cottage_natural_grocers F safelite_autoglass,Denver #2
+visit,1,Move location to knapp street go south then to kneeland street to Tufts Dental School.,F tufts_dental_school,Boston
+visit,1,Navigate to Tufts University School of Dental Medicine while avoiding the church.,F tufts_dental_school,Boston
+visit,1,Move straight to the dental school.,F tufts_dental_school,Boston
+visit,1,Move to Tufts Dental School,F tufts_dental_school,Boston
+visit,1,Go straight to Tufts University School of Dental Medicine.,F tufts_dental_school,Boston
+visit,1,Make your way directly to Tufts Dental School.,F tufts_dental_school,Boston
+visit,1,Navigate straight to Tufts Dental School,F tufts_dental_school,Boston
+visit,1,Head southwest across the street to get to Tufts Dental School.,F tufts_dental_school,Boston
+visit,1,Head straight forward to Tufts Dental School.,F tufts_dental_school,Boston
+visit,1,Head straight for Tufts Dental School.,F tufts_dental_school,Boston
+visit,2,Move to Tufts Dental School than navigate to St. James Church,F & tufts_dental_school F st._james_church,Boston
+visit,2,Travel through the dental school and continue on to St James.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Navigate to the church while passing through the private school.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Visit the dental school and then the church.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Move to the dental school and then continue to St. James.,F & tufts_dental_school F st._james_church,Boston
+visit,2,First go through the dental school and then end up at St. James Church.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Go to Tufts Dental School while navigating to St. James Church,F & tufts_dental_school F st._james_church,Boston
+visit,2,Go down to Tufts Dental School before crossing the street to St. James Church.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Travel through or around Tufts Dental School to St. James Church.,F & tufts_dental_school F st._james_church,Boston
+visit,2,Go to Tufts Dental School first then on to St James Church.,F & tufts_dental_school F st._james_church,Boston
+visit,2,"Stop at St. James Church, then navigate to The Wilbur Theatre.",F & st._james_church F wilbur_theatre,Boston
+visit,2,Navigate to the theater while avoiding the church.,F & st._james_church F wilbur_theatre,Boston
+visit,2,Go to the Wilbur Theatre while passing through the church,F & st._james_church F wilbur_theatre,Boston
+visit,2,"Travel to Wilbur Theatre, visiting St. James Church en route.",F & st._james_church F wilbur_theatre,Boston
+visit,2,Navigate to St James Church while on your way to Wilbur Theatre,F & st._james_church F wilbur_theatre,Boston
+visit,2,Go down to St. James Church before crossing the street to The Wilbur.,F & st._james_church F wilbur_theatre,Boston
+visit,2,move to Wilbur and avoid passing through St.James The Greater Church.,F & st._james_church F wilbur_theatre,Boston
+visit,2,Head through St James Church. on your way to the Wilbur Theatre.,F & st._james_church F wilbur_theatre,Boston
+visit,2,"Move to the church, and then keep going until you get to The Wilbur.",F & st._james_church F wilbur_theatre,Boston
+visit,2,"Stop off at St. James Church first, then proceed on to Wilbur Theatre.",F & st._james_church F wilbur_theatre,Boston
+visit,2,"Move to the theatre, then go to the dental school.",F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Move to The Wilbur Theatre and than navigate to Tufts Dental School,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Go to the dental school and visit the theater on your way there.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Navigate to the Tufts Dental School while passing by the Wilbur Theatre.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Head straight through The Wilbur on your way to Tufts Dental School.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Navigate to the dental school while passing through the theater.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Go to Wilbur Theatre while on your way to Tufts Dental School,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Head down to The Wilbur and then go east to Tufts Dental School.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,Navigate to the theater and then continue to the dental school.,F & wilbur_theatre F tufts_dental_school,Boston
+visit,2,"Stop off at Wilbur Theatre first, then proceed on to Tufts Dental School.",F & wilbur_theatre F tufts_dental_school,Boston

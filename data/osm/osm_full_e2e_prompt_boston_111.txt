@@ -1,0 +1,149 @@
+Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.
+
+Landmark List: Jiaho supermarket, Citi Performing Arts Center, Happy Lamb Hot Pot, Panera Bread, Emerson College - Little Building, Washington St @ Tufts Med Ctr, Wilbur Theatre, Emerson College – Union Bank Building, Cutler Majestic Theater - Emerson College, Dumpling Cafe, Kneeland St @ Washington St, Wang Theater, Tremont and Stuart Streets, Tufts University School of Medicine, Emerson College, Washington St @ Kneeland St, Wirth Building, Cutler Majestic Theater, Boston Kitchen Pizza, The Kensington, St. James Church, Montien, Citibank, my thai vegan cafe, Chinatown, Tufts Dental School, Genki Ya, 62 on the Park, Seybolt Park, Massachusetts State Transportation Building, Pho Pasteur, Dunkin’ Donuts, HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, Tufts University Hirsh Health Sciences Library, New Saigon Sandwich, Empire Garden Restaurant, AVA Theater District
+
+Utterance: find Dumpling Cafe
+LTL: F dumpling_cafe
+
+Utterance: go to Wang Theater, and Montien, in an arbitrary order
+LTL: & F wang_theater F montien
+
+Utterance: go to the following locations HI Boston, Citibank, and Genki Ya
+LTL: & F hi_boston & F citibank F genki_ya
+
+Utterance: go to Wang Theater, Chinatown, Seybolt Park, and Pho Pasteur, in arbitrary order
+LTL: & F wang_theater & F chinatown & F seybolt_park F pho_pasteur
+
+Utterance: go to Montien, Chinatown, Citibank, Panera Bread, and Pho Pasteur
+LTL: & F montien & F chinatown & F citibank & F panera_bread F pho_pasteur
+
+Utterance: go to HI Boston, then go to Seybolt Park
+LTL: F & hi_boston F seybolt_park
+
+Utterance: visit Panera Bread, then visit Chinatown, then reach HI Boston
+LTL: F & panera_bread F & chinatown F hi_boston
+
+Utterance: visit Seybolt Park, Panera Bread, Genki Ya, and Montien, in this order there can be other locations in between
+LTL: F & seybolt_park F & panera_bread F & genki_ya F montien
+
+Utterance: reach Chinatown, Seybolt Park, Wang Theater, Dumpling Cafe, and Genki Ya, sequentially
+LTL: F & chinatown F & seybolt_park F & wang_theater F & dumpling_cafe F genki_ya
+
+Utterance: go to Seybolt Park, only then go to Citibank, and only then go to Montien
+LTL: & U ! citibank seybolt_park & U ! montien citibank F montien
+
+Utterance: go to Panera Bread, only once but keep away from Seybolt Park, and then visit Seybolt Park, but keep away from Panera Bread
+LTL: & & U ! seybolt_park panera_bread F seybolt_park U ! panera_bread U panera_bread U ! panera_bread seybolt_park
+
+Utterance: do not go to Genki Ya, until Seybolt Park, is visited and do not go to Seybolt Park, until Panera Bread, is visited along the path never return to previous location you have been to
+LTL: & & U ! seybolt_park panera_bread & U ! genki_ya seybolt_park F genki_ya & U ! panera_bread U panera_bread U ! panera_bread seybolt_park U ! seybolt_park U seybolt_park U ! seybolt_park genki_ya
+
+Utterance: do not go to Dumpling Cafe, until Montien, is visited and do not go to Montien, until Citibank, is visited and do not go to Citibank, until HI Boston, is visited along the path never return to previous location you have been to
+LTL: & & U ! citibank hi_boston & U ! montien citibank & U ! dumpling_cafe montien F dumpling_cafe & U ! hi_boston U hi_boston U ! hi_boston citibank & U ! citibank U citibank U ! citibank montien U ! montien U montien U ! montien dumpling_cafe
+
+Utterance: go to Pho Pasteur, but not through Panera Bread, Montien, Wang Theater, or Chinatown, and then go to Panera Bread, but not through Montien, Wang Theater, or Chinatown, and then go to Montien, but not through Wang Theater, or Chinatown, and then go to Wang Theater, but not through Chinatown, and finally go to Chinatown, no revisiting is allowed here
+LTL: & & U ! panera_bread pho_pasteur & U ! montien panera_bread & U ! wang_theater montien & U ! chinatown wang_theater F chinatown & U ! pho_pasteur U pho_pasteur U ! pho_pasteur panera_bread & U ! panera_bread U panera_bread U ! panera_bread montien & U ! montien U montien U ! montien wang_theater U ! wang_theater U wang_theater U ! wang_theater chinatown
+
+Utterance: ensure that you do not reach Citibank, before going to Seybolt Park
+LTL: & U ! citibank seybolt_park F citibank
+
+Utterance: make sure you visit Chinatown, infinite times
+LTL: G F chinatown
+
+Utterance: first go directly to Montien, without visiting any other waypoints then go directly to Chinatown, then directly to Citibank, and finally directly to Panera Bread
+LTL: & U ! chinatown montien & U ! citibank chinatown & U ! panera_bread citibank F panera_bread
+
+Utterance: visit Pho Pasteur, Montien, Chinatown, Dumpling Cafe, and Genki Ya, in this order without skipping any one of them
+LTL: & U ! montien pho_pasteur & U ! chinatown montien & U ! dumpling_cafe chinatown & U ! genki_ya dumpling_cafe F genki_ya
+
+Utterance: make sure Wang Theater, Panera Bread, and Citibank, are visited infinitely
+LTL: & G F wang_theater & G F panera_bread G F citibank
+
+Utterance: make sure Citibank, Montien, Chinatown, and Wang Theater, are visited infinitely
+LTL: & G F citibank & G F montien & G F chinatown G F wang_theater
+
+Utterance: make sure Genki Ya, Pho Pasteur, Montien, Wang Theater, and Chinatown, are visited infinitely
+LTL: & G F genki_ya & G F pho_pasteur & G F montien & G F wang_theater G F chinatown
+
+Utterance: at any point in time you must visit Chinatown, and Pho Pasteur, at least once after
+LTL: & G F chinatown G F pho_pasteur
+
+Utterance: Chinatown, can not be visited at any time
+LTL: G ! chinatown
+
+Utterance: always avoid going to Pho Pasteur, and never visit Montien
+LTL: & G ! pho_pasteur G ! montien
+
+Utterance: always stay away from Montien, Citibank, and HI Boston
+LTL: & G ! montien & G ! citibank G ! hi_boston
+
+Utterance: make sure you never visit Citibank, HI Boston, Genki Ya, or Dumpling Cafe
+LTL: & G ! citibank & G ! hi_boston & G ! genki_ya G ! dumpling_cafe
+
+Utterance: make sure you never visit HI Boston, Seybolt Park, Wang Theater, Genki Ya, or Chinatown
+LTL: & G ! hi_boston & G ! seybolt_park & G ! wang_theater & G ! genki_ya G ! chinatown
+
+Utterance: once you observe Genki Ya, only then are you allowed to go to Chinatown
+LTL: U ! chinatown genki_ya
+
+Utterance: never go to HI Boston, more than once
+LTL: ! F & hi_boston U hi_boston & ! hi_boston U ! hi_boston F hi_boston
+
+Utterance: never go to Citibank, more than twice
+LTL: ! F & citibank U citibank & ! citibank U ! citibank F & citibank U citibank & ! citibank U ! citibank F citibank
+
+Utterance: never go to Panera Bread, more than three times
+LTL: ! F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F panera_bread
+
+Utterance: never go to Chinatown, more than four times
+LTL: ! F & chinatown U chinatown & ! chinatown U ! chinatown F & chinatown U chinatown & ! chinatown U ! chinatown F & chinatown U chinatown & ! chinatown U ! chinatown F & chinatown U chinatown & ! chinatown U ! chinatown F chinatown
+
+Utterance: never go to Seybolt Park, more than five times
+LTL: ! F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F seybolt_park
+
+Utterance: you have to visit Montien, at least once
+LTL: F montien
+
+Utterance: you have to visit Seybolt Park, at least twice
+LTL: F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F seybolt_park
+
+Utterance: visit Pho Pasteur, equal or more than three times
+LTL: F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F pho_pasteur
+
+Utterance: make your way to Panera Bread, at least four times
+LTL: F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F panera_bread
+
+Utterance: you have to visit Montien, at least five times
+LTL: F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F montien
+
+Utterance: you have to visit Montien, exactly once
+LTL: M montien | ! montien G | montien G ! montien
+
+Utterance: you have to visit HI Boston, exactly twice
+LTL: M & hi_boston F & ! hi_boston F hi_boston | ! hi_boston G | hi_boston G | ! hi_boston G | hi_boston G ! hi_boston
+
+Utterance: you have to visit Wang Theater, exactly three times
+LTL: M & wang_theater F & ! wang_theater F & wang_theater F & ! wang_theater F wang_theater | ! wang_theater G | wang_theater G | ! wang_theater G | wang_theater G | ! wang_theater G | wang_theater G ! wang_theater
+
+Utterance: you have to visit Citibank, exactly four times
+LTL: M & citibank F & ! citibank F & citibank F & ! citibank F & citibank F & ! citibank F citibank | ! citibank G | citibank G | ! citibank G | citibank G | ! citibank G | citibank G | ! citibank G | citibank G ! citibank
+
+Utterance: you have to visit Genki Ya, exactly five times
+LTL: M & genki_ya F & ! genki_ya F & genki_ya F & ! genki_ya F & genki_ya F & ! genki_ya F & genki_ya F & ! genki_ya F genki_ya | ! genki_ya G | genki_ya G | ! genki_ya G | genki_ya G | ! genki_ya G | genki_ya G | ! genki_ya G | genki_ya G | ! genki_ya G | genki_ya G ! genki_ya
+
+Utterance: once Dumpling Cafe, is visited you can not go to Citibank, any more
+LTL: G i dumpling_cafe X G ! citibank
+
+Utterance: whenever you visit Seybolt Park, you have to visit Citibank, after that
+LTL: G i seybolt_park F citibank
+
+Utterance: you can visit nowhere else except Montien, right after Pho Pasteur, and you can visit nowhere else except Pho Pasteur, right before Montien
+LTL: G e pho_pasteur X montien
+
+Utterance: you can leave after Seybolt Park, is observed otherwise stay at Wang Theater
+LTL: U wang_theater seybolt_park
+
+Utterance: immediately after you visit Chinatown, you must visit Pho Pasteur
+LTL: G i chinatown X pho_pasteur
+
+Utterance:
