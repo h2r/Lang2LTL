@@ -12,7 +12,7 @@ from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
-from evaluation import evaluate_lang_new, evaluate_lang, evaluate_plan
+from evaluation import evaluate_lang_0, evaluate_lang, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 
@@ -25,6 +25,11 @@ def run_exp():
         full_e2e_module = GPT3(translation_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
         out_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
+
+        accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls)
+        for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
+            logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
+        logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
     else:  # Modular
         names, utt2names = rer()
         out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
@@ -56,11 +61,6 @@ def run_exp():
 
     if len(input_utts) != len(out_ltls):
         logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(out_ltls)}")
-
-    # accs, accumulated_acc = evaluate_lang(out_grd_ltls, true_ltls)
-    # for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, out_grd_ltls, true_ltls, accs_lang)):
-    #     logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
-    # logging.info(f"Language to LTL translation accuracy: {accumulated_acc_lang}")
 
     all_results = {
         "RER": utt2names if not args.full_e2e else None,
