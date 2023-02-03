@@ -337,7 +337,7 @@ if __name__ == "__main__":
                         ]
     )
 
-    if args.env == "osm" or "cleanup":
+    if args.env == "osm" or args.env == "cleanup":
         # if args.city == "all":
         #     cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
         # else:
