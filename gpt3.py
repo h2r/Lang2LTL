@@ -21,10 +21,10 @@ class GPT3:
         name_entities = outs[0].split(' | ')
         return name_entities
 
-    def translate(self, query, prompt=""):
+    def translate(self, query, prompt="", e2e=False):
         if isinstance(query, list):
             query = query[0]
-        query_prompt = prompt + query
+        query_prompt = prompt + ' ' + query + '\nLTL:' if e2e else prompt + query
         outs = self.generate(query_prompt)
         return outs
 

@@ -99,6 +99,6 @@ if __name__ == '__main__':
 
         # Evaluation
         result_log_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_log.csv"
-        analysis_fpath = "data/analysis_batch1.csv"
+        analysis_fpath = "data/analysis_symbolic_batch12_perm.csv"
         acc_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_acc.csv"
         evaluate_lang_from_file(s2s, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath)

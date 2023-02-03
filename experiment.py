@@ -24,12 +24,15 @@ def run_exp():
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3(translation_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt)[0] for query in input_utts]
+        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt, e2e=True)[0] for query in input_utts]
 
-        accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls)
+        accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls, string_match=True)
+        pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
         for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
             logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
+            pair_results.append((input_utt, true_ltl, output_ltl, acc))
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
+        save_to_file(pair_results, pair_result_fpath)
     else:  # Modular
         names, utt2names = rer()
         out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions

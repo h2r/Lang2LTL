@@ -50,11 +50,13 @@ def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert
     return accs, acc
 
 
-def evaluate_lang_0(true_ltls, out_ltls):
+def evaluate_lang_0(true_ltls, out_ltls, string_match=False):
     accs = []
     for true_ltl, out_ltl in zip(true_ltls, out_ltls):
         if true_ltl == out_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
             is_correct = "True"
+        elif string_match:
+            is_correct = 'False'
         else:
             try:  # output LTL formula may have syntax error
                 spot_correct = spot.are_equivalent(spot.formula(true_ltl), spot.formula(out_ltl))
