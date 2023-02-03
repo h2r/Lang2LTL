@@ -53,7 +53,7 @@ def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert
 def evaluate_lang_0(true_ltls, out_ltls):
     accs = []
     for true_ltl, out_ltl in zip(true_ltls, out_ltls):
-        if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
+        if true_ltl == out_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
             is_correct = "True"
         else:
             try:  # output LTL formula may have syntax error
@@ -61,6 +61,10 @@ def evaluate_lang_0(true_ltls, out_ltls):
                 is_correct = "True" if spot_correct else "False"
             except SyntaxError:
                 is_correct = "Syntax Error"
+                logging.info(f"Syntax error:\n{true_ltl}\n{out_ltl}\n")
+            except TypeError:
+                logging.info(f"Type error:\n{true_ltl}\n{out_ltl}\n")
+                breakpoint()
         accs.append(is_correct)
     acc = np.mean([True if acc == "True" else False for acc in accs])
     return accs, acc

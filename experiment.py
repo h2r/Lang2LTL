@@ -24,7 +24,7 @@ def run_exp():
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3(translation_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
+        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt)[0] for query in input_utts]
 
         accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls)
         for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
@@ -249,7 +249,7 @@ def translate_e2e(grounded_utts):
     """
     trans_e2e_prompt = load_from_file(args.trans_e2e_prompt)
     model = GPT3(translation_engine)
-    output_ltls = [model.translate(utt, trans_e2e_prompt) for utt in grounded_utts]
+    output_ltls = [model.translate(utt, trans_e2e_prompt)[0] for utt in grounded_utts]
     return output_ltls
 
 
