@@ -24,7 +24,7 @@ def run_exp():
     if args.full_e2e:  # Full end-to-end from language to LTL
         full_e2e_module = GPT3(translation_engine)
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
-        out_ltls = [full_e2e_module.translate(query, full_e2e_prompt, e2e=True)[0] for query in input_utts]
+        out_ltls = [full_e2e_module.translate(query+"\nLTL:", full_e2e_prompt+' ')[0] for query in input_utts]
 
         accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls, string_match=True)
         pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
