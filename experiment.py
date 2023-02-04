@@ -28,7 +28,7 @@ def run_exp():
 
         accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls, string_match=True)
         pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
-        for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
+        for idx, (input_utt, true_ltl, output_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
             logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
             pair_results.append((input_utt, true_ltl, output_ltl, acc))
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
