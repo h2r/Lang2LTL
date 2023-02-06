@@ -5,6 +5,7 @@ from collections import defaultdict
 from sklearn.metrics import confusion_matrix
 import seaborn as sns
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 from pprint import pprint
 
@@ -148,6 +149,33 @@ def find_all_formulas(type2nprops, perm):
                     formula2prop[formula] = list(prop_perm)
     return formula2type, formula2prop
 
+def acc_osm_cities(fpath='results/lang2ltl/osm/', filtered=['boston_e2e'], holdout=['utt', 'formula']):
+    def acc_one_city(df):
+        correct = df['Accuracy'].values.tolist()
+        return correct.count('True')/df.shape[0]
+
+    holdout2path = {'utt': 'utt_holdout_batch12', 'formula': 'formula_holdout_batch12', 'type': 'type_holdout_batch12'}
+    fname_list = [f for f in os.listdir(fpath)]
+    holdout_paths = [ holdout2path[hd] for hd in holdout]
+    acc = {}
+    for city in fname_list:
+        if not city in filtered:
+            acc[city] = {}
+            for holdout_path in holdout_paths:
+                full_path = os.path.join(fpath, city, holdout_path)
+                files = [f for f in os.listdir(full_path)]
+                files = [f for f in files if f.endswith('.csv')]
+                acc[city][holdout_path] = [acc_one_city(pd.read_csv(os.path.join(full_path, f))) for f in files]
+    
+    final_acc = {'analyzed':{}, 'raw': acc}
+    for city in fname_list:
+        if not city in filtered:
+            per_city = {}
+            for holdout_path in holdout_paths:
+                per_city[holdout_path] = {'mean': np.mean(acc[city][holdout_path]), 'std': np.std(acc[city][holdout_path])}
+            final_acc['analyzed'][city] = per_city       
+    
+    save_to_file(final_acc, os.path.join(fpath, 'aggregated_acc_{}_per_city.json'.format('&'.join(holdout))))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
