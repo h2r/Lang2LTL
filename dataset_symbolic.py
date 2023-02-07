@@ -256,6 +256,30 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
     prompt_fpath = f"{prompt_dpath}/prompt_nexamples{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
+def generate_lc_splits(split_fpath, portions=[0.1, 0.3, 0.5, 0.7], seed=42):
+    '''
+    split one fold for plotting laerning curve
+    '''
+    train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_fpath)
+    
+    meta2data = defaultdict(list)
+    for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(train_iter, train_meta)):
+        meta2data[(pattern_type, len(props))].append((utt, ltl))
+    
+    for p in portions:
+        train_iter_new, train_meta_new = [], []
+        for (pattern_type, nprop), data in meta2data.items():
+            random.seed(seed)
+            random.shuffle(data)
+            examples = data[:int(len(data)*p)]
+            print(f'Num of {pattern_type}, {nprop}: {len(examples)}')
+            for pair in examples:
+                train_iter_new.append(pair)
+                train_meta_new.append((pattern_type, nprop))
+        split_dataset_name = Path(split_fpath).stem
+        lc_split_name = f'lc_{p}_{split_dataset_name}.pkl'
+        split_pkl_new = {'train_iter': train_iter_new, 'train_meta': train_meta_new, 'valid_iter': valid_iter, 'valid_meta': valid_meta}
+        save_to_file(split_pkl_new, os.path.join(os.path.split(split_fpath)[0], lc_split_name))
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
