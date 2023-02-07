@@ -18,22 +18,25 @@ def plot_cm(results_fpath, cm, all_types):
 
     if "utt" in results_fpath:
         holdout_type = "Utterance Holdout"
-    elif "ltl_formula" in results_fpath:
+    elif "formula" in results_fpath:
         holdout_type = "Formula Holdout"
-    elif "ltl_type" in results_fpath:
+    elif "type" in results_fpath:
         holdout_type = "Type Holdout"
     else:
         raise ValueError(f"ERROR: unrecognized holdout type in results file:\n{results_fpath}")
 
     df_cm = pd.DataFrame(cm, index=all_types, columns=all_types)
     plt.figure(figsize=(8, 6))
-    plt.title(f"Misclassified Types in {holdout_type}")
+    plt.title(f"Confusion Matrix for {holdout_type}", fontsize = 10, fontweight="bold")
     plt.xlabel("Prediction")
     plt.ylabel("True")
-    sns.set(font_scale=0.8)
-    sns.heatmap(df_cm, annot=True, cmap="YlGnBu")
+    sns.set(font_scale=0.5)
+    palette = sns.color_palette("crest", as_cmap=True)
+    sns.heatmap(df_cm, square=True, cmap=palette, linewidths=0.1, annot=True, annot_kws={"fontsize":5}, fmt ='.2f', vmax=1).figure.subplots_adjust(left=0.2, bottom=0.25) # change vmax for different saturation
     fig_fpath = os.path.join(os.path.dirname(results_fpath), f"fig_{'_'.join(Path(results_fpath).stem.split('_')[1:])}.png")  # remove results ID: "log"
-    plt.savefig(fig_fpath)
+    plt.setp(plt.gca().get_xticklabels(), rotation=45, ha="right",
+         rotation_mode="anchor")
+    plt.savefig(fig_fpath, dpi=200)
     # plt.show()
 
 
@@ -131,8 +134,10 @@ def analyze_errs(result_fpath, type2nprops, debug):
 
     all_types = sorted(type2nprops.keys(), reverse=True)
     cm = confusion_matrix(y_true, y_pred, labels=all_types)
-
-    return cm, all_types, len(results), type2errs_sorted, out_str
+    row_sums = cm.sum(axis=1)
+    cm_normal = cm / row_sums[:, np.newaxis]
+    
+    return cm_normal, all_types, len(results), type2errs_sorted, out_str
 
 
 def find_all_formulas(type2nprops, perm):
@@ -197,6 +202,12 @@ if __name__ == "__main__":
         for typ, errs in type2errs_sorted:
             all_type2errs[typ].extend(errs)
         all_out_str += out_str
+    
+    df_list = [pd.read_csv(result_fpath) for result_fpath in result_fpaths] # merge all csvs and call plot_cm() again
+    merged_csv_fpath = os.path.join(args.result_path,f'merged_{Path(args.result_path).stem}.csv')
+    pd.concat(df_list, axis=0).iloc[: , 1:].to_csv(merged_csv_fpath)
+    cm, all_types, nresults, type2errs_sorted, out_str = analyze_errs(merged_csv_fpath, TYPE2NPROPS, args.debug)
+    plot_cm(merged_csv_fpath, cm, all_types)
 
     type2errs_sorted = sorted(all_type2errs.items(), key=lambda kv: len(kv[1]), reverse=True)
     nerrs_caught = 0
