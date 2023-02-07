@@ -270,6 +270,7 @@ def generate_lc_splits(split_fpath, portions=[0.1, 0.3, 0.5, 0.7], seed=42):
         train_iter_new, train_meta_new = [], []
         for (pattern_type, nprop), data in meta2data.items():
             random.seed(seed)
+            data = sorted(data)
             random.shuffle(data)
             examples = data[:int(len(data)*p)]
             print(f'Num of {pattern_type}, {nprop}: {len(examples)}')
