@@ -1,0 +1,41 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,,corrected
+visit,1,Move location to knapp street go south then to kneeland street to Tufts Dental School.,F tufts_dental_school,F & the_kensington F & chinatown F tufts_dental_school,FALSE,FALSE
+visit,2,Navigate to the church while passing through the private school.,F & tufts_dental_school F st._james_church,F & emerson_college F st_james_church,FALSE,FALSE
+visit,2,Travel through or around Tufts Dental School to St. James Church.,F & tufts_dental_school F st._james_church,F tufts_dental_school,FALSE,FALSE
+visit,2,Navigate to St James Church while on your way to Wilbur Theatre,F & st._james_church F wilbur_theatre,F & wilbur_theatre F st_james_church,FALSE,FALSE
+visit,2,"Move to the church, and then keep going until you get to The Wilbur.",F & st._james_church F wilbur_theatre,U st_james_church wilbur_theatre,FALSE,FALSE
+visit,2,Go to the dental school and visit the theater on your way there.,F & wilbur_theatre F tufts_dental_school,F & tufts_dental_school F wang_theater,FALSE,FALSE
+visit,2,Navigate to the Tufts Dental School while passing by the Wilbur Theatre.,F & wilbur_theatre F tufts_dental_school,& U ! wilbur_theatre tufts_dental_school F tufts_dental_school,FALSE,FALSE
+visit,2,Head straight through The Wilbur on your way to Tufts Dental School.,F & wilbur_theatre F tufts_dental_school,G F wilbur_theatre,FALSE,FALSE
+visit,2,Navigate to the dental school while passing through the theater.,F & wilbur_theatre F tufts_dental_school,F & wang_theater F tufts_dental_school,FALSE,FALSE
+visit,2,Go to Wilbur Theatre while on your way to Tufts Dental School,F & wilbur_theatre F tufts_dental_school,F & tufts_dental_school F wilbur_theatre,FALSE,FALSE
+visit,2,Navigate to the theater and then continue to the dental school.,F & wilbur_theatre F tufts_dental_school,F & wang_theater F tufts_dental_school,FALSE,FALSE
+visit,1,Navigate to Tufts University School of Dental Medicine while avoiding the church.,F tufts_dental_school,& U ! st_james_church tufts_dental_school F tufts_dental_school,FALSE,TRUE
+visit,1,Move straight to the dental school.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Move to Tufts Dental School,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Go straight to Tufts University School of Dental Medicine.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Make your way directly to Tufts Dental School.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Navigate straight to Tufts Dental School,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Head southwest across the street to get to Tufts Dental School.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Head straight forward to Tufts Dental School.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,1,Head straight for Tufts Dental School.,F tufts_dental_school,F tufts_dental_school,TRUE,TRUE
+visit,2,Move to Tufts Dental School than navigate to St. James Church,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,Travel through the dental school and continue on to St James.,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,Visit the dental school and then the church.,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,Move to the dental school and then continue to St. James.,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,First go through the dental school and then end up at St. James Church.,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,Go to Tufts Dental School while navigating to St. James Church,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,Go down to Tufts Dental School before crossing the street to St. James Church.,F & tufts_dental_school F st._james_church,U ! st_james_church tufts_dental_school,FALSE,TRUE
+visit,2,Go to Tufts Dental School first then on to St James Church.,F & tufts_dental_school F st._james_church,F & tufts_dental_school F st_james_church,FALSE,TRUE
+visit,2,"Stop at St. James Church, then navigate to The Wilbur Theatre.",F & st._james_church F wilbur_theatre,F & st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,Navigate to the theater while avoiding the church.,F & st._james_church F wilbur_theatre,& U ! st_james_church wang_theater F wang_theater,FALSE,TRUE
+visit,2,Go to the Wilbur Theatre while passing through the church,F & st._james_church F wilbur_theatre,F & st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,"Travel to Wilbur Theatre, visiting St. James Church en route.",F & st._james_church F wilbur_theatre,F & st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,Go down to St. James Church before crossing the street to The Wilbur.,F & st._james_church F wilbur_theatre,U ! wilbur_theatre st_james_church,FALSE,TRUE
+visit,2,move to Wilbur and avoid passing through St.James The Greater Church.,F & st._james_church F wilbur_theatre,& G ! st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,Head through St James Church. on your way to the Wilbur Theatre.,F & st._james_church F wilbur_theatre,F & st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,"Stop off at St. James Church first, then proceed on to Wilbur Theatre.",F & st._james_church F wilbur_theatre,F & st_james_church F wilbur_theatre,FALSE,TRUE
+visit,2,"Move to the theatre, then go to the dental school.",F & wilbur_theatre F tufts_dental_school,F & wilbur_theatre F tufts_dental_school,TRUE,TRUE
+visit,2,Move to The Wilbur Theatre and than navigate to Tufts Dental School,F & wilbur_theatre F tufts_dental_school,F & wilbur_theatre F tufts_dental_school,TRUE,TRUE
+visit,2,Head down to The Wilbur and then go east to Tufts Dental School.,F & wilbur_theatre F tufts_dental_school,F & wilbur_theatre F tufts_dental_school,TRUE,TRUE
+visit,2,"Stop off at Wilbur Theatre first, then proceed on to Tufts Dental School.",F & wilbur_theatre F tufts_dental_school,F & wilbur_theatre F tufts_dental_school,TRUE,TRUE

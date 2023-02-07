@@ -1,0 +1,41 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,,
+visit,1,Navigate to Seawalk Pavilion,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Move to the seawalk pavilion and avoid surfer the bar,F seawalk_pavilion,& U ! surfer_the_bar seawalk_pavilion F seawalk_pavilion,FALSE,TRUE
+visit,1,Go to SeaWalk Pavillion while on your way to Surfer the Bar,F seawalk_pavilion,F & seawalk_pavilion F surfer_the_bar,FALSE,FALSE
+visit,1,Move directly to Seawalk Pavilion.,F seawalk_pavilion,G ! b,FALSE,FALSE
+visit,1,Head directly to your end destination the Seawalk Pavilion.,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Navigate to Seawalk Pavillion,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Head straight ahead to Seawalk Pavilion.,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Go to the Seawalk Pavilion.,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Navigate straight to the Seawalk Pavilion,F seawalk_pavilion,F seawalk_pavilion,TRUE,TRUE
+visit,1,Go directly to the Seawalk Pavilion and avoid Surfer [the Bar].,F seawalk_pavilion,& U ! surfer_the_bar seawalk_pavilion F seawalk_pavilion,FALSE,TRUE
+visit,2,Proceed through the restaurant before moving towards the Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,U campeche_bay_mexican_restaurant F seawalk_pavilion,FALSE,FALSE
+visit,2,"Move to Sea Walk Pavilion, but first go to the Carrabba's Italian Grill.",F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,Go to Carrabba's Italian Grill while on your way to Seawalk Pavilion,F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,Head to Carrabba's and then to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,Navigate to Carrabba's Italian Grill then navigate to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,"Go to Carrabba's Italian Grill, then keep going until you reach SeaWalk Pavillion.",F & carrabbas_italian_grill F seawalk_pavilion,U carrabbas_italian_grill seawalk_pavilion,FALSE,FALSE
+visit,2,"Go to Carrabba's Italian Grill, then go to Seawalk Pavilion.",F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,"Make a straight line to Carrabba's Italian Grill and stop, then head to Seawalk Pavilion",F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,Visit Carrabba's Italian Grill and then the SeaWalk Pavilion,F & carrabbas_italian_grill F seawalk_pavilion,F & carrabbas_italian_grill F seawalk_pavilion,TRUE,TRUE
+visit,2,Go to the italian grill before heading over to Seawalk Pavilion.,F & carrabbas_italian_grill F seawalk_pavilion,U ! seawalk_pavilion carrabbas_italian_grill,FALSE,TRUE
+visit,2,Bypass Seawalk Pavilion on your way to Surfer (the bar),F & seawalk_pavilion F surfer_the_bar,F seawalk_pavilion,FALSE,FALSE
+visit,2,Navigate to Seawalk Pavilion and then to Surfer the Bar.,F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,Go to Seawalk Pavillion while on your way to Surfer the Bar,F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,Go to Seawalk Pavilion and then to the bar & grill.,F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F blue_water_daiquiri_&_oyster_bar,Syntax Error,Syntax Error
+visit,2,"Go up to SeaWalk Pavillion then continue to Surfer the Bar, right next to it.",F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,"Go to the Seawalk Pavilion, then go to Surfer (the Bar).",F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,Head straight to Seawalk Pavilion then head left to stop at Surfer [The Bar],F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,Navigate to the bar while avoiding the pavilion.,F & seawalk_pavilion F surfer_the_bar,& U ! seawalk_pavilion blue_water_daiquiri_&_oyster_bar F blue_water_daiquiri_&_oyster_bar,Syntax Error,Syntax Error
+visit,2,Turn left just past the Seawalk Pavilion and go the bar.,F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F blue_water_daiquiri_&_oyster_bar,Syntax Error,Syntax Error
+visit,2,Head towards Seawalk Pavilion and turn to go to Surfer.,F & seawalk_pavilion F surfer_the_bar,F & seawalk_pavilion F surfer_the_bar,TRUE,TRUE
+visit,2,go to the Italian grill then navigate to the Surfer bar.,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,Travel to Carrabba's Italian Grill and then to Surfer the Bar.,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,Go to Carrabba's Italian Grill while on your way to Surfer the Bar,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,First go to Carrabba's Italian Grill then proceed to Surfer[The Bar].,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,Head straight to Carrabba's Italian Grill and then head northeast.,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F n,FALSE,FALSE
+visit,2,"Go to Carrabba's Italian Grill, then go to Surfer (the Bar).",F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,Go to Carrabba's Italian Grill and then head to Surfer The Bar.,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,"Go straight and stop at Carrabba's Italian Grill, then veer right and make a stop at Surfer the Bar",F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,"Navigate first to Carrabba's Italian Grill, and then to Surfer the Bar",F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill F surfer_the_bar,TRUE,TRUE
+visit,2,When you get to the Italian Grill make a sharp right turn and head back to the bar.,F & carrabbas_italian_grill F surfer_the_bar,F & carrabbas_italian_grill G & blue_water_daiquiri_&_oyster_bar F blue_water_daiquiri_&_oyster_bar,Syntax Error,Syntax Error

@@ -1,0 +1,31 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,,
+visit,1,Head straight over to the Italian Cultural Center.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Go directly to the Italian Cultural Center of San Diego.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Move directly to the Italian Cultural Center.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Navigate across State Street to the Italian Cultural Center of San Diego.,F italian_cultural_center,F little_italy F italian_cultural_center,Syntax Error,Syntax Error
+visit,1,Go straight to the cultural center instead of heading in the direction of the museum.,F italian_cultural_center,& U ! italian_cultural_center d,Syntax Error,Syntax Error
+visit,1,Go straight across the street to the Italian Cultural Center.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Head over to the Italian Cultural Center.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Proceed directly to Italian Cultural Center.,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Go straight to Italian Cultural Center,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,1,Go in a short straight line to the Italian Cultural Center,F italian_cultural_center,F italian_cultural_center,TRUE,TRUE
+visit,2,Go to the Italian restaurant on your way to the language school.,F & buon_appetito F italian_cultural_center,F & little_italy U little_italy & ! little_italy U ! little_italy F little_italy,FALSE,FALSE
+visit,2,Navigate straight to Buon Appetito Restaurant and from there head to the Italian Cultural Center,F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,Make your first stop at Buon Appetito Restaurant before moving on to your next stop at the Italian Cultural Center,F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,Head straight to Buon Appetito and then turn slightly right.,F & buon_appetito F italian_cultural_center,F & buon_appetito U buon_appetito & ! buon_appetito U ! buon_appetito F buon_appetito,FALSE,FALSE
+visit,2,Go to Buon Appetito Restaurant and then head to the Italian Cultural Center of San Diego.,F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,Ride past the Buon Appetito and end up at the Italian Cultural center.,F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,"Go to Buon Appetito Restaurant, then continue to the Italian Cultural Center.",F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,Go to Buon Appetito Restaurant and then go to the Italian Cultural Center.,F & buon_appetito F italian_cultural_center,F & buon_appetito F italian_cultural_center,TRUE,TRUE
+visit,2,Go to Buon Appetito Restaurant while on your way to Italian Cultural Center,F & buon_appetito F italian_cultural_center,F & italian_cultural_center F buon_appetito,FALSE,FALSE
+visit,2,Proceed through Buon Appetito on way to Language school.,F & buon_appetito F italian_cultural_center,F buon_appetito,FALSE,FALSE
+visit,2,Navigate first to the Italian Cultural Center and then onward to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,F & italian_cultural_center F firehouse_museum,TRUE,TRUE
+visit,2,Go to Italian Cultural Center of San Diego while on your way to Firehouse Museum,F & italian_cultural_center F firehouse_museum,F & italian_cultural_center F firehouse_museum,TRUE,TRUE
+visit,2,Stop by the language school on your way to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,F little_italy,FALSE,FALSE
+visit,2,"Navigate to the Italian Cultural Center of San Diego, and then to the Firehouse Museum",F & italian_cultural_center F firehouse_museum,F & italian_cultural_center F firehouse_museum,TRUE,TRUE
+visit,2,"Move to Italian Cultural Center of San Diego, and then move the Firehouse Museum",F & italian_cultural_center F firehouse_museum,F & italian_cultural_center F firehouse_museum,TRUE,TRUE
+visit,2,Turn left at the Italian Cultural Center before heading to the Firehouse Museum.,F & italian_cultural_center F firehouse_museum,U ! firehouse_museum italian_cultural_center,FALSE,TRUE
+visit,2,Proceed to the museum while visiting the language school on the way.,F & italian_cultural_center F firehouse_museum,F & little_italy F italian_cultural_center,FALSE,FALSE
+visit,2,Stop at the cultural center and then continue to the museum.,F & italian_cultural_center F firehouse_museum,F & italian_cultural_center U italian_cultural_center & ! italian_cultural_center U ! italian_cultural_center F italian_cultural_center,FALSE,FALSE
+visit,2,First go to the cultural center and then head over to Firehouse Museum.,F & italian_cultural_center F firehouse_museum,F & italian_cultural_center F firehouse_museum,TRUE,TRUE
+visit,2,Hit the cultural center of SA only to land at the Firehouse museum.,F & italian_cultural_center F firehouse_museum,& G F italian_cultural_center X firehouse_museum,FALSE,TRUE

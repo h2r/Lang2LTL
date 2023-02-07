@@ -1,0 +1,43 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,,
+visit,1,Move directly towards the Beaches Museum without taking any detours.,F beaches_museum_chapel,G i beaches_museum,Syntax Error,Syntax Error
+visit,2,fly north east and over us 90 towards beaches museum chapel.  turn left or north west at the chapel flying above pablo street to reach players by the sea one black away from beaches museum chapel.,F & beaches_museum_chapel F players_by_the_sea,& U ! beaches_museum_chapel east_coast_railway_foremans_house_#93 & U ! 1903_pablo_beach_post_office beaches_museum_chapel & U ! the_1911_train_engine 1903_pablo_beach_post_office F the_1911_train_engine,Syntax Error,Syntax Error
+visit,2,"Be careful with crossing US 90 and make sure to cross Beach Museum Chapel first, before going to the Players By the Sea.",F & beaches_museum_chapel F players_by_the_sea,F & east_coast_railway_foremans_house_#93 F & beaches_museum_chapel F players_by_the_sea,Syntax Error,Syntax Error
+visit,1,Travel forward along Shetter ave to Beaches Museum.,F beaches_museum_chapel,F st_vincent_de_paul_thrift_store,FALSE,FALSE
+visit,1,Go straight to Beaches Museum.,F beaches_museum_chapel,F beaches_museum,FALSE,FALSE
+visit,1,Go directly to Beaches Museum.,F beaches_museum_chapel,F beaches_museum,FALSE,FALSE
+visit,1,Head directly to the Beaches Museum while avoiding Players By the Sea and Publix.,F beaches_museum_chapel,& U ! players_by_the_sea beaches_museum & U ! publix beaches_museum F beaches_museum,FALSE,FALSE
+visit,2,Make a a right turn at the Beaches Museum on your way to Players By the Sea.,F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum F players_by_the_sea,FALSE,FALSE
+visit,2,Stop by Beaches Museum on the way to Players By The Sea.,F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum F players_by_the_sea,FALSE,FALSE
+visit,2,Go straight to the Beaches Museum.,F & beaches_museum_chapel F players_by_the_sea,F beaches_museum,FALSE,FALSE
+visit,2,Go through Beaches Museum on your way to the community theater.,F & beaches_museum_chapel F players_by_the_sea,F beaches_museum,FALSE,FALSE
+visit,2,"Move to Player by the sea.
+Navigate to the Publix market and avoid the Beaches Museum.
+Move to Publix Super Market.",F & players_by_the_sea F publix,& U ! beaches_museum players_by_the_sea F publix,FALSE,FALSE
+visit,2,Turn right at Players By the Sea.,F & players_by_the_sea F publix,F players_by_the_sea,FALSE,FALSE
+visit,2,Navigate to Players by the Sea and then to Publix avoiding Beaches Museum Chapel.,F & players_by_the_sea F publix,& U ! publix players_by_the_sea F publix,FALSE,FALSE
+visit,2,Go to the community theater and then proceed to the super market.,F & players_by_the_sea F publix,F & players_by_the_sea F pet_supermarket,FALSE,FALSE
+visit,2,"Go in a straight line and make your first stop at Publix. After that, go in another straight line all the way to Players By the Sea.",F & publix F players_by_the_sea,& U ! players_by_the_sea publix F players_by_the_sea,FALSE,FALSE
+visit,2,Stop at Publix on your way to the theater.,F & publix F players_by_the_sea,F publix,FALSE,FALSE
+visit,2,Head to Publix and then go to Players By the Sea but avoid the Beaches Museum Chapel.,F & publix F players_by_the_sea,& U ! players_by_the_sea publix F players_by_the_sea,FALSE,FALSE
+visit,2,Move to Publix and than move to Players by the sea while avoiding the Museum Chapel.,F & publix F players_by_the_sea,& U ! players_by_the_sea publix F players_by_the_sea,FALSE,FALSE
+visit,2,Go by publix on your way to Players By The Sea,F & publix F players_by_the_sea,F publix,FALSE,FALSE
+visit,1,Go directly to the history museum.,F beaches_museum_chapel,F beaches_museum_chapel,TRUE,TRUE
+visit,1,Proceed in a straight line to Beaches museum chapel.,F beaches_museum_chapel,F beaches_museum_chapel,TRUE,TRUE
+visit,1,Go directly to the Beaches Museum Chapel.,F beaches_museum_chapel,F beaches_museum_chapel,TRUE,TRUE
+visit,1,Head towards the museum and avoid Players by the sea.,F beaches_museum_chapel,& U ! players_by_the_sea beaches_museum_chapel F beaches_museum_chapel,FALSE,TRUE
+visit,1,"From your location, make a straight line and head for Beaches Museum Chapel.",F beaches_museum_chapel,F beaches_museum_chapel,TRUE,TRUE
+visit,2,"Travel first to the history museum, and then to the arts theater after.",F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum_chapel F players_by_the_sea,TRUE,TRUE
+visit,2,Move to Beaches Museum Chapel then turn left and head to Players By the Sea.,F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum_chapel F players_by_the_sea,TRUE,TRUE
+visit,2,"Make a straight line toward Beaches Museum Chapel for your first stop. After that, make another straight line to Players By the Sea.",F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum_chapel F players_by_the_sea,TRUE,TRUE
+visit,2,First go to the Museum Chapel and than move to Players by the sea.,F & beaches_museum_chapel F players_by_the_sea,F & beaches_museum_chapel F players_by_the_sea,TRUE,TRUE
+visit,2,Go to Players By The Sea on your way to Publix.,F & players_by_the_sea F publix,F & players_by_the_sea F publix,TRUE,TRUE
+visit,2,First head to Players By the Sea then turn right and head straight to Publix.,F & players_by_the_sea F publix,F & players_by_the_sea F publix,TRUE,TRUE
+visit,2,Go Straight through Players by the sea avoiding Beaches Museum on route to Publix.,F & players_by_the_sea F publix,& U ! beaches_museum players_by_the_sea publix,FALSE,TRUE
+visit,2,"Your first stop is Players by the Sea, followed with a straight line to Publix.",F & players_by_the_sea F publix,F & players_by_the_sea F publix,TRUE,TRUE
+visit,2,Move towards Players by the sea and than navigate towards Publix.,F & players_by_the_sea F publix,F & players_by_the_sea F publix,TRUE,TRUE
+visit,2,"Go to the performing arts theater first, and then to the grocery store after.",F & players_by_the_sea F publix,F & players_by_the_sea F publix,TRUE,TRUE
+visit,2,Travel to the Player By The Sea avoiding the Publix,F & publix F players_by_the_sea,& U ! publix players_by_the_sea F players_by_the_sea,FALSE,TRUE
+visit,2,Navigate to Publix Super Market and then navigate to Players By the Sea.,F & publix F players_by_the_sea,F & publix F players_by_the_sea,TRUE,TRUE
+visit,2,Move to Publix Super Market at Middle Beach Commons and then to Players By the Sea,F & publix F players_by_the_sea,F & publix F players_by_the_sea,TRUE,TRUE
+visit,2,Go to the performing arts theater while stopping at the grocery store first.,F & publix F players_by_the_sea,F & publix F players_by_the_sea,TRUE,TRUE
+visit,2,Navigate to Publix and then Player's by the Sea.,F & publix F players_by_the_sea,F & publix F players_by_the_sea,TRUE,TRUE

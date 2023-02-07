@@ -1,0 +1,41 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,,
+visit,1,Pass the Indonesian Consulate and stop outside Robek's Juice on Wilshire.,F robeks_juice,U consulat_general_of_the_republic_of_indonesia | robeks_juice,Syntax Error,Syntax Error
+visit,1,Navigate to Robeks Juice,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Proceed straight to the juice shop.,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Go straight to Robeks Juice,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Can you show me where exactly is Robeks Juice is located,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Navigate to Robeks Juice but avoid Big 5 Sporting Goods along the way.,F robeks_juice,& U ! big_5_sporting_goods robeks_juice F robeks_juice,FALSE,TRUE
+visit,1,Travel straight to Robeks Fresh Juices & Smoothies.,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Go to Robeks Juice.,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,1,Go straight across Wilshire Boulevard and stop at Robek's Juice.,F robeks_juice,F wilshire_christian_manor | robeks_juice,FALSE,FALSE
+visit,1,Proceed straight to Robeks Juice,F robeks_juice,F robeks_juice,TRUE,TRUE
+visit,2,Go to Big 5 Sporting Goods while on your way to Robeks Juice,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Go to the sporting goods store and then to the juice shop.,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Navigate to Big 5 Sporting Goods and than move to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Go straight until you reach Big 5 Sporting Goods and then go west to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,U big_5_sporting_goods robeks_juice,FALSE,FALSE
+visit,2,Pass by Big 5 Sporting Good to arrive at Robeks Juice,F & big_5_sporting_goods F robeks_juice,F big_5_sporting_goods,FALSE,FALSE
+visit,2,proceed to Big 5 Sporting goods then advance to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Navigate to Big 5 Sporting Goods and then Robeks Fresh Juices & Smoothies.,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,"Go to Big 5 Sporting Goods, then go to Robeks Juice.",F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Swing by Big 5 Sporting Goods on your way to Robeks Juice.,F & big_5_sporting_goods F robeks_juice,F & big_5_sporting_goods F robeks_juice,TRUE,TRUE
+visit,2,Proceed to Robek's juice shop through Big 5 sporting goods.,F & big_5_sporting_goods F robeks_juice,F big_5_sporting_goods,FALSE,FALSE
+visit,2,Navigate to Big 5 Sporting Goods while passing through Robeks Juice,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Move to the juice shop followed by the sporting goods store.,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Nagivate to Robeks Fresh Juices & Smoothies and then move to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Go to Robeks Juice while on your way to Big 5 Sporting Goods,F & robeks_juice F big_5_sporting_goods,F & big_5_sporting_goods F robeks_juice,FALSE,FALSE
+visit,2,First travel to Robeks Fresh Juices & Smoothies and then to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Head towards Robeks Huice and than navigate to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Stop at Robek's Juice befrore going east to Big 5 Sporting Goods.,F & robeks_juice F big_5_sporting_goods,U robeks_juice,Syntax Error,Syntax Error
+visit,2,"Go to Robeks Fresh Juices & Smoothies, then head to Big 5 Sporting Goods.",F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Go to the Smoothie shop and then head to the Sporting Goods store,F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,"Go down to Robeks Fresh Juices & Smoothies, then head over to Big 5 Sporting Goods.",F & robeks_juice F big_5_sporting_goods,F & robeks_juice F big_5_sporting_goods,TRUE,TRUE
+visit,2,Go to The Line then on to Robeks Juice.,F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,Go to The Line while on your way to Robeks Juice,F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,Go to Robeks Juice and stop by The Line along the way.,F & the_line F robeks_juice,F & robeks_juice F the_line,FALSE,FALSE
+visit,2,Navigate to The Line and than head towards Robeks Juice.,F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,"Go to The Line, then go to Robeks Juice.",F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,Go straight to The Line and then head southeast to Robek's Juice.,F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,Go to The LINE Los Angeles and then to Robeks Fresh Juices & Smoothies.,F & the_line F robeks_juice,F & wilshire_normandie F robeks_juice,FALSE,FALSE
+visit,2,"Advance to The Line, then proceed to the Juice Store.",F & the_line F robeks_juice,F & the_line F robeks_juice,TRUE,TRUE
+visit,2,Check in at the hotel and then go to get some juice at Robeks,F & the_line F robeks_juice,F & pot F robeks_juice,FALSE,FALSE
+visit,2,Go to The Line before heading to Robeks Juice.,F & the_line F robeks_juice,& U ! robeks_juice the_line F robeks_juice,FALSE,TRUE

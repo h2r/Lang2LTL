@@ -1,0 +1,16 @@
+Formula Type,Average Accuracy
+bound_delay,0
+delayed_reaction,0
+exact_restricted_avoidance,0.366666667
+future_avoidance,0
+global_avoidance,0.654722222
+lower_restricted_avoidance,0.588333333
+ordered_visit,0.49897984
+past_avoidance,0
+patrolling,0.507974638
+prompt_reaction,0
+sequenced_visit,0.604880536
+strictly_ordered_visit,0.257529331
+upper_restricted_avoidance,0.021666667
+visit,0.763915598
+wait,0

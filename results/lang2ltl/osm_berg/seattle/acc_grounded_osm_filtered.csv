@@ -1,0 +1,46 @@
+Pattern Type,NProps,Utterance,True LTL,Out LTL,
+visit,1,Move directly to the chiropractor.,F amasia_acupuncture_massage_herbs_center,F kenneth_hong_md,FALSE
+visit,1,"Move to Amasia Acupunture, Chiropractic, Massage & Herbs Clinic while bypassing TCG Printing and Imaging.",F amasia_acupuncture_massage_herbs_center,& U ! tcc_printing_&_imaging amasia_acupuncture_massage_herbs_center F amasia_acupuncture_massage_herbs_center,FALSE
+visit,1,Navigate to the chiropractor while avoiding the commercial printer.,F amasia_acupuncture_massage_herbs_center,& U ! tcc_printing_&_imaging kenneth_hong_md F kenneth_hong_md,FALSE
+visit,1,"Make a direct South-East beeline to the Amasia Acupuncture, Chiropractic, Massage and Herbs Clinic, avoiding TCC Printing and Imaging below it.",F amasia_acupuncture_massage_herbs_center,& U ! tcc_printing_&_imaging amasia_acupuncture_massage_herbs_center F tcc_printing_&_imaging,Syntax Error
+visit,1,Head straight for Amasia Acupuncture.,F amasia_acupuncture_massage_herbs_center,F amasia_acupuncture_massage_herbs_center,TRUE
+visit,1,Proceed straight to Amasia Acupuncture Massage Herbs Center.,F amasia_acupuncture_massage_herbs_center,F amasia_acupuncture_massage_herbs_center,TRUE
+visit,1,Move to the Amasia Acupuncture Clinic and avoid Alice's Floral Designs and TCC Printing and Imaging.,F amasia_acupuncture_massage_herbs_center,& U ! alices_floral_designs amasia_acupuncture_massage_herbs_center F tcc_printing_&_imaging,Syntax Error
+visit,1,Navigate straight to Amasia Acupuncture Massage Herbs Center,F amasia_acupuncture_massage_herbs_center,F amasia_acupuncture_massage_herbs_center,TRUE
+visit,1,"navigate to Amasia Acupunture, Chiropractix,Massage& Herbs Clinic while avoiding Alice's Floral Designs.",F amasia_acupuncture_massage_herbs_center,& U ! alices_floral_designs amasia_acupuncture_massage_herbs_center F amasia_acupuncture_massage_herbs_center,TRUE
+visit,1,Begin at China and end at Amasia Acupunture.,F amasia_acupuncture_massage_herbs_center,F donnie_chin_international_childrens_park F amasia_acupuncture_massage_herbs_center,Syntax Error
+visit,2,"Head east to Alice's floral, take the passasage infront of Alices's and head south till you reach TCC on your right.",F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F & tcc_printing_&_imaging,TRUE
+visit,2,Go to the florist followed by going to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,"Stop at Alice's Floral Designs on your way to TCC Printing.
+A quick pit stop at Alice's before continuing on to TCC.
+Don't forget to stop at Alice's before you head to TCC.",F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,"go over cvs and across the street to alice's floral design's
+go down and over the bistro and across the street
+go to the  right of young tea to amasia acupunture, chiropractic, massage & herbs clinic
+go down to the left to tcc printing and imaging",F & alices_floral_designs F tcc_printing__imaging,F & savvy_cosmetics F & alices_floral_designs F & saigon_bistro F & amasia_acupuncture_massage_herbs_center F tcc_printing_&_imaging,Syntax Error
+visit,2,Move to Alice's Floral Design and than navigate to TCC Printing and Imaging,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,Navigate to Alice's Floral Design's while going to TCC Printing and Imaging,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,go toward Alice's Floral Designs and then to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,Make a stop at Alice's Floral Designs and then make a sharp left turn before heading down to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs U alices_floral_designs & ! alices_floral_designs U ! alices_floral_designs F tcc_printing_&_imaging,Syntax Error
+visit,2,Navigate to the commercial printer while passing through the florist.,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,Navigate to Alice's Floral Designs then navigate to TCC Printing and Imaging.,F & alices_floral_designs F tcc_printing__imaging,F & alices_floral_designs F tcc_printing_&_imaging,TRUE
+visit,2,Navigate to the chiropractor while passing through the commercial printer.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F kenneth_hong_md,FALSE
+visit,2,Curve around to TCC printing and Imaging and go straight to Amasia Acupuncture.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,& U ! amasia_acupuncture_massage_herbs_center tcc_printing_&_imaging F amasia_acupuncture_massage_herbs_center,FALSE
+visit,2,Navigate to Amasia Acupuncture with a stop at TCC Printing and Imaging on the way.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,Move to Acupuncture store by avoiding printing store.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,& U ! tcc_printing_&_imaging amasia_acupuncture_massage_herbs_center F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,Make a stop at TCC Printing and Imaging before going across the street to Amasia Acupuncture.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,U tcc_printing_&_imaging,Syntax Error
+visit,2,Head to TCC Printing and Imaging and then the chiropractor.,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F kenneth_hong_md,FALSE
+visit,2,"Move to TCC Printing & Imaging and than navigate to Amazia Acupuncture, Chiropractic, Massage & Herbs Clinic",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,"Heda to TCC Printing and Imaging first, then go to Amasia Acupuncture.",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & h F amasia_acupuncture_massage_herbs_center,FALSE
+visit,2,"Navigate to the printing and imaging business, and then continue to Amasia's.",F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F asia,FALSE
+visit,2,Go to TCC Printing and Imaging while navigating to Amasia Acupuncture Massage Herbs Center,F & tcc_printing__imaging F amasia_acupuncture_massage_herbs_center,F & tcc_printing_&_imaging F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,Go to Alice's Floral Designs while navigating to Amasia Acupuncture Massage Herbs Center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,"Avoid Alice's Floral Designs to get to Amasia Accupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,U ! alices_floral_designs amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,Pass through Alice's Floral Designs before heading to Amasia Acupuncture Massage Herbs Center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,U ! amasia_acupuncture_massage_herbs_center alices_floral_designs,TRUE
+visit,2,Navigate to Alice's Floral Designs and avoid AA Travel and New An Dong Chinese herb & Grocery,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,& U ! aa_travel alices_floral_designs & U ! new_an_dong_chinese_herb_&_grocery aa_travel F new_an_dong_chinese_herb_&_grocery,Syntax Error
+visit,2,move from Cushing street to Soban,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F salon_juno,FALSE
+visit,2,Navigate to the chiropractor while passing through the flower shop.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F & alices_floral_designs F kenneth_hong_md,FALSE
+visit,2,"Head to Alice's Floral Designs and then navigate to Amasia Acupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,TRUE
+visit,2,Go to the florist and then to the chiropractor.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F & alices_floral_designs F kenneth_hong_md,FALSE
+visit,2,Go to Alice's Floral Designs before heading to Amasia.,F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,& U ! asia alices_floral_designs F asia,FALSE
+visit,2,"Go through Alice's Floral Designs on your way to Amasia Acupuncture, Chiropractic, Massage & Herbs Clinic.",F & alices_floral_designs F amasia_acupuncture_massage_herbs_center,F alices_floral_designs,FALSE
