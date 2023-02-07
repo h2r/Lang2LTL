@@ -1,0 +1,22 @@
+,map_name,num_lm,accuracy
+0,Charlotte #1,24,0.0
+1,Charlotte #2,15,0.0
+2,Chicago #1,22,0.0
+3,Chicago #2,26,0.0
+4,Columbus #1,10,0.0
+5,Columbus #2,26,0.0
+6,Denver #1,27,0.0
+7,Denver #2,21,0.0
+8,Houston,32,0.0
+9,Indianapolis,10,0.0
+10,Jacksonville #1,19,0.0
+11,Jacksonville #2,16,0.0
+12,Los Angeles #1,60,0.0
+13,Los Angeles #2,62,0.0
+14,New York #1,71,0.0
+15,New York #2,73,0.0
+16,Philadelphia #1,21,0.0
+17,Philadelphia #2,90,0.0
+18,San Diego #1,41,0.0
+19,San Diego #2,31,0.0
+20,Seattle,119,0.0
