@@ -21,8 +21,40 @@ TEST_NAMES = {'utt_holdout': 'Utterance','formula_holdout':'Formula','type_holdo
 OSM_MODEL_NAMES = ['Lang2LTL', 'CopyNet']
 
 
-def parse_per_city_accs():
-    a=1
+def parse_per_city_accs(test_type):
+    filepath = os.path.join('.','results','lang2ltl','osm')
+    cities = get_osm_cities()
+    accs = []
+    df = {}
+    entry_id = 0
+    
+    
+    for city in cities:
+        city_accs = []
+        filepath1 = os.path.join(filepath, city, test_type+'_batch12')
+        if os.path.exists(filepath1):
+            files = [file for file in os.listdir(filepath1) if fnmatch(file, 'acc*.json')]
+            for file in files:
+                with open(os.path.join(filepath1, file), 'r') as f:
+                    data = json.load(f)
+                acc = data['Accumulated Accuracy']
+                city_accs.append(acc)
+        if len(city_accs):
+            accs.append(city_accs)
+        for (model_id, acc) in enumerate(city_accs):
+            entry = {}
+            entry['Model ID'] = model_id
+            entry['Accuracy'] = acc
+            entry['City'] = city
+            df[entry_id] = entry
+            entry_id = entry_id + 1
+        
+    return pd.DataFrame.from_dict(df, orient = 'index')
+    
+    
+    
+    
+        
 
 def create_symbolic_accuracies_table(test_types = SYMBOLIC_TEST_TYPES, model_types = SYMBOLIC_MODEL_TYPES):
     entries = []
@@ -234,7 +266,7 @@ def parse_acc(csv_data):
 def get_osm_cities():
     filepath = os.path.join('.','results','lang2ltl','osm')
     cities = os.listdir(filepath)
-    cities = [city for city in cities if city != 'boston']
+    cities = [city for city in cities if 'boston' not in city]
     return cities
 
 

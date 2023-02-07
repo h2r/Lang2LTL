@@ -49,6 +49,7 @@ def plot_type_accuracies():
                 sns.set_color_codes('muted')
                 plt.figure(figsize = [12,10])
                 sns.barplot(data = accs, x = 'Accuracy', y = 'Formula Type', color = 'b', ci = None)
+                plt.xlim([0,1])
                 plt.savefig(f'figures/type_accs_{test_type}_{model_type}.jpg', dpi = 400, bbox_inches = 'tight')
     
 def plot_n_prop_accuracies():
@@ -60,9 +61,19 @@ def plot_n_prop_accuracies():
             with sns.plotting_context(context = 'poster', rc = rc):
                 sns.set_color_codes('muted')
                 plt.figure(figsize = [12,10])
-                sns.barplot(data = accs, x = 'N Propositions', y = 'Accuracy', color = 'b')
+                sns.barplot(data = accs, x = 'N Propositions', y = 'Accuracy', color = 'b', capsize = 0.1)
                 plt.ylim([0,1])
                 plt.savefig(f'figures/n_prop_accs_{test_type}_{model_type}.jpg', dpi = 400, bbox_inches = 'tight')
+
+def plot_per_city_accuracy():
+    for test_type in SYMBOLIC_TEST_TYPES:
+        data = parse_per_city_accs(test_type)
+        with sns.plotting_context(context = 'poster',rc = rc):
+            sns.set_color_codes('muted')
+            plt.figure(figsize=[10,12])
+            sns.barplot(data = data, x = 'Accuracy',y = 'City', color = 'b', capsize = 0.1)
+            plt.xlim([0,1])
+            plt.savefig(f'figures/city_accuracies_{test_type}.jpg', dpi = 400, bbox_inches = 'tight')
     
     
 if __name__ == '__main__':
@@ -71,3 +82,4 @@ if __name__ == '__main__':
     #plot_osm_accuracies()
     plot_type_accuracies()
     plot_n_prop_accuracies()
+    plot_per_city_accuracy()
