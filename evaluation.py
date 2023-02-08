@@ -1,3 +1,6 @@
+"""
+Evaluate different model for symbolic translation.
+"""
 import os
 from pathlib import Path
 import argparse

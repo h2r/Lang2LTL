@@ -5,18 +5,13 @@ from pathlib import Path
 import random
 import numpy as np
 import spot
-from openai.embeddings_utils import cosine_similarity
 
+from lang2ltl import rer, ground_names, ground_utterances, translate_modular, PROPS
 from gpt3 import GPT3
-from s2s_sup import Seq2Seq, T5_MODELS
-from s2s_pt_transformer import construct_dataset_meta
-from dataset_symbolic import load_split_dataset
-from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
+from utils import load_from_file, save_to_file, substitute_single_letter
 from evaluation import evaluate_lang_0, evaluate_lang, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
-
-PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
 
 
 def run_exp():
@@ -34,14 +29,14 @@ def run_exp():
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
         save_to_file(pair_results, pair_result_fpath)
     else:  # Modular
-        names, utt2names = rer()
+        names, utt2names = rer(args.rer, args.rer_engine, args.rer_prompt, input_utts)
         out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
-        name2grounds = ground_names(names)
+        name2grounds = ground_names(names, name_embed, obj_embed, args.ground, args.embed_engine, args.topk)
         grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
         if args.trans_e2e:
             out_ltls = translate_e2e(grounded_utts)
         else:
-            out_ltls, out_sym_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
+            sym_utts, out_sym_ltls, out_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt, args.sym_trans, translation_engine, args.convert_rule, args.s2s_sup_data)
 
             # out_sym_ltls_sub = []
             # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
@@ -51,14 +46,14 @@ def run_exp():
             accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_names, out_names, objs_per_utt, args.convert_rule, PROPS)
             # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
 
-            pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
-            for idx, (pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
-                logging.info(f"{idx}\n{pattern_type} {props} Input utterance: {input_utt}\n"
+            pair_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
+            for idx, (pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, sym_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
+                logging.info(f"{idx}\n{pattern_type} {props}\nInput utterance: {in_utt}\nSymbolic utterance: {sym_utt}\n"
                              f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
                              f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
                              f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
                              f"{acc}\n")
-                pair_results.append((pattern_type, props, input_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
+                pair_results.append((pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
             logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
             save_to_file(pair_results, pair_result_fpath)
 
@@ -70,6 +65,7 @@ def run_exp():
         "Grounding": name2grounds if not args.full_e2e else None,
         "Placeholder maps": placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
         "Input utterances": input_utts,
+        "Symbolic utterances": sym_utts,
         "Output Symbolic LTLs": out_sym_ltls if not (args.trans_e2e or args.full_e2e) else None,
         "Output Grounded LTLs": out_ltls,
         "True Grounded LTLs": true_ltls,
@@ -84,166 +80,6 @@ def run_exp():
     # true_trajs = load_from_file(args.true_trajs)
     # acc_plan = plan(output_ltls, name2grounds)
     # logging.info(f"Planning accuracy: {acc_plan}")
-
-
-def rer():
-    """
-    Referring Expression Recognition: extract name entities from input utterances.
-    """
-    rer_prompt = load_from_file(args.rer_prompt)
-
-    if args.rer == "gpt3":
-        rer_module = GPT3(args.rer_engine)
-    # elif args.rer == "bert":
-    #     rer_module = BERT()
-    else:
-        raise ValueError(f"ERROR: RER module not recognized: {args.rer}")
-
-    names, utt2names = set(), []  # name entity list names should not have duplicates
-    for idx_utt, utt in enumerate(input_utts):
-
-        # print(f"{rer_prompt.strip()} {utt}\nPropositions:\n{idx_utt}")
-        # breakpoint()
-
-        logging.info(f"Extracting referring expressions from utterance: {idx_utt}/{len(input_utts)}")
-        names_per_utt = [name.strip() for name in rer_module.extract_ne(query=f"{rer_prompt.strip()} {utt}\nPropositions:")]
-        names_per_utt = list(set(names_per_utt))  # remove duplicated RE
-
-        # print(names_per_utt)
-        # breakpoint()
-
-        # extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate RER error
-        # for name in names_per_utt:
-        #     name_words = name.split()
-        #     if name_words[0] == "the":
-        #         extra_name = " ".join(name_words[1:])
-        #     else:
-        #         name_words.insert(0, "the")
-        #         extra_name = " ".join(name_words)
-        #     if extra_name not in names_per_utt:
-        #         extra_names.append(extra_name)
-        # names_per_utt += extra_names
-
-        names.update(names_per_utt)
-        utt2names.append((utt, names_per_utt))
-
-    # breakpoint()
-
-    return names, utt2names
-
-
-def ground_names(names):
-    """
-    Find groundings (objects in given environment) of name entities in input utterances.
-    """
-    obj2embed = load_from_file(obj_embed)  # load embeddings of known objects in given environment
-    if os.path.exists(name_embed):  # load cached embeddings of name entities
-        name2embed = load_from_file(name_embed)
-    else:
-        name2embed = {}
-
-    if args.ground == "gpt3":
-        ground_module = GPT3(args.embed_engine)
-    # elif args.ground == "bert":
-    #     ground_module = BERT()
-    else:
-        raise ValueError(f"ERROR: grounding module not recognized: {args.ground}")
-
-    name2grounds = {}
-    is_embed_added = False
-    for name in names:
-        logging.info(f"grounding landmark: {name}")
-        if name in name2embed:  # use cached embedding if exists
-            logging.info(f"use cached embedding: {name}")
-            embed = name2embed[name]
-        else:
-            embed = ground_module.get_embedding(name)
-            name2embed[name] = embed
-            is_embed_added = True
-
-        sims = {n: cosine_similarity(e, embed) for n, e in obj2embed.items()}
-        sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
-        name2grounds[name] = list(dict(sims_sorted[:args.topk]).keys())
-
-        if is_embed_added:
-            save_to_file(name2embed, name_embed)
-
-    return name2grounds
-
-
-def ground_utterances(input_strs, utt2names, name2grounds):
-    """
-    Replace name entities in input strings (e.g. utterances, LTL formulas) with objects in given environment.
-    """
-    grounding_maps = []  # name to grounding map per utterance
-    for _, names in utt2names:
-        grounding_maps.append({name: name2grounds[name][0] for name in names})
-
-    output_strs, subs_per_str = substitute(input_strs, grounding_maps, is_utt=True)
-
-    # breakpoint()
-
-    return output_strs, subs_per_str
-
-
-def translate_modular(grounded_utts, objs_per_utt):
-    """
-    Translation language to LTL modular approach.
-    :param grounded_utts: Input utterances with name entities grounded to objects in given environment.
-    :param objs_per_utt: grounding objects for each input utterance
-    :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
-    """
-    if "ft" in translation_engine:
-        trans_modular_prompt = ""
-    elif "text-davinci" in translation_engine:
-        trans_modular_prompt = load_from_file(args.trans_modular_prompt)
-    else:
-        raise ValueError(f"ERROR: Unrecognized translation engine: {translation_engine}")
-
-    if "gpt3" in args.sym_trans:
-        trans_module = GPT3(translation_engine)
-    elif args.sym_trans in T5_MODELS:
-        trans_module = Seq2Seq(args.sym_trans)
-    elif args.sym_trans == "pt_transformer":
-        train_iter, _, _, _ = load_split_dataset(args.s2s_sup_data)
-        vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{args.sym_trans}.pth"
-        trans_module = Seq2Seq(args.sym_trans,
-                               vocab_transform=vocab_transform, text_transform=text_transform,
-                               src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
-    else:
-        raise ValueError(f"ERROR: translation module not recognized: {args.sym_trans}")
-
-    # breakpoint()
-
-    placeholder_maps, placeholder_maps_inv = [], []
-    for objs in objs_per_utt:
-        placeholder_map, placeholder_map_inv = build_placeholder_map(objs, args.convert_rule, PROPS)
-        placeholder_maps.append(placeholder_map)
-        placeholder_maps_inv.append(placeholder_map_inv)
-    trans_queries, _ = substitute(grounded_utts, placeholder_maps, is_utt=True)  # replace names by symbols
-
-    # breakpoint()
-
-    symbolic_ltls = []
-    for idx, query in enumerate(trans_queries):
-        logging.info(f"Symbolic Translation: {idx}/{len(trans_queries)}")
-        query = query.translate(str.maketrans('', '', ',.'))
-        query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
-        ltl = trans_module.translate(query, trans_modular_prompt)[0]
-        # try:
-        #     spot.formula(ltl)
-        # except SyntaxError:
-        #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
-        symbolic_ltls.append(ltl)
-
-    # breakpoint()
-
-    output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv, is_utt=False)  # replace symbols by props
-
-    # breakpoint()
-
-    return output_ltls, symbolic_ltls, placeholder_maps
 
 
 def translate_e2e(grounded_utts):
