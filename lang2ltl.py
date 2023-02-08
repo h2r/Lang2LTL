@@ -211,7 +211,7 @@ if __name__ == "__main__":
                         ]
     )
 
-    utt = "Go to bookshelf, then workstation A, then counter, then workstation A."
+    utt = "Go to bookshelf first, then workstation A, then go to counter, then back to workstation A."
     lmk2sem = {
         "bookshelf": {},
         "desk A": {},

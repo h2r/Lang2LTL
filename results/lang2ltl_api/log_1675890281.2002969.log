@@ -1,0 +1,54 @@
+RER engine: text-davinci-003
+Embedding engine: text-embedding-ada-002
+Symbolic translation engine: davinci:ft-brown-university:utt-davinci-perm-batch12-42-2023-01-24-09-56-50
+
+Input Utterance to be translated:
+Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.
+
+
+Generated Embeddings for:
+{'bookshelf': {}, 'desk A': {}, 'kitchen counter': {}, 'desk B': {}}
+saved at:
+results/lang2ltl_api/lmk_sem_embeds/obj2embed_lang2ltl_api_text-embedding-ada-002.pkl
+
+Extracting referring expressions from utterance: 0/1
+message='Request to OpenAI API' method=post path=https://api.openai.com/v1/completions
+api_version=None data='{"model": "text-davinci-003", "prompt": "Your task is to repeat exact strings from the given utterance which possibly refer to certain propositions.\\n\\nUtterance: move to red room\\nPropositions: red room\\n\\nUtterance: visit Cutler Majestic Theater\\nPropositions: Cutler Majestic Theater\\n\\nUtterance: robot c move to big red room and then move to green area\\nPropositions: big red room | green area\\n\\nUtterance: you have to visit Panera Bread, four or more than four times\\nPropositions: Panera Bread\\n\\nUtterance: i want you to go into yellow region\\nPropositions: yellow region\\n\\nUtterance: Visit The Kensington, HI Boston, and Dunkin\' Donuts in that specific order. make sure not to visit waypoints out of turn\\nPropositions: The Kensington | HI Boston | Dunkin\' Donuts\'\\n\\nUtterance: go to Cutler Majestic Theater - Emerson College, exactly three times\\nPropositions: Cutler Majestic Theater - Emerson College\\n\\nUtterance: visit Cutler Majestic Theater \\u2013 Emerson College, 62 on the Park, and Citibank, one after another\\nPropositions: Cutler Majestic Theater \\u2013 Emerson College | 62 on the Park | Citibank\\n\\nUtterance: go to green area then to blue room\\nPropositions: green area | blue room\\n\\nUtterance: go to Chinatown, without visiting New Saigon Sandwich, then go to New Saigon Sandwich, without visiting Dumpling Cafe, then go to Dumpling Cafe, without visiting Emerson College - Little Building, finally go to Emerson College - Little Building, while only visiting each location once\\nPropositions: Chinatown | New Saigon Sandwich | Dumpling Cafe | Emerson College - Little Building\\n\\nUtterance: take a path to reach blue box but avoid red path\\nPropositions: blue box | red path\\n\\nUtterance: reach Emerson College, without going to Stuart St @ Tremont St, then go to Stuart St @ Tremont St, without passing AVA Theater District, then go to AVA Theater District, without passing my thai vegan cafe, finally go to my thai vegan cafe\\nPropositions: Emerson College | Stuart St @ Tremont St | AVA Theater District | my thai vegan cafe\\n\\nUtterance: go through red room or yellow room to green room\\nPropositions: red room | yellow room | green room\\n\\nUtterance: make sure you never visit Wilbur Theatre, Dunkin\' Donuts, Montien, New Saigon Sandwich, or Stuart St @ Tremont St\\nPropositions: Wilbur Theatre | Dunkin\' Donuts | Montien | New Saigon Sandwich | Stuart St @ Tremont St\\n\\nUtterance: move the robot through yellow region or small red room and then to large green room\\nPropositions: yellow region | small red room | large green room\\n\\nUtterance: make your way to Wirth Building, only after going to Tremont and Stuart Streets, before that make your way to Tremont and Stuart Streets, only after going to Seybolt Park, before that make your way to Seybolt Park, only after going to Tufts University School of Medicine, before that make your way to Tufts University School of Medicine, only after going to Wang Theater\\nPropositions: Wirth Building | Tremont and Stuart Streets | Seybolt Park | Tufts University School of Medicine | Wang Theater\\n\\nUtterance: Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.\\nPropositions:", "temperature": 0, "max_tokens": 128, "stop": ["\\n"], "n": 1}' message='Post details'
+Converted retries value: 2 -> Retry(total=2, connect=None, read=None, redirect=None, status=None)
+Starting new HTTPS connection (1): api.openai.com:443
+https://api.openai.com:443 "POST /v1/completions HTTP/1.1" 200 299
+message='OpenAI API response' path=https://api.openai.com/v1/completions processing_ms=1616 request_id=c420d75181cb6a1299f2967046234653 response_code=200
+
+Extracted Referring Expressions (REs):
+{'bookshelf', 'counter', 'workstation A'}
+
+grounding landmark: bookshelf
+use cached embedding: bookshelf
+grounding landmark: counter
+use cached embedding: counter
+grounding landmark: workstation A
+use cached embedding: workstation A
+Groundings for REs:
+{'bookshelf': ['bookshelf', 'desk B'], 'counter': ['kitchen counter', 'desk A'], 'workstation A': ['desk A', 'desk B']}
+
+Grounded Input Utterance:
+Go to bookshelf first, then desk A, then go to kitchen counter, then back to desk A.
+groundings: {'bookshelf', 'desk A', 'kitchen counter'}
+
+Symbolic Translation: 0/1
+message='Request to OpenAI API' method=post path=https://api.openai.com/v1/completions
+api_version=None data='{"model": "davinci:ft-brown-university:utt-davinci-perm-batch12-42-2023-01-24-09-56-50", "prompt": "Utterance: Go to a first then b then go to c then back to b\\nLTL:", "temperature": 0, "max_tokens": 128, "stop": ["\\n"], "n": 1}' message='Post details'
+https://api.openai.com:443 "POST /v1/completions HTTP/1.1" 200 344
+message='OpenAI API response' path=https://api.openai.com/v1/completions processing_ms=2385 request_id=a57f2cdb60a00fbb1bc983ddfd98b2b8 response_code=200
+Placeholder Map:
+{'bookshelf': 'a', 'desk A': 'b', 'kitchen counter': 'c'}
+
+Symbolic Utterance:
+Go to a first, then b, then go to c, then back to b.
+
+Translated Symbolic LTL Formula:
+F & a F & b F & c F b
+
+Grounded LTL Formula:
+F & bookshelf F & desk_a F & kitchen_counter F desk_a
+
