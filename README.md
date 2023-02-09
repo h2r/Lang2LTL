@@ -128,3 +128,19 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
+
+
+# Baselines
+## CopyNet
+Grounding Language to Landmarks in Arbitrary Outdoor Environments [Berg et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/berg20.pdf),
+[code](https://github.com/jasonxyliu/magic-skydio)
+
+## GRU-based Sequence-to-Sequence
+Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications [Gopalan et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/gopalan18.pdf)
+[code](https://github.com/h2r/lggltl/tree/master/models)
+
+## Code as Policies
+Code as Policies: Language Model Programs for Embodied Control [Liang, et al. 22](https://arxiv.org/abs/2209.07753)
+[code](https://colab.research.google.com/drive/1UgMpP-b-TnSs4pgpTUj63sSSJsXRTgxC?usp=sharing)
+
+
