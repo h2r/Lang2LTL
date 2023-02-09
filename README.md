@@ -30,7 +30,11 @@ python -m spacy download en_core_web_sm
 # Files
 ```experiment.py```: main function to start running all experiments for evaluation full translation system.
 
+```lang2llt.py```: modules of Lang2LTL translation system and an API.
+
 ```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions.
+
+```utils.py```: utility functions, e.g. substitute, name_to_prop.
 
 ```s2s_sup.py```: generic supervised sequence-to-sequence model.
 
@@ -44,13 +48,19 @@ python -m spacy download en_core_web_sm
 
 ```dataset_symbolic.py```: construct symbolic train and test sets for evaluating symbolic translation module.
 
-```dataset_osm.py```: construct grounded train and test sets using OSM landmarks for evaluation full translation system.
+```dataset_grounded.py```: construct grounded train and test sets using OSM or CleanUp landmarks for evaluation full translation system.
+
+```dataset_filtered.py```: import test sets from Gopalan et al. 18 and Berg et al. 20.
 
 ```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
 
 ```evaluation.py```: functions to evaluate translation and planning.
 
+```analyze_results.py```: scripts to analyze results, e.g. confusion matrix, misclassification.
+
 ```tester.py```: unittests.
+
+```dataset_corlw.py```: construct grounded train and test sets for CoRL22-W.
 
 
 # Run Experiments
@@ -61,20 +71,53 @@ export ORG_ID=<YOUR_ORG_ID>
 ```
 Or permanently set the above environment variables in your ```~/.bash_profile``` or ```~/.bashrc```.
 
-Run end-to-end language to LTL translation using GPT-3
+Create embeddings for known landmarks or objects in the given environment.
 ```
-python run_experiment.py --full_e2e
+python get_emebd.py
 ```
-Run the modular_ner approach to language to LTL translation
+
+To generate symbolic dataset, train test splits for training symbolic translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset for batch 1 and 2 data.
 ```
-python run_experiment.py --translate_e2e
+python dataset_symbolic.py --perm --update --merge
 ```
-Run the modular_ner+placeholders approach to language to LTL translation
+
+Generate grounded dataset from symbolic dataset
+```
+python dataset_grounded.py --env=osm --city=CITYNAME
+```
+where CITYNAME is the name of a file in the directory ```data/osm/osm_lmks``` without .json file extension.
+
+Use Lang2LTL as an API
+```
+from lang2ltl import lang2ltl
+out_ltl = lang2ltl(utt, lmk2sem, result_dpath)
+```
+
+Run experiments for the Lang2LTL modular system
 ```
 python run_experiment.py
 ```
 
+Run experiments for the end-to-end GPT-3 translation system with prompt
+```
+python run_experiment.py --full_e2e
+```
+
+Run experiments for the modular_ner approach to translate language to LTL translation
+```
+python run_experiment.py --translate_e2e
+```
+
+
 # Datasets
+## Symbolic
+```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g. a, b, c, etc, used for training symbolic translation module.
+
+```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
+
+## OpenStreetMap (OSM)
+```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
+
 ## Cleanup World
 ```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
 for language commands paired LTL expressions, converted to 1 csv file from 2 txt files, ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
@@ -85,22 +128,3 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
-
-## OpenStreetMap (OSM)
-```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
-
-## Symbolic
-```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g. a, b, c, etc, used for training symbolic translation module.
-
-```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
-
-To generate symbolic dataset, train test splits for training symbolic translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset.
-```
-python dataset_symbolic.py --perm --update
-```
-
-## Generate Grounded Dataset from Symbolic Dataset
-```
-python dataset_osm.py --city=CITYNAME
-```
-where CITYNAME is the name of a file in the directory ```data/osm/osm_lmks``` without .json file extension.
