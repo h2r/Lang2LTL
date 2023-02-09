@@ -1,0 +1,49 @@
+LTL Type,Number of Propositions,Number of Utterances,Accuracy
+bound_delay,2,480,no valid data
+delayed_reaction,2,480,no valid data
+exact_restricted_avoidance,1,120,no valid data
+exact_restricted_avoidance,2,120,no valid data
+exact_restricted_avoidance,3,120,no valid data
+exact_restricted_avoidance,4,120,no valid data
+exact_restricted_avoidance,5,120,no valid data
+future_avoidance,2,480,no valid data
+global_avoidance,1,120,no valid data
+global_avoidance,2,480,no valid data
+global_avoidance,3,1440,no valid data
+global_avoidance,4,2880,no valid data
+global_avoidance,5,2880,no valid data
+lower_restricted_avoidance,1,120,no valid data
+lower_restricted_avoidance,2,120,0.05
+lower_restricted_avoidance,3,135,no valid data
+lower_restricted_avoidance,4,120,no valid data
+lower_restricted_avoidance,5,120,no valid data
+ordered_visit,2,520,no valid data
+ordered_visit,3,1320,no valid data
+ordered_visit,4,2400,0.8320833333333333
+ordered_visit,5,2520,no valid data
+past_avoidance,2,460,no valid data
+patrolling,1,150,no valid data
+patrolling,2,480,no valid data
+patrolling,3,1380,no valid data
+patrolling,4,2880,no valid data
+patrolling,5,2880,no valid data
+prompt_reaction,2,480,no valid data
+sequenced_visit,2,540,0.07037037037037037
+sequenced_visit,3,1560,no valid data
+sequenced_visit,4,2640,no valid data
+sequenced_visit,5,2880,no valid data
+strictly_ordered_visit,2,500,no valid data
+strictly_ordered_visit,3,1260,0.5976190476190476
+strictly_ordered_visit,4,2520,no valid data
+strictly_ordered_visit,5,2760,no valid data
+upper_restricted_avoidance,1,120,no valid data
+upper_restricted_avoidance,2,120,0.0
+upper_restricted_avoidance,3,120,0.0
+upper_restricted_avoidance,4,120,0.0
+upper_restricted_avoidance,5,120,0.0
+visit,1,130,1.0
+visit,2,540,no valid data
+visit,3,1560,no valid data
+visit,4,2880,no valid data
+visit,5,2880,no valid data
+wait,2,480,0.0
