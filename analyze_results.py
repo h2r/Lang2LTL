@@ -97,7 +97,7 @@ def analyze_errs(result_fpath, type2nprops, debug):
                     if is_correct == "True":
                         raise ValueError("not incorrect_orders")
                     # breakpoint()
-                else:
+                else:  # correct classification
                     if is_correct != "True":
                         raise ValueError(f"Uncaught errors:\n{result}")
                     y_true.append(pattern_type)
@@ -132,11 +132,8 @@ def analyze_errs(result_fpath, type2nprops, debug):
         raise ValueError(f"total nerrors != nerrs_caught: {total_errs} != {nerrs_caught}")
 
     all_types = sorted(type2nprops.keys(), reverse=True)
-    cm = confusion_matrix(y_true, y_pred, labels=all_types)
-    row_sums = cm.sum(axis=1)
-    cm_normal = cm / row_sums[:, np.newaxis]
-    
-    return cm_normal, all_types, len(results), type2errs_sorted, out_str
+    cm = confusion_matrix(y_true, y_pred, labels=all_types, normalize="true")  # y/rows: true; x/cols: predicted
+    return cm, all_types, len(results), type2errs_sorted, out_str
 
 
 def find_all_formulas(type2nprops, perm):
@@ -201,10 +198,11 @@ if __name__ == "__main__":
         for typ, errs in type2errs_sorted:
             all_type2errs[typ].extend(errs)
         all_out_str += out_str
-    
-    df_list = [pd.read_csv(result_fpath) for result_fpath in result_fpaths] # merge all csvs and call plot_cm() again
-    merged_csv_fpath = os.path.join(args.result_path,f'merged_{Path(args.result_path).stem}.csv')
-    pd.concat(df_list, axis=0).iloc[: , 1:].to_csv(merged_csv_fpath)
+
+    # Plot confusion matrix again on merged csv
+    df_list = [pd.read_csv(result_fpath) for result_fpath in result_fpaths]
+    merged_csv_fpath = os.path.join(args.result_path, f"merged_{Path(args.result_path).stem}.csv")
+    pd.concat(df_list, axis=0).iloc[:, 1:].to_csv(merged_csv_fpath)
     cm, all_types, nresults, type2errs_sorted, out_str = analyze_errs(merged_csv_fpath, TYPE2NPROPS, args.debug)
     plot_cm(merged_csv_fpath, cm, all_types)
 
