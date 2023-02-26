@@ -27,15 +27,14 @@ def plot_cm(results_fpath, cm, all_types):
 
     df_cm = pd.DataFrame(cm, index=all_types, columns=all_types)
     plt.figure(figsize=(8, 6))
-    plt.title(f"Confusion Matrix for {holdout_type}", fontsize = 10, fontweight="bold")
+    plt.title(f"Confusion Matrix for {holdout_type}", fontsize=10, fontweight="bold")
     plt.xlabel("Prediction")
     plt.ylabel("True")
     sns.set(font_scale=0.5)
     palette = sns.color_palette("crest", as_cmap=True)
-    sns.heatmap(df_cm, square=True, cmap=palette, linewidths=0.1, annot=True, annot_kws={"fontsize":5}, fmt ='.2f', vmax=1).figure.subplots_adjust(left=0.2, bottom=0.25) # change vmax for different saturation
-    fig_fpath = os.path.join(os.path.dirname(results_fpath), f"fig_{'_'.join(Path(results_fpath).stem.split('_')[1:])}.png")  # remove results ID: "log"
-    plt.setp(plt.gca().get_xticklabels(), rotation=45, ha="right",
-         rotation_mode="anchor")
+    sns.heatmap(df_cm, square=True, cmap=palette, linewidths=0.1, annot=True, annot_kws={"fontsize": 5}, fmt='.2f', vmax=1).figure.subplots_adjust(left=0.2, bottom=0.25)  # change vmax for different saturation
+    fig_fpath = os.path.join(os.path.dirname(results_fpath), f"fig_{'_'.join(Path(results_fpath).stem.split('_')[1:])}.jpg")  # remove results ID: "log"
+    plt.setp(plt.gca().get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
     plt.savefig(fig_fpath, dpi=200)
     # plt.show()
 
