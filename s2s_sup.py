@@ -19,11 +19,12 @@ from utils import count_params
 
 
 class Seq2Seq:
-    def __init__(self, model_type, **kwargs):
+    def __init__(self, model_type, checkpoint=None, **kwargs):
         self.model_type = model_type
 
         if args.model in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
             model_dir = f"model/{model_type}"
+            if checkpoint: model_dir += f'/checkpoint-{checkpoint}'
             self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
             self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
         elif model_type == "pt_transformer":
@@ -45,6 +46,7 @@ class Seq2Seq:
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
                 do_sample=False,
+                max_new_tokens=256,
             )
             ltls = self.tokenizer.batch_decode(output_tokens, skip_special_tokens=True)
         elif self.model_type == "pt_transformer":
@@ -59,10 +61,11 @@ class Seq2Seq:
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--split_dataset_fpath', type=str, default='data/split_symbolic_no_perm_batch1_ltl_instance_0.2_42.pkl',
+    parser.add_argument('--split_dataset_fpath', type=str, default='data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl',
                         help='complete file path or prefix of file paths to train test split dataset')
     parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"],
                         help='name of supervised seq2seq model')
+    parser.add_argument('--checkpoint', type=str, default=None)
     args = parser.parse_args()
 
     logging.basicConfig(level=logging.DEBUG,
@@ -84,7 +87,10 @@ if __name__ == '__main__':
 
         # Load trained model
         if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
-            s2s = Seq2Seq(args.model)
+            if args.checkpoint:
+                s2s = Seq2Seq(args.model, checkpoint=args.checkpoint)
+            else:
+                s2s = Seq2Seq(args.model)
         elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
             vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
             model_params = f"model/s2s_{args.model}_{Path(split_dataset_fpath).stem}.pth"

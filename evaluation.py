@@ -109,23 +109,48 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     """
     Evaluate translation accuracy per LTL pattern type.
     """
+    def batch(iterable, n=1):
+        l = len(iterable)
+        for ndx in range(0, l, n):
+            yield iterable[ndx:min(ndx + n, l)]
+
     result_log = [["train_or_valid", "pattern_type", "nprops", "prop_perm", "utterances", "true_ltl", "output_ltl", "is_correct"]]
 
     meta2accs = defaultdict(list)
-    for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(zip(valid_iter, valid_meta)):
-        nprops = len(prop_perm)
-        train_or_valid = "valid" if idx < valid_iter_len else "train"  # TODO: remove after having enough data
-        out_ltl = model.translate([utt])[0].strip()
-        try:  # output LTL formula may have syntax error
-            is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-            is_correct = "True" if is_correct else "False"
-        except SyntaxError:
-            is_correct = "Syntax Error"
-        logging.info(f"{idx}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
-        result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
-        if train_or_valid == "valid":
-            meta2accs[(pattern_type, nprops)].append(is_correct)
+    # for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(zip(valid_iter, valid_meta)):
+    #     nprops = len(prop_perm)
+    #     train_or_valid = "valid" if idx < valid_iter_len else "train"  # TODO: remove after having enough data
+    #     out_ltl = model.translate([utt])[0].strip()
+    #     try:  # output LTL formula may have syntax error
+    #         is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
+    #         is_correct = "True" if is_correct else "False"
+    #     except SyntaxError:
+    #         is_correct = "Syntax Error"
+    #     logging.info(f"{idx}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+    #     result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
+    #     if train_or_valid == "valid":
+    #         meta2accs[(pattern_type, nprops)].append(is_correct)
+    train_or_valid = "valid"
+    cnt = 0
+    for batch in batch(list(zip(valid_iter, valid_meta)), int(valid_iter_len/100)): # batch_size = 100
+        utts = [tp[0][0] for tp in batch]
+        out_ltls = model.translate(utts)
+        for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(batch):
+            cnt += 1
+            nprops = len(prop_perm)
+            out_ltl = out_ltls[idx].strip()
+            try:  # output LTL formula may have syntax error
+                is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
+                is_correct = "True" if is_correct else "False"
+            except SyntaxError:
+                is_correct = "Syntax Error"
 
+            if train_or_valid == "valid":
+                meta2accs[(pattern_type, nprops)].append(is_correct)
+            if cnt > valid_iter_len: 
+                train_or_valid = "train"
+            logging.info(f"{cnt}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+            result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
     save_to_file(result_log, result_log_fpath)
 
     meta2acc = {meta: np.mean([True if acc == "True" else False for acc in accs]) for meta, accs in meta2accs.items()}
