@@ -41,7 +41,7 @@ def compose(data_fpath, operators, base_types, base_nprops, perm=False):
         all_base_pairs.append(utt_ltl_pairs)
 
     # Compose
-    compositions = [["composed_utterance", "composed_formulas", "base_utterances", "base_formulas"]]
+    compositions = []
     for operator in operators:
         if operator in UNARY_OPERATORS:
             base_pairs = all_base_pairs.pop(0)
@@ -104,8 +104,11 @@ if __name__ == "__main__":
     all_operators = [["and"]]  # operators used to compose base formulas
     all_base_types = [["sequenced_visit", "global_avoidance"]]  # LTL type for each base formula
     all_base_nprops = [[2, 1]]  # number of propositions for each base formula
+    header = ["composed_utterance", "composed_formulas", "base_utterances", "base_formulas"]
 
     for operators, base_types, base_nprops in zip(all_operators, all_base_types, all_base_nprops):
-        compositions = compose(args.data_fpath, operators, base_types, base_nprops, args.perm)
+        compositions = [header] if header else []
+        compositions.extend(compose(args.data_fpath, operators, base_types, base_nprops, args.perm))
         save_fpath = os.path.join(os.path.dirname(args.data_fpath), f"composed_{Path(args.data_fpath).stem}.csv")
         save_to_file(compositions, save_fpath, mode='w')  # change mode to 'a' to append to existing composed dataset
+        header = None  # only add csv header once
