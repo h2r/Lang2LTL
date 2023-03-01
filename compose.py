@@ -28,20 +28,20 @@ def compose(data_fpath, operators, base_types, base_nprops, perm=False):
         props = deserialize_props_str(props_str)
         if not perm:
             if props == PROPS[:len(props)]:
-                meta2data[(pattern_type, len(props))].append((formula, utt))
+                meta2data[(pattern_type, len(props))].append((utt, formula))
                 all_formulas.add(formula)
         else:
-            meta2data[(pattern_type, len(props))].append((formula, utt))
+            meta2data[(pattern_type, len(props))].append((utt, formula))
             all_formulas.add(formula)
 
     # Select base formulas and base utterances
     all_base_pairs = []
     for pattern_type, nprops in zip(base_types, base_nprops):
-        ltl_utt_pairs = meta2data[(pattern_type, nprops)]
-        all_base_pairs.append(ltl_utt_pairs)
+        utt_ltl_pairs = meta2data[(pattern_type, nprops)]
+        all_base_pairs.append(utt_ltl_pairs)
 
     # Compose
-    compositions = [["composed_formulas", "composed_utterance", "base_formulas", "base_utteraces"]]
+    compositions = [["composed_utterance", "composed_formulas", "base_utterances", "base_formulas"]]
     for operator in operators:
         if operator in UNARY_OPERATORS:
             base_pairs = all_base_pairs.pop(0)
@@ -59,11 +59,11 @@ def compose(data_fpath, operators, base_types, base_nprops, perm=False):
 
         pairs_composed = []
         for compose_bases in base_pairs_perm:
-            formulas, utts = zip(*compose_bases)  # unpack list of tuples into 2 lists
+            utts_base, formulas_base = zip(*compose_bases)  # unpack list of tuples into 2 lists
             if operator == "and":
-                formula_composed, utt_composed = compose_and(formulas, utts)
+                utt_composed, formula_composed = compose_and(utts_base, formulas_base)
             elif operator == "or":
-                formula_composed, utt_composed = compose_or(formulas, utts)
+                utt_composed, formula_composed = compose_or(utts_base, formulas_base)
             else:
                 raise ValueError(f"ERROR: operator not yet supported: {operator}.")
 
@@ -76,23 +76,23 @@ def compose(data_fpath, operators, base_types, base_nprops, perm=False):
             if formula_composed in all_formulas:
                 print(f"Composed formula already exists:\n{formula_composed}\n{utt_composed}")
             else:
-                pairs_composed.append((formula_composed, utt_composed))
-                compositions.append([formula_composed, utt_composed, formulas, utts])
+                pairs_composed.append((utt_composed, formula_composed))
+                compositions.append([utt_composed, formula_composed, utts_base, formulas_base])
             all_base_pairs.insert(0, pairs_composed)
 
     return compositions
 
 
-def compose_and(formulas, utts):
-    formula_composed = f"& {formulas[0]} {formulas[1]}"
+def compose_and(utts, formulas):
     utt_composed = f"{utts[0]}, in addition {utts[1]}"
-    return formula_composed, utt_composed
+    formula_composed = f"& {formulas[0]} {formulas[1]}"
+    return utt_composed, formula_composed
 
 
-def compose_or(formulas, utts):
-    formula_composed = f"| {formulas[0]} {formulas[1]}"
+def compose_or(utts, formulas):
     utt_composed = f"Either {utts[0]}, or {utts[1]}"
-    return formula_composed, utt_composed
+    formula_composed = f"| {formulas[0]} {formulas[1]}"
+    return utt_composed, formula_composed
 
 
 if __name__ == "__main__":
