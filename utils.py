@@ -174,19 +174,19 @@ def deserialize_props_str(props_str):
     return props
 
 
-def save_to_file(data, fpth):
+def save_to_file(data, fpth, mode=None):
     ftype = os.path.splitext(fpth)[-1][1:]
     if ftype == 'pkl':
-        with open(fpth, 'wb') as wfile:
+        with open(fpth, mode if mode else 'wb') as wfile:
             dill.dump(data, wfile)
     elif ftype == 'txt':
-        with open(fpth, 'w') as wfile:
+        with open(fpth, mode if mode else 'w') as wfile:
             wfile.write(data)
     elif ftype == 'json':
-        with open(fpth, 'w') as wfile:
+        with open(fpth, mode if mode else 'w') as wfile:
             json.dump(data, wfile)
     elif ftype == 'csv':
-        with open(fpth, 'w', newline='') as wfile:
+        with open(fpth, mode if mode else 'w', newline='') as wfile:
             writer = csv.writer(wfile)
             writer.writerows(data)
     else:
