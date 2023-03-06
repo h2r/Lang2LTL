@@ -285,6 +285,7 @@ def generate_lc_splits(split_fpath, portions=[0.1, 0.3, 0.5, 0.7], seed=42):
 
 
 if __name__ == "__main__":
+    # python dataset_symbolic.py --perm --update --merge --nexamples=1
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", action="store", type=str, nargs="+", default=["data/aggregated_responses_batch1.csv", "data/aggregated_responses_batch2.csv"], help="fpath to aggregated Google form responses.")
     parser.add_argument("--perm", action="store_true", help="True if permute props after train, test split.")
@@ -296,8 +297,6 @@ if __name__ == "__main__":
     parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1, 2, 3], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed for choosing prompt examples.")
     args = parser.parse_args()
-
-    # python dataset_symbolic.py --perm --update --merge --nexamples=1
 
     # Merge Google form responses from batches and construct non-permuted symbolic dataset for each batch
     data_fpaths = args.data_fpath if isinstance(args.data_fpath, list) else [args.data_fpath]
