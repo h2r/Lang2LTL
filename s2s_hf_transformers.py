@@ -11,7 +11,7 @@ import evaluate
 from utils import load_from_file
 from dataset_symbolic import load_split_dataset
 
-T5_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b"]
+T5_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "facebook/bart-base"]
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
@@ -75,7 +75,7 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,
         weight_decay=0.01,
-        num_train_epochs=1,
+        num_train_epochs=10,
         # fp16=True,
         predict_with_generate=True,
         metric_for_best_model="exact_match",
@@ -149,7 +149,7 @@ def finetune_t5_old(input_sequences, output_sequences, tokenizer, model):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, default='t5-base', choices=["t5-small", "t5-base", "t5-large", "t5-3b", "bart"], help='name of supervised seq2seq model')
+    parser.add_argument('--model', type=str, default='t5-base', choices=["t5-small", "t5-base", "t5-large", "t5-3b", "facebook/bart-base"], help='name of supervised seq2seq model')
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.model)
