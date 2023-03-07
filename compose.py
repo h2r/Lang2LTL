@@ -28,7 +28,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
         all_formulas_spot.add(spot.formula(formula))
 
     save_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}.csv")
-    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}_stats.log")
+    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}.log")
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
@@ -52,7 +52,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
                     ncomposed += 1
     logger.info(f"Total number of composed types: {ncomposed}")
     logger.info(f"Total number of composed pairs: {npairs}")
-    # save_to_file(compositions, save_fpath, mode='w')
+    save_to_file(compositions, save_fpath, mode='w')
 
 
 def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_redundant, logger):
@@ -93,34 +93,32 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
 
         if len(base_pairs_perm) == 0:  # nprops invalid for 1 type, e.g. ["and"], ["visit", "sequenced_visit"], [1, 1]
             return []
-        else:
-            return [0] * len(base_pairs_perm)
-        #
-        # pairs_composed = []
-        # for pair_idx, composing_bases in enumerate(base_pairs_perm):
-        #     utts_base, formulas_base = zip(*composing_bases)  # unpack list of tuples into 2 lists
-        #     if operator == "and":
-        #         utt_composed, formula_composed = compose_and(utts_base, formulas_base)
-        #     elif operator == "or":
-        #         utt_composed, formula_composed = compose_or(utts_base, formulas_base)
-        #     else:
-        #         raise ValueError(f"ERROR: operator not yet supported: {operator}.")
-        #     logger.info(f"Composed pair {pair_idx}:\n{utts_base}\n{formulas_base}\n{utt_composed}\n{formula_composed}\n")
-        #
-        #     # Check composed formula for syntactical correctness and redundancy before adding to composed dataset
-        #     try:
-        #         formula_spot = spot.formula(formula_composed)
-        #     except SyntaxError:
-        #         raise SyntaxError(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
-        #
-        #     if ignore_redundant and formula_spot in all_formulas_spot:
-        #         logger.info(f"Composed formula already exists:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
-        #         return []
-        #     else:
-        #         pairs_composed.append((utt_composed, formula_composed))
-        #         compositions.append([utt_composed, formula_composed, utts_base, formulas_base])
-        #
-        #     all_base_pairs.insert(0, pairs_composed)
+
+        pairs_composed = []
+        for pair_idx, composing_bases in enumerate(base_pairs_perm):
+            utts_base, formulas_base = zip(*composing_bases)  # unpack list of tuples into 2 lists
+            if operator == "and":
+                utt_composed, formula_composed = compose_and(utts_base, formulas_base)
+            elif operator == "or":
+                utt_composed, formula_composed = compose_or(utts_base, formulas_base)
+            else:
+                raise ValueError(f"ERROR: operator not yet supported: {operator}.")
+            # logger.info(f"Composed pair {pair_idx}:\n{utts_base}\n{formulas_base}\n{utt_composed}\n{formula_composed}\n")
+
+            # Check composed formula for syntactical correctness and redundancy before adding to composed dataset
+            try:
+                formula_spot = spot.formula(formula_composed)
+            except SyntaxError:
+                raise SyntaxError(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
+
+            if ignore_redundant and formula_spot in all_formulas_spot:
+                logger.info(f"Composed formula already exists:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
+                return []
+            else:
+                pairs_composed.append((utt_composed, formula_composed))
+                compositions.append([utt_composed, formula_composed, utts_base, formulas_base])
+
+            all_base_pairs.insert(0, pairs_composed)
 
     return compositions
 
@@ -140,7 +138,7 @@ def compose_or(utts, formulas):
 if __name__ == "__main__":
     # python compose.py --ignore_redundant
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_fpath", type=str, default="data/symbolic_batch12_perm.csv", help="dataset used for composition.")
+    parser.add_argument("--data_fpath", type=str, default="data/symbolic_batch12_noperm.csv", help="dataset used for composition.")
     parser.add_argument("--ignore_redundant", action="store_true", help="True to ignore composed formulas already exist.")
     args = parser.parse_args()
 
@@ -148,9 +146,5 @@ if __name__ == "__main__":
     all_operators = list(product(FEASIBLE_OPERATORS, repeat=nclauses-1))  # operators used to compose base formulas
     all_base_types = list(product(FEASIBLE_TYPES, repeat=nclauses))  # LTL type for each base formula
     all_base_nprops = list(product(range(1, len(PROPS)+1), repeat=nclauses))  # nprops for each base formula
-
-    # all_operators = [["and"]]
-    # all_base_types = [["sequenced_visit", "global_avoidance"]]
-    # all_base_nprops = [[2, 1]]  # perm: 64800; non-perm: 648
 
     compose(args.data_fpath, all_operators, all_base_types, all_base_nprops, args.ignore_redundant)
