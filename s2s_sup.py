@@ -27,6 +27,11 @@ class Seq2Seq:
             if checkpoint: model_dir += f'/checkpoint-{checkpoint}'
             self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
             self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
+        elif "bart" in args.model:
+            model_dir = f"model/facebook/{args.model}"
+            if checkpoint: model_dir += f'/checkpoint-{checkpoint}'
+            self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dir)
         elif model_type == "pt_transformer":
             self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -39,7 +44,7 @@ class Seq2Seq:
             raise ValueError(f'ERROR: unrecognized model: {model_type}')
 
     def translate(self, queries):
-        if self.model_type in T5_MODELS:
+        if self.model_type in T5_MODELS or "bart" in args.model:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
             inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
             output_tokens = self.model.generate(
@@ -63,7 +68,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--split_dataset_fpath', type=str, default='data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl',
                         help='complete file path or prefix of file paths to train test split dataset')
-    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "pt_transformer"],
+    parser.add_argument('--model', type=str, default="t5-base", choices=["t5-base", "t5-small", "bart-base", "pt_transformer"],
                         help='name of supervised seq2seq model')
     parser.add_argument('--checkpoint', type=str, default=None)
     args = parser.parse_args()
@@ -86,7 +91,7 @@ if __name__ == '__main__':
         train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
 
         # Load trained model
-        if args.model in T5_MODELS:  # pretrained T5 from Hugging Face
+        if args.model in T5_MODELS or 'bart' in args.model:  # pretrained T5/Bart from Hugging Face
             if args.checkpoint:
                 s2s = Seq2Seq(args.model, checkpoint=args.checkpoint)
             else:
