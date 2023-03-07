@@ -174,6 +174,10 @@ def deserialize_props_str(props_str):
     return props
 
 
+def props_in_formula(formula, feasible_props):
+    return [prop for prop in feasible_props if prop in formula]
+
+
 def save_to_file(data, fpth, mode=None):
     ftype = os.path.splitext(fpth)[-1][1:]
     if ftype == 'pkl':
