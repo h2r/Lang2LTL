@@ -56,7 +56,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     save_to_file(composed, save_fpath)
 
 
-def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_redundant, logger):
+def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_repeat, logger):
     """
     Construct a single composition permuting all base formulas and base utterances.
     e.g., ["and"],  ["sequenced_visit", "global_avoidance"], [2, 1]
@@ -111,7 +111,7 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
             except SyntaxError:
                 raise SyntaxError(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
 
-            if ignore_redundant and formula_spot in all_formulas_spot:
+            if ignore_repeat and formula_spot in all_formulas_spot:
                 logger.info(f"Composed formula already exists:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
                 return [], []
             else:
@@ -138,7 +138,7 @@ def compose_or(utts, formulas):
 
 
 if __name__ == "__main__":
-    # python compose.py --ignore_redundant
+    # python compose.py --ignore_repeat
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/symbolic_batch12_noperm.csv", help="dataset used for composition.")
     parser.add_argument("--ignore_repeat", action="store_true", help="True to ignore composed formulas already exist.")
