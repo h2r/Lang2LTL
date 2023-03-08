@@ -153,7 +153,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
             result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
             if is_correct == "True":
                 ncorrects += 1
-            logging.info(f"partial results\nnumber of corrects: {ncorrects}\naccuracy: {ncorrects/nsamples}\n")
+            logging.info(f"partial results: {ncorrects}/{nsamples} = {ncorrects/nsamples}\n")
     save_to_file(result_log, result_log_fpath)
 
     meta2acc = {meta: np.mean([True if acc == "True" else False for acc in accs]) for meta, accs in meta2accs.items()}
