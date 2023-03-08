@@ -131,12 +131,12 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     #     if train_or_valid == "valid":
     #         meta2accs[(pattern_type, nprops)].append(is_correct)
     train_or_valid = "valid"
-    cnt = 0
+    nsamples, ncorrects = 0, 0
     for batch in batch(list(zip(valid_iter, valid_meta)), int(valid_iter_len/100)):  # batch_size = 100
         utts = [tp[0][0] for tp in batch]
         out_ltls = model.translate(utts)
         for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
-            cnt += 1
+            nsamples += 1
             nprops = len(prop_perm)
             out_ltl = out_ltls[idx].strip()
             try:  # output LTL formula may have syntax error
@@ -147,10 +147,13 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
 
             if train_or_valid == "valid":
                 meta2accs[(pattern_type, nprops)].append(is_correct)
-            if cnt > valid_iter_len: 
+            if nsamples > valid_iter_len:
                 train_or_valid = "train"
-            logging.info(f"{cnt}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+            logging.info(f"{nsamples}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
             result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
+            if is_correct == "True":
+                ncorrects += 1
+            logging.info(f"partial results\nnumber of corrects: {ncorrects}\naccuracy: {ncorrects/nsamples}\n")
     save_to_file(result_log, result_log_fpath)
 
     meta2acc = {meta: np.mean([True if acc == "True" else False for acc in accs]) for meta, accs in meta2accs.items()}
