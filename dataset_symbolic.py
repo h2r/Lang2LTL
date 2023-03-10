@@ -135,7 +135,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_type
             else:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                               holdout_type, holdout_types, size, seed)
+                               size, seed, holdout_type, holdout_types)
     elif holdout_type == "ltl_formula":  # hold out specified (pattern type, nprops) pairs
         all_formulas = []
         for pattern_type, props_str, _, _ in dataset:
@@ -168,7 +168,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_type
             else:
                 split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}_fold{fold_idx}.pkl"
             save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                               holdout_type, holdout_formulas, size, seed)
+                               size, seed, holdout_type, holdout_formulas)
     elif holdout_type == "utt":  # hold out a specified ratio of utts for every (pattern type, nprops) pair
         train_iter, train_meta, valid_iter, valid_meta = [], [], [], []  # meta data is (pattern_type, nprops) pairs
         meta2data = defaultdict(list)
@@ -197,7 +197,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_type
         else:
             split_fpath = f"{split_dpath}/{dataset_name}_{holdout_type}_{size}_{seed}.pkl"
         save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta,
-                           holdout_type, list(meta2data.keys()), size, seed)
+                           size, seed, holdout_type, list(meta2data.keys()))
     else:
         raise ValueError(f"ERROR unrecognized holdout type: {holdout_type}.")
 
@@ -214,7 +214,7 @@ def permute(pattern_type, nprops, utt, data, meta):
         meta.append((pattern_type, prop_perm))
 
 
-def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta, holdout_type, holdout_meta, size, seed):
+def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_meta, size, seed, holdout_type=None, holdout_meta=None):
     split_dataset = {
         "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
         "holdout_type": holdout_type,
