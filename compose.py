@@ -48,12 +48,13 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     composed_zeroshot = defaultdict(list)  # by itself serve as test set for zero-shot transfer
     formula2dataset = {}  # formula to (data, meta) pair
     composed_utt = []  # utt split dataset for each folder
-    nattempts, ncomposed, npairs = 0, 0, 0
+    nattempts, npairs = 0, 0
+    error2count = defaultdict(int)  # composed formula: syntax error, semantic error, repeated, correct
     for operators in all_operators:
         for base_types in all_base_types:
             for base_nprops in all_base_nprops:
                 logger.info(f"Composing type {nattempts}:\n{operators}\n{base_types}\n{base_nprops}")
-                data, meta = compose_single(meta2data, all_base_formulas_spot, operators, base_types, base_nprops, ignore_repeat, logger)
+                data, meta = compose_single(meta2data, all_base_formulas_spot, operators, base_types, base_nprops, ignore_repeat, error2count, logger)
 
                 composed_zeroshot["data"].extend(data)
                 composed_zeroshot["meta"].extend(meta)
@@ -66,10 +67,11 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
 
                 nattempts += 1
                 npairs += len(data)
-                if data:
-                    ncomposed += 1
     # Save zero_shot transfer dataset
-    logger.info(f"Total number of composed types: {ncomposed}")
+    logger.info(f"Composed types with syntax error: {error2count['syntax_err']}/{nattempts} = {error2count['syntax_err']/nattempts}")
+    logger.info(f"Composed types with semantic error: {error2count['semantic_err']}/{nattempts} = {error2count['semantic_err']/nattempts}")
+    logger.info(f"Composed types being redundant: {error2count['repeat']}/{nattempts} = {error2count['repeat']/nattempts}")
+    logger.info(f"Correct composed types: {error2count['correct']}/{nattempts} = {error2count['correct']/nattempts}")
     logger.info(f"Total number of composed pairs: {npairs}")
     save_to_file(composed_zeroshot, save_fpath_zeoshot)
     # Save formula holdout dataset
@@ -93,10 +95,12 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     save_to_file(composed_utt, save_fpath_utt)
 
 
-def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_repeat, logger):
+def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_repeat, error2count, logger):
     """
-    Construct a single composition permuting all base formulas and base utterances.
+    Construct a single composed type permuting all composed utterances.
     e.g., ["and"],  ["sequenced_visit", "global_avoidance"], [2, 1]
+    Same composed formula for all composed utterances.
+    Short circuit: return empty lists if compose formula for 1 composed utterance incorrect or redundant.
     """
     # Check arguments
     assert len(base_types) == len(base_nprops), f"{base_types} base formula types != {base_nprops} base prop lists."
@@ -142,16 +146,23 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
                 raise ValueError(f"ERROR: operator not yet supported: {operator}.")
             # logger.info(f"Composed pair {pair_idx}:\n{utts_base}\n{formulas_base}\n{utt_composed}\n{formula_composed}\n")
 
-            # Check composed formula for syntactical correctness and redundancy before adding to composed dataset
+            # Check composed formula for incorrect syntax, semantics, redundancy before adding to composed dataset
             try:
                 formula_spot = spot.formula(formula_composed)
             except SyntaxError:
+                error2count["syntax_err"] += 1
+                logger.info(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
                 raise SyntaxError(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
-
             if ignore_repeat and formula_spot in all_formulas_spot:
+                error2count["repeat"] += 1
                 logger.info(f"Composed formula already exists:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
                 return [], []
+            elif spot.are_equivalent(formula_spot, spot.formula("False")):
+                error2count["semantic_err"] += 1
+                logger.info(f"Composed formula semantically incorrect:\n{formula_composed}\n{utt_composed}")
+                return [], []
             else:
+                error2count["correct"] += 1
                 pairs_composed.append((utt_composed, formula_composed))
 
         all_base_pairs.insert(0, pairs_composed)
