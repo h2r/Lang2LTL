@@ -12,7 +12,7 @@ from utils import deserialize_props_str, props_in_formula, load_from_file, save_
 
 UNARY_OPERATORS = ["not", "next", "finally", "always"]
 BINARY_OPERATORS = ["and", "or", "implies", "until"]
-FEASIBLE_OPERATORS = ["and", "or"]
+FEASIBLE_OPERATORS = ["and", "or"]  # operators currently supported
 
 
 def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_repeat,
@@ -30,10 +30,10 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
         meta2data[(pattern_type, len(props))].append((utt, formula))
         all_base_formulas_spot.add(spot.formula(formula))
 
-    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}.log")
     save_fpath_zeoshot = os.path.join(os.path.dirname(data_fpath), f"composed_zeroshot_{Path(args.data_fpath).stem}.pkl")
     save_fpath_formula = os.path.join(os.path.dirname(data_fpath), f"composed_formula_{Path(args.data_fpath).stem}.pkl")
     save_fpath_utt = os.path.join(os.path.dirname(data_fpath), f"composed_utt_{Path(args.data_fpath).stem}.pkl")
+    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}.log")
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
@@ -47,7 +47,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     # Construct composed dataset
     composed_zeroshot = defaultdict(list)  # by itself serve as test set for zero-shot transfer
     formula2dataset = {}  # formula to (data, meta) pair
-    composed_utt = []  # utt split dataset for each folder
+    composed_utt = []  # utt split dataset for each fold
     nattempts, npairs = 0, 0
     error2count = defaultdict(int)  # composed formula: syntax error, semantic error, repeated, correct
     for operators in all_operators:
@@ -59,7 +59,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
                 composed_zeroshot["data"].extend(data)
                 composed_zeroshot["meta"].extend(meta)
 
-                formula2dataset[(meta[0][0], meta[0][1])] = (data, meta)
+                formula2dataset[(meta[0][0], meta[0][1])] = (data, meta)  # key: type, props of composed formula
 
                 for seed_utt in seeds_utt:
                     train_data, valid_data = train_test_split(data, test_size=size_utt, random_state=seed_utt)
@@ -74,7 +74,7 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     logger.info(f"Correct composed types: {error2count['correct']}/{nattempts} = {error2count['correct']/nattempts}")
     logger.info(f"Total number of composed pairs: {npairs}")
     save_to_file(composed_zeroshot, save_fpath_zeoshot)
-    # Save formula holdout dataset
+    # Construct and save formula holdout dataset
     composed_formula = []
     all_formulas = list(formula2dataset.keys())
     kf = KFold(n_splits=len(all_formulas) // size_formula, random_state=seed_formula, shuffle=True)
@@ -188,17 +188,17 @@ def compose_or(utts, formulas):
 if __name__ == "__main__":
     # python compose.py --ignore_repeat
     parser = argparse.ArgumentParser()
-    parser.add_argument("--data_fpath", type=str, default="data/symbolic_batch12_noperm.csv", help="dataset used for composition.")
+    parser.add_argument("--data_fpath", type=str, default="data/symbolic_batch12_noperm.csv", help="base dataset for composition.")
     parser.add_argument("--ignore_repeat", action="store_true", help="True to ignore composed formulas already exist.")
-    parser.add_argument("--size_formula", type=int, default=900, help="size per folder for formula holdout.")
+    parser.add_argument("--size_formula", type=int, default=900, help="fold size for formula holdout.")
     parser.add_argument("--seed_formula", type=int, default=42, help="seed for formula holdout.")
-    parser.add_argument("--size_utt", type=int, default=[0, 1, 2, 42, 111], help="size per folder for utterance holdout.")
-    parser.add_argument("--seeds_utt", type=float, default=0.2, help="seed for utterance holdout.")
+    parser.add_argument("--size_utt", type=float, default=0.2, help="fold size for utterance holdout.")
+    parser.add_argument("--seeds_utt", type=int, default=[0, 1, 2, 42, 111], help="seed for utterance holdout.")
     args = parser.parse_args()
 
     nclauses = 2
-    all_operators = list(product(FEASIBLE_OPERATORS, repeat=nclauses-1))  # operators used to compose base formulas
-    all_base_types = list(product(FEASIBLE_TYPES, repeat=nclauses))  # LTL type for each base formula
+    all_operators = list(product(FEASIBLE_OPERATORS, repeat=nclauses-1))  # all possible combs of operators to connect base formulas
+    all_base_types = list(product(FEASIBLE_TYPES, repeat=nclauses))  # all possible combs of LTL types for base formulas
     all_base_nprops = list(product(range(1, len(PROPS)+1), repeat=nclauses))  # nprops for each base formula
 
     compose(args.data_fpath, all_operators, all_base_types, all_base_nprops, args.ignore_repeat,
