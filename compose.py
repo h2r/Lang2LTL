@@ -95,6 +95,13 @@ def compose(data_fpath, all_operators, all_base_types, all_base_nprops, ignore_r
     save_to_file(composed_utt, save_fpath_utt)
 
 
+def get_valid_composed_formulas(all_operators, all_base_types, all_base_nprops):
+    """
+    A valid composed formula does not have syntax, semantic error, or repeat existing base formula.
+    """
+    error2count = defaultdict(int)  # composed formula: syntax error, semantic error, repeated, correct
+
+
 def compose_single(meta2data, all_formulas_spot, operators, base_types, base_nprops, ignore_repeat, error2count, logger):
     """
     Construct a single composed type permuting all composed utterances.
@@ -109,10 +116,12 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
         if base_type not in FEASIBLE_TYPES:
             raise ValueError(f"ERROR: {base_type} not a feasible LTL type.")
 
-    # Select base formulas and based utterances based input arguments
-    all_base_pairs = []
+    # Select base formulas and based utterances based on input arguments
+    all_base_pairs = []  # list of lists, one list per operand
     for pattern_type, nprops in zip(base_types, base_nprops):
         utt_ltl_pairs = meta2data[(pattern_type, nprops)]
+        if len(utt_ltl_pairs) == 0:  # nprops invalid for type, e.g. ["and"], ["visit", "sequenced_visit"], [1, 1]
+            return [], []
         all_base_pairs.append(utt_ltl_pairs)
 
     # Compose one operator at a time
@@ -127,16 +136,13 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
             raise ValueError(f"ERROR: unrecognized operator: {operator}.")
 
         if len(base_pairs) > 1:  # binary operator
-            base_pairs_perm = list(product(*base_pairs))  # permute all possible operand 1 and all possible operand 2
+            base_pairs_comb = list(product(*base_pairs))  # all possible combs of operand 1 and operand 2
         else:  # unary operator
-            base_pairs_perm = base_pairs
-        logger.info(f"Number of pairs to be composed: {len(base_pairs_perm)}\n")  # TODO: count only valid <= 2 clauses
-
-        if len(base_pairs_perm) == 0:  # nprops invalid for 1 type, e.g. ["and"], ["visit", "sequenced_visit"], [1, 1]
-            return [], []
+            base_pairs_comb = base_pairs
+        logger.info(f"Number of pairs to be composed: {len(base_pairs_comb)}\n")  # TODO: count only valid <= 2 clauses
 
         pairs_composed = []
-        for pair_idx, composing_bases in enumerate(base_pairs_perm):
+        for pair_idx, composing_bases in enumerate(base_pairs_comb):
             utts_base, formulas_base = zip(*composing_bases)  # unpack list of tuples into 2 lists
             if operator == "and":
                 utt_composed, formula_composed = compose_and(utts_base, formulas_base)
@@ -155,20 +161,20 @@ def compose_single(meta2data, all_formulas_spot, operators, base_types, base_npr
                 raise SyntaxError(f"Syntax error in composed formula:\n{formula_composed}\n{utt_composed}")
             if ignore_repeat and formula_spot in all_formulas_spot:
                 error2count["repeat"] += 1
-                logger.info(f"Composed formula already exists:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
+                logger.info(f"Repeated composed formula already exists in base dataset:\n{formula_spot} = {formula_composed}\n{utt_composed}\n{formulas_base}\n{utts_base}\n")
                 return [], []
             elif spot.are_equivalent(formula_spot, spot.formula("False")):
                 error2count["semantic_err"] += 1
-                logger.info(f"Composed formula semantically incorrect:\n{formula_composed}\n{utt_composed}")
+                logger.info(f"Semantic error in composed formula:\n{formula_composed}\n{utt_composed}")
                 return [], []
             else:
                 error2count["correct"] += 1
                 pairs_composed.append((utt_composed, formula_composed))
 
-        all_base_pairs.insert(0, pairs_composed)
+        all_base_pairs.insert(0, pairs_composed)  # continue composing composed formula with remaining base formulas
 
     data = all_base_pairs[0]
-    type_composed = '-'.join(list(operators) + list(base_types) + [str(props) for props in base_nprops])
+    type_composed = '-'.join(list(operators) + list(base_types) + [str(nprops) for nprops in base_nprops])
     meta = [(type_composed, props_in_formula(ltl, PROPS)) for _, ltl in data]
     return data, meta
 
