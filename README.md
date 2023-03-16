@@ -34,7 +34,7 @@ python -m spacy download en_core_web_sm
 
 ```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions.
 
-```utils.py```: utility functions, e.g. substitute, name_to_prop.
+```utils.py```: utility functions, e.g., substitute, name_to_prop.
 
 ```s2s_sup.py```: generic supervised sequence-to-sequence model.
 
@@ -56,7 +56,7 @@ python -m spacy download en_core_web_sm
 
 ```evaluation.py```: functions to evaluate translation and planning.
 
-```analyze_results.py```: scripts to analyze results, e.g. confusion matrix, misclassification.
+```analyze_results.py```: scripts to analyze results, e.g., confusion matrix, misclassification.
 
 ```tester.py```: unittests.
 
@@ -111,7 +111,7 @@ python run_experiment.py --translate_e2e
 
 # Datasets
 ## Symbolic
-```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g. a, b, c, etc, used for training symbolic translation module.
+```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g., a, b, c, etc, used for training symbolic translation module.
 
 ```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
 
@@ -122,12 +122,17 @@ python run_experiment.py --translate_e2e
 ```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
 for language commands paired LTL expressions, converted to 1 csv file from 2 txt files, ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
 
-```cleanup_fixed.csv``` after fixing mistakes (e.g. mislabel, incorrect language, typos).
+```cleanup_fixed.csv``` after fixing mistakes (e.g., mislabel, incorrect language, typos).
 
-```cleanup_cleaned.csv``` after data cleaning (e.g. remove ambiguous language, manipulation).
+```cleanup_cleaned.csv``` after data cleaning (e.g., remove ambiguous language, manipulation).
 
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
+
+## Large datasets
+Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
+e.g., composed datasets.
+
 
 
 # Baselines
