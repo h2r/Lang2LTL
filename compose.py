@@ -15,8 +15,7 @@ BINARY_OPERATORS = ["and", "or", "implies", "until"]
 FEASIBLE_OPERATORS = ["and", "or"]  # operators currently supported
 
 
-def compose(data_fpath, nclauses, ignore_repeat,
-            size_formula, seed_formula, size_utt, seeds_utt):
+def compose(data_fpath, nclauses, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt):
     """
     Construct composed dataset.
     In one pass, construct composed dataset for zero-shot transfer, formula and utterance holdout.
@@ -210,7 +209,7 @@ def get_valid_composed_formulas(data_fpath, nclauses):
     """
     A valid composed formula does not have syntax, semantic error, or repeat existing base formula.
     """
-    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_stats_{Path(data_fpath).stem}.log")
+    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(data_fpath).stem}.log")
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
@@ -258,25 +257,29 @@ def get_valid_composed_formulas(data_fpath, nclauses):
                 except SyntaxError:
                     error2count["syntax_err"] += 1
                     logger.info(f"Syntax error in composed formula:\n{ltl_composed}")
-                    raise SyntaxError(f"Syntax error in composed formula:\n{ltl_composed}")
+                    break
                 if ltl_spot in all_base_formulas_spot:
                     error2count["repeat"] += 1
                     logger.info(f"Repeated composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{base_ltls}\n")
+                    break
                 elif spot.are_equivalent(ltl_spot, spot.formula("False")):
                     error2count["semantic_err"] += 1
                     logger.info(f"Semantic error in composed formula:\n{ltl_composed}")
+                    break
                 else:
                     error2count["correct"] += 1
                     logger.info(f"Correct composed formula:\n{ltl_composed}")
 
                 base_ltl_seq.insert(0, ltl_composed)  # continue composing composed formula with remaining base formulas
 
-            composed_ltls.add(base_ltl_seq[0])
+            if base_ltl_seq:
+                composed_ltls.add(base_ltl_seq[0])
 
-    save_fpath_stats = os.path.join(os.path.dirname(data_fpath), f"composed_stats_{Path(args.data_fpath).stem}.pkl")
+    save_fpath_stats = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(args.data_fpath).stem}.pkl")
     stats = {
         "total_attempts": n_attempts,
         "error2count": error2count,
+        "composed_ltls": composed_ltls,
     }
     save_to_file(stats, save_fpath_stats)
 
@@ -289,7 +292,7 @@ def get_valid_composed_formulas_0(data_fpath, nclauses):
     """
     A valid composed formula does not have syntax, semantic error, or repeat existing base formula.
     """
-    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_formulas_{Path(data_fpath).stem}.log")
+    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(data_fpath).stem}_test.log")
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
@@ -308,6 +311,7 @@ def get_valid_composed_formulas_0(data_fpath, nclauses):
     base_nprops_seqs = list(product(range(1, len(PROPS) + 1), repeat=nclauses))  # nprops for each base formula
     error2count = defaultdict(int)  # composed formula: correct, syntax error, semantic error, repeat
     n_attempts = 0
+    composed_ltls = set()
     for operators in operator_seqs:
         for base_type_seq in base_type_seqs:
             for base_nprops_seq in base_nprops_seqs:
@@ -324,12 +328,10 @@ def get_valid_composed_formulas_0(data_fpath, nclauses):
                         logger.info(f"Nprops invalid for type:\n{pattern_type}\n{nprops}")
                         invalid_nprops = True
                         print(pattern_type, nprops, base_ltl_seqs)
-                        breakpoint()
                         break
                 if invalid_nprops:
                     print(pattern_type, nprops, base_ltl_seqs)
-                    breakpoint()
-                    break
+                    continue
 
                 # Compose one operator at a time
                 for operator in operators:
@@ -356,20 +358,25 @@ def get_valid_composed_formulas_0(data_fpath, nclauses):
                     except SyntaxError:
                         error2count["syntax_err"] += 1
                         logger.info(f"Syntax error in composed formula:\n{ltl_composed}")
-                        raise SyntaxError(f"Syntax error in composed formula:\n{ltl_composed}")
+                        break
                     if ltl_spot in all_base_formulas_spot:
                         error2count["repeat"] += 1
                         logger.info(f"Repeated composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{base_ltls}\n")
+                        break
                     elif spot.are_equivalent(ltl_spot, spot.formula("False")):
                         error2count["semantic_err"] += 1
                         logger.info(f"Semantic error in composed formula:\n{ltl_composed}")
+                        break
                     else:
                         error2count["correct"] += 1
                         logger.info(f"Correct composed formula:\n{ltl_composed}")
 
                     base_ltl_seqs.insert(0, ltl_composed)  # continue composing composed formula with remaining base formulas
 
-    save_fpath_stats = os.path.join(os.path.dirname(data_fpath), f"composed_formulas_stats_{Path(args.data_fpath).stem}.pkl")
+                if base_ltl_seqs:
+                    composed_ltls.add(base_ltl_seqs[0])
+
+    save_fpath_stats = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(args.data_fpath).stem}_test.pkl")
     stats = {
         "total_attempts": n_attempts,
         "error2count": error2count,
@@ -377,7 +384,7 @@ def get_valid_composed_formulas_0(data_fpath, nclauses):
     save_to_file(stats, save_fpath_stats)
 
     print(error2count)
-    print(n_attempts, sum(error2count.values()))
+    print(n_attempts, sum(error2count.values()), len(composed_ltls))
     breakpoint()
 
 
@@ -396,7 +403,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.get_formula_stats:
-        get_valid_composed_formulas_0(args.data_fpath, args.nclauses)
+        get_valid_composed_formulas(args.data_fpath, args.nclauses)
     else:
         compose(args.data_fpath, args.nclauses, args.ignore_repeat,
                 args.size_formula, args.seed_formula, args.size_utt, args.seeds_utt)
