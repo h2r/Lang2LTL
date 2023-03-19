@@ -68,7 +68,8 @@ def compose(data_fpath, nclauses, ignore_repeat, size_formula, seed_formula, siz
     logger.info(f"Composed types with syntax error: {error2count['syntax_err']}/{nattempts} = {error2count['syntax_err']/nattempts}")
     logger.info(f"Composed types with semantic error: {error2count['semantic_err']}/{nattempts} = {error2count['semantic_err']/nattempts}")
     logger.info(f"Composed types being redundant: {error2count['repeat']}/{nattempts} = {error2count['repeat']/nattempts}")
-    logger.info(f"Correct composed types: {error2count['correct']}/{nattempts} = {error2count['correct']/nattempts}")
+    ncorrects = nattempts - error2count['syntax_err'] - error2count['semantic_err'] - error2count['repeat']
+    logger.info(f"Correct composed types: {ncorrects/nattempts} = {ncorrects /nattempts}")
     logger.info(f"Total number of composed pairs: {npairs}")
     save_to_file(composed_zeroshot, save_fpath_zeoshot)
     # Construct and save formula holdout dataset
@@ -147,7 +148,6 @@ def compose_single(ltl2utts, all_ltls_spot, operators, base_ltls, ignore_repeat,
                 logger.info(f"Semantic error in composed formula:\n{ltl_composed}\n{utt_composed}")
                 return [], []
             else:
-                error2count["correct"] += 1
                 logger.info(f"Correct composed formula:\n{ltl_composed}")
                 pairs_composed.append((utt_composed, ltl_composed))
 
