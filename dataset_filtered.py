@@ -21,7 +21,7 @@ def filter_cleanup(env):
             filter_dataset.append((pattern_type, nprops, utt, ltl))
 
     cleanup_filtered_fpath = os.path.join(cleanup_dpath, "cleanup_filtered.pkl")
-    save_to_file({"vali_iter": data, "valid_meta": data}, cleanup_filtered_fpath)
+    save_to_file({"valid_iter": data, "valid_meta": meta}, cleanup_filtered_fpath)
 
     cleanup_filtered_fpath = os.path.join(cleanup_dpath, "cleanup_filtered.csv")
     save_to_file(filter_dataset, cleanup_filtered_fpath)
@@ -75,7 +75,7 @@ def filter_osm(env):
             filter_dataset.append((pattern_type, nprops, utt, ltl, city))
 
     osm_filtered_fpath = os.path.join(osm_dpath, "osm_filtered.pkl")
-    save_to_file({"vali_iter": data, "valid_meta": data}, osm_filtered_fpath)
+    save_to_file({"valid_iter": data, "valid_meta": meta}, osm_filtered_fpath)
 
     osm_filtered_fpath = os.path.join(osm_dpath, "osm_filtered.csv")
     save_to_file(filter_dataset, osm_filtered_fpath)

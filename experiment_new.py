@@ -436,10 +436,10 @@ if __name__ == "__main__":
         data_fpath = os.path.join(env_dpath, f"{args.env.split('_')[0]}_filtered.pkl")
 
         obj_emebd_dpath = os.path.join("data", "cleanup", "lmk_sem_embeds")
-        obj_embed = os.path.join(env_dpath, "lmk_sem_embeds", f"obj2embed_{args.cities}_{args.embed_engine}.pkl")
+        obj_embed = os.path.join(env_dpath, "lmk_sem_embeds", f"obj2embed_{args.cities[0]}_{args.embed_engine}.pkl")
 
         os.makedirs(os.path.join(env_dpath, "lmk_name_embeds"), exist_ok=True)
-        name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{args.cities}_{args.embed_engine}.pkl")
+        name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{args.cities[0]}_{args.embed_engine}.pkl")
 
         result_dpath = os.path.join("results", "lang2ltl", args.env)
         os.makedirs(result_dpath, exist_ok=True)
@@ -451,12 +451,12 @@ if __name__ == "__main__":
         meta_iter = dataset["valid_meta"]
 
         input_utts, true_ltls, pattern_types, npropositions, cities = [], [], [], [], []
-        for (utt, ltl), (pattern_type, nprops, city) in zip(valid_iter, meta_iter):
+        for (utt, ltl), _ in zip(valid_iter, meta_iter):
             input_utts.append(utt)
             true_ltls.append(ltl)
-            pattern_types.append(pattern_type)
-            npropositions.append(nprops)
-            cities.append(city)
+            # pattern_types.append(pattern_type)
+            # npropositions.append(nprops)
+            # cities.append(city)
 
         logging.info(data_fpath)
 
@@ -464,7 +464,7 @@ if __name__ == "__main__":
         logging.info(f"Embedding engine: {args.embed_engine}")
 
         if args.sym_trans == "gpt3_finetuned":
-            translation_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+            translation_engine = f"gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2"
             translation_engine = load_from_file("model/gpt3_models.pkl")[translation_engine]
         elif args.sym_trans == "gpt3_pretrained":
             translation_engine = "text-davinci-003"
@@ -488,6 +488,7 @@ if __name__ == "__main__":
 
         city2input_utts, city2true_ltls, city2pattern_types, city2npropositions, cities = defaultdict(list), defaultdict(list), defaultdict(list), defaultdict(list), set()
         for (utt, ltl), (pattern_type, nprops, city) in zip(valid_iter, meta_iter):
+            city = '_'.join([char[1] if '#' in char else char for char in city.lower().split()])
             city2input_utts[city].append(utt)
             city2true_ltls[city].append(ltl)
             city2pattern_types[city].append(pattern_type)
@@ -498,7 +499,7 @@ if __name__ == "__main__":
         logging.info(f"Embedding engine: {args.embed_engine}")
 
         if args.sym_trans == "gpt3_finetuned":
-            translation_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+            translation_engine = f"gpt3_finetuned_symbolic_batch12_perm_utt_0.2_2"
             translation_engine = load_from_file("model/gpt3_models.pkl")[translation_engine]
         elif args.sym_trans == "gpt3_pretrained":
             translation_engine = "text-davinci-003"
@@ -509,7 +510,7 @@ if __name__ == "__main__":
         obj_emebd_dpath = os.path.join("data", "osm", "lmk_sem_embeds")
 
         os.makedirs(os.path.join(env_dpath, "lmk_name_embeds"), exist_ok=True)
-        name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{args.cities}_{args.embed_engine}.pkl")
+        name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{args.cities[0]}_{args.embed_engine}.pkl")
         logging.info(f"cached lmk embed: {name_embed}")
 
         for city in cities:
@@ -517,6 +518,11 @@ if __name__ == "__main__":
             true_ltls  = city2true_ltls[city]
             pattern_types = city2pattern_types[city]
             npropositions = city2npropositions[city]
+
+            # input_utts = list(input_utts)[:10]
+            # true_ltls = list(true_ltls)[:10]
+            # pattern_types = list(pattern_types)[:10]
+            # npropositions = list(npropositions)[:10]
 
             obj_embed = os.path.join(obj_emebd_dpath, f"obj2embed_{city}_{args.embed_engine}.pkl")
             logging.info(f"known lmk embed: {obj_embed}")

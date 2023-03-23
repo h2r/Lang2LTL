@@ -1,6 +1,7 @@
 """
 Finetune pre-trained transformer models from Hugging Face.
 """
+import os
 import argparse
 import numpy as np
 from datasets import Dataset, DatasetDict, load_dataset, load_metric
@@ -15,7 +16,7 @@ T5_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "facebook/bart-base"]
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
-BATCH_SIZE = 50
+BATCH_SIZE = 20
 
 
 def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
@@ -66,12 +67,12 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
     train_args = Seq2SeqTrainingArguments(
         output_dir=f"model/{model_name}",
         evaluation_strategy="steps",
-        eval_steps=100,
+        eval_steps=1000,
         logging_strategy="steps",
-        logging_steps=100,
+        logging_steps=1000,
         save_strategy="steps",
-        save_steps=100,
-        learning_rate=1e-4,
+        save_steps=1000,
+        learning_rate=1e-5,
         per_device_train_batch_size=BATCH_SIZE,
         per_device_eval_batch_size=BATCH_SIZE,
         weight_decay=0.01,
@@ -149,7 +150,7 @@ def finetune_t5_old(input_sequences, output_sequences, tokenizer, model):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--data', type=str, default='data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, default='t5-base', choices=["t5-small", "t5-base", "t5-large", "t5-3b", "facebook/bart-base"], help='name of supervised seq2seq model')
+    parser.add_argument('--model', type=str, help='name of supervised seq2seq model')
     args = parser.parse_args()
 
     tokenizer = AutoTokenizer.from_pretrained(args.model)
@@ -158,7 +159,7 @@ if __name__ == '__main__':
     # model = AutoModelForSeq2SeqLM.from_config(config)
     model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
 
-    if args.model in T5_MODELS:
+    if args.model in T5_MODELS or os.path.exists(args.model):
         finetune_t5(args.model, tokenizer, args.data)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")

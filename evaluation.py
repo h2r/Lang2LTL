@@ -132,7 +132,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     #         meta2accs[(pattern_type, nprops)].append(is_correct)
     train_or_valid = "valid"
     nsamples, ncorrects = 0, 0
-    for batch in batch(list(zip(valid_iter, valid_meta)), int(valid_iter_len/100)):  # batch_size = 100
+    for batch in batch(list(zip(valid_iter, valid_meta)), 100):  # batch_size = 100
         utts = [tp[0][0] for tp in batch]
         out_ltls = model.translate(utts)
         for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
