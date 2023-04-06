@@ -63,6 +63,35 @@ python -m spacy download en_core_web_sm
 ```dataset_corlw.py```: construct grounded train and test sets for CoRL22-W.
 
 
+# Finetuning GPT-3
+*Make sure you have set OpenAI API keys before running following steps*
+## Data Formatting
+1. Prepend a prefix `'Utterance: '` and append a separator `'\nLTL: '` to each of the input query, so your input will look like `'Utterance: {input_sequence}\nLTL: '`
+2. Prepend a whitespace and append a stop word `'\n'` to each of the completion, so your output will look like `' {output_sequence}\n'`
+
+## Prepare Data
+Convert your formatted dataset into `.jsonl` type with CLI data preparation tool provided by OpenAI:
+```
+$openai tools fine_tunes.prepare_data -f your_file
+```
+Follow the directions and answer the promtped questions. For reproducing our results, DO NOT remove duplicates, DO NOT lowercase, and DO NOT split into training set and validation set.
+
+## Create Finetuned Model
+You'll need to submit finetuning jobs to OpenAI to get the finetuned model. Using the `.jsonl` file we just got converted:
+```
+$openai api fine_tunes.create -t prepared_file.jsonl -m base_model --suffix "your_desired_model_name"
+```
+For reproducing our results, please use `davinci` as the base model and use default hyperparameters: epoch=4, batch_size=0.2%*training_set_size, learning_rate_multiplier=0.1
+## Use the model
+You can check the status of a finetuning job by:
+```
+$openai api fine_tunes.list
+```
+When a job is finished (`"status": "processed"`), you will be able to find the name of that finetuned model in the list, and you can then use the finetuned model the same way as other OpenAI models through the API.
+
+For more info, please refer to the [official document](https://platform.openai.com/docs/guides/fine-tuning)
+
+
 # Run Experiments
 Temporarily set environment variables for API key and organization ID
 ```
@@ -109,34 +138,6 @@ python run_experiment.py --translate_e2e
 ```
 
 
-# Finetuning GPT-3
-*Make sure you have set OpenAI API keys before running following steps*
-## Data Formatting
-1. Prepend a prefix `'Utterance: '` and append a separator `'\nLTL: '` to each of the input query, so your input will look like `'Utterance: {input_sequence}\nLTL: '`
-2. Prepend a whitespace and append a stop word `'\n'` to each of the completion, so your output will look like `' {output_sequence}\n'`
-
-## Prepare Data
-Convert your formatted dataset into `.jsonl` type with CLI data preparation tool provided by OpenAI:
-```
-$openai tools fine_tunes.prepare_data -f your_file
-```
-Follow the directions and answer the promtped questions. For reproducing our results, DO NOT remove duplicates, DO NOT lowercase, and DO NOT split into training set and validation set.
-
-## Create Finetuned Model
-You'll need to submit finetuning jobs to OpenAI to get the finetuned model. Using the `.jsonl` file we just got converted:
-```
-$openai api fine_tunes.create -t prepared_file.jsonl -m base_model --suffix "your_desired_model_name"
-```
-For reproducing our results, please use `davinci` as the base model and use default hyperparameters.
-
-## Use the model
-You can check the status of a finetuning job by:
-```
-$openai api fine_tunes.list
-```
-When a job is finished (`"status": "processed"`), you will be able to find the name of that finetuned model in the list, and you can then use the finetuned model the same way as other OpenAI models through the API.
-
-For more info, please refer to the [official document](https://platform.openai.com/docs/guides/fine-tuning)
 # Datasets
 ## Symbolic
 ```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g., a, b, c, etc, used for training symbolic translation module.
