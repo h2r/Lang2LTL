@@ -1,3 +1,6 @@
+"""
+For NL2LTL baseline. https://github.com/IBM/nl2ltl
+"""
 import argparse
 import random
 from collections import defaultdict
@@ -14,6 +17,7 @@ ALLOWED_PATTERNS: visit_1, visit_2, visit_3, visit_4, visit_5, sequenced_visit_2
 ALLOWED_SYMBOLS: a, b, c, d, h
 
 '''
+
 
 def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, seed):
     """
@@ -42,6 +46,7 @@ def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, se
     prompt_fpath = f"{prompt_dpath}/nl2ltl_prompt_nexamples{nexamples}_{split_dataset_name}.txt"
     save_to_file(prompt, prompt_fpath)
 
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--prompt_fpath', type=str, default='data/prompt_nl2ltl')
@@ -51,6 +56,3 @@ if __name__ == '__main__':
     for seed in SEEDS:
         split_fpath = f'{args.split_fpath}_{seed}.pkl'
         generate_prompts_from_split_dataset(split_fpath, args.prompt_fpath, 1, seed)
-
-
-            
