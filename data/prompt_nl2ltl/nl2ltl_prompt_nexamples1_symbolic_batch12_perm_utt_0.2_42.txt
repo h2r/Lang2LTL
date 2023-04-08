@@ -1,0 +1,199 @@
+
+Translate natural language sentences into patterns.
+
+ALLOWED_PATTERNS: visit_1, visit_2, visit_3, visit_4, visit_5, sequenced_visit_2, sequenced_visit_3, sequenced_visit_4, sequenced_visit_5, ordered_visit_2, ordered_visit_3, ordered_visit_4, ordered_visit_5, strictly_ordered_visit_2, strictly_ordered_visit_3, strictly_ordered_visit_4, strictly_ordered_visit_5, patrolling_1, patrolling_2, patrolling_3, patrolling_4, patrolling_5, past_avoidance_2, global_avoidance_1, global_avoidance_2, global_avoidance_3, global_avoidance_4, global_avoidance_5, future_avoidance_2, upper_restricted_avoidance_1, upper_restricted_avoidance_2, upper_restricted_avoidance_3, upper_restricted_avoidance_4, upper_restricted_avoidance_5, lower_restricted_avoidance_1, lower_restricted_avoidance_2, lower_restricted_avoidance_3, lower_restricted_avoidance_4, lower_restricted_avoidance_5, exact_restricted_avoidance_1, exact_restricted_avoidance_2, exact_restricted_avoidance_3, exact_restricted_avoidance_4, exact_restricted_avoidance_5, delayed_reaction_2, prompt_reaction_2, bound_delay_2, wait_2
+ALLOWED_SYMBOLS: a, b, c, d, h
+
+NL: visit b
+PATTERN: visit_1
+SYMBOLS: b
+
+NL: reach b and h in any order
+PATTERN: visit_2
+SYMBOLS: b, h
+
+NL: visit h a and b in any order
+PATTERN: visit_3
+SYMBOLS: h, a, b
+
+NL: visit h go to a reach b reach c
+PATTERN: visit_4
+SYMBOLS: h, a, b, c
+
+NL: make sure you go to h a b c d in any order
+PATTERN: visit_5
+SYMBOLS: h, a, b, c, d
+
+NL: go to b then move to h
+PATTERN: sequenced_visit_2
+SYMBOLS: b, h
+
+NL: make your way to h a and b consecutively
+PATTERN: sequenced_visit_3
+SYMBOLS: h, a, b
+
+NL: visit c at least once after visiting h visit a at least once after visiting h and c visit d at least once after visiting h c and a
+PATTERN: sequenced_visit_4
+SYMBOLS: h, c, a, d
+
+NL: visit h then a then b then c and finally d
+PATTERN: sequenced_visit_5
+SYMBOLS: h, a, b, c, d
+
+NL: visit h at least once then visit c at least once finally visit a do not visit c or a before h do not visit a before c
+PATTERN: ordered_visit_3
+SYMBOLS: h, c, a
+
+NL: reach b and then h in that exact order without repetitions
+PATTERN: strictly_ordered_visit_2
+SYMBOLS: b, h
+
+NL: go to h exactly once then go to c exactly once finally go to a do not go to c or a before h do not go to a before c
+PATTERN: strictly_ordered_visit_3
+SYMBOLS: h, c, a
+
+NL: visit c but before visiting c you must visit h only after that visit a after visiting a visit d visit each location once
+PATTERN: strictly_ordered_visit_4
+SYMBOLS: h, c, a, d
+
+NL: make your way to d only after going to c before that make your way to c only after going to b before that make your way to b only after going to a before that make your way to a only after going to h do not go back to the previous location you have visited while heading to the next
+PATTERN: strictly_ordered_visit_5
+SYMBOLS: h, a, b, c, d
+
+NL: visit h only after visiting b
+PATTERN: ordered_visit_2
+SYMBOLS: b, h
+
+NL: continue to visit b
+PATTERN: patrolling_1
+SYMBOLS: b
+
+NL: visit h c a d in that specific order
+PATTERN: ordered_visit_4
+SYMBOLS: h, c, a, d
+
+NL: visit h before visiting c a d and b then visit c before visiting a d and b then visit a before visiting d and b then visit d before visiting b finally visit b
+PATTERN: ordered_visit_5
+SYMBOLS: h, c, a, d, b
+
+NL: keep visiting h a and b infinitely often
+PATTERN: patrolling_3
+SYMBOLS: h, a, b
+
+NL: keep visiting h a b and c an infinite number of times
+PATTERN: patrolling_4
+SYMBOLS: h, a, b, c
+
+NL: keep visiting h a b c and d an infinite number of times
+PATTERN: patrolling_5
+SYMBOLS: h, a, b, c, d
+
+NL: please keep visiting b and h without stopping
+PATTERN: patrolling_2
+SYMBOLS: b, h
+
+NL: b should never be reached
+PATTERN: global_avoidance_1
+SYMBOLS: b
+
+NL: never visit b and h
+PATTERN: global_avoidance_2
+SYMBOLS: b, h
+
+NL: you can not go to h a or b
+PATTERN: global_avoidance_3
+SYMBOLS: h, a, b
+
+NL: you can not go to h a b or c
+PATTERN: global_avoidance_4
+SYMBOLS: h, a, b, c
+
+NL: you can not go to h a b c or d
+PATTERN: global_avoidance_5
+SYMBOLS: h, a, b, c, d
+
+NL: make sure you see h before going to b
+PATTERN: past_avoidance_2
+SYMBOLS: b, h
+
+NL: never visit b again after you have visited it once
+PATTERN: upper_restricted_avoidance_1
+SYMBOLS: b
+
+NL: never visit b again after you have visited it twice
+PATTERN: upper_restricted_avoidance_2
+SYMBOLS: b, b
+
+NL: never visit b again after you have visited it three times
+PATTERN: upper_restricted_avoidance_3
+SYMBOLS: b, b, b
+
+NL: never visit b again after you have visited it four times
+PATTERN: upper_restricted_avoidance_4
+SYMBOLS: b, b, b, b
+
+NL: never visit b again after you have visited it five times
+PATTERN: upper_restricted_avoidance_5
+SYMBOLS: b, b, b, b, b
+
+NL: you have to go to b one or more than one time
+PATTERN: lower_restricted_avoidance_1
+SYMBOLS: b
+
+NL: you have to go to b two or more than two times
+PATTERN: lower_restricted_avoidance_2
+SYMBOLS: b, b
+
+NL: visit b at least three times
+PATTERN: lower_restricted_avoidance_3
+SYMBOLS: b, b, b
+
+NL: you have to go to b four or more than four times
+PATTERN: lower_restricted_avoidance_4
+SYMBOLS: b, b, b, b
+
+NL: you have to go to b five or more than five times
+PATTERN: lower_restricted_avoidance_5
+SYMBOLS: b, b, b, b, b
+
+NL: you must go to b exactly once
+PATTERN: exact_restricted_avoidance_1
+SYMBOLS: b
+
+NL: you must go to b exactly twice
+PATTERN: exact_restricted_avoidance_2
+SYMBOLS: b, b
+
+NL: you must go to b exactly three times
+PATTERN: exact_restricted_avoidance_3
+SYMBOLS: b, b, b
+
+NL: you must go to b exactly four times
+PATTERN: exact_restricted_avoidance_4
+SYMBOLS: b, b, b, b
+
+NL: you must go to b exactly five times
+PATTERN: exact_restricted_avoidance_5
+SYMBOLS: b, b, b, b, b
+
+NL: you can go to b but you must not go to h after that
+PATTERN: future_avoidance_2
+SYMBOLS: b, h
+
+NL: if you visit b you also have to visit h after that
+PATTERN: delayed_reaction_2
+SYMBOLS: b, h
+
+NL: after you visit b you must visit h right after b and you can only visit h immediately after visiting b
+PATTERN: bound_delay_2
+SYMBOLS: b, h
+
+NL: do not leave b before h is seen
+PATTERN: wait_2
+SYMBOLS: b, h
+
+NL: if you visit b make your way right to h right after that
+PATTERN: prompt_reaction_2
+SYMBOLS: b, h
+
+NL:

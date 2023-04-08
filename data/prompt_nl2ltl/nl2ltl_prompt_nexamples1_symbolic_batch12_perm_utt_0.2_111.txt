@@ -1,0 +1,199 @@
+
+Translate natural language sentences into patterns.
+
+ALLOWED_PATTERNS: visit_1, visit_2, visit_3, visit_4, visit_5, sequenced_visit_2, sequenced_visit_3, sequenced_visit_4, sequenced_visit_5, ordered_visit_2, ordered_visit_3, ordered_visit_4, ordered_visit_5, strictly_ordered_visit_2, strictly_ordered_visit_3, strictly_ordered_visit_4, strictly_ordered_visit_5, patrolling_1, patrolling_2, patrolling_3, patrolling_4, patrolling_5, past_avoidance_2, global_avoidance_1, global_avoidance_2, global_avoidance_3, global_avoidance_4, global_avoidance_5, future_avoidance_2, upper_restricted_avoidance_1, upper_restricted_avoidance_2, upper_restricted_avoidance_3, upper_restricted_avoidance_4, upper_restricted_avoidance_5, lower_restricted_avoidance_1, lower_restricted_avoidance_2, lower_restricted_avoidance_3, lower_restricted_avoidance_4, lower_restricted_avoidance_5, exact_restricted_avoidance_1, exact_restricted_avoidance_2, exact_restricted_avoidance_3, exact_restricted_avoidance_4, exact_restricted_avoidance_5, delayed_reaction_2, prompt_reaction_2, bound_delay_2, wait_2
+ALLOWED_SYMBOLS: a, b, c, d, h
+
+NL: reach c
+PATTERN: visit_1
+SYMBOLS: c
+
+NL: visit a and c
+PATTERN: visit_2
+SYMBOLS: c, a
+
+NL: stop by b c and a in any order
+PATTERN: visit_3
+SYMBOLS: b, c, a
+
+NL: visit b c a and h in no particular order
+PATTERN: visit_4
+SYMBOLS: b, c, a, h
+
+NL: you must visit b c a h d but it can be done in any order
+PATTERN: visit_5
+SYMBOLS: b, c, a, h, d
+
+NL: visit c and then a
+PATTERN: sequenced_visit_2
+SYMBOLS: c, a
+
+NL: visit b then go to c finally make your way to a
+PATTERN: sequenced_visit_3
+SYMBOLS: b, c, a
+
+NL: travel to a then travel to d then go to c then reach b
+PATTERN: sequenced_visit_4
+SYMBOLS: a, d, c, b
+
+NL: visit b visit c after b then visit a after c then visit h after a finally visit d after h
+PATTERN: sequenced_visit_5
+SYMBOLS: b, c, a, h, d
+
+NL: visit a first while avoiding d and then move to d while avoiding c then visit c
+PATTERN: ordered_visit_3
+SYMBOLS: a, d, c
+
+NL: only visit c once and do not visit a until you visit c
+PATTERN: strictly_ordered_visit_2
+SYMBOLS: c, a
+
+NL: go to a exactly once then go to d exactly once finally go to c do not go to d or c before a do not go to c before d
+PATTERN: strictly_ordered_visit_3
+SYMBOLS: a, d, c
+
+NL: visit d but before visiting d you must visit a only after that visit c after visiting c visit b visit each location once
+PATTERN: strictly_ordered_visit_4
+SYMBOLS: a, d, c, b
+
+NL: visit b while staying away from c then visit c while staying away from a then visit a while staying away from h then visit h while staying away from d finally reach d without returning to any previously visited locations
+PATTERN: strictly_ordered_visit_5
+SYMBOLS: b, c, a, h, d
+
+NL: find a but not until you find c first
+PATTERN: ordered_visit_2
+SYMBOLS: c, a
+
+NL: please keep visiting a without stopping
+PATTERN: patrolling_1
+SYMBOLS: a
+
+NL: go to b but do not go to b until c is visited and do not go to c until d is visited and do not go to d until a is visited
+PATTERN: ordered_visit_4
+SYMBOLS: a, d, c, b
+
+NL: visit a before visiting d c b and h then visit d before visiting c b and h then visit c before visiting b and h then visit b before visiting h finally visit h
+PATTERN: ordered_visit_5
+SYMBOLS: a, d, c, b, h
+
+NL: travel to c a and b infinitely
+PATTERN: patrolling_3
+SYMBOLS: b, c, a
+
+NL: continue visiting b c a and h an infinite number of times
+PATTERN: patrolling_4
+SYMBOLS: b, c, a, h
+
+NL: do not stop visiting b c a h and d
+PATTERN: patrolling_5
+SYMBOLS: b, c, a, h, d
+
+NL: go to c and a infinitely often
+PATTERN: patrolling_2
+SYMBOLS: c, a
+
+NL: do not go to c
+PATTERN: global_avoidance_1
+SYMBOLS: c
+
+NL: you can never go to c or a
+PATTERN: global_avoidance_2
+SYMBOLS: c, a
+
+NL: b c or a can never become true at any instant
+PATTERN: global_avoidance_3
+SYMBOLS: b, c, a
+
+NL: b c a and h must never be allowed to be true
+PATTERN: global_avoidance_4
+SYMBOLS: b, c, a, h
+
+NL: ensure that none among b c a h and d are ever visited
+PATTERN: global_avoidance_5
+SYMBOLS: b, c, a, h, d
+
+NL: avoid visiting c till you observe a
+PATTERN: past_avoidance_2
+SYMBOLS: c, a
+
+NL: go to c at most once
+PATTERN: upper_restricted_avoidance_1
+SYMBOLS: c
+
+NL: go to c at most twice
+PATTERN: upper_restricted_avoidance_2
+SYMBOLS: c, c
+
+NL: go to c at most three times
+PATTERN: upper_restricted_avoidance_3
+SYMBOLS: c, c, c
+
+NL: go to c at most four times
+PATTERN: upper_restricted_avoidance_4
+SYMBOLS: c, c, c, c
+
+NL: go to c at most five times
+PATTERN: upper_restricted_avoidance_5
+SYMBOLS: c, c, c, c, c
+
+NL: go to c at least once
+PATTERN: lower_restricted_avoidance_1
+SYMBOLS: c
+
+NL: go to c at least twice
+PATTERN: lower_restricted_avoidance_2
+SYMBOLS: c, c
+
+NL: go to c at least three times
+PATTERN: lower_restricted_avoidance_3
+SYMBOLS: c, c, c
+
+NL: go to c at least four times
+PATTERN: lower_restricted_avoidance_4
+SYMBOLS: c, c, c, c
+
+NL: go to c at least five times
+PATTERN: lower_restricted_avoidance_5
+SYMBOLS: c, c, c, c, c
+
+NL: go to c exactly once
+PATTERN: exact_restricted_avoidance_1
+SYMBOLS: c
+
+NL: go to c exactly twice
+PATTERN: exact_restricted_avoidance_2
+SYMBOLS: c, c
+
+NL: go to c exactly three times
+PATTERN: exact_restricted_avoidance_3
+SYMBOLS: c, c, c
+
+NL: go to c exactly four times
+PATTERN: exact_restricted_avoidance_4
+SYMBOLS: c, c, c, c
+
+NL: go to c exactly five times
+PATTERN: exact_restricted_avoidance_5
+SYMBOLS: c, c, c, c, c
+
+NL: never go to a once you go to c
+PATTERN: future_avoidance_2
+SYMBOLS: c, a
+
+NL: you must visit a once you visit c
+PATTERN: delayed_reaction_2
+SYMBOLS: c, a
+
+NL: you can not visit a without visiting c right before that and you can not visit c without visiting a right after that
+PATTERN: bound_delay_2
+SYMBOLS: c, a
+
+NL: you can not go to other place from c unless you see a
+PATTERN: wait_2
+SYMBOLS: c, a
+
+NL: immediately after you go to c you must go to a
+PATTERN: prompt_reaction_2
+SYMBOLS: c, a
+
+NL:
