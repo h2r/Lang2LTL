@@ -9,11 +9,12 @@ openai.organization = os.getenv("ORG_ID")
 
 
 class GPT3:
-    def __init__(self, engine, temp=0, max_tokens=128, n=1):
+    def __init__(self, engine, temp=0, max_tokens=128, n=1, stop=['\n']):
         self.engine = engine
         self.temp = temp
         self.max_tokens = max_tokens
         self.n = n
+        self.stop = stop
 
     def extract_ne(self, query, prompt=""):
         query_prompt = prompt + query
@@ -38,7 +39,7 @@ class GPT3:
                     prompt=query_prompt,
                     temperature=self.temp,
                     max_tokens=self.max_tokens,
-                    stop=['\n'],
+                    stop=self.stop,
                     n=self.n,
                     # logprobs=5
                 )
