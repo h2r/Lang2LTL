@@ -82,11 +82,11 @@ if __name__ == "__main__":
         "English: Go to Burger Queen then to black stone park; go to KFC before black stone park and after Burger Queen\n"\
         "Landmarks: Burger Queen | black stone park | KFC\n" \
         "LTL: F ( Burger Queen & F ( KFC & F ( black stone park ) )\n\n" \
-        "English: "
+        "English: Go to Science Library then Burger Queen\n"
     response = gpt3.generate(query_prompt)
     print(response)
 
     gpt3 = GPT3("text-embedding-ada-002")
     embedding = gpt3.get_embedding("Burger Queen")
-    print(embedding)
+    # print(embedding)
     breakpoint()
