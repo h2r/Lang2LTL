@@ -14,6 +14,7 @@ from gpt3 import GPT3
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, name_to_prop, substitute_single_word
 
+
 def generate_meta2ltl(iter, meta):
     """
     build meta to formula mapping using a utt holdout split
@@ -24,10 +25,11 @@ def generate_meta2ltl(iter, meta):
             meta2ltl[(pattern_type, props)] = ltl
     return meta2ltl
 
+
 def ltl_from_nl2ltl(resp, meta2ltl):
-    '''
+    """
     get ltl formula from nl2ltl's output, e.g., 'Visit_3 Symbols: a, b, c'
-    '''
+    """
     pattern = resp.split('\nSymbols: ')[0][:-2]
     props = resp.split('\nSymbols: ')[1].split(', ')
     props = tuple([p.strip() for p in props])
