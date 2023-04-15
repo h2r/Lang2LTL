@@ -158,6 +158,22 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
 
+## Compose Datasets
+To construct composed dataset for zero shot transfer, utterance and formula holdout,
+first run 
+```
+python compose.py
+```
+then run
+```
+python dataset_composed.py
+```
+
+Composed dataset for zero shot transfer: dictionary of data and meta
+
+Composed dataset for utterance and formula holdout: dictionary of train data, train meta data, test data, test meta data and information of base datasets used to construct the composed dataset.
+
+
 ## Large datasets
 Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
 e.g., composed datasets.
