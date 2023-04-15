@@ -38,7 +38,7 @@ def merge_batches(batch_fpaths):
 
 def create_symbolic_dataset(load_fpath, save_fpath, filter_types, update_dataset, remove_pun, perm_props=False):
     """
-    Generate non-permuted symbolic dataset for training symbolic translation module.
+    Generate symbolic dataset (permute props if asked) for training symbolic translation module.
     :param load_fpath: path to csv file storing Google form responses. Assume fields are t, user, ltl type, nprops, utt.
     :param save_fpath: path to save symbolic dataset.
     :param filter_types: LTL types to filter out.
