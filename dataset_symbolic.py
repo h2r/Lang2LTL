@@ -140,7 +140,7 @@ def construct_split_dataset(data_fpath, split_dpath, holdout_type, feasible_type
         all_formulas = []
         for pattern_type, props_str, _, _ in dataset:
             props = deserialize_props_str(props_str)
-            formula = (pattern_type, len(props))
+            formula = (pattern_type, len(props))  # same type and nprops, diff perm of props considered same formula
             if pattern_type not in filter_types and formula not in all_formulas:
                 all_formulas.append(formula)
         kf = KFold(n_splits=len(all_formulas)//size, random_state=seed, shuffle=True)
