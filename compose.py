@@ -219,7 +219,7 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
     logger = logging.getLogger()
 
     # Load base dataset
-    _, all_base_ltls, all_base_ltls_spot = load_base_dataset(data_fpath, logger)
+    _, all_base_ltls, all_base_ltls_spot, _ = load_base_dataset(data_fpath, logger)
 
     # Construct composed formula; count errors
     operator_seqs = list(product(feasible_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
@@ -274,14 +274,7 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
             if base_ltl_seq:
                 composed_ltls.add(base_ltl_seq[0])
 
-    save_fpath_stats = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(args.data_fpath).stem}.pkl")
-    stats = {
-        "total_attempts": nattempts,
-        "error2count": err2count,
-        "composed_ltls": composed_ltls,
-    }
-    save_to_file(stats, save_fpath_stats)
-
+    logger.info(f"composed_ltls: {composed_ltls}")
     logger.info(f"total attempts: {nattempts}")
     logger.info(f"total number of composed formulas: {len(composed_ltls)}")
     logger.info(f"error2count: {err2count} {sum(err2count.values())}")
