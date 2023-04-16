@@ -225,6 +225,14 @@ def save_split_dataset(split_fpath, train_iter, train_meta, valid_iter, valid_me
     save_to_file(split_dataset, split_fpath)
 
 
+def save_split_dataset_new(split_fpath, train_iter, train_meta, valid_iter, valid_meta, info):
+    split_dataset = {
+        "train_iter": train_iter, "train_meta": train_meta, "valid_iter": valid_iter, "valid_meta": valid_meta,
+        "info": info,
+    }
+    save_to_file(split_dataset, split_fpath)
+
+
 def load_split_dataset(split_fpath):
     dataset = load_from_file(split_fpath)
     return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
