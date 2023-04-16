@@ -145,18 +145,18 @@ def compose_single(operators, base_ltls, ltl2utts, all_ltls_spot, ltl2meta, igno
                 ltl_spot = spot.formula(ltl_composed)
             except SyntaxError:
                 err2count["syntax_err"] += 1
-                logger.info(f"Syntax error in composed formula:\n{ltl_composed}\n{utt_composed}")
+                # logger.info(f"Syntax error in composed formula:\n{ltl_composed}\n{utt_composed}")
                 return [], []
             if ignore_repeat and ltl_spot in all_ltls_spot:
                 err2count["repeat"] += 1
-                logger.info(f"Repeat composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{utt_composed}\n{ltls_base}\n{utts_base}\n")
+                # logger.info(f"Repeat composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{utt_composed}\n{ltls_base}\n{utts_base}\n")
                 return [], []
             elif spot.are_equivalent(ltl_spot, spot.formula("False")):
                 err2count["semantic_err"] += 1
-                logger.info(f"Semantic error in composed formula:\n{ltl_composed}\n{utt_composed}")
+                # logger.info(f"Semantic error in composed formula:\n{ltl_composed}\n{utt_composed}")
                 return [], []
             else:
-                logger.info(f"Correct composed formula:\n{ltl_composed}\n{metas}")
+                # logger.info(f"Correct composed formula:\n{ltl_composed}\n{metas}")
                 pairs_composed.append((utt_composed, ltl_composed, metas))
 
         all_base_triples.insert(0, pairs_composed)  # continue composing composed formula with remaining base formulas
