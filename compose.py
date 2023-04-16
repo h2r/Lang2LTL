@@ -42,7 +42,7 @@ def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formul
 
     composed_zeroshot = defaultdict(list)  # by itself serve as test set for zero-shot transfer
     formula2dataset = defaultdict(list)  # formula to (data, meta) pair
-    composed_utt = []  # utt split dataset for each fold
+    composed_utt = [[] for _ in range(len(seeds_utt))]  # utt split dataset for each fold
     nattempts, npairs = 0, 0
     err2count = defaultdict(int)  # composed formula: syntax error, semantic error, repeated, correct
     for operator_seq in operator_seqs:
@@ -57,11 +57,15 @@ def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formul
             if data and meta:
                 formula2dataset[meta[0][0]].append((data, meta))  # key: composed ltl formula 'and-global_avoidance_3-visit_2'
 
-                for seed_utt in seeds_utt:
+                for seed_idx, seed_utt in enumerate(seeds_utt):
                     train_dataset, valid_dataset = train_test_split(list(zip(data, meta)), test_size=size_utt, random_state=seed_utt)
                     train_data, train_meta = zip(*train_dataset)
                     valid_data, valid_meta = zip(*valid_dataset)
-                    composed_utt.append((train_data, train_meta, valid_data, valid_meta, {"size": size_utt, "seed": seed_utt}))
+                    if composed_utt[seed_idx]:
+                        for item_idx, item in enumerate([train_data, train_meta, valid_data, valid_meta]):
+                            composed_utt[seed_idx][item_idx] += item
+                    else:
+                        composed_utt[seed_idx] = [train_data, train_meta, valid_data, valid_meta, {"size": size_utt, "seed": seed_utt}]
 
             nattempts += 1
             npairs += len(data)
