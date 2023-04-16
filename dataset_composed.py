@@ -8,13 +8,13 @@ from dataset_symbolic import save_split_dataset_new
 
 def construct_composed_dataset(data_fpath, composed_fpath):
     """
-    Add composed symbolic dataset to original symbolic dataset.
+    Construct composed split datasets for zero shot transfer, utterance and formula holdout.
     """
     dataset = load_from_file(data_fpath)
-    composed = load_from_file(composed_fpath)
-
-    dataset["train_iter"].extend(dataset["valid_iter"])
+    dataset["train_iter"].extend(dataset["valid_iter"])  # all base dataset used for train
     dataset["train_meta"].extend(dataset["valid_meta"])
+
+    composed = load_from_file(composed_fpath)
 
     if "zeroshot" in composed_fpath:
         holdout_type = "zeroshot"
@@ -54,7 +54,7 @@ def construct_composed_dataset(data_fpath, composed_fpath):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="original symbolic dataset.")
-    parser.add_argument("--composed_fpath", type=str, default="data/composed_formula_symbolic_batch12_noperm.pkl", help="composed dataset.")
+    parser.add_argument("--composed_fpath", type=str, default="data/composed_utt_symbolic_batch12_noperm.pkl", help="composed dataset.")
     args = parser.parse_args()
 
     construct_composed_dataset(args.data_fpath, args.composed_fpath)
