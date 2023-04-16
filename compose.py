@@ -189,9 +189,6 @@ def load_base_dataset(data_fpath, logger):
     for pattern_type, props_str, utt, ltl in dataset:
         props = deserialize_props_str(props_str)
 
-        if "restricted_avoidance" in pattern_type and len(set(props)) != 1:  # fix bug in data/symbolic_batch12_noperm.csv: props must be multiple a's
-            props = ["a"] * len(props)
-
         ltl2utts[ltl].append(utt)
         all_base_ltls.add(ltl)
         all_base_ltls_spot.add(spot.formula(ltl))
