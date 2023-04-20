@@ -178,7 +178,7 @@ if __name__ == "__main__":
     # embedding = gpt3.get_embedding("Burger Queen")
     # print(embedding)
 
-    gpt4 = GPT4("gpt-3.5-turbo")
+    gpt4 = GPT4("gpt-4")
     query_prompt = \
         "Your tasks is to repeat exact strings from the given utterance which possibly refer to certain propositions." \
         "English: Go to Bookstore then to Science Library\n" \
