@@ -9,6 +9,11 @@ pip install tensorboard
 pip install transformers datasets evaluate
 ```
 
+If needed, upgrade openai package (e.g., to use GPT-4)
+```
+pip install openai --upgrade
+```
+
 To install LTL/Automaton library Spot
 ```
 conda install -c conda-forge spot

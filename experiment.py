@@ -7,7 +7,7 @@ import numpy as np
 import spot
 
 from lang2ltl import rer, ground_names, ground_utterances, translate_modular, PROPS
-from gpt3 import GPT3
+from gpt import GPT3
 from utils import load_from_file, save_to_file, substitute_single_letter
 from evaluation import evaluate_lang_0, evaluate_lang, evaluate_plan
 from formula_sampler import TYPE2NPROPS

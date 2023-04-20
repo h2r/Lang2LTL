@@ -10,7 +10,7 @@ import numpy as np
 import random
 import nltk
 
-from gpt3 import GPT3
+from gpt import GPT3
 
 
 def build_placeholder_map(name_entities, convert_rule, props):

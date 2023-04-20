@@ -8,7 +8,7 @@ import numpy as np
 import spot
 from openai.embeddings_utils import cosine_similarity
 
-from gpt3 import GPT3
+from gpt import GPT3
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset

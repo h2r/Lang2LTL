@@ -4,7 +4,7 @@ import logging
 from openai.embeddings_utils import cosine_similarity
 
 from get_embed import store_embeds
-from gpt3 import GPT3
+from gpt import GPT3, GPT4
 from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
@@ -66,7 +66,7 @@ def rer(rer_model, rer_engine, rer_prompt, input_utts):
     names, utt2names = set(), []  # name entity list names should not have duplicates
     for idx_utt, utt in enumerate(input_utts):
         logging.info(f"Extracting referring expressions from utterance: {idx_utt}/{len(input_utts)}")
-        names_per_utt = [name.strip() for name in rer_module.extract_ne(query=f"{rer_prompt.strip()} {utt}\nPropositions:")]
+        names_per_utt = [name.strip() for name in rer_module.extract_re(query=f"{rer_prompt.strip()} {utt}\nPropositions:")]
         names_per_utt = list(set(names_per_utt))  # remove duplicated RE
 
         # extra_names = []  # make sure both 'name' and 'the name' are in names_per_utt to mitigate RER error
