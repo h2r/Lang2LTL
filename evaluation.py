@@ -101,7 +101,7 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
     return accs, acc
 
 
-def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len):
+def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len, batch_size=100):
     """
     Evaluate translation accuracy per LTL pattern type.
     """
@@ -128,7 +128,8 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     #         meta2accs[(pattern_type, nprops)].append(is_correct)
     train_or_valid = "valid"
     nsamples, ncorrects = 0, 0
-    for batch in batch(list(zip(valid_iter, valid_meta)), 100):  # batch_size = 100
+    batches = batch(list(zip(valid_iter, valid_meta)), batch_size)
+    for batch in batches:
         utts = [tp[0][0] for tp in batch]
         out_ltls = model.translate(utts)
         for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
@@ -172,10 +173,10 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     return meta2acc, total_acc
 
 
-def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath):
+def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath, batch_size=100):
     _, _, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
     return evaluate_lang_single(model, valid_iter, valid_meta,
-                                analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
+                                analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter), batch_size)
 
 
 def aggregate_results(result_fpaths, filter_types):
