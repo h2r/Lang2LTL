@@ -1,40 +1,14 @@
 """
-Evaluate different model for symbolic translation.
+Evaluation functions for full translation, symbolic translation, RER and trajectory.
 """
 import os
-from pathlib import Path
-import argparse
 import logging
 from collections import defaultdict
 import numpy as np
 import spot
-from pprint import pprint
 
-from gpt import GPT3
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, name_to_prop, substitute_single_word
-
-
-def generate_meta2ltl(iter, meta):
-    """
-    build meta to formula mapping using a utt holdout split
-    """
-    meta2ltl = {}
-    for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(iter, meta)):
-        if not (pattern_type, props) in meta2ltl:
-            meta2ltl[(pattern_type, props)] = ltl
-    return meta2ltl
-
-
-def ltl_from_nl2ltl(resp, meta2ltl):
-    """
-    get ltl formula from nl2ltl's output, e.g., 'Visit_3 Symbols: a, b, c'
-    """
-    pattern = resp.split('\nSymbols: ')[0][:-2]
-    props = resp.split('\nSymbols: ')[1].split(', ')
-    props = tuple([p.strip() for p in props])
-
-    return meta2ltl[(pattern, props)]
 
 
 def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert_rule, all_props):
@@ -131,13 +105,12 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     """
     Evaluate translation accuracy per LTL pattern type.
     """
-    meta2ltl = generate_meta2ltl(valid_iter, valid_meta)
     def batch(iterable, n=1):
         l = len(iterable)
         for ndx in range(0, l, n):
             yield iterable[ndx:min(ndx + n, l)]
 
-    result_log = [["train_or_valid", "pattern_type", "nprops", "prop_perm", "utterances", "true_ltl", "response", "output_ltl", "is_correct"]]
+    result_log = [["train_or_valid", "pattern_type", "nprops", "prop_perm", "utterances", "true_ltl", "output_ltl", "is_correct"]]
 
     meta2accs = defaultdict(list)
     # for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(zip(valid_iter, valid_meta)):
@@ -155,28 +128,25 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     #         meta2accs[(pattern_type, nprops)].append(is_correct)
     train_or_valid = "valid"
     nsamples, ncorrects = 0, 0
-    for batch in batch(list(zip(valid_iter, valid_meta)), 1):  # batch_size = 100
+    for batch in batch(list(zip(valid_iter, valid_meta)), 100):  # batch_size = 100
         utts = [tp[0][0] for tp in batch]
-        resps = model.translate(utts)
+        out_ltls = model.translate(utts)
         for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
             nsamples += 1
             nprops = len(prop_perm)
-            # out_ltl = out_ltls[idx].strip()
-            
-            try:  # output LTL formula may have syntax errorx
-                out_ltl = ltl_from_nl2ltl(resps[idx], meta2ltl)
+            out_ltl = out_ltls[idx].strip()
+            try:  # output LTL formula may have syntax error
                 is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
                 is_correct = "True" if is_correct else "False"
-            except:
+            except SyntaxError:
                 is_correct = "Syntax Error"
 
             if train_or_valid == "valid":
                 meta2accs[(pattern_type, nprops)].append(is_correct)
             if nsamples > valid_iter_len:
                 train_or_valid = "train"
-            utt_log = utt.split("\n")[-2]
-            logging.info(f"{nsamples}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt_log}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
-            result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt_log, true_ltl, resps[idx], out_ltl, is_correct])
+            logging.info(f"{nsamples}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
+            result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
             if is_correct == "True":
                 ncorrects += 1
             logging.info(f"partial results: {ncorrects}/{nsamples} = {ncorrects/nsamples}\n")
@@ -204,8 +174,6 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
 
 def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath):
     _, _, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
-    # valid_iter = valid_iter[:10]
-    # valid_meta = valid_meta[:10]
     return evaluate_lang_single(model, valid_iter, valid_meta,
                                 analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter))
 
@@ -265,67 +233,3 @@ def evaluate_rer(out_lmks_str, true_lmks):
 
 def evaluate_plan(out_traj, true_traj):
     return out_traj == true_traj
-
-
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing test set")
-    parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
-    parser.add_argument("--model", type=str, default="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", help="name of model to be evaluated")
-    parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
-    parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
-    args = parser.parse_args()
-    dataset_name = Path(args.train_dataset_fpath).stem
-
-    if args.aggregate:  # aggregate acc-per-formula result files
-        result_dpath = "results/finetuned_gpt3/formula_holdout_batch12_perm"
-        result_fpaths = [os.path.join(result_dpath, fname) for fname in os.listdir(result_dpath) if "acc" in fname and "csv" in fname and "aggregated" not in fname]
-        filter_types = ["fair_visit"]
-        accumulated_acc, accumulated_std = aggregate_results(result_fpaths, filter_types)
-        print("Please verify results files")
-        pprint(result_fpaths)
-    else:
-        if "gpt3" in args.model or "davinci" in args.model:  # gpt3 for finetuned gpt3, davinci for off-the-shelf gpt3
-            dataset = load_from_file(args.train_dataset_fpath)
-            test_dataset = load_from_file(args.test_dataset_fpath)
-            valid_iter = test_dataset["valid_iter"]
-            dataset["valid_meta"] = test_dataset["valid_meta"]
-            if "utt" in args.train_dataset_fpath:  # results directory based on holdout type
-                dname = "utt_holdout_batch12_perm"
-            elif "formula" in args.train_dataset_fpath:
-                dname = "formula_holdout_batch12_perm"
-            elif "type" in args.train_dataset_fpath:
-                dname = "type_holdout_batch12_perm"
-            if "finetuned" in args.model:
-                engine = load_from_file("model/gpt3_models.pkl")[args.model]
-                valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
-                result_dpath = os.path.join("results", "finetuned_gpt3", dname)
-                os.makedirs(result_dpath, exist_ok=True)
-                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}.csv")  # fintuned model name already contains dataset name
-                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}.csv")
-            else:
-                engine = args.model
-                prompt_fpath = os.path.join("data", "prompt_nl2ltl", f"nl2ltl_prompt_nexamples{args.nexamples}_{dataset_name}.txt")
-                prompt = load_from_file(prompt_fpath)
-                valid_iter = [(f"{prompt} {utt}\nPattern:", ltl) for utt, ltl in valid_iter]
-                result_dpath = os.path.join("results", "nl2ltl_pretrained_gpt3", dname)
-                os.makedirs(result_dpath, exist_ok=True)
-                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{dataset_name}.csv")
-                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{dataset_name}.csv")
-            dataset["valid_iter"] = valid_iter
-            split_dataset_fpath = os.path.join("data", "gpt3", f"{dataset_name}.pkl")
-            save_to_file(dataset, split_dataset_fpath)
-            model = GPT3(engine, temp=0.5, max_tokens=200, stop=['\n\n'])
-        else:
-            raise ValueError(f"ERROR: model not recognized: {args.model}")
-
-        logging.basicConfig(level=logging.DEBUG,
-                            format='%(message)s',
-                            handlers=[
-                                logging.FileHandler(f'{os.path.splitext(result_log_fpath)[0]}.log', mode='w'),
-                                logging.StreamHandler()
-                            ]
-        )
-
-        evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath)
