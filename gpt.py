@@ -132,22 +132,10 @@ def prompt2msg(query_prompt):
     :return: message used by chat completion API (gpt-3, gpt-3.5-turbo).
     """
     prompt_splits = query_prompt.split("\n\n")
-    task_description = prompt_splits[0]
-    examples = prompt_splits[1: -1]
-    query = prompt_splits[-1]
+    system_prompt = "\n\n".join(prompt_splits[0: -1])  # task description and common examples
+    query = prompt_splits[-1]  # specific context info and query question
 
-    msg = [{"role": "system", "content": task_description}]
-    for example in examples:
-        if "\n" in example:
-            example_splits = example.split("\n")
-            q = '\n'.join(example_splits[0:-1])  # every line except the last in 1 example block
-            a_splits = example_splits[-1].split(" ")  # last line is the response
-            q += f"\n{a_splits.pop(0)}"
-            a = " ".join(a_splits)
-            msg.append({"role": "user", "content": q})
-            msg.append({"role": "assistant", "content": a})
-        else:  # info should be in system prompt, e.g., landmark list
-            msg[0]["content"] += f"\n{example}"
+    msg = [{"role": "system", "content": system_prompt}]
     msg.append({"role": "user", "content": query})
     return msg
 

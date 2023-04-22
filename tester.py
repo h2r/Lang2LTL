@@ -81,68 +81,60 @@ class TestUtils(unittest.TestCase):
     def test_prompt2msg(self):
         query_prompts = []
         query_prompts.append(
-            "Your task is to translate English utterances into linear temporal logic (LTL) formulas.\n\n" \
-            "Utterance: reach d\nLTL: F d\n\n" \
-            "Utterance: go to d and c in any order\nLTL: & F d F c\n\n" \
+            "Your task is to translate English utterances into linear temporal logic (LTL) formulas.\n\n"
+            "Utterance: reach d\nLTL: F d\n\n"
+            "Utterance: go to d and c in any order\nLTL: & F d F c\n\n"
             "Utterance: please visit d infinitely often\nLTL:"
         )
         query_prompts.append(
-            "Your task is to repeat exact strings from the given utterance which possibly refer to certain propositions.\n\n" \
-            "Utterance: move to red room\nPropositions: red room\n\n" \
-            "Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another\nPropositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank\n\n" \
+            "Your task is to repeat exact strings from the given utterance which possibly refer to certain propositions.\n\n"
+            "Utterance: move to red room\nPropositions: red room\n\n"
+            "Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another\nPropositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank\n\n"
             "Utterance: move the robot through yellow region or small red room and then to large green room\nPropositions:"
         )
         query_prompts.append(
-            "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n" \
-            "Landmark List: Jiaho supermarket, Citi Performing Arts Center, Happy Lamb Hot Pot, Panera Bread, Emerson College - Little Building, Washington St @ Tufts Med Ctr, Wilbur Theatre, Emerson College – Union Bank Building, Cutler Majestic Theater - Emerson College, Dumpling Cafe, Kneeland St @ Washington St, Wang Theater, Tremont and Stuart Streets, Tufts University School of Medicine, Emerson College, Washington St @ Kneeland St, Wirth Building, Cutler Majestic Theater, Boston Kitchen Pizza, The Kensington, St. James Church, Montien, Citibank, my thai vegan cafe, Chinatown, Tufts Dental School, Genki Ya, 62 on the Park, Seybolt Park, Massachusetts State Transportation Building, Pho Pasteur, Dunkin’ Donuts, HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, Tufts University Hirsh Health Sciences Library, New Saigon Sandwich, Empire Garden Restaurant, AVA Theater District\n\n" \
-            "Utterance: do not go to Dumpling Cafe, Chinatown, or Panera Bread\nLTL: & G ! dumpling_cafe & G ! chinatown G ! panera_bread\n\n" \
-            "Utterance: visit Dumpling Cafe\nLTL: F dumpling_cafe\n\n" \
+            "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n"
+            "Landmark List: Jiaho supermarket, Citi Performing Arts Center, Happy Lamb Hot Pot, Panera Bread, Emerson College - Little Building, Washington St @ Tufts Med Ctr, Wilbur Theatre, Emerson College – Union Bank Building, Cutler Majestic Theater - Emerson College, Dumpling Cafe, Kneeland St @ Washington St, Wang Theater, Tremont and Stuart Streets, Tufts University School of Medicine, Emerson College, Washington St @ Kneeland St, Wirth Building, Cutler Majestic Theater, Boston Kitchen Pizza, The Kensington, St. James Church, Montien, Citibank, my thai vegan cafe, Chinatown, Tufts Dental School, Genki Ya, 62 on the Park, Seybolt Park, Massachusetts State Transportation Building, Pho Pasteur, Dunkin’ Donuts, HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, Tufts University Hirsh Health Sciences Library, New Saigon Sandwich, Empire Garden Restaurant, AVA Theater District\n\n"
+            "Utterance: do not go to Dumpling Cafe, Chinatown, or Panera Bread\nLTL: & G ! dumpling_cafe & G ! chinatown G ! panera_bread\n\n"
+            "Utterance: visit Dumpling Cafe\nLTL: F dumpling_cafe\n\n"
             "Utterance: you can not make any visit to Pho Pasteur, when Dumpling Cafe, remains unseen\nLTL:"
         )
         query_prompts.append(
-            "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n" \
-            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n" \
-            "Utterance: move to the red room\n" \
-            "LTL: F red_room\n\n" \
-            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n" \
-            "Utterance: go to the green room via the red or blue room\n" \
-            "LTL: F & | red_room blue_room F green_room\n\n" \
-            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n" \
-            "Utterance: go through the red or blue room into the green room\n" \
+            "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n"
+            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n"
+            "Utterance: move to the red room\n"
+            "LTL: F red_room\n\n"
+            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n"
+            "Utterance: go to the green room via the red or blue room\n"
+            "LTL: F & | red_room blue_room F green_room\n\n"
+            "Landmark List: [blue_room, green_room, yellow_room, red_room]\n"
+            "Utterance: go through the red or blue room into the green room\n"
             "LTL:"
         )
 
         true_msgs = [
             [
-                {"role": "system", "content": "Your task is to translate English utterances into linear temporal logic (LTL) formulas."},
-                {"role": "user", "content": "Utterance: reach d\nLTL:"},
-                {"role": "assistant", "content": "F d"},
-                {"role": "user", "content": "Utterance: go to d and c in any order\nLTL:"},
-                {"role": "assistant", "content": "& F d F c"},
+                {"role": "system", "content": "Your task is to translate English utterances into linear temporal logic (LTL) formulas.\n\n"
+                                              "Utterance: reach d\nLTL: F d\n\n"
+                                              "Utterance: go to d and c in any order\nLTL: & F d F c"},
                 {"role": "user", "content": "Utterance: please visit d infinitely often\nLTL:"}
             ],
             [
-                {"role": "system", "content": "Your task is to repeat exact strings from the given utterance which possibly refer to certain propositions."},
-                {"role": "user", "content": "Utterance: move to red room\nPropositions:"},
-                {"role": "assistant", "content": "red room"},
-                {"role": "user", "content": "Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another\nPropositions:"},
-                {"role": "assistant", "content": "Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank"},
+                {"role": "system", "content": "Your task is to repeat exact strings from the given utterance which possibly refer to certain propositions.\n\n"
+                                              "Utterance: move to red room\nPropositions: red room\n\n"
+                                              "Utterance: visit Cutler Majestic Theater – Emerson College, 62 on the Park, and Citibank, one after another\nPropositions: Cutler Majestic Theater – Emerson College | 62 on the Park | Citibank"},
                 {"role": "user", "content": "Utterance: move the robot through yellow region or small red room and then to large green room\nPropositions:"}
             ],
             [
-                {"role": "system", "content": "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\nLandmark List: Jiaho supermarket, Citi Performing Arts Center, Happy Lamb Hot Pot, Panera Bread, Emerson College - Little Building, Washington St @ Tufts Med Ctr, Wilbur Theatre, Emerson College – Union Bank Building, Cutler Majestic Theater - Emerson College, Dumpling Cafe, Kneeland St @ Washington St, Wang Theater, Tremont and Stuart Streets, Tufts University School of Medicine, Emerson College, Washington St @ Kneeland St, Wirth Building, Cutler Majestic Theater, Boston Kitchen Pizza, The Kensington, St. James Church, Montien, Citibank, my thai vegan cafe, Chinatown, Tufts Dental School, Genki Ya, 62 on the Park, Seybolt Park, Massachusetts State Transportation Building, Pho Pasteur, Dunkin’ Donuts, HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, Tufts University Hirsh Health Sciences Library, New Saigon Sandwich, Empire Garden Restaurant, AVA Theater District"},
-                {"role": "user", "content": "Utterance: do not go to Dumpling Cafe, Chinatown, or Panera Bread\nLTL:"},
-                {"role": "assistant", "content": "& G ! dumpling_cafe & G ! chinatown G ! panera_bread"},
-                {"role": "user", "content": "Utterance: visit Dumpling Cafe\nLTL:"},
-                {"role": "assistant", "content": "F dumpling_cafe"},
+                {"role": "system", "content": "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\nLandmark List: Jiaho supermarket, Citi Performing Arts Center, Happy Lamb Hot Pot, Panera Bread, Emerson College - Little Building, Washington St @ Tufts Med Ctr, Wilbur Theatre, Emerson College – Union Bank Building, Cutler Majestic Theater - Emerson College, Dumpling Cafe, Kneeland St @ Washington St, Wang Theater, Tremont and Stuart Streets, Tufts University School of Medicine, Emerson College, Washington St @ Kneeland St, Wirth Building, Cutler Majestic Theater, Boston Kitchen Pizza, The Kensington, St. James Church, Montien, Citibank, my thai vegan cafe, Chinatown, Tufts Dental School, Genki Ya, 62 on the Park, Seybolt Park, Massachusetts State Transportation Building, Pho Pasteur, Dunkin’ Donuts, HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, Tufts University Hirsh Health Sciences Library, New Saigon Sandwich, Empire Garden Restaurant, AVA Theater District\n\n"
+                                              "Utterance: do not go to Dumpling Cafe, Chinatown, or Panera Bread\nLTL: & G ! dumpling_cafe & G ! chinatown G ! panera_bread\n\n"
+                                              "Utterance: visit Dumpling Cafe\nLTL: F dumpling_cafe"},
                 {"role": "user", "content": "Utterance: you can not make any visit to Pho Pasteur, when Dumpling Cafe, remains unseen\nLTL:"}
             ],
             [
-                {"role": "system", "content": "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas."},
-                {"role": "user", "content": "Landmark List: [blue_room, green_room, yellow_room, red_room]\nUtterance: move to the red room\nLTL:"},
-                {"role": "assistant", "content": "F red_room"},
-                {"role": "user", "content": "Landmark List: [blue_room, green_room, yellow_room, red_room]\nUtterance: go to the green room via the red or blue room\nLTL:"},
-                {"role": "assistant", "content": "F & | red_room blue_room F green_room"},
+                {"role": "system", "content": "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n"
+                                              "Landmark List: [blue_room, green_room, yellow_room, red_room]\nUtterance: move to the red room\nLTL: F red_room\n\n"
+                                              "Landmark List: [blue_room, green_room, yellow_room, red_room]\nUtterance: go to the green room via the red or blue room\nLTL: F & | red_room blue_room F green_room"},
                 {"role": "user", "content": "Landmark List: [blue_room, green_room, yellow_room, red_room]\nUtterance: go through the red or blue room into the green room\nLTL:"}
             ],
         ]
