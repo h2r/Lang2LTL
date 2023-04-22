@@ -9,7 +9,7 @@ import spot
 from lang2ltl import rer, ground_names, ground_utterances, translate_modular, PROPS
 from gpt import GPT3
 from utils import load_from_file, save_to_file, substitute_single_letter
-from evaluation import evaluate_lang_0, evaluate_lang, evaluate_plan
+from evaluate_symbolic import evaluate_lang_0, evaluate_lang
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 
@@ -121,17 +121,17 @@ def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=
     return ltl_fix
 
 
-def plan(output_ltls, true_trajs, name2grounds):
-    """
-    Planning with translated LTL as task specification
-    """
-    accs = []
-    planner = None
-    for out_ltl, true_traj in zip(output_ltls, true_trajs):
-        out_traj = planner.plan(out_ltl, name2grounds)
-        accs.append(evaluate_plan(out_traj, true_traj))
-    acc = np.mean(accs)
-    return acc
+# def plan(output_ltls, true_trajs, name2grounds):
+#     """
+#     Planning with translated LTL as task specification
+#     """
+#     accs = []
+#     planner = None
+#     for out_ltl, true_traj in zip(output_ltls, true_trajs):
+#         out_traj = planner.plan(out_ltl, name2grounds)
+#         accs.append(evaluation_plan.evaluate_plan(out_traj, true_traj))
+#     acc = np.mean(accs)
+#     return acc
 
 
 if __name__ == "__main__":
@@ -139,7 +139,7 @@ if __name__ == "__main__":
     parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
     parser.add_argument("--cities", action="store", type=str, nargs="+", default=["philadelphia_2", "new_york_1"], help="list of cities.")
     parser.add_argument("--holdout", type=str, default="utt", choices=["utt", "formula", "type"], help="type of holdout testing.")
-    parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "bert"], help="Referring Expressoin Recognition module")
+    parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module")
     parser.add_argument("--rer_engine", type=str, default="text-davinci-003", help="pretrained GPT-3 for RER.")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")

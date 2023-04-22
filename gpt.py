@@ -66,7 +66,7 @@ class GPT3:
 
 
 class GPT4:
-    def __init__(self, engine, temp=0, max_tokens=128, n=1, stop=['\n']):
+    def __init__(self, engine="gpt-4", temp=0, max_tokens=128, n=1, stop=['\n']):
         self.engine = engine
         self.temp = temp
         self.max_tokens = max_tokens
@@ -178,7 +178,7 @@ if __name__ == "__main__":
     # embedding = gpt3.get_embedding("Burger Queen")
     # print(embedding)
 
-    gpt4 = GPT4("gpt-4")
+    gpt4 = GPT4()
     query_prompt = \
         "Your tasks is to repeat exact strings from the given utterance which possibly refer to certain propositions." \
         "English: Go to Bookstore then to Science Library\n" \

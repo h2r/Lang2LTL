@@ -235,10 +235,6 @@ def evaluate_rer(out_lmks_str, true_lmks):
     return set(out_lmks) == set(true_lmks)
 
 
-def evaluate_plan(out_traj, true_traj):
-    return out_traj == true_traj
-
-
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing train set")

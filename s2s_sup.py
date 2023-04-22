@@ -14,7 +14,7 @@ from s2s_pt_transformer import Seq2SeqTransformer, \
 from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
 from dataset_symbolic import load_split_dataset
-from evaluation import evaluate_lang_from_file
+from evaluate_symbolic import evaluate_lang_from_file
 from utils import count_params
 
 
