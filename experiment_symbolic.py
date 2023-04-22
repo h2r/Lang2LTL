@@ -6,6 +6,7 @@ import logging
 from pathlib import Path
 import argparse
 from pprint import pprint
+import random
 
 from gpt import GPT3, GPT4
 from evaluation import aggregate_results, evaluate_lang_from_file
@@ -18,7 +19,8 @@ if __name__ == "__main__":
     parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt-4", choices=["gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", "gpt-4", "text-davinci-003"], help="name of model to be evaluated")
-    parser.add_argument("--nexamples", type=int, default=1, help="number of examples per instance for GPT-3")
+    parser.add_argument("--nexamples", type=int, default=3, help="number of examples per instance for GPT")
+    parser.add_argument("--rand_samples", type=int, default=100, help="number of random evaluation samples")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
     args = parser.parse_args()
     dataset_name = Path(args.train_dataset_fpath).stem
@@ -60,7 +62,16 @@ if __name__ == "__main__":
                 result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{dataset_name}.csv")
                 acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{dataset_name}.csv")
             dataset["valid_iter"] = valid_iter
-            split_dataset_fpath = os.path.join("data", f"gpt{gpt_model_number}", f"{dataset_name}.pkl")
+
+
+            if args.rand_samples:
+                valid_iter, valid_meta = dataset["valid_iter"], dataset["valid_meta"]
+                dataset["valid_iter"], dataset["valid_meta"] = zip(*random.sample(list(zip(valid_iter, valid_meta)), args.rand_samples))
+
+
+            split_dname = os.path.join("data", f"gpt{gpt_model_number}")
+            os.makedirs(split_dname, exist_ok=True)
+            split_dataset_fpath = os.path.join(split_dname, f"{dataset_name}.pkl")
             save_to_file(dataset, split_dataset_fpath)
             model = GPT4(engine, temp=0, max_tokens=128) if gpt_model_number == 4 else GPT3(engine, temp=0, max_tokens=128)
         else:
@@ -74,4 +85,5 @@ if __name__ == "__main__":
                             ]
         )
 
-        evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath)
+
+        evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath, batch_size=1)
