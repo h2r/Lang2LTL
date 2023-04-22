@@ -44,7 +44,7 @@ def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formul
     formula2dataset = defaultdict(list)  # formula to (data, meta) pair
     composed_utt = [[] for _ in range(len(seeds_utt))]  # utt split dataset for each fold
     nattempts, npairs = 0, 0
-    err2count = defaultdict(int)  # composed formula: syntax error, semantic error, repeated, correct
+    err2count = defaultdict(int)  # composed formula: syntax error, infeasible, repeated, correct
     for operator_seq in operator_seqs:
         for base_ltl_seq in base_ltl_seqs:
             base_ltl_seq = list(base_ltl_seq)
@@ -71,9 +71,9 @@ def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formul
             npairs += len(data)
 
     logger.info(f"Composed types with syntax error: {err2count['syntax_err']}/{nattempts} = {err2count['syntax_err']/nattempts}")
-    logger.info(f"Composed types with semantic error: {err2count['semantic_err']}/{nattempts} = {err2count['semantic_err']/nattempts}")
+    logger.info(f"Composed types that are infeasible: {err2count['infeasible']}/{nattempts} = {err2count['infeasible']/nattempts}")
     logger.info(f"Composed types being redundant: {err2count['repeat']}/{nattempts} = {err2count['repeat']/nattempts}")
-    ncorrects = nattempts - err2count['syntax_err'] - err2count['semantic_err'] - err2count['repeat']
+    ncorrects = nattempts - err2count['syntax_err'] - err2count['infeasible'] - err2count['repeat']
     logger.info(f"Correct composed types: {ncorrects}/{nattempts} = {ncorrects /nattempts}")
     logger.info(f"Total number of composed pairs: {npairs}")
 
@@ -140,7 +140,7 @@ def compose_single(operators, base_ltls, ltl2utts, all_ltls_spot, ltl2meta, igno
                 raise ValueError(f"ERROR: operator not yet supported: {operator}.")
             # logger.info(f"Composed pair {pair_idx}:\n{utts_base}\n{formulas_base}\n{utt_composed}\n{formula_composed}\n")
 
-            # Check composed formula for incorrect syntax, semantics, redundancy before adding to composed dataset
+            # Check composed formula for incorrect syntax, feasibility, redundancy before adding to composed dataset
             try:
                 ltl_spot = spot.formula(ltl_composed)
             except SyntaxError:
@@ -152,8 +152,8 @@ def compose_single(operators, base_ltls, ltl2utts, all_ltls_spot, ltl2meta, igno
                 # logger.info(f"Repeat composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{utt_composed}\n{ltls_base}\n{utts_base}\n")
                 return [], []
             elif spot.are_equivalent(ltl_spot, spot.formula("False")):
-                err2count["semantic_err"] += 1
-                # logger.info(f"Semantic error in composed formula:\n{ltl_composed}\n{utt_composed}")
+                err2count["infeasible"] += 1
+                # logger.info(f"Infeasible composed formula:\n{ltl_composed}\n{utt_composed}")
                 return [], []
             else:
                 # logger.info(f"Correct composed formula:\n{ltl_composed}\n{metas}")
@@ -210,7 +210,7 @@ def load_base_dataset(data_fpath, logger):
 
 def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
     """
-    A valid composed formula does not have syntax, semantic error, or repeat existing base formula.
+    A valid composed formula does not have syntax, infeasibility, or repeat existing base formula.
     """
     log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_valid_formulas_stats_{Path(data_fpath).stem}.log")
     logging.basicConfig(level=logging.DEBUG,
@@ -228,7 +228,7 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
     # Construct composed formula; count errors
     operator_seqs = list(product(feasible_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
     base_ltl_seqs = list(product(all_base_ltls, repeat=nclauses))  # all combs of base formulas
-    err2count = defaultdict(int)  # composed formula: correct, syntax error, semantic error, repeat
+    err2count = defaultdict(int)  # composed formula: correct, syntax error, infeasible, repeat
     nattempts = 0
     composed_ltls = set()
     for operator_seq in operator_seqs:
@@ -254,7 +254,7 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
                     raise ValueError(f"ERROR: operator not yet supported: {operator}.")
                 ltl_composed = f"{op} {base_ltls[0]} {base_ltls[1]}"
 
-                # Check composed formula for incorrect syntax, semantics, redundancy before adding to composed dataset
+                # Check composed formula for incorrect syntax, feasibility, redundancy before adding to composed dataset
                 try:
                     ltl_spot = spot.formula(ltl_composed)
                 except SyntaxError:
@@ -266,8 +266,8 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
                     logger.info(f"Repeated composed formula already exists in base dataset:\n{ltl_spot} = {ltl_composed}\n{base_ltls}\n")
                     break
                 elif spot.are_equivalent(ltl_spot, spot.formula("False")):
-                    err2count["semantic_err"] += 1
-                    logger.info(f"Semantic error in composed formula:\n{ltl_composed}")
+                    err2count["infeasible"] += 1
+                    logger.info(f"Infeasible composed formula:\n{ltl_composed}")
                     break
                 else:
                     err2count["correct"] += 1
