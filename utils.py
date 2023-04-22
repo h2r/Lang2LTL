@@ -9,6 +9,7 @@ from collections import defaultdict
 import numpy as np
 import random
 import nltk
+import tiktoken
 
 from gpt import GPT3
 
@@ -280,7 +281,24 @@ def count_params(model):
     return sum(param.numel() for param in model.parameters() if param.requires_grad)
 
 
-def count_lmk_ntokens():
+def count_ntokens(text, model):
+    """
+    https://github.com/openai/tiktoken
+    :param model: GPT model name, e.g. gpt-4, text-davinci-003
+    :param text: English text to count tokens
+    :return: number of tokens by OpenAI tokenizer
+    """
+    enc = tiktoken.encoding_for_model(model)
+    tokens = enc.encode(text)
+    return len(tokens)
+
+
+def count_prompt_ntokens(prompt_fpath, model):
+    prompt_text = load_from_file(prompt_fpath)
+    print(f"ntokens for prompt: {prompt_fpath}\n{count_ntokens(prompt_text, model)}")
+
+
+def count_lmk_ntokens(model):
     """
     Count total number of tokens in all lmks in an OSM city
     """
@@ -288,8 +306,8 @@ def count_lmk_ntokens():
     cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
     for city in cities:
         lmks = list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())
-        print(f"{city}:\t {', '.join(lmks)}\n")
-        # then copy and past output string to https://platform.openai.com/tokenizer
+        lmk_list = ', '.join(lmks)
+        print(f"{city}:\t {lmk_list}\n{count_ntokens(lmk_list, model)}")  # https://platform.openai.com/tokenizer
 
 
 def equal(item1, item2):
