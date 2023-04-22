@@ -129,7 +129,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
     train_or_valid = "valid"
     nsamples, ncorrects = 0, 0
     batches = batch(list(zip(valid_iter, valid_meta)), batch_size)
-    for batch in batches:
+    for batch_idx, batch in enumerate(batches):
         utts = [tp[0][0] for tp in batch]
         out_ltls = model.translate(utts)
         for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
@@ -150,7 +150,7 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
             result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
             if is_correct == "True":
                 ncorrects += 1
-            logging.info(f"partial results: {ncorrects}/{nsamples} = {ncorrects/nsamples}\n")
+            logging.info(f"batch {batch_idx} partial results: {ncorrects}/{nsamples} = {ncorrects/nsamples}\n")
     save_to_file(result_log, result_log_fpath)
 
     meta2acc = {meta: np.mean([True if acc == "True" else False for acc in accs]) for meta, accs in meta2accs.items()}
