@@ -42,11 +42,11 @@ if __name__ == "__main__":
             valid_iter = test_dataset["valid_iter"]
             dataset["valid_meta"] = test_dataset["valid_meta"]
             if "utt" in args.train_dataset_fpath:  # results directory based on holdout type
-                dname = "utt_holdout_batch12_perm"
+                dname = f"utt_holdout_batch12_perm"
             elif "formula" in args.train_dataset_fpath:
-                dname = "formula_holdout_batch12_perm"
+                dname = f"formula_holdout_batch12_perm"
             elif "type" in args.train_dataset_fpath:
-                dname = "type_holdout_batch12_perm"
+                dname = f"type_holdout_batch12_perm"
             if "finetuned" in args.model:
                 engine = load_from_file("model/gpt3_models.pkl")[args.model]
                 valid_iter = [(f"Utterance: {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
@@ -56,13 +56,14 @@ if __name__ == "__main__":
                 acc_fpath = os.path.join(result_dpath, f"acc_{args.model}.csv")
             else:
                 engine = args.model
-                prompt_fpath = os.path.join("data", "prompt_symbolic_batch12_perm", f"prompt_nexamples{args.nexamples}_{dataset_name}.txt")
+                prompt_fname = f"prompt_nexamples{args.nexamples}_{dataset_name}.txt"
+                prompt_fpath = os.path.join("data", "prompt_symbolic_batch12_perm", prompt_fname)
                 prompt = load_from_file(prompt_fpath)
                 valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_dpath = os.path.join("results", f"pretrained_gpt{gpt_model_number}", dname)
                 os.makedirs(result_dpath, exist_ok=True)
-                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{dataset_name}.csv")
-                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{dataset_name}.csv")
+                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{Path(prompt_fname).stem}.csv")
+                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{Path(prompt_fname).stem}.csv")
             dataset["valid_iter"] = valid_iter
 
             # Samples a subset of test set by sampling rand_eval_samples per formula
