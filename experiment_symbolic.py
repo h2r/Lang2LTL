@@ -20,7 +20,7 @@ if __name__ == "__main__":
     parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt-4", choices=["gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", "gpt-4", "text-davinci-003"], help="name of model to be evaluated")
-    parser.add_argument("--nexamples", type=int, default=4, help="number of examples per instance in prompt for GPT")
+    parser.add_argument("--nexamples", type=int, default=3, help="number of examples per instance in prompt for GPT")
     parser.add_argument("--rand_eval_samples", type=int, default=25, help="number of random evaluation samples per formula")
     parser.add_argument("--seed_eval_samples", type=int, default=42, help="seed for randomly sampling evaluation samples")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
@@ -71,14 +71,14 @@ if __name__ == "__main__":
                 valid_iter_sampled, valid_meta_sampled = [], []
                 meta2data = defaultdict(list)
                 for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(valid_iter, valid_meta)):
-                    meta2data[(pattern_type, len(props))].append((utt, ltl))
+                    meta2data[(pattern_type, len(props))].append((utt, ltl, props))
                 sorted(meta2data.items(), key=lambda kv: kv[0])
 
                 for (pattern_type, nprop), data in meta2data.items():
                     random.seed(args.seed_eval_samples)
                     examples = random.sample(data, args.rand_eval_samples)
-                    valid_iter_sampled.extend(examples)
-                    valid_meta_sampled.extend([(pattern_type, nprop)]*args.rand_eval_samples)
+                    valid_iter_sampled.extend([(utt, ltl) for utt, ltl, _ in examples])
+                    valid_meta_sampled.extend([(pattern_type, props) for _, _, props in examples])
 
                 dataset["valid_iter"], dataset["valid_meta"] = valid_iter_sampled, valid_meta_sampled
                 # dataset["valid_iter"], dataset["valid_meta"] = zip(*random.sample(list(zip(valid_iter, valid_meta)), args.rand_samples))
