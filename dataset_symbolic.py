@@ -238,11 +238,26 @@ def load_split_dataset(split_fpath):
     return dataset["train_iter"], dataset["train_meta"], dataset["valid_iter"], dataset["valid_meta"]
 
 
+def generate_prompts_from_split_datasets(split_dpath, prompt_dpath, nexamples, seed):
+    """
+    :param split_dpath: directory path of pickle files containing train, test split.
+    :param prompt_dpath: directory to save constructed prompts.
+    :param nexamples: a range of numbers of examples for 1 formula.
+    :param seed: seed to sample utterances for a formula.
+    """
+    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
+    nexamples = nexamples if isinstance(nexamples, list) else [nexamples]
+    for split_fpath in split_fpaths:
+        for n in nexamples:
+            generate_prompts_from_split_dataset(split_fpath, prompt_dpath, n, seed)
+
+
 def generate_prompts_from_split_dataset(split_fpath, prompt_dpath, nexamples, seed):
     """
-    :param split_fpath: path to pickle file containing train, test split for a holdout type
-    :param nexamples: number of examples for 1 formula
-    :return:
+    :param split_fpath: path to pickle file containing train, test split for a holdout type.
+    :param prompt_dpath: directory to save constructed prompts.
+    :param nexamples: number of examples for 1 formula.
+    :param seed: seed to sample utterances for a formula.
     """
     train_iter, train_meta, _, _ = load_split_dataset(split_fpath)
 
@@ -346,9 +361,5 @@ if __name__ == "__main__":
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_type", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=3, seed=42, firstn=args.firstn)
     construct_split_dataset(symbolic_fpath, split_dpath, "ltl_formula", FEASIBLE_TYPES, FILTER_TYPES, args.perm, size=9, seed=42, firstn=args.firstn)
 
-    # Generate prompts for off-the-shelf GPT-3
-    split_fpaths = [os.path.join(split_dpath, fname) for fname in os.listdir(split_dpath) if "pkl" in fname]
-    nexamples = args.nexamples if isinstance(args.nexamples, list) else [args.nexamples]
-    for split_fpath in split_fpaths:
-        for n in nexamples:
-            generate_prompts_from_split_dataset(split_fpath, prompt_dpath, n, args.seed_prompt)
+    # Generate prompts for off-the-shelf GPT
+    generate_prompts_from_split_datasets(split_dpath, prompt_dpath, args.nexamples, args.seed_prompt)

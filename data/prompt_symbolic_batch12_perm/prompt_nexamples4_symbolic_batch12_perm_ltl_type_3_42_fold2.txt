@@ -1,0 +1,471 @@
+Your task is to translate English utterances into linear temporal logic (LTL) formulas.
+
+Utterance: reach d
+LTL: F d
+
+Utterance: reach b
+LTL: F b
+
+Utterance: visit a
+LTL: F a
+
+Utterance: approach c
+LTL: F c
+
+Utterance: go to d and c in any order
+LTL: & F d F c
+
+Utterance: visit c and b
+LTL: & F b F c
+
+Utterance: go to a and go to c
+LTL: & F a F c
+
+Utterance: go to one of c and d and then to the other
+LTL: & F c F d
+
+Utterance: you must go to c h and a at least once
+LTL: & F h & F a F c
+
+Utterance: head to h a and b in any order
+LTL: & F h & F a F b
+
+Utterance: go to h b and a
+LTL: & F h & F b F a
+
+Utterance: visit b d and a in any order
+LTL: & F b & F d F a
+
+Utterance: visit h go to a reach c reach d
+LTL: & F h & F a & F c F d
+
+Utterance: go to h a b and c in arbitrary order
+LTL: & F h & F a & F b F c
+
+Utterance: visit b h a and c
+LTL: & F h & F b & F a F c
+
+Utterance: stop by b h d and a in any order
+LTL: & F b & F h & F d F a
+
+Utterance: make sure you go to h a c d b in any order
+LTL: & F h & F a & F c & F d F b
+
+Utterance: go to h a b c and d
+LTL: & F h & F a & F b & F c F d
+
+Utterance: visit h b a c and d
+LTL: & F h & F b & F a & F c F d
+
+Utterance: go to b h d a and c in arbitrary order
+LTL: & F b & F h & F d & F a F c
+
+Utterance: visit h but before visiting h you must visit b visit each location once
+LTL: & & U ! h b F h U ! b U b U ! b h
+
+Utterance: reach h exactly once while staying away from b then move to b
+LTL: & & U ! b h F b U ! h U h U ! h b
+
+Utterance: only visit d once and do not visit a until you visit d
+LTL: & & U ! a d F a U ! d U d U ! d a
+
+Utterance: only visit h once then visit d only after visiting h
+LTL: & & U ! d h F d U ! h U h U ! h d
+
+Utterance: do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a F b & U ! h U h U ! h a U ! a U a U ! a b
+
+Utterance: do not visit a until you visit b visit b only once do no visit b until you visit h visit h only once
+LTL: & & U ! b h & U ! a b F a & U ! h U h U ! h b U ! b U b U ! b a
+
+Utterance: visit b h and d once do not visit h without visiting b and do not visit d without visiting h
+LTL: & & U ! h b & U ! d h F d & U ! b U b U ! b h U ! h U h U ! h d
+
+Utterance: visit b only once without visiting h then visit h one time without visiting a finally visit a in the future
+LTL: & & U ! h b & U ! a h F a & U ! b U b U ! b h U ! h U h U ! h a
+
+Utterance: do not go to c until b is visited and do not go to b until a is visited and do not go to a until h is visited along the path never return to previous location you have been to
+LTL: & & U ! a h & U ! b a & U ! c b F c & U ! h U h U ! h a & U ! a U a U ! a b U ! b U b U ! b c
+
+Utterance: do not visit c until you visit a visit a only once do not visit a until you visit b visit b only once do no visit b until you visit h visit h only once
+LTL: & & U ! b h & U ! a b & U ! c a F c & U ! h U h U ! h b & U ! b U b U ! b a U ! a U a U ! a c
+
+Utterance: stay away from h d and a until you make b single visit to b and then make your way to h while staying away from b d and a and then make your way to d while staying away from b h or a and finally make your way to a while staying away from b h and d
+LTL: & & U ! h b & U ! d h & U ! a d F a & U ! b U b U ! b h & U ! h U h U ! h d U ! d U d U ! d a
+
+Utterance: visit b one time but not through h a or d and then visit h once but not through b a or d and then visit a once but not through b h or d and then visit d once but not through b h or a
+LTL: & & U ! h b & U ! a h & U ! d a F d & U ! b U b U ! b h & U ! h U h U ! h a U ! a U a U ! a d
+
+Utterance: visit h while staying away from a then visit a while staying away from c then visit c while staying away from d then visit d while staying away from b finally reach b without returning to any previously visited locations
+LTL: & & U ! a h & U ! c a & U ! d c & U ! b d F b & U ! h U h U ! h a & U ! a U a U ! a c & U ! c U c U ! c d U ! d U d U ! d b
+
+Utterance: go to h but not through a b c or d and then go to a but not through b c or d and then go to b but not through c or d and then go to c but not through d and finally go to d no revisiting is allowed here
+LTL: & & U ! a h & U ! b a & U ! c b & U ! d c F d & U ! h U h U ! h a & U ! a U a U ! a b & U ! b U b U ! b c U ! c U c U ! c d
+
+Utterance: do not visit d until you visit c visit c only once do not visit c until you visit a visit a only once do not visit a until you visit b visit b only once do no visit b until you visit h visit h only once
+LTL: & & U ! b h & U ! a b & U ! c a & U ! d c F d & U ! h U h U ! h b & U ! b U b U ! b a & U ! a U a U ! a c U ! c U c U ! c d
+
+Utterance: visit b only once then eventually visit h only once then visit d in the future for one time followed by one visit to a and after that c
+LTL: & & U ! h b & U ! d h & U ! a d & U ! c a F c & U ! b U b U ! b h & U ! h U h U ! h d & U ! d U d U ! d a U ! a U a U ! a c
+
+Utterance: please visit d infinitely often
+LTL: G F d
+
+Utterance: go to b an infinite number of times
+LTL: G F b
+
+Utterance: visit a infinitely often
+LTL: G F a
+
+Utterance: keep on visiting c forever
+LTL: G F c
+
+Utterance: travel to a c and h infinitely
+LTL: & G F h & G F a G F c
+
+Utterance: make sure h a and b are visited infinitely
+LTL: & G F h & G F a G F b
+
+Utterance: never stop visiting h b and a
+LTL: & G F h & G F b G F a
+
+Utterance: repeatedly keep visiting b h and d
+LTL: & G F b & G F h G F d
+
+Utterance: keep visiting h a c and d an infinite number of times
+LTL: & G F h & G F a & G F c G F d
+
+Utterance: make sure h a b and c are visited infinitely
+LTL: & G F h & G F a & G F b G F c
+
+Utterance: never stop visiting h b a and c
+LTL: & G F h & G F b & G F a G F c
+
+Utterance: continue to stop at b h d and a
+LTL: & G F b & G F h & G F d G F a
+
+Utterance: keep visiting h a c d and b an infinite number of times
+LTL: & G F h & G F a & G F c & G F d G F b
+
+Utterance: make sure h a b c and d are visited infinitely
+LTL: & G F h & G F a & G F b & G F c G F d
+
+Utterance: never stop visiting h b a c and d
+LTL: & G F h & G F b & G F a & G F c G F d
+
+Utterance: cycle through a c h d and b
+LTL: & G F b & G F h & G F d & G F a G F c
+
+Utterance: make sure b and h are visited infinitely
+LTL: & G F b G F h
+
+Utterance: repeatedly visit h and b forever
+LTL: & G F h G F b
+
+Utterance: keep visiting d and a forever
+LTL: & G F d G F a
+
+Utterance: frequent h and d but the order can be arbitrary
+LTL: & G F h G F d
+
+Utterance: never visit b
+LTL: G ! b
+
+Utterance: you can go anywhere but h
+LTL: G ! h
+
+Utterance: never go to d
+LTL: G ! d
+
+Utterance: you can not go to h
+LTL: G ! h
+
+Utterance: make sure to never reach either b or h
+LTL: & G ! b G ! h
+
+Utterance: you can not go to h or b at any time
+LTL: & G ! h G ! b
+
+Utterance: never visit d or a
+LTL: & G ! d G ! a
+
+Utterance: you can not go to h or d
+LTL: & G ! h G ! d
+
+Utterance: you can not go to h a or c
+LTL: & G ! h & G ! a G ! c
+
+Utterance: always stay away from h a and b
+LTL: & G ! h & G ! a G ! b
+
+Utterance: never go to h b or a
+LTL: & G ! h & G ! b G ! a
+
+Utterance: ensure that you never reach the locations b h and d
+LTL: & G ! b & G ! h G ! d
+
+Utterance: you can not go to h a c or d
+LTL: & G ! h & G ! a & G ! c G ! d
+
+Utterance: make sure you never visit h a b or c
+LTL: & G ! h & G ! a & G ! b G ! c
+
+Utterance: never visit h b a or c
+LTL: & G ! h & G ! b & G ! a G ! c
+
+Utterance: avoid going to b h d and a
+LTL: & G ! b & G ! h & G ! d G ! a
+
+Utterance: you can not go to h a c d or b
+LTL: & G ! h & G ! a & G ! c & G ! d G ! b
+
+Utterance: make sure you never visit h a b c or d
+LTL: & G ! h & G ! a & G ! b & G ! c G ! d
+
+Utterance: never visit h b a c or d
+LTL: & G ! h & G ! b & G ! a & G ! c G ! d
+
+Utterance: make sure you never reach the following locations b h d a and c
+LTL: & G ! b & G ! h & G ! d & G ! a G ! c
+
+Utterance: h must be observed before visiting b
+LTL: U ! b h
+
+Utterance: do not go to h until b has occured
+LTL: U ! h b
+
+Utterance: do not go to d until you see a
+LTL: U ! d a
+
+Utterance: d has to be observed prior to any visit to h
+LTL: U ! h d
+
+Utterance: once you reach b you are never allowed to visit it again
+LTL: ! F & b U b & ! b U ! b F b
+
+Utterance: you can visit h at most once
+LTL: ! F & h U h & ! h U ! h F h
+
+Utterance: visit d at most once
+LTL: ! F & d U d & ! d U ! d F d
+
+Utterance: you can not visit h two or more times
+LTL: ! F & h U h & ! h U ! h F h
+
+Utterance: you can visit b at most twice
+LTL: ! F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you can visit h at most twice
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at most twice
+LTL: ! F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: once you leave h for the second time you can not come back to it
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: passing through b thrice will lock it for future visits
+LTL: ! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you can visit h at most three times
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at most three times
+LTL: ! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: do not visit h any more than three times
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visiting b for the fourth time will lock it for future visits
+LTL: ! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you can visit h at most four times
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at most four times
+LTL: ! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: the maximum number of times you can visit h four
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: you can not visit b six or more times
+LTL: ! F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you can visit h at most five times
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at most five times
+LTL: ! F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: do not visit h more than five times
+LTL: ! F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit b at least once
+LTL: F b
+
+Utterance: make your way to h at least once
+LTL: F h
+
+Utterance: visit d at least once
+LTL: F d
+
+Utterance: reach h
+LTL: F h
+
+Utterance: visit b at least twice while leaving its region in between
+LTL: F & b U b & ! b U ! b F b
+
+Utterance: make your way to h at least twice
+LTL: F & h U h & ! h U ! h F h
+
+Utterance: visit d at least twice
+LTL: F & d U d & ! d U ! d F d
+
+Utterance: the minimum number of times you can reach h is two
+LTL: F & h U h & ! h U ! h F h
+
+Utterance: you can not visit d less than three times
+LTL: F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: go to b at least three times
+LTL: F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you have to go to a three or more than three times
+LTL: F & a U a & ! a U ! a F & a U a & ! a U ! a F a
+
+Utterance: you have to reach c at least three times
+LTL: F & c U c & ! c U ! c F & c U c & ! c U ! c F c
+
+Utterance: you are not allowed to visit b three times or fewer you must visit b four times or more
+LTL: F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: you have to visit h at least four times
+LTL: F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at least four times
+LTL: F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: the minimum number of times you must reach h is two
+LTL: F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: you must visit and then leave b at least five times
+LTL: F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F & b U b & ! b U ! b F b
+
+Utterance: make your way to h at least five times
+LTL: F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit d at least five times
+LTL: F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F & d U d & ! d U ! d F d
+
+Utterance: you must pass through h on at least five separate occasions
+LTL: F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F & h U h & ! h U ! h F h
+
+Utterance: visit b then leave b and never go back
+LTL: M b | ! b G | b G ! b
+
+Utterance: make your way to h exactly once
+LTL: M h | ! h G | h G ! h
+
+Utterance: visit d exactly once
+LTL: M d | ! d G | d G ! d
+
+Utterance: you are allowed to make only one visit to h
+LTL: M h | ! h G | h G ! h
+
+Utterance: go to b then leave b and repeat this exactly once more
+LTL: M & b F & ! b F b | ! b G | b G | ! b G | b G ! b
+
+Utterance: make your way to h exactly twice
+LTL: M & h F & ! h F h | ! h G | h G | ! h G | h G ! h
+
+Utterance: visit d exactly twice
+LTL: M & d F & ! d F d | ! d G | d G | ! d G | d G ! d
+
+Utterance: visit h on exactly two separate instances
+LTL: M & h F & ! h F h | ! h G | h G | ! h G | h G ! h
+
+Utterance: you are required to visit b on exactly three separate instances
+LTL: M & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G ! b
+
+Utterance: make your way to h exactly three times
+LTL: M & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: visit d exactly three times
+LTL: M & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G ! d
+
+Utterance: visit h exactly three separate times
+LTL: M & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: you are required to make exactly four separate visits to b
+LTL: M & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b
+
+Utterance: make your way to h exactly four times
+LTL: M & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: visit d exactly four times
+LTL: M & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d
+
+Utterance: do not visit h any more or any fewer than four times
+LTL: M & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: complete exactly five separate visits to b
+LTL: M & b F & ! b F & b F & ! b F & b F & ! b F & b F & ! b F b | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G | ! b G | b G ! b
+
+Utterance: make your way to h exactly five times
+LTL: M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: visit d exactly five times
+LTL: M & d F & ! d F & d F & ! d F & d F & ! d F & d F & ! d F d | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G | ! d G | d G ! d
+
+Utterance: you are required to complete exactly five separate visits to h
+LTL: M & h F & ! h F & h F & ! h F & h F & ! h F & h F & ! h F h | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G | ! h G | h G ! h
+
+Utterance: once b is reached after that you can never visit h
+LTL: G i b X G ! h
+
+Utterance: after you visit h you can not visit b afterward
+LTL: G i h X G ! b
+
+Utterance: do not go to a once you have visited d
+LTL: G i d X G ! a
+
+Utterance: if you go to h you can never go to d after that
+LTL: G i h X G ! d
+
+Utterance: if b is observed at any time then h must be visited in the future
+LTL: G i b F h
+
+Utterance: you can visit h but you have to visit b later
+LTL: G i h F b
+
+Utterance: once you visit d you have to visit a too
+LTL: G i d F a
+
+Utterance: if at any time h occurs then d must be reached once afterwards
+LTL: G i h F d
+
+Utterance: h must occur in the very next time step that b occurs and b must happen in the immediately previous time step of h occurring
+LTL: G e b X h
+
+Utterance: h must be visited right before b b must be visited right after h
+LTL: G e h X b
+
+Utterance: you must visit d right before visiting a and you must visit a right after visiting d
+LTL: G e d X a
+
+Utterance: if h happens only and only then is d allowed to happen at the very next time instant
+LTL: G e h X d
+
+Utterance: as soon as b is observed visit h at the next time instant
+LTL: G i b X h
+
+Utterance: you must visit b immediately after you visit h
+LTL: G i h X b
+
+Utterance: you must go to a immediately after you go to d
+LTL: G i d X a
+
+Utterance: d should happen immediately in the next time step as soon as h is observed
+LTL: G i h X d
+
+Utterance:
