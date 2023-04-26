@@ -13,7 +13,7 @@ from s2s_sup import Seq2Seq, T5_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
-from evaluation import evaluate_lang, evaluate_lang_0, evaluate_lang_new, evaluate_plan
+from eval import evaluate_lang, evaluate_lang_0, evaluate_lang_new, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 

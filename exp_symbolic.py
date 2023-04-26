@@ -10,25 +10,26 @@ import random
 from collections import defaultdict
 
 from gpt import GPT3, GPT4
-from evaluation import aggregate_results, evaluate_lang_from_file
+from eval import aggregate_results, evaluate_lang_from_file
 from utils import load_from_file, save_to_file
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_111.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_formula_9_42_fold2.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_formula_9_42_fold2.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt-4", choices=["gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", "gpt-4", "text-davinci-003"], help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=3, help="number of examples per instance in prompt for GPT")
-    parser.add_argument("--rand_eval_samples", type=int, default=25, help="number of random evaluation samples per formula")
+    parser.add_argument("--rand_eval_samples", type=int, default=100, help="number of random evaluation samples per formula")
     parser.add_argument("--seed_eval_samples", type=int, default=42, help="seed for randomly sampling evaluation samples")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
+    parser.add_argument("--aggregate_dpath", type=str, default="results/pretrained_gpt4/formula_holdout_batch12_perm", help="dpath to results file to aggregate")
     args = parser.parse_args()
     dataset_name = Path(args.train_dataset_fpath).stem
 
     if args.aggregate:  # aggregate acc-per-formula result files
-        result_dpath = "results/finetuned_gpt3/formula_holdout_batch12_perm"
+        result_dpath = args.aggregate_dpath
         result_fpaths = [os.path.join(result_dpath, fname) for fname in os.listdir(result_dpath) if "acc" in fname and "csv" in fname and "aggregated" not in fname]
         filter_types = ["fair_visit"]
         accumulated_acc, accumulated_std = aggregate_results(result_fpaths, filter_types)
@@ -56,14 +57,14 @@ if __name__ == "__main__":
                 acc_fpath = os.path.join(result_dpath, f"acc_{args.model}.csv")
             else:
                 engine = args.model
-                prompt_fname = f"prompt_nexamples{args.nexamples}_{dataset_name}.txt"
+                prompt_fname = f"prompt_nexamples{args.nexamples}_{dataset_name}.txt"  # prompt corresponds to train split dataset
                 prompt_fpath = os.path.join("data", "prompt_symbolic_batch12_perm", prompt_fname)
                 prompt = load_from_file(prompt_fpath)
                 valid_iter = [(f"{prompt} {utt}\nLTL:", ltl) for utt, ltl in valid_iter]
                 result_dpath = os.path.join("results", f"pretrained_gpt{gpt_model_number}", dname)
                 os.makedirs(result_dpath, exist_ok=True)
-                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{Path(prompt_fname).stem}.csv")
-                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{Path(prompt_fname).stem}.csv")
+                result_log_fpath = os.path.join(result_dpath, f"log_{args.model}_{Path(prompt_fname).stem}_{args.rand_eval_samples}-eval-samples.csv")
+                acc_fpath = os.path.join(result_dpath, f"acc_{args.model}_{Path(prompt_fname).stem}_{args.rand_eval_samples}-eval-samples.csv")
             dataset["valid_iter"] = valid_iter
 
             # Samples a subset of test set by sampling rand_eval_samples per formula
@@ -86,7 +87,7 @@ if __name__ == "__main__":
 
             split_dname = os.path.join("data", f"gpt{gpt_model_number}")
             os.makedirs(split_dname, exist_ok=True)
-            split_dataset_fpath = os.path.join(split_dname, f"{dataset_name}.pkl")
+            split_dataset_fpath = os.path.join(split_dname, f"{dataset_name}_{args.rand_eval_samples}-eval-samples.pkl")
             save_to_file(dataset, split_dataset_fpath)
             model = GPT4(engine, temp=0, max_tokens=128) if gpt_model_number == 4 else GPT3(engine, temp=0, max_tokens=128)
         else:
@@ -99,5 +100,7 @@ if __name__ == "__main__":
                                 logging.StreamHandler()
                             ]
         )
+
+        breakpoint()
 
         evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath, batch_size=1)
