@@ -99,7 +99,7 @@ For more info, please refer to the [official document](https://platform.openai.c
 
 
 # Finetuning T5 Models
-Besides finetuning GPT models, we cal also finetune [T5 models](https://arxiv.org/abs/1910.10683) for symbolic translation using our dataset.
+Besides finetuning GPT models, we can also finetune [T5 models](https://arxiv.org/abs/1910.10683) for symbolic translation using our dataset.
 T5 models are open source, so we can customize the model architecture and have ownership of the finetuned model weights.
 The datasets for reproducing all holdout test results are stored under `data/holdout_split_batch12_perm/`.
 For finetuning, run
