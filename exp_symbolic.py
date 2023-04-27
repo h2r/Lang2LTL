@@ -16,8 +16,8 @@ from utils import load_from_file, save_to_file
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_formula_9_42_fold2.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_formula_9_42_fold2.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold3.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold3.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt-4", choices=["gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", "gpt-4", "text-davinci-003"], help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=3, help="number of examples per instance in prompt for GPT")
@@ -85,7 +85,12 @@ if __name__ == "__main__":
                 dataset["valid_iter"], dataset["valid_meta"] = valid_iter_sampled, valid_meta_sampled
                 # dataset["valid_iter"], dataset["valid_meta"] = zip(*random.sample(list(zip(valid_iter, valid_meta)), args.rand_samples))
 
-            split_dname = os.path.join("data", f"gpt{gpt_model_number}")
+
+                print(f"test set size: {len(dataset['valid_iter'])}, {len(dataset['valid_meta'])}\n{meta2data.keys()}")
+                breakpoint()
+
+
+            split_dname = os.path.join("data", f"eval_gpt{gpt_model_number}")
             os.makedirs(split_dname, exist_ok=True)
             split_dataset_fpath = os.path.join(split_dname, f"{dataset_name}_{args.rand_eval_samples}-eval-samples.pkl")
             save_to_file(dataset, split_dataset_fpath)
@@ -100,7 +105,6 @@ if __name__ == "__main__":
                                 logging.StreamHandler()
                             ]
         )
-
-        breakpoint()
+        logging.info(f"test set size: {len(dataset['valid_iter'])}, {len(dataset['valid_meta'])}\n{meta2data.keys()}\n")
 
         evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath, batch_size=1)
