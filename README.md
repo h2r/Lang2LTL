@@ -97,12 +97,16 @@ When a job is finished (`"status": "processed"`), you will be able to find the n
 
 For more info, please refer to the [official document](https://platform.openai.com/docs/guides/fine-tuning)
 
-# Finetuning T5 Model
-Besides finetuning a GPT model, it's also possible to train a light-weight transformer model as the symbolic translation module with our collected dataset. The prepared datasets for reproducing all holdout test results are stored under `data/holdout_split_batch12_perm/`. For training, run
+
+# Finetuning T5 Models
+Besides finetuning GPT models, we cal also finetune [T5 models](https://arxiv.org/abs/1910.10683) for symbolic translation using our dataset.
+T5 models are open source, so we can customize the model architecture and have ownership of the finetuned model weights.
+The datasets for reproducing all holdout test results are stored under `data/holdout_split_batch12_perm/`.
+For finetuning, run
 ```
 python s2s_hf_transformers.py --model=t5-base --data data/holdout_split_batch12_perm/{DESIRED_HOLDOUT_FOLD}.pkl
 ```
-In order to reproduce the exact result in our paper, please make sure to use the same hyperparameters
+To reproduce the exact results presented in our paper, please use the following hyperparameters,
 ```
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
@@ -112,6 +116,8 @@ weight_decay = 0.01
 num_train_epochs = 5
 ```
 We use a single NVIDIA GeForce RTX 3090 (24GiB) for training, and a complete training process for one fold of the holdout test sets takes ~2 hours.
+
+
 # Run Experiments
 Temporarily set environment variables for API key and organization ID
 ```
