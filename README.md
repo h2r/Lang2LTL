@@ -115,7 +115,7 @@ learning_rate = 1e-4
 weight_decay = 0.01
 num_train_epochs = 5
 ```
-We use a single NVIDIA GeForce RTX 3090 (24GiB) for training, and a complete training process for one fold of the holdout test sets takes ~2 hours.
+We use a single NVIDIA GeForce RTX 3090 (24GiB) for finetuning, and completing one fold of the holdout test set takes ~2 hours.
 
 
 # Run Experiments
