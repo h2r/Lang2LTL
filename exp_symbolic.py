@@ -16,15 +16,15 @@ from utils import load_from_file, save_to_file
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold3.pkl", help="path to pkl file storing train set")
-    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold3.pkl", help="path to pkl file storing test set")
+    parser.add_argument("--train_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold4.pkl", help="path to pkl file storing train set")
+    parser.add_argument("--test_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_ltl_type_3_42_fold4.pkl", help="path to pkl file storing test set")
     parser.add_argument("--analysis_fpath", type=str, default="data/analysis_symbolic_batch12_perm.csv", help="path to dataset analysis")
     parser.add_argument("--model", type=str, default="gpt-4", choices=["gpt3_finetuned_symbolic_batch12_perm_utt_0.2_111", "gpt-4", "text-davinci-003"], help="name of model to be evaluated")
     parser.add_argument("--nexamples", type=int, default=3, help="number of examples per instance in prompt for GPT")
     parser.add_argument("--rand_eval_samples", type=int, default=100, help="number of random evaluation samples per formula")
     parser.add_argument("--seed_eval_samples", type=int, default=42, help="seed for randomly sampling evaluation samples")
     parser.add_argument("--aggregate", action="store_true", help="whether to aggregate results or compute new results.")
-    parser.add_argument("--aggregate_dpath", type=str, default="results/pretrained_gpt4/formula_holdout_batch12_perm", help="dpath to results file to aggregate")
+    parser.add_argument("--aggregate_dpath", type=str, default="results/pretrained_gpt4/type_holdout_batch12_perm", help="dpath to results file to aggregate")
     args = parser.parse_args()
     dataset_name = Path(args.train_dataset_fpath).stem
 
