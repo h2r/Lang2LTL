@@ -19,11 +19,11 @@ def lang2ltl(utt, lmk2sem, result_dpath,
              ground_model="gpt3", topk=2,
              sym_trans_model="gpt3_finetuned", translation_engine="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", finetuned_models="model/gpt3_models.pkl", convert_rule="lang2ltl", props=PROPS,
     ):
+    translation_engine = load_from_file(finetuned_models)[translation_engine]
+
     logging.info(f"RER engine: {rer_engine}")
     logging.info(f"Embedding engine: {embed_engine}")
-    translation_engine = load_from_file(finetuned_models)[translation_engine]
     logging.info(f"Symbolic translation engine: {translation_engine}\n")
-
     logging.info(f"Input Utterance to be translated:\n{utt}\n")
 
     obj2embed_fpath, obj2embed = store_embeds(embed_model, result_dpath, lmk2sem, [], embed_engine, update_embed)
