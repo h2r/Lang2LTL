@@ -1,0 +1,237 @@
+Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.
+
+Utterance: reach Wilbur Theatre
+LTL: F wilbur_theatre
+
+Utterance: reach Seybolt Park
+LTL: F seybolt_park
+
+Utterance: go to Dunkin' Donuts, and 62 on the Park, in any order
+LTL: & F dunkin_donuts F 62_on_the_park
+
+Utterance: visit Tufts University School of Medicine, and New Saigon Sandwich
+LTL: & F new_saigon_sandwich F tufts_university_school_of_medicine
+
+Utterance: you must go to Tufts Dental School, Cutler Majestic Theater, and Emerson College, at least once
+LTL: & F cutler_majestic_theater & F emerson_college F tufts_dental_school
+
+Utterance: head to Wirth Building, Tufts University School of Medicine, and Stuart St @ Tremont St, in any order
+LTL: & F wirth_building & F tufts_university_school_of_medicine F stuart_st_@_tremont_st
+
+Utterance: visit AVA Theater District, go to my thai vegan cafe, reach Wirth Building, reach HI Boston
+LTL: & F ava_theater_district & F my_thai_vegan_cafe & F wirth_building F hi_boston
+
+Utterance: go to HI Boston, Stuart St @ Tremont St, Joy Luck Hot Pot, and Kneeland St @ Washington St, in arbitrary order
+LTL: & F hi_boston & F stuart_st_@_tremont_st & F joy_luck_hot_pot F kneeland_st_@_washington_st
+
+Utterance: make sure you go to Chinatown, Emerson College - Little Building, Empire Garden Restaurant, St. James Church, Genki Ya, in any order
+LTL: & F chinatown & F emerson_college_little_building & F empire_garden_restaurant & F st_james_church F genki_ya
+
+Utterance: go to Empire Garden Restaurant, The Kensington, Emerson College - Union Bank Building, Wirth Building, and Tufts University School of Medicine
+LTL: & F empire_garden_restaurant & F the_kensington & F emerson_college_union_bank_building & F wirth_building F tufts_university_school_of_medicine
+
+Utterance: find Citibank, first then find Emerson College - Little Building
+LTL: F & citibank F emerson_college_little_building
+
+Utterance: visit Genki Ya, and then Citi Performing Arts Center
+LTL: F & genki_ya F citi_performing_arts_center
+
+Utterance: go to Seybolt Park, then go to Washington St @ Tufts Med Ctr, then go to Chinatown
+LTL: F & seybolt_park F & washington_st_@_tufts_med_ctr F chinatown
+
+Utterance: visit my thai vegan cafe, Tufts Dental School, and Genki Ya, one after another
+LTL: F & my_thai_vegan_cafe F & tufts_dental_school F genki_ya
+
+Utterance: visit Emerson College - Little Building, then Emerson College - Union Bank Building, then Montien, then my thai vegan cafe, and finally Jiaho supermarket
+LTL: F & emerson_college_little_building F & emerson_college_union_bank_building F & montien F & my_thai_vegan_cafe F jiaho_supermarket
+
+Utterance: reach Tufts Dental School, AVA Theater District, Emerson College, Stuart St @ Tremont St, and Dunkin' Donuts, sequentially
+LTL: F & tufts_dental_school F & ava_theater_district F & emerson_college F & stuart_st_@_tremont_st F dunkin_donuts
+
+Utterance: first go to Tufts University Hirsh Health Sciences Library, while staying away from Massachusetts State Transportation Building, then go to Massachusetts State Transportation Building, while staying away from Montien, finally visit Montien
+LTL: & U ! massachusetts_state_transportation_building tufts_university_hirsh_health_sciences_library & U ! montien massachusetts_state_transportation_building F montien
+
+Utterance: go to Wirth Building, only then go to Tremont and Stuart Streets, and only then go to Emerson College
+LTL: & U ! tremont_and_stuart_streets wirth_building & U ! emerson_college tremont_and_stuart_streets F emerson_college
+
+Utterance: visit Empire Garden Restaurant, but before visiting Empire Garden Restaurant, you must visit Dunkin' Donuts, visit each location once
+LTL: & & U ! empire_garden_restaurant dunkin_donuts F empire_garden_restaurant U ! dunkin_donuts U dunkin_donuts U ! dunkin_donuts empire_garden_restaurant
+
+Utterance: reach Emerson College - Union Bank Building, exactly once while staying away from Citi Performing Arts Center, then move to Citi Performing Arts Center
+LTL: & & U ! citi_performing_arts_center emerson_college_union_bank_building F citi_performing_arts_center U ! emerson_college_union_bank_building U emerson_college_union_bank_building U ! emerson_college_union_bank_building citi_performing_arts_center
+
+Utterance: do not go to Citi Performing Arts Center, until Dumpling Cafe, is visited and do not go to Dumpling Cafe, until 62 on the Park, is visited along the path never return to previous location you have been to
+LTL: & & U ! dumpling_cafe 62_on_the_park & U ! citi_performing_arts_center dumpling_cafe F citi_performing_arts_center & U ! 62_on_the_park U 62_on_the_park U ! 62_on_the_park dumpling_cafe U ! dumpling_cafe U dumpling_cafe U ! dumpling_cafe citi_performing_arts_center
+
+Utterance: do not visit Seybolt Park, until you visit Boston Kitchen Pizza, visit Boston Kitchen Pizza, only once do no visit Boston Kitchen Pizza, until you visit Happy Lamb Hot Pot, visit Happy Lamb Hot Pot, only once
+LTL: & & U ! boston_kitchen_pizza happy_lamb_hot_pot & U ! seybolt_park boston_kitchen_pizza F seybolt_park & U ! happy_lamb_hot_pot U happy_lamb_hot_pot U ! happy_lamb_hot_pot boston_kitchen_pizza U ! boston_kitchen_pizza U boston_kitchen_pizza U ! boston_kitchen_pizza seybolt_park
+
+Utterance: do not go to Emerson College - Little Building, until Wang Theater, is visited and do not go to Wang Theater, until Emerson College - Union Bank Building, is visited and do not go to Emerson College - Union Bank Building, until Montien, is visited along the path never return to previous location you have been to
+LTL: & & U ! emerson_college_union_bank_building montien & U ! wang_theater emerson_college_union_bank_building & U ! emerson_college_little_building wang_theater F emerson_college_little_building & U ! montien U montien U ! montien emerson_college_union_bank_building & U ! emerson_college_union_bank_building U emerson_college_union_bank_building U ! emerson_college_union_bank_building wang_theater U ! wang_theater U wang_theater U ! wang_theater emerson_college_little_building
+
+Utterance: do not visit Wirth Building, until you visit Pho Pasteur, visit Pho Pasteur, only once do not visit Pho Pasteur, until you visit Emerson College - Union Bank Building, visit Emerson College - Union Bank Building, only once do no visit Emerson College - Union Bank Building, until you visit Tremont and Stuart Streets, visit Tremont and Stuart Streets, only once
+LTL: & & U ! emerson_college_union_bank_building tremont_and_stuart_streets & U ! pho_pasteur emerson_college_union_bank_building & U ! wirth_building pho_pasteur F wirth_building & U ! tremont_and_stuart_streets U tremont_and_stuart_streets U ! tremont_and_stuart_streets emerson_college_union_bank_building & U ! emerson_college_union_bank_building U emerson_college_union_bank_building U ! emerson_college_union_bank_building pho_pasteur U ! pho_pasteur U pho_pasteur U ! pho_pasteur wirth_building
+
+Utterance: visit Seybolt Park, while staying away from AVA Theater District, then visit AVA Theater District, while staying away from Emerson College - Little Building, then visit Emerson College - Little Building, while staying away from Boston Kitchen Pizza, then visit Boston Kitchen Pizza, while staying away from Tremont and Stuart Streets, finally reach Tremont and Stuart Streets, without returning to any previously visited locations
+LTL: & & U ! ava_theater_district seybolt_park & U ! emerson_college_little_building ava_theater_district & U ! boston_kitchen_pizza emerson_college_little_building & U ! tremont_and_stuart_streets boston_kitchen_pizza F tremont_and_stuart_streets & U ! seybolt_park U seybolt_park U ! seybolt_park ava_theater_district & U ! ava_theater_district U ava_theater_district U ! ava_theater_district emerson_college_little_building & U ! emerson_college_little_building U emerson_college_little_building U ! emerson_college_little_building boston_kitchen_pizza U ! boston_kitchen_pizza U boston_kitchen_pizza U ! boston_kitchen_pizza tremont_and_stuart_streets
+
+Utterance: go to HI Boston, but not through AVA Theater District, Citi Performing Arts Center, Montien, or Happy Lamb Hot Pot, and then go to AVA Theater District, but not through Citi Performing Arts Center, Montien, or Happy Lamb Hot Pot, and then go to Citi Performing Arts Center, but not through Montien, or Happy Lamb Hot Pot, and then go to Montien, but not through Happy Lamb Hot Pot, and finally go to Happy Lamb Hot Pot, no revisiting is allowed here
+LTL: & & U ! ava_theater_district hi_boston & U ! citi_performing_arts_center ava_theater_district & U ! montien citi_performing_arts_center & U ! happy_lamb_hot_pot montien F happy_lamb_hot_pot & U ! hi_boston U hi_boston U ! hi_boston ava_theater_district & U ! ava_theater_district U ava_theater_district U ! ava_theater_district citi_performing_arts_center & U ! citi_performing_arts_center U citi_performing_arts_center U ! citi_performing_arts_center montien U ! montien U montien U ! montien happy_lamb_hot_pot
+
+Utterance: please visit Emerson College, infinitely often
+LTL: G F emerson_college
+
+Utterance: go to Pho Pasteur, an infinite number of times
+LTL: G F pho_pasteur
+
+Utterance: first go directly to Citi Performing Arts Center, without visiting any other waypoints then go directly to Tremont and Stuart Streets, then directly to Cutler Majestic Theater - Emerson College, and finally directly to Citibank
+LTL: & U ! tremont_and_stuart_streets citi_performing_arts_center & U ! cutler_majestic_theater_emerson_college tremont_and_stuart_streets & U ! citibank cutler_majestic_theater_emerson_college F citibank
+
+Utterance: visit Tufts University School of Medicine, Panera Bread, Wilbur Theatre, and Massachusetts State Transportation Building, in that specific order make sure not to visit waypoints out of turn
+LTL: & U ! panera_bread tufts_university_school_of_medicine & U ! wilbur_theatre panera_bread & U ! massachusetts_state_transportation_building wilbur_theatre F massachusetts_state_transportation_building
+
+Utterance: visit Genki Ya, Seybolt Park, Stuart St @ Tremont St, Wirth Building, and Massachusetts State Transportation Building, in this order without skipping any one of them
+LTL: & U ! seybolt_park genki_ya & U ! stuart_st_@_tremont_st seybolt_park & U ! wirth_building stuart_st_@_tremont_st & U ! massachusetts_state_transportation_building wirth_building F massachusetts_state_transportation_building
+
+Utterance: go to The Kensington, but not through Washington St @ Kneeland St, my thai vegan cafe, Emerson College - Little Building, or Citi Performing Arts Center, and then go to Washington St @ Kneeland St, but not through my thai vegan cafe, Emerson College - Little Building, or Citi Performing Arts Center, and then go to my thai vegan cafe, but not through Emerson College - Little Building, or Citi Performing Arts Center, and then go to Emerson College - Little Building, but not through Citi Performing Arts Center, and finally go to Citi Performing Arts Center
+LTL: & U ! washington_st_@_kneeland_st the_kensington & U ! my_thai_vegan_cafe washington_st_@_kneeland_st & U ! emerson_college_little_building my_thai_vegan_cafe & U ! citi_performing_arts_center emerson_college_little_building F citi_performing_arts_center
+
+Utterance: keep visiting Wang Theater, Pho Pasteur, Tufts University Hirsh Health Sciences Library, and The Kensington, an infinite number of times
+LTL: & G F wang_theater & G F pho_pasteur & G F tufts_university_hirsh_health_sciences_library G F the_kensington
+
+Utterance: make sure Seybolt Park, The Kensington, Cutler Majestic Theater, and Massachusetts State Transportation Building, are visited infinitely
+LTL: & G F seybolt_park & G F the_kensington & G F cutler_majestic_theater G F massachusetts_state_transportation_building
+
+Utterance: make sure 62 on the Park, and Dumpling Cafe, are visited infinitely
+LTL: & G F 62_on_the_park G F dumpling_cafe
+
+Utterance: repeatedly visit Kneeland St @ Washington St, and Genki Ya, forever
+LTL: & G F kneeland_st_@_washington_st G F genki_ya
+
+Utterance: make sure to never reach either New Saigon Sandwich, or Emerson College - Union Bank Building
+LTL: & G ! new_saigon_sandwich G ! emerson_college_union_bank_building
+
+Utterance: you can not go to Massachusetts State Transportation Building, or Seybolt Park, at any time
+LTL: & G ! massachusetts_state_transportation_building G ! seybolt_park
+
+Utterance: you can not go to 62 on the Park, Wirth Building, or Chinatown
+LTL: & G ! 62_on_the_park & G ! wirth_building G ! chinatown
+
+Utterance: always stay away from Citi Performing Arts Center, Emerson College - Little Building, and Montien
+LTL: & G ! citi_performing_arts_center & G ! emerson_college_little_building G ! montien
+
+Utterance: you can not go to Dumpling Cafe, Emerson College - Union Bank Building, New Saigon Sandwich, or Massachusetts State Transportation Building
+LTL: & G ! dumpling_cafe & G ! emerson_college_union_bank_building & G ! new_saigon_sandwich G ! massachusetts_state_transportation_building
+
+Utterance: make sure you never visit Massachusetts State Transportation Building, 62 on the Park, Tufts Dental School, or Boston Kitchen Pizza
+LTL: & G ! massachusetts_state_transportation_building & G ! 62_on_the_park & G ! tufts_dental_school G ! boston_kitchen_pizza
+
+Utterance: you can not go to Wang Theater, my thai vegan cafe, Boston Kitchen Pizza, Washington St @ Tufts Med Ctr, or Emerson College - Union Bank Building
+LTL: & G ! wang_theater & G ! my_thai_vegan_cafe & G ! boston_kitchen_pizza & G ! washington_st_@_tufts_med_ctr G ! emerson_college_union_bank_building
+
+Utterance: make sure you never visit Jiaho supermarket, Seybolt Park, The Kensington, Panera Bread, or Chinatown
+LTL: & G ! jiaho_supermarket & G ! seybolt_park & G ! the_kensington & G ! panera_bread G ! chinatown
+
+Utterance: Dunkin' Donuts, must be observed before visiting Tremont and Stuart Streets
+LTL: U ! tremont_and_stuart_streets dunkin_donuts
+
+Utterance: do not go to Tufts University School of Medicine, until Dunkin' Donuts, has occured
+LTL: U ! tufts_university_school_of_medicine dunkin_donuts
+
+Utterance: you can visit Washington St @ Kneeland St, at most twice
+LTL: ! F & washington_st_@_kneeland_st U washington_st_@_kneeland_st & ! washington_st_@_kneeland_st U ! washington_st_@_kneeland_st F & washington_st_@_kneeland_st U washington_st_@_kneeland_st & ! washington_st_@_kneeland_st U ! washington_st_@_kneeland_st F washington_st_@_kneeland_st
+
+Utterance: you can visit Dumpling Cafe, at most twice
+LTL: ! F & dumpling_cafe U dumpling_cafe & ! dumpling_cafe U ! dumpling_cafe F & dumpling_cafe U dumpling_cafe & ! dumpling_cafe U ! dumpling_cafe F dumpling_cafe
+
+Utterance: passing through The Kensington, thrice will lock it for future visits
+LTL: ! F & the_kensington U the_kensington & ! the_kensington U ! the_kensington F & the_kensington U the_kensington & ! the_kensington U ! the_kensington F & the_kensington U the_kensington & ! the_kensington U ! the_kensington F the_kensington
+
+Utterance: you can visit Chinatown, at most three times
+LTL: ! F & chinatown U chinatown & ! chinatown U ! chinatown F & chinatown U chinatown & ! chinatown U ! chinatown F & chinatown U chinatown & ! chinatown U ! chinatown F chinatown
+
+Utterance: visiting Genki Ya, for the fourth time will lock it for future visits
+LTL: ! F & genki_ya U genki_ya & ! genki_ya U ! genki_ya F & genki_ya U genki_ya & ! genki_ya U ! genki_ya F & genki_ya U genki_ya & ! genki_ya U ! genki_ya F & genki_ya U genki_ya & ! genki_ya U ! genki_ya F genki_ya
+
+Utterance: you can visit Montien, at most four times
+LTL: ! F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F & montien U montien & ! montien U ! montien F montien
+
+Utterance: you can not visit Dunkin' Donuts, six or more times
+LTL: ! F & dunkin_donuts U dunkin_donuts & ! dunkin_donuts U ! dunkin_donuts F & dunkin_donuts U dunkin_donuts & ! dunkin_donuts U ! dunkin_donuts F & dunkin_donuts U dunkin_donuts & ! dunkin_donuts U ! dunkin_donuts F & dunkin_donuts U dunkin_donuts & ! dunkin_donuts U ! dunkin_donuts F & dunkin_donuts U dunkin_donuts & ! dunkin_donuts U ! dunkin_donuts F dunkin_donuts
+
+Utterance: you can visit Pho Pasteur, at most five times
+LTL: ! F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F & pho_pasteur U pho_pasteur & ! pho_pasteur U ! pho_pasteur F pho_pasteur
+
+Utterance: visit Tufts Dental School, at least once
+LTL: F tufts_dental_school
+
+Utterance: make your way to Massachusetts State Transportation Building, at least once
+LTL: F massachusetts_state_transportation_building
+
+Utterance: visit Chinatown, at least twice while leaving its region in between
+LTL: F & chinatown U chinatown & ! chinatown U ! chinatown F chinatown
+
+Utterance: make your way to Seybolt Park, at least twice
+LTL: F & seybolt_park U seybolt_park & ! seybolt_park U ! seybolt_park F seybolt_park
+
+Utterance: you can not visit Panera Bread, less than three times
+LTL: F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F & panera_bread U panera_bread & ! panera_bread U ! panera_bread F panera_bread
+
+Utterance: go to Cutler Majestic Theater, at least three times
+LTL: F & cutler_majestic_theater U cutler_majestic_theater & ! cutler_majestic_theater U ! cutler_majestic_theater F & cutler_majestic_theater U cutler_majestic_theater & ! cutler_majestic_theater U ! cutler_majestic_theater F cutler_majestic_theater
+
+Utterance: you are not allowed to visit Washington St @ Tufts Med Ctr, three times or fewer you must visit Washington St @ Tufts Med Ctr, four times or more
+LTL: F & washington_st_@_tufts_med_ctr U washington_st_@_tufts_med_ctr & ! washington_st_@_tufts_med_ctr U ! washington_st_@_tufts_med_ctr F & washington_st_@_tufts_med_ctr U washington_st_@_tufts_med_ctr & ! washington_st_@_tufts_med_ctr U ! washington_st_@_tufts_med_ctr F & washington_st_@_tufts_med_ctr U washington_st_@_tufts_med_ctr & ! washington_st_@_tufts_med_ctr U ! washington_st_@_tufts_med_ctr F washington_st_@_tufts_med_ctr
+
+Utterance: you have to visit Wilbur Theatre, at least four times
+LTL: F & wilbur_theatre U wilbur_theatre & ! wilbur_theatre U ! wilbur_theatre F & wilbur_theatre U wilbur_theatre & ! wilbur_theatre U ! wilbur_theatre F & wilbur_theatre U wilbur_theatre & ! wilbur_theatre U ! wilbur_theatre F wilbur_theatre
+
+Utterance: you must visit and then leave Emerson College - Union Bank Building, at least five times
+LTL: F & emerson_college_union_bank_building U emerson_college_union_bank_building & ! emerson_college_union_bank_building U ! emerson_college_union_bank_building F & emerson_college_union_bank_building U emerson_college_union_bank_building & ! emerson_college_union_bank_building U ! emerson_college_union_bank_building F & emerson_college_union_bank_building U emerson_college_union_bank_building & ! emerson_college_union_bank_building U ! emerson_college_union_bank_building F & emerson_college_union_bank_building U emerson_college_union_bank_building & ! emerson_college_union_bank_building U ! emerson_college_union_bank_building F emerson_college_union_bank_building
+
+Utterance: make your way to HI Boston, at least five times
+LTL: F & hi_boston U hi_boston & ! hi_boston U ! hi_boston F & hi_boston U hi_boston & ! hi_boston U ! hi_boston F & hi_boston U hi_boston & ! hi_boston U ! hi_boston F & hi_boston U hi_boston & ! hi_boston U ! hi_boston F hi_boston
+
+Utterance: go to Wilbur Theatre, then leave Wilbur Theatre, and repeat this exactly once more
+LTL: M & wilbur_theatre F & ! wilbur_theatre F wilbur_theatre | ! wilbur_theatre G | wilbur_theatre G | ! wilbur_theatre G | wilbur_theatre G ! wilbur_theatre
+
+Utterance: make your way to Emerson College - Little Building, exactly twice
+LTL: M & emerson_college_little_building F & ! emerson_college_little_building F emerson_college_little_building | ! emerson_college_little_building G | emerson_college_little_building G | ! emerson_college_little_building G | emerson_college_little_building G ! emerson_college_little_building
+
+Utterance: you are required to visit Citibank, on exactly three separate instances
+LTL: M & citibank F & ! citibank F & citibank F & ! citibank F citibank | ! citibank G | citibank G | ! citibank G | citibank G | ! citibank G | citibank G ! citibank
+
+Utterance: make your way to New Saigon Sandwich, exactly three times
+LTL: M & new_saigon_sandwich F & ! new_saigon_sandwich F & new_saigon_sandwich F & ! new_saigon_sandwich F new_saigon_sandwich | ! new_saigon_sandwich G | new_saigon_sandwich G | ! new_saigon_sandwich G | new_saigon_sandwich G | ! new_saigon_sandwich G | new_saigon_sandwich G ! new_saigon_sandwich
+
+Utterance: you are required to make exactly four separate visits to Chinatown
+LTL: M & chinatown F & ! chinatown F & chinatown F & ! chinatown F & chinatown F & ! chinatown F chinatown | ! chinatown G | chinatown G | ! chinatown G | chinatown G | ! chinatown G | chinatown G | ! chinatown G | chinatown G ! chinatown
+
+Utterance: make your way to Joy Luck Hot Pot, exactly four times
+LTL: M & joy_luck_hot_pot F & ! joy_luck_hot_pot F & joy_luck_hot_pot F & ! joy_luck_hot_pot F & joy_luck_hot_pot F & ! joy_luck_hot_pot F joy_luck_hot_pot | ! joy_luck_hot_pot G | joy_luck_hot_pot G | ! joy_luck_hot_pot G | joy_luck_hot_pot G | ! joy_luck_hot_pot G | joy_luck_hot_pot G | ! joy_luck_hot_pot G | joy_luck_hot_pot G ! joy_luck_hot_pot
+
+Utterance: once Stuart St @ Tremont St, is reached after that you can never visit Dumpling Cafe
+LTL: G i stuart_st_@_tremont_st X G ! dumpling_cafe
+
+Utterance: after you visit Jiaho supermarket, you can not visit Happy Lamb Hot Pot, afterward
+LTL: G i jiaho_supermarket X G ! happy_lamb_hot_pot
+
+Utterance: if 62 on the Park, is observed at any time then Joy Luck Hot Pot, must be visited in the future
+LTL: G i 62_on_the_park F joy_luck_hot_pot
+
+Utterance: you can visit St. James Church, but you have to visit Emerson College - Union Bank Building, later
+LTL: G i st_james_church F emerson_college_union_bank_building
+
+Utterance: Jiaho supermarket, must occur in the very next time step that Tufts University Hirsh Health Sciences Library, occurs and Tufts University Hirsh Health Sciences Library, must happen in the immediately previous time step of Jiaho supermarket, occurring
+LTL: G e tufts_university_hirsh_health_sciences_library X jiaho_supermarket
+
+Utterance: HI Boston, must be visited right before Panera Bread, Panera Bread, must be visited right after HI Boston
+LTL: G e hi_boston X panera_bread
+
+Utterance: remain at Pho Pasteur, till you observe Empire Garden Restaurant
+LTL: U pho_pasteur empire_garden_restaurant
+
+Utterance: util you observe Chinatown, stay at Emerson College - Little Building
+LTL: U emerson_college_little_building chinatown
+
+Utterance:

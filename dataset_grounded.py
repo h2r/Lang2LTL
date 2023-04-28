@@ -5,15 +5,17 @@ import argparse
 import os
 import logging
 from pathlib import Path
+import time
 import string
 import re
-from itertools import permutations
 import random
 from pprint import pprint
-import time
+from itertools import permutations
+from collections import defaultdict
 
 from utils import load_from_file, save_to_file, substitute_single_letter, remove_prop_perms, name_to_prop
 from formula_sampler import PROPS
+from dataset_symbolic import load_split_dataset
 
 
 def rename_map_files(osm_lmks_dpath):
@@ -22,7 +24,7 @@ def rename_map_files(osm_lmks_dpath):
     e.g. Map00.json -> new_york_1.json
     One time change after pulling dataset from CopyNet repo.
     """
-    mapid2cityname = {
+    mapid2envname = {
         "Map00": "New York #1", "Map01": "New York #2", "Map02": "Los Angeles #1",
         "Map03": "Los Angeles #2", "Map04": "Chicago #1", "Map05": "Chicago #2",
         "Map07": "Houston", "Map10": "Philadelphia #1", "Map11": "Philadelphia #2",
@@ -37,11 +39,11 @@ def rename_map_files(osm_lmks_dpath):
         if "Map" in map_fname:
             map_fpath = os.path.join(osm_lmks_dpath, map_fname)
             map_id = Path(map_fpath).stem
-            if map_id in mapid2cityname:
-                city_name = mapid2cityname[map_id]
-                if "#" in city_name:
-                    city_name = city_name.translate(str.maketrans('', '', string.punctuation))  # remove #
-                new_map_fname = "_".join(city_name.lower().split(" ")) + ".json"
+            if map_id in mapid2envname:
+                env_name = mapid2envname[map_id]
+                if "#" in env_name:
+                    env_name = env_name.translate(str.maketrans('', '', string.punctuation))  # remove #
+                new_map_fname = "_".join(env_name.lower().split(" ")) + ".json"
                 new_map_fpath = os.path.join(osm_lmks_dpath, new_map_fname)
                 os.rename(map_fpath, new_map_fpath)
 
@@ -53,8 +55,8 @@ def construct_lmk2prop(osm_lmks_dpath, model):
     """
     lmk_fnames = [fname for fname in os.listdir(osm_lmks_dpath) if os.path.splitext(fname)[1] == ".json"]
     for lmk_fname in lmk_fnames:
-        city_name = os.path.splitext(lmk_fname)[0]
-        print(city_name)
+        env_name = os.path.splitext(lmk_fname)[0]
+        print(env_name)
         lmk2prop = {}
         lmk_fpath = os.path.join(osm_lmks_dpath, lmk_fname)
         lmk_json = load_from_file(lmk_fpath)
@@ -65,10 +67,10 @@ def construct_lmk2prop(osm_lmks_dpath, model):
         print("\n")
 
 
-def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamples, add_comma, model, save_dpath):
-    logging.info(f"Constructing grounded dataset for city: {city}")
+def construct_grounded_dataset(split_dpath, lmks, env, remove_perm, seed, nsamples, add_comma, model, save_dpath):
+    logging.info(f"Constructing grounded dataset for env: {env}")
     split_fnames = sorted([fname for fname in os.listdir(split_dpath) if "pkl" in fname])
-    save_dpath = os.path.join(save_dpath, model, city)
+    save_dpath = os.path.join(save_dpath, model, env)
     os.makedirs(save_dpath, exist_ok=True)
 
     nprops2lmkperms = {} if nsamples else None
@@ -99,7 +101,7 @@ def construct_grounded_dataset(split_dpath, lmks, city, remove_perm, seed, nsamp
         dataset["valid_iter"], dataset["valid_meta"] = substitute_lmks(valid_iter, valid_meta, lmks, seed+10000000, add_comma, model, nprops2lmkperms, nsamples)  # +10000000 avoid sampele lmks w/ same seeds as train set
         logging.info(f"generate valid took: {(time.time()-start_time) / 60}")
         start_time = time.time()
-        dataset["city"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = city, seed, remove_perm, model
+        dataset["env"], dataset["seed_lmk"], dataset["remove_perm"], dataset["model"] = env, seed, remove_perm, model
         save_to_file(dataset, os.path.join(save_dpath, split_fname))
         logging.info(f"saving took: {(time.time() - start_time) / 60}")
         logging.info(f"{os.path.join(save_dpath, split_fname)}")
@@ -162,46 +164,87 @@ def construct_cleanup_lmks(env_lmks_dpath):
     sem_lmks = {re.sub(' +', ' ', f"{size} {color} {shape} {amenity}".strip()): {} for color in colors for size in sizes for shape in shapes for amenity in amenities}
 
     os.makedirs(env_lmks_dpath, exist_ok=True)
-    city_fpath = os.path.join(env_lmks_dpath, "cleanup.json")  # call cleanup city to be consistent with OSM env
-    save_to_file(sem_lmks, city_fpath)
+    env_fpath = os.path.join(env_lmks_dpath, "cleanup.json")
+    save_to_file(sem_lmks, env_fpath)
     logging.info(f"generated {len(sem_lmks)} lmks for CleanUp\nfrom\nsizes: {sizes}\ncolors: {colors}\nshapes: {shapes}\namenities: {amenities}")
+
+
+def generate_prompts_from_grounded_split_dataset(split_fpath, prompt_dpath, nexamples, seed):
+    """
+    :param split_fpath: pickle file containing train, test split for a holdout type of a grounded dataset.
+    :param prompt_dpath: directory to save constructed prompts.
+    :param nexamples: number of examples for 1 formula.
+    :param seed: seed to sample landmarks for a formula.
+    """
+    train_iter, train_meta, _, _ = load_split_dataset(split_fpath)
+
+    meta2data = defaultdict(list)
+    for idx, ((utt, ltl), (_, _, pattern_type, props, _, _)) in enumerate(zip(train_iter, train_meta)):
+        meta2data[(pattern_type, len(props))].append((utt, ltl))
+    sorted(meta2data.items(), key=lambda kv: kv[0])
+
+    prompt = "Your task is to first find referred landmarks from a given list then use them as propositions to translate English utterances to linear temporal logic (LTL) formulas.\n\n"
+    for (pattern_type, nprop), data in meta2data.items():
+        random.seed(seed)
+        examples = random.sample(data, nexamples)
+        for utt, ltl in examples:
+            prompt += f"Utterance: {utt}\nLTL: {ltl}\n\n"
+            # print(f"{pattern_type} | {nprop}\n{utt}\n{ltl}\n")
+    prompt += "Utterance:"
+
+    split_dataset_name = Path(split_fpath).stem
+    prompt_fpath = f"{prompt_dpath}/prompt_nexamples{nexamples}_{split_dataset_name}.txt"
+    save_to_file(prompt, prompt_fpath)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--split_dpath", type=str, default="data/holdout_split_batch12_perm", help="dpath to all split datasets.")
-    parser.add_argument("--env", type=str, default="cleanup", choices=["osm", "cleanup"], help="environment name.")
-    parser.add_argument("--city", type=str, default="cleanup", help="city lmks from 1 or all json files in data/osm/lmks or data/clenaup/lmks.")
+    parser.add_argument("--domain", type=str, default="osm", choices=["osm", "cleanup"], help="domain name.")
+    parser.add_argument("--env", type=str, default="boston", choices=["boston", "all", "cleanup"], help="env lmks from 1 or all json files in data/osm/lmks or data/clenaup/lmks.")
     parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
     parser.add_argument("--nsamples", type=int, default=2, help="number of samples per utt strucutre when perm lmks for valid set.")
     parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
-    parser.add_argument("--cleanup_lmk", action="store_true", help="True if construct json for CleanUp lmks.")
+    parser.add_argument("--env_prompt", type=str, default="boston", help="env dataset to generate full translation prompt.")
+    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[2], help="number of examples per formula in prompt.")
+    parser.add_argument("--seed_prompt", type=int, default=42, help="random seed to sample prompt examples.")
+    parser.add_argument("--cleanup_lmk", action="store_true", help="True if construct lmk json for CleanUp lmks.")
     args = parser.parse_args()
 
-    env_dpath = os.path.join("data", args.env)
-    env_lmks_dpath = os.path.join(env_dpath, "lmks")
-    model_dpath = os.path.join(env_dpath, args.model)
+    domain_dpath = os.path.join("data", args.domain)
+    domain_lmks_dpath = os.path.join(domain_dpath, "lmks")
+    model_dpath = os.path.join(domain_dpath, args.model)
     os.makedirs(model_dpath, exist_ok=True)
     # construct_lmk2prop(osm_lmks_dpath, args.model)  # for testing
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join(model_dpath, f'log_gen_grounded_{args.city}.log'),
+                            logging.FileHandler(os.path.join(model_dpath, f'log_gen_grounded_{args.env}.log'),
                                                 mode='w'),
                             logging.StreamHandler()
                         ]
     )
 
-    if args.cleanup_lmk:
-        construct_cleanup_lmks(env_lmks_dpath)  # construct lmk json file for CleanUp World
+    if args.cleanup_lmk:  # construct lmk json file for CleanUp World
+        construct_cleanup_lmks(domain_lmks_dpath)
+
+    if args.env == "all":
+        envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_lmks_dpath) if fname.endswith("json")]
     else:
-        if args.city == "all":
-            cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname]
-        else:
-            cities = [args.city]
-        for city in cities:
-            city_lmks = [name.replace(u'\xa0', u' ') for name in list(load_from_file(os.path.join(env_lmks_dpath, f"{city}.json")).keys())]  # remove unicode space \xa0 or NBSP
-            construct_grounded_dataset(args.split_dpath, city_lmks, city, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, env_dpath)
+        envs = [args.env]
+    for env in envs:
+        env_lmks = [name.replace(u'\xa0', u' ') for name in list(load_from_file(os.path.join(domain_lmks_dpath, f"{env}.json")).keys())]  # remove unicode space \xa0 or NBSP
+        # construct_grounded_dataset(args.split_dpath, env_lmks, env, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, domain_dpath)
+
+        # Construct full translation prompts from grounded dataset for a given env
+        if env == args.env_prompt:
+            grounded_split_dpath = os.path.join(model_dpath, args.env_prompt)
+            prompt_dpath = os.path.join(domain_dpath, "full_translation_prompt", args.env_prompt)
+            os.makedirs(prompt_dpath, exist_ok=True)
+            grounded_split_fpaths = [os.path.join(grounded_split_dpath, grounded_split_fname) for grounded_split_fname in os.listdir(grounded_split_dpath) if grounded_split_fname.endswith("pkl")]
+            for grounded_split_fpath in grounded_split_fpaths:
+                for nexamples in args.nexamples:
+                    generate_prompts_from_grounded_split_dataset(grounded_split_fpath, prompt_dpath, nexamples, args.seed_prompt)
