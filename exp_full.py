@@ -61,7 +61,7 @@ def run_exp():
         names, utt2names = rer(args.rer, args.rer_engine, args.rer_prompt, input_utts)
         out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
         name2grounds = ground_names(names, name_embed, obj_embed, args.ground, args.embed_engine, args.topk)
-        grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in env
+        grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in domain
         if args.trans_e2e:
             logging.info(f"End-to-end translation engine: {translation_engine}")
             out_ltls = translate_e2e(grounded_utts, translation_engine)
@@ -167,57 +167,57 @@ def plan(output_ltls, true_trajs, name2grounds):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--env", type=str, default="osm", choices=["osm", "cleanup"], help="environment name.")
-    parser.add_argument("--cities", action="store", type=str, nargs="+", default=["boston"], help="list of cities.")
+    parser.add_argument("--domain", type=str, default="osm", choices=["osm", "cleanup"], help="domain name.")
+    parser.add_argument("--envs", action="store", type=str, nargs="+", default=["boston"], help="list of envs.")
     parser.add_argument("--holdout", type=str, default="utt", choices=["utt", "formula", "type", None], help="type of holdout test or None for all types.")
-    parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module")
+    parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module.")
     parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt4", "llama-7B"], help="pretrained LLM for RER.")
-    parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt")
-    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module")
-    parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine")
-    parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re")
-    parser.add_argument("--sym_trans", type=str, default="gpt3_finetuned", choices=["gpt3_finetuned", "gpt3_pretrained", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module")
+    parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt.")
+    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module.")
+    parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine.")
+    parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re.")
+    parser.add_argument("--sym_trans", type=str, default="gpt3_finetuned", choices=["gpt3_finetuned", "gpt3_pretrained", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module.")
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
-    parser.add_argument("--full_e2e", type=str, default="gpt4", choices=["gpt3", "gpt4", "llama-7B", None], help="solve full translation using LLM")
+    parser.add_argument("--full_e2e", type=str, default="gpt4", choices=["gpt3", "gpt4", "llama-7B", None], help="solve full translation using LLM.")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per formula in prompt.")
-    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all")
-    # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt")
-    parser.add_argument("--trans_e2e", action="store_true", help="solve translation task end-to-end using GPT-3")
-    parser.add_argument("--trans_e2e_prompt", type=str, default="data/cleanup_trans_e2e_prompt_15.txt", help="path to translation end-to-end prompt")
-    parser.add_argument("--s2s_sup_data", type=str, default="data/symbolic_pairs.csv", help="file path to train and test data for supervised seq2seq")
-    parser.add_argument("--true_trajs", type=str, default="data/true_trajs.pkl", help="path to true trajectories")
-    parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model")
+    parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all.")
+    # parser.add_argument("--trans_modular_prompt", type=str, default="data/cleanup/cleanup_trans_modular_prompt_15.txt", help="symbolic translation prompt.")
+    parser.add_argument("--trans_e2e", action="store_true", help="solve translation task end-to-end using GPT-3.")
+    parser.add_argument("--trans_e2e_prompt", type=str, default="data/cleanup_trans_e2e_prompt_15.txt", help="path to translation end-to-end prompt.")
+    parser.add_argument("--s2s_sup_data", type=str, default="data/symbolic_pairs.csv", help="file path to train and test data for supervised seq2seq.")
+    parser.add_argument("--true_trajs", type=str, default="data/true_trajs.pkl", help="path to true trajectories.")
+    parser.add_argument("--nruns", type=int, default=1, help="number of runs to test each model.")
     parser.add_argument("--debug", action="store_true", help="True to print debug trace.")
     args = parser.parse_args()
 
-    env_dpath = os.path.join("data", args.env)
-    env_lmks_dpath = os.path.join(env_dpath, "lmks")
+    domain_dpath = os.path.join("data", args.domain)
+    domain_lmks_dpath = os.path.join(domain_dpath, "lmks")
 
     e2e_id = "e2e" if args.full_e2e else ""
-    log_dpath = os.path.join("results", "lang2ltl", args.env, "log")
+    log_dpath = os.path.join("results", "lang2ltl", args.domain, "log")
     os.makedirs(log_dpath, exist_ok=True)
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.cities)}.log'), mode='w'),
+                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.envs)}.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
 
-    if args.env == "osm" or args.env == "cleanup":  # TODO: separate exp_full_ENV.py for each ENV
-        # if args.city == "all":
-        #     cities = [os.path.splitext(fname)[0] for fname in os.listdir(env_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
+    if args.domain == "osm" or args.domain == "cleanup":  # TODO: separate exp_full_DOMIN.py for each DOMAIN
+        # if args.envs == "all":
+        #     envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
         # else:
-        #     cities = [args.city]
-        for city in args.cities:
-            city_dpath = os.path.join(env_dpath, "lang2ltl", city)
-            data_fpaths = [os.path.join(city_dpath, fname) for fname in os.listdir(city_dpath) if fname.startswith("symbolic")]
+        #     envs = [args.envs]
+        for env in args.envs:
+            env_dpath = os.path.join(domain_dpath, "lang2ltl", env)
+            data_fpaths = [os.path.join(env_dpath, fname) for fname in os.listdir(env_dpath) if fname.startswith("symbolic")]
             if args.holdout:
                 data_fpaths = [data_fpath for data_fpath in data_fpaths if args.holdout in data_fpath]
             data_fpaths = sorted(data_fpaths, reverse=True)[:1]
 
-            obj_embed = os.path.join(env_dpath, "lmk_sem_embeds", f"obj2embed_{city}_{args.embed_engine}.pkl")
-            name_embed = os.path.join(env_dpath, "lmk_name_embeds", f"name2embed_{city}_{args.embed_engine}.pkl")
+            obj_embed = os.path.join(domain_dpath, "lmk_sem_embeds", f"obj2embed_{env}_{args.embed_engine}.pkl")
+            name_embed = os.path.join(domain_dpath, "lmk_name_embeds", f"name2embed_{env}_{args.embed_engine}.pkl")
 
             for data_fpath in data_fpaths:
                 if "utt" in data_fpath:
@@ -229,10 +229,10 @@ if __name__ == "__main__":
                 else:
                     raise ValueError(f"ERROR: unrecognized data fpath\n{data_fpath}")
                 if args.full_e2e:
-                    result_dpath = os.path.join("results", "lang2ltl", args.env, "e2e", args.full_e2e, city, result_subd)
-                    full_e2e_prompt_fpath = os.path.join(env_dpath, "full_translation_prompt", city, f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
+                    result_dpath = os.path.join("results", "lang2ltl", args.domain, "e2e", args.full_e2e, env, result_subd)
+                    full_e2e_prompt_fpath = os.path.join(domain_dpath, "full_translation_prompt", env, f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
                 else:
-                    result_dpath = os.path.join("results", "lang2ltl", args.env, city, result_subd)
+                    result_dpath = os.path.join("results", "lang2ltl", args.domain, env, result_subd)
                 os.makedirs(result_dpath, exist_ok=True)
                 all_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
                 pair_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
@@ -280,16 +280,16 @@ if __name__ == "__main__":
                         run_exp()
 
     # # Test grounding
-    # city_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
-    # filter_cities = ["boston", "chicago_2", "jacksonville_1", "san_diego_2"]
-    # city_names = [city for city in city_names if city not in filter_cities]
-    # for city in city_names:
-    #     obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{city}_{embed_engine}.pkl"
-    #     name_embed = f"data/osm/lmk_name_embeds/name2embed_{city}_{embed_engine}.pkl"
+    # env_names = [os.path.splitext(fname)[0] for fname in os.listdir("data/osm/lmks") if "json" in fname]
+    # filter_envs = ["boston", "chicago_2", "jacksonville_1", "san_diego_2"]
+    # env_names = [env for env in env_names if env not in filter_envs]
+    # for env in env_names:
+    #     obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{env}_{embed_engine}.pkl"
+    #     name_embed = f"data/osm/lmk_name_embeds/name2embed_{env}_{embed_engine}.pkl"
     #     print(obj_embed)
     #     print(name_embed)
     #     breakpoint()
-    #     names = list(load_from_file(f"data/osm/lmks/{city}.json").keys())
+    #     names = list(load_from_file(f"data/osm/lmks/{env}.json").keys())
     #     name2grounds = ground_names(names)
     #     for name, grounds in name2grounds.items():
     #         if name != grounds[0]:
