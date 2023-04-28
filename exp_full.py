@@ -199,7 +199,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{"_".join(args.cities)}_{e2e_id}.log'), mode='w'),
+                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{"_".join(args.cities)}_{e2e_id}_2.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
