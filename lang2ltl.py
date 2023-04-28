@@ -58,8 +58,8 @@ def rer(rer_model, rer_engine, rer_prompt, input_utts):
 
     if rer_model == "gpt3":
         rer_module = GPT3(rer_engine)
-    # elif args.rer == "bert":
-    #     rer_module = BERT()
+    elif rer_model == "gpt4":
+        rer_module = GPT4(rer_engine)
     else:
         raise ValueError(f"ERROR: RER module not recognized: {rer_model}")
 
