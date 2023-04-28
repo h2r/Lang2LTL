@@ -199,7 +199,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{"_".join(args.cities)}_{e2e_id}_2.log'), mode='w'),
+                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.cities)}.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
@@ -229,7 +229,7 @@ if __name__ == "__main__":
                 else:
                     raise ValueError(f"ERROR: unrecognized data fpath\n{data_fpath}")
                 if args.full_e2e:
-                    result_dpath = os.path.join("results", "lang2ltl", args.env, "e2e", city, result_subd)
+                    result_dpath = os.path.join("results", "lang2ltl", args.env, "e2e", args.full_e2e, city, result_subd)
                     full_e2e_prompt_fpath = os.path.join(env_dpath, "full_translation_prompt", city, f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
                 else:
                     result_dpath = os.path.join("results", "lang2ltl", args.env, city, result_subd)
