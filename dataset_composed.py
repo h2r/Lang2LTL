@@ -27,16 +27,6 @@ def construct_composed_dataset(data_fpath, composed_fpath):
         os.makedirs(save_dpatph, exist_ok=True)
         save_fpath = os.path.join(save_dpatph, f"{Path(composed_fpath).stem}.pkl")
         save_to_file(dataset, save_fpath)
-    elif "formula" in composed_fpath:
-        holdout_type = "formula"
-        save_dpatph = os.path.join("data", f"composed_{holdout_type}")
-        os.makedirs(save_dpatph, exist_ok=True)
-
-        for train_data, train_meta, valid_data, valid_meta, info in composed:
-            size, seed, fold_idx = info["size"], info["seed"], info["fold_idx"]
-            save_fname = f"{Path(composed_fpath).stem}_{size}_{seed}_fold{fold_idx}.pkl"
-            split_fpath = os.path.join(save_dpatph, save_fname)
-            save_split_dataset_new(split_fpath, train_data, train_meta, valid_data, valid_meta, info)
     elif "utt" in composed_fpath:
         holdout_type = "utt"
         save_dpatph = os.path.join("data", f"composed_{holdout_type}")
@@ -45,6 +35,16 @@ def construct_composed_dataset(data_fpath, composed_fpath):
         for train_data, train_meta, valid_data, valid_meta, info in composed:
             size, seed = info["size"], info["seed"]
             save_fname = f"{Path(composed_fpath).stem}_{size}_{seed}.pkl"
+            split_fpath = os.path.join(save_dpatph, save_fname)
+            save_split_dataset_new(split_fpath, train_data, train_meta, valid_data, valid_meta, info)
+    elif "formula" in composed_fpath:
+        holdout_type = "formula"
+        save_dpatph = os.path.join("data", f"composed_{holdout_type}")
+        os.makedirs(save_dpatph, exist_ok=True)
+
+        for train_data, train_meta, valid_data, valid_meta, info in composed:
+            size, seed, fold_idx = info["size"], info["seed"], info["fold_idx"]
+            save_fname = f"{Path(composed_fpath).stem}_{size}_{seed}_fold{fold_idx}.pkl"
             split_fpath = os.path.join(save_dpatph, save_fname)
             save_split_dataset_new(split_fpath, train_data, train_meta, valid_data, valid_meta, info)
     else:
