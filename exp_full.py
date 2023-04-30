@@ -26,6 +26,7 @@ def run_exp():
         elif args.full_e2e == "gpt4":
             translation_engine = "gpt-4"
             full_e2e_module = GPT4(translation_engine)
+            breakpoint()
         else:
             raise ValueError(f"ERROR: unrecognized full translation model: {args.full_e2e}")
         logging.info(f"Full translation engine: {translation_engine}")
@@ -199,7 +200,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.envs)}.log'), mode='w'),
+                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.envs)}_{args.holdout}_nexamples{args.nexamples}.log'), mode='w'),
                             logging.StreamHandler()
                         ]
     )
@@ -214,7 +215,7 @@ if __name__ == "__main__":
             data_fpaths = [os.path.join(env_dpath, fname) for fname in os.listdir(env_dpath) if fname.startswith("symbolic")]
             if args.holdout:
                 data_fpaths = [data_fpath for data_fpath in data_fpaths if args.holdout in data_fpath]
-            data_fpaths = sorted(data_fpaths, reverse=True)[:1]
+            data_fpaths = sorted(data_fpaths, reverse=True)[2:]
 
             obj_embed = os.path.join(domain_dpath, "lmk_sem_embeds", f"obj2embed_{env}_{args.embed_engine}.pkl")
             name_embed = os.path.join(domain_dpath, "lmk_name_embeds", f"name2embed_{env}_{args.embed_engine}.pkl")
