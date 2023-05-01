@@ -20,6 +20,25 @@ TEST_NAMES = {'utt_holdout': 'Utterance','formula_holdout':'Formula','type_holdo
 
 OSM_MODEL_NAMES = ['Lang2LTL', 'CopyNet']
 
+def get_full_system_piechart(test_type):
+    filepath = os.path.join('.','results','lang2ltl','osm')
+    cities = get_osm_cities()
+    symbolic_errors = 0
+    RER_errors = 0
+    
+    for city in cities:
+        city_accs = []
+        filepath1 = os.path.join(filepath, city, test_type+'_batch12')
+        if os.path.exists(filepath1):
+            files = [file for file in os.listdir(filepath1) if fnmatch(file, 'acc*.csv')]
+            for file in files:
+                df = pd.read_csv(os.path.join(filepath1,file))
+                if 'False' in df['Accuracy'].value_counts().index:
+                    symbolic_errors = symbolic_errors + df['Accuracy'].value_counts()['False']
+                if 'RER or Grounding Error' in df['Accuracy'].value_counts().index:
+                    RER_errors = RER_errors + df['Accuracy'].value_counts()['RER or Grounding Error']
+    return symbolic_errors, RER_errors
+            
 
 def parse_per_city_accs(test_type):
     filepath = os.path.join('.','results','lang2ltl','osm')

@@ -75,11 +75,69 @@ def plot_per_city_accuracy():
             plt.xlim([0,1])
             plt.savefig(f'figures/city_accuracies_{test_type}.jpg', dpi = 400, bbox_inches = 'tight')
     
+def symbolic_error_piechart():
+    data = [1688, 690, 205, 524, 212]
+    with sns.plotting_context(context = 'poster', rc =rc):
+        plt.figure(figsize=[12,10])
+        labels = ['Misclassified Template','Incorrect Propositions', 'Incorrect Permutation', 'Unknown Templates', 'Invalid LTL']
+        colors = sns.color_palette('muted',n_colors=5)
+        plt.pie(data, labels=labels, colors = colors)
+        plt.savefig('figures/symbolic_piechart.jpg',dpi=400, bbox_inches = 'tight')
     
+def symbolic_error_piechart_finetuned_formula():
+    data = [4539, 4794, 178, 2326, 6830]
+    with sns.plotting_context(context = 'poster', rc =rc):
+        plt.figure(figsize=[12,10])
+        labels = ['Misclassified Template','Incorrect Propositions', 'Incorrect Permutation', 'Unknown Templates', 'Invalid LTL']
+        colors = sns.color_palette('muted',n_colors=5)
+        plt.pie(data, labels=labels, colors = colors)
+        plt.savefig('figures/symbolic_piechart_finetuned_formula.jpg',dpi=400, bbox_inches = 'tight')
+
+def symbolic_error_piechart_finetuned_type():
+    data = [47204, 11, 7, 1310, 733]
+    with sns.plotting_context(context = 'poster', rc =rc):
+        plt.figure(figsize=[12,10])
+        labels = ['Misclassified Template','Incorrect Propositions', 'Incorrect Permutation', 'Unknown Templates', 'Invalid LTL']
+        colors = sns.color_palette('muted',n_colors=5)
+        plt.pie(data, labels=labels, colors = colors)
+        plt.savefig('figures/symbolic_piechart_finetuned_type.jpg',dpi=400, bbox_inches = 'tight')
+
+
+def plot_full_system_piechart(test_type):
+    symbolic_errors, RER_errors = get_full_system_piechart(test_type)
+    with sns.plotting_context(context='poster',rc = rc):
+        plt.figure(figsize=[12,10])
+        labels = ['Symbolic Translation Error', 'Proposition Grounding Error']
+        colors = sns.color_palette('muted',n_colors = 2)
+        plt.pie([symbolic_errors, RER_errors], labels = labels, colors = colors)
+        plt.savefig(f'figures/full_system_{test_type}.jpg',dpi=400, bbox_inches = 'tight')
+
+def plot_bar_charts():
+    data = create_osm_accuracies_table()
+    data = data.loc[data['Test Type'] == 'Utterance']
+    entry = {}
+    entry['Model ID'] = [0]
+    entry['Accuracy'] = [0.38]
+    entry['Model'] = ['Prompt GPT-3']
+    entry['Test Type'] = ['Utterance']
+    data = pd.concat([data, pd.DataFrame(entry)], axis=0, ignore_index=True)
+    
+    with sns.plotting_context(context='poster', rc = rc):
+        plt.figure(figsize=[12,10])
+        sns.barplot(data = data, x = 'Model', y = 'Accuracy', ci=None)
+        plt.ylim([0,1])
+        plt.savefig(f'figures/full_system_accuracy.jpg',dpi=400, bbox_inches = 'tight')
+
 if __name__ == '__main__':
     #plot_symbolic_accuracies1()
     #plot_symbolic_accuracies2()
     #plot_osm_accuracies()
-    plot_type_accuracies()
-    plot_n_prop_accuracies()
-    plot_per_city_accuracy()
+    #plot_type_accuracies()
+    #plot_n_prop_accuracies()
+    #plot_per_city_accuracy()
+    #ymbolic_error_piechart()
+    #plot_full_system_piechart('utt_holdout')
+    #plot_full_system_piechart('formula_holdout')
+    #plot_bar_charts()
+    symbolic_error_piechart_finetuned_formula()
+    symbolic_error_piechart_finetuned_type()
