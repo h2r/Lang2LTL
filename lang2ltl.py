@@ -141,7 +141,7 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     return output_strs, subs_per_str
 
 
-def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None, s2s_sup_data=None):
+def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None, s2s_sup_data=None, checkpoint=None):
     """
     Translation language to LTL modular approach.
     :param ground_utts: Input utterances with name entities grounded to objects in given environment.
@@ -164,7 +164,7 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
     if "gpt3" in sym_trans_model:
         trans_module = GPT3(translation_engine)
     elif sym_trans_model in T5_MODELS:
-        trans_module = Seq2Seq(sym_trans_model)
+        trans_module = Seq2Seq(sym_trans_model, checkpoint=checkpoint)
     elif sym_trans_model == "pt_transformer":
         train_iter, _, _, _ = load_split_dataset(s2s_sup_data)
         vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset_meta(train_iter)
@@ -186,14 +186,16 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
     for idx, sym_utt in enumerate(symbolic_utts):
         logging.info(f"Symbolic Translation: {idx}/{len(symbolic_utts)}")
         query = sym_utt.translate(str.maketrans('', '', ',.'))
-        query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
-        ltl = trans_module.translate(query, trans_modular_prompt)[0]
+        if "gpt3" in sym_trans_model:
+            query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
+            ltl = trans_module.translate(query, trans_modular_prompt)[0]
+        else:
+            ltl = trans_module.translate([query])[0]
         # try:
         #     spot.formula(ltl)
         # except SyntaxError:
         #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
         symbolic_ltls.append(ltl)
-
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv, is_utt=False)  # replace symbols by props
 
     return symbolic_utts, symbolic_ltls, output_ltls, placeholder_maps

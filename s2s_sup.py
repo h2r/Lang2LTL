@@ -22,7 +22,7 @@ class Seq2Seq:
     def __init__(self, model_type, checkpoint=None, **kwargs):
         self.model_type = model_type
 
-        if args.model in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
+        if self.model_type in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
             model_dir = f"model/{model_type}"
             if checkpoint: model_dir += f'/checkpoint-{checkpoint}'
             self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
