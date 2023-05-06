@@ -117,6 +117,24 @@ num_train_epochs = 5
 ```
 We use a single NVIDIA GeForce RTX 3090 (24GiB) for finetuning, and completing one fold of the holdout test set takes ~2 hours.
 
+# Running Jobs on Cluster
+For submitting jobs on clusters, please refer to the bash scripts templates under `bash_scripts/`. 
+## Finetuning T5
+for finetuning t5 from huggingface, please refer to `t5_finetuning` and make modifications if neccesary. The lines you might want to modify are:
+1. Request running time
+```
+#SBATCH --time=10:00:00
+```
+2. Request proper graphic card
+```
+#SBATCH -p 3090-gcondo --gres=gpu:1
+```
+3. Fill in `YOUR_USER_NAME`, dataset file path, and `MODEL_NAME`, respectively. Notice that we only support finetuning on single gpu right now, so you may want to refer to your hardware specs to decide which pretrained model to use. Supported models are `t5-small`, `t5-base`, `t5-large`, `t5-3b`.
+```
+/users/YOUR_USER_NAME/anaconda/lang2ltl/bin/python s2s_hf_transformers.py --data path/to/pkl/files --model MODEL_NAME
+```
+## LLaMA Inference
+LLaMA can be easily deployed on multiple gpu for running inference. We here provide a example code (__WIP__) and bash script `llama.sh`.
 
 # Run Experiments
 Temporarily set environment variables for API key and organization ID
