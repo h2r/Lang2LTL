@@ -14,24 +14,14 @@ BINARY_OPERATORS = ["and", "or", "implies", "until"]
 FEASIBLE_OPERATORS = ["and", "or"]  # operators currently supported
 
 
-def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt):
+def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt, logger):
     """
     Construct composed dataset.
     In one pass of base dataset, construct composed dataset for zero-shot transfer, formula and utterance holdout.
     """
-    save_fpath_zeoshot = os.path.join(os.path.dirname(data_fpath), f"composed_zeroshot_{Path(args.data_fpath).stem}.pkl")
-    save_fpath_formula = os.path.join(os.path.dirname(data_fpath), f"composed_formula_{Path(args.data_fpath).stem}.pkl")
-    save_fpath_utt = os.path.join(os.path.dirname(data_fpath), f"composed_utt_{Path(args.data_fpath).stem}.pkl")
-    log_fpath = os.path.join(os.path.dirname(data_fpath), f"composed_{Path(args.data_fpath).stem}.log")
-
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(log_fpath, mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
-    logger = logging.getLogger()
+    save_fpath_zeoshot = os.path.join(os.path.dirname(data_fpath), f"composed_zeroshot_{Path(data_fpath).stem}.pkl")
+    save_fpath_formula = os.path.join(os.path.dirname(data_fpath), f"composed_formula_{Path(data_fpath).stem}.pkl")
+    save_fpath_utt = os.path.join(os.path.dirname(data_fpath), f"composed_utt_{Path(data_fpath).stem}.pkl")
 
     # Load base dataset
     ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta = load_base_dataset(data_fpath, logger)
@@ -297,6 +287,16 @@ if __name__ == "__main__":
     parser.add_argument("--size_utt", type=float, default=0.2, help="fold size for utterance holdout.")
     parser.add_argument("--seeds_utt", type=int, default=[0, 1, 2, 42, 111], help="seed for utterance holdout.")
     args = parser.parse_args()
+
+    log_fpath = os.path.join(os.path.dirname(args.data_fpath), f"composed_{Path(args.data_fpath).stem}.log")
+    logging.basicConfig(level=logging.DEBUG,
+                        format='%(message)s',
+                        handlers=[
+                            logging.FileHandler(log_fpath, mode='w'),
+                            logging.StreamHandler()
+                        ]
+    )
+    logger = logging.getLogger()
 
     if args.get_formula_stats:
         get_valid_composed_formulas(args.data_fpath, args.nclauses, FEASIBLE_OPERATORS)
