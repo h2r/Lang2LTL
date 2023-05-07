@@ -12,4 +12,4 @@ module load python/3.9.0
 source /gpfs/runtime/opt/miniconda/4.10/etc/profile.d/conda.sh
 conda activate ~/anaconda/lang2ltl
 nvidia-smi
-python llama_test.py
+python llama_example.py
