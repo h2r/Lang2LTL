@@ -13,4 +13,4 @@ module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-python s2s_hf_transformers.py --data data/holdout_split_batch12_perm/composed_formula/composed_formula_symbolic_batch12_noperm_900_42_fold0.pkl --model t5-base
+python /users/$USER/lang2ltl/s2s_hf_transformers.py --data /users/$USER/lang2ltl/data/composed_formula/composed_formula_symbolic_batch12_noperm_900_42_fold0.pkl --model t5-base
