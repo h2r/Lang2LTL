@@ -34,7 +34,7 @@ python -m spacy download en_core_web_sm
 ```
 
 ## Install LLaMA
-
+To install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform) to request access to model weights. After downloaded, the weights can be converted and loaded easily with huggingface model classes. Please refer to the [huggnigface documentation](https://huggingface.co/docs/transformers/main/model_doc/llama) for more instructions.
 
 # Files
 ```experiment.py```: main function to start running all experiments for evaluation full translation system.
