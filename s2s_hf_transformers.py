@@ -19,7 +19,7 @@ MAX_TAR_LEN = 256
 BATCH_SIZE = 20
 
 
-def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
+def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=0.2, test_size=0.1):
     """
     Followed most of the tutorial at
     https://medium.com/nlplanet/a-full-guide-to-finetuning-t5-for-text2text-and-building-a-demo-with-streamlit-c72009631887
@@ -58,7 +58,7 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True, max_length=MAX_TAR_LEN)
         return metric.compute(predictions=decoded_preds, references=decoded_labels)
 
-    input_seqs, output_seqs, input_seqs_valid, output_seqs_valid = construct_dataset(fpath)
+    input_seqs, output_seqs, input_seqs_valid, output_seqs_valid = construct_dataset(data_fpath)
     symbolic_dataset = DatasetDict({'train': Dataset.from_dict({'utterance': input_seqs, 'ltl_formula': output_seqs}),
                                     'test': Dataset.from_dict({'utterance': input_seqs_valid, 'ltl_formula': output_seqs_valid})})
     dataset_train_valid = symbolic_dataset["test"].train_test_split(test_size=test_size)
@@ -101,7 +101,10 @@ def finetune_t5(model_name, tokenizer, fpath, valid_size=0.2, test_size=0.1):
     )
 
     trainer.train()
-    trainer.save_model()
+    if model_dpath:
+        trainer.save_model(model_dpath)
+    else:
+        trainer.save_model()
 
 
 def construct_dataset(fpath):
@@ -149,9 +152,13 @@ def finetune_t5_old(input_sequences, output_sequences, tokenizer, model):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl', help='file path to train and test data for supervised seq2seq')
-    parser.add_argument('--model', type=str, help='name of supervised seq2seq model')
+    parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="file path to train and test data for supervised seq2seq.")
+    parser.add_argument("--model_dpath", type=str, default=None, help="directory to save model checkpoints.")
+    parser.add_argument("--model", type=str, help="name of supervised seq2seq model")
     args = parser.parse_args()
+
+    print(f"Finetune dataset: {args.data_fpath}")
+    print(f"Save model checkpoints to: {args.model_dpath}")
 
     tokenizer = AutoTokenizer.from_pretrained(args.model)
     # config = AutoConfig.from_pretrained(args.model) # load from config lead to much worse performance
@@ -160,12 +167,12 @@ if __name__ == '__main__':
     model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
 
     if args.model in T5_MODELS or os.path.exists(args.model):
-        finetune_t5(args.model, tokenizer, args.data)
+        finetune_t5(args.model, tokenizer, args.data_fpath, args.model_dpath)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
     # tensorboard --logdir=model/runs
 
-    # input_sequences, output_sequences = construct_dataset(args.data)
+    # input_sequences, output_sequences = construct_dataset(args.data_fpath)
 
     # if args.model in T5_MODELS:
     #     finetune_t5(input_sequences, output_sequences, tokenizer, model)
