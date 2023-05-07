@@ -12,7 +12,7 @@ module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-data_fpath = "$HOME/data/shared/lang2ltl/data/composed_formula/composed_formula_symbolic_batch12_noperm_900_42_fold0.pkl"
-model_dpath = "$HOME/data/shared/lang2ltl/model"
+DATA_FPATH="$HOME/data/shared/lang2ltl/data/composed_formula/composed_formula_symbolic_batch12_noperm_900_42_fold0.pkl"
+MODEL_FPATH="$HOME/data/shared/lang2ltl/model"
 
-python $HOME/lang2ltl/s2s_hf_transformers.py --data $data_fpath --model_dpath $model_dapth --model t5-base
+python $HOME/lang2ltl/s2s_hf_transformers.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base
