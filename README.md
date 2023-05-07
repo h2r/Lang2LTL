@@ -2,12 +2,11 @@
 ```
 conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
 conda activate lang2ltl
-pip install openai
-pip install tiktoken
+pip install openai tiktoken 
 pip install nltk seaborn
-conda install pytorch torchtext torchdata -c pytorch
-pip install tensorboard
-pip install transformers datasets evaluate
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia  # GPU
+conda install pytorch torchtext torchdata -c pytorch  # CPU
+pip install tensorboard transformers datasets evaluate
 ```
 
 If needed, upgrade openai package (e.g., to use GPT-4)
@@ -34,7 +33,11 @@ python -m spacy download en_core_web_sm
 ```
 
 ## Install LLaMA
-To install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform) to request access to model weights. After downloaded, the weights can be converted and loaded easily with huggingface model classes. Please refer to the [huggnigface documentation](https://huggingface.co/docs/transformers/main/model_doc/llama) for more instructions.
+Make sure to complete the installation instructions above.
+
+Then too install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform) to request access to model weights. After downloaded, the weights can be converted and loaded with huggingface model classes. Please refer to the [huggnigface documentation](https://huggingface.co/docs/transformers/main/model_doc/llama) for more instructions.
+
+
 
 # Files
 ```experiment.py```: main function to start running all experiments for evaluation full translation system.
@@ -70,6 +73,7 @@ To install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [fo
 ```tester.py```: unittests.
 
 ```dataset_corlw.py```: construct grounded train and test sets for CoRL22-W.
+
 
 
 # Finetuning GPT-3
@@ -118,26 +122,9 @@ learning_rate = 1e-4
 weight_decay = 0.01
 num_train_epochs = 5
 ```
-We use a single NVIDIA GeForce RTX 3090 (24GiB) for finetuning, and completing one fold of the holdout test set takes ~2 hours.
+We use a single NVIDIA GeForce RTX 3090 (24GB) for finetuning, and completing one fold of the holdout test set takes ~2 hours.
 
-# Running Jobs on Cluster
-For submitting jobs on clusters, please refer to the bash scripts templates under `bash_scripts/`. 
-## Finetuning T5
-for finetuning t5 from huggingface, please refer to `t5_finetuning` and make modifications if neccesary. The lines you might want to modify are:
-1. Request running time
-```
-#SBATCH --time=10:00:00
-```
-2. Request proper graphic card
-```
-#SBATCH -p 3090-gcondo --gres=gpu:1
-```
-3. Fill in `YOUR_USER_NAME`, dataset file path, and `MODEL_NAME`, respectively. Notice that we only support finetuning on single gpu right now, so you may want to refer to your hardware specs to decide which pretrained model to use. Supported models are `t5-small`, `t5-base`, `t5-large`, `t5-3b`.
-```
-/users/YOUR_USER_NAME/anaconda/lang2ltl/bin/python s2s_hf_transformers.py --data path/to/pkl/files --model MODEL_NAME
-```
-## LLaMA Inference
-LLaMA can be easily deployed on multiple gpu for running inference. We here provide a example code (__WIP__) and bash script `llama.sh`.
+
 
 # Run Experiments
 Temporarily set environment variables for API key and organization ID
@@ -232,12 +219,10 @@ e.g., composed datasets.
 Grounding Language to Landmarks in Arbitrary Outdoor Environments [Berg et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/berg20.pdf),
 [code](https://github.com/jasonxyliu/magic-skydio)
 
-## GRU-based Sequence-to-Sequence
+## GRU-based Sequence-to-Sequence-Attention
 Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications [Gopalan et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/gopalan18.pdf)
 [code](https://github.com/h2r/lggltl/tree/master/models)
 
 ## Code as Policies
 Code as Policies: Language Model Programs for Embodied Control [Liang, et al. 22](https://arxiv.org/abs/2209.07753)
 [code](https://colab.research.google.com/drive/1UgMpP-b-TnSs4pgpTUj63sSSJsXRTgxC?usp=sharing)
-
-
