@@ -65,7 +65,7 @@ def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=
     symbolic_dataset["validation"] = dataset_train_valid["test"]
     dataset_tokenized = symbolic_dataset.map(preprocess_data, batched=True)
     train_args = Seq2SeqTrainingArguments(
-        output_dir=f"model/{model_name}",
+        output_dir=f"{model_dpath}/{model_name}",
         evaluation_strategy="steps",
         eval_steps=1000,
         logging_strategy="steps",
