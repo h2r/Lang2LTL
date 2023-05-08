@@ -8,21 +8,21 @@ from pathlib import Path
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, T5Tokenizer, T5ForConditionalGeneration
 
-from s2s_hf_transformers import T5_PREFIX, T5_MODELS
+from s2s_hf_transformers import T5_PREFIX, MODELS
 from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
 from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from eval import evaluate_lang_from_file
-from utils import count_params
+from utils import count_params, load_from_file
 
 
 class Seq2Seq:
     def __init__(self, model_type, checkpoint=None, **kwargs):
         self.model_type = model_type
 
-        if self.model_type in T5_MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
+        if self.model_type in MODELS:  # https://huggingface.co/docs/transformers/model_doc/t5
             model_dir = f"model/{model_type}"
             if checkpoint: model_dir += f'/checkpoint-{checkpoint}'
             self.tokenizer = AutoTokenizer.from_pretrained(model_dir)
@@ -44,7 +44,7 @@ class Seq2Seq:
             raise ValueError(f'ERROR: unrecognized model: {model_type}')
 
     def translate(self, queries):
-        if self.model_type in T5_MODELS or "bart" in args.model:
+        if self.model_type in MODELS or "bart" in args.model:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
             inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
             output_tokens = self.model.generate(
@@ -68,8 +68,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--split_dataset_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="complete file path or prefix of file paths to train test split dataset.")
     parser.add_argument("--model", type=str, default="t5-base", choices=["t5-base", "t5-small", "bart-base", "pt_transformer"], help="name of supervised seq2seq model.")
-    parser.add_argument("--checkpoint", type=str, default=None)
+    parser.add_argument("--checkpoint", type=str, default=None, help="checkpoint to use for inferance.")
+    # parser.add_argument("--model2ckpt_fpath", type=str, default="model/s2s_models.pkl", help="best checkpoints for models.")
     args = parser.parse_args()
+    # model2ckpt = load_from_file(args.model2ckpt_fpath)
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
@@ -89,7 +91,7 @@ if __name__ == "__main__":
         train_iter, train_meta, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
 
         # Load trained model
-        if args.model in T5_MODELS or "bart" in args.model:  # pretrained T5/Bart from Hugging Face
+        if args.model in MODELS or "bart" in args.model:  # pretrained T5/Bart from Hugging Face
             if args.checkpoint:
                 s2s = Seq2Seq(args.model, checkpoint=args.checkpoint)
             else:
@@ -106,7 +108,7 @@ if __name__ == "__main__":
         logging.info(f"Number of training samples: {len(train_iter)}")
         logging.info(f"Number of validation samples: {len(valid_iter)}\n")
 
-        # Evaluation
+        # Evaluate
         result_log_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_log.csv"
         analysis_fpath = "data/analysis_symbolic_batch12_perm.csv"
         acc_fpath = f"results/s2s_{args.model}_{Path(split_dataset_fpath).stem}_acc.csv"
