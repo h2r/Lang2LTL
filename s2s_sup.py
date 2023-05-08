@@ -21,7 +21,7 @@ MODELS = MODELS.extend(["pt_transformer"])
 
 
 class Seq2Seq:
-    def __init__(self, model_dpath, model_name, checkpoint=None, **kwargs):
+    def __init__(self, model_dpath, model_name, **kwargs):
         self.model_name = model_name
 
         if "t5" in model_name or "bart" in model_name:
@@ -95,7 +95,7 @@ if __name__ == "__main__":
         if "t5" in args.model or "bart" in args.model:  # pretrained T5/Bart from Hugging Face
             model_dpath = os.path.join(args.model_dpath, args.model)
             if checkpoint: model_dpath = os.path.join(model_dpath, f"checkpoint-{checkpoint}")
-            s2s = Seq2Seq(model_dpath, args.model, checkpoint=checkpoint)
+            s2s = Seq2Seq(model_dpath, args.model)
         elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
             vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
             model_params = f"model/s2s_{args.model}_{Path(data_fpath).stem}.pth"

@@ -16,4 +16,4 @@ DATA_FPATH="$HOME/data/shared/lang2ltl/data/composed_formula/composed_formula_sy
 MODEL_FPATH="$HOME/data/shared/lang2ltl/model"
 CKPT=8000
 
-python $HOME/lang2ltl/s2s_sup.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base --checkpoint CKPT
+python $HOME/lang2ltl/s2s_sup.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base --checkpoint $CKPT
