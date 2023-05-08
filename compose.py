@@ -11,10 +11,10 @@ from utils import deserialize_props_str, load_from_file, save_to_file
 
 UNARY_OPERATORS = ["not", "next", "finally", "always"]
 BINARY_OPERATORS = ["and", "or", "implies", "until"]
-FEASIBLE_OPERATORS = ["and", "or"]  # operators currently supported
+COMPOSE_OPERATORS = ["and", "or"]  # operators currently supported
 
 
-def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt, logger):
+def compose(data_fpath, nclauses, compose_operators, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt, logger):
     """
     Construct composed dataset.
     In one pass of base dataset, construct composed dataset for zero-shot transfer, formula and utterance holdout.
@@ -27,7 +27,7 @@ def compose(data_fpath, nclauses, feasible_operators, ignore_repeat, size_formul
     ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta = load_base_dataset(data_fpath, logger)
 
     # Construct composed dataset
-    operator_seqs = list(product(feasible_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
+    operator_seqs = list(product(compose_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
     base_ltl_seqs = list(product(all_base_ltls, repeat=nclauses))  # all combs of base formulas
 
     composed_zeroshot = defaultdict(list)  # by itself serve as test set for zero-shot transfer
@@ -127,7 +127,7 @@ def compose_single(operators, base_ltls, ltl2utts, all_ltls_spot, ltl2meta, igno
             elif operator == "or":
                 utt_composed, ltl_composed = compose_or(utts_base, ltls_base)
             else:
-                raise ValueError(f"ERROR: operator not yet supported: {operator}.")
+                raise ValueError(f"ERROR: operator not supported: {operator}.")
             # logger.info(f"Composed pair {pair_idx}:\n{utts_base}\n{formulas_base}\n{utt_composed}\n{formula_composed}\n")
 
             # Check composed formula for incorrect syntax, feasibility, redundancy before adding to composed dataset
@@ -198,7 +198,7 @@ def load_base_dataset(data_fpath, logger):
     return ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta
 
 
-def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
+def get_valid_composed_formulas(data_fpath, nclauses, compose_operators):
     """
     A valid composed formula does not have syntax, infeasibility, or repeat existing base formula.
     """
@@ -216,7 +216,7 @@ def get_valid_composed_formulas(data_fpath, nclauses, feasible_operators):
     _, all_base_ltls, all_base_ltls_spot, _ = load_base_dataset(data_fpath, logger)
 
     # Construct composed formula; count errors
-    operator_seqs = list(product(feasible_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
+    operator_seqs = list(product(compose_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
     base_ltl_seqs = list(product(all_base_ltls, repeat=nclauses))  # all combs of base formulas
     err2count = defaultdict(int)  # composed formula: correct, syntax error, infeasible, repeat
     nattempts = 0
@@ -299,7 +299,7 @@ if __name__ == "__main__":
     logger = logging.getLogger()
 
     if args.get_formula_stats:
-        get_valid_composed_formulas(args.data_fpath, args.nclauses, FEASIBLE_OPERATORS)
+        get_valid_composed_formulas(args.data_fpath, args.nclauses, COMPOSE_OPERATORS)
     else:
-        compose(args.data_fpath, args.nclauses, FEASIBLE_OPERATORS, args.ignore_repeat,
-                args.size_formula, args.seed_formula, args.size_utt, args.seeds_utt)
+        compose(args.data_fpath, args.nclauses, COMPOSE_OPERATORS, args.ignore_repeat,
+                args.size_formula, args.seed_formula, args.size_utt, args.seeds_utt, logger)
