@@ -6,7 +6,7 @@ pip install openai tiktoken
 pip install nltk seaborn
 conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia  # GPU
 conda install pytorch torchtext torchdata -c pytorch  # CPU
-pip install tensorboard transformers datasets evaluate
+pip install tensorboard transformers datasets evaluate torchtext
 ```
 
 If needed, upgrade openai package (e.g., to use GPT-4)
