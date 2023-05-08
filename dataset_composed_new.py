@@ -130,10 +130,10 @@ if __name__ == "__main__":
     parser.add_argument("--nsamples", type=int, default=10, choices=[10, None], help="number of samples in composed dataset. None to construct entire composed dataset.")
     parser.add_argument("--split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
-    parser.add_argument("--holdout", action="store_true", help="True if to construct utterance, formula holdout from train test split dataset.")
+    parser.add_argument("--split_fpath", type=str, default=None, help="given train test split dataset to construct utterance, formula holdout.")
     args = parser.parse_args()
 
-    log_prefix = "holdout" if args.holdout else "sample-split"
+    log_prefix = "holdout" if args.split_fpath else "sample-split"
     log_fpath = f"{args.composed_dpath}/{log_prefix}_nsamples{args.nsamples}_raito{args.split_ratio}_seed{args.seed}_{Path(args.base_fpath).stem}.log"
     logging.basicConfig(level=logging.INFO,
                         format='%(message)s',
@@ -144,7 +144,8 @@ if __name__ == "__main__":
                         )
     logger = logging.getLogger()
 
-    base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, logger)
-    split_fpath = construct_split_datasets(base_fpath, composed_fpath, args.split_ratio, args.seed, logger)
-    if args.holdout:
-        utt_fpath, formula_fpath = construct_holdout_datasets(split_fpath)
+    if args.split_fpath:
+        utt_fpath, formula_fpath = construct_holdout_datasets(args.split_fpath)
+    else:
+        base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, logger)
+        split_fpath = construct_split_datasets(base_fpath, composed_fpath, args.split_ratio, args.seed, logger)
