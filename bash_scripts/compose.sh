@@ -15,4 +15,4 @@ COMPOSED_FPATH="$HOME/data/shared/lang2ltl/data/composed"
 NSAMPLES=5000000
 RATIO=0.6
  
-python $HOME/lang2ltl/dataset_composed_new.py --base_fpath BASE_FPATH --composed_dpath COMPOSED_FPATH --nsamples $NSAMPLES --split_ratio $RATIO
+python $HOME/lang2ltl/dataset_composed_new.py --base_fpath $BASE_FPATH --composed_dpath $COMPOSED_FPATH --nsamples $NSAMPLES --split_ratio $RATIO
