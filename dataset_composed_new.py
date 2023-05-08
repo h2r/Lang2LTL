@@ -127,7 +127,7 @@ if __name__ == "__main__":
     parser.add_argument("--base_fpath", type=str, default="data/symbolic_batch12_perm.csv", help="base dataset.")
     parser.add_argument("--composed_dpath", type=str, default="data/composed", help="dir to save composed dataset.")
     parser.add_argument("--nclauses", type=int, default=2, help="number of clauses in composed formula.")
-    parser.add_argument("--nsamples", type=int, default=10, choices=[10, None], help="number of samples in composed dataset. None to construct entire composed dataset.")
+    parser.add_argument("--nsamples", type=int, default=10, help="number of samples in composed dataset. None to construct entire composed dataset.")
     parser.add_argument("--split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
     parser.add_argument("--split_fpath", type=str, default=None, help="given train test split dataset to construct utterance, formula holdout.")
