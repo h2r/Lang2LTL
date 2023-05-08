@@ -14,11 +14,10 @@ from utils import load_from_file, save_to_file, deserialize_props_str
 
 def load_base_dataset(base_fpath, logger):
     base_dataset = load_from_file(base_fpath)
-    base_data, base_meta = [], []
-    base_ltls = set()
+    base_data, base_meta, base_ltls = [], [], set()
     for pattern_type, props_str, utt, ltl in base_dataset:
-        props = deserialize_props_str(props_str)
         base_data.append((utt, ltl))
+        props = deserialize_props_str(props_str)
         base_meta.append((pattern_type, props))
         base_ltls.add(ltl)
     logger.info(f"Base dataset nsamples: {len(base_data)}, {len(base_meta)}")
@@ -92,8 +91,7 @@ def construct_holdout_datasets(split_fpath):
     train_data, train_meta = split_dataset["train_iter"], split_dataset["train_meta"]
     test_data, test_meta = split_dataset["valid_iter"], split_dataset["valid_meta"]
 
-    utt_data, utt_meta, formula_data, formula_meta = [], [], [], []
-    utt_ltls, formula_ltls = set(), set()
+    utt_data, utt_meta, utt_ltls, formula_data, formula_meta, formula_ltls = [], [], set(), [], [], set()
     for (utt, ltl), meta in zip(test_data, test_meta):
         if ltl in train_data:  # TODO: use Spot equivalent check
             utt_data.append((utt, ltl))
@@ -105,35 +103,42 @@ def construct_holdout_datasets(split_fpath):
             formula_ltls.add(ltl)
 
     utt_fpath = os.path.join(os.path.dirname(split_fpath), f"utt_{os.path.basename(split_fpath)}")
-    save_to_file({"train_iter": train_data, "train_meta": train_meta, "valid_iter": utt_data, "valid_meta": utt_meta,
+    save_to_file({"train_iter": train_data, "train_meta": train_meta,
+                  "valid_iter": utt_data, "valid_meta": utt_meta,
                   "info": split_dataset["info"]}, utt_fpath)
     formula_fpath = os.path.join(os.path.dirname(split_fpath), f"formula_{os.path.basename(split_fpath)}")
-    save_to_file({"train_iter": train_data, "train_meta": train_meta, "valid_iter": formula_data, "valid_meta": formula_meta,
+    save_to_file({"train_iter": train_data, "train_meta": train_meta,
+                  "valid_iter": formula_data, "valid_meta": formula_meta,
                   "info": split_dataset["info"]}, formula_fpath)
 
     logger.info(f"Utterance holdout: {utt_fpath}")
-    logger.info(f"Utterance holdout nsamples: {len(utt_data)}, {len(utt_meta)}")
-    logger.info(f"Utterance holdout nformulas: {len(utt_ltls)}")
+    logger.info(f"Utterance holdout train nsamples: {len(train_data)}, {len(train_meta)}")
+    logger.info(f"Utterance holdout test nsamples: {len(utt_data)}, {len(utt_meta)}")
+    logger.info(f"Utterance holdout test nformulas: {len(utt_ltls)}")
     logger.info(f"Formula holdout: {formula_fpath}")
-    logger.info(f"Formula holdout nsamples: {len(formula_data)}, {len(formula_meta)}")
-    logger.info(f"Formula holdout nformulas: {len(formula_ltls)}")
+    logger.info(f"Formula holdout train nsamples: {len(train_data)}, {len(train_meta)}")
+    logger.info(f"Formula holdout test nsamples: {len(formula_data)}, {len(formula_meta)}")
+    logger.info(f"Formula holdout test nformulas: {len(formula_ltls)}")
     return utt_fpath, formula_fpath
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--base_fpath", type=str, default="data/symbolic_batch12_perm.csv", help="base dataset.")
-    parser.add_argument("--composed_dpath", type=str, default="data/composed", help="direction to save composed dataset.")
+    parser.add_argument("--composed_dpath", type=str, default="data/composed", help="dir to save composed dataset.")
     parser.add_argument("--nclauses", type=int, default=2, help="number of clauses in composed formula.")
     parser.add_argument("--nsamples", type=int, default=10, choices=[10, None], help="number of samples in composed dataset. None to construct entire composed dataset.")
     parser.add_argument("--split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
+    parser.add_argument("--holdout", action="store_true", help="True if to construct utterance, formula holdout from train test split dataset.")
     args = parser.parse_args()
 
+    log_prefix = "holdout" if args.holdout else "sample-split"
+    log_fpath = f"{args.composed_dpath}/{log_prefix}_nsamples{args.nsamples}_raito{args.split_ratio}_seed{args.seed}_{Path(args.base_fpath).stem}.log"
     logging.basicConfig(level=logging.INFO,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(f"{os.path.dirname(args.base_fpath)}/log_composed_{Path(args.base_fpath).stem}.log", mode='w'),
+                            logging.FileHandler(log_fpath, mode='w'),
                             logging.StreamHandler()
                         ]
                         )
@@ -141,4 +146,5 @@ if __name__ == "__main__":
 
     base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, logger)
     split_fpath = construct_split_datasets(base_fpath, composed_fpath, args.split_ratio, args.seed, logger)
-    # utt_fpath, formula_fpath = construct_holdout_datasets(split_fpath)
+    if args.holdout:
+        utt_fpath, formula_fpath = construct_holdout_datasets(split_fpath)
