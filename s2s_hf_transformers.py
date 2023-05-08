@@ -1,7 +1,6 @@
 """
 Finetune pre-trained transformer models from Hugging Face.
 """
-import os
 import argparse
 import numpy as np
 from datasets import Dataset, DatasetDict
@@ -11,7 +10,7 @@ import evaluate
 
 from dataset_symbolic import load_split_dataset
 
-MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "facebook/bart-base"]
+MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bart-base"]
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
@@ -171,7 +170,7 @@ if __name__ == '__main__':
         finetune_t5(args.model, tokenizer, args.data_fpath, args.model_dpath)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
-    # tensorboard --logdir=model/runs
+    # tensorboard --logdir=model/t5-base/runs
 
     # input_sequences, output_sequences = construct_dataset(args.data_fpath)
     # finetune_t5(input_sequences, output_sequences, tokenizer, model)
