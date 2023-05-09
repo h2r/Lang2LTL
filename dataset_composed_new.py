@@ -26,10 +26,14 @@ def load_base_dataset(base_fpath, logger):
 
 
 def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, composed_dpath, logger):
-    base_data, base_meta = load_base_dataset(base_fpath, logger)
-    based_dataset = {"data": base_data, "meta": base_meta}
     base_fpath = os.path.join(composed_dpath, f"base_{Path(base_fpath).stem}.pkl")
-    save_to_file(based_dataset, base_fpath)
+    if os.path.exists(base_fpath):
+        based_dataset = load_from_file(base_fpath)
+        base_data, base_meta = based_dataset["data"], based_dataset["meta"]
+    else:
+        base_data, base_meta = load_base_dataset(base_fpath, logger)
+        based_dataset = {"data": base_data, "meta": base_meta}
+        save_to_file(based_dataset, base_fpath)
 
     composed_data, composed_meta = [], []
     random.seed(seed)
