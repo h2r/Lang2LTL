@@ -40,6 +40,11 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
         data, meta = zip(*random.sample(list(zip(base_data, base_meta)), 2))
         utts_base, ltls_base = zip(*data)
 
+        type_composed = '-'.join([compose_operator] + [f"{pattern_type}_{len(props)}" for pattern_type, props in meta])
+        _, props = zip(*meta)
+        props_composed = sum(props, [])
+        meta_composed = (type_composed, props_composed)
+
         if compose_operator == "and":
             utt_composed, ltl_composed = compose_and(utts_base, ltls_base)
         elif compose_operator == "or":
@@ -48,7 +53,7 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
             raise ValueError(f"ERROR: operator not supported: {compose_operator}.")
 
         composed_data.append((utt_composed, ltl_composed))
-        composed_meta.append(meta)
+        composed_meta.append(meta_composed)
 
     composed_dataset = {"data": composed_data, "meta": composed_meta}
     composed_fpath = os.path.join(composed_dpath, f"composed_nsamples{nsamples}_seed{seed}_{Path(base_fpath).stem}.pkl")
