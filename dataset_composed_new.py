@@ -43,7 +43,7 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
         type_composed = '-'.join([compose_operator] + [f"{pattern_type}_{len(props)}" for pattern_type, props in meta])
         _, props = zip(*meta)
         props_composed = sum(props, [])
-        meta_composed = (type_composed, props_composed)
+        meta_composed = (type_composed, props_composed)  # "and-visit_2-global_avoidance_1", ["a", "b", "c"]
 
         if compose_operator == "and":
             utt_composed, ltl_composed = compose_and(utts_base, ltls_base)
