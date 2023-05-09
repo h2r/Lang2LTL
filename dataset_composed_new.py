@@ -5,6 +5,7 @@ import os
 from pathlib import Path
 import argparse
 import logging
+from tqdm import tqdm
 import random
 from sklearn.model_selection import train_test_split
 
@@ -25,7 +26,16 @@ def load_base_dataset(base_fpath, logger):
     return base_data, base_meta
 
 
-def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, composed_dpath, logger):
+def save_composed_dataset(composed_data, composed_meta, composed_fpath):
+    if os.path.exists(composed_fpath):
+        composed_dataset = load_from_file(base_fpath)
+        composed_data.extend(composed_dataset["data"])
+        composed_meta.extend(composed_dataset["meta"])
+    composed_dataset = {"data": composed_data, "meta": composed_meta}
+    save_to_file(composed_dataset, composed_fpath)
+
+
+def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, composed_dpath, save_every, logger):
     base_fpath = os.path.join(composed_dpath, f"base_{Path(base_fpath).stem}.pkl")
     if os.path.exists(base_fpath):
         based_dataset = load_from_file(base_fpath)
@@ -36,8 +46,9 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
         save_to_file(based_dataset, base_fpath)
 
     composed_data, composed_meta = [], []
+    composed_fpath = os.path.join(composed_dpath, f"sample_nsamples{nsamples}_seed{seed}_{Path(base_fpath).stem}.pkl")
     random.seed(seed)
-    for sample_id in range(nsamples):
+    for sample_id in tqdm(range(nsamples)):
         logger.info(f"Composing sample {sample_id}")
 
         compose_operator = random.sample(compose_operators, 1)[0]
@@ -59,9 +70,9 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
         composed_data.append((utt_composed, ltl_composed))
         composed_meta.append(meta_composed)
 
-    composed_dataset = {"data": composed_data, "meta": composed_meta}
-    composed_fpath = os.path.join(composed_dpath, f"composed_nsamples{nsamples}_seed{seed}_{Path(base_fpath).stem}.pkl")
-    save_to_file(composed_dataset, composed_fpath)
+        if (sample_id + 1) % save_every == 0:
+            save_composed_dataset(composed_data, composed_meta, composed_fpath)
+
     return base_fpath, composed_fpath
 
 
@@ -139,6 +150,7 @@ if __name__ == "__main__":
     parser.add_argument("--nsamples", type=int, default=10, help="number of samples in composed dataset. None to construct entire composed dataset.")
     parser.add_argument("--split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
+    parser.add_argument("--save_every", type=int, default=10000, help="save composed sample frequency.")
     parser.add_argument("--split_fpath", type=str, default=None, help="given train test split dataset to construct utterance, formula holdout.")
     args = parser.parse_args()
 
@@ -156,5 +168,5 @@ if __name__ == "__main__":
     if args.split_fpath:
         utt_fpath, formula_fpath = construct_holdout_datasets(args.split_fpath)
     else:
-        base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, logger)
+        base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, args.save_every, logger)
         split_fpath = construct_split_datasets(base_fpath, composed_fpath, args.split_ratio, args.seed, logger)

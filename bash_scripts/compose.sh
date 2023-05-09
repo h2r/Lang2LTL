@@ -12,7 +12,8 @@ conda activate lang2ltl
 
 BASE_FPATH="$HOME/data/shared/lang2ltl/data/symbolic_batch12_perm.csv"
 COMPOSED_FPATH="$HOME/data/shared/lang2ltl/data/composed"
-NSAMPLES=5000000
+NSAMPLES=1000000
 RATIO=0.6
+SAVE_EVERY=100
 
-python $HOME/lang2ltl/dataset_composed_new.py --base_fpath $BASE_FPATH --composed_dpath $COMPOSED_FPATH --nsamples $NSAMPLES --split_ratio $RATIO
+python $HOME/lang2ltl/dataset_composed_new.py --base_fpath $BASE_FPATH --composed_dpath $COMPOSED_FPATH --nsamples $NSAMPLES --split_ratio $RATIO --save_every $SAVE_EVERY
