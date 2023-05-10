@@ -8,7 +8,7 @@ from pathlib import Path
 import torch
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
-from s2s_hf_transformers import T5_PREFIX, MODELS
+from s2s_hf_transformers import T5_PREFIX, HF_MODELS
 from s2s_pt_transformer import Seq2SeqTransformer, \
     NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD, DIM_FFN_HID
 from s2s_pt_transformer import translate as pt_transformer_translate
@@ -17,7 +17,7 @@ from dataset_symbolic import load_split_dataset
 from eval import evaluate_lang_from_file
 from utils import count_params, load_from_file
 
-MODELS = MODELS.extend(["pt_transformer"])
+S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
 
 
 class Seq2Seq:
@@ -63,11 +63,11 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="complete file path or prefix of file paths to train test split dataset.")
     parser.add_argument("--model_dpath", type=str, default=None, help="directory to save model checkpoints.")
-    parser.add_argument("--model", type=str, default="t5-base", choices=MODELS, help="name of supervised seq2seq model.")
+    parser.add_argument("--model", type=str, default="t5-base", choices=S2S_MODELS, help="name of supervised seq2seq model.")
     parser.add_argument("--model2ckpt_fpath", type=str, default=None, help="best checkpoint for models.")
     parser.add_argument("--checkpoint", type=str, default=None, help="checkpoint to use for inferance.")
     args = parser.parse_args()
-    checkpoint = load_from_file(args.model2ckpt_fpath)["model"] if args.model2ckpt_fpath else args.checkpoint
+    checkpoint = load_from_file(args.model2ckpt_fpath)[args.model] if args.model2ckpt_fpath else args.checkpoint
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',

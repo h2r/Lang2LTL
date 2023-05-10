@@ -10,7 +10,7 @@ import evaluate
 
 from dataset_symbolic import load_split_dataset
 
-MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bart-base"]
+HF_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bart-base"]
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
@@ -154,7 +154,7 @@ if __name__ == '__main__':
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="train and test sets.")
     parser.add_argument("--model_dpath", type=str, default=None, help="directory to save model checkpoints.")
     parser.add_argument("--cache_dpath", type=str, default="$HOME/.cache/huggingface", help="huggingface cache.")
-    parser.add_argument("--model", type=str, choices=MODELS, help="name of supervised seq2seq model")
+    parser.add_argument("--model", type=str, choices=HF_MODELS, help="name of supervised seq2seq model")
     args = parser.parse_args()
 
     print(f"Finetune dataset: {args.data_fpath}")

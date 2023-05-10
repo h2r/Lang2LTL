@@ -5,9 +5,8 @@ from openai.embeddings_utils import cosine_similarity
 
 from get_embed import store_embeds
 from gpt import GPT3, GPT4
-from s2s_sup import Seq2Seq, T5_MODELS
-from s2s_pt_transformer import construct_dataset_meta
-from dataset_symbolic import load_split_dataset
+from s2s_sup import Seq2Seq
+from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
@@ -99,8 +98,6 @@ def ground_names(names, name_embed, obj_embed, ground_model, embed_engine, topk)
 
     if ground_model == "gpt3":
         ground_module = GPT3(embed_engine)
-    # elif embed_model == "bert":
-    #     ground_module = BERT()
     else:
         raise ValueError(f"ERROR: grounding module not recognized: {ground_model}")
 
@@ -141,37 +138,28 @@ def ground_utterances(input_strs, utt2names, name2grounds):
     return output_strs, subs_per_str
 
 
-def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None, s2s_sup_data=None, checkpoint=None):
+def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None):
     """
     Translation language to LTL modular approach.
     :param ground_utts: Input utterances with name entities grounded to objects in given environment.
     :param objs_per_utt: grounding objects for each input utterance.
-    :param sym_trans_model: symbolic translation model, gpt3_finetuned, gpt3_pretrained, t5-base, t5-small, pt_transformer
-    :param translation_engine: finetuned or pretrained GPT-3 engine to use for translation.
+    :param sym_trans_model: symbolic translation model, gpt3_finetuned, gpt3_pretrained, t5-base.
+    :param translation_engine: pretrained T5 model weights, finetuned or pretrained GPT-3 engine to use for translation.
     :param convert_rule: referring expression to proposition conversion rule.
     :param props: all possible propositions.
     :param trans_modular_prompt: prompt for pretrained GPT-3.
-    :param s2s_sup_data: file path to train and test data for supervised seq2seq.
     :return: output grounded LTL formulas, corresponding intermediate symbolic LTL formulas, placeholder maps
     """
-    if "ft" in translation_engine:
-        trans_modular_prompt = ""
-    elif "text-davinci" in translation_engine:
-        trans_modular_prompt = load_from_file(trans_modular_prompt)
-    else:
-        raise ValueError(f"ERROR: Unrecognized translation engine: {translation_engine}")
-
-    if "gpt3" in sym_trans_model:
+    if sym_trans_model in HF_MODELS:
+        trans_module = Seq2Seq(translation_engine, sym_trans_model)
+    elif "gpt3" in sym_trans_model:
         trans_module = GPT3(translation_engine)
-    elif sym_trans_model in T5_MODELS:
-        trans_module = Seq2Seq(sym_trans_model, checkpoint=checkpoint)
-    elif sym_trans_model == "pt_transformer":
-        train_iter, _, _, _ = load_split_dataset(s2s_sup_data)
-        vocab_transform, text_transform, src_vocab_size, tar_vocab_size = construct_dataset_meta(train_iter)
-        model_params = f"model/s2s_{sym_trans_model}.pth"
-        trans_module = Seq2Seq(sym_trans_model,
-                               vocab_transform=vocab_transform, text_transform=text_transform,
-                               src_vocab_sz=src_vocab_size, tar_vocab_sz=tar_vocab_size, fpath_load=model_params)
+        if "ft" in translation_engine:
+            trans_modular_prompt = ""
+        elif "text-davinci" in translation_engine:
+            trans_modular_prompt = load_from_file(trans_modular_prompt)
+        else:
+            raise ValueError(f"ERROR: Unrecognized translation engine: {translation_engine}")
     else:
         raise ValueError(f"ERROR: translation module not recognized: {sym_trans_model}")
 

@@ -11,6 +11,7 @@ import spot
 
 from lang2ltl import rer, ground_names, ground_utterances, translate_modular, PROPS
 from gpt import GPT3, GPT4
+from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, substitute_single_letter
 from eval import evaluate_lang_0, evaluate_lang, evaluate_plan
 from formula_sampler import TYPE2NPROPS
@@ -47,13 +48,6 @@ def run_exp():
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
         save_to_file(pair_results, pair_result_fpath)
     else:  # Modular
-        if args.sym_trans == "gpt3_finetuned":
-            translation_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
-            translation_engine = load_from_file("model/gpt3_models.pkl")[translation_engine]
-        elif args.sym_trans == "gpt3_pretrained":
-            translation_engine = "text-davinci-003"
-        else:
-            raise ValueError(f"ERROR: unrecognized symbolic translation model: {args.sym_trans}")
         logging.info(f"RER engine: {args.rer_engine}")
         logging.info(f"Embedding engine: {args.embed_engine}")
         logging.info(f"known lmk embed: {obj_embed}")
@@ -63,12 +57,24 @@ def run_exp():
         out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
         name2grounds = ground_names(names, name_embed, obj_embed, args.ground, args.embed_engine, args.topk)
         grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in domain
+
+        if args.sym_trans in HF_MODELS:
+            checkpoint = load_from_file(args.model2ckpt_fpath)[args.sym_trans]
+            translation_engine = os.path.join(args.model_dpath, args.sym_trans, f"checkpoint-{checkpoint}")
+        elif args.sym_trans == "gpt3_finetuned":
+            translation_engine = f"gpt3_finetuned_{Path(data_fpath).stem}"
+            translation_engine = load_from_file("model/gpt3_models.pkl")[translation_engine]
+        elif args.sym_trans == "gpt3_pretrained":
+            translation_engine = "text-davinci-003"
+        else:
+            raise ValueError(f"ERROR: unrecognized symbolic translation model: {args.sym_trans}")
+
         if args.trans_e2e:
             logging.info(f"End-to-end translation engine: {translation_engine}")
             out_ltls = translate_e2e(grounded_utts, translation_engine)
         else:
             logging.info(f"Symbolic translation engine: {translation_engine}")
-            sym_utts, out_sym_ltls, out_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt, args.sym_trans, translation_engine, args.convert_rule, args.s2s_sup_data)
+            sym_utts, out_sym_ltls, out_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt, args.sym_trans, translation_engine, args.convert_rule, PROPS)
 
             # out_sym_ltls_sub = []
             # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
@@ -177,7 +183,9 @@ if __name__ == "__main__":
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module.")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine.")
     parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re.")
-    parser.add_argument("--sym_trans", type=str, default="gpt3_finetuned", choices=["gpt3_finetuned", "gpt3_pretrained", "t5-base", "t5-small", "pt_transformer"], help="symbolic translation module.")
+    parser.add_argument("--sym_trans", type=str, default="t5-base", choices=["t5-base", "gpt3_finetuned", "gpt3_pretrained"], help="symbolic translation module.")
+    parser.add_argument("--model_dpath", type=str, default=None, help="directory to model checkpoints.")
+    parser.add_argument("--model2ckpt_fpath", type=str, default=None, help="best checkpoint for models.")
     parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
     parser.add_argument("--full_e2e", type=str, default="gpt4", choices=["gpt3", "gpt4", "llama-7B", None], help="solve full translation using LLM.")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per formula in prompt.")
