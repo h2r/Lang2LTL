@@ -178,7 +178,7 @@ if __name__ == "__main__":
     parser.add_argument("--envs", action="store", type=str, nargs="+", default=["boston"], help="list of envs.")
     parser.add_argument("--holdout", type=str, default="utt", choices=["utt", "formula", "type", None], help="type of holdout test or None for all types.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module.")
-    parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt4", "llama-7B"], help="pretrained LLM for RER.")
+    parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt4"], help="GPT engine for RER.")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt.")
     parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module.")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine.")
