@@ -77,7 +77,6 @@ if __name__ == "__main__":
                         ]
     )
     logging.info(f"Load model and checkpoint: {args.model_dpath}/{args.model}/checkpoint-{args.checkpoint}")
-    logging.info(f"Evaluate on {args.data_fpath}")
 
     if "pkl" in args.data_fpath:  # complete file path, e.g. data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl
         data_fpaths = [args.data_fpath]
