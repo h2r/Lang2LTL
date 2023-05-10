@@ -69,7 +69,6 @@ def sample_composed_dataset(meta2pairs, compose_operators, nsamples, seed, logge
 
         composed_data.append((utt_composed, ltl_composed))
         composed_meta.append(meta_composed)
-
     return composed_data, composed_meta
 
 
