@@ -7,6 +7,7 @@ import argparse
 import logging
 from tqdm import tqdm
 import random
+from collections import defaultdict
 from sklearn.model_selection import train_test_split
 
 from compose import COMPOSE_OPERATORS, compose_and, compose_or
@@ -15,38 +16,37 @@ from utils import load_from_file, save_to_file, deserialize_props_str
 
 def load_base_dataset(base_fpath, logger):
     base_dataset = load_from_file(base_fpath)
-    base_data, base_meta, base_ltls = [], [], set()
+    meta2pairs, base_data, base_meta, base_ltls = defaultdict(list), [], [], set()
     for pattern_type, props_str, utt, ltl in base_dataset:
+        props = tuple(deserialize_props_str(props_str))
+        meta2pairs[(pattern_type, props)].append((utt, ltl))  # use meta not ltl as key due to repeated ltl strs, visit 1, low restricted avoidance
         base_data.append((utt, ltl))
-        props = deserialize_props_str(props_str)
         base_meta.append((pattern_type, props))
         base_ltls.add(ltl)
-    logger.info(f"Base dataset nsamples: {len(base_data)}, {len(base_meta)}")
-    logger.info(f"Base dataset nformulas: {len(base_ltls)}")
-    return base_data, base_meta
+    logger.info(f"Base dataset nsamples: {sum([len(pairs) for pairs in meta2pairs.values()])} {len(base_data)} {len(base_meta)}")
+    logger.info(f"Base dataset nformulas: {len(meta2pairs)}; repeats: {len(meta2pairs)-len(base_ltls)}")
+    return meta2pairs, base_data, base_meta, base_ltls
 
 
-def save_composed_dataset(composed_data, composed_meta, composed_fpath):
-    if os.path.exists(composed_fpath):
-        composed_dataset = load_from_file(base_fpath)
-        composed_data.extend(composed_dataset["data"])
-        composed_meta.extend(composed_dataset["meta"])
-    composed_dataset = {"data": composed_data, "meta": composed_meta}
-    save_to_file(composed_dataset, composed_fpath)
+def split_utts(meta2pairs, seed, split_ratio, logger):
+    meta2pairs_train, meta2pairs_test = {}, {}
+    for meta, pairs in meta2pairs.items():
+        assert len(set([ltl for _, ltl in pairs])) == 1, f"more than 1 ltl {[ltl for _, ltl in pairs]}"
+        pairs_train, pairs_test = train_test_split(pairs, test_size=split_ratio, random_state=seed)
+        meta2pairs_train[meta] = pairs_train
+        meta2pairs_test[meta] = pairs_test
+        logger.info(f"{meta}: train nutts {len(pairs_train)}; test nutts {len(pairs_test)}\n{pairs_train[0][0]}\n")
+    return meta2pairs_train, meta2pairs_test
 
 
-def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, composed_dpath, save_every, logger):
-    base_fpath = os.path.join(composed_dpath, f"base_{Path(base_fpath).stem}.pkl")
-    if os.path.exists(base_fpath):
-        based_dataset = load_from_file(base_fpath)
-        base_data, base_meta = based_dataset["data"], based_dataset["meta"]
-    else:
-        base_data, base_meta = load_base_dataset(base_fpath, logger)
-        based_dataset = {"data": base_data, "meta": base_meta}
-        save_to_file(based_dataset, base_fpath)
+def sample_composed_dataset(meta2pairs, compose_operators, nsamples, seed, logger):
+    base_data, base_meta = [], []
+    for meta, pairs in meta2pairs.items():
+        base_data.extend(pairs)
+        base_meta.extend([meta] * len(pairs))
+        assert len(base_data) == len(base_meta), f"meta not match data {base_data}, {base_meta}"
 
     composed_data, composed_meta = [], []
-    composed_fpath = os.path.join(composed_dpath, f"sample_nsamples{nsamples}_seed{seed}_{Path(base_fpath).stem}.pkl")
     random.seed(seed)
     for sample_id in tqdm(range(nsamples)):
         logger.info(f"Composing sample {sample_id}")
@@ -57,7 +57,7 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
 
         type_composed = '-'.join([compose_operator] + [f"{pattern_type}_{len(props)}" for pattern_type, props in meta])
         _, props = zip(*meta)
-        props_composed = sum(props, [])
+        props_composed = sum(props, ())
         meta_composed = (type_composed, props_composed)  # "and-visit_2-global_avoidance_1", ["a", "b", "c"]
 
         if compose_operator == "and":
@@ -70,76 +70,26 @@ def sample_composed_dataset(compose_operators, base_fpath, nsamples, seed, compo
         composed_data.append((utt_composed, ltl_composed))
         composed_meta.append(meta_composed)
 
-        if (sample_id + 1) % save_every == 0:
-            save_composed_dataset(composed_data, composed_meta, composed_fpath)
-
-    return base_fpath, composed_fpath
+    return composed_data, composed_meta
 
 
-def construct_split_datasets(base_fpath, composed_fpath, split_ratio, seed, logger):
-    """
-    Construct train and test split.
-    """
-    comosed_dataset = load_from_file(composed_fpath)
-    composed_data, composed_meta = comosed_dataset["data"], comosed_dataset["meta"]
+def costruct_composed_dataset(compose_operators, base_fpath, utt_split_ratio, test_split_ratio, nsamples, seed, composed_dpath, logger):
+    meta2pairs, base_data, base_meta, base_ltls = load_base_dataset(base_fpath, logger)
 
-    train_dataset, test_dataset = train_test_split(list(zip(composed_data, composed_meta)), test_size=split_ratio, random_state=seed)
-    train_data, train_meta = zip(*train_dataset)
-    test_data, test_meta = zip(*test_dataset)
+    meta2pairs_train, meta2pairs_test = split_utts(meta2pairs, seed, utt_split_ratio, logger)
 
-    base_dataset = load_from_file(base_fpath)
-    base_data, base_meta = base_dataset["data"], base_dataset["meta"]
-    train_data = tuple(base_data) + train_data
-    train_meta = tuple(base_meta) + train_meta
+    nsamples_train = int(nsamples * (1 - test_split_ratio))
+    composed_train, meta_train = sample_composed_dataset(meta2pairs_train, compose_operators, nsamples_train, seed, logger)
+    composed_dataset = {"train_iter": base_data+composed_train, "train_meta": base_meta+meta_train}
+    composed_fpath = os.path.join(composed_dpath, f"split-sample_nsamples{nsamples}_raito{utt_split_ratio}-{test_split_ratio}_seed{args.seed}_{Path(base_fpath).stem}.pkl")
+    save_to_file(composed_dataset, composed_fpath)
 
-    split_dataset = {"train_iter": train_data, "train_meta": train_meta,
-                     "valid_iter": test_data, "valid_meta": test_meta,
-                     "info": {"split_ratio": split_ratio, "seed": seed}}
-    split_fpath = os.path.join(os.path.dirname(composed_fpath), f"split_raito{split_ratio}_seed{seed}_{os.path.basename(composed_fpath)}")
-    save_to_file(split_dataset, split_fpath)
-
-    logger.info(f"Training set size: {len(train_data)}, {len(train_meta)}")
-    logger.info(f"Testin set size: {len(test_data)}, {len(test_meta)}")
-    return split_fpath
-
-
-def construct_holdout_datasets(split_fpath):
-    """
-    Construct utterance and formula holdout datasets.
-    """
-    split_dataset = load_from_file(split_fpath)
-    train_data, train_meta = split_dataset["train_iter"], split_dataset["train_meta"]
-    test_data, test_meta = split_dataset["valid_iter"], split_dataset["valid_meta"]
-
-    utt_data, utt_meta, utt_ltls, formula_data, formula_meta, formula_ltls = [], [], set(), [], [], set()
-    for (utt, ltl), meta in zip(test_data, test_meta):
-        if ltl in train_data:  # TODO: use Spot equivalent check
-            utt_data.append((utt, ltl))
-            utt_meta.append(meta)
-            utt_ltls.add(ltl)
-        else:
-            formula_data.append((utt, ltl))
-            formula_meta.append(meta)
-            formula_ltls.add(ltl)
-
-    utt_fpath = os.path.join(os.path.dirname(split_fpath), f"utt_{os.path.basename(split_fpath)}")
-    save_to_file({"train_iter": train_data, "train_meta": train_meta,
-                  "valid_iter": utt_data, "valid_meta": utt_meta,
-                  "info": split_dataset["info"]}, utt_fpath)
-    formula_fpath = os.path.join(os.path.dirname(split_fpath), f"formula_{os.path.basename(split_fpath)}")
-    save_to_file({"train_iter": train_data, "train_meta": train_meta,
-                  "valid_iter": formula_data, "valid_meta": formula_meta,
-                  "info": split_dataset["info"]}, formula_fpath)
-
-    logger.info(f"Utterance holdout: {utt_fpath}")
-    logger.info(f"Utterance holdout train nsamples: {len(train_data)}, {len(train_meta)}")
-    logger.info(f"Utterance holdout test nsamples: {len(utt_data)}, {len(utt_meta)}")
-    logger.info(f"Utterance holdout test nformulas: {len(utt_ltls)}")
-    logger.info(f"Formula holdout: {formula_fpath}")
-    logger.info(f"Formula holdout train nsamples: {len(train_data)}, {len(train_meta)}")
-    logger.info(f"Formula holdout test nsamples: {len(formula_data)}, {len(formula_meta)}")
-    logger.info(f"Formula holdout test nformulas: {len(formula_ltls)}")
-    return utt_fpath, formula_fpath
+    nsamples_test = nsamples - nsamples_train
+    composed_test, meta_test = sample_composed_dataset(meta2pairs_test, compose_operators, nsamples_test, seed, logger)
+    composed_dataset = load_from_file(composed_fpath)
+    composed_dataset["valid_iter"], composed_dataset["valid_meta"] = composed_test, meta_test
+    save_to_file(composed_dataset, composed_fpath)
+    logger.info(f"Composed dataset: {composed_fpath}")
 
 
 if __name__ == "__main__":
@@ -147,15 +97,13 @@ if __name__ == "__main__":
     parser.add_argument("--base_fpath", type=str, default="data/symbolic_batch12_perm.csv", help="base dataset.")
     parser.add_argument("--composed_dpath", type=str, default="data/composed", help="dir to save composed dataset.")
     parser.add_argument("--nclauses", type=int, default=2, help="number of clauses in composed formula.")
-    parser.add_argument("--nsamples", type=int, default=10, help="number of samples in composed dataset. None to construct entire composed dataset.")
-    parser.add_argument("--split_ratio", type=float, default=0.6, help="train test split ratio.")
+    parser.add_argument("--nsamples", type=int, default=1000, help="number of samples in composed dataset. None to construct entire composed dataset.")
+    parser.add_argument("--utt_split_ratio", type=float, default=0.3, help="train test split ratio.")
+    parser.add_argument("--test_split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
-    parser.add_argument("--save_every", type=int, default=10000, help="save composed sample frequency.")
-    parser.add_argument("--split_fpath", type=str, default=None, help="given train test split dataset to construct utterance, formula holdout.")
     args = parser.parse_args()
 
-    log_prefix = "holdout" if args.split_fpath else "sample-split"
-    log_fpath = f"{args.composed_dpath}/{log_prefix}_nsamples{args.nsamples}_raito{args.split_ratio}_seed{args.seed}_{Path(args.base_fpath).stem}.log"
+    log_fpath = f"{args.composed_dpath}/split-sample_nsamples{args.nsamples}_raito{args.utt_split_ratio}-{args.test_split_ratio}_seed{args.seed}_{Path(args.base_fpath).stem}.log"
     logging.basicConfig(level=logging.INFO,
                         format='%(message)s',
                         handlers=[
@@ -165,8 +113,4 @@ if __name__ == "__main__":
                         )
     logger = logging.getLogger()
 
-    if args.split_fpath:
-        utt_fpath, formula_fpath = construct_holdout_datasets(args.split_fpath)
-    else:
-        base_fpath, composed_fpath = sample_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.nsamples, args.seed, args.composed_dpath, args.save_every, logger)
-        split_fpath = construct_split_datasets(base_fpath, composed_fpath, args.split_ratio, args.seed, logger)
+    costruct_composed_dataset(COMPOSE_OPERATORS, args.base_fpath, args.utt_split_ratio, args.test_split_ratio, args.nsamples, args.seed, args.composed_dpath, logger)
