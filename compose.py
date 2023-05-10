@@ -14,27 +14,48 @@ BINARY_OPERATORS = ["and", "or", "implies", "until"]
 COMPOSE_OPERATORS = ["and", "or"]  # operators currently supported
 
 
+def load_base_dataset(data_fpath, logger):
+    dataset = load_from_file(data_fpath)
+    ltl2utts = defaultdict(list)
+    all_base_ltls = set()
+    all_base_ltls_spot = set()
+    ltl2metas = defaultdict(list)
+    for pattern_type, props_str, utt, ltl in dataset:
+        props = deserialize_props_str(props_str)
+
+        ltl2utts[ltl].append(utt)
+        all_base_ltls.add(ltl)
+        all_base_ltls_spot.add(spot.formula(ltl))
+
+        ltl2metas[ltl].append((pattern_type, tuple(props)))
+
+    for ltl, metas in ltl2metas.items():
+        metas = set(metas)
+        if len(metas) > 1:
+            logger.info(f"Duplicate base formulas:\n{metas}\n{ltl}\n")
+
+    ltl2meta = {ltl: meta[0] for ltl, meta in ltl2metas.items()}
+    return ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta
+
+
 def compose(data_fpath, nclauses, compose_operators, ignore_repeat, size_formula, seed_formula, size_utt, seeds_utt, logger):
     """
     Construct composed dataset.
     In one pass of base dataset, construct composed dataset for zero-shot transfer, formula and utterance holdout.
     """
-    save_fpath_zeoshot = os.path.join(os.path.dirname(data_fpath), f"composed_zeroshot_{Path(data_fpath).stem}.pkl")
-    save_fpath_formula = os.path.join(os.path.dirname(data_fpath), f"composed_formula_{Path(data_fpath).stem}.pkl")
-    save_fpath_utt = os.path.join(os.path.dirname(data_fpath), f"composed_utt_{Path(data_fpath).stem}.pkl")
-
     # Load base dataset
     ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta = load_base_dataset(data_fpath, logger)
 
     # Construct composed dataset
-    operator_seqs = list(product(compose_operators, repeat=nclauses-1))  # all combs of operators to connect base formulas
-    base_ltl_seqs = list(product(all_base_ltls, repeat=nclauses))  # all combs of base formulas
-
     composed_zeroshot = defaultdict(list)  # by itself serve as test set for zero-shot transfer
     formula2dataset = defaultdict(list)  # formula to (data, meta) pair
     composed_utt = [[] for _ in range(len(seeds_utt))]  # utt split dataset for each fold
     nattempts, npairs = 0, 0
     err2count = defaultdict(int)  # composed formula: syntax error, infeasible, repeated, correct
+
+    operator_seqs = list(product(compose_operators, repeat=nclauses - 1))  # all combs of operators to connect base formulas
+    base_ltl_seqs = list(product(all_base_ltls, repeat=nclauses))  # all combs of base formulas
+
     for operator_seq in operator_seqs:
         for base_ltl_seq in base_ltl_seqs:
             base_ltl_seq = list(base_ltl_seq)
@@ -68,9 +89,11 @@ def compose(data_fpath, nclauses, compose_operators, ignore_repeat, size_formula
     logger.info(f"Total number of composed pairs: {npairs}")
 
     # Save zero_shot transfer dataset
+    save_fpath_zeoshot = os.path.join(os.path.dirname(data_fpath), f"composed_zeroshot_{Path(data_fpath).stem}.pkl")
     save_to_file(composed_zeroshot, save_fpath_zeoshot)
 
     # Save utterance holdout dataset
+    save_fpath_utt = os.path.join(os.path.dirname(data_fpath), f"composed_utt_{Path(data_fpath).stem}.pkl")
     save_to_file(composed_utt, save_fpath_utt)
 
     # Construct and save formula holdout dataset
@@ -89,6 +112,7 @@ def compose(data_fpath, nclauses, compose_operators, ignore_repeat, size_formula
                     train_iter.extend(data)
                     train_meta.extend(meta)
         composed_formula.append((train_iter, train_meta, valid_iter, valid_meta, {"size": size_formula, "seed": seed_formula, "fold_idx": fold_idx}))
+    save_fpath_formula = os.path.join(os.path.dirname(data_fpath), f"composed_formula_{Path(data_fpath).stem}.pkl")
     save_to_file(composed_formula, save_fpath_formula)
 
 
@@ -172,30 +196,6 @@ def compose_or(utts, formulas):
     utt_composed = f"Either {utts[0]}, or {utts[1]}"
     formula_composed = f"| {formulas[0]} {formulas[1]}"
     return utt_composed, formula_composed
-
-
-def load_base_dataset(data_fpath, logger):
-    dataset = load_from_file(data_fpath)
-    ltl2utts = defaultdict(list)
-    all_base_ltls = set()
-    all_base_ltls_spot = set()
-    ltl2metas = defaultdict(list)
-    for pattern_type, props_str, utt, ltl in dataset:
-        props = deserialize_props_str(props_str)
-
-        ltl2utts[ltl].append(utt)
-        all_base_ltls.add(ltl)
-        all_base_ltls_spot.add(spot.formula(ltl))
-
-        ltl2metas[ltl].append((pattern_type, tuple(props)))
-
-    for ltl, metas in ltl2metas.items():
-        metas = set(metas)
-        if len(metas) > 1:
-            logger.info(f"Duplicate base formulas:\n{metas}\n{ltl}\n")
-
-    ltl2meta = {ltl: meta[0] for ltl, meta in ltl2metas.items()}
-    return ltl2utts, all_base_ltls, all_base_ltls_spot, ltl2meta
 
 
 def get_valid_composed_formulas(data_fpath, nclauses, compose_operators):
