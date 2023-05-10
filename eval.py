@@ -101,40 +101,24 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
     return accs, acc
 
 
-def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_log_fpath, acc_fpath, valid_iter_len, batch_size=100):
+def evaluate_sym_trans(model, split_dataset_fpath, result_log_fpath, analysis_fpath, acc_fpath, batch_size=100):
     """
-    Evaluate translation accuracy per LTL pattern type.
+    Evaluate symbolic translation.
     """
-    def batch(iterable, n=1):
-        l = len(iterable)
-        for ndx in range(0, l, n):
-            yield iterable[ndx:min(ndx + n, l)]
+    def batchify(dataset, batch_size):
+        for batch_start_idx in range(0, len(dataset), batch_size):
+            yield dataset[batch_start_idx: batch_start_idx + batch_size]
+
+    _, _, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
 
     result_log = [["train_or_valid", "pattern_type", "nprops", "prop_perm", "utterances", "true_ltl", "output_ltl", "is_correct"]]
-
     meta2accs = defaultdict(list)
-    # for idx, ((utt, true_ltl), (pattern_type, prop_perm)) in enumerate(zip(valid_iter, valid_meta)):
-    #     nprops = len(prop_perm)
-    #     train_or_valid = "valid" if idx < valid_iter_len else "train"  # TODO: remove after having enough data
-    #     out_ltl = model.translate([utt])[0].strip()
-    #     try:  # output LTL formula may have syntax error
-    #         is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
-    #         is_correct = "True" if is_correct else "False"
-    #     except SyntaxError:
-    #         is_correct = "Syntax Error"
-    #     logging.info(f"{idx}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
-    #     result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
-    #     if train_or_valid == "valid":
-    #         meta2accs[(pattern_type, nprops)].append(is_correct)
-    train_or_valid = "valid"
     nsamples, ncorrects = 0, 0
-    batches = batch(list(zip(valid_iter, valid_meta)), batch_size)
+    batches = batchify(list(zip(valid_iter, valid_meta)), batch_size)
     for batch_idx, batch in enumerate(batches):
-        utts = [tp[0][0] for tp in batch]
+        utts = [utt_ltl[0] for utt_ltl, _ in batch]
         out_ltls = model.translate(utts)
-        for idx, ((utt, true_ltl), (pattern_type, prop_perm, *other_meta)) in enumerate(batch):
-            nsamples += 1
-            nprops = len(prop_perm)
+        for idx, ((utt, true_ltl), (pattern_type, props, *other_meta)) in enumerate(batch):
             out_ltl = out_ltls[idx].strip()
             try:  # output LTL formula may have syntax error
                 is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
@@ -142,41 +126,35 @@ def evaluate_lang_single(model, valid_iter, valid_meta, analysis_fpath, result_l
             except SyntaxError:
                 is_correct = "Syntax Error"
 
-            if train_or_valid == "valid":
-                meta2accs[(pattern_type, nprops)].append(is_correct)
-            if nsamples > valid_iter_len:
-                train_or_valid = "train"
-            logging.info(f"{nsamples}/{len(valid_iter)}\n{pattern_type} | {nprops} {prop_perm}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
-            result_log.append([train_or_valid, pattern_type, nprops, prop_perm, utt, true_ltl, out_ltl, is_correct])
+            nprops = len(props)
+            meta2accs[(pattern_type, tuple(props))].append(is_correct)
+            result_log.append(["valid", pattern_type, nprops, props, utt, true_ltl, out_ltl, is_correct])
+
+            nsamples += 1
             if is_correct == "True":
                 ncorrects += 1
-            logging.info(f"batch {batch_idx} partial results: {ncorrects}/{nsamples} = {ncorrects/nsamples}\n")
+            logging.info(f"{nsamples}/{len(valid_iter)}\nPartial result: {ncorrects}/{nsamples} = {ncorrects / nsamples}\n")
+            logging.info(f"{pattern_type} | {nprops} {props}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
     save_to_file(result_log, result_log_fpath)
 
     meta2acc = {meta: np.mean([True if acc == "True" else False for acc in accs]) for meta, accs in meta2accs.items()}
     logging.info(meta2acc)
 
-    analysis = load_from_file(analysis_fpath)
-    acc_anaysis = [["LTL Type", "Number of Propositions", "Number of Utterances", "Accuracy"]]
-    for pattern_type, nprops, nutts in analysis:
-        pattern_type = "_".join(pattern_type.lower().split())
-        meta = (pattern_type, int(nprops))
-        if meta in meta2acc:
-            acc_anaysis.append([pattern_type, nprops, nutts, meta2acc[meta]])
-        else:
-            acc_anaysis.append([pattern_type, nprops, nutts, "no valid data"])
-    save_to_file(acc_anaysis, acc_fpath)
+    # if os.path.exists(analysis_fpath):  # TODO: only works for base dataset
+    #     analysis = load_from_file(analysis_fpath)
+    #     acc_anaysis = [["LTL Type", "Number of Propositions", "Number of Utterances", "Accuracy"]]
+    #     for pattern_type, nprops, nutts in analysis:
+    #         pattern_type = "_".join(pattern_type.lower().split())
+    #         meta = (pattern_type, int(nprops))
+    #         if meta in meta2acc:
+    #             acc_anaysis.append([pattern_type, nprops, nutts, meta2acc[meta]])
+    #         else:
+    #             acc_anaysis.append([pattern_type, nprops, nutts, "no valid data"])
+    #     save_to_file(acc_anaysis, acc_fpath)
 
     total_acc = np.mean([True if acc == "True" else False for accs in meta2accs.values() for acc in accs])
-    logging.info(f"total validation accuracy: {total_acc}")
-
+    logging.info(f"Total validation accuracy: {total_acc}")
     return meta2acc, total_acc
-
-
-def evaluate_lang_from_file(model, split_dataset_fpath, analysis_fpath, result_log_fpath, acc_fpath, batch_size=100):
-    _, _, valid_iter, valid_meta = load_split_dataset(split_dataset_fpath)
-    return evaluate_lang_single(model, valid_iter, valid_meta,
-                                analysis_fpath, result_log_fpath, acc_fpath, len(valid_iter), batch_size)
 
 
 def aggregate_results(result_fpaths, filter_types):

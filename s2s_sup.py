@@ -14,7 +14,7 @@ from s2s_pt_transformer import Seq2SeqTransformer, \
 from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
 from dataset_symbolic import load_split_dataset
-from eval import evaluate_lang_from_file
+from eval import evaluate_sym_trans
 from utils import count_params, load_from_file
 
 S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
@@ -76,8 +76,8 @@ if __name__ == "__main__":
                             logging.StreamHandler()
                         ]
     )
-
     logging.info(f"Load model and checkpoint: {args.model_dpath}/{args.model}/checkpoint-{args.checkpoint}")
+    logging.info(f"Evaluate on {args.data_fpath}")
 
     if "pkl" in args.data_fpath:  # complete file path, e.g. data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl
         data_fpaths = [args.data_fpath]
@@ -112,4 +112,4 @@ if __name__ == "__main__":
         result_log_fpath = f"results/s2s_{args.model}-{checkpoint}_{Path(data_fpath).stem}_log.csv"
         analysis_fpath = "data/analysis_symbolic_batch12_perm.csv"
         acc_fpath = f"results/s2s_{args.model}-{checkpoint}_{Path(data_fpath).stem}_acc.csv"
-        evaluate_lang_from_file(s2s, data_fpath, analysis_fpath, result_log_fpath, acc_fpath)
+        evaluate_sym_trans(s2s, data_fpath, result_log_fpath, analysis_fpath, acc_fpath)

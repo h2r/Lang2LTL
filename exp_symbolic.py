@@ -10,7 +10,7 @@ import random
 from collections import defaultdict
 
 from gpt import GPT3, GPT4
-from eval import aggregate_results, evaluate_lang_from_file
+from eval import aggregate_results, evaluate_sym_trans
 from utils import load_from_file, save_to_file
 
 
@@ -107,4 +107,4 @@ if __name__ == "__main__":
         )
         logging.info(f"test set size: {len(dataset['valid_iter'])}, {len(dataset['valid_meta'])}\n{meta2data.keys()}\n")
 
-        evaluate_lang_from_file(model, split_dataset_fpath, args.analysis_fpath, result_log_fpath, acc_fpath, batch_size=1)
+        evaluate_sym_trans(model, split_dataset_fpath, result_log_fpath, args.analysis_fpath, acc_fpath, batch_size=1)
