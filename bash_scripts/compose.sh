@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -n 1
-#SBATCH --mem=199G
+#SBATCH --mem=299G
 #SBATCH --time=99:00:00
 
 #SBATCH -e sbatch_out/job-%j.err
@@ -12,7 +12,7 @@ conda activate lang2ltl
 
 BASE_FPATH="$HOME/data/shared/lang2ltl/data/symbolic_batch12_perm.csv"
 COMPOSED_FPATH="$HOME/data/shared/lang2ltl/data/composed"
-NSAMPLES=1000000
+NSAMPLES=3000000
 UTT_SPLIT_RATIO=0.3
 TEST_SPLIT_RATIO=0.6
 

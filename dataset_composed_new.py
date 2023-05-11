@@ -19,19 +19,26 @@ def load_base_dataset(base_fpath, logger):
     meta2pairs, base_data, base_meta, base_ltls = defaultdict(list), [], [], set()
     for pattern_type, props_str, utt, ltl in base_dataset:
         props = tuple(deserialize_props_str(props_str))
-        meta2pairs[(pattern_type, props)].append((utt, ltl))  # use meta not ltl as key due to repeated ltl strs, visit 1, low restricted avoidance
+        meta2pairs[(pattern_type, props)].append((utt, ltl))  # meta not ltl as key due to repeated ltl strs, visit 1 == low restricted avoidance 1
         base_data.append((utt, ltl))
         base_meta.append((pattern_type, props))
         base_ltls.add(ltl)
-    logger.info(f"Base dataset nsamples: {sum([len(pairs) for pairs in meta2pairs.values()])} {len(base_data)} {len(base_meta)}")
+    base_size = sum([len(pairs) for pairs in meta2pairs.values()])
+    assert base_size == len(base_data) == len(base_meta), f"base size not match {base_size} {len(base_data)} {len(base_meta)}"
+    logger.info(f"Base dataset nsamples: {base_size} {len(base_data)} {len(base_meta)}")
     logger.info(f"Base dataset nformulas: {len(meta2pairs)}; repeats: {len(meta2pairs)-len(base_ltls)}")
-    return meta2pairs, base_data, base_meta, base_ltls
+    return meta2pairs, base_data, base_meta
 
 
-def split_utts(meta2pairs, seed, split_ratio, logger):
+def split_utts(meta2pairs, split_ratio, seed, logger):
+    """
+    Split utterances per LTL into train test to avoid utterance leakage from training to test set.
+    :param meta2pairs: dict of unique formula id (pattern_type, props) to utt-ltl pairs
+    :param split_ratio: ratio of splitting utterances per LTL into train test
+    """
     meta2pairs_train, meta2pairs_test = {}, {}
     for meta, pairs in meta2pairs.items():
-        assert len(set([ltl for _, ltl in pairs])) == 1, f"more than 1 ltl {[ltl for _, ltl in pairs]}"
+        assert len(set([ltl for _, ltl in pairs])) == 1, f"{meta} more than 1 ltl {[ltl for _, ltl in pairs]}"
         pairs_train, pairs_test = train_test_split(pairs, test_size=split_ratio, random_state=seed)
         meta2pairs_train[meta] = pairs_train
         meta2pairs_test[meta] = pairs_test
@@ -44,21 +51,16 @@ def sample_composed_dataset(meta2pairs, compose_operators, nsamples, seed, logge
     for meta, pairs in meta2pairs.items():
         base_data.extend(pairs)
         base_meta.extend([meta] * len(pairs))
-        assert len(base_data) == len(base_meta), f"meta not match data {base_data}, {base_meta}"
+        assert len(base_data) == len(base_meta), f"base data size not match meta {base_data} {base_meta}"
 
-    composed_data, composed_meta = [], []
     random.seed(seed)
+    composed_data, composed_meta = [], []
     for sample_id in tqdm(range(nsamples)):
         logger.info(f"Composing sample {sample_id}")
 
         compose_operator = random.sample(compose_operators, 1)[0]
         data, meta = zip(*random.sample(list(zip(base_data, base_meta)), 2))
         utts_base, ltls_base = zip(*data)
-
-        type_composed = '-'.join([compose_operator] + [f"{pattern_type}_{len(props)}" for pattern_type, props in meta])
-        _, props = zip(*meta)
-        props_composed = sum(props, ())
-        meta_composed = (type_composed, props_composed)  # "and-visit_2-global_avoidance_1", ["a", "b", "c"]
 
         if compose_operator == "and":
             utt_composed, ltl_composed = compose_and(utts_base, ltls_base)
@@ -67,15 +69,20 @@ def sample_composed_dataset(meta2pairs, compose_operators, nsamples, seed, logge
         else:
             raise ValueError(f"ERROR: operator not supported: {compose_operator}.")
 
+        type_composed = '-'.join([compose_operator] + [f"{pattern_type}_{len(props)}" for pattern_type, props in meta])
+        _, props = zip(*meta)
+        props_composed = sum(props, ())
+        meta_composed = (type_composed, props_composed)  # "and-visit_2-global_avoidance_1", ("a", "b", "c")
+
         composed_data.append((utt_composed, ltl_composed))
         composed_meta.append(meta_composed)
     return composed_data, composed_meta
 
 
 def costruct_composed_dataset(compose_operators, base_fpath, utt_split_ratio, test_split_ratio, nsamples, seed, composed_dpath, logger):
-    meta2pairs, base_data, base_meta, base_ltls = load_base_dataset(base_fpath, logger)
+    meta2pairs, base_data, base_meta = load_base_dataset(base_fpath, logger)
 
-    meta2pairs_train, meta2pairs_test = split_utts(meta2pairs, seed, utt_split_ratio, logger)
+    meta2pairs_train, meta2pairs_test = split_utts(meta2pairs, utt_split_ratio, seed, logger)
 
     nsamples_train = int(nsamples * (1 - test_split_ratio))
     composed_train, meta_train = sample_composed_dataset(meta2pairs_train, compose_operators, nsamples_train, seed, logger)
@@ -97,7 +104,7 @@ if __name__ == "__main__":
     parser.add_argument("--composed_dpath", type=str, default="data/composed", help="dir to save composed dataset.")
     parser.add_argument("--nclauses", type=int, default=2, help="number of clauses in composed formula.")
     parser.add_argument("--nsamples", type=int, default=1000, help="number of samples in composed dataset. None to construct entire composed dataset.")
-    parser.add_argument("--utt_split_ratio", type=float, default=0.3, help="train test split ratio.")
+    parser.add_argument("--utt_split_ratio", type=float, default=0.3, help="ratio to split utts per ltl into train test.")
     parser.add_argument("--test_split_ratio", type=float, default=0.6, help="train test split ratio.")
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
     args = parser.parse_args()
