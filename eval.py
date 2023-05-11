@@ -133,7 +133,7 @@ def evaluate_sym_trans(model, split_dataset_fpath, result_log_fpath, analysis_fp
             nsamples += 1
             if is_correct == "True":
                 ncorrects += 1
-            logging.info(f"{nsamples}/{len(valid_iter)}\nPartial result: {ncorrects}/{nsamples} = {ncorrects / nsamples}\n")
+            logging.info(f"{nsamples}/{len(valid_iter)}\nPartial result: {ncorrects}/{nsamples} = {ncorrects / nsamples}")
             logging.info(f"{pattern_type} | {nprops} {props}\n{utt}\n{true_ltl}\n{out_ltl}\n{is_correct}\n")
     save_to_file(result_log, result_log_fpath)
 
