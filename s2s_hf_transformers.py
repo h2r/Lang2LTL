@@ -14,7 +14,7 @@ HF_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bar
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
-EPOCHS = 10
+EPOCHS = 5
 BATCH_SIZE = 20
 
 
@@ -66,23 +66,23 @@ def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=
 
     train_args = Seq2SeqTrainingArguments(
         output_dir=f"{model_dpath}/{model_name}",
+        overwrite_output_dir=True,
+        num_train_epochs=EPOCHS,
+        per_device_train_batch_size=BATCH_SIZE,
+        per_device_eval_batch_size=BATCH_SIZE,
+        learning_rate=1e-5,
+        weight_decay=0.01,
+        # fp16=True,
         evaluation_strategy="steps",
         eval_steps=1000,
         logging_strategy="steps",
         logging_steps=1000,
         save_strategy="steps",
         save_steps=1000,
-        learning_rate=1e-5,
-        per_device_train_batch_size=BATCH_SIZE,
-        per_device_eval_batch_size=BATCH_SIZE,
-        weight_decay=0.01,
-        num_train_epochs=EPOCHS,
-        # fp16=True,
-        predict_with_generate=True,
         metric_for_best_model="exact_match",
         load_best_model_at_end=True,
-        save_total_limit=3,
-        overwrite_output_dir=True,
+        save_total_limit=3,  # best and last chkpt always saved
+        predict_with_generate=True,
         report_to="tensorboard"
     )
 
