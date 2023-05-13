@@ -193,19 +193,12 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 Convert propositions in target LTLs from letters to words joined by underscores.
 
 ## Compose Datasets
-To construct composed dataset for zero shot transfer, utterance and formula holdout,
-first run 
+To construct training and test set of a composed dataset,
+run
 ```
-python compose.py
+python dataset_composed_new.py
 ```
-then run
-```
-python dataset_composed.py
-```
-
-Composed dataset for zero shot transfer: dictionary of data and meta
-
-Composed dataset for utterance and formula holdout: dictionary of train data, train meta data, test data, test meta data and information of base datasets used to construct the composed dataset.
+Composed dataset pkl file: dictionary of train data, train meta data, test data, test meta data and information used for construction.
 
 
 ## Large datasets
