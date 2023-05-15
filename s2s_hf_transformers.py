@@ -1,6 +1,7 @@
 """
 Finetune pre-trained transformer models from Hugging Face.
 """
+import os
 import argparse
 import numpy as np
 from datasets import Dataset, DatasetDict
@@ -18,7 +19,7 @@ EPOCHS = 5
 BATCH_SIZE = 20
 
 
-def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=0.2, test_size=0.1):
+def finetune_t5(model_name, data_fpath, model_dpath=None, valid_size=0.2, test_size=0.1):
     """
     Followed most of the tutorial at
     https://medium.com/nlplanet/a-full-guide-to-finetuning-t5-for-text2text-and-building-a-demo-with-streamlit-c72009631887
@@ -32,6 +33,9 @@ def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=
     For finetuning T5 tips
     https://discuss.huggingface.co/t/t5-finetuning-tips/684
     """
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
     def preprocess_data(examples):
         inputs = [T5_PREFIX + utt for utt in examples["utt"]]
         model_inputs = tokenizer(
@@ -65,7 +69,7 @@ def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=
     dataset_tokenized = symbolic_dataset.map(preprocess_data, batched=True)
 
     train_args = Seq2SeqTrainingArguments(
-        output_dir=f"{model_dpath}/{model_name}",
+        output_dir=model_dpath,
         overwrite_output_dir=True,
         num_train_epochs=EPOCHS,
         per_device_train_batch_size=BATCH_SIZE,
@@ -102,7 +106,10 @@ def finetune_t5(model_name, tokenizer, data_fpath, model_dpath=None, valid_size=
 
     trainer.train()
     if model_dpath:
-        trainer.save_model(model_dpath)
+        best_ckpt_dpath = os.path.join(model_dpath, "checkpoint-best")
+        os.makedirs(best_ckpt_dpath, exist_ok=True)
+        trainer.save_model(best_ckpt_dpath)
+        print(f"Saved model best checkpoint at: {best_ckpt_dpath}")
     else:
         trainer.save_model()
 
@@ -157,17 +164,13 @@ if __name__ == '__main__':
     parser.add_argument("--model", type=str, choices=HF_MODELS, help="name of supervised seq2seq model")
     args = parser.parse_args()
 
-    print(f"Finetune dataset: {args.data_fpath}")
-    print(f"Save model checkpoints to: {args.model_dpath}")
+    model_dpath = os.path.join(args.model_dpath, args.model)
 
-    tokenizer = AutoTokenizer.from_pretrained(args.model)
-    # config = AutoConfig.from_pretrained(args.model) # load from config lead to much worse performance
-    # config.max_lengtgh = 50
-    # model = AutoModelForSeq2SeqLM.from_config(config)
-    model = AutoModelForSeq2SeqLM.from_pretrained(args.model)
+    print(f"Finetune dataset: {args.data_fpath}")
+    print(f"Save model checkpoints at: {model_dpath}")
 
     if "t5" in args.model:
-        finetune_t5(args.model, tokenizer, args.data_fpath, args.model_dpath)
+        finetune_t5(args.model, args.data_fpath, model_dpath)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
     # tensorboard --logdir=model/t5-base/runs

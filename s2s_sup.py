@@ -64,10 +64,10 @@ if __name__ == "__main__":
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="complete file path or prefix of file paths to train test split dataset.")
     parser.add_argument("--model_dpath", type=str, default=None, help="directory to save model checkpoints.")
     parser.add_argument("--model", type=str, default="t5-base", choices=S2S_MODELS, help="name of supervised seq2seq model.")
-    parser.add_argument("--model2ckpt_fpath", type=str, default=None, help="best checkpoint for models.")
-    parser.add_argument("--checkpoint", type=str, default=None, help="checkpoint to use for inferance.")
+    parser.add_argument("--checkpoint", type=str, default=None, help="checkpoint for inference.")
     args = parser.parse_args()
-    checkpoint = load_from_file(args.model2ckpt_fpath)[args.model] if args.model2ckpt_fpath else args.checkpoint
+
+    ckpt_dname = f"checkpoint-{args.checkpoint}" if args.checkpoint else "checkpoint-best"
 
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
@@ -92,8 +92,7 @@ if __name__ == "__main__":
 
         # Load trained model
         if "t5" in args.model or "bart" in args.model:  # pretrained T5/Bart from Hugging Face
-            model_dpath = os.path.join(args.model_dpath, args.model)
-            if checkpoint: model_dpath = os.path.join(model_dpath, f"checkpoint-{checkpoint}")
+            model_dpath = os.path.join(args.model_dpath, args.model, ckpt_dname)
             s2s = Seq2Seq(model_dpath, args.model)
         elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
             vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
@@ -108,7 +107,7 @@ if __name__ == "__main__":
         logging.info(f"Number of validation samples: {len(valid_iter)}\n")
 
         # Evaluate
-        result_log_fpath = f"results/s2s_{args.model}-{checkpoint}_{Path(data_fpath).stem}_log.csv"
+        result_log_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_log.csv"
         analysis_fpath = "data/analysis_symbolic_batch12_perm.csv"
-        acc_fpath = f"results/s2s_{args.model}-{checkpoint}_{Path(data_fpath).stem}_acc.csv"
+        acc_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_acc.csv"
         evaluate_sym_trans(s2s, data_fpath, result_log_fpath, analysis_fpath, acc_fpath)

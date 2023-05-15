@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH -n 1
-#SBATCH --time=99:00:00
+#SBATCH --time=299:00:00
 #SBATCH -p 3090-gcondo --gres=gpu:1
 #SBATCH --mem-per-gpu=32G
 
@@ -12,8 +12,8 @@ module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-DATA_FPATH="$HOME/data/shared/lang2ltl/data/composed/split_raito0.6_seed42_sample_nsamples10000_seed42_base_symbolic_batch12_perm.pkl"
-MODEL_FPATH="$HOME/data/shared/lang2ltl/model"
-CKPT=26000
+NSAMPLES="1000000"
+DATA_FPATH="${HOME}/data/shared/lang2ltl/data/composed/split-sample_nsamples${NSAMPLES}_raito0.3-0.6_seed42_symbolic_batch12_perm.pkl"
+MODEL_FPATH="${HOME}/data/shared/lang2ltl/model_${NSAMPLES}"
 
-python $HOME/lang2ltl/s2s_sup.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base --checkpoint $CKPT
+python $HOME/lang2ltl/s2s_sup.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base
