@@ -124,7 +124,7 @@ class Seq2Seq:
         else:
             raise ValueError(f'ERROR: unrecognized model, {self.model_name}')
         return ltls
-    
+
     def type_constrained_decode(self, utts):
         """
         type constrained decoding based on LTL syntax:
@@ -170,7 +170,7 @@ class Seq2Seq:
             next_token = self.tokenizer.decode(next_decoder_input_ids[0], skip_special_tokens=False)
             token_list = []
             whitespace = False
-            while not '</s>' in token_list and len(token_list) < MAX_LENGTH:
+            while '</s>' not in token_list and len(token_list) < MAX_LENGTH:
                 # decode the first token
                 if len(token_list) == 0:
                     if next_token in PROPS + UNARY_OPERATORS + BINARY_OPERATORS:
@@ -184,7 +184,7 @@ class Seq2Seq:
                 # only check depth after certain # of operators & props
                 elif len(token_list) > CHECK_DEPTH:
                     no_uni_list = ''.join([s for s in token_list if not s in UNARY_OPERATORS])
-                    partial_tree, _  = build_tree(no_uni_list)
+                    partial_tree, _ = build_tree(no_uni_list)
                     # if max_depth is reached
                     if depth(partial_tree) > MAX_DEPTH:
                         # only output props and <EOS>
