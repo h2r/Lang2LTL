@@ -125,6 +125,9 @@ def evaluate_sym_trans(model, split_dataset_fpath, result_log_fpath, analysis_fp
                 is_correct = "True" if is_correct else "False"
             except SyntaxError:
                 is_correct = "Syntax Error"
+                out_ltl = model.type_constrained_decode([utt])[0]
+                is_correct = spot.are_equivalent(spot.formula(out_ltl), spot.formula(true_ltl))
+                is_correct = "True" if is_correct else "False"
 
             nprops = len(props)
             meta2accs[(pattern_type, tuple(props))].append(is_correct)
