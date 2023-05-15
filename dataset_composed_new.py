@@ -109,6 +109,8 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42, help="random seed.")
     args = parser.parse_args()
 
+    os.makedirs(args.composed_dpath, exist_ok=True)
+
     log_fpath = f"{args.composed_dpath}/split-sample_nsamples{args.nsamples}_raito{args.utt_split_ratio}-{args.test_split_ratio}_seed{args.seed}_{Path(args.base_fpath).stem}.log"
     logging.basicConfig(level=logging.INFO,
                         format='%(message)s',
