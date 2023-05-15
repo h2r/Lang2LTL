@@ -173,6 +173,8 @@ python run_experiment.py --translate_e2e
 
 
 # Datasets
+All data is stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing).
+
 ## Symbolic
 ```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g., a, b, c, etc, used for training symbolic translation module.
 
@@ -204,6 +206,11 @@ Composed dataset pkl file: dictionary of train data, train meta data, test data,
 ## Large datasets
 Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
 e.g., composed datasets.
+
+
+
+## Model Weights
+All model weights are stored on [Google Drive](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing)
 
 
 
