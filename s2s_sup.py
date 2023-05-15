@@ -76,7 +76,6 @@ if __name__ == "__main__":
                             logging.StreamHandler()
                         ]
     )
-    logging.info(f"Load model and checkpoint: {args.model_dpath}/{args.model}/checkpoint-{args.checkpoint}")
 
     if "pkl" in args.data_fpath:  # complete file path, e.g. data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl
         data_fpaths = [args.data_fpath]
@@ -93,6 +92,7 @@ if __name__ == "__main__":
         # Load trained model
         if "t5" in args.model or "bart" in args.model:  # pretrained T5/Bart from Hugging Face
             model_dpath = os.path.join(args.model_dpath, args.model, ckpt_dname)
+            logging.info(f"Load model and checkpoint: {model_dpath}")
             s2s = Seq2Seq(model_dpath, args.model)
         elif args.model == "pt_transformer":  # pretrained seq2seq transformer implemented in PyTorch
             vocab_transform, text_transform, src_vocab_size, tar_vocab_size = pt_transformer_construct_dataset_meta(train_iter)
