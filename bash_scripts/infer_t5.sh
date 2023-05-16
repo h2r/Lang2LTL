@@ -16,4 +16,4 @@ NSAMPLES="1000000"
 DATA_FPATH="${HOME}/data/shared/lang2ltl/data/composed/split-sample_nsamples${NSAMPLES}_raito0.3-0.6_seed42_symbolic_batch12_perm.pkl"
 MODEL_FPATH="${HOME}/data/shared/lang2ltl/model_${NSAMPLES}"
 
-python $HOME/lang2ltl/s2s_sup.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base
+python $HOME/lang2ltl/s2s_sup_tcd.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base
