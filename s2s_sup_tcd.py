@@ -260,7 +260,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(f'results/s2s_{args.model}_{Path(args.data_fpath).stem}.log', mode='w'),
+                            logging.FileHandler(f'results/s2s_tcd_{args.model}_{Path(args.data_fpath).stem}.log', mode='w'),
                             logging.StreamHandler()
                         ]
     )
