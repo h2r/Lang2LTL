@@ -16,7 +16,7 @@ from s2s_pt_transformer import translate as pt_transformer_translate
 from s2s_pt_transformer import construct_dataset_meta as pt_transformer_construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from eval import evaluate_sym_trans
-from utils import count_params, load_from_file
+from utils import count_params
 
 S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
 UNARY_OPERATORS = ['!', "F", "G", "X"]

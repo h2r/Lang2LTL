@@ -103,7 +103,7 @@ def evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_nam
 
 def evaluate_sym_trans(model, split_dataset_fpath, result_log_fpath, analysis_fpath, acc_fpath, batch_size=100):
     """
-    Evaluate symbolic translation.
+    Evaluate symbolic translation with type constrained decoding (TCD).
     """
     def batchify(dataset, batch_size):
         for batch_start_idx in range(0, len(dataset), batch_size):
