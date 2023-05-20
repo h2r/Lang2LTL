@@ -105,20 +105,22 @@ def remove_prop_perms(data, meta, all_props):
     formula2data = defaultdict(list)  # expensive: entire symbolic iter, meta in memory
     for (utt, ltl), (pattern_type, props) in zip(data, meta):
         props = list(props)
+        # sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
         if props.count(props[0]) == len(props):  # restricted avoidance formulas all props are the same
-            sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, [all_props[0]]*len(props))}  # b, b -> a, a
+            props_noperm = [all_props[0]]*len(props)  # b, b -> a, a
         else:
-            sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}
+            props_noperm = all_props[:len(props)]
+        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, props_noperm)}
         utt_noperm = substitute_single_letter(utt, sub_map)
         ltl_noperm = substitute_single_letter(ltl, sub_map)
-        formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
+        formula2data[(pattern_type, tuple(props_noperm))].append((utt_noperm, ltl_noperm))
 
     data_noperm, meta_noperm = [], []
-    for (pattern_type, nprops), data in formula2data.items():
+    for (pattern_type, props_noperm), data in formula2data.items():
         data = list(dict.fromkeys(data))  # unique utt structures per formula in data. same order across runs
         for utt, ltl in data:
             data_noperm.append((utt, ltl))
-            meta_noperm.append((pattern_type, all_props[:nprops]))
+            meta_noperm.append((pattern_type, list(props_noperm)))
     return data_noperm, meta_noperm
 
 
@@ -179,10 +181,6 @@ def deserialize_props_str(props_str):
 
 def props_in_formula(formula, feasible_props):
     return [prop for prop in feasible_props if prop in formula]
-
-
-def props_in_utt(utt, feasible_props):
-    return [word.strip() for word in utt.split() if word in feasible_props]
 
 
 def save_to_file(data, fpth, mode=None):
