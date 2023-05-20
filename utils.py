@@ -105,7 +105,10 @@ def remove_prop_perms(data, meta, all_props):
     formula2data = defaultdict(list)  # expensive: entire symbolic iter, meta in memory
     for (utt, ltl), (pattern_type, props) in zip(data, meta):
         props = list(props)
-        sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
+        if props.count(props[0]) == len(props):  # restricted avoidance formulas all props are the same
+            sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, [all_props[0]]*len(props))}  # b, b -> a, a
+        else:
+            sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}
         utt_noperm = substitute_single_letter(utt, sub_map)
         ltl_noperm = substitute_single_letter(ltl, sub_map)
         formula2data[(pattern_type, len(props))].append((utt_noperm, ltl_noperm))
