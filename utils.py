@@ -105,7 +105,6 @@ def remove_prop_perms(data, meta, all_props):
     formula2data = defaultdict(list)  # expensive: entire symbolic iter, meta in memory
     for (utt, ltl), (pattern_type, props) in zip(data, meta):
         props = list(props)
-        # sub_map = {old_prop: new_prop for old_prop, new_prop in zip(props, all_props[:len(props)])}  # remove perm
         if props.count(props[0]) == len(props):  # restricted avoidance formulas all props are the same
             props_noperm = [all_props[0]]*len(props)  # b, b -> a, a
         else:
@@ -117,7 +116,7 @@ def remove_prop_perms(data, meta, all_props):
 
     data_noperm, meta_noperm = [], []
     for (pattern_type, props_noperm), data in formula2data.items():
-        data = list(dict.fromkeys(data))  # unique utt structures per formula in data. same order across runs
+        data = list(dict.fromkeys(data))  # remove duplicate utt structures per formula. same order across runs
         for utt, ltl in data:
             data_noperm.append((utt, ltl))
             meta_noperm.append((pattern_type, list(props_noperm)))
