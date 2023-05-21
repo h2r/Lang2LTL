@@ -119,7 +119,7 @@ def remove_prop_perms(data, meta, all_props):
         data = list(dict.fromkeys(data))  # remove duplicate utt structures per formula. same order across runs
         for utt, ltl in data:
             data_noperm.append((utt, ltl))
-            meta_noperm.append((pattern_type, list(set(props_noperm))))
+            meta_noperm.append((pattern_type, list(props_noperm)))
     return data_noperm, meta_noperm
 
 

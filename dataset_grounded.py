@@ -116,16 +116,17 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
         props = [prop.translate(str.maketrans('', '', string.punctuation)).strip() for prop in props]  # ['a,'] -> ['a']
         seed += idx  # diff seed to sample diff lmks for each utt-ltl pair
         if nsamples:  # permute lmks for valid_iter
-            if len(props) not in nprops2lmkperms:
-                nprops2lmkperms[len(props)] = list(permutations(lmks, len(props)))  # each perm contain len(props) lmks
-            lmk_perms = nprops2lmkperms[len(props)]
+            nprops_norepeat = len(set(props))  # restricted avoidance repeat props, e.g., [a, a, a]
+            if nprops_norepeat not in nprops2lmkperms:
+                nprops2lmkperms[nprops_norepeat] = list(permutations(lmks, nprops_norepeat))  # each perm contain nprops_norepeat lmks
+            lmk_perms = nprops2lmkperms[nprops_norepeat]
             random.seed(seed)
             lmk_subs = random.sample(lmk_perms, nsamples)  # sample nsamples lmk perms
             # print(f"{idx}: {pattern_type} {props}\n{utt}\n{ltl}")
             # breakpoint()
         else:
             lmk_subs = [lmks]
-        for lmk_sub in lmk_subs:
+        for lmk_sub in lmk_subs:  # substitute multiple lmks in each (utt, ltl)
             utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props, seed, add_comma, model)
             if utt == utt_grounded:
                 raise ValueError(f"ERROR\n{utt}\n==\n{utt_grounded}")
@@ -137,11 +138,12 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
 
 
 def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
-    if len(lmks) == len(props):  # already sample lmks from all perms for valid_iter
+    nprops_norepeat = len(set(props))  # repeat props in restricted avoidance, e.g., [a, a, a]
+    if len(lmks) == nprops_norepeat:  # already sample lmks from all perms for valid_iter
         lmk_names = lmks
     else:  # randomly sample lmks from complete lmk list for train_iter
         random.seed(seed)
-        lmk_names = random.sample(lmks, len(props))
+        lmk_names = random.sample(lmks, nprops_norepeat)
 
     if add_comma:
         sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
@@ -204,7 +206,7 @@ if __name__ == "__main__":
     parser.add_argument("--env", type=str, default="boston", choices=["boston", "all", "cleanup"], help="env lmks from 1 or all json files in data/osm/lmks or data/clenaup/lmks.")
     parser.add_argument("--model", type=str, default="lang2ltl", choices=["lang2ltl", "copynet"], help="model name.")
     parser.add_argument("--seed", type=int, default=42, help="random seed to sample lmks.")
-    parser.add_argument("--nsamples", type=int, default=2, help="number of samples per utt strucutre when perm lmks for valid set.")
+    parser.add_argument("--nsamples", type=int, default=2, help="number of samples per utt-ltl pair when perm lmks for valid set.")
     parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
     parser.add_argument("--env_prompt", type=str, default="boston", help="env dataset to generate full translation prompt.")
