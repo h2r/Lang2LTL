@@ -48,7 +48,7 @@ def multimodal_example(utt, rer_model, rer_engine, rer_prompt, sym_trans, conver
 
 
 if __name__ == "__main__":
-    utt = "go to the red brick building without passing by the CS department"
+    utt = "grab book from bookshelf then deliver it to desk"
     multimodal_example(utt,
                        rer_model="gpt3",
                        rer_engine="text-davinci-003",

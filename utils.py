@@ -182,6 +182,10 @@ def props_in_formula(formula, feasible_props):
     return [prop for prop in feasible_props if prop in formula]
 
 
+def props_in_utt(utt, feasible_props):
+    return [word.strip() for word in utt.split() if word.strip() in feasible_props]
+
+
 def save_to_file(data, fpth, mode=None):
     ftype = os.path.splitext(fpth)[-1][1:]
     if ftype == 'pkl':
