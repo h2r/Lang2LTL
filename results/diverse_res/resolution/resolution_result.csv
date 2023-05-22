@@ -1,0 +1,1319 @@
+Domain,Referring expression,Grounded landmarks,Ground Truth,Accuracy
+philadelphia_1,Colonial Cleaners dry cleaning shop,Colonial Cleaners,Colonial Cleaners,True
+philadelphia_1,Linode shop,Linode,Linode,True
+philadelphia_1,Linode store,Linode,Linode,True
+philadelphia_1,Betsy Ross House Museum gift shop,Betsy Ross House Museum Shop,Betsy Ross House Museum Shop,True
+philadelphia_1,Sioux New and Vintage clothing store,Sioux New and Vintage,Sioux New and Vintage,True
+philadelphia_1,Sioux New and Vintage clothes store,Sioux New and Vintage,Sioux New and Vintage,True
+philadelphia_1,Brick Creative Arts Building on Cuthbert Street,Creative Arts Building,Creative Arts Building,True
+philadelphia_1,Creative Arts Building made of brick on Cuthbert Street,Creative Arts Building,Creative Arts Building,True
+philadelphia_1,Creative Arts Building on Cuthbert Street,Creative Arts Building,Creative Arts Building,True
+philadelphia_1,The UPS Store on North 3rd Street,The UPS Store,The UPS Store,True
+philadelphia_1,Betsy Ross House park,Betsy Ross House,Betsy Ross House,True
+philadelphia_1,Christian place of worship on Arch Street,Arch Street Friends Meetinghouse,Arch Street Friends Meetinghouse,True
+philadelphia_1,MOKO Organic Beauty Studio on North 3rd Street,MOKO Organic Beauty Studio,MOKO Organic Beauty Studio,True
+philadelphia_1,Organic beauty studio on North 3rd Street,MOKO Organic Beauty Studio,MOKO Organic Beauty Studio,True
+philadelphia_1,E-Z Parking on North 3rd Street,E-Z Parking,E-Z Parking,True
+philadelphia_1,Pet shop on North 3rd Street,Bon-e-jour,Bon-e-jour,True
+philadelphia_1,Bon-e-jour pet store on North 3rd Street,Bon-e-jour,Bon-e-jour,True
+philadelphia_1,Starbucks coffee shop on North 3rd Street,Starbucks,Starbucks,True
+philadelphia_1,Vintage clothing store,Briar Vintage,Briar Vintage,True
+philadelphia_1,Vintage clothes store,Briar Vintage,Briar Vintage,True
+philadelphia_1,vintage clothing store,Briar Vintage,Briar Vintage,True
+philadelphia_1,PhillyCarShare at 2nd & Arch,2nd & Arch,2nd & Arch,True
+philadelphia_1,"Sass Vintage, a shop",Sass Vintage,Sass Vintage,True
+philadelphia_1,Sass Vintage shop,Sass Vintage,Sass Vintage,True
+philadelphia_1,Margot & Camille Optician shop,Margot & Camille,Margot & Camille,True
+philadelphia_1,Optician shop Margot & Camille,Margot & Camille,Margot & Camille,True
+philadelphia_1,Margot & Camille optician shop,Margot & Camille,Margot & Camille,True
+philadelphia_1,Brick building on North 2nd Street,Hamilton Family Arts Center,Hamilton Family Arts Center,True
+philadelphia_1,"Hamilton Family Arts Center, a brick building on North 2nd Street",Hamilton Family Arts Center,Hamilton Family Arts Center,True
+philadelphia_1,Japanese sushi and ramen restaurant named Tomo,Tomo sushi&ramen,Tomo sushi&ramen,True
+philadelphia_1,Asian and Japanese sushi and ramen restaurant,Tomo sushi&ramen,Tomo sushi&ramen,True
+philadelphia_1,Asian and Japanese sushi and ramen restaurant named Tomo,Tomo sushi&ramen,Tomo sushi&ramen,True
+philadelphia_1,Tribal Home furniture store,Tribal Home (interiors),Tribal Home (interiors),True
+philadelphia_1,Tribal Home interiors furniture store,Tribal Home (interiors),Tribal Home (interiors),True
+philadelphia_1,Home interiors store,LA Signature Home Interiors,LA Signature Home Interiors,True
+philadelphia_1,LA Signature Home Interiors shop,LA Signature Home Interiors,LA Signature Home Interiors,True
+philadelphia_1,Girard Fountain Park,Girard Fountain Park,Girard Fountain Park,True
+charlotte_1,CPCC Overcash Building,CPCC Overcash,CPCC Overcash,True
+charlotte_1,CPCC Overcash building,CPCC Overcash,CPCC Overcash,True
+charlotte_1,CPCC Health Careers building,CPCC Health Careers,CPCC Health Careers,True
+charlotte_1,CPCC Central High building,CPCC Central High,CPCC Central High,True
+charlotte_1,Central Piedmont Community College,Central Piedmont Community College,Central Piedmont Community College,True
+charlotte_1,CPCC Overcash Arts Wing building,CPCC Overcash - Arts Wing,CPCC Overcash - Arts Wing,True
+charlotte_1,CPCC Overcash - Arts Wing building,CPCC Overcash - Arts Wing,CPCC Overcash - Arts Wing,True
+charlotte_1,CPCC Pease Auditorium theater building,CPCC Pease Auditorium,CPCC Pease Auditorium,True
+charlotte_1,CPCC Pease Auditorium Theatre Building,CPCC Pease Auditorium,CPCC Pease Auditorium,True
+charlotte_1,"CPCC Pease Auditorium, a theatre building",CPCC Pease Auditorium,CPCC Pease Auditorium,True
+charlotte_1,Little Sugar Creek,Little Sugar Creek,Little Sugar Creek,True
+charlotte_1,CPCC Tate Tower monument,CPCC Tate Tower,CPCC Tate Tower,True
+charlotte_1,Independence Park on Hawthorne Lane,Independence Park,Independence Park,True
+charlotte_1,CPCC Library,CPCC Library,CPCC Library,True
+charlotte_1,CPCC Library building,CPCC Library,CPCC Library,True
+charlotte_1,Historic Gloria Victus Monument Memorial,Gloria Victus Monument,Gloria Victus Monument,True
+charlotte_1,"Gloria Victus Monument, a historic memorial",Gloria Victus Monument,Gloria Victus Monument,True
+charlotte_1,Gloria Victus Memorial,Gloria Victus Monument,Gloria Victus Monument,True
+charlotte_1,Duke's 100kV Transmission Line,100kV Transmission Line,100kV Transmission Line,True
+charlotte_1,Duke operated 100kV Transmission Line,100kV Transmission Line,100kV Transmission Line,True
+charlotte_1,Duke's 100kV transmission line,100kV Transmission Line,100kV Transmission Line,True
+charlotte_1,CPCC Terrell building,CPCC Terrell,CPCC Terrell,True
+charlotte_1,CPCC Terrell Building,CPCC Terrell,CPCC Terrell,True
+charlotte_1,Aspire monument,Aspire,Aspire,True
+charlotte_1,Aspire historic monument,Aspire,Aspire,True
+charlotte_1,Sloan-Morgan building at CPCC,CPCC Sloan-Morgan,CPCC Sloan-Morgan,True
+charlotte_1,CPCC Sloan-Morgan building,CPCC Sloan-Morgan,CPCC Sloan-Morgan,True
+charlotte_1,CPCC,CPCC,CPCC Health Careers,False
+charlotte_1,CPCC Zeiss Building,CPCC Zeiss,CPCC Zeiss,True
+charlotte_1,CPCC Zeiss building,CPCC Zeiss,CPCC Zeiss,True
+charlotte_1,CPCC Advanced Technology Center building,CPCC Advanced Technology Center,CPCC Advanced Technology Center,True
+charlotte_1,CPCC Faculty/Theatre Parking,CPCC Faculty/Theatre Parking,CPCC Faculty/Theatre Parking,True
+charlotte_1,CPCC Faculty/Theatre Parking lot,CPCC Faculty/Theatre Parking,CPCC Faculty/Theatre Parking,True
+charlotte_1,Kratt building under construction since June 2017,CPCC Kratt,CPCC Kratt,True
+charlotte_1,"Demolished building, with construction for a new one starting in Fall 2017 at CPCC Kratt.",CPCC Kratt,CPCC Kratt,True
+charlotte_1,CPCC Kratt building demolished and under construction since 2017,CPCC Kratt,CPCC Kratt,True
+charlotte_1,Halton Theatre operated by CPCC,Halton Theatre,Halton Theatre,True
+charlotte_1,CPCC Citizens Center Building,CPCC Citizens Center,CPCC Citizens Center,True
+charlotte_1,CPCC Citizens Center building,CPCC Citizens Center,CPCC Citizens Center,True
+charlotte_1,CPCC Worrell Building,CPCC Worrell,CPCC Worrell,True
+charlotte_1,CPCC Worrell building,CPCC Worrell,CPCC Worrell,True
+charlotte_1,CPCC Giles Science Center building,CPCC Giles Science Center,CPCC Giles Science Center,True
+charlotte_1,Giles Science Center at CPCC,CPCC Giles Science Center,CPCC Giles Science Center,True
+los_angeles_1,Village Center Newsstand selling newspapers and magazines,Village Center Newsstand,Village Center Newsstand,True
+los_angeles_1,Newsstand at Village Center,Village Center Newsstand,Village Center Newsstand,True
+los_angeles_1,Pizza fast food on Lindbrook Drive,800 Degrees,800 Degrees,True
+los_angeles_1,Asian fusion restaurant on Gayley Avenue,Iso Fusion Café,Iso Fusion Café,True
+los_angeles_1,Asian fusion cafe on Gayley Avenue,Iso Fusion Café,Iso Fusion Café,True
+los_angeles_1,Mexican fast-food on Gayley Avenue,El Pollo Loco,El Pollo Loco,True
+los_angeles_1,Mexican fast food on Gayley Avenue,El Pollo Loco,El Pollo Loco,True
+los_angeles_1,Royal Palace Hotel,Royal Palace Hotel,Royal Palace Hotel,True
+los_angeles_1,Village Square on Westwood Boulevard,Westwood's Village Square,Westwood Village,False
+los_angeles_1,Westwood's Village Square on Westwood Boulevard,Westwood's Village Square,Westwood Village,False
+los_angeles_1,Sporting goods store on Gayley Avenue,Westwood Sporting Goods,Westwood Sporting Goods,True
+los_angeles_1,Westwood Sporting Goods store on Gayley Avenue,Westwood Sporting Goods,Westwood Sporting Goods,True
+los_angeles_1,"Red Pelican Music, a private music lesson center on Lindbrook Drive",Red Pelican Music,Red Pelican Music,True
+los_angeles_1,Red Pelican Music education center on Lindbrook Drive,Red Pelican Music,Red Pelican Music,True
+los_angeles_1,Bagel fast food place on Lindbrook Drive,Noah's Bagels,Noah's Bagels,True
+los_angeles_1,Bagel fast food on Lindbrook Drive,Noah's Bagels,Noah's Bagels,True
+los_angeles_1,Bicycle shop on Gayley Avenue,Helen's Cycles,Helen's Cycles,True
+los_angeles_1,"Helen's Cycles, a bicycle shop on Gayley Avenue",Helen's Cycles,Helen's Cycles,True
+los_angeles_1,Helen's Cycles bicycle shop on Gayley Avenue,Helen's Cycles,Helen's Cycles,True
+los_angeles_1,Plaza la Reina building,Plaza la Reina,Plaza la Reina,True
+los_angeles_1,Kaplan education center on Westwood Boulevard,Kaplan,Kaplan,True
+los_angeles_1,Kaplan education centre on Westwood Boulevard,Kaplan,Kaplan,True
+los_angeles_1,UCLA Extension college building in Westwood Village on Gayley Avenue,UCLA Extension - Westwood Village Center,UCLA Extension - Westwood Village Center,True
+los_angeles_1,UCLA Extension - Westwood Village Center on Gayley Avenue,UCLA Extension - Westwood Village Center,UCLA Extension - Westwood Village Center,True
+los_angeles_1,UCLA Extension College in Westwood Village on Gayley Avenue,UCLA Extension - Westwood Village Center,UCLA Extension - Westwood Village Center,True
+los_angeles_1,Yogurtland frozen yogurt shop on Lindbrook Drive,Yogurtland,Yogurtland,True
+los_angeles_1,Yogurtland frozen yogurt on Lindbrook Drive,Yogurtland,Yogurtland,True
+los_angeles_1,UCLA Extension building on Lindbrook Drive,UCLA Extension - Lindbrook Center,UCLA Extension - Lindbrook Center,True
+los_angeles_1,UCLA Extension at Lindbrook Center on Lindbrook Drive,UCLA Extension - Lindbrook Center,UCLA Extension - Lindbrook Center,True
+los_angeles_1,UCLA Extension Lindbrook Center on Lindbrook Drive,UCLA Extension - Lindbrook Center,UCLA Extension - Lindbrook Center,True
+los_angeles_1,Westwood Wilshire,Westwood Wilshire,Westwood Village,False
+los_angeles_1,Skylight Gardens restaurant on Glendon Avenue,Skylight Gardens,Skylight Gardens,True
+los_angeles_1,Korean fast food at bibigo,bibigo,bibigo,True
+los_angeles_1,Korean fast food called bibigo,bibigo,bibigo,True
+los_angeles_1,Korean fast food restaurant named bibigo,bibigo,bibigo,True
+los_angeles_1,Native Foods Cafe on Gayley Avenue,Native Foods,Native Foods,True
+los_angeles_1,Native Foods cafe on Gayley Avenue,Native Foods,Native Foods,True
+los_angeles_1,Tender Greens restaurant on Glendon Avenue,Tender Greens,Tender Greens,True
+los_angeles_1,Burger fast food on Kinross Avenue,Fatburger,Fatburger,True
+los_angeles_1,Fatburger fast food on Kinross Avenue,Fatburger,Fatburger,True
+los_angeles_1,Burger fast-food on Kinross Avenue,Fatburger,Fatburger,True
+los_angeles_1,Headlines! restaurant on Kinross Avenue,Headlines!,Headlines!,True
+los_angeles_1,Starbucks coffee shop on Westwood Boulevard,Starbucks,Starbucks,True
+los_angeles_1,Japanese fast food on Lindbrook Drive,SanSai Japanese Grill,SanSai Japanese Grill,True
+los_angeles_1,Poke Bar cafe,Poke Bar,Poke Bar,True
+los_angeles_1,Gayley & Lindbrook Apartments on Gayley Avenue,Gayley & Lindbrook Apartments,Gayley & Lindbrook Apartments,True
+los_angeles_1,Apartments on Gayley Avenue,Gayley & Lindbrook Apartments,Gayley & Lindbrook Apartments,True
+los_angeles_1,Denny's restaurant on Tiverton Avenue,Denny's,Denny's,True
+los_angeles_1,Occidental Petroleum Heliport operated by Oxy Westwood Corp,Occidental Petroleum Heliport,Occidental Petroleum Heliport,True
+los_angeles_1,Ike's Place sandwich shop on Westwood Boulevard,Ike's Place,Ike's Place,True
+los_angeles_1,Ike's sandwich restaurant on Westwood Boulevard,Ike's Place,Ike's Place,True
+los_angeles_1,Ike's Place serving sandwiches on Westwood Boulevard,Ike's Place,Ike's Place,True
+los_angeles_1,UCLA-operated parking lot 36,Parking 36,Parking 36,True
+los_angeles_1,UCLA-operated Parking 36,Parking 36,Parking 36,True
+los_angeles_1,Kinross Building North on Kinross Avenue,Kinross Building North,Kinross Building North,True
+los_angeles_1,Westwood Lindbrook,Westwood / Lindbrook,Westwood / Lindbrook,True
+los_angeles_1,UCLA-operated Parking 32,Parking 32,Parking 32,True
+los_angeles_1,UCLA-operated Parking 32 building,Parking 32,Parking 32,True
+los_angeles_1,UCLA Parking 32 building,Parking 32,Parking 32,True
+los_angeles_1,Verizon Wireless mobile phone store,Verizon Wireless,Verizon Wireless,True
+los_angeles_1,Novel Cafe in Westwood on Gayley Avenue,Novel Cafe Westwood,Novel Cafe Westwood,True
+los_angeles_1,Novel Cafe Westwood on Gayley Avenue,Novel Cafe Westwood,Novel Cafe Westwood,True
+los_angeles_1,Stone Canyon Creek (underground),Stone Canyon Creek (underground),Stone Canyon Creek (underground),True
+los_angeles_1,Underground Stone Canyon Creek,Stone Canyon Creek (underground),Stone Canyon Creek (underground),True
+los_angeles_1,Stationery store on Gayley Avenue,Flax Pen to Paper,Flax Pen to Paper,True
+los_angeles_1,Stationery shop on Gayley Avenue,Flax Pen to Paper,Flax Pen to Paper,True
+los_angeles_1,Kinross Building South on Kinross Avenue,Kinross Building South,Kinross Building South,True
+los_angeles_1,New York-style pizza on Gayley Avenue,Lamonicas NY-Pizza,Lamonicas NY-Pizza,True
+los_angeles_1,New York-style pizza place on Gayley Avenue,Lamonicas NY-Pizza,Lamonicas NY-Pizza,True
+los_angeles_1,Lamonicas NY-Pizza on Gayley Avenue,Lamonicas NY-Pizza,Lamonicas NY-Pizza,True
+los_angeles_1,Subway sandwich fast food on Westwood Boulevard,Subway,Subway,True
+los_angeles_1,London Cleaners on Gayley Avenue,London Cleaners,London Cleaners,True
+los_angeles_1,The Gayley Building on Gayley Avenue,The Gayley Building,The Gayley Building,True
+los_angeles_1,Burger fast-food on Westwood Boulevard,U-Mini,U-Mini,True
+los_angeles_1,Burger fast food on Westwood Boulevard,U-Mini,U-Mini,True
+los_angeles_1,Peet's Coffee & Tea cafe on Westwood Boulevard,Peet's Coffee & Tea,Peet's Coffee & Tea,True
+los_angeles_1,Peet's Coffee & Tea on Westwood Boulevard,Peet's Coffee & Tea,Peet's Coffee & Tea,True
+los_angeles_1,Vegetarian cafe on Lindbrook Drive,Nature's Way Café,Nature's Way Café,True
+los_angeles_1,Vegetarian café on Lindbrook Drive,Nature's Way Café,Nature's Way Café,True
+los_angeles_1,Westwood Village neighborhood,Westwood Village,Westwood Village,True
+los_angeles_1,Mongolian restaurant on Gayley Avenue,Mongol BBQ,Mongol BBQ,True
+los_angeles_1,"Janss Dome, also known as Janss Investment Company Building",Janss Dome,Janss Dome,True
+los_angeles_1,Retail center on Gayley Avenue,Gayley Center,Gayley Center,True
+los_angeles_1,Elysee cafe on Gayley Avenue,Elysee,Elysee,True
+los_angeles_1,Flower garden on Gayley Avenue,Westwood Flower Garden,Westwood Flower Garden,True
+los_angeles_1,Westwood Flower Garden on Gayley Avenue,Westwood Flower Garden,Westwood Flower Garden,True
+los_angeles_1,UTLA Beauty on Gayley Avenue,UTLA Beauty,UTLA Beauty,True
+los_angeles_1,UTLA Beauty building on Gayley Avenue,UTLA Beauty,UTLA Beauty,True
+los_angeles_1,Urban Outfitters clothing store,Urban Outfitters,Urban Outfitters,True
+los_angeles_1,Victoria's Secret women's underwear store,Victoria's Secret,Victoria's Secret,True
+los_angeles_1,Victoria's Secret women's underwear and clothing store,Victoria's Secret,Victoria's Secret,True
+los_angeles_1,Victoria's Secret women's underwear and clothes store,Victoria's Secret,Victoria's Secret,True
+los_angeles_1,Hammer Museum on Wilshire Boulevard,Hammer Museum,Hammer Museum,True
+los_angeles_1,Westwood Medical Plaza on Wilshire Boulevard,Westwood Medical Plaza,Westwood Medical Plaza,True
+los_angeles_1,Italian restaurant on Gayley Avenue,Mio Babbo's,Mio Babbo's,True
+los_angeles_1,American fast food on Westwood Boulevard,TCT Foods,TCT Foods,True
+los_angeles_1,T-Mobile store on Westwood Boulevard,T-Mobile,T-Mobile,True
+los_angeles_1,Veggie Grill fast food on Lindbrook Drive,Veggie Grill,Veggie Grill,True
+indianapolis,PNC Bank,PNC Bank,PNC Bank,True
+indianapolis,Bicycle rental at Fountain Square,Fountain Square,Fountain Square,True
+indianapolis,Fountain Square with bicycle rental,Fountain Square,Fountain Square,True
+indianapolis,Smokehouse restaurant on Shelby Street,Smokehouse On Shelby,Smokehouse On Shelby,True
+indianapolis,Sandwich restaurant on Virginia Avenue,Pure,Pure,True
+indianapolis,Pure sandwich restaurant on Virginia Avenue,Pure,Pure,True
+indianapolis,Comic book store,Hero House Comics,Hero House Comics,True
+indianapolis,Hero House comic book store,Hero House Comics,Hero House Comics,True
+indianapolis,Peruvian restaurant on Virginia Avenue,Mama Irma,Mama Irma,True
+indianapolis,Mexican restaurant on Virginia Avenue,El Arado,La Margarita Fountain Square,False
+indianapolis,Fountain Square Branch Indianapolis-Marion County Public Library on Virginia Avenue,Fountain Square Branch Indianapolis-Marion County Public Library,Fountain Square Branch Indianapolis-Marion County Public Library,True
+indianapolis,Fountain Square Branch Library on Virginia Avenue,Fountain Square Branch Indianapolis-Marion County Public Library,Fountain Square Branch Indianapolis-Marion County Public Library,True
+indianapolis,Mexican restaurant on Virginia Avenue,La Margarita Fountain Square,La Margarita Fountain Square,True
+indianapolis,PNC Bank Drive-Thru with a roof,PNC Bank Drive-Thru,PNC Bank Drive-Thru,True
+new_york_1,Joy Luck Palace restaurant,Joy Luck Palace,Joy Luck Palace,True
+new_york_1,New ML Oro Jewelry store on Canal Street,"New ML Oro Jewelry, Inc.","New ML Oro Jewelry, Inc.",True
+new_york_1,TD Bank on Canal Street,TD Bank,TD Bank,True
+new_york_1,Audrey Bakery & Cafe on Canal Street,Audrey Bakery & Cafe,Audrey Bakery & Cafe,True
+new_york_1,Optician on Mott Street,Eyesmate Optical,Mott Street Optical,False
+new_york_1,Optician shop on Mott Street,Eyesmate Optical,Mott Street Optical,False
+new_york_1,"Eastern States Buddhist Temple, a place of worship",Eastern States Buddhist Temple,Eastern States Buddhist Temple,True
+new_york_1,Buddhist temple for worship,Eastern States Buddhist Temple,Eastern States Buddhist Temple,True
+new_york_1,Eastern States Buddhist Temple for worship,Eastern States Buddhist Temple,Eastern States Buddhist Temple,True
+new_york_1,Bookstore on Elizabeth Street,Oriental Culture Enterprises Co,Oriental Culture Enterprises Co,True
+new_york_1,bookstore on Elizabeth Street,Oriental Culture Enterprises Co,Oriental Culture Enterprises Co,True
+new_york_1,Japanese ramen and sake bar on Bowery,Shinka ramen & sake bar,Shinka ramen & sake bar,True
+new_york_1,Yee Li restaurant on Elizabeth Street,Yee Li,Yee Li,True
+new_york_1,Historic Manhattan Bridge Arch,Manhattan Bridge Arch,Manhattan Bridge Arch,True
+new_york_1,Japanese and Chinese tea garden on Chrystie Street,Yaya Tea Garden,Yaya Tea Garden,True
+new_york_1,Japanese and Chinese cafe on Chrystie Street,Yaya Tea Garden,Yaya Tea Garden,True
+new_york_1,Citi Bike rental station at Elizabeth St & Hester St operated by NYC Bike Share,Citi Bike - Elizabeth St & Hester St,Citi Bike - Elizabeth St & Hester St,True
+new_york_1,Citi Bike rental at Elizabeth St & Hester St operated by NYC Bike Share,Citi Bike - Elizabeth St & Hester St,Citi Bike - Elizabeth St & Hester St,True
+new_york_1,The Bowery Bar,The Bowery,The Bowery,True
+new_york_1,The Bowery bar,The Bowery,The Bowery,True
+new_york_1,Kung Fu Tea cafe,Kung Fu Tea,Kung Fu Tea,True
+new_york_1,House of Vegetarian restaurant,house of vegetarian,house of vegetarian,True
+new_york_1,Simply Bakery on Bayard Street,Simply Bakery,Simply Bakery,True
+new_york_1,Massage shop on Mott Street,Hao Zu Dao,Mott Street Optical,False
+new_york_1,Massage parlor on Mott Street,Hao Zu Dao,Hao Zu Dao,True
+new_york_1,Penguin Ice Cream cafe on Canal Street,Penguin Ice Cream,Penguin Ice Cream,True
+new_york_1,Penguin Ice Cream on Canal Street,Penguin Ice Cream,Penguin Ice Cream,True
+new_york_1,West New Malaysia Restaurant on Bowery Street,West New Malaysia Restaurant,West New Malaysia Restaurant,True
+new_york_1,West New Malaysia Restaurant on Bowery,West New Malaysia Restaurant,West New Malaysia Restaurant,True
+new_york_1,Herbalist shop on Bayard Street,7955 AE Comapny,7955 AE Comapny,True
+new_york_1,herbalist shop on Bayard Street,7955 AE Comapny,7955 AE Comapny,True
+new_york_1,Chinatown Federal Savings Bank on Canal Street,Chinatown Federal Savings Bank,Chinatown Federal Savings Bank,True
+new_york_1,New World Hotel,New World Hotel,New World Hotel,True
+new_york_1,Sun Bright on Hester Street,Sun Bright,Sun Bright,True
+new_york_1,Gong Cha cafe on Bayard Street,Gong Cha,Gong Cha,True
+new_york_1,Tinma Travel & Tours on Bowery Street,Tinma Travel & Tours,Tinma Travel & Tours,True
+new_york_1,Tinma Travel & Tours on Bowery,Tinma Travel & Tours,Tinma Travel & Tours,True
+new_york_1,Chinese restaurant on Mott Street,wonton garden,New Mandarin Court,False
+new_york_1,Chinese restaurant Wonton Garden on Mott Street,wonton garden,wonton garden,True
+new_york_1,Chinese restaurant on Mott street called Wonton Garden,wonton garden,wonton garden,True
+new_york_1,Keki Modern Cakes restaurant,Keki Modern Cakes,Keki Modern Cakes,True
+new_york_1,NYPD 5th Precinct Police Station,NYPD 5 PCT,NYPD 5 PCT,True
+new_york_1,oo35mm cosmetics shop on Mott Street,oo35mm,oo35mm,True
+new_york_1,Cosmetics shop on Mott Street,oo35mm,oo35mm,True
+new_york_1,Chinese and Japanese restaurant XO Kitchen,XO Kitchen,XO Kitchen,True
+new_york_1,"Chinese and Japanese restaurant, XO Kitchen",XO Kitchen,XO Kitchen,True
+new_york_1,Chinese and Japanese restaurant called XO Kitchen,XO Kitchen,XO Kitchen,True
+new_york_1,Tyka Pharmacy,Tyka Pharmacy,Tyka Pharmacy,True
+new_york_1,IES Test Prep school,IES Test Prep,IES Test Prep,True
+new_york_1,Italian restaurant Sorbillo,Sorbillo,Sorbillo,True
+new_york_1,Italian restaurant named Sorbillo,Sorbillo,Sorbillo,True
+new_york_1,clothing store on Elizabeth Street,Unique Hype Collection,Unique Hype Collection,True
+new_york_1,Clothing store on Elizabeth Street,Unique Hype Collection,Unique Hype Collection,True
+new_york_1,Mott Street Optical store,Mott Street Optical,Mott Street Optical,True
+new_york_1,Mott Street Optical shop,Mott Street Optical,Mott Street Optical,True
+new_york_1,Mott Street Optical store by Mott Optical Group,Mott Street Optical,Mott Street Optical,True
+new_york_1,Canal Street,Canal Street,Canal Street,True
+new_york_1,Tesla Supercharger station operated by Tesla Motors,Tesla Supercharger,Tesla Supercharger,True
+new_york_1,Sun's Organic Garden cafe on Bayard Street,Sun's Organic Garden,Sun's Organic Garden,True
+new_york_1,Lucky Star Bamboo Depot supermarket on Bayard Street,Lucky Star Bamboo Depot,Lucky Star Bamboo Depot,True
+new_york_1,Citibank on Canal Street,Citibank,Citibank,True
+new_york_1,"Bakery and cafe on Bowery offering coffee, pastries, and baked goods",Bake Culture,Bake Culture,True
+new_york_1,Bakery and cafe with coffee and pastries on Bowery,Bake Culture,Bake Culture,True
+new_york_1,"Bakery and cafe on Bowery, offering coffee and pastry",Bake Culture,Bake Culture,True
+new_york_1,Farreros Bakery on Mulberry Street,Farreros Bakery,Farreros Bakery,True
+new_york_1,Chinatown,Chinatown,Chinatown,True
+new_york_1,Chinese restaurant on Mott Street,Amazing 66,New Mandarin Court,False
+new_york_1,Chinese restaurant on Mott Street,New Mandarin Court,New Mandarin Court,True
+new_york_1,New Mandarin Court Chinese restaurant on Mott Street,New Mandarin Court,New Mandarin Court,True
+new_york_1,Taipan Bakery on Canal Street,Taipan Bakery,Taipan Bakery,True
+new_york_1,Bakery shop,Bakery,Bakery,True
+new_york_1,East West Bank on Bowery street,East West Bank,East West Bank,True
+new_york_1,East West Bank on Bowery,East West Bank,East West Bank,True
+new_york_1,East West Bank on Bowery Street,East West Bank,East West Bank,True
+new_york_1,Intermediate School 131 on Hester Street,Intermediate School 131,Intermediate School 131,True
+new_york_1,Obstetrics and Gynecology clinic on Bayard Street,Bayard Street Obstetrics and Gynecology,Bayard Street Obstetrics and Gynecology,True
+new_york_1,Wanda Coach bus station on Canal Street,Wanda Coach,Wanda Coach,True
+new_york_1,Gee How Oak Tin Association community center,Gee How Oak Tin Association,Gee How Oak Tin Association,True
+new_york_1,Gee How Oak Tin community center,Gee How Oak Tin Association,Gee How Oak Tin Association,True
+new_york_1,Xi'an Famous Foods Chinese restaurant,Xi'an Famous Foods,Xi'an Famous Foods,True
+new_york_1,"Xi'an Famous Foods, a Chinese restaurant",Xi'an Famous Foods,Xi'an Famous Foods,True
+new_york_1,Bowery and Hester Street,Bowery & Hester Street,Bowery & Hester Street,True
+new_york_1,Bowery & Hester Street,Bowery & Hester Street,Bowery & Hester Street,True
+new_york_1,Korean cafe named Ten Ren,Ten Ren,Ten Ren,True
+new_york_1,Korean cafe Ten Ren,Ten Ren,Ten Ren,True
+new_york_1,Citi Bike rental at Forsyth St and Canal St operated by NYC Bike Share,Citi Bike - Forsyth St & Canal St,Citi Bike - Forsyth St & Canal St,True
+new_york_1,Citi Bike rental at Forsyth St & Canal St,Citi Bike - Forsyth St & Canal St,Citi Bike - Forsyth St & Canal St,True
+new_york_1,Citi Bike rental at Forsyth St & Canal St operated by NYC Bike Share,Citi Bike - Forsyth St & Canal St,Citi Bike - Forsyth St & Canal St,True
+new_york_1,Hoy Wong Restaurant on Mott Street,Hoy Wong Restaurant,Hoy Wong Restaurant,True
+new_york_1,Chinese seafood restaurant on Mott Street,Royal Seafood Restaurant,Royal Seafood Restaurant,True
+new_york_1,Royal Seafood Restaurant on Mott Street,Royal Seafood Restaurant,Royal Seafood Restaurant,True
+new_york_1,186f Kepler on Canal Street,186f Kepler,186f Kepler,True
+new_york_1,Building 186f Kepler on Canal Street,186f Kepler,186f Kepler,True
+new_york_1,Asian restaurant on Bayard Street,New Green Bo,New Green Bo,True
+new_york_1,Mei Lai Wah Coffee on Bayard Street,Mei Lai Wah Coffee,Mei Lai Wah Coffee,True
+new_york_1,Mei Lai Wah Coffee restaurant on Bayard Street,Mei Lai Wah Coffee,Mei Lai Wah Coffee,True
+new_york_1,HSBC Bank,HSBC,HSBC,True
+new_york_1,Mahayanna Buddhist Center,Mahayanna Buddhist Center,Mahayanna Buddhist Center,True
+new_york_1,Pharmacy on Canal Street,Canal Pharmacy,Canal Pharmacy,True
+new_york_1,pharmacy on Canal Street,Canal Pharmacy,Canal Pharmacy,True
+new_york_1,Shanghai Dumpling Chinese restaurant on Mott Street,Shanghai Dumpling,Shanghai Dumpling,True
+new_york_1,Chinese dumpling restaurant on Mott Street,Shanghai Dumpling,Shanghai Dumpling,True
+new_york_1,Chinese restaurant on Mott Street serving Shanghai Dumpling,Shanghai Dumpling,Shanghai Dumpling,True
+new_york_1,Shanghai Asian Cuisine restaurant,Shanghai Asian Cruisine,Shanghai Asian Cruisine,True
+new_york_1,Chinese Merchant's Association building on Mulberry Street,Chinese Merchant's Association,Chinese Merchant's Association,True
+new_york_1,Chinese restaurant on Elizabeth Street,Jing Fong,Jing Fong,True
+new_york_1,Chinese restaurant on Elizabeth Street named Jing Fong,Jing Fong,Jing Fong,True
+new_york_1,Bayard L. C. Pharmacy on Bayard Street,Bayard L. C. Pharmacy,Bayard L. C. Pharmacy,True
+new_york_1,Pharmacy on Bayard Street,Bayard L. C. Pharmacy,Bayard L. C. Pharmacy,True
+new_york_1,New Kam Man supermarket on Canal Street,"New Kam Man, LLC","New Kam Man, LLC",True
+new_york_1,Chase Bank,Chase,Chase,True
+seattle,"Fortuna Cafe, a Chinese restaurant on South King Street",Fortuna Cafe,Fortuna Cafe,True
+seattle,Cindy's Beauty Salon on South King Street,Cindy's Beauty Salon,Cindy's Beauty Salon,True
+seattle,Interim CPA,Interim CPA,Interim CPA,True
+seattle,Sing Keong Society on Maynard Avenue South,Sing Keong Society,Sing Keong Society,True
+seattle,Northwest Kung Fu Fitness Studios,Northwest Kung Fu Fitness Studios,Northwest Kung Fu Fitness Studios,True
+seattle,Kung Fu Fitness Studios in Northwest,Northwest Kung Fu Fitness Studios,Northwest Kung Fu Fitness Studios,True
+seattle,Ocean Star Seafood Restaurant on 7th Avenue South,Ocean Star Seafood Restaurant,Ocean Star Seafood Restaurant,True
+seattle,Maekawa Bar with karaoke,Maekawa Bar,Maekawa Bar,True
+seattle,Karaoke bar Maekawa,Maekawa Bar,Maekawa Bar,True
+seattle,Karaoke bar named Maekawa,Maekawa Bar,Maekawa Bar,True
+seattle,Alice Hotel building,Alice Hotel,Alice Hotel,True
+seattle,Golden Hong Market on 7th Avenue South,Golden Hong Market,Golden Hong Market,True
+seattle,Convenience store on 7th Avenue South,Golden Hong Market,Golden Hong Market,True
+seattle,Chinese bistro on South Weller Street,663 Bistro,H Bistro,False
+seattle,Chinese restaurant 663 Bistro on South Weller Street,663 Bistro,663 Bistro,True
+seattle,Tea house cafe named Nagomi,Nagomi Tea House,Nagomi Tea House,True
+seattle,Nagomi Tea House cafe,Nagomi Tea House,Nagomi Tea House,True
+seattle,Japanese tea house cafe,Nagomi Tea House,Nagomi Tea House,True
+seattle,Burger fast-food on 5th Avenue South,Great State Burger - Chinatown,Great State Burger - Chinatown,True
+seattle,Great State Burger fast food on 5th Avenue South,Great State Burger - Chinatown,Great State Burger - Chinatown,True
+seattle,CAGJ CISPES WFTC,CAGJ CISPES WFTC,CAGJ CISPES WFTC,True
+seattle,Seattle Pinball Museum on Maynard Avenue South,Seattle Pinball Museum,Seattle Pinball Museum,True
+seattle,Seattle Pinball Museum on Maynard Avenue,Seattle Pinball Museum,Seattle Pinball Museum,True
+seattle,Ellenos Real Greek Yogurt cafe,Ellenos Real Greek Yogurt,Ellenos Real Greek Yogurt,True
+seattle,Greek yogurt cafe Ellenos,Ellenos Real Greek Yogurt,Ellenos Real Greek Yogurt,True
+seattle,Young House convenience store on Maynard Avenue South,Young House,Young House,True
+seattle,Chinese restaurant Gan Bei on South Weller Street,Gan Bei,Gan Bei,True
+seattle,Gan Bei Chinese restaurant on South Weller Street,Gan Bei,Gan Bei,True
+seattle,Eastern Hotel on Maynard Avenue South,Eastern Hotel,Eastern Hotel,True
+seattle,Rex Apartments on South King Street,Rex Apartments,Rex Apartments,True
+seattle,"The Publix Apartments, recently completed construction",The Publix Apartments,The Publix Apartments,True
+seattle,The Publix Apartments with completed construction,The Publix Apartments,The Publix Apartments,True
+seattle,"The Publix Apartments, a newly constructed building",The Publix Apartments,The Publix Apartments,True
+seattle,Ambrosia Cafe on South King Street,Ambrosia,Ambrosia,True
+seattle,Ambrosia cafe on South King Street,Ambrosia,Ambrosia,True
+seattle,Gossip cafe serving coffee on South King Street,Gossip,Gossip,True
+seattle,Gossip cafe on South King Street,Gossip,Gossip,True
+seattle,Gossip cafe on South King Street serving coffee,Gossip,Gossip,True
+seattle,New Central Building,New Central Building,New Central Building,True
+seattle,Hair salon on 7th Avenue South,Hair To You,Hair To You,True
+seattle,Chong Wa Benevolent Association building on 7th Avenue South,Chong Wa Benevolent Association,Chong Wa Benevolent Association,True
+seattle,Chong Wa Benevolent Association on 7th Avenue South,Chong Wa Benevolent Association,Chong Wa Benevolent Association,True
+seattle,Acupuncture massage and herbs center on South Weller Street,Amasia Acupuncture Massage Herbs Center,Amasia Acupuncture Massage Herbs Center,True
+seattle,Acupuncture and massage center on South Weller Street,Amasia Acupuncture Massage Herbs Center,Amasia Acupuncture Massage Herbs Center,True
+seattle,Acupuncture and Massage Center on South Weller Street,Amasia Acupuncture Massage Herbs Center,Amasia Acupuncture Massage Herbs Center,True
+seattle,U2 Mobile phone store,U2 Mobile,U2 Mobile,True
+seattle,U2 Mobile phone shop,U2 Mobile,U2 Mobile,True
+seattle,Asian restaurant on 5th Avenue South,Boiling Point,Boiling Point,True
+seattle,Realhome Network on South Weller Street,Realhome Network,Realhome Network,True
+seattle,Pacific Herb & Grocery on South Weller Street,Pacific Herb & Grocery,Pacific Herb & Grocery,True
+seattle,Convenience store on South Weller Street,Pacific Herb & Grocery,Pacific Herb & Grocery,True
+seattle,Pacific Herb & Grocery store on South Weller Street,Pacific Herb & Grocery,Pacific Herb & Grocery,True
+seattle,Asian fast-food at King's Barbecue House on 6th Avenue South,King's Barbecue House,King's Barbecue House,True
+seattle,Asian fast food at King's Barbecue House on 6th Avenue South,King's Barbecue House,King's Barbecue House,True
+seattle,Asian fast-food restaurant at King's Barbecue House on 6th Avenue South,King's Barbecue House,King's Barbecue House,True
+seattle,Pink Gorilla Import & Retro Gaming toy store,Pink Gorilla Import & Retro Gaming,Pink Gorilla Import & Retro Gaming,True
+seattle,Eastern Cafe on Maynard Avenue South,Eastern Cafe,Eastern Cafe,True
+seattle,Ironsteak restaurant on South Weller Street,Ironsteak,Ironsteak,True
+seattle,Chase ATM,Chase ATM,Chase ATM,True
+seattle,Paris Skin Care beauty store,Paris Skin Care,Paris Skin Care,True
+seattle,Paris Skin Care beauty shop,Paris Skin Care,Paris Skin Care,True
+seattle,Asian restaurant on Maynard Avenue South,Bush Garden,Honey Court Seafood Restaurant,False
+seattle,St. Paul's Medical Clinic,St. Paul's Medical Clinic,St. Paul's Medical Clinic,True
+seattle,International House on Maynard Avenue South,International House,International House,True
+seattle,International House social facility on Maynard Avenue South,International House,International House,True
+seattle,Japanese Samurai Noodle restaurant on 5th Avenue South,Samurai Noodle,Samurai Noodle,True
+seattle,Japanese restaurant on 5th Avenue South,Samurai Noodle,Samurai Noodle,True
+seattle,Japanese noodle restaurant on 5th Avenue South,Samurai Noodle,Samurai Noodle,True
+seattle,Dochi donut cafe,Dochi,Dochi,True
+seattle,Donut cafe named Dochi,Dochi,Dochi,True
+seattle,Hong Kong Apartments on Maynard Avenue South,Hong Kong Apartments,Hong Kong Apartments,True
+seattle,Vietnamese bistro on South Weller Street,Saigon Bistro,Saigon Bistro,True
+seattle,Asia Condo on South Lane Street,Asia Condo,Asia Condo,True
+seattle,Apartment Lobby Entrance,Apartment Lobby Entrance,Apartment Lobby Entrance,True
+seattle,The Publix apartments on 5th Avenue South,The Publix,The Publix,True
+seattle,International District/Chinatown suburb,International District/Chinatown,International District/Chinatown,True
+seattle,Chinatown Gate with a roof,Chinatown Gate,Chinatown Gate,True
+seattle,Chinese restaurant King Noodle on South King Street,King Noodle,King Noodle,True
+seattle,King Noodle Chinese restaurant on South King Street,King Noodle,King Noodle,True
+seattle,Yummy House Bakery on South Weller Street,Yummy House Bakery,Yummy House Bakery,True
+seattle,Yummy House Bakery restaurant on South Weller Street,Yummy House Bakery,Yummy House Bakery,True
+seattle,Chinese herb and grocery convenience store,New An Dong Chinese Herb & Grocery,New An Dong Chinese Herb & Grocery,True
+seattle,Chinese herb and grocery store,New An Dong Chinese Herb & Grocery,New An Dong Chinese Herb & Grocery,True
+seattle,New An Dong Chinese Herb & Grocery convenience store,New An Dong Chinese Herb & Grocery,New An Dong Chinese Herb & Grocery,True
+seattle,Chase Bank,Chase,Chase,True
+seattle,TCC Printing & Imaging shop on 6th Avenue South,TCC Printing & Imaging,TCC Printing & Imaging,True
+seattle,TCC Printing & Imaging copyshop on 6th Avenue South,TCC Printing & Imaging,TCC Printing & Imaging,True
+seattle,TCC Printing & Imaging on 6th Avenue South,TCC Printing & Imaging,TCC Printing & Imaging,True
+seattle,Sushi restaurant on South Weller Street,J Sushi,J Sushi,True
+seattle,Korean BBQ restaurant on South Weller Street,Shilla Korean BBQ,Shilla Korean BBQ,True
+seattle,Savvy Cosmetics beauty store,Savvy Cosmetics,Savvy Cosmetics,True
+seattle,Savvy Cosmetics beauty shop,Savvy Cosmetics,Savvy Cosmetics,True
+seattle,Dough Zone Dumpling House on 5th Avenue South,Dough Zone Dumpling House,Dough Zone Dumpling House,True
+seattle,Chinese Dumpling House on 5th Avenue South,Dough Zone Dumpling House,Dough Zone Dumpling House,True
+seattle,Asia building,Asia,Asia,True
+seattle,Sew Ying Chong Co. located on South King Street,Sew Ying Chong Co.,Sew Ying Chong Co.,True
+seattle,Sew Ying Chong Co. on South King Street,Sew Ying Chong Co.,Sew Ying Chong Co.,True
+seattle,Optician shop named Paris Miki Optical,Paris Miki Optical,Paris Miki Optical,True
+seattle,Optician store Paris Miki Optical,Paris Miki Optical,Paris Miki Optical,True
+seattle,optician named Paris Miki Optical,Paris Miki Optical,Paris Miki Optical,True
+seattle,Wing Luke Asian Museum on South King Street,Wing Luke Asian Museum,Wing Luke Asian Museum,True
+seattle,Instyle Hair Salon,Instyle Hair Salon,Instyle Hair Salon,True
+seattle,Uwajimaya Village,Uwajimaya Village,Uwajimaya Village,True
+seattle,Mobile phone store on South King Street,World Wireless Station,World Wireless Station,True
+seattle,Ho Ho Seafood restaurant on South Weller Street,Ho Ho Seafood,Ho Ho Seafood,True
+seattle,Aloha Plates restaurant on South Weller Street,Aloha Plates,Aloha Plates,True
+seattle,Vietnamese noodle restaurant on South Weller Street,Phở Hòa,Phở Hòa,True
+seattle,Vietnamese restaurant on 7th Avenue South,Bun,Saigon Bistro,False
+seattle,"Alice's Floral Designs, a florist on South King Street",Alice's Floral Designs,Alice's Floral Designs,True
+seattle,Alice's Floral Designs florist on South King Street,Alice's Floral Designs,Alice's Floral Designs,True
+seattle,Vibrant Cities,Vibrant Cities,Vibrant Cities,True
+seattle,Beacon Plumbing on 7th Avenue South,Beacon Plumbing,Beacon Plumbing,True
+seattle,Louisa Hotel Apartment Building,Louisa Hotel Building,Louisa Hotel Building,True
+seattle,Louisa Hotel Apartments,Louisa Hotel Building,Louisa Hotel Building,True
+seattle,Donnie Chin International Children's Park,Donnie Chin International Children’s Park,Donnie Chin International Children’s Park,True
+seattle,Bao An Tang convenience store on South King Street,Bao An Tang,Bao An Tang,True
+seattle,Asian restaurant Noodle Zen on South Weller Street,Noodle Zen,Noodle Zen,True
+seattle,Asian restaurant called Noodle Zen on South Weller Street,Noodle Zen,Noodle Zen,True
+seattle,Asian noodle restaurant on South Weller Street,Noodle Zen,Noodle Zen,True
+seattle,Deng's Studio and Art Gallery on 7th Avenue South,Deng's Studio And Art Gallery,Deng's Studio And Art Gallery,True
+seattle,Art gallery on 7th Avenue South,Deng's Studio And Art Gallery,Deng's Studio And Art Gallery,True
+seattle,Travel agency on South Weller Street,Global Travel,Global Travel,True
+seattle,Global Travel agency on South Weller Street,Global Travel,Global Travel,True
+seattle,Chinese restaurant Canton Wonton House on South Weller Street,Canton Wonton House,Canton Wonton House,True
+seattle,Chinese restaurant on South Weller Street,Canton Wonton House,H Bistro,False
+seattle,Harbor City Chinese restaurant on South King Street,Harbor City,Harbor City,True
+seattle,Chinese restaurant on South King Street,Harbor City,Tai Tung Restaurant,False
+seattle,Win Law,Win Law,Win Law,True
+seattle,Little Sheep Mongolian Hot Pot Chinese restaurant on South Weller Street,Little Sheep Mongolian Hot Pot,Little Sheep Mongolian Hot Pot,True
+seattle,"Little Sheep Mongolian Hot Pot, Chinese restaurant on South Weller Street",Little Sheep Mongolian Hot Pot,Little Sheep Mongolian Hot Pot,True
+seattle,"Little Sheep Mongolian Hot Pot, a Chinese restaurant on South Weller Street",Little Sheep Mongolian Hot Pot,Little Sheep Mongolian Hot Pot,True
+seattle,Fast food restaurant on South Weller Street,Beard Papa's,H Bistro,False
+seattle,Beard Papa's fast food on South Weller Street,Beard Papa's,Beard Papa's,True
+seattle,Fast food on South Weller Street,Beard Papa's,H Bistro,False
+seattle,Uwajimaya supermarket,Uwajimaya,Uwajimaya,True
+seattle,New Central Hotel Apartments on South Weller Street,New Central Hotel Apartments,New Central Hotel Apartments,True
+seattle,Travel agency on South King Street,AA Travel,Jade Holiday Travel,False
+seattle,AA Travel agency on South King Street,AA Travel,AA Travel,True
+seattle,Luke's Pharmacy on Maynard Avenue South,Luke's Pharmacy,Luke's Pharmacy,True
+seattle,bookstore on South Weller Street,Kinokuniya Books,Kinokuniya Books,True
+seattle,Kinokuniya Books store on South Weller Street,Kinokuniya Books,Kinokuniya Books,True
+seattle,Bookstore on South Weller Street,Kinokuniya Books,Kinokuniya Books,True
+seattle,Magical Massage parlor,Magical Massage,Magical Massage,True
+seattle,Salon Juno hairdresser on 6th Avenue South,Salon Juno,Salon Juno,True
+seattle,"Salon Juno, a hairdresser on 6th Avenue South",Salon Juno,Salon Juno,True
+seattle,Hair salon on 6th Avenue South,Salon Juno,Salon Juno,True
+seattle,Baba Mama,Baba Mama,Baba Mama,True
+seattle,Duk Li Dim Sum restaurant on South Weller Street,Duk Li Dim Sum,Duk Li Dim Sum,True
+seattle,Tai Tung Chinese Restaurant on South King Street,Tai Tung Restaurant,Tai Tung Restaurant,True
+seattle,Psychic shop,Psychic,Psychic,True
+seattle,SCIDpda,SCIDpda,SCIDpda,True
+seattle,Seattle Gospel Center place of worship,Seattle Gospel Center,Seattle Gospel Center,True
+seattle,"Seattle Gospel Center, a place of worship",Seattle Gospel Center,Seattle Gospel Center,True
+seattle,Ton Kiang BBQ Noodle House on South Weller Street,Ton Kiang BBQ Noodle House,Ton Kiang BBQ Noodle House,True
+seattle,Tea cafe on South Weller Street,Young Tea,Young Tea,True
+seattle,scarf shop on Maynard Avenue South,Tuesday Scarves,Tuesday Scarves,True
+seattle,Tuesday Scarves shop on Maynard Avenue South,Tuesday Scarves,Tuesday Scarves,True
+seattle,Tuesday Scarves on Maynard Avenue South,Tuesday Scarves,Tuesday Scarves,True
+seattle,Filipino cafe and bar named Hood Famous,Hood Famous Cafe and Bar,Hood Famous Cafe and Bar,True
+seattle,Filipino cafe named Hood Famous,Hood Famous Cafe and Bar,Hood Famous Cafe and Bar,True
+seattle,EastWest Bank,EastWest Bank,EastWest Bank,True
+seattle,Merchants Parking lot,Merchants Parking,Merchants Parking,True
+seattle,Cake House bakery on South Weller Street,Cake House,Cake House,True
+seattle,Fast food place Cheese Meats Bread,Cheese Meats Bread,Cheese Meats Bread,True
+seattle,Cheese Meats Bread fast food,Cheese Meats Bread,Cheese Meats Bread,True
+seattle,Shanghai Garden Chinese restaurant on 6th Avenue South,Shanghai Garden Restaurant,Shanghai Garden Restaurant,True
+seattle,Shanghai Garden Chinese restaurant on 6th Avenue,Shanghai Garden Restaurant,Shanghai Garden Restaurant,True
+seattle,Chinese restaurant Shanghai Garden on 6th Avenue South,Shanghai Garden Restaurant,Shanghai Garden Restaurant,True
+seattle,Seafood restaurant on Maynard Avenue South,Honey Court Seafood Restaurant,Honey Court Seafood Restaurant,True
+seattle,Honey Court Seafood Restaurant on Maynard Avenue South,Honey Court Seafood Restaurant,Honey Court Seafood Restaurant,True
+seattle,Dr. Kenneth Hong's clinic on South Weller Street,"Kenneth Hong, MD","Kenneth Hong, MD",True
+seattle,Doctor's office on South Weller Street,"Kenneth Hong, MD","Kenneth Hong, MD",True
+seattle,Doctor Kenneth Hong's office on South Weller Street,"Kenneth Hong, MD","Kenneth Hong, MD",True
+seattle,AI Video electronics store,AI Video,AI Video,True
+seattle,AI Video electronics shop,AI Video,AI Video,True
+seattle,Jade Holiday Travel agency on South King Street,Jade Holiday Travel,Jade Holiday Travel,True
+seattle,Thai restaurant on South Weller Street,Thai Place,Thai Place,True
+seattle,Korean BBQ restaurant on 6th Avenue South,Seoul Tofu House & Korean BBQ,Seoul Tofu House & Korean BBQ,True
+seattle,Travel agency on Maynard Avenue South,H.I.S. International Tours,H.I.S. International Tours,True
+seattle,Chinese bistro on Maynard Avenue South,Hong Kong Bistro,Hong Kong Bistro,True
+seattle,"Hong Kong Bistro, Chinese restaurant on Maynard Avenue South",Hong Kong Bistro,Hong Kong Bistro,True
+seattle,Hong Kong Bistro Chinese restaurant on Maynard Avenue South,Hong Kong Bistro,Hong Kong Bistro,True
+seattle,Sand Dragon on South Lane Street,Sand Dragon,Sand Dragon,True
+seattle,Alps Hotel on South King Street,Alps Hotel,Alps Hotel,True
+seattle,Girls Rock Math School,Girls Rock Math,Girls Rock Math,True
+seattle,Girls Rock Math school,Girls Rock Math,Girls Rock Math,True
+seattle,Purple Dot Chinese restaurant on Maynard Avenue South,Purple Dot Cafe,Purple Dot Cafe,True
+seattle,Chinese cafe on Maynard Avenue,Purple Dot Cafe,Purple Dot Cafe,True
+seattle,Chinese cafe on Maynard Avenue South,Purple Dot Cafe,Purple Dot Cafe,True
+seattle,Asian restaurant on South King Street,goPoké,goPoké,True
+seattle,Tea house on 6th Avenue South,Oasis Tea House,Oasis Tea House,True
+seattle,Tea house on 6th Avenue South offering fast food,Oasis Tea House,Oasis Tea House,True
+seattle,Chinese Cantonese restaurant on South Weller Street,H Bistro,Canton Wonton House,False
+seattle,Cantonese Chinese restaurant on South Weller Street,H Bistro,Canton Wonton House,False
+chicago_2,Town Hall Pub bar on North Halsted Street,Town Hall Pub,Town Hall Pub,True
+chicago_2,Town Hall Pub on North Halsted Street,Town Hall Pub,Town Hall Pub,True
+chicago_2,American restaurant on North Halsted Street,Home Bistro,Home Bistro,True
+chicago_2,American bistro on North Halsted Street,Home Bistro,Home Bistro,True
+chicago_2,Bicycle rental at Halsted St & Roscoe St operated by Divvy,Halsted St & Roscoe St,Halsted St & Roscoe St,True
+chicago_2,Wood restaurant on North Halsted Street,Wood,Wood,True
+chicago_2,Ann Sather restaurant on North Broadway,Ann Sather,Ann Sather,True
+chicago_2,The Chicago Diner on North Halsted Street,The Chicago Diner,The Chicago Diner,True
+chicago_2,Christian place of worship at Broadway United Methodist Church,Broadway United Methodist Church,Broadway United Methodist Church,True
+chicago_2,Christian church named Broadway United Methodist Church,Broadway United Methodist Church,Broadway United Methodist Church,True
+chicago_2,Chicago Transit Authority at Halsted & Roscoe,Halsted & Roscoe,Halsted & Roscoe,True
+chicago_2,Jacqueline's bar on North Broadway,Jacquelines's,Jacquelines's,True
+chicago_2,Wendt Playlot playground,Wendt Playlot,Wendt Playlot,True
+chicago_2,Best Western Plus Hawthorne Terrace on Broadway St.,Best Western Plus Hawthorne Terrace,Best Western Plus Hawthorne Terrace,True
+chicago_2,Best Western Plus Hawthorne Terrace on N Broadway St,Best Western Plus Hawthorne Terrace,Best Western Plus Hawthorne Terrace,True
+chicago_2,Gift shop named Beatnix,Beatnix,Beatnix,True
+chicago_2,Beatnix gift shop,Beatnix,Beatnix,True
+chicago_2,Yefseis Cafe on North Halsted Street,Yefseis Cafe,Yefseis Cafe,True
+chicago_2,XO beauty shop,XO,XO,True
+chicago_2,Roscoe's Tavern & Cafe bar,Roscoe's Tavern & Cafe,Roscoe's Tavern & Cafe,True
+chicago_2,Nookie's Restaurant,Nookie's,Nookie's,True
+chicago_2,Nookie's restaurant,Nookie's,Nookie's,True
+chicago_2,Boystown quarter,Boystown,Boystown,True
+chicago_2,Pets First veterinary clinic,Pets First,Pets First,True
+chicago_2,7-Eleven convenience store,7-Eleven,7-Eleven,True
+chicago_2,Broadway & Roscoe SB operated by Chicago Transit Authority,Broadway & Roscoe SB,Broadway & Roscoe SB,True
+chicago_2,Chicago Transit Authority stop at Broadway & Roscoe,Broadway & Roscoe SB,Broadway & Roscoe SB,True
+chicago_2,Chicago Transit Authority stop at Broadway & Roscoe SB,Broadway & Roscoe SB,Broadway & Roscoe SB,True
+chicago_2,Rolled Around Bakery on West Roscoe Street,Rolled Around Bakery - Corporate,Rolled Around Bakery - Corporate,True
+chicago_2,Cocktail bar,Cocktail,Cocktail,True
+chicago_2,Minibar,Minibar,Minibar,True
+chicago_2,Sidetrack bar on North Halsted Street,Sidetrack,Sidetrack,True
+chicago_2,Shiawase Japanese Restaurant,Shiawase Japanese Restaurant,Shiawase Japanese Restaurant,True
+chicago_2,El Mariache Restaurant,El Mariache Restaurant,El Mariache Restaurant,True
+jacksonville_2,Waffle House restaurant,Waffle House,Waffle House,True
+jacksonville_2,Burrito Gallery restaurant,Burrito Gallery,Burrito Gallery,True
+jacksonville_2,Publix supermarket,Publix,Publix,True
+jacksonville_2,East Coast Railway Foreman's House #93,East Coast Railway Foreman's House #93,East Coast Railway Foreman's House #93,True
+jacksonville_2,Texaco fuel station with a roof,Texaco,Texaco,True
+jacksonville_2,Cypress Productions studio building,Cypress Productions,Cypress Productions,True
+jacksonville_2,Cypress Productions Studio,Cypress Productions,Cypress Productions,True
+jacksonville_2,Theatre called Players by the Sea,Players by the Sea,Players by the Sea,True
+jacksonville_2,Players by the Sea Theatre,Players by the Sea,Players by the Sea,True
+jacksonville_2,Beaches Museum,Beaches Museum,Beaches Museum,True
+jacksonville_2,Beaches Museum Chapel building,Beaches Museum Chapel,Beaches Museum Chapel,True
+jacksonville_2,1903 Pablo Beach Post Office building,1903 Pablo Beach Post Office,1903 Pablo Beach Post Office,True
+jacksonville_2,St Vincent de Paul Thrift Store selling second-hand items,St Vincent de Paul Thrift Store,St Vincent de Paul Thrift Store,True
+jacksonville_2,Mayport East Coast Railway Depot building,Mayport East Coast Railway Depot,Mayport East Coast Railway Depot,True
+jacksonville_2,Pet Supermarket,Pet Supermarket,Pet Supermarket,True
+jacksonville_2,Pet Supermarket store,Pet Supermarket,Pet Supermarket,True
+jacksonville_2,The Oesterreicher-McCormick Cabin building,The Oesterreicher-McCormick Cabin,The Oesterreicher-McCormick Cabin,True
+jacksonville_2,1911 Train Engine building,The 1911 Train Engine,The 1911 Train Engine,True
+jacksonville_2,St Paul's Catholic Church,St Paul's Catholic Church,St Paul's Catholic Church,True
+jacksonville_2,St Paul's Catholic Church with Christian religion,St Paul's Catholic Church,St Paul's Catholic Church,True
+jacksonville_2,"St Paul's Catholic Church, Christian religion",St Paul's Catholic Church,St Paul's Catholic Church,True
+boston,Jiaho Supermarket on Washington Street,Jiaho supermarket,Jiaho supermarket,True
+boston,Jiaho supermarket on Washington Street,Jiaho supermarket,Jiaho supermarket,True
+boston,Citi Performing Arts Center building,Citi Performing Arts Center,Citi Performing Arts Center,True
+boston,Citi Performing Arts Center,Citi Performing Arts Center,Citi Performing Arts Center,True
+boston,Happy Lamb Chinese restaurant on Washington Street,Happy Lamb Hot Pot,Happy Lamb Hot Pot,True
+boston,Chinese hot pot restaurant on Washington Street,Happy Lamb Hot Pot,Happy Lamb Hot Pot,True
+boston,Panera Bread fast food sandwich shop on Stuart Street,Panera Bread,Panera Bread,True
+boston,Panera Bread sandwich fast food on Stuart Street,Panera Bread,Panera Bread,True
+boston,Emerson College Little Building on Boylston Street,Emerson College - Little Building,Emerson College - Little Building,True
+boston,Emerson College's Little Building on Boylston Street,Emerson College - Little Building,Emerson College - Little Building,True
+boston,"Washington St at Tufts Medical Center, operated by MBTA",Washington St @ Tufts Med Ctr,Washington St @ Tufts Med Ctr,True
+boston,Washington St at Tufts Medical Center by MBTA,Washington St @ Tufts Med Ctr,Washington St @ Tufts Med Ctr,True
+boston,Washington St at Tufts Medical Center operated by MBTA,Washington St @ Tufts Med Ctr,Washington St @ Tufts Med Ctr,True
+boston,Wilbur Theatre,Wilbur Theatre,Wilbur Theatre,True
+boston,Emerson College Union Bank Building,Emerson College - Union Bank Building,Emerson College - Union Bank Building,True
+boston,Cutler Majestic Theater at Emerson College on Tremont Street,Cutler Majestic Theater - Emerson College,Cutler Majestic Theater - Emerson College,True
+boston,Chinese dumpling cafe on Washington Street,Dumpling Cafe,Dumpling Cafe,True
+boston,MBTA operated location at Kneeland St and Washington St,Kneeland St @ Washington St,Washington St @ Kneeland St,False
+boston,MBTA station at Kneeland St and Washington St,Kneeland St @ Washington St,Washington St @ Kneeland St,False
+boston,MBTA stop at Kneeland Street and Washington Street,Kneeland St @ Washington St,Washington St @ Kneeland St,False
+boston,Wang Theater,Wang Theater,Wang Theater,True
+boston,First Transit at Tremont and Stuart Streets,Tremont and Stuart Streets,Tremont and Stuart Streets,True
+boston,Public transit area managed by First Transit at Tremont and Stuart streets,Tremont and Stuart Streets,Tremont and Stuart Streets,True
+boston,Tufts University School of Medicine on Harrison Avenue,Tufts University School of Medicine,Tufts University School of Medicine,True
+boston,Emerson College,Emerson College,Emerson College,True
+boston,"Washington St at Kneeland St, operated by MBTA",Washington St @ Kneeland St,Washington St @ Kneeland St,True
+boston,Washington St at Kneeland St operated by MBTA,Washington St @ Kneeland St,Washington St @ Kneeland St,True
+boston,Wirth Building,Wirth Building,Wirth Building,True
+boston,Cutler Majestic Theater on Tremont Street,Cutler Majestic Theater,Cutler Majestic Theater,True
+boston,Italian pizza and subs restaurant on Stuart Street,Boston Kitchen Pizza,Boston Kitchen Pizza,True
+boston,The Kensington apartments,The Kensington,The Kensington,True
+boston,"St. James Church, a christian place of worship on Harrison Avenue",St. James Church,St. James Church,True
+boston,"St. James Church, a Christian place of worship on Harrison Avenue",St. James Church,St. James Church,True
+boston,Thai restaurant Montien,Montien,Montien,True
+boston,Thai restaurant named Montien,Montien,Montien,True
+boston,Citibank branch,Citibank,Citibank,True
+boston,Citibank,Citibank,Citibank,True
+boston,My Thai vegan fast food cafe,my thai vegan cafe,my thai vegan cafe,True
+boston,My Thai Vegan Cafe offering fast food,my thai vegan cafe,my thai vegan cafe,True
+boston,Chinatown neighborhood,Chinatown,Chinatown,True
+boston,Tufts Dental School on Kneeland Street,Tufts Dental School,Tufts Dental School,True
+boston,Sushi restaurant on Tremont Street,Genki Ya,Genki Ya,True
+boston,62 on the Park building,62 on the Park,62 on the Park,True
+boston,Seybolt Park,Seybolt Park,Seybolt Park,True
+boston,Brick building with a flat concrete roof at Massachusetts State Transportation Building,Massachusetts State Transportation Building,Massachusetts State Transportation Building,True
+boston,Massachusetts State Transportation Building with a brick exterior and flat concrete roof,Massachusetts State Transportation Building,Massachusetts State Transportation Building,True
+boston,Massachusetts State Transportation Building made of brick with a flat concrete roof,Massachusetts State Transportation Building,Massachusetts State Transportation Building,True
+boston,Vietnamese restaurant on Washington Street,Pho Pasteur,Pho Pasteur,True
+boston,Vietnamese restaurant on Washington Street named Pho Pasteur,Pho Pasteur,Pho Pasteur,True
+boston,Dunkin' Donuts serving donuts and coffee,Dunkin' Donuts,Dunkin' Donuts,True
+boston,Dunkin' Donuts fast food serving donuts and coffee,Dunkin' Donuts,Dunkin' Donuts,True
+boston,Dunkin' Donuts: a fast food donut and coffee shop,Dunkin' Donuts,Dunkin' Donuts,True
+boston,Hosteling International's HI Boston,HI Boston,HI Boston,True
+boston,HI Boston operated by Hosteling International,HI Boston,HI Boston,True
+boston,Stuart St @ Tremont St operated by MBTA,Stuart St @ Tremont St,Stuart St @ Tremont St,True
+boston,Stuart St at Tremont St MBTA stop,Stuart St @ Tremont St,Stuart St @ Tremont St,True
+boston,Thai hot pot restaurant on Kneeland Street,Joy Luck Hot Pot,Joy Luck Hot Pot,True
+boston,Tufts University Hirsh Health Sciences Library on Harrison Avenue,Tufts University Hirsh Health Sciences Library,Tufts University Hirsh Health Sciences Library,True
+boston,Vietnamese sandwich restaurant on Washington Street,New Saigon Sandwich,New Saigon Sandwich,True
+boston,Chinese restaurant on Washington Street,Empire Garden Restaurant,Empire Garden Restaurant,True
+boston,AVA Theater District residential building,AVA Theater District,AVA Theater District,True
+chicago_1,Edward Jones,Edward Jones,Edward Jones,True
+chicago_1,Sushi and Thai restaurant on West Devon Avenue,Ruk Sushi & Thai,Ruk Sushi & Thai,True
+chicago_1,Pace Bus stop at Central & Devon,Central & Devon NB,Central & Devon SB,False
+chicago_1,Edgebrook Coffee Shop on North Central Avenue,Edgebrook Coffee Ship,Edgebrook Coffee Ship,True
+chicago_1,Edgebrook coffee shop on North Central Avenue,Edgebrook Coffee Ship,Edgebrook Coffee Ship,True
+chicago_1,Domino's Pizza fast food,Domino's,Domino's,True
+chicago_1,Domino's Pizza fast food restaurant,Domino's,Domino's,True
+chicago_1,Associated Bank on North Central Avenue,Associated Bank,Associated Bank,True
+chicago_1,Associated Bank on North Central Avenue with a building,Associated Bank,Associated Bank,True
+chicago_1,"My Sister's Closet, a second-hand shop on West Devon Avenue",My Sister's Closet,My Sister's Closet,True
+chicago_1,Second-hand shop on West Devon Avenue,My Sister's Closet,My Sister's Closet,True
+chicago_1,Chicago gift shop named Local Goods,Local Goods Chicago,Local Goods Chicago,True
+chicago_1,Local Goods Chicago gift shop,Local Goods Chicago,Local Goods Chicago,True
+chicago_1,Terry's hairdressing salon,Terry's Place,Terry's Place,True
+chicago_1,Terry's hairdresser shop,Terry's Place,Terry's Place,True
+chicago_1,Ace Hardware store on West Devon Avenue,Ace Hardware,Ace Hardware,True
+chicago_1,Currency exchange bureau,Currency Change,Currency Change,True
+chicago_1,Currency exchange office,Currency Change,Currency Change,True
+chicago_1,Starbucks coffee shop on West Devon Avenue,Starbucks,Starbucks,True
+chicago_1,North Branch Arts,North Branch Arts,North Branch Arts,True
+chicago_1,Lee Nails beauty shop,Lee Nails,Lee Nails,True
+chicago_1,Creativo! Academy,Creativo! Academy,Creativo! Academy,True
+chicago_1,Vietnamese restaurant King Pho,King Pho,King Pho,True
+chicago_1,"Vietnamese restaurant, King Pho",King Pho,King Pho,True
+chicago_1,Little Nest Care building on West Devon Avenue,Little Nest Care,Little Nest Care,True
+chicago_1,Little Nest Care on West Devon Avenue,Little Nest Care,Little Nest Care,True
+chicago_1,Becker Roofing Company,Becker Roofing Company,Becker Roofing Company,True
+chicago_1,Kanellos Shoe Repair shop,Kanellos Shoe Repair,Kanellos Shoe Repair,True
+chicago_1,Baird & Warner building,Baird & Warner,Baird & Warner,True
+chicago_1,US Post Office on West Devon Avenue,US Post Office,US Post Office,True
+chicago_1,US Post Office on West Devon Avenue operated by USPS,US Post Office,US Post Office,True
+chicago_1,Pace Bus stop at Central & Devon,Central & Devon SB,Central & Devon SB,True
+san_diego_1,Goorin Bros shop,Goorin Bros,Goorin Bros,True
+san_diego_1,Sweetlabs Inc,Sweetlabs Inc,Sweetlabs Inc,True
+san_diego_1,Mexican restaurant on 4th Avenue,Las Hadas Bar & Grill,Tacos El Cabron,False
+san_diego_1,Mexican bar and grill on 4th Avenue,Las Hadas Bar & Grill,Las Hadas Bar & Grill,True
+san_diego_1,Nouvelle Latin Cuisine bar,Nouvelle Latin Cuisine,Nouvelle Latin Cuisine,True
+san_diego_1,CVS Pharmacy,CVS,CVS,True
+san_diego_1,The Amazing Picture Booth Co. on 5th Avenue,The Amazing Picture Booth Co.,The Amazing Picture Booth Co.,True
+san_diego_1,Smoking Gun restaurant,Smocking Gun,Smocking Gun,True
+san_diego_1,Smocking Gun restaurant,Smocking Gun,Smocking Gun,True
+san_diego_1,Jewelry shop on 5th Avenue,Nikki Fine Jewelers,Nikki Fine Jewelers,True
+san_diego_1,Nikki Fine Jewelers on 5th Avenue,Nikki Fine Jewelers,Nikki Fine Jewelers,True
+san_diego_1,Jewelry store on 5th Avenue,Nikki Fine Jewelers,Nikki Fine Jewelers,True
+san_diego_1,Gaslamp Quarter,Gaslamp Quarter,Gaslamp Quarter,True
+san_diego_1,Gaslamp Quarter area,Gaslamp Quarter,Gaslamp Quarter,True
+san_diego_1,Mexican fast food on 4th Avenue,Tacos El Cabron,Tacos El Cabron,True
+san_diego_1,Horton House apartments,Horton House,Horton House,True
+san_diego_1,Horton House apartment building,Horton House,Horton House,True
+san_diego_1,Steak house named Marble Room,Marble Room,Marble Room,True
+san_diego_1,Marble Room steak house restaurant,Marble Room,Marble Room,True
+san_diego_1,Double Standard Kitchenetta & Bar,Double Standard Kitchenetta & Bar,Double Standard Kitchenetta & Bar,True
+san_diego_1,Indian restaurant on Market Street,Royal India,Royal India,True
+san_diego_1,Indian restaurant Royal India on Market Street,Royal India,Royal India,True
+san_diego_1,"Hostelling International on Market Street, San Diego",Hostelling International San Diego,Hostelling International San Diego,True
+san_diego_1,Hostelling International San Diego on Market Street,Hostelling International San Diego,Hostelling International San Diego,True
+san_diego_1,BarleyMash pub,BarleyMash,BarleyMash,True
+san_diego_1,Sandwich fast food on 5th Avenue,Ike's Place,Ike's Place,True
+san_diego_1,"Ike's Place, a sandwich fast food on 5th Avenue",Ike's Place,Ike's Place,True
+san_diego_1,Starbucks coffee shop on Market Street,Starbucks,Starbucks,True
+san_diego_1,Sing Sing Restaurant bar,Sing Sing Restaurant,Sing Sing Restaurant,True
+san_diego_1,Sing Sing Restaurant Bar,Sing Sing Restaurant,Sing Sing Restaurant,True
+san_diego_1,Fluxx Bar,Fluxx,Fluxx,True
+san_diego_1,Fluxx bar,Fluxx,Fluxx,True
+san_diego_1,Library Towers,Library Towers,Library Towers,True
+san_diego_1,Parking facility on Market Street,Park-it-on-Market,Park-it-on-Market,True
+san_diego_1,Commercial building with parking on Market Street,Park-it-on-Market,Park-it-on-Market,True
+san_diego_1,Lucky Brand clothing store,Lucky Brand,Lucky Brand,True
+san_diego_1,Lions Club of San Diego garages,Lions Club of San Diego,Lions Club of San Diego,True
+san_diego_1,Lions Club of San Diego garage building,Lions Club of San Diego,Lions Club of San Diego,True
+san_diego_1,Lions Club of San Diego's garage building,Lions Club of San Diego,Lions Club of San Diego,True
+san_diego_1,Alta building,Alta,Alta,True
+san_diego_1,Bang Bang bar,Bang Bang,Bang Bang,True
+san_diego_1,Hotel Z with Pineapple Hospitality,Hotel Z - A Piece of Pineapple Hospitality,Hotel Z - A Piece of Pineapple Hospitality,True
+san_diego_1,"Hotel Z, part of Pineapple Hospitality",Hotel Z - A Piece of Pineapple Hospitality,Hotel Z - A Piece of Pineapple Hospitality,True
+san_diego_1,Brazilian steakhouse on 6th Avenue featuring meats and appetizer buffet,Fogo de Chao,Fogo de Chao,True
+san_diego_1,"Brazilian steakhouse on 6th Avenue, featuring a meats and appetizer buffet",Fogo de Chao,Fogo de Chao,True
+san_diego_1,Brazilian steakhouse on 6th Avenue,Fogo de Chao,Fogo de Chao,True
+san_diego_1,Searsucker pub,Searsucker,Searsucker,True
+san_diego_1,Tivoli Bar,Tivoli Bar,Tivoli Bar,True
+san_diego_1,Blue Point restaurant,Blue Point,Blue Point,True
+san_diego_1,Blue Point Restaurant,Blue Point,Blue Point,True
+san_diego_1,Gift shop at San Diego Trading Company,San Diego Trading Company,San Diego Trading Company,True
+san_diego_1,San Diego gift shop,San Diego Trading Company,San Diego Trading Company,True
+san_diego_1,San Diego Trading Company gift shop,San Diego Trading Company,San Diego Trading Company,True
+san_diego_1,American Junkie bar,American Junkie,American Junkie,True
+san_diego_1,Mexican restaurant on 4th Avenue,La Puerta,Tacos El Cabron,False
+san_diego_1,William Heath Davis House Museum,William Heath Davis House Museum,William Heath Davis House Museum,True
+san_diego_1,Urban Outfitters clothes store,Urban Outfitters,Urban Outfitters,True
+san_diego_1,Urban Outfitters clothing store,Urban Outfitters,Urban Outfitters,True
+san_diego_1,Ghirardelli ice cream on 5th Avenue,Ghirardelli,Ghirardelli,True
+san_diego_1,Ghirardelli ice cream restaurant on 5th Avenue,Ghirardelli,Ghirardelli,True
+san_diego_1,Irish pub on 4th Avenue,Dublin Square Irish Pub,Dublin Square Irish Pub,True
+san_diego_1,Ciro's fast food,Ciro's,Ciro's,True
+san_diego_1,Project Management Academy on 6th Avenue,Project Management Academy,Project Management Academy,True
+san_diego_1,San Diego Lions Manor apartments,San Diego Lions Manor,San Diego Lions Manor,True
+jacksonville_1,Blue Water Daiquiri & Oyster Bar restaurant,Blue Water Daiquiri & Oyster Bar,Blue Water Daiquiri & Oyster Bar,True
+jacksonville_1,Zeta Brewing Company restaurant,Zeta Brewing Company,Zeta Brewing Company,True
+jacksonville_1,Seawalk Hotel and Spa,Seawalk Hotel and Spa,Seawalk Hotel and Spa,True
+jacksonville_1,Latham Plaza park,Latham Plaza,Latham Plaza,True
+jacksonville_1,Four Points by Sheraton Jacksonville Beachfront building,Four Points by Sheraton Jacksonville Beachfront,Four Points by Sheraton Jacksonville Beachfront,True
+jacksonville_1,Carrabba's Italian Grill restaurant,Carrabba's Italian Grill,Carrabba's Italian Grill,True
+jacksonville_1,Walgreens Pharmacy,Walgreens,Walgreens,True
+jacksonville_1,Walgreens pharmacy building,Walgreens,Walgreens,True
+jacksonville_1,Sneakers Sports Grille restaurant,Sneakers Sports Grille,Sneakers Sports Grille,True
+jacksonville_1,Sneakers Sports Grille Restaurant,Sneakers Sports Grille,Sneakers Sports Grille,True
+jacksonville_1,Public Parking,Public Parking,Public Parking,True
+jacksonville_1,Texaco fuel station with a roof,Texaco,Texaco,True
+jacksonville_1,Jacksonville Beach City Hall on 3rd Street North,Jacksonville Beach City Hall,Jacksonville Beach City Hall,True
+jacksonville_1,Wells Fargo bank building,Wells Fargo,Wells Fargo,True
+jacksonville_1,Campeche Bay Mexican Restaurant,Campeche Bay Mexican Restaurant,Campeche Bay Mexican Restaurant,True
+jacksonville_1,Surfer the Bar on 1st Street North,Surfer the Bar,Surfer the Bar,True
+jacksonville_1,Surfer-themed bar on 1st Street North,Surfer the Bar,Surfer the Bar,True
+jacksonville_1,Seawalk Pavilion Park,Seawalk Pavilion,Seawalk Pavilion,True
+jacksonville_1,Seawalk Pavilion park,Seawalk Pavilion,Seawalk Pavilion,True
+jacksonville_1,SeaWalk Pavilion theater building,SeaWalk Pavillion,Seawalk Pavilion,False
+jacksonville_1,SeaWalk Pavillion Theatre,SeaWalk Pavillion,Seawalk Pavilion,False
+jacksonville_1,Picasso Day Spa & Salon offering beauty services,Picasso Day Spa & Salon,Picasso Day Spa & Salon,True
+jacksonville_1,"Picasso Day Spa & Salon, a beauty shop",Picasso Day Spa & Salon,Picasso Day Spa & Salon,True
+jacksonville_1,Picasso Day Spa and Salon,Picasso Day Spa & Salon,Picasso Day Spa & Salon,True
+jacksonville_1,Beachside Resortwear clothing store,Beachside Resortwear,Beachside Resortwear,True
+jacksonville_1,Beachside resort wear clothing store,Beachside Resortwear,Beachside Resortwear,True
+jacksonville_1,Jacksonville Beach Patrol police building,Jacksonville Beach Patrol,Jacksonville Beach Patrol,True
+denver_1,Center for Colorado Women's History on Bannock Street,Center for Colorado Women's History,Center for Colorado Women's History,True
+denver_1,Mirror-clad commercial building on Broadway,Security Life Center Building,Security Life Center Building,True
+denver_1,Mirror commercial building on Broadway,Security Life Center Building,Security Life Center Building,True
+denver_1,Kirkland Museum of Fine & Decorative Art on Bannock Street,Kirkland Museum of Fine & Decorative Art,Kirkland Museum of Fine & Decorative Art,True
+denver_1,Dozens restaurant on West 13th Avenue,Dozens,Dozens,True
+denver_1,Cultural Center Garden park,Cultural Center Garden,Cultural Center Garden,True
+denver_1,Broadway and 13th Ave operated by RTD,Broadway & 13th Ave,Broadway & 13th Ave,True
+denver_1,Broadway & 13th Ave operated by RTD,Broadway & 13th Ave,Broadway & 13th Ave,True
+denver_1,Denver Public Library on West 14th Avenue,Denver Public Library,Denver Public Library,True
+denver_1,Pints Pub on West 13th Avenue,Pints Pub,Pints Pub,True
+denver_1,Four Winds Interactive on Broadway Street,Four Winds Interactive,Four Winds Interactive,True
+denver_1,Four Winds Interactive on Broadway,Four Winds Interactive,Four Winds Interactive,True
+denver_1,Clyfford Still Museum on Bannock Street,Clyfford Still Museum,Clyfford Still Museum,True
+denver_1,Rendezvous Cafe on Broadway,Rendezvous Cafe,Rendezvous Cafe,True
+denver_1,Denver Art Museum on West 14th Avenue Parkway,Denver Art Museum,Denver Art Museum,True
+denver_1,Art shop on Bannock Street,Native American Trading Company,Native American Trading Company,True
+denver_1,"Byers-Evans House, a civic building on Bannock Street",Byers-Evans House,Byers-Evans House,True
+denver_1,Byers-Evans House on Bannock Street,Byers-Evans House,Byers-Evans House,True
+denver_1,Ralph L. Carr Colorado Judicial Center on East 14th Avenue,Ralph L. Carr Colorado Judicial Center,Ralph L. Carr Colorado Judicial Center,True
+denver_1,"Ralph L. Carr Colorado Judicial Center, a courthouse on East 14th Avenue",Ralph L. Carr Colorado Judicial Center,Ralph L. Carr Colorado Judicial Center,True
+denver_1,Ralph L. Carr Colorado Judicial Center courthouse on East 14th Avenue,Ralph L. Carr Colorado Judicial Center,Ralph L. Carr Colorado Judicial Center,True
+denver_1,Eviva Cherokee glass apartments on Cherokee Street,Eviva Cherokee,Eviva Cherokee,True
+denver_1,The Balustrade Condos on Cherokee Street,The Balustrade Condos,The Balustrade Condos,True
+denver_1,Foster & Graham Huttner LLP on Bannock Street,Foster & Graham Huttner LLP,Foster & Graham Huttner LLP,True
+denver_1,Art Hotel on Broadway,the Art Hotel,the Art Hotel,True
+denver_1,the Art Hotel on Broadway,the Art Hotel,the Art Hotel,True
+denver_1,Denver Art Museum Administration Building on Bannock Street,Denver Art Museum Administration Building,Denver Art Museum Administration Building,True
+denver_1,History Colorado Center on Broadway,History Colorado Center,History Colorado Center,True
+denver_1,History Colorado Center on Broadway street,History Colorado Center,History Colorado Center,True
+denver_1,Bcycle rental at Denver Public Library on West 14th Avenue Parkway,Bcycle @ Denver Public Library,Bcycle @ Denver Public Library,True
+denver_1,Bicycle rental at Denver Public Library on West 14th Avenue Parkway,Bcycle @ Denver Public Library,Bcycle @ Denver Public Library,True
+denver_1,Capitol Hill neighborhood,Capitol Hill,Capitol Hill,True
+denver_1,Frederick C. Hamilton Building at Denver Art Museum on West 14th Avenue,Denver Art Museum Frederick C. Hamilton Building,Denver Art Museum Frederick C. Hamilton Building,True
+denver_1,Denver Art Museum Frederick C. Hamilton Building on West 14th Avenue,Denver Art Museum Frederick C. Hamilton Building,Denver Art Museum Frederick C. Hamilton Building,True
+denver_1,North Entry Terrace park,North Entry Terrace,North Entry Terrace,True
+denver_1,Cultural Complex Parking & Museum Residences apartments,Cultural Complex Parking & Museum Residences,Cultural Complex Parking & Museum Residences,True
+denver_1,Cultural Complex Parking & Museum Residences apartment building,Cultural Complex Parking & Museum Residences,Cultural Complex Parking & Museum Residences,True
+denver_1,Golden Triangle neighbourhood,Golden Triangle,Golden Triangle,True
+denver_1,Golden Triangle neighborhood,Golden Triangle,Golden Triangle,True
+los_angeles_2,Neris Filipino restaurant,Neris Filipino Dining,Neris Filipino Dining,True
+los_angeles_2,Neri's Filipino Dining restaurant,Neris Filipino Dining,Neris Filipino Dining,True
+los_angeles_2,Neris Filipino Dining restaurant,Neris Filipino Dining,Neris Filipino Dining,True
+los_angeles_2,Equitable Life Building,Equitable Life Building,Equitable Life Building,True
+los_angeles_2,Bongchu restaurant,Bongchu,Bongchu,True
+los_angeles_2,Boos fast food,Boos,Boos,True
+los_angeles_2,Fast food at Boos,Boos,Boos,True
+los_angeles_2,Food & Grog bar,Food & Grog,Food & Grog,True
+los_angeles_2,The Line building,The Line,The Line,True
+los_angeles_2,Mermaid Cafe,Mermaid Cafe,Mermaid Cafe,True
+los_angeles_2,Home Cafe,Home Cafe,Home Cafe,True
+los_angeles_2,Korean BBQ restaurant,Korean BBQ,Gwang Yang BBQ,False
+los_angeles_2,Bakery House,Bakery House,Bakery House,True
+los_angeles_2,Hairdresser shop,Details,Details,True
+los_angeles_2,Hairdresser,Details,Details,True
+los_angeles_2,Wilshire Christian Manor residential building,Wilshire Christian Manor,Wilshire Christian Manor,True
+los_angeles_2,Koko Pizza restaurant,Koko Pizza,Koko Pizza,True
+los_angeles_2,Togo's sandwich fast food,Togo's,Togo's,True
+los_angeles_2,Togo's fast food sandwich shop,Togo's,Togo's,True
+los_angeles_2,Central Plaza 1 building,Central Plaza 1,Central Plaza 1,True
+los_angeles_2,Crystal Spa on West 6th Street,Crystal Spa,Crystal Spa,True
+los_angeles_2,Central Plaza 2 building,Central Plaza 2,Central Plaza 2,True
+los_angeles_2,POT bar in Line Hotel,POT,POT,True
+los_angeles_2,POT bar operated by Line Hotel,POT,POT,True
+los_angeles_2,POT bar at Line Hotel,POT,POT,True
+los_angeles_2,Eyeland Optical on West 6th Street,"Eyeland Optical, Inc.","Eyeland Optical, Inc.",True
+los_angeles_2,McDonald's fast food burger restaurant,McDonald's,McDonald's,True
+los_angeles_2,McDonald's fast food burger joint,McDonald's,McDonald's,True
+los_angeles_2,McDonald's fast food burger,McDonald's,McDonald's,True
+los_angeles_2,Japanese restaurant named Wasabi,Wasabi,Wasabi,True
+los_angeles_2,Wasabi Japanese restaurant,Wasabi,Wasabi,True
+los_angeles_2,Philly Cheesesteaks restaurant on Wilshire Boulevard,Boo's Philly Cheesesteaks Ktown,Boo's Philly Cheesesteaks Ktown,True
+los_angeles_2,Central Plaza 3 building,Central Plaza 3,Central Plaza 3,True
+los_angeles_2,Central Plaza 3 Building,Central Plaza 3,Central Plaza 3,True
+los_angeles_2,Starbucks coffee shop,Starbucks,Starbucks,True
+los_angeles_2,Korean BBQ Premium Chicken restaurant,BBQ Premium Chicken,BBQ Premium Chicken,True
+los_angeles_2,Robeks Juice cafe,Robeks Juice,Robeks Juice,True
+los_angeles_2,Wako restaurant,Wako,Wako,True
+los_angeles_2,Etude Lounge hairdresser on West 6th Street,Etude Lounge,Etude Lounge,True
+los_angeles_2,Etude Lounge hair salon on West 6th Street,Etude Lounge,Etude Lounge,True
+los_angeles_2,Happy Noodle restaurant,Happy Noodle,Happy Noodle,True
+los_angeles_2,Korean restaurant named Chunju Han Il Kwan,Chunju Han Il Kwan,Chunju Han Il Kwan,True
+los_angeles_2,Korean restaurant Chunju Han Il Kwan,Chunju Han Il Kwan,Chunju Han Il Kwan,True
+los_angeles_2,Metro,Metro,Metro,True
+los_angeles_2,Robert F. Kennedy Community Schools,Robert F. Kennedy Community Schools,Robert F. Kennedy Community Schools,True
+los_angeles_2,Los Angeles County Metro station at Wilshire/Normandie,Wilshire/Normandie,Wilshire/Normandie,True
+los_angeles_2,Wilshire/Normandie Metro Station operated by Los Angeles County Metropolitan Transportation Authority,Wilshire/Normandie,Wilshire/Normandie,True
+los_angeles_2,Hotel Normandie on South Normandie Avenue,Hotel Normandie,Hotel Normandie,True
+los_angeles_2,Korean BBQ restaurant named Gwang Yang,Gwang Yang BBQ,Gwang Yang BBQ,True
+los_angeles_2,Korean BBQ restaurant,Gwang Yang BBQ,Gwang Yang BBQ,True
+los_angeles_2,Coffee Bean & Tea Leaf cafe,Coffee Bean & Tea Leaf,Coffee Bean & Tea Leaf,True
+los_angeles_2,Philippine Consulate General Embassy,Philippine Consulate General,Philippine Consulate General,True
+los_angeles_2,Philippine Consulate General embassy,Philippine Consulate General,Philippine Consulate General,True
+los_angeles_2,Korean BBQ restaurant,Korean Bbq,Gwang Yang BBQ,False
+los_angeles_2,Mali Taste of Thailand restaurant,Mali Taste of Thailand,Mali Taste of Thailand,True
+los_angeles_2,Thai restaurant named Mali Taste of Thailand,Mali Taste of Thailand,Mali Taste of Thailand,True
+los_angeles_2,The Halal Guys restaurant,The Halal Guys,The Halal Guys,True
+los_angeles_2,Foothill Transit,Foothill Transit,Foothill Transit,True
+los_angeles_2,Ice cream place,Ice Cream,Ice Cream,True
+los_angeles_2,Ice Cream shop,Ice Cream,Ice Cream,True
+los_angeles_2,Ice cream shop,Ice Cream,Ice Cream,True
+los_angeles_2,Carl's Jr. burger fast food,Carl's Jr.,Carl's Jr.,True
+los_angeles_2,Carl's Jr. burger fast food restaurant,Carl's Jr.,Carl's Jr.,True
+los_angeles_2,Bayou Smokehouse restaurant,Bayou Smokehouse,Bayou Smokehouse,True
+los_angeles_2,Indonesian Consulate General's embassy building,Consulat General of the Republic of Indonesia,Consulat General of the Republic of Indonesia,True
+los_angeles_2,Indonesian consulate,Consulat General of the Republic of Indonesia,Consulat General of the Republic of Indonesia,True
+los_angeles_2,Indonesian Consulate General,Consulat General of the Republic of Indonesia,Consulat General of the Republic of Indonesia,True
+los_angeles_2,Normandie Gardens Apartments,Normandie Gardens Apartments,Normandie Gardens Apartments,True
+los_angeles_2,Big 5 Sporting Goods store,Big 5 Sporting Goods,Big 5 Sporting Goods,True
+los_angeles_2,The Gaylord Apartments on Wilshire Boulevard,The Gaylord Apartments,The Gaylord Apartments,True
+los_angeles_2,The Boiling Crab restaurant,The Boiling Crab,The Boiling Crab,True
+los_angeles_2,Korean restaurant on West 6th Street,Sun Nong Dan,Sun Nong Dan,True
+los_angeles_2,Gogobop Korean Rice Bar restaurant,Gogobop Korean Rice Bar,Gogobop Korean Rice Bar,True
+los_angeles_2,Wilshire-Kenmore commercial building,Wilshire-Kenmore Building,Wilshire-Kenmore Building,True
+los_angeles_2,LA Dental dentist,LA Dental,LA Dental,True
+los_angeles_2,LA Dental Clinic,LA Dental,LA Dental,True
+los_angeles_2,Tarboosh Middle East Kitchen restaurant,Tarboosh middle East kitchen,Tarboosh middle East kitchen,True
+los_angeles_2,Metroplex Wilshire building,Metroplex Wilshire,Metroplex Wilshire,True
+los_angeles_2,Korean Seaweed restaurant,Seaweed,Seaweed,True
+los_angeles_2,Wiki Poki restaurant,Wiki Poki,Wiki Poki,True
+los_angeles_2,Hair News beauty store,Hair News,Hair News,True
+los_angeles_2,Beauty shop named Hair News,Hair News,Hair News,True
+los_angeles_2,Hair News beauty shop,Hair News,Hair News,True
+los_angeles_2,Zan ResPub restaurant,Zan ResPub,Zan ResPub,True
+los_angeles_2,California Design College,California Design College,California Design College,True
+los_angeles_2,Bank of America,Bank of America,Bank of America,True
+los_angeles_2,Vietnamese restaurant named Pho 24,Pho 24,Pho 24,True
+los_angeles_2,Vietnamese Pho restaurant,Pho 24,Pho 24,True
+san_diego_2,Ice cream shop on India Street,Salt & Straw,Salt & Straw,True
+san_diego_2,West Cedar Market convenience store,West Cedar Market,West Cedar Market,True
+san_diego_2,Firehouse Museum on Columbia Street,Firehouse Museum,Firehouse Museum,True
+san_diego_2,The Market By Buon Appetito supermarket,The Market By Buon Appetito,The Market By Buon Appetito,True
+san_diego_2,The Market by Buon Appetito supermarket,The Market By Buon Appetito,The Market By Buon Appetito,True
+san_diego_2,Italian restaurant on India Street,Sogno Di Vino,Prepkitchen Little Italy,False
+san_diego_2,"Coffee shop cafe on India Street, Tazza D'Oro",Tazza D'Oro,Tazza D'Oro,True
+san_diego_2,Tazza D'Oro coffee shop on India Street,Tazza D'Oro,Tazza D'Oro,True
+san_diego_2,Wells Fargo ATM,Wells Fargo,Wells Fargo,True
+san_diego_2,Burger Lounge restaurant,Burger Lounge,Burger Lounge,True
+san_diego_2,Indigo Grill restaurant,Indigo Grill,Indigo Grill,True
+san_diego_2,Ironside regional restaurant on India Street,Ironside,Ironside,True
+san_diego_2,Regional restaurant on India Street,Ironside,Ironside,True
+san_diego_2,ITH Eco Farm House in San Diego,ITH Eco Farm House San Diego,ITH Eco Farm House San Diego,True
+san_diego_2,Farmers Market offering fast food on Wednesdays and Saturdays,Farmers Market (Wed and Sat),Farmers Market (Wed and Sat),True
+san_diego_2,Farmers Market with fast food on Wednesdays and Saturdays,Farmers Market (Wed and Sat),Farmers Market (Wed and Sat),True
+san_diego_2,Village Walk on India Street,Village Walk,Village Walk,True
+san_diego_2,Visage Beauty Salon,Visage Beauty Salon,Visage Beauty Salon,True
+san_diego_2,Mexican Consulate on India Street,Mexican Consulate,Mexican Consulate,True
+san_diego_2,"Christian place of worship, Our Lady of the Rosary Church",Our Lady of the Rosary Church,Our Lady of the Rosary Church,True
+san_diego_2,Our Lady of the Rosary Christian Church,Our Lady of the Rosary Church,Our Lady of the Rosary Church,True
+san_diego_2,Urban Boutique Hotel,Urban Boutique Hotel,Urban Boutique Hotel,True
+san_diego_2,New Zealand restaurant in Queenstown,Queenstown,Queenstown,True
+san_diego_2,New Zealand-themed restaurant in Queenstown,Queenstown,Queenstown,True
+san_diego_2,New Zealand cuisine restaurant in Queenstown,Queenstown,Queenstown,True
+san_diego_2,Vegan-friendly coffee shop Lofty Coffee & Co. on West Cedar Street,Lofty Coffee & co.,Lofty Coffee & co.,True
+san_diego_2,"Vegan-friendly cafe on West Cedar Street serving sandwiches, breakfast, and coffee",Lofty Coffee & co.,Lofty Coffee & co.,True
+san_diego_2,Vegan sandwich and breakfast cafe on West Cedar Street,Lofty Coffee & co.,Lofty Coffee & co.,True
+san_diego_2,Italian restaurant on India Street,Davanti Enoteca,Prepkitchen Little Italy,False
+san_diego_2,Princess Pub and Grille,Princess Pub and Grille,Princess Pub and Grille,True
+san_diego_2,Little Italy neighborhood,Little Italy,Little Italy,True
+san_diego_2,Lofty restaurant,Lofty,Lofty,True
+san_diego_2,Italian restaurant on India Street,Buon Appetito,Prepkitchen Little Italy,False
+san_diego_2,La Vita Little Italy building,La Vita Little Italy,La Vita Little Italy,True
+san_diego_2,La Vita in Little Italy,La Vita Little Italy,Little Italy,False
+san_diego_2,Piazza della Famiglia,Piazza della Famiglia,Piazza della Famiglia,True
+san_diego_2,iDessert restaurant,iDessert,iDessert,True
+san_diego_2,Italian restaurant Sorrento Ristorante,Sorrento Ristorante,Sorrento Ristorante,True
+san_diego_2,Italian restaurant named Sorrento Ristorante,Sorrento Ristorante,Sorrento Ristorante,True
+san_diego_2,"Italian restaurant, Sorrento Ristorante",Sorrento Ristorante,Sorrento Ristorante,True
+san_diego_2,Harbor Breakfast restaurant,Harbor Breakfast,Harbor Breakfast,True
+san_diego_2,"Prepkitchen Little Italy, regional cuisine restaurant on India Street",Prepkitchen Little Italy,Prepkitchen Little Italy,True
+san_diego_2,Prepkitchen Little Italy restaurant on India Street,Prepkitchen Little Italy,Prepkitchen Little Italy,True
+san_diego_2,"Prepkitchen Little Italy, a regional cuisine restaurant on India Street",Prepkitchen Little Italy,Prepkitchen Little Italy,True
+san_diego_2,Italian Cultural Center,Italian Cultural Center,Italian Cultural Center,True
+new_york_2,COS clothing store for women and men on 5th Avenue,COS,COS,True
+new_york_2,COS clothing store on 5th Avenue for women and men,COS,COS,True
+new_york_2,COS clothing store for men and women on 5th Avenue,COS,COS,True
+new_york_2,Jewish place of worship in Midtown Manhattan,Chabad of Midtown Manhattan,Chabad of Midtown Manhattan,True
+new_york_2,Jewish place of worship,Chabad of Midtown Manhattan,Chabad of Midtown Manhattan,True
+new_york_2,Clothing shop on Madison Avenue operated by Tunch Hepguler,Sayki,Sayki,True
+new_york_2,Clothing store on Madison Avenue,Sayki,300 Madison Avenue,False
+new_york_2,Sathya Sai place of worship,sathya sai,sathya sai,True
+new_york_2,Wendell L. Willkie Memorial,Wendell L. Willkie,Wendell L. Willkie,True
+new_york_2,Wendell L. Willkie memorial,Wendell L. Willkie,Wendell L. Willkie,True
+new_york_2,Building at 335 Madison Avenue,335 Madison Avenue,335 Madison Avenue,True
+new_york_2,building on 335 Madison Avenue,335 Madison Avenue,335 Madison Avenue,True
+new_york_2,Salmon Tower commercial building on West 42nd Street,Salmon Tower,Salmon Tower,True
+new_york_2,Bakers shoe store,Bakers,Bakers,True
+new_york_2,Shoe store named Bakers,Bakers,Bakers,True
+new_york_2,5th Avenue operated by New York City Transit Authority,5th Avenue,5th Avenue,True
+new_york_2,Bryant Park,Bryant Park,Bryant Park,True
+new_york_2,Sean John clothes shop on East 42nd Street,Sean John,Sean John,True
+new_york_2,Sean John clothing store on East 42nd Street,Sean John,Sean John,True
+new_york_2,Chipotle Mexican fast food,Chipotle,Chipotle,True
+new_york_2,Mexican fast-food chain Chipotle,Chipotle,Chipotle,True
+new_york_2,Pret A Manger sandwich fast food chain,Pret A Manger,Pret A Manger,True
+new_york_2,Pret A Manger fast food sandwich chain,Pret A Manger,Pret A Manger,True
+new_york_2,Wine & Spirits alcohol shop on West 43rd Street,Wine & Spirits,Wine & Spirits,True
+new_york_2,Wine & Spirits store on West 43rd Street,Wine & Spirits,Wine & Spirits,True
+new_york_2,Sperry & Hutchinson commercial building,Sperry & Hutchinson Building,Sperry & Hutchinson Building,True
+new_york_2,IDB Bank,IDB Bank,IDB Bank,True
+new_york_2,VPC Tower on East 43rd Street with a flat concrete roof and stone building material,VPC Tower,VPC Tower,True
+new_york_2,"VPC Tower, a stone building with a flat concrete roof on East 43rd Street",VPC Tower,VPC Tower,True
+new_york_2,VPC Tower building with a flat concrete roof and stone material on East 43rd Street,VPC Tower,VPC Tower,True
+new_york_2,Gertrude Stein Memorial,Gertrude Stein,Gertrude Stein,True
+new_york_2,Gertrude Stein memorial,Gertrude Stein,Gertrude Stein,True
+new_york_2,The Bryant building on West 40th Street,The Bryant,The Bryant,True
+new_york_2,William Earle Dodge Memorial,William Earle Dodge,William Earle Dodge,True
+new_york_2,William Earle Dodge memorial,William Earle Dodge,William Earle Dodge,True
+new_york_2,Bank of America,Bank of America,Bank of America,True
+new_york_2,McDonald's fast-food burger restaurant,McDonald's,McDonald's,True
+new_york_2,McDonald's fast food burger restaurant,McDonald's,McDonald's,True
+new_york_2,McDonald's fast food burger joint,McDonald's,McDonald's,True
+new_york_2,Commercial building on 5th Avenue,500 Fifth Avenue,489 5th Avenue,False
+new_york_2,Don Peterson on 5th Avenue,Don Peterson,Don Peterson,True
+new_york_2,"Christian place of worship, IESS (Inner Enlightenment Spiritist Society)",Inner Enlightenment Spiritist Society,Inner Enlightenment Spiritist Society,True
+new_york_2,"Christian place of worship, IESS",Inner Enlightenment Spiritist Society,Inner Enlightenment Spiritist Society,True
+new_york_2,New York Public Library,New York public library,New York public library,True
+new_york_2,H&M clothing store,H&M,H&M,True
+new_york_2,Starbucks coffee shop,Starbucks,Starbucks,True
+new_york_2,Madison Avenue & East 42nd Street,Madison Avenue & East 42nd Street,East 42nd Street & Madison Avenue,False
+new_york_2,Madison Avenue and East 42nd Street intersection,Madison Avenue & East 42nd Street,East 42nd Street & Madison Avenue,False
+new_york_2,Madison Avenue & East 42nd Street intersection,Madison Avenue & East 42nd Street,East 42nd Street & Madison Avenue,False
+new_york_2,Sephora cosmetics store on Madison Avenue,Sephora,Sephora,True
+new_york_2,glass building with a flat concrete roof on Madison Avenue,300 Madison Avenue,335 Madison Avenue,False
+new_york_2,Glass building with a flat concrete roof at 300 Madison Avenue,300 Madison Avenue,300 Madison Avenue,True
+new_york_2,Alden Shoes on Madison Avenue,Alden Shoes,Alden Shoes,True
+new_york_2,Alden Shoes store on Madison Avenue,Alden Shoes,Alden Shoes,True
+new_york_2,East 42nd Street and Madison Avenue intersection,East 42nd Street & Madison Avenue,East 42nd Street & Madison Avenue,True
+new_york_2,Money Exchange bureau,Money Exchange,Money Exchange,True
+new_york_2,Money Exchange Bureau,Money Exchange,Money Exchange,True
+new_york_2,PNC Bank,PNC Bank,PNC Bank,True
+new_york_2,"Car rental on Madison Avenue, NYC",Cheap Car Lease NYC,Cheap Car Lease NYC,True
+new_york_2,Car rental on Madison Avenue,Cheap Car Lease NYC,Cheap Car Lease NYC,True
+new_york_2,Historic Croton Reservoir,Croton Reservoir,Croton Reservoir,True
+new_york_2,historic Croton Reservoir,Croton Reservoir,Croton Reservoir,True
+new_york_2,"clothing store named ""and other stories""",and other stories,and other stories,True
+new_york_2,New York Public Library on 5th Avenue,New York Public Library,New York public library,False
+new_york_2,Le Pain Quotidien coffee shop and café,Le Pain Quotidien,Le Pain Quotidien,True
+new_york_2,Le Pain Quotidien coffee shop,Le Pain Quotidien,Le Pain Quotidien,True
+new_york_2,Le Pain Quotidien coffee shop and cafe,Le Pain Quotidien,Le Pain Quotidien,True
+new_york_2,Chick-fil-A fast food chicken restaurant on East 42nd Street,Chick-fil-A,Chick-fil-A,True
+new_york_2,Chick-fil-A chicken fast food on East 42nd Street,Chick-fil-A,Chick-fil-A,True
+new_york_2,Commercial building on 5th Avenue,505 Fifth Avenue,489 5th Avenue,False
+new_york_2,Building at 489 5th Avenue,489 5th Avenue,489 5th Avenue,True
+new_york_2,building at 489 5th Avenue,489 5th Avenue,489 5th Avenue,True
+new_york_2,building located at 489 5th Avenue,489 5th Avenue,489 5th Avenue,True
+new_york_2,Commercial building on 5th Avenue,509 Fifth Avenue,489 5th Avenue,False
+new_york_2,Bryant Park Grill restaurant,Bryant Park Grill,Bryant Park Grill,True
+new_york_2,Bryant Park Grill Restaurant,Bryant Park Grill,Bryant Park Grill,True
+new_york_2,The Forefront Law Group on 5th Avenue,The Forefront Law Group,The Forefront Law Group,True
+new_york_2,Pizza fast food in Little Italy on East 43rd Street,Little Italy,Little Italy,True
+new_york_2,"Little Italy, a pizza fast-food joint on East 43rd Street",Little Italy,Little Italy,True
+new_york_2,The North Face clothing store,The North Face,The North Face,True
+new_york_2,Mets Clubhouse clothing store,Mets Clubhouse Shop,Mets Clubhouse Shop,True
+new_york_2,Mets Clubhouse clothing shop,Mets Clubhouse Shop,Mets Clubhouse Shop,True
+new_york_2,Mets Clubhouse clothes shop,Mets Clubhouse Shop,Mets Clubhouse Shop,True
+new_york_2,Bravo Pizza fast food joint,Bravo Pizza,Bravo Pizza,True
+new_york_2,Bravo Pizza fast food,Bravo Pizza,Bravo Pizza,True
+new_york_2,Unification Church Headquarters public building,Unification Church Headquarters,Unification Church Headquarters,True
+new_york_2,Unification Church Headquarters building,Unification Church Headquarters,Unification Church Headquarters,True
+new_york_2,W 42 St / 5 Av,W 42 St / 5 Av,W 42 St / 5 Av,True
+new_york_2,W 42 St / 5 Av intersection,W 42 St / 5 Av,W 42 St / 5 Av,True
+new_york_2,W 42 St and 5 Av intersection,W 42 St / 5 Av,W 42 St / 5 Av,True
+new_york_2,Lefcourt National Building on 5th Avenue,Lefcourt National Building,Lefcourt National Building,True
+new_york_2,Cafe Metro,Cafe Metro,Cafe Metro,True
+new_york_2,One Vanderbilt under construction with a final height of 427m,One Vanderbilt,One Vanderbilt,True
+new_york_2,One Vanderbilt under construction with a final height of 427 meters,One Vanderbilt,One Vanderbilt,True
+new_york_2,Building at 340 Madison Avenue,340 Madison Avenue,340 Madison Avenue,True
+new_york_2,building at 340 Madison Avenue,340 Madison Avenue,340 Madison Avenue,True
+new_york_2,Andaz on 5th Avenue,Andaz,Andaz,True
+new_york_2,Emigrant Savings Bank commercial building,Emigrant Savings Bank Building,Emigrant Savings Bank Building,True
+new_york_2,Historic Sidewalk Clock at 522 5th Avenue,Sidewalk Clock at 522 5th Avenue,Sidewalk Clock at 522 5th Avenue,True
+new_york_2,Historic sidewalk clock at 522 5th Avenue,Sidewalk Clock at 522 5th Avenue,Sidewalk Clock at 522 5th Avenue,True
+new_york_2,W. R. Grace commercial building on 6th Avenue,W. R. Grace Building,W. R. Grace Building,True
+new_york_2,"Nat Sherman Townhouse, a tobacco retail store with a flat concrete roof on East 42nd Street",Nat Sherman Townhouse,Nat Sherman Townhouse,True
+new_york_2,"Nat Sherman Townhouse, a tobacco shop on East 42nd Street with a flat concrete roof",Nat Sherman Townhouse,Nat Sherman Townhouse,True
+new_york_2,"Nat Sherman Townhouse, a tobacco shop on East 42nd Street",Nat Sherman Townhouse,Nat Sherman Townhouse,True
+new_york_2,Urban Outfitters clothing store,Urban Outfitters,Urban Outfitters,True
+new_york_2,Fila shoe store,Fila,Fila,True
+new_york_2,Bryant Park public restrooms,Bryant Park public toilets,Bryant Park public toilets,True
+new_york_2,Bryant Park public toilets,Bryant Park public toilets,Bryant Park public toilets,True
+new_york_2,Gertrude Stein monument,Gertrude Stein statue,Gertrude Stein statue,True
+new_york_2,Gertrude Stein statue monument,Gertrude Stein statue,Gertrude Stein statue,True
+new_york_2,fast food restaurant named Food Exchange,food exchange,food exchange,True
+new_york_2,Fast food at Food Exchange,food exchange,food exchange,True
+new_york_2,fast food exchange,food exchange,food exchange,True
+new_york_2,SUNY State College of Optometry,SUNY State College of Optometry,SUNY State College of Optometry,True
+new_york_2,M&T Bank,M&T Bank,M&T Bank,True
+new_york_2,Elite Bureau Club V.I.P. on Madison Avenue,Elite Bureau Club V.I.P.,Elite Bureau Club V.I.P.,True
+new_york_2,West 42nd Street & 5th Avenue intersection,West 42nd Street & 5th Avenue,West 42nd Street & 5th Avenue,True
+new_york_2,West 42nd Street & 5th Avenue,West 42nd Street & 5th Avenue,West 42nd Street & 5th Avenue,True
+new_york_2,Zara clothing store,Zara,Zara,True
+new_york_2,Zara clothes store,Zara,Zara,True
+new_york_2,Cohen's Fashion Optical optician shop,Cohen's Fashion Optical,Cohen's Fashion Optical,True
+new_york_2,Chase Bank,Chase,Chase,True
+charlotte_2,Elizabeth Billiards bar,Elizabeth Billiards,Elizabeth Billiards,True
+charlotte_2,Fuel Pizza restaurant,Fuel Pizza,Fuel Pizza,True
+charlotte_2,Common Market convenience store on Commonwealth Avenue,Common Market,Common Market,True
+charlotte_2,Wells Fargo bank on Central Avenue,Wells Fargo,Wells Fargo,True
+charlotte_2,Public Library of Charlotte and Mecklenburg County- Plaza Midwood Branch on Central Avenue,Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch,Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch,True
+charlotte_2,Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch on Central Avenue,Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch,Public Library of Charlotte and Mecklenburg County - Plaza Midwood Branch,True
+charlotte_2,CVS Pharmacy on Pecan Avenue,CVS,CVS,True
+charlotte_2,Nova's Bakery on Central Avenue,Nova's Bakery,Nova's Bakery,True
+charlotte_2,Animal Hospital on Commonwealth Avenue,Commonwealth Animal Hospital,Commonwealth Animal Hospital,True
+charlotte_2,Animal hospital on Commonwealth Avenue,Commonwealth Animal Hospital,Commonwealth Animal Hospital,True
+charlotte_2,Diamond Restaurant,Diamond Restaurant,Diamond Restaurant,True
+charlotte_2,The Plaza Post Office operated by United States Postal Service,The Plaza Post Office,The Plaza Post Office,True
+charlotte_2,Subway sandwich shop on The Plaza,Subway,Subway,True
+charlotte_2,Subway sandwich fast food on The Plaza,Subway,Subway,True
+charlotte_2,"Dish, a restaurant building",Dish,Dish,True
+charlotte_2,Dish restaurant in a building,Dish,Dish,True
+charlotte_2,Dish restaurant building,Dish,Dish,True
+charlotte_2,Zada Jane's Cafe on Central Avenue,Zada Jane's,Zada Jane's,True
+charlotte_2,Zada Jane's cafe on Central Avenue,Zada Jane's,Zada Jane's,True
+charlotte_2,Dairy Queen fast food,Dairy Queen,Dairy Queen,True
+charlotte_2,Dairy Queen fast food restaurant,Dairy Queen,Dairy Queen,True
+charlotte_2,Harris Teeter supermarket on Central Avenue,Harris Teeter,Harris Teeter,True
+philadelphia_2,Wilson dormitory,Wilson,Wilson,True
+philadelphia_2,Wilson dormitory building,Wilson,Wilson,True
+philadelphia_2,Smith dormitory building,Smith,Smith,True
+philadelphia_2,Smith dormitory,Smith,Smith,True
+philadelphia_2,Graduate dormitory building,Graduate,Graduate,True
+philadelphia_2,Warwick dormitory,Warwick,Warwick,True
+philadelphia_2,Warwick dormitory building,Warwick,Warwick,True
+philadelphia_2,CHOP Parking Garage,CHOP Parking Garage,CHOP Parking Garage,True
+philadelphia_2,Hopkinson dormitory building,Hopkinson,Hopkinson,True
+philadelphia_2,Hopkinson dormitory,Hopkinson,Hopkinson,True
+philadelphia_2,Stouffer Commons building on Spruce Street,Stouffer Commons,Stouffer Commons,True
+philadelphia_2,University theatre on Spruce Street,Irvine Auditorium,Irvine Auditorium,True
+philadelphia_2,"Irvine Auditorium, a university theatre on Spruce Street",Irvine Auditorium,Irvine Auditorium,True
+philadelphia_2,Bodine dormitory building,Bodine,Bodine,True
+philadelphia_2,James G. Kaskey Memorial Park,James G. Kaskey Memorial Park,James G. Kaskey Memorial Park,True
+philadelphia_2,Ryan Veterinary Hospital on Spruce Street,Ryan Veterinary Hospital,Ryan Veterinary Hospital,True
+philadelphia_2,Brooks dormitory building,Brooks,Brooks,True
+philadelphia_2,Biomedical Research Building II/III,Biomedical Research Building II/III,Biomedical Research Building II/III,True
+philadelphia_2,University of Pennsylvania Hospital on Spruce Street,Hospital of the University of Pennsylvania,Hospital of the University of Pennsylvania,True
+philadelphia_2,Hospital of the University of Pennsylvania on Spruce Street operated by Penn Medicine,Hospital of the University of Pennsylvania,Hospital of the University of Pennsylvania,True
+philadelphia_2,Children's Hospital of Philadelphia Heliport,Children's Hospital of Philadelphia Heliport,Children's Hospital of Philadelphia Heliport,True
+philadelphia_2,university building on South 36th Street,Claudia Cohen Hall,Claudia Cohen Hall,True
+philadelphia_2,University building on South 36th Street,Claudia Cohen Hall,Claudia Cohen Hall,True
+philadelphia_2,"Claudia Cohen Hall, a university building on South 36th Street",Claudia Cohen Hall,Claudia Cohen Hall,True
+philadelphia_2,Lower Quad park,Lower Quad,Lower Quad,True
+philadelphia_2,Rodney dormitory building,Rodney,Rodney,True
+philadelphia_2,E.F. Smith dormitory building,E.F. Smith,E.F. Smith,True
+philadelphia_2,Ashhurst dormitory building,Ashhurst,Ashhurst,True
+philadelphia_2,Children's Hospital of Philadelphia on Civic Center Boulevard (CHOP),Children's Hospital of Philadelphia,Children's Hospital of Philadelphia,True
+philadelphia_2,Children's Hospital of Philadelphia (CHOP) on Civic Center Boulevard,Children's Hospital of Philadelphia,Children's Hospital of Philadelphia,True
+philadelphia_2,Memorial Tower dormitory on Spruce Street,Memorial Tower,Memorial Tower,True
+philadelphia_2,Au Bon Pain sandwich fast food,Au Bon Pain,Au Bon Pain,True
+philadelphia_2,Au Bon Pain sandwich fast_food place,Au Bon Pain,Au Bon Pain,True
+philadelphia_2,Wistar Institute on Spruce Street,Wistar Institute,Wistar Institute,True
+philadelphia_2,Leonard and Madlyn Abramson Pediatric Research Center,Leonard and Madlyn Abramson Pediatric Research Center,Leonard and Madlyn Abramson Pediatric Research Center,True
+philadelphia_2,Butcher dormitory building,Butcher,Butcher,True
+philadelphia_2,dormitory named Butcher,Butcher,Butcher,True
+philadelphia_2,McIlhenney dormitory,McIlhenney,McIlhenney,True
+philadelphia_2,McIlhenney dormitory building,McIlhenney,McIlhenney,True
+philadelphia_2,Biology Pond,Biology Pond,Biology Pond,True
+philadelphia_2,Speakman dormitory building,Speakman,Speakman,True
+philadelphia_2,Chestnut dormitory building,Chestnut,Chestnut,True
+philadelphia_2,Fisher Fine Arts Library building,Fisher Fine Arts Library,Fisher Fine Arts Library,True
+philadelphia_2,Fisher Fine Arts Library,Fisher Fine Arts Library,Fisher Fine Arts Library,True
+philadelphia_2,Children's Seashore House of CHOP hospital,Children's Seashore House of CHOP,Children's Seashore House of CHOP,True
+philadelphia_2,Leidy dormitory building,Leidy,Leidy,True
+philadelphia_2,Leidy dormitory,Leidy,Leidy,True
+philadelphia_2,Mudd Labs building,Mudd Labs,Mudd Labs,True
+philadelphia_2,Richards Building on Hamilton Walk,Richards,Richards,True
+philadelphia_2,Richards building on Hamilton Walk,Richards,Richards,True
+philadelphia_2,Wawa convenience store,Wawa,Wawa,True
+philadelphia_2,Ward dormitory building,Ward,Ward,True
+philadelphia_2,Anatomy Chemistry building,Anatomy Chemistry,Anatomy Chemistry,True
+philadelphia_2,Baird dormitory building,Baird,Baird,True
+philadelphia_2,Richard D Wood Pediatric Ambulatory Care Center,Richard D Wood Pediatric Ambulatory Care Center,Richard D Wood Pediatric Ambulatory Care Center,True
+philadelphia_2,South Tower,South Tower,South Tower,True
+philadelphia_2,Houston Hall at the university,Houston Hall,Houston Hall,True
+philadelphia_2,The X park,The X,The X,True
+philadelphia_2,CHOP Main Hospital Building on Civic Center Boulevard,CHOP Main Building,CHOP Main Building,True
+philadelphia_2,CHOP Main Hospital on Civic Center Boulevard,CHOP Main Building,CHOP Main Building,True
+philadelphia_2,New York Alumni dormitory building,New York Alumni,New York Alumni,True
+philadelphia_2,Cleemann dormitory building,Cleemann,Cleemann,True
+philadelphia_2,Bishop White dormitory building,Bishop White,Bishop White,True
+philadelphia_2,Kaplan Wing building,Kaplan Wing,Kaplan Wing,True
+philadelphia_2,Baldwin dormitory building,Baldwin,Baldwin,True
+philadelphia_2,Baldwin dormitory,Baldwin,Baldwin,True
+philadelphia_2,Fagin Hall building,Fagin Hall,Fagin Hall,True
+philadelphia_2,Baby Quad Park,Baby Quad,Baby Quad,True
+philadelphia_2,Baby Quad park,Baby Quad,Baby Quad,True
+philadelphia_2,John Morgan ATM on Hamilton Walk,John Morgan,John Morgan,True
+philadelphia_2,ATM on Hamilton Walk,John Morgan,John Morgan,True
+philadelphia_2,The UPS Store post office,The UPS Store,The UPS Store,True
+philadelphia_2,Lancaster Farms CSA Drop Site on Spruce Street,Lancaster Farms CSA Drop Site,Lancaster Farms CSA Drop Site,True
+philadelphia_2,University building on Spruce Street,Vance Hall,Stouffer Commons,False
+philadelphia_2,"Vance Hall, university building on Spruce Street",Vance Hall,Vance Hall,True
+philadelphia_2,University Vance Hall on Spruce Street,Vance Hall,Vance Hall,True
+philadelphia_2,Lippincott dormitory,Lippincott,Lippincott,True
+philadelphia_2,Lippincott dormitory building,Lippincott,Lippincott,True
+philadelphia_2,Birthday dormitory building,Birthday,Birthday,True
+philadelphia_2,Birthday dormitory,Birthday,Birthday,True
+philadelphia_2,Leidy Laboratories building,Leidy Laboratories,Leidy Laboratories,True
+philadelphia_2,Stellar Chance Labs building on Curie Boulevard,Stellar Chance Labs,Stellar Chance Labs,True
+philadelphia_2,Stellar Chance Labs on Curie Boulevard,Stellar Chance Labs,Stellar Chance Labs,True
+philadelphia_2,Magee dormitory building,Magee,Magee,True
+philadelphia_2,Perelman Center for Advanced Medicine,Perelman Center for Advanced Medicine,Perelman Center for Advanced Medicine,True
+philadelphia_2,Perelman Center for Advanced Medicine building,Perelman Center for Advanced Medicine,Perelman Center for Advanced Medicine,True
+philadelphia_2,Franklin dormitory building,Franklin,Franklin,True
+philadelphia_2,Franklin dormitory,Franklin,Franklin,True
+philadelphia_2,Blockley Hall building,Blockley Hall,Blockley Hall,True
+philadelphia_2,Chinese restaurant named Beijing,Beijing,Beijing,True
+philadelphia_2,Chinese restaurant in Beijing,Beijing,Beijing,True
+philadelphia_2,Veterans' Affairs Medical Centre hospital,Veterans' Affairs Medical Centre,Veterans' Affairs Medical Centre,True
+philadelphia_2,Craig dormitory building,Craig,Craig,True
+philadelphia_2,Provost Tower dormitory,Provost Tower,Provost Tower,True
+philadelphia_2,CHOP West Tower hospital,CHOP West Tower,CHOP West Tower,True
+philadelphia_2,CHOP West Tower hospital building,CHOP West Tower,CHOP West Tower,True
+philadelphia_2,Class of '28 dormitory building,Class of '28,Class of '28,True
+philadelphia_2,Fitler dormitory building,Fitler,Fitler,True
+philadelphia_2,Carruth dormitory building,Carruth,Carruth,True
+philadelphia_2,McClelland dormitory,McClelland,McClelland,True
+philadelphia_2,Hamilton Field park,Hamilton Field,Hamilton Field,True
+philadelphia_2,Hamilton Field Park,Hamilton Field,Hamilton Field,True
+philadelphia_2,Williams Hall building,Williams Hall,Williams Hall,True
+philadelphia_2,Thomas Penn dormitory,Thomas Penn,Thomas Penn,True
+philadelphia_2,Thomas Penn dormitory building,Thomas Penn,Thomas Penn,True
+philadelphia_2,Upper Quad park,Upper Quad,Upper Quad,True
+philadelphia_2,Coxe dormitory building,Coxe,Coxe,True
+philadelphia_2,37th Street Station,37th Street Station,37th Street Station,True
+philadelphia_2,USPS Postbox,USPS Postbox,USPS Postbox,True
+philadelphia_2,USPS postbox,USPS Postbox,USPS Postbox,True
+philadelphia_2,Morris dormitory building,Morris,Morris,True
+philadelphia_2,Morgan dormitory building,Morgan,Morgan,True
+philadelphia_2,Morgan dormitory,Morgan,Morgan,True
+philadelphia_2,McKean dormitory building,McKean,McKean,True
+philadelphia_2,Clinical Research Building,Clinical Research Building,Clinical Research Building,True
+philadelphia_2,Foerderer dormitory,Foerderer,Foerderer,True
+philadelphia_2,Foerderer dormitory building,Foerderer,Foerderer,True
+philadelphia_2,College Hall university building,College Hall,College Hall,True
+philadelphia_2,College Hall at university,College Hall,College Hall,True
+philadelphia_2,College Hall at the university,College Hall,College Hall,True
+philadelphia_2,West Philly Foods CSA drop site at 34th Street and Civic Center Boulevard,West Philly Foods CSA Drop Site,West Philly Foods CSA Drop Site,True
+philadelphia_2,West Philly Foods CSA Drop Site on 34th Street and Civic Center Boulevard,West Philly Foods CSA Drop Site,West Philly Foods CSA Drop Site,True
+philadelphia_2,1920 Commons University building,1920 Commons,1920 Commons,True
+philadelphia_2,1920 Commons university building,1920 Commons,1920 Commons,True
+philadelphia_2,Mask & Wig dormitory building,Mask & Wig,Mask & Wig,True
+philadelphia_2,"Steinberg-Dietrich Hall, a brick university building on Locust Walk with a concrete roof",Steinberg-Dietrich Hall,Steinberg-Dietrich Hall,True
+philadelphia_2,University building with a concrete roof on Locust Walk: Steinberg-Dietrich Hall,Steinberg-Dietrich Hall,Steinberg-Dietrich Hall,True
+philadelphia_2,"Steinberg-Dietrich Hall, a university building on Locust Walk with a concrete roof and brick exterior",Steinberg-Dietrich Hall,Steinberg-Dietrich Hall,True
+philadelphia_2,Stouffer College House dormitory,Stouffer College House,Stouffer College House,True
+columbus_2,Short North neighborhood,Short North,Short North,True
+columbus_2,Park Street Cantina bar,Park Street Cantina,Park Street Cantina,True
+columbus_2,North Market Parking lot,North Market Parking,North Market Parking,True
+columbus_2,North Market Parking area,North Market Parking,North Market Parking,True
+columbus_2,Dahlia Nightclub,Dahlia Nightclub,Dahlia Nightclub,True
+columbus_2,Mikey's pizza restaurant,Mikey's Late Night Slice,Mikey's Late Night Slice,True
+columbus_2,Pizza restaurant,Mikey's Late Night Slice,Mikey's Late Night Slice,True
+columbus_2,Mikey's Late Night Slice pizza restaurant,Mikey's Late Night Slice,Mikey's Late Night Slice,True
+columbus_2,Garage Bar,Garage Bar,Garage Bar,True
+columbus_2,"North Market, a commercial supermarket building",North Market,North Market,True
+columbus_2,North Market supermarket in a commercial building,North Market,North Market,True
+columbus_2,CoGo North Market bike rental,CoGo North Market,CoGo North Market,True
+columbus_2,Columbus Convention Center Vine Street Garage for parking,Columbus Convention Center - Vine Street Garage,Columbus Convention Center - Vine Street Garage,True
+columbus_2,Columbus Convention Center parking garage on Vine Street,Columbus Convention Center - Vine Street Garage,Columbus Convention Center - Vine Street Garage,True
+columbus_2,Columbus Convention Center Vine Street Garage,Columbus Convention Center - Vine Street Garage,Columbus Convention Center - Vine Street Garage,True
+columbus_2,Brothers Bar & Grill on Park Street,Brothers Bar & Grill,Brothers Bar & Grill,True
+columbus_2,Central Ohio Transit Authority at N High St & Spruce St,N High St & Spruce St,N High St & Spruce St,True
+columbus_2,Park Street Tavern bar,Park Street Tavern,Park Street Tavern,True
+columbus_2,Martini Modern Italian restaurant on North High Street,Martini Modern Italian,Martini Modern Italian,True
+columbus_2,Arnold Schwarzenegger statue,Arnold Schwarzenegger statue,Arnold Schwarzenegger statue,True
+columbus_2,Columbus Children's Theatre,Columbus Children's Theatre,Columbus Children's Theatre,True
+columbus_2,Bar Louie pub,Bar Louie,Bar Louie,True
+columbus_2,"Columbus Convention Center, a conference centre building",Columbus Convention Center,Columbus Convention Center,True
+columbus_2,Columbus Convention Center is a conference centre building.,Columbus Convention Center,Columbus Convention Center,True
+columbus_2,Park Street District neighborhood,North Market Historic District,North Market Historic District,True
+columbus_2,BBR bar,BBR,BBR,True
+columbus_2,Barley's Brewing Company pub on North High Street,Barley's Brewing Company,Barley's Brewing Company,True
+columbus_2,Arena Crossing Apartments,Arena Crossing Apartments,Arena Crossing Apartments,True
+columbus_2,Flower shop called Market Blooms,Market Blooms,Market Blooms,True
+columbus_2,Market Blooms florist shop,Market Blooms,Market Blooms,True
+columbus_2,Hilton Columbus Downtown commercial building,Hilton Columbus Downtown,Hilton Columbus Downtown,True
+columbus_2,Char Bar pub on North High Street,Char Bar,Char Bar,True
+columbus_2,Martinis restaurant,Martinis,Martinis,True
+columbus_2,Hampton Inn and Suites Columbus Downtown,Hampton Inn and Suites Columbus Downtown,Hampton Inn and Suites Columbus Downtown,True
+columbus_2,Hampton Inn and Suites in Columbus Downtown,Hampton Inn and Suites Columbus Downtown,Hampton Inn and Suites Columbus Downtown,True
+columbus_1,OhioHealth hospital on South Grant Avenue,Grant Medical Center,Grant Medical Center,True
+columbus_1,Grant Medical Center on South Grant Avenue operated by OhioHealth,Grant Medical Center,Grant Medical Center,True
+columbus_1,Grant Medical Center hospital on South Grant Avenue operated by OhioHealth,Grant Medical Center,Grant Medical Center,True
+columbus_1,CoGo Bike Share at Topiary Park on Town St,CoGo Topiary Park - Town St,CoGo Topiary Park - Town St,True
+columbus_1,CoGo Bike Share at Topiary Park on Town Street,CoGo Topiary Park - Town St,CoGo Topiary Park - Town St,True
+columbus_1,Topiary Park,Deaf School Park,Deaf School Park,True
+columbus_1,"Topiary Park, also known as Deaf School Park",Deaf School Park,Deaf School Park,True
+columbus_1,Grant Medical Center Heliport,Grant Medical Center Heliport,Grant Medical Center Heliport,True
+columbus_1,CoGo Bike Share at the Library - Main Branch,CoGo Library - Main Branch,CoGo Library - Main Branch,True
+columbus_1,Main Branch of CoGo Bike Share Library for bicycle rental,CoGo Library - Main Branch,CoGo Library - Main Branch,True
+columbus_1,CoGo Bike Share at Library Main Branch,CoGo Library - Main Branch,CoGo Library - Main Branch,True
+columbus_1,Christian Spiritualist Temple on South Sixth Street,Christian Spiritualist Temple,Christian Spiritualist Temple,True
+columbus_1,Christian Spiritualist Temple church on South Sixth Street,Christian Spiritualist Temple,Christian Spiritualist Temple,True
+columbus_1,Columbus Metropolitan Library on South Grant Avenue,Columbus Metropolitan Library (Main),Columbus Metropolitan Library (Main),True
+columbus_1,"The Columbus Metropolitan Library on South Grant Avenue, also known as Carnegie Main Library",Columbus Metropolitan Library (Main),Columbus Metropolitan Library (Main),True
+columbus_1,Ohio Institution for the Education of the Deaf and Dumb school,Ohio Institution for the Education of the Deaf and Dumb,Ohio Institution for the Education of the Deaf and Dumb,True
+columbus_1,Ohio Institution for the Education of the Deaf and Dumb School,Ohio Institution for the Education of the Deaf and Dumb,Ohio Institution for the Education of the Deaf and Dumb,True
+columbus_1,East Town Street Historic Neighborhood,East Town Street Historic District,East Town Street Historic District,True
+columbus_1,East Town Street Historic neighborhood,East Town Street Historic District,East Town Street Historic District,True
+columbus_1,East Town Street Historic District neighborhood,East Town Street Historic District,East Town Street Historic District,True
+columbus_1,Capitol University Law School on East Broad Street,Capitol University Law School,Capitol University Law School,True
+houston,Five Guys burger fast food on South Main Street,Five Guys,Five Guys,True
+houston,Burger fast-food restaurant on South Main Street,Five Guys,Five Guys,True
+houston,Burger fast food restaurant on South Main Street,Five Guys,Five Guys,True
+houston,Asian and Japanese sushi restaurant with wine bar on Kirby Drive,Akashi Asian Sushi Cuisine & Wine Bar,Akashi Asian Sushi Cuisine & Wine Bar,True
+houston,Asian and Japanese sushi restaurant on Kirby Drive,Akashi Asian Sushi Cuisine & Wine Bar,Akashi Asian Sushi Cuisine & Wine Bar,True
+houston,Asian and Japanese sushi cuisine restaurant with a wine bar on Kirby Drive,Akashi Asian Sushi Cuisine & Wine Bar,Akashi Asian Sushi Cuisine & Wine Bar,True
+houston,Bank of America Financial Center on Old Spanish Trail,Bank of America Financial Center,Bank of America Financial Center,True
+houston,Fannin Substation operated by CenterPoint Energy,Fannin Substation,Fannin Substation,True
+houston,SpringHill Suites Houston Medical Center/NRG Park building,SpringHill Suites Houston Medical Center/NRG Park,SpringHill Suites Houston Medical Center/NRG Park,True
+houston,Office Depot stationery store,Office Depot,Office Depot,True
+houston,The UPS Store on Old Spanish Trail,The UPS Store,The UPS Store,True
+houston,Viet's Express restaurant on Kirby Drive,Viet's Express,Viet's Express,True
+houston,Mexican fast food at Chipotle on South Main Street,Chipotle,Chipotle,True
+houston,Mexican fast food on South Main Street,Chipotle,Chipotle,True
+houston,Walgreens Pharmacy on Kirby Drive,Walgreens Pharmacy,Walgreens Pharmacy,True
+houston,Capital One Bank on Kirby Drive,Capital One Bank,Capital One Bank,True
+houston,Fiesta supermarket on Kirby Drive,Fiesta,Fiesta,True
+houston,GameStop on Kirby Drive,GameStop,GameStop,True
+houston,Glazed Doughnut Cafe on Old Spanish Trail,Glazed the Doughnut Cafe,Glazed the Doughnut Cafe,True
+houston,Doughnut cafe on Old Spanish Trail,Glazed the Doughnut Cafe,Glazed the Doughnut Cafe,True
+houston,Fried food restaurant on Kirby Drive,Catfish Station,Catfish Station,True
+houston,Fried food restaurant Catfish Station on Kirby Drive,Catfish Station,Catfish Station,True
+houston,Olive Garden Italian restaurant on Old Spanish Trail,Olive Garden,Olive Garden,True
+houston,Italian restaurant Olive Garden on Old Spanish Trail,Olive Garden,Olive Garden,True
+houston,Taco Cabana Mexican fast-food restaurant,Taco Cabana,Taco Cabana,True
+houston,Taco Cabana Mexican fast food,Taco Cabana,Taco Cabana,True
+houston,Freebirds World Burrito restaurant on Kirby Drive,Freebirds World Burrito,Freebirds World Burrito,True
+houston,Freebirds World Burrito on Kirby Drive,Freebirds World Burrito,Freebirds World Burrito,True
+houston,Texas Medical Center quarter,Texas Medical Center,Texas Medical Center,True
+houston,TGF Hair Salon on Kirby Drive,TGF Hair Salon,TGF Hair Salon,True
+houston,"Extended Stay America hotel near Med. Ctr., NRG Park, and Kirby in Houston",Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,True
+houston,Extended Stay America hotel near Kirby in Houston,Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,True
+houston,"Extended Stay America hotel near NRG Park, Kirby",Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,Extended Stay America - Houston - Med. Ctr. - NRG Park - Kirby,True
+houston,NRG Park locality,NRG Park,NRG Park,True
+houston,Family dentist on Old Spanish Trail,Infinite Smiles Family Dentistry,Infinite Smiles Family Dentistry,True
+houston,Family dentistry on Old Spanish Trail,Infinite Smiles Family Dentistry,Infinite Smiles Family Dentistry,True
+houston,Big Lots department store on Kirby Drive,Big Lots,Big Lots,True
+houston,Pizza Hut on Kirby Drive,Pizza Hut,Pizza Hut,True
+houston,Pizza Hut restaurant on Kirby Drive,Pizza Hut,Pizza Hut,True
+houston,Domain at Kirby apartments on Old Spanish Trail,Domain at Kirby,Domain at Kirby,True
+houston,Purple Lot parking area,Purple Lot,Purple Lot,True
+houston,Holiday Inn Houston - NRG/Medical Center Area building,Holiday Inn Houston - NRG/Medical Center Area,Holiday Inn Houston - NRG/Medical Center Area,True
+houston,Holiday Inn Houston in NRG/Medical Center Area,Holiday Inn Houston - NRG/Medical Center Area,Holiday Inn Houston - NRG/Medical Center Area,True
+houston,Antone's Import Co. restaurant on Kirby Drive,Antone's Import Co.,Antone's Import Co.,True
+houston,PetSmart pet store,PetSmart,PetSmart,True
+houston,North Kirby parking lot,North Kirby Lot,North Kirby Lot,True
+houston,Royal Nails & Spa on South Main Street,Royal Nails & Spa,Royal Nails & Spa,True
+houston,nail and spa on South Main Street,Royal Nails & Spa,Royal Nails & Spa,True
+denver_2,Native Foods Cafe on South Colorado Boulevard,Native Foods Cafe,Native Foods Cafe,True
+denver_2,Colorado Center II office building on South Colorado Boulevard,Colorado Center II,Colorado Center II,True
+denver_2,Colorado Center Tower Two office building on South Colorado Boulevard,Colorado Center II,Colorado Center II,True
+denver_2,Brakes Plus car repair on East Evans Avenue,Brakes Plus,Brakes Plus,True
+denver_2,Sheepskin Factory clothing store on South Colorado Boulevard,The Sheepskin Factory,The Sheepskin Factory,True
+denver_2,Clothing store at Sheepskin Factory on South Colorado Boulevard,The Sheepskin Factory,The Sheepskin Factory,True
+denver_2,Clothing store named The Sheepskin Factory on South Colorado Boulevard,The Sheepskin Factory,The Sheepskin Factory,True
+denver_2,South Colorado Boulevard & Evans Avenue intersection,South Colorado Boulevard & Evans Avenue,South Colorado Boulevard & Evans Avenue,True
+denver_2,South Colorado Boulevard and Evans Avenue intersection,South Colorado Boulevard & Evans Avenue,South Colorado Boulevard & Evans Avenue,True
+denver_2,International restaurant on South Colorado Boulevard,Mad Greens,Mad Greens,True
+denver_2,Mad Greens international restaurant on South Colorado Boulevard,Mad Greens,Mad Greens,True
+denver_2,Wells Fargo bank on South Colorado Boulevard,Wells Fargo,Wells Fargo,True
+denver_2,S Colorado Blvd & Buchtel Blvd intersection,S Colorado Blvd & Buchtel Blvd,S Colorado Blvd & Buchtel Blvd,True
+denver_2,S Colorado Blvd & Buchtel Blvd,S Colorado Blvd & Buchtel Blvd,S Colorado Blvd & Buchtel Blvd,True
+denver_2,Asian restaurant Pei Wei on Buchtel Boulevard,Pei Wei,Pei Wei,True
+denver_2,Pei Wei Asian restaurant on Buchtel Boulevard,Pei Wei,Pei Wei,True
+denver_2,Which Wich sandwich fast food on Buchtel Boulevard,Which Wich?,Which Wich?,True
+denver_2,Which Wich? sandwich fast food on Buchtel Boulevard,Which Wich?,Which Wich?,True
+denver_2,Office Depot stationery store,Office Depot,Office Depot,True
+denver_2,Colorado Center,Colorado Center,Colorado Center,True
+denver_2,Westcraft Carpets store on South Colorado Boulevard,Westcraft Carpets,Westcraft Carpets,True
+denver_2,Safelite AutoGlass car repair on East Evans Avenue,Safelite AutoGlass,Safelite AutoGlass,True
+denver_2,Vitamin Cottage Natural Grocers supermarket on South Colorado Boulevard,Vitamin Cottage Natural Grocers,Vitamin Cottage Natural Grocers,True
+denver_2,Vitamin Cottage Natural supermarket on South Colorado Boulevard,Vitamin Cottage Natural Grocers,Vitamin Cottage Natural Grocers,True
+denver_2,J & K Shopping Center operated by J & K Shopping Services,J & K Shopping Center,J & K Shopping Center,True
+denver_2,Loan Stop bank on South Colorado Boulevard,Loan Stop,Loan Stop,True
+denver_2,Amira Bakery & Deli on East Evans Avenue,Amira Bakery & Deli,Amira Bakery & Deli,True
+denver_2,A&W fast food burger and Kentucky Fried Chicken on South Colorado Boulevard,A&W,A&W,True
+denver_2,"A&W fast food burger joint on South Colorado Boulevard, also known as Kentucky Fried Chicken",A&W,A&W,True
+denver_2,Public Storage on East Evans Avenue,Public Storage,Public Storage,True
+denver_2,KFC fast food chicken on South Colorado Boulevard,KFC,KFC,True
+denver_2,KFC fast food chicken restaurant on South Colorado Boulevard,KFC,KFC,True
+denver_2,KFC fast food restaurant serving chicken on South Colorado Boulevard,KFC,KFC,True
