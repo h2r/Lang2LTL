@@ -125,7 +125,7 @@ def ground_names(names, name_embed, obj_embed, ground_model, embed_engine, topk)
 
 def ground_utterances(input_strs, utt2names, name2grounds):
     """
-    Replace name entities in input strings (e.g. utterances, LTL formulas) with objects in given environment.
+    Replace name entities in input strings (e.g. utterances, LTL formulas) with best matching objects in given env.
     """
     grounding_maps = []  # name to grounding map per utterance
     for _, names in utt2names:
