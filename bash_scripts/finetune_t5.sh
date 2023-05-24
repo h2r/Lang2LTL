@@ -3,17 +3,28 @@
 #SBATCH -n 1
 #SBATCH --time=199:00:00
 #SBATCH -p 3090-gcondo --gres=gpu:1
-#SBATCH --mem-per-gpu=32G
+#SBATCH --mem-per-gpu=24G
+#SBATCH --array=0-3
 
-#SBATCH -e sbatch_out/job-%j.err
-#SBATCH -o sbatch_out/job-%j.out
+# Use '%A' for array-job ID, '%J' for job ID and '%a' for task ID
+#SBATCH -e sbatch_out/arrayjob-%A-%a.err
+#SBATCH -o sbatch_out/arrayjob-%A-%a.out
 
 module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-NSAMPLES="2000000"
-DATA_FPATH="${HOME}/data/shared/lang2ltl/data/composed/split-sample_nsamples${NSAMPLES}_raito0.3-0.6_seed42_symbolic_batch12_perm.pkl"
-MODEL_FPATH="${HOME}/data/shared/lang2ltl/model_${NSAMPLES}"
+runs=( 0 )
+end_indices=( 25000 50000 75000 100000 )
 
-python $HOME/lang2ltl/s2s_hf_transformers.py --data_fpath $DATA_FPATH --model_dpath $MODEL_FPATH --model t5-base
+i=`expr $SLURM_ARRAY_TASK_ID % ${#runs[@]}`
+j=`expr $SLURM_ARRAY_TASK_ID / ${#runs[@]}`
+k=`expr $j % ${#end_indices[@]}`
+
+run=${runs[$i]}
+end_idx=${end_indices[$k]}
+
+nsamples="1000000"
+data_fpath="${HOME}/data/shared/lang2ltl/data/composed/split-sample_nsamples${nsamples}_raito0.3-0.6_seed42_symbolic_batch12_perm.pkl"
+model_dpath="${HOME}/data/shared/lang2ltl/model_${nsamples}_run${run}_endidx${end_idx}"
+python $HOME/lang2ltl/s2s_hf_transformers.py --data_fpath $data_fpath --end_idx $end_idx --model_dpath $model_dpath --model t5-base

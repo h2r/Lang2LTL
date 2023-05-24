@@ -5,8 +5,8 @@ import os
 import argparse
 import numpy as np
 from datasets import Dataset, DatasetDict
-from transformers import AutoConfig, AutoTokenizer, AutoModelForSeq2SeqLM, \
-    Seq2SeqTrainer, Seq2SeqTrainingArguments, DataCollatorForSeq2Seq
+from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, \
+    Seq2SeqTrainingArguments, DataCollatorForSeq2Seq, Seq2SeqTrainer
 import evaluate
 
 from dataset_symbolic import load_split_dataset
@@ -17,9 +17,10 @@ MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
 EPOCHS = 5
 BATCH_SIZE = 20
+BASE_DATASET_SIZE = 49655
 
 
-def finetune_t5(model_name, data_fpath, model_dpath=None, valid_size=0.2, test_size=0.1):
+def finetune_t5(model_name, data_fpath, end_idx, model_dpath=None, valid_size=0.2, test_size=0.1):
     """
     Followed most of the tutorial at
     https://medium.com/nlplanet/a-full-guide-to-finetuning-t5-for-text2text-and-building-a-demo-with-streamlit-c72009631887
@@ -61,11 +62,12 @@ def finetune_t5(model_name, data_fpath, model_dpath=None, valid_size=0.2, test_s
         decoded_labels = tokenizer.batch_decode(labels, skip_special_tokens=True, max_length=MAX_TAR_LEN)
         return metric.compute(predictions=decoded_preds, references=decoded_labels)
 
-    in_seqs_train, out_seqs_train, in_seqs_valid, out_seqs_valid = construct_dataset(data_fpath)
+    in_seqs_train, out_seqs_train, in_seqs_valid, out_seqs_valid = construct_dataset(data_fpath, end_idx)
     symbolic_dataset = DatasetDict({"train": Dataset.from_dict({"utt": in_seqs_train, "ltl": out_seqs_train}),
                                     "test": Dataset.from_dict({"utt": in_seqs_valid, "ltl": out_seqs_valid})})
     dataset_train_valid = symbolic_dataset["test"].train_test_split(test_size=test_size)
     symbolic_dataset["validation"] = dataset_train_valid["test"]
+    print(f"Training set size: {len(in_seqs_train)}, {len(out_seqs_train)}\nValidation set size: {len(symbolic_dataset['validation'])}")
     dataset_tokenized = symbolic_dataset.map(preprocess_data, batched=True)
 
     train_args = Seq2SeqTrainingArguments(
@@ -105,6 +107,7 @@ def finetune_t5(model_name, data_fpath, model_dpath=None, valid_size=0.2, test_s
     )
 
     trainer.train()
+
     if model_dpath:
         best_ckpt_dpath = os.path.join(model_dpath, "checkpoint-best")
         os.makedirs(best_ckpt_dpath, exist_ok=True)
@@ -114,8 +117,10 @@ def finetune_t5(model_name, data_fpath, model_dpath=None, valid_size=0.2, test_s
         trainer.save_model()
 
 
-def construct_dataset(fpath):
+def construct_dataset(fpath, end_idx):
     train_iter, _, valid_iter, _ = load_split_dataset(fpath)
+    if end_idx:
+        train_iter = train_iter[:BASE_DATASET_SIZE + end_idx]  # keep all base dataset, slice composed dataset
     in_seqs_train, out_seqs_train, in_seqs_valid, out_seqs_valid = [], [], [], []
     for utt, ltl in train_iter:
         in_seqs_train.append(utt)
@@ -159,6 +164,7 @@ def finetune_t5_old(input_sequences, output_sequences, tokenizer, model):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="train and test sets.")
+    parser.add_argument("--end_idx", type=int, default=None, help="slicing index for learning curve.")
     parser.add_argument("--model_dpath", type=str, default=None, help="directory to save model checkpoints.")
     parser.add_argument("--cache_dpath", type=str, default="$HOME/.cache/huggingface", help="huggingface cache.")
     parser.add_argument("--model", type=str, choices=HF_MODELS, help="name of supervised seq2seq model")
@@ -166,11 +172,11 @@ if __name__ == '__main__':
 
     model_dpath = os.path.join(args.model_dpath, args.model)
 
-    print(f"Finetune dataset: {args.data_fpath}")
+    print(f"Finetune dataset: {args.data_fpath}[:{BASE_DATASET_SIZE}+{args.end_idx}]")
     print(f"Save model checkpoints at: {model_dpath}")
 
     if "t5" in args.model:
-        finetune_t5(args.model, args.data_fpath, model_dpath)
+        finetune_t5(args.model, args.data_fpath, args.end_idx, model_dpath)
     else:
         raise TypeError(f"ERROR: unrecognized model, {args.model}")
     # tensorboard --logdir=model/t5-base/runs
