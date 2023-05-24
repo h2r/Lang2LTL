@@ -14,7 +14,7 @@ module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-runs=( 0 )
+runs=( 1 )
 end_indices=( 25000 50000 75000 100000 )
 
 i=`expr $SLURM_ARRAY_TASK_ID % ${#runs[@]}`
