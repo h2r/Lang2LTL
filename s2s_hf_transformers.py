@@ -15,7 +15,7 @@ HF_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bar
 T5_PREFIX = "translate English to Linear Temporal Logic: "
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
-EPOCHS = 5
+EPOCHS = 10
 BATCH_SIZE = 20
 BASE_DATASET_SIZE = 49655
 
@@ -33,9 +33,14 @@ def finetune_t5(model_name, data_fpath, end_idx, model_dpath=None, valid_size=0.
 
     For finetuning T5 tips
     https://discuss.huggingface.co/t/t5-finetuning-tips/684
+
+    Send model and datasets to GPUs
+    https://discuss.huggingface.co/t/sending-a-dataset-or-datasetdict-to-a-gpu/17208/13
     """
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(model_name)
+
+    print(f"====== right after load. model on cuda: {next(model.parameters()).device}")
 
     def preprocess_data(examples):
         inputs = [T5_PREFIX + utt for utt in examples["utt"]]
@@ -105,6 +110,8 @@ def finetune_t5(model_name, data_fpath, end_idx, model_dpath=None, valid_size=0.
         tokenizer=tokenizer,
         compute_metrics=compute_metrics,
     )
+
+    print(f"====== right after init trainer. model on cuda: {trainer.args.device}")
 
     trainer.train()
 
