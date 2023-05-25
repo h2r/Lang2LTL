@@ -26,5 +26,5 @@ end_idx=${end_indices[$k]}
 
 nsamples="1000000"
 data_fpath="${HOME}/data/shared/lang2ltl/data/composed/split-sample_nsamples${nsamples}_raito0.3-0.6_seed42_symbolic_batch12_perm.pkl"
-model_dpath="${HOME}/data/shared/lang2ltl/model_${nsamples}_run${run}_endidx${end_idx}"
+model_dpath="${HOME}/data/shared/lang2ltl/models/model_${nsamples}_run${run}_endidx${end_idx}"
 python $HOME/lang2ltl/s2s_hf_transformers.py --data_fpath $data_fpath --end_idx $end_idx --model_dpath $model_dpath --model t5-base
