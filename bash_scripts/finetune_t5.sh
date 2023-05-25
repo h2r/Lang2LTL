@@ -4,7 +4,7 @@
 #SBATCH --time=399:00:00
 #SBATCH -p 3090-gcondo --gres=gpu:1
 #SBATCH --mem-per-gpu=32G
-#SBATCH --array=0-20
+#SBATCH --array=0-6
 
 # Use '%A' for array-job ID, '%J' for job ID and '%a' for task ID
 #SBATCH -e sbatch_out/arrayjob-%A_%a.err
@@ -14,7 +14,7 @@ module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
 
-runs=( 0 1 2 )
+runs=( 0 )
 end_indices=( 25000 50000 75000 100000 200000 300000 400000 )
 
 i=`expr $SLURM_ARRAY_TASK_ID % ${#runs[@]}`
