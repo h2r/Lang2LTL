@@ -133,6 +133,7 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
                 raise ValueError(f"ERROR\n{utt}\n==\n{utt_grounded}")
             if ltl == ltl_grounded:
                 raise ValueError(f"ERROR\n{ltl}\n==\n{ltl_grounded}")
+            utt_grounded.replace(", , ", ", ")  # remove duplicated commas. artifact of adding commas in compose and lmk substitution
             data_grounded.append((utt_grounded, ltl_grounded))
             meta_data_grounded.append((utt, ltl, pattern_type, props_norepeat, lmk_names, seed))
     return data_grounded, meta_data_grounded
