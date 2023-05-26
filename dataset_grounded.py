@@ -114,9 +114,10 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
 
     for idx, ((utt, ltl), (pattern_type, props)) in enumerate(zip(data, meta_data)):
         props = [prop.translate(str.maketrans('', '', string.punctuation)).strip() for prop in props]  # ['a,'] -> ['a']
+        props_norepeat = list(set(props))  # repeat props in restricted avoidance, e.g., [a, a, a]
         seed += idx  # diff seed to sample diff lmks for each utt-ltl pair
         if nsamples:  # permute lmks for valid_iter
-            nprops_norepeat = len(set(props))  # restricted avoidance repeat props, e.g., [a, a, a]
+            nprops_norepeat = len(props_norepeat)  # restricted avoidance repeat props, e.g., [a, a, a]
             if nprops_norepeat not in nprops2lmkperms:
                 nprops2lmkperms[nprops_norepeat] = list(permutations(lmks, nprops_norepeat))  # each perm contain nprops_norepeat lmks
             lmk_perms = nprops2lmkperms[nprops_norepeat]
@@ -127,18 +128,18 @@ def substitute_lmks(data, meta_data, lmks, seed, add_comma, model, nprops2lmkper
         else:
             lmk_subs = [lmks]
         for lmk_sub in lmk_subs:  # substitute multiple lmks in each (utt, ltl)
-            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props, seed, add_comma, model)
+            utt_grounded, ltl_grounded, lmk_names = substitute_lmk(utt, ltl, lmk_sub, props_norepeat, seed, add_comma, model)
             if utt == utt_grounded:
                 raise ValueError(f"ERROR\n{utt}\n==\n{utt_grounded}")
             if ltl == ltl_grounded:
                 raise ValueError(f"ERROR\n{ltl}\n==\n{ltl_grounded}")
             data_grounded.append((utt_grounded, ltl_grounded))
-            meta_data_grounded.append((utt, ltl, pattern_type, props, lmk_names, seed))
+            meta_data_grounded.append((utt, ltl, pattern_type, props_norepeat, lmk_names, seed))
     return data_grounded, meta_data_grounded
 
 
-def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
-    nprops_norepeat = len(set(props))  # repeat props in restricted avoidance, e.g., [a, a, a]
+def substitute_lmk(utt, ltl, lmks, props_norepeat, seed, add_comma, model):
+    nprops_norepeat = len(props_norepeat)
     if len(lmks) == nprops_norepeat:  # already sample lmks from all perms for valid_iter
         lmk_names = lmks
     else:  # randomly sample lmks from complete lmk list for train_iter
@@ -146,12 +147,12 @@ def substitute_lmk(utt, ltl, lmks, props, seed, add_comma, model):
         lmk_names = random.sample(lmks, nprops_norepeat)
 
     if add_comma:
-        sub_map = {prop: f"{name}," for prop, name in zip(props, lmk_names)}  # add comma after name for RER by GPT-3
+        sub_map = {prop: f"{name}," for prop, name in zip(props_norepeat, lmk_names)}  # add comma after name for RER by GPT-3
     else:
-        sub_map = {prop: name for prop, name in zip(props, lmk_names)}
+        sub_map = {prop: name for prop, name in zip(props_norepeat, lmk_names)}
     utt_grounded = substitute_single_letter(utt, sub_map).strip(",")  # if name at end of utt, remove extra comma if add_comma=True
 
-    sub_map = {prop: name_to_prop(name, model) for prop, name in zip(props, lmk_names)}
+    sub_map = {prop: name_to_prop(name, model) for prop, name in zip(props_norepeat, lmk_names)}
     ltl_grounded = substitute_single_letter(ltl, sub_map)
 
     return utt_grounded, ltl_grounded, lmk_names
