@@ -42,8 +42,6 @@ def store_embeds(model, save_dpath, lmks, keep_keys, gpt3_embed_engine=None, upd
 
         if model == "gpt3":
             ground_module = GPT3(gpt3_embed_engine)
-        # elif model == 'bert':
-        #     ground_module = BERT()
         else:
             raise ValueError("ERROR: grounding module not recognized")
 
@@ -64,7 +62,7 @@ def store_embeds(model, save_dpath, lmks, keep_keys, gpt3_embed_engine=None, upd
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--env", type=str, default="cleanup", choices=["osm", "cleanup"], help="fpath or dpath to lmks.")
-    parser.add_argument("--model", type=str, default="gpt3", choices=["gpt3", "bert"])
+    parser.add_argument("--model", type=str, default="gpt3", choices=["gpt3", "llama"])
     parser.add_argument("--gpt3_embed_engine", type=str, default="text-embedding-ada-002")
     args = parser.parse_args()
 

@@ -10,26 +10,32 @@ from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
+SHARED_DPATH = "$HOME/data/shared/lang2ltl"  # group's data folder on cluster
 
 
 def lang2ltl(utt, lmk2sem, result_dpath,
-             embed_model="gpt3", embed_engine="text-embedding-ada-002",
-             rer_model="gpt3", rer_engine="text-davinci-003", rer_prompt_fpath="data/osm/rer_prompt_16.txt", update_embed=False,
-             ground_model="gpt3", topk=2,
-             sym_trans_model="gpt3_finetuned", translation_engine="gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42", finetuned_models="model/gpt3_models.pkl", convert_rule="lang2ltl", props=PROPS,
+             rer_model="gpt4", rer_engine="gpt4", rer_prompt_fpath=f"{SHARED_DPATH}/rer_prompt_diverse_16.txt", update_embed=False,
+             embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2,
+             model_dpath=f"{SHARED_DPATH}/model_3000000", sym_trans_model="t5-base", convert_rule="lang2ltl", props=PROPS,
     ):
-    translation_engine = load_from_file(finetuned_models)[translation_engine]
+    if sym_trans_model == "gpt3_finetuned":
+        translation_engine = f"gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42"
+        translation_engine = load_from_file(os.path.join(model_dpath, "gpt3_models.pkl"))[translation_engine]
+    elif sym_trans_model in HF_MODELS:
+        model_fpath = os.path.join(model_dpath, "t5-base", "checkpoint-best")
+        translation_engine = model_fpath
+    else:
+        raise ValueError(f"ERROR: unrecognized symbolic translation model: {sym_trans_model}")
 
     logging.info(f"RER engine: {rer_engine}")
     logging.info(f"Embedding engine: {embed_engine}")
     logging.info(f"Symbolic translation engine: {translation_engine}\n")
-    logging.info(f"Input Utterance to be translated:\n{utt}\n")
-
-    obj2embed_fpath, obj2embed = store_embeds(embed_model, result_dpath, lmk2sem, [], embed_engine, update_embed)
-    logging.info(f"\nGenerated Embeddings for:\n{lmk2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
     res, utt2res = rer(rer_model, rer_engine, rer_prompt_fpath, [utt])
     logging.info(f"\nExtracted Referring Expressions (REs):\n{res}\n")
+
+    obj2embed_fpath, obj2embed = store_embeds(embed_model, result_dpath, lmk2sem, [], embed_engine, update_embed)
+    logging.info(f"\nGenerated Embeddings for:\n{lmk2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
     re2embed_dpath = os.path.join(result_dpath, "lmk_name_embeds")
     os.makedirs(re2embed_dpath, exist_ok=True)
@@ -41,6 +47,7 @@ def lang2ltl(utt, lmk2sem, result_dpath,
     logging.info(f"Grounded Input Utterance:\n{ground_utts[0]}\ngroundings: {objs_per_utt[0]}\n")
 
     sym_utts, sym_ltls, out_ltls, placeholder_maps = translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props)
+    logging.info(f"Input Utterance to be translated:\n{utt}\n")
     logging.info(f"Placeholder Map:\n{placeholder_maps[0]}\n")
     logging.info(f"Symbolic Utterance:\n{sym_utts[0]}\n")
     logging.info(f"Translated Symbolic LTL Formula:\n{sym_ltls[0]}\n")
@@ -190,9 +197,9 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
 
 
 if __name__ == "__main__":
-    result_dpath = os.path.join("results", "lang2ltl_api")
+    result_dpath = os.path.join("$HOME", "lang2ltl", "results", "lang2ltl_api")
     os.makedirs(result_dpath, exist_ok=True)
-    result_fpath = os.path.join(result_dpath, f"log_{time.time()}.log")
+    result_fpath = os.path.join(result_dpath, f"log_lang2ltl_api_{time.time()}.log")
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
@@ -205,7 +212,11 @@ if __name__ == "__main__":
     lmk2sem = {
         "bookshelf": {},
         "desk A": {},
-        "kitchen counter": {},
+        "table": {},
         "desk B": {},
+        "doorway": {},
+        "kitchen counter": {},
+        "couch": {},
+        "door": {}
     }
     out_ltl = lang2ltl(utt, lmk2sem, result_dpath)
