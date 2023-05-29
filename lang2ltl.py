@@ -1,53 +1,54 @@
 import os
-import time
+from datetime import datetime
 import logging
 from openai.embeddings_utils import cosine_similarity
 
-from get_embed import store_embeds
 from gpt import GPT3, GPT4
+from get_embed import generate_embeds
 from s2s_sup import Seq2Seq
 from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
 PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
-SHARED_DPATH = "$HOME/data/shared/lang2ltl"  # group's data folder on cluster
+SHARED_DPATH = os.path.join(os.path.expanduser('~'), "data", "shared", "lang2ltl")  # group's data folder on cluster
 
 
-def lang2ltl(utt, lmk2sem, result_dpath,
-             rer_model="gpt4", rer_engine="gpt4", rer_prompt_fpath=f"{SHARED_DPATH}/rer_prompt_diverse_16.txt", update_embed=False,
+def lang2ltl(utt, obj2sem,
+             data_dpath=f"{SHARED_DPATH}/data", exp_name="lang2ltl-api",
+             rer_model="gpt4", rer_engine="gpt-4", rer_prompt_fpath=f"{SHARED_DPATH}/data/rer_prompt_diverse_16.txt",
              embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2,
              model_dpath=f"{SHARED_DPATH}/model_3000000", sym_trans_model="t5-base", convert_rule="lang2ltl", props=PROPS,
     ):
-    if sym_trans_model == "gpt3_finetuned":
-        translation_engine = f"gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42"
-        translation_engine = load_from_file(os.path.join(model_dpath, "gpt3_models.pkl"))[translation_engine]
-    elif sym_trans_model in HF_MODELS:
+    if sym_trans_model in HF_MODELS:
         model_fpath = os.path.join(model_dpath, "t5-base", "checkpoint-best")
         translation_engine = model_fpath
+    elif sym_trans_model == "gpt3_finetuned":
+        translation_engine = f"gpt3_finetuned_symbolic_batch12_perm_utt_0.2_42"
+        translation_engine = load_from_file(os.path.join(model_dpath, "gpt3_models.pkl"))[translation_engine]
     else:
         raise ValueError(f"ERROR: unrecognized symbolic translation model: {sym_trans_model}")
 
     logging.info(f"RER engine: {rer_engine}")
-    logging.info(f"Embedding engine: {embed_engine}")
+    logging.info(f"Embedding engine: {embed_model} {embed_engine}")
     logging.info(f"Symbolic translation engine: {translation_engine}\n")
+    logging.info(f"Input Utterance to be translated:\n{utt}\n")
 
     res, utt2res = rer(rer_model, rer_engine, rer_prompt_fpath, [utt])
     logging.info(f"\nExtracted Referring Expressions (REs):\n{res}\n")
 
-    obj2embed_fpath, obj2embed = store_embeds(embed_model, result_dpath, lmk2sem, [], embed_engine, update_embed)
-    logging.info(f"\nGenerated Embeddings for:\n{lmk2sem}\nsaved at:\n{obj2embed_fpath}\n")
+    obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, embed_engine=embed_engine, exp_name=exp_name)
+    logging.info(f"\nGenerated Database of Embeddings for:\n{obj2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
-    re2embed_dpath = os.path.join(result_dpath, "lmk_name_embeds")
+    re2embed_dpath = os.path.join(data_dpath, "re_embeds")
     os.makedirs(re2embed_dpath, exist_ok=True)
-    re2embed_fpath = os.path.join(re2embed_dpath, f"name2embed_lang2ltl_api_{embed_engine}.pkl")
-    name2grounds = ground_names(res, re2embed_fpath, obj2embed_fpath, ground_model, embed_engine, topk)
-    logging.info(f"Groundings for REs:\n{name2grounds}\n")
+    re2embed_fpath = os.path.join(re2embed_dpath, f"re2embed_{exp_name}_{embed_model}-{embed_engine}.pkl")
+    re2grounds = ground_res(res, re2embed_fpath, obj2embed_fpath, ground_model, embed_engine, topk)
+    logging.info(f"Groundings for REs:\n{re2grounds}\n")
 
-    ground_utts, objs_per_utt = ground_utterances([utt], utt2res, name2grounds)
+    ground_utts, objs_per_utt = ground_utterances([utt], utt2res, re2grounds)
     logging.info(f"Grounded Input Utterance:\n{ground_utts[0]}\ngroundings: {objs_per_utt[0]}\n")
 
     sym_utts, sym_ltls, out_ltls, placeholder_maps = translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props)
-    logging.info(f"Input Utterance to be translated:\n{utt}\n")
     logging.info(f"Placeholder Map:\n{placeholder_maps[0]}\n")
     logging.info(f"Symbolic Utterance:\n{sym_utts[0]}\n")
     logging.info(f"Translated Symbolic LTL Formula:\n{sym_ltls[0]}\n")
@@ -93,46 +94,46 @@ def rer(rer_model, rer_engine, rer_prompt, input_utts):
     return names, utt2names
 
 
-def ground_names(names, name_embed, obj_embed, ground_model, embed_engine, topk):
+def ground_res(res, re2embed_fpath, obj_embed, ground_model, embed_engine, topk):
     """
-    Find groundings (objects in given environment) of referring expressions (REs) in input utterances.
+    Find groundings (objects in given environment) of referring expressions (REs) extracted from input utterances.
     """
     obj2embed = load_from_file(obj_embed)  # load embeddings of known objects in given environment
-    if os.path.exists(name_embed):  # load cached embeddings of name entities
-        name2embed = load_from_file(name_embed)
+    if os.path.exists(re2embed_fpath):  # load cached embeddings of referring expressions
+        re2embed = load_from_file(re2embed_fpath)
     else:
-        name2embed = {}
+        re2embed = {}
 
     if ground_model == "gpt3":
         ground_module = GPT3(embed_engine)
     else:
         raise ValueError(f"ERROR: grounding module not recognized: {ground_model}")
 
-    name2grounds = {}
-    is_embed_added = False
-    for name in names:
-        logging.info(f"grounding landmark: {name}")
-        if name in name2embed:  # use cached embedding if exists
-            logging.info(f"use cached embedding: {name}")
-            embed = name2embed[name]
+    re2grounds = {}
+    is_new_embed = False
+    for re in res:
+        logging.info(f"grounding referring expression: {re}")
+        if re in re2embed:  # use cached RE embedding if exists
+            logging.info(f"use cached RE embedding: {re}")
+            re_embed = re2embed[re]
         else:
-            embed = ground_module.get_embedding(name)
-            name2embed[name] = embed
-            is_embed_added = True
+            re_embed = ground_module.get_embedding(re)
+            re2embed[re] = re_embed
+            is_new_embed = True
 
-        sims = {n: cosine_similarity(e, embed) for n, e in obj2embed.items()}
+        sims = {o: cosine_similarity(e, re_embed) for o, e in obj2embed.items()}
         sims_sorted = sorted(sims.items(), key=lambda kv: kv[1], reverse=True)
-        name2grounds[name] = list(dict(sims_sorted[:topk]).keys())
+        re2grounds[re] = list(dict(sims_sorted[:topk]).keys())
 
-        if is_embed_added:
-            save_to_file(name2embed, name_embed)
+        if is_new_embed:
+            save_to_file(re2embed, re2embed_fpath)
 
-    return name2grounds
+    return re2grounds
 
 
 def ground_utterances(input_strs, utt2names, name2grounds):
     """
-    Replace name entities in input strings (e.g. utterances, LTL formulas) with best matching objects in given env.
+    Replace name entities in input strings (e.g. REs in utts, props in LTLs) with best matching objects in given env.
     """
     grounding_maps = []  # name to grounding map per utterance
     for _, names in utt2names:
@@ -197,9 +198,9 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
 
 
 if __name__ == "__main__":
-    result_dpath = os.path.join("$HOME", "lang2ltl", "results", "lang2ltl_api")
+    result_dpath = os.path.join(SHARED_DPATH, "results", "lang2ltl_api")
     os.makedirs(result_dpath, exist_ok=True)
-    result_fpath = os.path.join(result_dpath, f"log_lang2ltl_api_{time.time()}.log")
+    result_fpath = os.path.join(result_dpath, f"log_robot-demo_{datetime.now().strftime('%m-%d-%Y-%H-%M-%S')}.log")
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
@@ -208,8 +209,10 @@ if __name__ == "__main__":
                         ]
     )
 
-    utt = "Go to bookshelf first, then workstation A, then go to counter, then back to workstation A."
-    lmk2sem = {
+    utts = [
+        "Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.",
+    ]
+    obj2sem = {
         "bookshelf": {},
         "desk A": {},
         "table": {},
@@ -219,4 +222,5 @@ if __name__ == "__main__":
         "couch": {},
         "door": {}
     }
-    out_ltl = lang2ltl(utt, lmk2sem, result_dpath)
+    for utt in utts:
+        out_ltl = lang2ltl(utt, obj2sem, exp_name="robot-demo")

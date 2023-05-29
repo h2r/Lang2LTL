@@ -9,7 +9,7 @@ import random
 import numpy as np
 import spot
 
-from lang2ltl import rer, ground_names, ground_utterances, translate_modular, PROPS
+from lang2ltl import rer, ground_res, ground_utterances, translate_modular, PROPS
 from gpt import GPT3, GPT4
 from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, substitute_single_letter
@@ -50,13 +50,13 @@ def run_exp():
     else:  # Modular
         logging.info(f"RER engine: {args.rer_engine}")
         logging.info(f"Embedding engine: {args.embed_engine}")
-        logging.info(f"known lmk embed: {obj_embed}")
-        logging.info(f"cached lmk embed: {name_embed}")
+        logging.info(f"known obj embed: {obj_embed}")
+        logging.info(f"cached RE embed: {re_embed}")
 
-        names, utt2names = rer(args.rer, args.rer_engine, args.rer_prompt, input_utts)
-        out_names = [utt_names[1] for utt_names in utt2names]  # referring expressions
-        name2grounds = ground_names(names, name_embed, obj_embed, args.ground, args.embed_engine, args.topk)
-        grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2names, name2grounds)  # ground names to objects in domain
+        res, utt2res = rer(args.rer, args.rer_engine, args.rer_prompt, input_utts)
+        out_res = [utt_res[1] for utt_res in utt2res]  # referring expressions
+        re2grounds = ground_res(res, re_embed, obj_embed, args.ground, args.embed_engine, args.topk)
+        grounded_utts, objs_per_utt = ground_utterances(input_utts, utt2res, re2grounds)  # ground res to known objects in env
 
         if args.sym_trans in HF_MODELS:
             checkpoint = load_from_file(args.model2ckpt_fpath)[args.sym_trans]
@@ -81,17 +81,17 @@ def run_exp():
             #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
             # out_sym_ltls = out_sym_ltls_sub
 
-            accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_names, out_names, objs_per_utt, args.convert_rule, PROPS)
-            # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
+            accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, PROPS)
+            # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt)
 
             pair_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
-            for idx, (pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, sym_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt, placeholder_maps, accs)):
+            for idx, (pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_re, out_re, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, sym_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt, placeholder_maps, accs)):
                 logging.info(f"{idx}\n{pattern_type} {props}\nInput utterance: {in_utt}\nSymbolic utterance: {sym_utt}\n"
                              f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
                              f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
-                             f"True Lmks: {true_name}\nOut Lmks:{out_name}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
+                             f"True REs: {true_re}\nOut REs:{out_re}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
                              f"{acc}\n")
-                pair_results.append((pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_name, out_name, out_grnd, placeholder_maps, acc))
+                pair_results.append((pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_re, out_re, out_grnd, placeholder_maps, acc))
             logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
             save_to_file(pair_results, pair_result_fpath)
 
@@ -99,8 +99,8 @@ def run_exp():
         logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(out_ltls)}")
 
     all_results = {
-        "RER": utt2names if not args.full_e2e else None,
-        "Grounding": name2grounds if not args.full_e2e else None,
+        "RER": utt2res if not args.full_e2e else None,
+        "Grounding": re2grounds if not args.full_e2e else None,
         "Placeholder maps": placeholder_maps if not (args.trans_e2e or args.full_e2e) else None,
         "Input utterances": input_utts,
         "Symbolic utterances": sym_utts if not (args.trans_e2e or args.full_e2e) else None,
@@ -116,7 +116,7 @@ def run_exp():
 
     # Planning task: LTL + MDP -> policy
     # true_trajs = load_from_file(args.true_trajs)
-    # acc_plan = plan(output_ltls, name2grounds)
+    # acc_plan = plan(output_ltls, re2grounds)
     # logging.info(f"Planning accuracy: {acc_plan}")
 
 
@@ -159,14 +159,14 @@ def feedback_module(trans_module, query, trans_modular_prompt, ltl_incorrect, n=
     return ltl_fix
 
 
-def plan(output_ltls, true_trajs, name2grounds):
+def plan(output_ltls, true_trajs, re2grounds):
     """
     Planning with translated LTL as task specification
     """
     accs = []
     planner = None
     for out_ltl, true_traj in zip(output_ltls, true_trajs):
-        out_traj = planner.plan(out_ltl, name2grounds)
+        out_traj = planner.plan(out_ltl, re2grounds)
         accs.append(evaluate_plan(out_traj, true_traj))
     acc = np.mean(accs)
     return acc
@@ -178,15 +178,15 @@ if __name__ == "__main__":
     parser.add_argument("--envs", action="store", type=str, nargs="+", default=["boston"], help="list of envs.")
     parser.add_argument("--holdout", type=str, default="utt", choices=["utt", "formula", "type", None], help="type of holdout test or None for all types.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module.")
-    parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt4"], help="GPT engine for RER.")
+    parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt-4"], help="GPT engine for RER.")
     parser.add_argument("--rer_prompt", type=str, default="data/osm/rer_prompt_16.txt", help="path to RER prompt.")
-    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3", "bert"], help="grounding module.")
+    parser.add_argument("--ground", type=str, default="gpt3", choices=["gpt3"], help="grounding module.")
     parser.add_argument("--embed_engine", type=str, default="text-embedding-ada-002", help="gpt-3 embedding engine.")
-    parser.add_argument("--topk", type=int, default=2, help="top k similar known names to re.")
+    parser.add_argument("--topk", type=int, default=2, help="top k similar known obj names to re.")
     parser.add_argument("--sym_trans", type=str, default="t5-base", choices=["t5-base", "gpt3_finetuned", "gpt3_pretrained"], help="symbolic translation module.")
     parser.add_argument("--model_dpath", type=str, default=None, help="directory to model checkpoints.")
     parser.add_argument("--model2ckpt_fpath", type=str, default=None, help="best checkpoint for models.")
-    parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="name to prop conversion rule.")
+    parser.add_argument("--convert_rule", type=str, default="lang2ltl", choices=["lang2ltl", "cleanup"], help="re to prop conversion rule.")
     parser.add_argument("--full_e2e", type=str, default="gpt4", choices=["gpt3", "gpt4", "llama-7B", None], help="solve full translation using LLM.")
     parser.add_argument("--nexamples", type=int, default=1, help="number of examples per formula in prompt.")
     parser.add_argument("--nsamples", type=int, default=None, help="randomly sample nsamples pairs or None to use all.")
@@ -226,7 +226,7 @@ if __name__ == "__main__":
             data_fpaths = sorted(data_fpaths, reverse=True)[2:]
 
             obj_embed = os.path.join(domain_dpath, "lmk_sem_embeds", f"obj2embed_{env}_{args.embed_engine}.pkl")
-            name_embed = os.path.join(domain_dpath, "lmk_name_embeds", f"name2embed_{env}_{args.embed_engine}.pkl")
+            re_embed = os.path.join(domain_dpath, "re_embeds", f"re2embed_{env}_{args.embed_engine}.pkl")
 
             for data_fpath in data_fpaths:
                 if "utt" in data_fpath:
@@ -256,23 +256,23 @@ if __name__ == "__main__":
 
                     breakpoint()
 
-                    input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_names, propositions = [], [], [], [], [], [], []
-                    for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, lmk_names, seed) in zip(valid_iter, valid_meta):
+                    input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_res, propositions = [], [], [], [], [], [], []
+                    for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, res, seed) in zip(valid_iter, valid_meta):
                         input_utts.append(utt)
                         true_ltls.append(ltl)
                         true_sym_utts.append(sym_utt)
                         pattern_types.append(pattern_type)
                         if "restricted_avoidance" in pattern_type:  # X_restricted_avoidance formulas have only 1 prop
                             true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
-                            true_names.append(lmk_names[-1:])
+                            true_res.append(res[-1:])
                             propositions.append(props[-1:])
                         else:
                             true_sym_ltls.append(sym_ltl)
-                            true_names.append(lmk_names)
+                            true_res.append(res)
                             propositions.append(props)
 
-                    assert len(input_utts) == len(true_ltls) == len(true_sym_utts) == len(true_sym_ltls) == len(pattern_types) == len(true_names) == len(propositions), \
-                        f"ERROR: input len != # out len: {len(input_utts)} {len(true_ltls)} {len(true_sym_utts)} {len(true_sym_ltls)} {len(pattern_types)} {len(true_names)} {len(propositions)}"
+                    assert len(input_utts) == len(true_ltls) == len(true_sym_utts) == len(true_sym_ltls) == len(pattern_types) == len(true_res) == len(propositions), \
+                        f"ERROR: input len != # out len: {len(input_utts)} {len(true_ltls)} {len(true_sym_utts)} {len(true_sym_ltls)} {len(pattern_types)} {len(true_res)} {len(propositions)}"
 
                     # logging.basicConfig(level=logging.DEBUG,
                     #                     format='%(message)s',
@@ -294,12 +294,12 @@ if __name__ == "__main__":
     # env_names = [env for env in env_names if env not in filter_envs]
     # for env in env_names:
     #     obj_embed = f"data/osm/lmk_sem_embeds/obj2embed_{env}_{embed_engine}.pkl"
-    #     name_embed = f"data/osm/lmk_name_embeds/name2embed_{env}_{embed_engine}.pkl"
+    #     re_embed = f"data/osm/re_embeds/re2embed_{env}_{embed_engine}.pkl"
     #     print(obj_embed)
-    #     print(name_embed)
+    #     print(re_embed)
     #     breakpoint()
-    #     names = list(load_from_file(f"data/osm/lmks/{env}.json").keys())
-    #     name2grounds = ground_names(names)
-    #     for name, grounds in name2grounds.items():
-    #         if name != grounds[0]:
-    #             print(f"Landmark name does not match grounding\n{name}\n{grounds}\n\n")
+    #     res = list(load_from_file(f"data/osm/lmks/{env}.json").keys())
+    #     re2grounds = ground_res(res)
+    #     for re, grounds in re2grounds.items():
+    #         if re != grounds[0]:
+    #             print(f"Landmark name does not match grounding\n{re}\n{grounds}\n\n")
