@@ -220,7 +220,8 @@ if __name__ == "__main__":
         "doorway": {},
         "kitchen counter": {},
         "couch": {},
-        "door": {}
-    }
+        "door": {},
+        "white table": {}
+    }  # semantic information of known objects in environment
     for utt in utts:
         out_ltl = lang2ltl(utt, obj2sem, exp_name="robot-demo")

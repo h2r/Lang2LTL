@@ -127,12 +127,11 @@ We use a single NVIDIA GeForce RTX 3090 (24GB) for finetuning, and completing on
 
 
 # Run Experiments
-Temporarily set environment variables for API key and organization ID
+Set environment variable for OpenAI API key for current shell
 ```
 export OPENAI_API_KEY=<YOUR_API_KEY>
-export ORG_ID=<YOUR_ORG_ID>
 ```
-Or permanently set the above environment variables in your ```~/.bash_profile``` or ```~/.bashrc```.
+Or permanently set the environment variable in your ```~/.bash_profile``` or ```~/.bashrc```.
 
 Create embeddings for known landmarks or objects in the given environment.
 ```
