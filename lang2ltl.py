@@ -37,7 +37,7 @@ def lang2ltl(utt, obj2sem,
     logging.info(f"\nExtracted Referring Expressions (REs):\n{res}\n")
 
     obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, embed_engine=embed_engine, exp_name=exp_name)
-    logging.info(f"\nGenerated Database of Embeddings for:\n{obj2sem}\nsaved at:\n{obj2embed_fpath}\n")
+    logging.info(f"Generated Database of Embeddings for:\n{obj2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
     re2embed_dpath = os.path.join(data_dpath, "re_embeds")
     os.makedirs(re2embed_dpath, exist_ok=True)
@@ -52,7 +52,7 @@ def lang2ltl(utt, obj2sem,
     logging.info(f"Placeholder Map:\n{placeholder_maps[0]}\n")
     logging.info(f"Symbolic Utterance:\n{sym_utts[0]}\n")
     logging.info(f"Translated Symbolic LTL Formula:\n{sym_ltls[0]}\n")
-    logging.info(f"Grounded LTL Formula:\n{out_ltls[0]}\n")
+    logging.info(f"Grounded LTL Formula:\n{out_ltls[0]}\n\n\n")
 
     return out_ltls[0]
 
@@ -201,7 +201,7 @@ if __name__ == "__main__":
     result_dpath = os.path.join(SHARED_DPATH, "results", "lang2ltl_api")
     os.makedirs(result_dpath, exist_ok=True)
     result_fpath = os.path.join(result_dpath, f"log_robot-demo_{datetime.now().strftime('%m-%d-%Y-%H-%M-%S')}.log")
-    logging.basicConfig(level=logging.DEBUG,
+    logging.basicConfig(level=logging.INFO,
                         format='%(message)s',
                         handlers=[
                             logging.FileHandler(result_fpath, mode='w'),
