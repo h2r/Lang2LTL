@@ -10,6 +10,7 @@
 #SBATCH -e sbatch_out/arrayjob-%A_%a.err
 #SBATCH -o sbatch_out/arrayjob-%A_%a.out
 
+conda deactivate
 module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl

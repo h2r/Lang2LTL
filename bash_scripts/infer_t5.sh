@@ -8,6 +8,7 @@
 #SBATCH -e sbatch_out/job-%j.err
 #SBATCH -o sbatch_out/job-%j.out
 
+conda deactivate
 module load anaconda/2022.05
 source /gpfs/runtime/opt/anaconda/2022.05/etc/profile.d/conda.sh
 conda activate lang2ltl
