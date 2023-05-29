@@ -28,7 +28,7 @@ def load_names(fpath):
     return names
 
 
-def generate_embeds(embed_model, save_dpath, lmk2sem, keep_keys=(), embed_engine=None, exp_name="lang2ltl-api", update_embed=False):
+def generate_embeds(embed_model, save_dpath, lmk2sem, keep_keys=(), embed_engine=None, exp_name="lang2ltl-api", update_embed=True):
     """
     Generate a database of known landmarks and their embeddings.
     :param embed_model: model used to generate embeddings.
@@ -39,20 +39,7 @@ def generate_embeds(embed_model, save_dpath, lmk2sem, keep_keys=(), embed_engine
     :param exp_name: experiment ID used in file name.
     :param update_embed: if to append new embeddings to existing embeddings, and overwrite if same landmark name.
     """
-    lmk2sem = load_from_file(lmk2sem) if isinstance(lmk2sem, str) else lmk2sem
-
-    if embed_model == "gpt3":
-        ground_module = GPT3(embed_engine)
-    else:
-        raise ValueError("ERROR: grounding module not recognized")
-
-    name2embed = {}
-    for lmk, sem in lmk2sem.items():
-        sem_filtered = {"name": lmk}
-        if keep_keys:
-            sem_filtered.update({k: v for k, v in sem.items() if k in keep_keys})
-        name2embed[lmk] = ground_module.get_embedding(json.dumps(sem_filtered))
-
+    # Load existing embeddings
     embed_dpath = os.path.join(save_dpath, "lmk_sem_embeds")
     os.makedirs(embed_dpath, exist_ok=True)
     lmk_fname = Path(lmk2sem).stem if isinstance(lmk2sem, str) else exp_name
@@ -61,10 +48,24 @@ def generate_embeds(embed_model, save_dpath, lmk2sem, keep_keys=(), embed_engine
     else:
         save_fpath = os.path.join(embed_dpath, f"obj2embed_{lmk_fname}_{embed_model}.pkl")
 
+    name2embed = {}
     if os.path.isfile(save_fpath):
-        name2embed_exist = load_from_file(save_fpath)
-        if update_embed:
-            name2embed = {**name2embed_exist, **name2embed}
+        name2embed = load_from_file(save_fpath)
+
+    # Generate new embeddings if needed
+    lmk2sem = load_from_file(lmk2sem) if isinstance(lmk2sem, str) else lmk2sem
+
+    if embed_model == "gpt3":
+        embed_module = GPT3(embed_engine)
+    else:
+        raise ValueError(f"ERROR: embedding module not recognized: {embed_model}")
+
+    for lmk, sem in lmk2sem.items():
+        if lmk not in name2embed or update_embed:
+            sem_filtered = {"name": lmk}
+            if keep_keys:
+                sem_filtered.update({k: v for k, v in sem.items() if k in keep_keys})
+            name2embed[lmk] = embed_module.get_embedding(json.dumps(sem_filtered))
 
     save_to_file(name2embed, save_fpath)
     return name2embed, save_fpath
