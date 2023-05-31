@@ -4,6 +4,9 @@ Please refer to Specification Patterns for Robotic Missions for the definition o
 https://arxiv.org/pdf/1901.02077.pdf
 Pattern sampling functions with post fixed means the function is different to what presented in the paper,
 after visiting a predecessor, trace does not need to exit DFA state at the immediate next time step.
+
+Spot prefix parser
+https://spot.lre.epita.fr/ioltl.html#prefix
 """
 import argparse
 from itertools import permutations
