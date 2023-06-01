@@ -13,7 +13,7 @@ PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "
 SHARED_DPATH = os.path.join(os.path.expanduser('~'), "data", "shared", "lang2ltl")  # group's data folder on cluster
 
 
-def lang2ltl(utt, obj2sem,
+def lang2ltl(utt, obj2sem, keep_keys,
              data_dpath=f"{SHARED_DPATH}/data", exp_name="lang2ltl-api",
              rer_model="gpt4", rer_engine="gpt-4", rer_prompt_fpath=f"{SHARED_DPATH}/data/rer_prompt_diverse_16.txt",
              embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2, update_embed=True,
@@ -36,7 +36,7 @@ def lang2ltl(utt, obj2sem,
     res, utt2res = rer(rer_model, rer_engine, rer_prompt_fpath, [utt])
     logging.info(f"\nExtracted Referring Expressions (REs):\n{res}\n")
 
-    obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, embed_engine=embed_engine, exp_name=exp_name, update_embed=True)
+    obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, keep_keys=keep_keys, embed_engine=embed_engine, exp_name=exp_name, update_embed=update_embed)
     logging.info(f"Generated Database of Embeddings for:\n{obj2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
     re2embed_dpath = os.path.join(data_dpath, "re_embeds")
@@ -131,13 +131,13 @@ def ground_res(res, re2embed_fpath, obj_embed, ground_model, embed_engine, topk)
     return re2grounds
 
 
-def ground_utterances(input_strs, utt2names, name2grounds):
+def ground_utterances(input_strs, utt2res, re2grounds):
     """
-    Replace name entities in input strings (e.g. REs in utts, props in LTLs) with best matching objects in given env.
+    Replace referring expressions in input utterances with best matching objects in given env.
     """
     grounding_maps = []  # name to grounding map per utterance
-    for _, names in utt2names:
-        grounding_maps.append({name: name2grounds[name][0] for name in names})
+    for _, res in utt2res:
+        grounding_maps.append({re: re2grounds[re][0] for re in res})
 
     output_strs, subs_per_str = substitute(input_strs, grounding_maps, is_utt=True)
 
@@ -210,31 +210,28 @@ if __name__ == "__main__":
     )
 
     utts = [
-        #"Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.",
-
-        "Go to the wooden bookshelf first, then to the empty desk, then go to the counter with white tiles, then back to the empty desk",
-        "go to brown bookshelf with a yellow robot, brown desk, black desk with books and a monitor, counter, and the blue couch in any order",
-        "visit metal desk with a monitor but only after bookshelf with a robot",
-        "go from brown bookshelf to desk with monitor and books and only visit each landmark one time",
-        "go to wood bookshelf at least five times",
-        "visit counter with white tiles at most 5 times",
-        "move to brown wood desk with nothing on it exactly 5 times",
-        "visit empty desk exactly two times, in addition do not go to that empty desk before bookshelf with books",
-        "visit the blue IKEA couch in addition never go to the big metal door",
+        "go to brown bookshelf, metal desk, wooden desk, kitchen counter, and the blue couch in any order",
+        "move to grey door, then bookrack, then brown desk , then counter, then white desk",
+        "visit metal desk but only after bookshelf",
+        "go from brown bookshelf to white metal desk and only visit each landmark one time",
+        "go to wooden bookshelf at least five times",
+        "visit counter at most 5 times",
+        "move to brown wooden desk exactly 5 times",
+        "visit wooden desk exactly two times, in addition do not go to wooden desk before bookrack",
+        "visit the blue IKEA couch, in addition never go to the big steel door",
         "visit white kitchen counter then go to brown desk, in addition never visit white table",
-        "go to the doorway with beige tiles, and only then go to the bookshelf with a yellow robot, in addition always avoid the desk with some books on its top",
-        "go to tiled kitchen counter then wooden desk, in addition after going to counter, you must avoid white table",
-        "go to desk with nothing on its top, alternatively go to desk with books"
+        "go to the doorway, and only then go to the bookshelf, in addition always avoid the table",
+        "go to kitchen counter then wooden desk, in addition after going to counter, you must avoid white table",
     ]
     obj2sem = {
-        "bookshelf": {'material': 'wood', 'color': 'brown', 'items': ['yellow robot', 'books']},
-        "desk A": {'material': 'wood', 'color': 'brown', 'items': 'empty'},
-        "desk B": {'material': 'metal', 'color': 'black', 'items': ['monitor', 'books']},
-        "doorway": {'floor_material': 'tile', 'floor_color': 'beige', 'wall_color': 'white'},
-        "kitchen counter": {'floor_material': 'tile', 'wall_color': 'white'},
-        "couch": {'color': 'blue', 'brand': 'IKEA', 'size': 'three-person', 'year': '2010'},
-        "door": {'material': 'metal', 'door_type': 'double', 'windowed': 'yes'},
-        "white table": {'color': 'white'}
+        "bookshelf": {"material": "wood", "color": "brown"},
+        "desk A": {"material": "wood", "color": "brown"},
+        "desk B": {"material": "metal", 'color': "white"},
+        "doorway": {},
+        "kitchen counter": {"color": "white"},
+        "couch": {"color": "blue", "brand": "IKEA"},
+        "door": {"material": "steel", "color": "grey"},
+        "table": {"color": "white"},
     }  # semantic information of known objects in environment
     for utt in utts:
-        out_ltl = lang2ltl(utt, obj2sem, exp_name="robot-demo")
+        out_ltl = lang2ltl(utt, obj2sem, keep_keys=["material", "color", "brand"], exp_name="robot-demo")
