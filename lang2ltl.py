@@ -210,18 +210,31 @@ if __name__ == "__main__":
     )
 
     utts = [
-        "Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.",
+        #"Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.",
+
+        "Go to the wooden bookshelf first, then to the empty desk, then go to the counter with white tiles, then back to the empty desk",
+        "go to brown bookshelf with a yellow robot, brown desk, black desk with books and a monitor, counter, and the blue couch in any order",
+        "visit metal desk with a monitor but only after bookshelf with a robot",
+        "go from brown bookshelf to desk with monitor and books and only visit each landmark one time",
+        "go to wood bookshelf at least five times",
+        "visit counter with white tiles at most 5 times",
+        "move to brown wood desk with nothing on it exactly 5 times",
+        "visit empty desk exactly two times, in addition do not go to that empty desk before bookshelf with books",
+        "visit the blue IKEA couch in addition never go to the big metal door",
+        "visit white kitchen counter then go to brown desk, in addition never visit white table",
+        "go to the doorway with beige tiles, and only then go to the bookshelf with a yellow robot, in addition always avoid the desk with some books on its top",
+        "go to tiled kitchen counter then wooden desk, in addition after going to counter, you must avoid white table",
+        "go to desk with nothing on its top, alternatively go to desk with books"
     ]
     obj2sem = {
-        "bookshelf": {},
-        "desk A": {},
-        "table": {},
-        "desk B": {},
-        "doorway": {},
-        "kitchen counter": {},
-        "couch": {},
-        "door": {},
-        "white table": {}
+        "bookshelf": {'material': 'wood', 'color': 'brown', 'items': ['yellow robot', 'books']},
+        "desk A": {'material': 'wood', 'color': 'brown', 'items': 'empty'},
+        "desk B": {'material': 'metal', 'color': 'black', 'items': ['monitor', 'books']},
+        "doorway": {'floor_material': 'tile', 'floor_color': 'beige', 'wall_color': 'white'},
+        "kitchen counter": {'floor_material': 'tile', 'wall_color': 'white'},
+        "couch": {'color': 'blue', 'brand': 'IKEA', 'size': 'three-person', 'year': '2010'},
+        "door": {'material': 'metal', 'door_type': 'double', 'windowed': 'yes'},
+        "white table": {'color': 'white'}
     }  # semantic information of known objects in environment
     for utt in utts:
         out_ltl = lang2ltl(utt, obj2sem, exp_name="robot-demo")
