@@ -5,7 +5,7 @@ from openai.embeddings_utils import cosine_similarity
 
 from gpt import GPT3, GPT4
 from get_embed import generate_embeds
-from s2s_sup import Seq2Seq
+from s2s_sup_tcd import Seq2Seq
 from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
@@ -16,7 +16,7 @@ SHARED_DPATH = os.path.join(os.path.expanduser('~'), "data", "shared", "lang2ltl
 def lang2ltl(utt, obj2sem,
              data_dpath=f"{SHARED_DPATH}/data", exp_name="lang2ltl-api",
              rer_model="gpt4", rer_engine="gpt-4", rer_prompt_fpath=f"{SHARED_DPATH}/data/rer_prompt_diverse_16.txt",
-             embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2,
+             embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2, update_embed=True,
              model_dpath=f"{SHARED_DPATH}/model_3000000", sym_trans_model="t5-base", convert_rule="lang2ltl", props=PROPS,
     ):
     if sym_trans_model in HF_MODELS:
@@ -36,7 +36,7 @@ def lang2ltl(utt, obj2sem,
     res, utt2res = rer(rer_model, rer_engine, rer_prompt_fpath, [utt])
     logging.info(f"\nExtracted Referring Expressions (REs):\n{res}\n")
 
-    obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, embed_engine=embed_engine, exp_name=exp_name)
+    obj2embed, obj2embed_fpath = generate_embeds(embed_model, data_dpath, obj2sem, embed_engine=embed_engine, exp_name=exp_name, update_embed=True)
     logging.info(f"Generated Database of Embeddings for:\n{obj2sem}\nsaved at:\n{obj2embed_fpath}\n")
 
     re2embed_dpath = os.path.join(data_dpath, "re_embeds")
@@ -186,7 +186,7 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
             query = f"Utterance: {query}\nLTL:"  # query format for finetuned GPT-3
             ltl = trans_module.translate(query, trans_modular_prompt)[0]
         else:
-            ltl = trans_module.translate([query])[0]
+            ltl = trans_module.type_constrained_decode([query])[0]
         # try:
         #     spot.formula(ltl)
         # except SyntaxError:
@@ -210,12 +210,23 @@ if __name__ == "__main__":
     )
 
     utts = [
-        "Go to bookshelf first, then workstation A, then go to counter, then back to workstation A.",
+        "go to bookshelf, desk B, desk A, counter, and couch in any order",
+        "move to door, then bookshelf, then desk A, then counter, then desk B",
+        "visit desk B but only after bookshelf",
+        "go from bookshelf to desk B and only visit each landmark one time ",
+        "go to bookshelf at least five times",
+        "visit counter at most 5 times",
+        "move to desk A exactly 5 times",
+        "visit desk A exactly two times, in addition do not go to desk A before bookshelf",
+        "visit the couch in addition never go to the door"
+        "visit counter then go to desk A, in addition never visit table",
+        "go to the doorway, and only then go to the bookshelf, in addition always avoid desk B",
+        "go to counter then desk A, in addition after going to counter, you must avoid table",
+        "Go to desk A, alternatively go to desk B",
     ]
     obj2sem = {
         "bookshelf": {},
         "desk A": {},
-        "table": {},
         "desk B": {},
         "doorway": {},
         "kitchen counter": {},
