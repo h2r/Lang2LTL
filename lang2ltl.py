@@ -217,11 +217,14 @@ if __name__ == "__main__":
         "go to wooden bookshelf at least five times",
         "visit counter at most 5 times",
         "move to brown wooden desk exactly 5 times",
+        "go to doorway exactly two times, in addition always avoid the table",
         "visit wooden desk exactly two times, in addition do not go to wooden desk before bookrack",
         "visit the blue IKEA couch, in addition never go to the big steel door",
         "visit white kitchen counter then go to brown desk, in addition never visit white table",
         "go to the doorway, and only then go to the bookshelf, in addition always avoid the table",
         "go to kitchen counter then wooden desk, in addition after going to counter, you must avoid white table",
+        "Go to bookshelf, alternatively go to metal desk",
+        "Go to counter, alternatively go to metal desk",
     ]
     obj2sem = {
         "bookshelf": {"material": "wood", "color": "brown"},
