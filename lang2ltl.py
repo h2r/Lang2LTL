@@ -219,6 +219,7 @@ if __name__ == "__main__":
         "move to brown wooden desk exactly 5 times",
         "go to doorway exactly two times, in addition always avoid the table",
         "visit wooden desk exactly two times, in addition do not go to wooden desk before bookrack",
+        "visit wooden desk at least two times, in addition do not go to wooden desk before bookshelf",
         "visit the blue IKEA couch, in addition never go to the big steel door",
         "visit white kitchen counter then go to brown desk, in addition never visit white table",
         "go to the doorway, and only then go to the bookshelf, in addition always avoid the table",
