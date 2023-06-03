@@ -3,7 +3,7 @@
 conda create -n lang2ltl python=3.9 dill matplotlib plotly scipy scikit-learn pandas tenacity
 conda activate lang2ltl
 pip install openai tiktoken 
-pip install nltk seaborn
+pip install nltk seaborn pyyaml
 conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia  # GPU
 conda install pytorch torchdata -c pytorch  # CPU
 pip install tensorboard transformers datasets evaluate torchtext

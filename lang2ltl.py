@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 import logging
+import yaml
 from openai.embeddings_utils import cosine_similarity
 
 from gpt import GPT3, GPT4
@@ -209,33 +210,12 @@ if __name__ == "__main__":
                         ]
     )
 
-    utts = [
-        "go to brown bookshelf, metal desk, wooden desk, kitchen counter, and the blue couch in any order",
-        "move to grey door, then bookrack, then brown desk , then counter, then white desk",
-        "visit metal desk but only after bookshelf",
-        "go from brown bookshelf to white metal desk and only visit each landmark one time",
-        "go to wooden bookshelf at least five times",
-        "visit counter at most 5 times",
-        "move to brown wooden desk exactly 5 times",
-        "go to doorway exactly two times, in addition always avoid the table",
-        "visit wooden desk exactly two times, in addition do not go to wooden desk before bookrack",
-        "visit wooden desk at least two times, in addition do not go to wooden desk before bookshelf",
-        "visit the blue IKEA couch, in addition never go to the big steel door",
-        "visit white kitchen counter then go to brown desk, in addition never visit white table",
-        "go to the doorway, and only then go to the bookshelf, in addition always avoid the table",
-        "go to kitchen counter then wooden desk, in addition after going to counter, you must avoid white table",
-        "Go to bookshelf, alternatively go to metal desk",
-        "Go to counter, alternatively go to metal desk",
-    ]
-    obj2sem = {
-        "bookshelf": {"material": "wood", "color": "brown"},
-        "desk A": {"material": "wood", "color": "brown"},
-        "desk B": {"material": "metal", 'color': "white"},
-        "doorway": {},
-        "kitchen counter": {"color": "white"},
-        "couch": {"color": "blue", "brand": "IKEA"},
-        "door": {"material": "steel", "color": "grey"},
-        "table": {"color": "white"},
-    }  # semantic information of known objects in environment
+    env_fpath = os.path.join(os.path.expanduser('~'), "data/shared/lang2ltl/data/robot_demo/robot_demo_envs.yaml")
+    # env_fpath = "data/robot_demo_envs.yaml"
+    exp_name = "robot-demo-house0"
+    with open(env_fpath, "r") as file:
+        robot_env = yaml.safe_load(file)[exp_name]
+    utts, obj2sem, keep_keys = robot_env["utts"], robot_env["obj2sem"], robot_env["keep_keys"]
+
     for utt in utts:
-        out_ltl = lang2ltl(utt, obj2sem, keep_keys=["material", "color", "brand"], exp_name="robot-demo")
+        out_ltl = lang2ltl(utt, obj2sem, keep_keys=keep_keys, exp_name=exp_name)
