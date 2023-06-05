@@ -22,7 +22,7 @@ S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
 UNARY_OPERATORS = ['!', "F", "G", "X"]
 BINARY_OPERATORS = ['&', '|', 'U', 'i', 'e', 'M']
 END_TOKEN = '</s>'
-MAX_LENGTH = 256
+MAX_LENGTH = 256 # 266? 2 x exact_restricted_avoidance_5
 MAX_DEPTH = 21
 CHECK_DEPTH = 100
 
@@ -96,7 +96,7 @@ class Seq2Seq:
 
         if "t5" in model_name or "bart" in model_name:
             self.tokenizer = AutoTokenizer.from_pretrained(model_dpath)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dpath)
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dpath).to('cuda')
         elif model_name == "pt_transformer":
             self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -111,7 +111,7 @@ class Seq2Seq:
     def translate(self, queries):
         if "t5" in self.model_name or "bart" in self.model_name:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
-            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to('cuda')
             output_tokens = self.model.generate(
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
@@ -160,9 +160,9 @@ class Seq2Seq:
 
         if "t5" in self.model_name or "bart" in self.model_name:
             inputs = [f"{T5_PREFIX}{utt}" for utt in utts]  # add prefix
-            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to('cuda')
             input_ids = inputs.input_ids
-            decoder_input_ids = self.tokenizer("<pad>", add_special_tokens=False, return_tensors="pt").input_ids
+            decoder_input_ids = self.tokenizer("<pad>", add_special_tokens=False, return_tensors="pt").input_ids.to('cuda')
             outputs = self.model(input_ids, decoder_input_ids=decoder_input_ids, return_dict=True)
             encoded_sequence = (outputs.encoder_last_hidden_state,)
             lm_logits = outputs.logits
@@ -260,7 +260,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.DEBUG,
                         format='%(message)s',
                         handlers=[
-                            logging.FileHandler(f'results/s2s_tcd_{args.model}_{Path(args.data_fpath).stem}.log', mode='w'),
+                            logging.FileHandler(f'results/s2s_tcd_{args.model}_{Path(args.data_fpath).stem}_{Path(args.model_dpath).stem}.log', mode='w'),
                             logging.StreamHandler()
                         ]
     )
@@ -295,7 +295,7 @@ if __name__ == "__main__":
         logging.info(f"Number of validation samples: {len(valid_iter)}\n")
 
         # Evaluate
-        result_log_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_log.csv"
+        result_log_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_{Path(args.model_dpath).stem}_log.csv"
         analysis_fpath = "data/analysis_symbolic_batch12_perm.csv"
-        acc_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_acc.csv"
-        evaluate_sym_trans(s2s, data_fpath, result_log_fpath, analysis_fpath, acc_fpath)
+        acc_fpath = f"results/s2s_{args.model}-{ckpt_dname}_{Path(data_fpath).stem}_{Path(args.model_dpath).stem}_acc.csv"
+        evaluate_sym_trans(s2s, data_fpath, result_log_fpath, analysis_fpath, acc_fpath, batch_size=30)
