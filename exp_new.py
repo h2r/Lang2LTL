@@ -1,3 +1,6 @@
+"""
+Run zero-shot transfer experiments to OSM and CleanUp World datasets.
+"""
 import os
 import argparse
 import logging
