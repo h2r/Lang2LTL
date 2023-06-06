@@ -27,18 +27,18 @@ def run_exp():
         elif args.full_e2e == "gpt4":
             translation_engine = "gpt-4"
             full_e2e_module = GPT4(translation_engine)
-            breakpoint()
         else:
             raise ValueError(f"ERROR: unrecognized full translation model: {args.full_e2e}")
         logging.info(f"Full translation engine: {translation_engine}")
 
         full_e2e_prompt = load_from_file(full_e2e_prompt_fpath)
         out_ltls = []
-        for idx, query in enumerate(input_utts):
-            query = f"{full_e2e_prompt} {query}\nLTL:"
+        for idx, input_utt in enumerate(input_utts):
+            query = f"{full_e2e_prompt} {input_utt}\nLTL:"
             out_ltl = full_e2e_module.translate(query)[0]
             out_ltls.append(out_ltl)
-            logging.info(f"Full Translation{idx}:\n{query}\n{out_ltl}")
+            logging.info(f"Full Translation {idx}:\nUtt: {input_utt}\nLTL: {out_ltl}\n")
+            # logging.info(f"Full Translation {idx}:\n{query}\n{out_ltl}")
 
         accs, accumulated_acc = evaluate_grounded_ltl(true_ltls, out_ltls, string_match=True)
         pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
@@ -175,7 +175,7 @@ def plan(output_ltls, true_trajs, re2grounds):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--domain", type=str, default="osm", choices=["osm", "cleanup"], help="domain name.")
-    parser.add_argument("--envs", action="store", type=str, nargs="+", default=["boston"], help="list of envs.")
+    parser.add_argument("--envs", action="store", type=str, nargs="+", default=["new_york_1"], help="list of envs.")
     parser.add_argument("--holdout", type=str, default="utt", choices=["utt", "formula", "type", None], help="type of holdout test or None for all types.")
     parser.add_argument("--rer", type=str, default="gpt3", choices=["gpt3", "gpt4", "llama-7B"], help="Referring Expressoin Recognition module.")
     parser.add_argument("--rer_engine", type=str, default="text-davinci-003", choices=["text-davinci-003", "gpt-4"], help="GPT engine for RER.")
@@ -200,33 +200,38 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     domain_dpath = os.path.join("data", args.domain)
-    domain_lmks_dpath = os.path.join(domain_dpath, "lmks")
-
-    e2e_id = "e2e" if args.full_e2e else ""
-    log_dpath = os.path.join("results", "lang2ltl", args.domain, "log")
-    os.makedirs(log_dpath, exist_ok=True)
-    logging.basicConfig(level=logging.DEBUG,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{"_".join(args.envs)}_{args.holdout}_nexamples{args.nexamples}.log'), mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
+    domain_res_dpath = os.path.join(domain_dpath, "ref_exps", "lmks")
+    # domain_res_dpath = os.path.join(domain_dpath, "ref_exps", "diverse_res")
 
     if args.domain == "osm" or args.domain == "cleanup":  # TODO: separate exp_full_DOMIN.py for each DOMAIN
         # if args.envs == "all":
-        #     envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_lmks_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
+        #     envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_res_dpath) if "json" in fname and fname != "boston"]  # Boston dataset for finetune prompt and train baseline
         # else:
         #     envs = [args.envs]
         for env in args.envs:
-            env_dpath = os.path.join(domain_dpath, "lang2ltl", env)
-            data_fpaths = [os.path.join(env_dpath, fname) for fname in os.listdir(env_dpath) if fname.startswith("symbolic")]
+            e2e_id = f"pretrained_{args.full_e2e}" if args.full_e2e else ""
+            log_dpath = os.path.join("results", "full_translation_diverse-re", args.domain, "log")
+            # log_dpath = os.path.join("results", "lang2ltl", args.domain, "log")
+            os.makedirs(log_dpath, exist_ok=True)
+            logging.basicConfig(level=logging.INFO,
+                                format='%(message)s',
+                                handlers=[
+                                    logging.FileHandler(os.path.join(log_dpath, f'log_raw_results_{e2e_id}_{args.holdout}_nexamples{args.nexamples}_{env}.log'), mode='w'),
+                                    logging.StreamHandler()
+                                ]
+            )
+
+            env_dpath = os.path.join(domain_dpath, "lang2ltl_diverse-re_downsampled", env)
+            data_fpaths = [os.path.join(env_dpath, fname) for fname in os.listdir(env_dpath) if "symbolic" in fname]
+            # env_dpath = os.path.join(domain_dpath, "lang2ltl", env)
+            # data_fpaths = [os.path.join(env_dpath, fname) for fname in os.listdir(env_dpath) if fname.startswith("symbolic")]
             if args.holdout:
                 data_fpaths = [data_fpath for data_fpath in data_fpaths if args.holdout in data_fpath]
-            data_fpaths = sorted(data_fpaths, reverse=True)[2:]
+            data_fpaths = sorted(data_fpaths, reverse=True)
 
-            obj_embed = os.path.join(domain_dpath, "lmk_sem_embeds", f"obj2embed_{env}_{args.embed_engine}.pkl")
-            re_embed = os.path.join(domain_dpath, "re_embeds", f"re2embed_{env}_{args.embed_engine}.pkl")
+            if not args.full_e2e:  # only modular approach using landmark and referring expression embeddings for proposition resolution
+                obj_embed = os.path.join(domain_dpath, "lmk_sem_embeds", f"obj2embed_{env}_{args.embed_engine}.pkl")
+                re_embed = os.path.join(domain_dpath, "re_embeds", f"re2embed_{env}_{args.embed_engine}.pkl")
 
             for data_fpath in data_fpaths:
                 if "utt" in data_fpath:
@@ -237,12 +242,16 @@ if __name__ == "__main__":
                     result_subd = "type_holdout_batch12"
                 else:
                     raise ValueError(f"ERROR: unrecognized data fpath\n{data_fpath}")
+
                 if args.full_e2e:
-                    result_dpath = os.path.join("results", "lang2ltl", args.domain, "e2e", args.full_e2e, env, result_subd)
-                    full_e2e_prompt_fpath = os.path.join(domain_dpath, "full_translation_prompt", env, f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
+                    result_dpath = os.path.join("results", "full_translation_diverse-re", f"pretrained_{args.full_e2e}", args.domain, env, result_subd)
+                    full_e2e_prompt_fpath = os.path.join(domain_dpath, "full_translation_prompt_diverse-re", "boston", f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
+                    # result_dpath = os.path.join("results", "lang2ltl", args.domain, f"e2e_{args.full_e2e}", env, result_subd)
+                    # full_e2e_prompt_fpath = os.path.join(domain_dpath, "full_translation_prompt", env, f"prompt_nexamples{args.nexamples}_{Path(data_fpath).stem}.txt")
                 else:
-                    result_dpath = os.path.join("results", "lang2ltl", args.domain, env, result_subd)
+                    result_dpath = os.path.join("results", "full_translation", args.domain, env, result_subd)
                 os.makedirs(result_dpath, exist_ok=True)
+
                 all_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
                 pair_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
 
@@ -254,14 +263,13 @@ if __name__ == "__main__":
                         valid_iter, valid_meta = zip(*random.sample(list(zip(valid_iter, valid_meta)), args.nsamples))
                     logging.info(f"{data_fpath}\ntest set size: {len(valid_iter)}, {len(valid_meta)}")
 
-                    breakpoint()
-
-                    input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_res, propositions = [], [], [], [], [], [], []
-                    for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, res, seed) in zip(valid_iter, valid_meta):
+                    input_utts, true_ltls, true_sym_utts, true_sym_ltls, pattern_types, true_res, true_lmks, propositions = [], [], [], [], [], [], [], []
+                    for (utt, ltl), (sym_utt, sym_ltl, pattern_type, props, res, lmks, seed) in zip(valid_iter, valid_meta):
                         input_utts.append(utt)
                         true_ltls.append(ltl)
                         true_sym_utts.append(sym_utt)
                         pattern_types.append(pattern_type)
+                        true_lmks.append(lmks)
                         if "restricted_avoidance" in pattern_type:  # X_restricted_avoidance formulas have only 1 prop
                             true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
                             true_res.append(res[-1:])

@@ -102,7 +102,8 @@ class GPT4:
                 complete = True
             except:
                 sleep(30)
-                logging.info(f"{ntries}: waiting for the server. sleep for 30 sec...\n{query_prompt}")
+                logging.info(f"{ntries}: waiting for the server. sleep for 30 sec...")
+                # logging.info(f"{ntries}: waiting for the server. sleep for 30 sec...\n{query_prompt}")
                 logging.info("OK continue")
                 ntries += 1
         if self.n == 1:
