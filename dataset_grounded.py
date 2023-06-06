@@ -68,6 +68,7 @@ def construct_lmk2prop(osm_lmks_dpath, model):
 
 
 def construct_grounded_dataset(split_dpath, lmks, env, remove_perm, seed, nsamples, add_comma, model, save_dpath):
+    # TODO: update to work with multiple diverse REs instead of 1 lmk name for each OSM lmk, i.e. lmk2res.
     logging.info(f"Constructing grounded dataset for env: {env}")
     split_fnames = sorted([fname for fname in os.listdir(split_dpath) if "pkl" in fname])
     save_dpath = os.path.join(save_dpath, model, env)
@@ -159,7 +160,7 @@ def substitute_lmk(utt, ltl, lmks, props_norepeat, seed, add_comma, model):
     return utt_grounded, ltl_grounded, lmk_names
 
 
-def construct_cleanup_lmks(env_lmks_dpath):
+def construct_cleanup_res(env_res_dpath):
     sizes = ["", "big", "small"]
     colors = ["green", "blue", "red", "yellow"]
     shapes = [""]
@@ -167,8 +168,8 @@ def construct_cleanup_lmks(env_lmks_dpath):
 
     sem_lmks = {re.sub(' +', ' ', f"{size} {color} {shape} {amenity}".strip()): {} for color in colors for size in sizes for shape in shapes for amenity in amenities}
 
-    os.makedirs(env_lmks_dpath, exist_ok=True)
-    env_fpath = os.path.join(env_lmks_dpath, "cleanup.json")
+    os.makedirs(env_res_dpath, exist_ok=True)
+    env_fpath = os.path.join(env_res_dpath, "cleanup.json")
     save_to_file(sem_lmks, env_fpath)
     logging.info(f"generated {len(sem_lmks)} lmks for CleanUp\nfrom\nsizes: {sizes}\ncolors: {colors}\nshapes: {shapes}\namenities: {amenities}")
 
@@ -183,7 +184,7 @@ def generate_prompts_from_grounded_split_dataset(split_fpath, prompt_dpath, nexa
     train_iter, train_meta, _, _ = load_split_dataset(split_fpath)
 
     meta2data = defaultdict(list)
-    for idx, ((utt, ltl), (_, _, pattern_type, props, _, _)) in enumerate(zip(train_iter, train_meta)):
+    for idx, ((utt, ltl), (_, _, pattern_type, props, _, _, _)) in enumerate(zip(train_iter, train_meta)):
         meta2data[(pattern_type, len(props))].append((utt, ltl))
     sorted(meta2data.items(), key=lambda kv: kv[0])
 
@@ -212,14 +213,14 @@ if __name__ == "__main__":
     parser.add_argument("--remove_perm", action="store_false", help="True to keep prop perms in valid set. Default True.")
     parser.add_argument("--add_comma", action="store_true", help="True to add comma after lmk name.")
     parser.add_argument("--env_prompt", type=str, default="boston", help="env dataset to generate full translation prompt.")
-    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[2], help="number of examples per formula in prompt.")
+    parser.add_argument("--nexamples", action="store", type=int, nargs="+", default=[1], help="number of examples per formula in prompt.")
     parser.add_argument("--seed_prompt", type=int, default=42, help="random seed to sample prompt examples.")
-    parser.add_argument("--cleanup_lmk", action="store_true", help="True if construct lmk json for CleanUp lmks.")
+    parser.add_argument("--cleanup_re", action="store_true", help="True if construct referring expression json for CleanUp lmks.")
     args = parser.parse_args()
 
     domain_dpath = os.path.join("data", args.domain)
-    domain_lmks_dpath = os.path.join(domain_dpath, "lmks")
-    model_dpath = os.path.join(domain_dpath, args.model)
+    domain_res_dpath = os.path.join(domain_dpath, "ref_exps", "diverse_res")
+    model_dpath = os.path.join(domain_dpath, f"{args.model}_diverse-re_downsampled")
     os.makedirs(model_dpath, exist_ok=True)
     # construct_lmk2prop(osm_lmks_dpath, args.model)  # for testing
 
@@ -232,22 +233,26 @@ if __name__ == "__main__":
                         ]
     )
 
-    if args.cleanup_lmk:  # construct lmk json file for CleanUp World
-        construct_cleanup_lmks(domain_lmks_dpath)
+    if args.cleanup_re:  # construct RE json file for CleanUp World
+        construct_cleanup_res(domain_res_dpath)
 
     if args.env == "all":
-        envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_lmks_dpath) if fname.endswith("json")]
+        envs = [os.path.splitext(fname)[0][40:] for fname in os.listdir(domain_res_dpath) if fname.endswith("csv")]  # csv for diverse RE
+        # envs = [os.path.splitext(fname)[0] for fname in os.listdir(domain_res_dpath) if fname.endswith("json")]  # json for simple RE (lmk name)
     else:
         envs = [args.env]
+
     for env in envs:
-        env_lmks = [name.replace(u'\xa0', u' ') for name in list(load_from_file(os.path.join(domain_lmks_dpath, f"{env}.json")).keys())]  # remove unicode space \xa0 or NBSP
-        # construct_grounded_dataset(args.split_dpath, env_lmks, env, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, domain_dpath)
+        lmk2res = {entry[0]: entry[2:] for entry in load_from_file(os.path.join(domain_res_dpath, f"paraphrased-res-gpt4_filtered-attributes_{env}.csv"))}
+        # env_res = [name.replace(u'\xa0', u' ') for name in list(load_from_file(os.path.join(domain_res_dpath, f"{env}.json")).keys())]  # remove unicode space \xa0 or NBSP
+
+        # construct_grounded_dataset(args.split_dpath, env_res, env, args.remove_perm, args.seed, args.nsamples, args.add_comma, args.model, domain_dpath)
 
         # Construct full translation prompts from grounded dataset for a given env
         if env == args.env_prompt:
-            grounded_split_dpath = os.path.join(model_dpath, args.env_prompt)
-            prompt_dpath = os.path.join(domain_dpath, "full_translation_prompt", args.env_prompt)
+            prompt_dpath = os.path.join(domain_dpath, "full_translation_prompt_diverse-re", args.env_prompt)
             os.makedirs(prompt_dpath, exist_ok=True)
+            grounded_split_dpath = os.path.join(model_dpath, args.env_prompt)
             grounded_split_fpaths = [os.path.join(grounded_split_dpath, grounded_split_fname) for grounded_split_fname in os.listdir(grounded_split_dpath) if grounded_split_fname.endswith("pkl")]
             for grounded_split_fpath in grounded_split_fpaths:
                 for nexamples in args.nexamples:
