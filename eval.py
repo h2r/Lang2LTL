@@ -11,7 +11,7 @@ from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, name_to_prop, substitute_single_word
 
 
-def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert_rule, all_props):
+def evaluate_lang2ltl(true_ltls, out_ltls, true_names, out_names, out_grnds, convert_rule, all_props):
     accs = []
     for true_ltl, out_ltl, true_name, out_name, out_grnd in zip(true_ltls, out_ltls, true_names, out_names, out_grnds):
         if out_ltl == true_ltl:  # Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park
@@ -49,7 +49,7 @@ def evaluate_lang(true_ltls, out_ltls, true_names, out_names, out_grnds, convert
     return accs, acc
 
 
-def evaluate_lang_0(true_ltls, out_ltls, string_match=False):
+def evaluate_grounded_ltl(true_ltls, out_ltls, string_match=False):
     accs = []
     for true_ltl, out_ltl in zip(true_ltls, out_ltls):
         if true_ltl == out_ltl:  # TODO: Spot cannot handle long but correct LTL formula, e.g. F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F & 62_on_the_park U 62_on_the_park & ! 62_on_the_park U ! 62_on_the_park F 62_on_the_park

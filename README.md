@@ -206,6 +206,12 @@ Composed dataset pkl file: dictionary of train data, train meta data, test data,
 Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
 e.g., composed datasets.
 
+To download files and folders from Google Drive
+```
+pip install gdown
+gdown <SHARED_LINK_FOR_FILE>
+gdown --folder <SHARED_LINK_FOR_FOLDER>
+```
 
 
 ## Model Weights

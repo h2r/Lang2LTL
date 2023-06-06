@@ -12,11 +12,12 @@ import spot
 from openai.embeddings_utils import cosine_similarity
 
 from gpt import GPT3
-from s2s_sup import Seq2Seq, T5_MODELS
+from s2s_sup import Seq2Seq
+from s2s_hf_transformers import HF_MODELS
 from s2s_pt_transformer import construct_dataset_meta
 from dataset_symbolic import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
-from eval import evaluate_lang, evaluate_lang_0, evaluate_lang_new, evaluate_plan
+from eval import evaluate_grounded_ltl, evaluate_lang2ltl, evaluate_lang_new, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 
@@ -30,7 +31,7 @@ def run_exp():
         full_e2e_prompt = load_from_file(args.full_e2e_prompt)
         out_ltls = [full_e2e_module.translate(query, full_e2e_prompt) for query in input_utts]
 
-        accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls)
+        accs, accumulated_acc = evaluate_grounded_ltl(true_ltls, out_ltls)
         for idx, (input_utt, output_ltl, true_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
             logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
@@ -45,7 +46,7 @@ def run_exp():
             out_ltls, out_sym_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt)
 
             if args.env == "osm":
-                accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_names, out_names, objs_per_utt, args.convert_rule, PROPS)
+                accs, accumulated_acc = evaluate_lang2ltl(true_ltls, out_ltls, true_names, out_names, objs_per_utt, args.convert_rule, PROPS)
                 # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_names, out_names, objs_per_utt)
 
                 pair_results = [["Pattern Type", "Propositions", "Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
@@ -60,7 +61,7 @@ def run_exp():
                 save_to_file(pair_results, pair_result_fpath)
 
             elif args.env == "cleanup_gopalan" or args.env == "osm_berg":
-                accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls)
+                accs, accumulated_acc = evaluate_grounded_ltl(true_ltls, out_ltls)
 
                 pair_results = [["Pattern Type", "NProps", "Utterance", "True LTL", "Out LTL", "Accuracy"]]
                 for idx, (pattern_type, nprops, input_utt, true_ltl, out_ltl, placeholder_map, acc) in enumerate(zip(pattern_types, npropositions, input_utts, true_ltls, out_ltls, placeholder_maps, accs)):
@@ -213,7 +214,7 @@ def translate_modular(grounded_utts, objs_per_utt):
 
     if "gpt3" in args.sym_trans:
         trans_module = GPT3(translation_engine)
-    elif args.sym_trans in T5_MODELS:
+    elif args.sym_trans in HF_MODELS:
         trans_module = Seq2Seq(args.sym_trans)
     elif args.sym_trans == "pt_transformer":
         train_iter, _, _, _ = load_split_dataset(args.s2s_sup_data)
