@@ -41,12 +41,12 @@ def run_exp():
             # logging.info(f"Full Translation {idx}:\n{query}\n{out_ltl}")
 
         accs, accumulated_acc = evaluate_grounded_ltl(true_ltls, out_ltls, string_match=True)
-        pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
+        io_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
         for idx, (input_utt, true_ltl, output_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
             logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
-            pair_results.append((input_utt, true_ltl, output_ltl, acc))
+            io_results.append((input_utt, true_ltl, output_ltl, acc))
         logging.info(f"Language to LTL translation accuracy: {accumulated_acc}")
-        save_to_file(pair_results, pair_result_fpath)
+        save_to_file(io_results, io_results_fpath)
     else:  # Modular
         logging.info(f"RER engine: {args.rer_engine}")
         logging.info(f"Embedding engine: {args.embed_engine}")
@@ -84,16 +84,16 @@ def run_exp():
             accs, accumulated_acc = evaluate_lang2ltl(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, PROPS)
             # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt)
 
-            pair_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
+            io_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
             for idx, (pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_re, out_re, out_grnd, placeholder_maps, acc) in enumerate(zip(pattern_types, propositions, input_utts, sym_utts, true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt, placeholder_maps, accs)):
                 logging.info(f"{idx}\n{pattern_type} {props}\nInput utterance: {in_utt}\nSymbolic utterance: {sym_utt}\n"
                              f"True Ground LTL: {true_ltl}\nOut Ground LTL: {out_ltl}\n"
                              f"True Symbolic LTL: {true_sym_ltl}\nOut Symbolic LTL: {out_sym_ltl}\n"
                              f"True REs: {true_re}\nOut REs:{out_re}\nOut Grounds: {out_grnd}\nPlaceholder Map: {placeholder_maps}\n"
                              f"{acc}\n")
-                pair_results.append((pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_re, out_re, out_grnd, placeholder_maps, acc))
+                io_results.append((pattern_type, props, in_utt, sym_utt, true_ltl, out_ltl, true_sym_ltl, out_sym_ltl, true_re, out_re, out_grnd, placeholder_maps, acc))
             logging.info(f"Language to LTL translation accuracy: {accumulated_acc}\n\n")
-            save_to_file(pair_results, pair_result_fpath)
+            save_to_file(io_results, io_results_fpath)
 
     if len(input_utts) != len(out_ltls):
         logging.info(f"ERROR: # input utterances {len(input_utts)} != # output LTLs {len(out_ltls)}")
@@ -253,9 +253,9 @@ if __name__ == "__main__":
                 os.makedirs(result_dpath, exist_ok=True)
 
                 all_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.json".replace("symbolic", "grounded"))
-                pair_result_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
+                io_results_fpath = os.path.join(result_dpath, f"acc_{Path(data_fpath).stem}.csv".replace("symbolic", "grounded"))
 
-                if os.path.basename(pair_result_fpath) not in os.listdir(result_dpath) and args.holdout in pair_result_fpath:  # only run unfinished exps of specified holdout type
+                if os.path.basename(io_results_fpath) not in os.listdir(result_dpath) and args.holdout in io_results_fpath:  # only run unfinished exps of specified holdout type
                     dataset = load_from_file(data_fpath)
                     valid_iter, valid_meta = dataset["valid_iter"], dataset["valid_meta"]
                     if args.nsamples:  # for testing, randomly sample `nsamples` pairs to cover diversity of dataset
