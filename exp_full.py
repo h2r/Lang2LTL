@@ -13,7 +13,7 @@ from lang2ltl import rer, ground_res, ground_utterances, translate_modular, PROP
 from gpt import GPT3, GPT4
 from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, substitute_single_letter
-from eval import evaluate_lang_0, evaluate_lang, evaluate_plan
+from eval import evaluate_grounded_ltl, evaluate_lang2ltl, evaluate_plan
 from formula_sampler import TYPE2NPROPS
 from analyze_results import find_all_formulas
 
@@ -40,7 +40,7 @@ def run_exp():
             out_ltls.append(out_ltl)
             logging.info(f"Full Translation{idx}:\n{query}\n{out_ltl}")
 
-        accs, accumulated_acc = evaluate_lang_0(true_ltls, out_ltls, string_match=True)
+        accs, accumulated_acc = evaluate_grounded_ltl(true_ltls, out_ltls, string_match=True)
         pair_results = [["Utterance", "True LTL", "Out LTL", "Accuracy"]]
         for idx, (input_utt, true_ltl, output_ltl, acc) in enumerate(zip(input_utts, true_ltls, out_ltls, accs)):
             logging.info(f"{idx}\nInput utterance: {input_utt}\nTrue LTL: {true_ltl}\nOutput LTL: {output_ltl}\n{acc}\n")
@@ -81,7 +81,7 @@ def run_exp():
             #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
             # out_sym_ltls = out_sym_ltls_sub
 
-            accs, accumulated_acc = evaluate_lang(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, PROPS)
+            accs, accumulated_acc = evaluate_lang2ltl(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, PROPS)
             # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt)
 
             pair_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
