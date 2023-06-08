@@ -210,9 +210,10 @@ if __name__ == "__main__":
                         ]
     )
 
-    env_fpath = os.path.join(os.path.expanduser('~'), "data/shared/lang2ltl/data/robot_demo/robot_demo_envs.yaml")
-    # env_fpath = "data/robot_demo_envs.yaml"
-    exp_name = "robot-demo-house0"
+    env_fpath = "data/robot_demo_configs/robot_demo_envs.yaml"
+    env_fpath = env_fpath if os.path.isfile(env_fpath) else os.path.join(SHARED_DPATH, "data/robot_demo_configs/robot_demo_envs.yaml")
+
+    exp_name = "robot-demo-house1"
     with open(env_fpath, "r") as file:
         robot_env = yaml.safe_load(file)[exp_name]
     utts, obj2sem, keep_keys = robot_env["utts"], robot_env["obj2sem"], robot_env["keep_keys"]
