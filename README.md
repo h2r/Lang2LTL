@@ -40,7 +40,7 @@ Then too install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill th
 
 
 # Files
-```experiment.py```: main function to start running all experiments for evaluation full translation system.
+```exp_full.py```: main function to start running all experiments for evaluation full translation system.
 
 ```lang2llt.py```: modules of Lang2LTL translation system and an API.
 
@@ -58,6 +58,8 @@ Then too install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill th
 
 ```get_embed.py```: interface to GPT-3 embedding feature.
 
+```eval.py```: functions to evaluate translation and planning.
+
 ```dataset_symbolic.py```: construct symbolic train and test sets for evaluating symbolic translation module.
 
 ```dataset_grounded.py```: construct grounded train and test sets using OSM or CleanUp landmarks for evaluation full translation system.
@@ -65,8 +67,6 @@ Then too install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill th
 ```dataset_filtered.py```: import test sets from Gopalan et al. 18 and Berg et al. 20.
 
 ```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
-
-```evaluation.py```: functions to evaluate translation and planning.
 
 ```analyze_results.py```: scripts to analyze results, e.g., confusion matrix, misclassification.
 
