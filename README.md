@@ -25,13 +25,6 @@ Optional. Install if use transformer model T5
 pip install sentencepiece
 ```
 
-Optional. Install if use spaCy
-```
-pip install -U pip setuptools wheel
-pip install -U spacy
-python -m spacy download en_core_web_sm
-```
-
 ## Install LLaMA
 Make sure to complete the installation instructions above.
 
