@@ -1,16 +1,14 @@
 import os
-from datetime import datetime
 import logging
-import yaml
 from openai.embeddings_utils import cosine_similarity
 
 from gpt import GPT3, GPT4
 from get_embed import generate_embeds
 from s2s_sup_tcd import Seq2Seq
 from s2s_hf_transformers import HF_MODELS
+from formula_sampler import ALL_PROPS
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute
 
-PROPS = ["a", "b", "c", "d", "h", "j", "k", "l", "n", "o", "p", "q", "r", "s", "y", "z"]
 SHARED_DPATH = os.path.join(os.path.expanduser('~'), "data", "shared", "lang2ltl")  # group's data folder on cluster
 
 
@@ -18,7 +16,7 @@ def lang2ltl(utt, obj2sem, keep_keys,
              data_dpath=f"{SHARED_DPATH}/data", exp_name="lang2ltl-api",
              rer_model="gpt4", rer_engine="gpt-4", rer_prompt_fpath=f"{SHARED_DPATH}/data/rer_prompt_diverse_16.txt",
              embed_model="gpt3", embed_engine="text-embedding-ada-002", ground_model="gpt3", topk=2, update_embed=True,
-             model_dpath=f"{SHARED_DPATH}/model_3000000", sym_trans_model="t5-base", convert_rule="lang2ltl", props=PROPS,
+             model_dpath=f"{SHARED_DPATH}/model_3000000", sym_trans_model="t5-base", convert_rule="lang2ltl", props=ALL_PROPS,
     ):
     if sym_trans_model in HF_MODELS:
         model_fpath = os.path.join(model_dpath, "t5-base", "checkpoint-best")
@@ -49,7 +47,7 @@ def lang2ltl(utt, obj2sem, keep_keys,
     ground_utts, objs_per_utt = ground_utterances([utt], utt2res, re2grounds)
     logging.info(f"Grounded Input Utterance:\n{ground_utts[0]}\ngroundings: {objs_per_utt[0]}\n")
 
-    sym_utts, sym_ltls, out_ltls, placeholder_maps = translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props)
+    sym_utts, sym_ltls, out_ltls, placeholder_maps = translate_grounded_utts(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props)
     logging.info(f"Placeholder Map:\n{placeholder_maps[0]}\n")
     logging.info(f"Symbolic Utterance:\n{sym_utts[0]}\n")
     logging.info(f"Translated Symbolic LTL Formula:\n{sym_ltls[0]}\n")
@@ -142,12 +140,10 @@ def ground_utterances(input_strs, utt2res, re2grounds):
 
     output_strs, subs_per_str = substitute(input_strs, grounding_maps, is_utt=True)
 
-    # breakpoint()
-
     return output_strs, subs_per_str
 
 
-def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None):
+def translate_grounded_utts(ground_utts, objs_per_utt, sym_trans_model, translation_engine, convert_rule, props, trans_modular_prompt=None):
     """
     Translation language to LTL modular approach.
     :param ground_utts: Input utterances with name entities grounded to objects in given environment.
@@ -188,35 +184,7 @@ def translate_modular(ground_utts, objs_per_utt, sym_trans_model, translation_en
             ltl = trans_module.translate(query, trans_modular_prompt)[0]
         else:
             ltl = trans_module.type_constrained_decode([query])[0]
-        # try:
-        #     spot.formula(ltl)
-        # except SyntaxError:
-        #     ltl = feedback_module(trans_module, query, trans_modular_prompt, ltl)
         symbolic_ltls.append(ltl)
     output_ltls, _ = substitute(symbolic_ltls, placeholder_maps_inv, is_utt=False)  # replace symbols by props
 
     return symbolic_utts, symbolic_ltls, output_ltls, placeholder_maps
-
-
-if __name__ == "__main__":
-    result_dpath = os.path.join(SHARED_DPATH, "results", "lang2ltl_api")
-    os.makedirs(result_dpath, exist_ok=True)
-    result_fpath = os.path.join(result_dpath, f"log_robot-demo_{datetime.now().strftime('%m-%d-%Y-%H-%M-%S')}.log")
-    logging.basicConfig(level=logging.INFO,
-                        format='%(message)s',
-                        handlers=[
-                            logging.FileHandler(result_fpath, mode='w'),
-                            logging.StreamHandler()
-                        ]
-    )
-
-    env_fpath = "data/robot_demo_configs/robot_demo_envs.yaml"
-    env_fpath = env_fpath if os.path.isfile(env_fpath) else os.path.join(SHARED_DPATH, "data/robot_demo_configs/robot_demo_envs.yaml")
-
-    exp_name = "robot-demo-house1"
-    with open(env_fpath, "r") as file:
-        robot_env = yaml.safe_load(file)[exp_name]
-    utts, obj2sem, keep_keys = robot_env["utts"], robot_env["obj2sem"], robot_env["keep_keys"]
-
-    for utt in utts:
-        out_ltl = lang2ltl(utt, obj2sem, keep_keys=keep_keys, exp_name=exp_name)

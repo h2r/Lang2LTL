@@ -9,7 +9,8 @@ import random
 import numpy as np
 import spot
 
-from lang2ltl import rer, ground_res, ground_utterances, translate_modular, PROPS
+from lang2ltl import rer, ground_res, ground_utterances, translate_grounded_utts
+from formula_sampler import ALL_PROPS
 from gpt import GPT3, GPT4
 from s2s_hf_transformers import HF_MODELS
 from utils import load_from_file, save_to_file, substitute_single_letter
@@ -74,14 +75,14 @@ def run_exp():
             out_ltls = translate_e2e(grounded_utts, translation_engine)
         else:
             logging.info(f"Symbolic translation engine: {translation_engine}")
-            sym_utts, out_sym_ltls, out_ltls, placeholder_maps = translate_modular(grounded_utts, objs_per_utt, args.sym_trans, translation_engine, args.convert_rule, PROPS)
+            sym_utts, out_sym_ltls, out_ltls, placeholder_maps = translate_grounded_utts(grounded_utts, objs_per_utt, args.sym_trans, translation_engine, args.convert_rule, ALL_PROPS)
 
             # out_sym_ltls_sub = []
             # for props, out_sym_ltl, placeholder_map in zip(propositions, out_sym_ltls, placeholder_maps.items()):
             #     out_sym_ltls_sub.append(substitute_single_letter(out_sym_ltl, {letter: prop for (_, letter), prop in zip(placeholder_map.items(), props)}))
             # out_sym_ltls = out_sym_ltls_sub
 
-            accs, accumulated_acc = evaluate_lang2ltl(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, PROPS)
+            accs, accumulated_acc = evaluate_lang2ltl(true_ltls, out_ltls, true_res, out_res, objs_per_utt, args.convert_rule, ALL_PROPS)
             # accs, accumulated_acc = evaluate_lang_new(true_ltls, out_ltls, true_sym_ltls, out_sym_ltls, true_res, out_res, objs_per_utt)
 
             io_results = [["Pattern Type", "Propositions", "Utterance", "Symolic Utterance", "True LTL", "Out LTL", "True Symbolic LTL", "Out Symbolic LTL", "True Lmks", "Out Lmks", "Out Lmk Ground", "Placeholder Map", "Accuracy"]]
@@ -271,7 +272,7 @@ if __name__ == "__main__":
                         pattern_types.append(pattern_type)
                         true_lmks.append(lmks)
                         if "restricted_avoidance" in pattern_type:  # X_restricted_avoidance formulas have only 1 prop
-                            true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: PROPS[0]}))
+                            true_sym_ltls.append(substitute_single_letter(sym_ltl, {props[-1]: ALL_PROPS[0]}))
                             true_res.append(res[-1:])
                             propositions.append(props[-1:])
                         else:
