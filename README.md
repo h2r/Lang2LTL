@@ -9,104 +9,70 @@ conda install pytorch torchdata -c pytorch  # CPU
 pip install tensorboard transformers datasets evaluate torchtext
 ```
 
-If needed, upgrade openai package (e.g., to use GPT-4)
+To install LTL/Automaton library [Spot](https://spot.lre.epita.fr/), use command below or follow the installation instructions [here](https://spot.lre.epita.fr/install.html).
+```
+conda install -c conda-forge spot
+```
+
+To upgrade openai package (e.g., to use GPT-4),
 ```
 pip install openai --upgrade
 ```
 
-To install LTL/Automaton library Spot
-```
-conda install -c conda-forge spot
-```
-or follow the installation instructions [here](https://spot.lre.epita.fr/install.html).
-
-Optional. Install if use transformer model T5
+To use transformer model T5,
 ```
 pip install sentencepiece
 ```
 
-## Install LLaMA
-Make sure to complete the installation instructions above.
+## Install LLaMA (Optional)
+Complete the installation instructions above.
 
-Then too install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform) to request access to model weights. After downloaded, the weights can be converted and loaded with huggingface model classes. Please refer to the [huggnigface documentation](https://huggingface.co/docs/transformers/main/model_doc/llama) for more instructions.
+To install [LLaMA](https://arxiv.org/abs/2302.13971), please first fill this [form](https://docs.google.com/forms/d/e/1FAIpQLSfqNECQnMkycAp2jP4Z9TFX0cGR4uf7b_fBxjY_OjhJILlKGA/viewform) to request access to the model weights.
+After downloading the model weights, convert and load them using HuggingFace's model classes. Please refer to the [documentation](https://huggingface.co/docs/transformers/main/model_doc/llama) for more instructions.
 
 
 
 # Files
-```exp_full.py```: main function to start running all experiments for evaluation full translation system.
+```lang2ltl.py```: modules and API of the Lang2LTL language grounding system.
 
-```lang2llt.py```: modules of Lang2LTL translation system and an API.
-
-```formula_sampler.py```: sample symbolic LTL formulas given formula type and the number of propositions.
-
-```utils.py```: utility functions, e.g., substitute, name_to_prop.
+```formula_sampler.py```: sample lifted LTL formulas given a formula type and the number of propositions.
 
 ```s2s_sup.py```: generic supervised sequence-to-sequence model.
 
-```s2s_hf_transformers.py```: finetune pretrained transformer models from Hugging Face.
+```s2s_hf_transformers.py```: finetune pretrained transformer models from HuggingFace.
 
-```s2s_pt_transformer.py```: train from scratch transformer sequence-to-sequence model implemented in PyTorch.
+```s2s_pt_transformer.py```: train from scratch transformer encoder-to-decoder model implemented in PyTorch.
 
-```gpt3.py```: interface to GPT-3 model.
+```gpt.py```: interface to GPT-3 and 4 model.
 
-```get_embed.py```: interface to GPT-3 embedding feature.
+```get_embed.py```: interface to GPT-3 embedding.
+
+```utils.py```: utility functions, e.g., build_placeholder_map, substitute, name_to_prop, etc.
 
 ```eval.py```: functions to evaluate translation and planning.
 
-```dataset_symbolic.py```: construct symbolic train and test sets for evaluating symbolic translation module.
+```exp_full.py```: main function to start running all experiments for evaluating the full language grounding system.
+
+```dataset_symbolic.py```: construct lifted train and test sets for evaluating the lifted translation module.
 
 ```dataset_grounded.py```: construct grounded train and test sets using OSM or CleanUp landmarks for evaluation full translation system.
 
 ```dataset_filtered.py```: import test sets from Gopalan et al. 18 and Berg et al. 20.
 
-```data_collection.py```: clean the collected symbolic dataset of utterances, LTL formulas.
+```data_collection.py```: clean the collected lifted dataset of utterances, LTL formulas.
 
 ```analyze_results.py```: scripts to analyze results, e.g., confusion matrix, misclassification.
 
-```tester.py```: unittests.
-
-```dataset_corlw.py```: construct grounded train and test sets for CoRL22-W.
-
-
-
-# Finetuning GPT-3
-*Make sure you have set OpenAI API keys before running following steps*
-## Data Formatting
-1. Prepend a prefix `'Utterance: '` and append a separator `'\nLTL: '` to each of the input query, so your input will look like `'Utterance: {input_sequence}\nLTL: '`
-2. Prepend a whitespace and append a stop word `'\n'` to each of the completion, so your output will look like `' {output_sequence}\n'`
-
-## Prepare Data
-Convert your formatted dataset into `.jsonl` type with CLI data preparation tool provided by OpenAI:
-```
-$openai tools fine_tunes.prepare_data -f your_file
-```
-Follow the directions and answer the promtped questions. For reproducing our results, DO NOT remove duplicates, DO NOT lowercase, and DO NOT split into training set and validation set.
-
-## Create Finetuned Model
-You'll need to submit finetuning jobs to OpenAI to get the finetuned model. Using the `.jsonl` file we just got converted:
-```
-$openai api fine_tunes.create -t prepared_file.jsonl -m base_model --suffix "your_desired_model_name"
-```
-For reproducing our results, please use `davinci` as the base model and use default hyperparameters: epoch=4, batch_size=0.2%*training_set_size, learning_rate_multiplier=0.1
-## Use the model
-You can check the status of a finetuning job by:
-```
-$openai api fine_tunes.list
-```
-When a job is finished (`"status": "processed"`), you will be able to find the name of that finetuned model in the list, and you can then use the finetuned model the same way as other OpenAI models through the API.
-
-For more info, please refer to the [official document](https://platform.openai.com/docs/guides/fine-tuning)
+```tester.py```: unit tests.
 
 
 # Finetuning T5 Models
-Besides finetuning GPT models, we can also finetune [T5 models](https://arxiv.org/abs/1910.10683) for symbolic translation using our dataset.
-T5 models are open source, so we can customize the model architecture and have ownership of the finetuned model weights.
+Following instructions below to finetune [T5 models](https://arxiv.org/abs/1910.10683) on our dataset for lifted translation.
 The datasets for reproducing all holdout test results are stored under `data/holdout_split_batch12_perm/`.
-For finetuning, run
 ```
 python s2s_hf_transformers.py --model=t5-base --data data/holdout_split_batch12_perm/{DESIRED_HOLDOUT_FOLD}.pkl
 ```
-To reproduce the exact results presented in our paper, please use the following hyperparameters,
+To reproduce the results presented in our paper, please use the following hyperparameters,
 ```
 MAX_SRC_LEN = 512
 MAX_TAR_LEN = 256
@@ -115,7 +81,56 @@ learning_rate = 1e-4
 weight_decay = 0.01
 num_train_epochs = 5
 ```
-We use a single NVIDIA GeForce RTX 3090 (24GB) for finetuning, and completing one fold of the holdout test set takes ~2 hours.
+We use a single NVIDIA GeForce RTX 3090 (24GB) for finetuning, and one fold of the holdout test set takes ~2 hours.
+
+
+
+# Finetuning GPT-3
+Set environment variable for OpenAI API key for current shell
+```
+export OPENAI_API_KEY=<YOUR_API_KEY>
+```
+Or permanently set the environment variable in your ```~/.bash_profile``` or ```~/.bashrc```.
+
+## Data Formatting
+1. Prepend a prefix `'Utterance: '` and append a separator `'\nLTL: '` to each input query, so your input will look like `'Utterance: {INPUT_UTTERANCE}\nLTL: '`
+2. Prepend a whitespace and append a stop word `'\n'` to each completion, so your output will look like `' {OUTPUT_LTL}\n'`
+
+## Prepare Data
+Convert your formatted dataset into `.jsonl` type with CLI data preparation tool provided by OpenAI:
+```
+$openai tools fine_tunes.prepare_data -f your_file
+```
+Follow the directions and answer the prompted questions. For reproducing our results, DO NOT remove duplicates, DO NOT lowercase, and DO NOT split into training set and validation set.
+
+## Create Finetuned Model
+You need to submit finetuning jobs to OpenAI. Using the `.jsonl` file obtained from last step:
+```
+$openai api fine_tunes.create -t prepared_file.jsonl -m base_model --suffix "{MODEL_NAME}"
+```
+To reproduce our results, please use `davinci` as the base model and use default hyperparameters: epoch=4, batch_size=0.2%*training_set_size, learning_rate_multiplier=0.1
+
+## Use the finetuned model
+You can check the status of a finetuning job by:
+```
+$openai api fine_tunes.list
+```
+When a fintuning job is finished (i.e., `"status": "processed"`), you can find the name of that finetuned model in the list, and you can then use the finetuned model the same way as other OpenAI models through its API.
+
+For more info, please refer to the [official document](https://platform.openai.com/docs/guides/fine-tuning).
+
+
+
+
+# Model Weights
+All model weights are stored on [Google Drive](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing)
+
+## Download files and folders from Google Drive
+```
+pip install gdown
+gdown <SHARED_LINK_FOR_FILE>
+gdown --folder <SHARED_LINK_FOR_FOLDER>
+```
 
 
 
@@ -126,56 +141,56 @@ export OPENAI_API_KEY=<YOUR_API_KEY>
 ```
 Or permanently set the environment variable in your ```~/.bash_profile``` or ```~/.bashrc```.
 
-Create embeddings for known landmarks or objects in the given environment.
+Create embeddings for the known landmarks or objects in the given environment.
 ```
 python get_emebd.py
 ```
 
-To generate symbolic dataset, train test splits for training symbolic translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset for batch 1 and 2 data.
+To generate lifted dataset, train test splits for training lifted translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset for batch 1 and 2 data.
 ```
-python dataset_symbolic.py --perm --update --merge
+python dataset_lifted.py --perm --update --merge
 ```
 
-Generate grounded dataset from symbolic dataset
+To generate grounded dataset from lifted dataset
 ```
-python dataset_grounded.py --env=osm --city=CITYNAME
+python dataset_grounded.py --env=osm --city={CITYNAME}
 ```
 where CITYNAME is the name of a file in the directory ```data/osm/osm_lmks``` without .json file extension.
 
-Use Lang2LTL as an API
+To use Lang2LTL as an API
 ```
 from lang2ltl import lang2ltl
 out_ltl = lang2ltl(utt, lmk2sem, result_dpath)
 ```
 
-Run experiments for the Lang2LTL modular system
+To run experiments for the Lang2LTL modular system
 ```
-python run_experiment.py
-```
-
-Run experiments for the end-to-end GPT-3 translation system with prompt
-```
-python run_experiment.py --full_e2e
+python exp_full.py
 ```
 
-Run experiments for the modular_ner approach to translate language to LTL translation
+To run experiments for the end-to-end translation with prompting GPT-3 or GPT-4
 ```
-python run_experiment.py --translate_e2e
+python exp_full.py --full_e2e
+```
+
+To run experiments for the modular_ner approach to translate language to LTL
+```
+python exp_full.py --translate_e2e
 ```
 
 
 # Datasets
 All data is stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing).
 
-## Symbolic
+## Lifted Dataset
 ```symbolic_no_perm.csv``` contains pairs of utterances and LTL formulas whose propositions are symbolic, e.g., a, b, c, etc, used for training symbolic translation module.
 
 ```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
 
-## OpenStreetMap (OSM)
+## Grounded Dataset: OpenStreetMap (OSM)
 ```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
 
-## Cleanup World
+## Grounded Dataset: Cleanup World
 ```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
 for language commands paired LTL expressions, converted to 1 csv file from 2 txt files, ```hard_pc_src.txt``` and ```hard_pc_tar.txt```.
 
@@ -187,7 +202,7 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 Convert propositions in target LTLs from letters to words joined by underscores.
 
 ## Compose Datasets
-To construct training and test set of a composed dataset,
+ (WIP) To construct training and test set of a composed dataset,
 run
 ```
 python dataset_composed_new.py
@@ -199,28 +214,18 @@ Composed dataset pkl file: dictionary of train data, train meta data, test data,
 Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
 e.g., composed datasets.
 
-To download files and folders from Google Drive
-```
-pip install gdown
-gdown <SHARED_LINK_FOR_FILE>
-gdown --folder <SHARED_LINK_FOR_FOLDER>
-```
-
-
-## Model Weights
-All model weights are stored on [Google Drive](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing)
 
 
 
 # Baselines
 ## CopyNet
-Grounding Language to Landmarks in Arbitrary Outdoor Environments [Berg et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/berg20.pdf),
-[code](https://github.com/jasonxyliu/magic-skydio)
-
-## GRU-based Sequence-to-Sequence-Attention
-Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications [Gopalan et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/gopalan18.pdf)
-[code](https://github.com/h2r/lggltl/tree/master/models)
+Grounding Language to Landmarks in Arbitrary Outdoor Environments ([Berg et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/berg20.pdf))
+([code](https://github.com/jasonxyliu/magic-skydio))
 
 ## Code as Policies
-Code as Policies: Language Model Programs for Embodied Control [Liang, et al. 22](https://arxiv.org/abs/2209.07753)
-[code](https://colab.research.google.com/drive/1UgMpP-b-TnSs4pgpTUj63sSSJsXRTgxC?usp=sharing)
+Code as Policies: Language Model Programs for Embodied Control ([Liang, et al. 22](https://arxiv.org/abs/2209.07753))
+([code](https://colab.research.google.com/drive/1UgMpP-b-TnSs4pgpTUj63sSSJsXRTgxC?usp=sharing))
+
+## GRU-based Sequence-to-Sequence with Attention
+Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications ([Gopalan et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/gopalan18.pdf))
+([code](https://github.com/h2r/lggltl/tree/master/models))

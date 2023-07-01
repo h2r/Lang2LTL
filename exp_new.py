@@ -15,7 +15,7 @@ from gpt import GPT3
 from s2s_sup import Seq2Seq
 from s2s_hf_transformers import HF_MODELS
 from s2s_pt_transformer import construct_dataset_meta
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 from utils import load_from_file, save_to_file, build_placeholder_map, substitute, substitute_single_letter
 from eval import evaluate_grounded_ltl, evaluate_lang2ltl, evaluate_lang_new, evaluate_plan
 from formula_sampler import TYPE2NPROPS

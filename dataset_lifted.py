@@ -308,7 +308,7 @@ def generate_lc_splits(split_fpath, portions=[0.1, 0.3, 0.5, 0.7], seed=42):
 
 
 if __name__ == "__main__":
-    # python dataset_symbolic.py --perm --update --merge --nexamples=1
+    # python dataset_lifted.py --perm --update --merge --nexamples=1
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", action="store", type=str, nargs="+", default=["data/aggregated_responses_batch1.csv", "data/aggregated_responses_batch2.csv"], help="fpath to aggregated Google form responses.")
     parser.add_argument("--perm", action="store_true", help="True if permute props after train, test split.")

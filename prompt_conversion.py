@@ -7,7 +7,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from utils import save_to_file
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 
 SEEDS = [0, 1, 2, 42, 111]
 HEADER = '''

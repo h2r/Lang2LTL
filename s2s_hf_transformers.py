@@ -9,7 +9,7 @@ from transformers import AutoTokenizer, AutoModelForSeq2SeqLM, \
     Seq2SeqTrainingArguments, DataCollatorForSeq2Seq, Seq2SeqTrainer
 import evaluate
 
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 
 HF_MODELS = ["t5-small", "t5-base", "t5-large", "t5-3b", "t5-11b", "facebook/bart-base"]
 T5_PREFIX = "translate English to Linear Temporal Logic: "

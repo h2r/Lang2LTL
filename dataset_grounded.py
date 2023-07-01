@@ -15,7 +15,7 @@ from collections import defaultdict
 
 from utils import load_from_file, save_to_file, substitute_single_letter, remove_prop_perms, name_to_prop
 from formula_sampler import PROPS
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 
 
 def rename_map_files(osm_lmks_dpath):

@@ -16,7 +16,7 @@ from torchtext.data.utils import get_tokenizer
 from torchtext.vocab import build_vocab_from_iterator
 from torch.utils.tensorboard import SummaryWriter
 
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.manual_seed(0)

@@ -1,5 +1,5 @@
 import argparse
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 from utils import save_to_file
 
 ONE_ARG_SYMBOLS = ['!', 'F', 'G', 'X']

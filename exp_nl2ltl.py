@@ -11,7 +11,7 @@ import spot
 from pprint import pprint
 
 from gpt import GPT3
-from dataset_symbolic import load_split_dataset
+from dataset_lifted import load_split_dataset
 from utils import load_from_file, save_to_file, name_to_prop, substitute_single_word
 
 
