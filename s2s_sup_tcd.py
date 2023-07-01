@@ -22,7 +22,7 @@ S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
 UNARY_OPERATORS = ['!', "F", "G", "X"]
 BINARY_OPERATORS = ['&', '|', 'U', 'i', 'e', 'M']
 END_TOKEN = '</s>'
-MAX_LENGTH = 256 # 266? 2 x exact_restricted_avoidance_5
+MAX_LENGTH = 256  # 266? 2 x exact_restricted_avoidance_5
 MAX_DEPTH = 21
 CHECK_DEPTH = 100
 
@@ -93,10 +93,11 @@ def build_tree(ltl):
 class Seq2Seq:
     def __init__(self, model_dpath, model_name, **kwargs):
         self.model_name = model_name
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         if "t5" in model_name or "bart" in model_name:
             self.tokenizer = AutoTokenizer.from_pretrained(model_dpath)
-            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dpath).to('cuda')
+            self.model = AutoModelForSeq2SeqLM.from_pretrained(model_dpath).to(self.device)
         elif model_name == "pt_transformer":
             self.model = Seq2SeqTransformer(kwargs["src_vocab_sz"], kwargs["tar_vocab_sz"],
                                             NUM_ENCODER_LAYERS, NUM_DECODER_LAYERS, EMBED_SIZE, NHEAD,
@@ -111,7 +112,8 @@ class Seq2Seq:
     def translate(self, queries):
         if "t5" in self.model_name or "bart" in self.model_name:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
-            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to('cuda')
+
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to(self.device)
             output_tokens = self.model.generate(
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
@@ -128,7 +130,7 @@ class Seq2Seq:
     def type_constrained_decode(self, utts):
         """
         type constrained decoding based on LTL syntax:
-        mask_and_regen() :: next_token is invalid, mask it and pick the second highest one
+        mask_and_regen() :: next_token is invalid, mask it and pick the token with the second highest likelihood
         add_and_gen_new() :: next_token is valid, append it to the partial formula and generate a new one
 
         Logic: 
@@ -160,9 +162,9 @@ class Seq2Seq:
 
         if "t5" in self.model_name or "bart" in self.model_name:
             inputs = [f"{T5_PREFIX}{utt}" for utt in utts]  # add prefix
-            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to('cuda')
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to(self.device)
             input_ids = inputs.input_ids
-            decoder_input_ids = self.tokenizer("<pad>", add_special_tokens=False, return_tensors="pt").input_ids.to('cuda')
+            decoder_input_ids = self.tokenizer("<pad>", add_special_tokens=False, return_tensors="pt").input_ids.to(self.device)
             outputs = self.model(input_ids, decoder_input_ids=decoder_input_ids, return_dict=True)
             encoded_sequence = (outputs.encoder_last_hidden_state,)
             lm_logits = outputs.logits

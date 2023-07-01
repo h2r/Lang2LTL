@@ -168,7 +168,7 @@ def finetune_t5_old(input_sequences, output_sequences, tokenizer, model):
     print(ltl)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--data_fpath", type=str, default="data/holdout_split_batch12_perm/symbolic_batch12_perm_utt_0.2_0.pkl", help="train and test sets.")
     parser.add_argument("--end_idx", type=int, default=None, help="slicing index for learning curve.")

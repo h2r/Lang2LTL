@@ -23,6 +23,7 @@ S2S_MODELS = HF_MODELS.extend(["pt_transformer"])
 class Seq2Seq:
     def __init__(self, model_dpath, model_name, **kwargs):
         self.model_name = model_name
+        self.device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
         if "t5" in model_name or "bart" in model_name:
             self.tokenizer = AutoTokenizer.from_pretrained(model_dpath)
@@ -41,7 +42,7 @@ class Seq2Seq:
     def translate(self, queries):
         if "t5" in self.model_name or "bart" in self.model_name:
             inputs = [f"{T5_PREFIX}{query}" for query in queries]  # add prefix
-            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True)
+            inputs = self.tokenizer(inputs, return_tensors="pt", padding=True).to(self.device)
             output_tokens = self.model.generate(
                 input_ids=inputs["input_ids"],
                 attention_mask=inputs["attention_mask"],
