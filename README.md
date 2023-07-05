@@ -123,7 +123,9 @@ For more info, please refer to the [official document](https://platform.openai.c
 
 
 # Model Weights
-All model weights are stored on [Google Drive](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing)
+All model weights are stored on [Google Drive link](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing).
+
+The model trained on the composed dataset is at [Google Drive link](https://drive.google.com/drive/folders/1rZl8tblyVj-pZZW4OgbO1NJwMIT2fwx9?usp=sharing)
 
 ## Download files and folders from Google Drive
 ```
@@ -229,3 +231,16 @@ Code as Policies: Language Model Programs for Embodied Control ([Liang, et al. 2
 ## GRU-based Sequence-to-Sequence with Attention
 Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications ([Gopalan et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/gopalan18.pdf))
 ([code](https://github.com/h2r/lggltl/tree/master/models))
+
+
+
+# Citation
+[arXiv paper](https://arxiv.org/abs/2302.11649)
+```
+@inproceedings{liu23lang2ltl,
+  title={Lang2LTL: Translating Natural Language Commands to Temporal Robot Task Specification},
+  author={Liu, Jason Xinyu and Yang, Ziyi and Idrees, Ifrah and Liang, Sam and Schornstein, Benjamin and Tellex, Stefanie and Shah, Ankit},
+  booktitle={arXiv preprint arXiv:2302.11649},
+  year={2023}
+}
+```
