@@ -240,7 +240,7 @@ Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications ([G
 @inproceedings{liu23lang2ltl,
   title={Lang2LTL: Translating Natural Language Commands to Temporal Robot Task Specification},
   author={Liu, Jason Xinyu and Yang, Ziyi and Idrees, Ifrah and Liang, Sam and Schornstein, Benjamin and Tellex, Stefanie and Shah, Ankit},
-  booktitle={arXiv preprint arXiv:2302.11649},
+  booktitle={Conference on Robbot Learning},
   year={2023}
 }
 ```
