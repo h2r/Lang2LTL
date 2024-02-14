@@ -199,7 +199,7 @@ All data is stored on [Google Drive](https://drive.google.com/drive/folders/1ept
 ```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
 
 ## Grounded Dataset: OpenStreetMap (OSM)
-[```osm_filtered.csv```](https://drive.google.com/file/d/1bq75optg84ThAEjA67HYxtebhg_TN3LE/view?usp=sharing) generated from ```osm_berg.csv``` by running ```dataset_filtered.py```. 
+[```osm_filtered.filtered```](https://drive.google.com/file/d/1bq75optg84ThAEjA67HYxtebhg_TN3LE/view?usp=sharing) generated from ```osm_berg.csv``` by running ```dataset_filtered.py```. 
 
 ## Grounded Dataset: Cleanup World
 ```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
