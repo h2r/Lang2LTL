@@ -66,6 +66,9 @@ After downloading the model weights, convert and load them using HuggingFace's m
 ```tester.py```: unit tests.
 
 
+
+
+
 # Finetuning T5 Models
 Following instructions below to finetune [T5 models](https://arxiv.org/abs/1910.10683) on our dataset for lifted translation.
 The datasets for reproducing all holdout test results are stored under `data/holdout_split_batch12_perm/`.
@@ -82,6 +85,20 @@ weight_decay = 0.01
 num_train_epochs = 5
 ```
 We use a single NVIDIA GeForce RTX 3090 (24GB) for finetuning, and one fold of the holdout test set takes ~2 hours.
+
+## Model Weights
+All model weights are stored on [Google Drive link](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing).
+
+The model trained on the composed dataset is at [Google Drive link](https://drive.google.com/drive/folders/1rZl8tblyVj-pZZW4OgbO1NJwMIT2fwx9?usp=sharing)
+
+## Download files and folders from Google Drive
+```
+pip install gdown
+gdown <SHARED_LINK_FOR_FILE>
+gdown --folder <SHARED_LINK_FOR_FOLDER>
+```
+
+
 
 
 
@@ -122,17 +139,6 @@ For more info, please refer to the [official document](https://platform.openai.c
 
 
 
-# Model Weights
-All model weights are stored on [Google Drive link](https://drive.google.com/drive/folders/1Rk_JICbHOArWZE6TRxwJZnHVd4wQ5abL?usp=sharing).
-
-The model trained on the composed dataset is at [Google Drive link](https://drive.google.com/drive/folders/1rZl8tblyVj-pZZW4OgbO1NJwMIT2fwx9?usp=sharing)
-
-## Download files and folders from Google Drive
-```
-pip install gdown
-gdown <SHARED_LINK_FOR_FILE>
-gdown --folder <SHARED_LINK_FOR_FOLDER>
-```
 
 
 
@@ -181,6 +187,9 @@ python exp_full.py --translate_e2e
 ```
 
 
+
+
+
 # Datasets
 All data is stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing).
 
@@ -190,7 +199,7 @@ All data is stored on [Google Drive](https://drive.google.com/drive/folders/1ept
 ```symbolic_perm.csv``` augments ```symbolic_no_perm.csv``` with permutations of propositions in utterances and their corresponding LTL formulas.
 
 ## Grounded Dataset: OpenStreetMap (OSM)
-```osm_corlw.csv``` generated from ```providence_500.csv``` by running the ```create_osm_dataset``` function in ```dataset.py```.
+[```osm_filtered.csv```](https://drive.google.com/file/d/1bq75optg84ThAEjA67HYxtebhg_TN3LE/view?usp=sharing) generated from ```osm_berg.csv``` by running ```dataset_filtered.py```. 
 
 ## Grounded Dataset: Cleanup World
 ```cleanup_raw.csv``` contains the raw [Gopalan et al. 18 dataset](https://github.com/h2r/language_datasets/tree/master/RSS_2018_Gopalan_et_al)
@@ -203,14 +212,15 @@ for language commands paired LTL expressions, converted to 1 csv file from 2 txt
 ```cleanup_corlw.csv``` generated from ```cleanup_cleaned.csv``` by running the ```generate_tar_file``` function in ```dataset.py```.
 Convert propositions in target LTLs from letters to words joined by underscores.
 
+[```cleanup_filtered.pkl```](https://drive.google.com/file/d/13tXP1gXUC5XSuNBRWJZzYjnZYs5ounq-/view?usp=sharing) generated from ```cleanup_corlw.csv``` by running ```dataset_filtered.py```.
+
 ## Compose Datasets
- (WIP) To construct training and test set of a composed dataset,
+(WIP) To construct training and test set of a composed dataset,
 run
 ```
 python dataset_composed_new.py
 ```
 Composed dataset pkl file: dictionary of train data, train meta data, test data, test meta data and information used for construction.
-
 
 ## Large datasets
 Large datasets are stored on [Google Drive](https://drive.google.com/drive/folders/1ept4vnvlUevzqUellFt938vV2VDcgdwb?usp=sharing),
