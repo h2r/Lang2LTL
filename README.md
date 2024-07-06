@@ -32,6 +32,8 @@ After downloading the model weights, convert and load them using HuggingFace's m
 
 
 
+
+
 # Files
 ```lang2ltl.py```: modules and API of the Lang2LTL language grounding system.
 
@@ -140,8 +142,6 @@ For more info, please refer to the [official document](https://platform.openai.c
 
 
 
-
-
 # Run Experiments
 Set environment variable for OpenAI API key for current shell
 ```
@@ -229,6 +229,7 @@ e.g., composed datasets.
 
 
 
+
 # Baselines
 ## CopyNet
 Grounding Language to Landmarks in Arbitrary Outdoor Environments ([Berg et al. 18](https://h2r.cs.brown.edu/wp-content/uploads/berg20.pdf))
@@ -244,13 +245,16 @@ Sequence-to-Sequence Language Grounding of Non-Markovian Task Specifications ([G
 
 
 
+
+
 # Citation
 [arXiv paper](https://arxiv.org/abs/2302.11649)
 ```
 @inproceedings{liu23lang2ltl,
-  title={Lang2LTL: Translating Natural Language Commands to Temporal Robot Task Specification},
-  author={Liu, Jason Xinyu and Yang, Ziyi and Idrees, Ifrah and Liang, Sam and Schornstein, Benjamin and Tellex, Stefanie and Shah, Ankit},
-  booktitle={Conference on Robbot Learning},
-  year={2023}
+  title     = {Lang2LTL: Translating Natural Language Commands to Temporal Robot Task Specification},
+  author    = {Liu, Jason Xinyu and Yang, Ziyi and Idrees, Ifrah and Liang, Sam and Schornstein, Benjamin and Tellex, Stefanie and Shah, Ankit},
+  booktitle = {Conference on Robbot Learning (CoRL)},
+  year      = {2023},
+  url       = {https://arxiv.org/abs/2302.11649}
 }
 ```
