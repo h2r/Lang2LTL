@@ -151,7 +151,7 @@ Or permanently set the environment variable in your ```~/.bash_profile``` or ```
 
 Create embeddings for the known landmarks or objects in the given environment.
 ```
-python get_emebd.py
+python get_embed.py
 ```
 
 To generate lifted dataset, train test splits for training lifted translation module and prompts for off-the-shelf GPT-3 with permuted propositions and update existing symbolic dataset for batch 1 and 2 data.
