@@ -1,4 +1,4 @@
-## Latest Updates
+# Latest Updates
 - [09/12/2024] We released Lang2LTL-2! Lang2LTL-2 uses both textual and visual descriptions of landmarks to ground spatiotemporal navigation commands in novel indoor and outdoor environments. Please see the project website [here](https://spatiotemporal-ground.github.io/).
 
 
